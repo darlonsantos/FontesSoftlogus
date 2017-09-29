@@ -1,0 +1,69 @@
+unit form_ativacaoicloud;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, AdvGlowButton, ExtCtrls, AdvReflectionImage;
+
+type
+  TForm_ativacao = class(TForm)
+    pnl4545: TPanel;
+    pnlerghgfh454: TPanel;
+    btngf4545: TAdvGlowButton;
+    lbl1_ativacao: TLabel;
+    pnl4447: TPanel;
+    img778788: TAdvReflectionImage;
+    lbl4g5: TLabel;
+    procedure btngf4545Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form_ativacao: TForm_ativacao;
+
+implementation
+
+uses principal;
+
+{$R *.dfm}
+
+procedure TForm_ativacao.btngf4545Click(Sender: TObject);
+begin
+  // Aqui reabre a tela de registro para registrar antes de expirar a aplicação
+
+   frmPrincipal.prtct1.Reabrir;
+   // Aqui se os dias restantes retornarem -1 quer diser que a aplicação foi liberada para sempre
+   // se não ele retorna os dias restantes para expiração do aplicativo.
+   if frmPrincipal.prtct1.DiasR = -1 then
+      lbl1_ativacao.Caption := 'Aplicação liberada para sempre.'
+   else
+      lbl1_ativacao.Caption := 'Dias Restantes : ' + FloatToStr( frmPrincipal.prtct1.DiasR ) + '  Até : ' + frmPrincipal.prtct1.datavenc;
+   // Aqui se os dias restantes forem menor ou igual que 15 dias, ele abilita a opção de registrar novamente.
+   if ( frmPrincipal.prtct1.DiasR <= 15 ) and ( frmPrincipal.prtct1.DiasR > 0 )  then
+      btngf4545.Enabled := True
+   else
+      btngf4545.Enabled := False;
+end;
+
+procedure TForm_ativacao.FormShow(Sender: TObject);
+begin
+   // Aqui se os dias restantes retornarem -1 quer diser que a aplicação foi liberada para sempre
+   // se não ele retorna os dias restantes para expiração do aplicativo.
+   if frmPrincipal.prtct1.DiasR = -1 then
+      lbl1_ativacao.Caption := 'Sistema iCloud liberado para sempre.'
+   else
+      lbl1_ativacao.Caption := 'Dias Restantes : ' + FloatToStr( frmPrincipal.prtct1.DiasR ) + '  Até : ' + frmPrincipal.prtct1.datavenc;
+   // Aqui se os dias restantes forem menor ou igual que 15 dias, ele abilita a opção de registrar novamente.
+   if ( frmPrincipal.prtct1.DiasR <= 15 ) and ( frmPrincipal.prtct1.DiasR > 0 ) then
+      btngf4545.Enabled := True
+   else
+      btngf4545.Enabled := False;
+
+end;
+
+end.

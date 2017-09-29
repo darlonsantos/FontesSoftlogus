@@ -1,0 +1,133 @@
+unit backup;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, Buttons, Mask, ExtCtrls,
+  Menus, AdvGlowButton, TFlatPanelUnit, RxToolEdit, ZipMstr;
+
+type
+  Tfrmbackup = class(TForm)
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
+    eorigem: TDirectoryEdit;
+    Label2: TLabel;
+    edestino: TDirectoryEdit;
+    DelBut: TButton;
+    Memo1: TMemo;
+    PopupMenu1: TPopupMenu;
+    EfetuarCpia1: TMenuItem;
+    Fechar1: TMenuItem;
+    Bevel2: TBevel;
+    pgravar: TFlatPanel;
+    bitbtn1: TAdvGlowButton;
+    bitbtn2: TAdvGlowButton;
+    zpmstr1: TZipMaster;
+    procedure BitBtn2Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure eorigemKeyPress(Sender: TObject; var Key: Char);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ZipMaster1Message(Sender: TObject; ErrCode: Integer;
+      Message: string);
+    procedure FormDestroy(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmbackup: Tfrmbackup;
+  autob: boolean;
+  i: integer;
+
+implementation
+
+uses modulo;
+
+{$R *.dfm}
+
+procedure Tfrmbackup.BitBtn2Click(Sender: TObject);
+begin
+  close;
+end;
+
+procedure Tfrmbackup.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  action := cafree;
+end;
+
+procedure Tfrmbackup.FormShow(Sender: TObject);
+begin
+  eorigem.text := copia_origem;
+  edestino.text := copia_destino;
+
+  memo1.align := alclient;
+end;
+
+procedure Tfrmbackup.eorigemKeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then perform(wm_nextdlgctl, 0, 0);
+end;
+
+procedure Tfrmbackup.BitBtn1Click(Sender: TObject);
+begin
+  if (EORIGEM.Text = '') or (EDESTINO.Text = '') then
+  begin
+    SHOWMESSAGE('Favor completar os campos de Origem e Destino!');
+  end
+  else
+  begin
+    edestino.Text := edestino.Text + '\';
+    frmmodulo.Conexao.Connected := FALSE;
+    FRMMODULO.ConexaoLOCAL.Connected := FALSE;
+
+
+
+    memo1.visible := true;
+    Application.ProcessMessages;
+    memo1.text := '';
+    zpmstr1.ZipFileName := edestino.text + 'backup_' + copy(datetostr(date), 7, 4) + copy(datetostr(date), 4, 2) + copy(datetostr(date), 1, 2) + '_' + copy(timetostr(time), 1, 2) + copy(timetostr(time), 4, 2) + '.zip'; ;
+    zpmstr1.FSpecArgs.Add(eorigem.text + '\*.*');
+    zpmstr1.Add;
+    Showmessage('Arquivo compactado! Qtde. de arquivos = ' + IntToStr(zpmstr1.SuccessCnt));
+
+    frmmodulo.Conexao.Connected := TRUE;
+    FRMMODULO.ConexaoLOCAL.Connected := TRUE;
+
+    frmmodulo.qrconfig.Open;
+    frmmodulo.qrconfig.edit;
+    frmmodulo.qrconfig.FieldByName('ultimo_backup').asdatetime := date;
+    frmmodulo.qrconfig.post;
+    frmmodulo.qrconfig.close;
+    frmmodulo.ConexaoLocal.Commit;
+    frmmodulo.Conexao.commit;
+
+    Memo1.visible := false;
+    close;
+  end;
+end;
+
+procedure Tfrmbackup.FormCreate(Sender: TObject);
+begin
+  zpmstr1.Load_Zip_Dll;
+  zpmstr1.Load_Unz_Dll;
+end;
+
+procedure Tfrmbackup.ZipMaster1Message(Sender: TObject; ErrCode: Integer;
+  Message: string);
+begin
+   { if ErrCode <> 0 then }{ uncomment this line to show errors ONLY }
+  memo1.Lines.Add(message);
+end;
+
+procedure Tfrmbackup.FormDestroy(Sender: TObject);
+begin
+  zpmstr1.Unload_Zip_Dll;
+  zpmstr1.Unload_Unz_Dll;
+end;
+
+end.

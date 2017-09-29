@@ -1,0 +1,48 @@
+object FMargemLucro: TFMargemLucro
+  Left = 385
+  Top = 322
+  BorderIcons = []
+  BorderStyle = bsDialog
+  Caption = 'Margem de Lucro'
+  ClientHeight = 109
+  ClientWidth = 257
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poMainFormCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 0
+    Top = 0
+    Width = 257
+    Height = 24
+    Align = alTop
+    Alignment = taCenter
+    Caption = 'Margem Lucro (%)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    ExplicitWidth = 172
+  end
+  object eMargem: TCurrencyEdit
+    Left = 82
+    Top = 56
+    Width = 71
+    Height = 21
+    Margins.Left = 1
+    Margins.Top = 1
+    AutoSize = False
+    DecimalPlaces = 0
+    DisplayFormat = '0'
+    TabOrder = 0
+    OnKeyPress = eMargemKeyPress
+  end
+end

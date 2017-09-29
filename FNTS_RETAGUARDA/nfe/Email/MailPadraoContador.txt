@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META content="text/html; charset=windows-1252" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.18928"></HEAD>
+<BODY>
+<H1 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 5px; FONT: 22px/24px Verdana, Geneva, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(255,255,255); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxTITULO><STRONG><FONT color=#009933 size=5 face=Tahoma>NFe-e Nota Fiscal 
+Eletrônica (XML's)</FONT></STRONG></H1>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 5px; FONT: 22px/24px Verdana, Geneva, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(255,255,255); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxTITULO><FONT color=#ff0000><STRONG>*AMBIENTE</STRONG></FONT></P>
+<DIV 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+<DIV style="LINE-HEIGHT: 17px" align=center>
+<HR style="LINE-HEIGHT: 17px" align=center SIZE=2 width="100%">
+</DIV></DIV>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">Em 
+Anexo à este e-mail você está os arquivos XML da Nota Fiscal Eletrônica e o 
+DANFe em PDF.</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+align=left><FONT size=2>Empresa: <FONT 
+color=#0000ff><STRONG>*Empresa</STRONG></FONT></FONT></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+align=left><FONT size=2>CNPJ: <FONT 
+color=#0000ff><STRONG>*CNPJ</STRONG></FONT></FONT></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+align=left><FONT size=2>Endereço: <FONT 
+color=#0000ff><STRONG>*Endereco</STRONG></FONT></FONT></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">
+<HR style="LINE-HEIGHT: 17px" align=center SIZE=2 width="100%">
+
+<P></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>Referência: 
+*Ref</STRONG></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+align=left><FONT size=2>*Notas</FONT></P>
+<DIV 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+align=center>
+<HR style="LINE-HEIGHT: 17px" align=center SIZE=2 width="100%">
+</DIV>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG 
+style="LINE-HEIGHT: 17px; FONT-WEIGHT: bold">Descrição dos anexos desse 
+e-mail:</STRONG><BR style="LINE-HEIGHT: 17px"><BR 
+style="LINE-HEIGHT: 17px">-<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="LINE-HEIGHT: 17px; FONT-WEIGHT: bold"><EM 
+style="LINE-HEIGHT: 17px; FONT-STYLE: italic">*PDF </EM></STRONG>- imagem 
+gráfica do DANFE - Documento Auxiliar da Nota Fiscal Eletrônica, que pode ser 
+visualizado em tela ou impresso, utilizando-se o software gratuito Adobe Acrobat 
+Reader.</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px">-<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><STRONG 
+style="LINE-HEIGHT: 17px; FONT-WEIGHT: bold">*XML</STRONG><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>- esse arquivo é a própria Nota Fiscal 
+Eletrônica, que deve ser guardada de acordo com a legislação.</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><STRONG>Obs: 
+</STRONG>O anexo está em formato ".zip" com os arquivos da nota (XML e 
+DANFe).</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 1.35em; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"></P>
+<HR style="LINE-HEIGHT: 17px" align=center SIZE=2 width="100%">
+<STRONG style="LINE-HEIGHT: 17px; FONT-WEIGHT: bold">Mensagem automática não 
+precisa responder.</STRONG>&nbsp; 
+<HR style="LINE-HEIGHT: 17px" align=center SIZE=2 width="100%">
+
+<P></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 5px; FONT: 13px/14px Verdana, Geneva, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(63,68,72) !important; WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxTEXTOSIMPLES></P>
+<P 
+style="WIDOWS: 2; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0px 5px; ORPHANS: 2" 
+class=ecxTEXTOSIMPLES></P><B><SPAN style="TEXT-INDENT: 0px !important" size="3" 
+face="Times New Roman">
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; FONT: medium 'Times New Roman'; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+align=center><BR class=Apple-interchange-newline><IMG 
+style="WIDTH: 86px; HEIGHT: 90px" border=0 hspace=0 alt="DBMaster Sistemas" 
+align=absBottom 
+src="file:///C:/Desenvolvimento/NFeSis/1.5/Debug/Win32/NFe/Email/logo.png" 
+width=79 height=90></P>
+<P 
+style="TEXT-ALIGN: center; WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; FONT: 11pt/17px Calibri, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; MARGIN-BOTTOM: 0pt; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxMsoNormal><B style="LINE-HEIGHT: 19px; FONT-WEIGHT: bold"></B></P><B 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; TEXT-INDENT: 0px; FONT: bold medium/19px 'Times New Roman'; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(0,0,0); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+color=#376092><SPAN style="LINE-HEIGHT: 13px; FONT-SIZE: 12px"><B><SPAN 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px !important; FONT: 15px/19px Calibri, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxGramE><B 
+style="LINE-HEIGHT: 19px; TEXT-INDENT: 0px !important; FONT-WEIGHT: bold"><SPAN 
+style="LINE-HEIGHT: 13px; TEXT-INDENT: 0px !important; COLOR: rgb(55,96,146); FONT-SIZE: 9pt">
+<DIV 
+style="TEXT-ALIGN: center; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><B><FONT 
+style="LINE-HEIGHT: normal" color=#009933 size=5>DBMaster Sistemas 
+</FONT></B></DIV>
+<DIV 
+style="TEXT-ALIGN: center; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><B><FONT 
+style="LINE-HEIGHT: normal" size=2>sistemas comerciais ao seu 
+alcance</FONT></B></DIV>
+<DIV 
+style="TEXT-ALIGN: center; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+style="LINE-HEIGHT: normal" size=2><FONT color=#005f8c>site</FONT>:<B 
+style="LINE-HEIGHT: 17px">&nbsp;</B><A 
+style="LINE-HEIGHT: 17px; COLOR: rgb(0,104,207); CURSOR: pointer" 
+href="http://www.dbmastersistemas.com/" 
+target=_blank>www.dbmastersistemas.com</A></FONT></DIV>
+<DIV 
+style="TEXT-ALIGN: center; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+style="LINE-HEIGHT: normal" size=2><FONT color=#005f8c>contato</FONT>: 
+santos.rn@hotmail.com</FONT></DIV>
+<DIV 
+style="TEXT-ALIGN: center; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+style="LINE-HEIGHT: normal" size=2><FONT color=#005f8c size=1>MSN</FONT>:<SPAN 
+class=Apple-converted-space>&nbsp;</SPAN><A 
+href="mailto:mizakpiva@gmail.com">mizakpiva@gmail.com</A></FONT></DIV></SPAN></B></SPAN></B></SPAN></FONT>
+<DIV 
+style="TEXT-ALIGN: center; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+color=#376092><B><B 
+style="LINE-HEIGHT: 19px; TEXT-INDENT: 0px !important; FONT-WEIGHT: bold"></B></B></FONT><FONT 
+color=#376092><SPAN style="LINE-HEIGHT: 13px; FONT-SIZE: 12px"><B><SPAN 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px !important; FONT: 15px/19px Calibri, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxGramE><B 
+style="LINE-HEIGHT: 19px; TEXT-INDENT: 0px !important; FONT-WEIGHT: bold"><SPAN 
+style="LINE-HEIGHT: 13px; TEXT-INDENT: 0px !important; COLOR: rgb(55,96,146); FONT-SIZE: 9pt"><FONT 
+color=#005f8c>Fones</FONT><SPAN 
+class=Apple-converted-space>&nbsp;</SPAN>:</SPAN></B></SPAN><B 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px !important; FONT: bold 15px/19px Calibri, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+styl="" 
+e="LINE-HEIGHT: 13px; TEXT-INDENT: 0px !important; COLOR: rgb(55,96,146); FONT-SIZE: 9pt">&nbsp;(94) 
+9179-7851 / 8160-2033</SPAN></B></B></SPAN></FONT></DIV>
+<DIV 
+style="TEXT-ALIGN: center; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+color=#376092><SPAN style="LINE-HEIGHT: 13px; FONT-SIZE: 12px"><B><B 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px !important; FONT: bold 15px/19px Calibri, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+styl="" 
+e="LINE-HEIGHT: 13px; TEXT-INDENT: 0px !important; COLOR: rgb(55,96,146); FONT-SIZE: 9pt"></SPAN></B></B></SPAN></FONT>&nbsp;</DIV>
+<DIV 
+style="TEXT-ALIGN: center; WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; FONT: 13px/17px Tahoma, Verdana, Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><FONT 
+color=#376092><SPAN style="LINE-HEIGHT: 13px; FONT-SIZE: 12px"><B><B 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px !important; FONT: bold 15px/19px Calibri, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><SPAN 
+styl="" 
+e="LINE-HEIGHT: 13px; TEXT-INDENT: 0px !important; COLOR: rgb(55,96,146); FONT-SIZE: 9pt">
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0cm 0pt; FONT: 8.5pt/14px Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxstyle1>&nbsp;</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0cm 0pt; FONT: 8.5pt/14px Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxstyle1 align=left></P>
+<HR>
+
+<P></P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0cm 1.35em; FONT: 8.5pt/14px Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxstyle1>AVISO LEGAL: Esta mensagem é destinada exclusivamente para a(s) 
+pessoa(s) a quem é dirigida, podendo conter informações confidencial e/ou 
+legalmente privilegiada. Se você não for destinatário desta mensagem, desde já 
+fica notificado de abster-se a divulgar, copiar, distribuir, examinar ou, de 
+qualquer forma, utilizar a informação contida nesta mensagem, por ser ilegal. 
+Caso você tenha recebido esta mensagem por engano, pedimos que nos retorne este 
+e-mail, promovendo, desde logo, a eliminação do seu conteúdo em sua base de 
+dados, registros ou sistema de controle. Fica desprovida de eficácia e validade 
+a mensagem que contiver vínculos obrigacionais, expedida por quem não detenha 
+poderes de representação.</P>
+<P 
+style="WIDOWS: 2; TEXT-TRANSFORM: none; BACKGROUND-COLOR: rgb(255,255,255); TEXT-INDENT: 0px; MARGIN: 0px 0cm 1.35em; FONT: 8.5pt/14px Arial, sans-serif; WHITE-SPACE: normal; ORPHANS: 2; LETTER-SPACING: normal; COLOR: rgb(42,42,42); WORD-SPACING: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px" 
+class=ecxstyle1><SPAN style="LINE-HEIGHT: 14px; COLOR: black" lang=EN-US>LEGAL 
+ADVICE: This message is exclusively destined for the people to whom it is 
+directed, and it can bear private and/or legally exceptional information. If you 
+are not addresses of this message, since now you are advised to not release, 
+copy, distribute, check or, otherwise, use the information contained in 
+elimination of its contents of your database, registrations or controls system. 
+The message that bears any mandatory links, issued by someone who has no 
+representation powers, shall be null or 
+void.</SPAN></SPAN></B></B></SPAN></FONT></B></SPAN></B><B 
+style="LINE-HEIGHT: 19px; FONT-WEIGHT: bold"></P></DIV></B></BODY></HTML>

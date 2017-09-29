@@ -1,0 +1,44 @@
+unit msg_operador;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, pngimage, ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    Image1: TImage;
+    Image2: TImage;
+    lb_msg: TLabel;
+    procedure FormHide(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.FormHide(Sender: TObject);
+begin
+  Screen.Cursor := crNone;
+  application.ProcessMessages;
+
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+  Screen.Cursor := crHourGlass;
+  Brush.Style := bsClear;
+  application.ProcessMessages;
+
+end;
+
+end.

@@ -1,0 +1,601 @@
+object frmcheque_baixa: Tfrmcheque_baixa
+  Left = 481
+  Top = 537
+  BorderStyle = bsToolWindow
+  Caption = 'CHEQUE | Baixa'
+  ClientHeight = 254
+  ClientWidth = 591
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PopupMenu = Pop2
+  Position = poMainFormCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Bevel10: TBevel
+    Left = 0
+    Top = 195
+    Width = 591
+    Height = 3
+    Align = alBottom
+  end
+  object GroupBox1: TGroupBox
+    Left = 7
+    Top = 4
+    Width = 145
+    Height = 188
+    Caption = 'Motivo da Baixa'
+    Color = 14657888
+    ParentColor = False
+    TabOrder = 0
+    object rdesfazer: TRadioButton
+      Left = 12
+      Top = 15
+      Width = 130
+      Height = 17
+      Caption = '&0 - DESFAZER - Baixa'
+      TabOrder = 0
+      OnClick = rdesfazerClick
+    end
+    object r1dev: TRadioButton
+      Left = 12
+      Top = 91
+      Width = 130
+      Height = 17
+      Caption = '&4 - 1'#170' Devolu'#231#227'o'
+      TabOrder = 4
+      OnClick = r1devClick
+    end
+    object r2dev: TRadioButton
+      Left = 12
+      Top = 109
+      Width = 130
+      Height = 17
+      Caption = '&5 - 2'#170' Devolu'#231#227'o'
+      TabOrder = 5
+      OnClick = r2devClick
+    end
+    object r1dep: TRadioButton
+      Left = 12
+      Top = 33
+      Width = 130
+      Height = 17
+      Caption = '&1 - 1'#186' Deposito'
+      TabOrder = 1
+      OnClick = r1depClick
+    end
+    object r2dep: TRadioButton
+      Left = 12
+      Top = 52
+      Width = 130
+      Height = 17
+      Caption = '&2 - 2'#186' Dep'#243'sito'
+      TabOrder = 2
+      OnClick = r2depClick
+    end
+    object rrep: TRadioButton
+      Left = 12
+      Top = 127
+      Width = 130
+      Height = 17
+      Caption = '&6 - Repassado'
+      TabOrder = 6
+      OnClick = rrepClick
+    end
+    object rdesc: TRadioButton
+      Left = 12
+      Top = 71
+      Width = 130
+      Height = 17
+      Caption = '&3 - Descontado'
+      TabOrder = 3
+      OnClick = rdescClick
+    end
+    object rsust: TRadioButton
+      Left = 12
+      Top = 146
+      Width = 130
+      Height = 17
+      Caption = '&7 - Sustado'
+      TabOrder = 7
+      OnClick = rsustClick
+    end
+    object rout: TRadioButton
+      Left = 12
+      Top = 165
+      Width = 130
+      Height = 17
+      Caption = '&8 - Outros'
+      TabOrder = 8
+      OnClick = routClick
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 155
+    Top = 4
+    Width = 429
+    Height = 188
+    Color = 14657888
+    ParentColor = False
+    TabOrder = 1
+    Visible = False
+    object Label1: TLabel
+      Left = 61
+      Top = 16
+      Width = 27
+      Height = 13
+      Alignment = taRightJustify
+      Caption = 'Data:'
+    end
+    object Label2: TLabel
+      Left = 48
+      Top = 48
+      Width = 40
+      Height = 13
+      Alignment = taRightJustify
+      Caption = 'Destino:'
+    end
+    object Label3: TLabel
+      Left = 45
+      Top = 87
+      Width = 43
+      Height = 13
+      Alignment = taRightJustify
+      Caption = 'Observ.:'
+    end
+    object Label7: TLabel
+      Left = 48
+      Top = 127
+      Width = 40
+      Height = 13
+      Alignment = taRightJustify
+      Caption = 'Destino:'
+    end
+    object DBDateEdit3: TDBDateEdit
+      Left = 94
+      Top = 12
+      Width = 106
+      Height = 21
+      DataField = 'DATA_BAIXA'
+      DataSource = dscheque2
+      GlyphKind = gkCustom
+      Glyph.Data = {
+        36030000424D3603000000000000360000002800000010000000100000000100
+        18000000000000030000C40E0000C40E00000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFDFB492D49C73D09567CD9162CA8D5DC8895AC6
+        8655C28351C28351C28351C28351C28351C28351CFA07CFFFFFFFFFFFFD6A074
+        F7F1ECF6EFE9F5ECE5F3E9E1F2E6DDF0E3DAEFE1D7EFE1D7EFE1D7EFE1D7EFE1
+        D7EFE1D7C48A5DFFFFFFFFFFFFD8A379F8F2EDEACFBBE6C0A3E6BEA0E5BD9EE5
+        BA99E2B794E0B48EDDAF88DBAA82D8AD88EFE1D7C58B5EFFFFFFFFFFFFDCA77D
+        F8F2EEEACFB9FEFEFEFDFDFDFDFEFDFDFEFDFEFEFEFDFDFDFEFEFEFEFEFEDAAF
+        8BEFE1D7C5895BFFFFFFFFFFFFDEA981F8F2EEE9CDB6FEFEFEBFDCC261AA68A0
+        CCA4AAD1AE67AD6DAAD1AEFEFEFEDCB390EFE1D7C78C5EFFFFFFFFFFFFE0AD86
+        F9F3EFE9CAB1FEFEFEFEFEFE61AA68D4E8D68BC090FEFEFE61AA68FEFEFEDEB7
+        95EFE1D7C38553FFFFFFFFFFFFE2B08BF9F5F0E9C8ADFEFEFEFEFEFE61AA68D4
+        E8D695C69AF8FBF86BB072FEFEFEE0BC9CEFE1D7C58554FFFFFFFFFFFFE4B38E
+        F9F5F1E8C5A9FEFEFEAAD1AE6BB072D4E8D6AAD1AE64AC6BAAD1AEFEFEFEE3C0
+        A3F1E6DDC78958FFFFFFFFFFFFE6B693FAF6F3E8C2A5FEFEFEFEFEFEFEFEFEFE
+        FEFEFEFEFEFEFEFEFEFEFEFEFEFEE4C5AAF6F0EACA8E5EFFFFFFFFFFFFE8B997
+        FAF6F364A3FE63A2FE61A1FE60A0FE5E9EFE5B9CFE5999FE5697FE5394FE5193
+        FEFAF6F3CD9263FFFFFFFFFFFFEABC9AFAF6F363A3FE78BCFE74BAFE70B8FE6C
+        B7FE67B2FE60AFFE59AAFE53A6FE3A7CFEFAF6F3D09669FFFFFFFFFFFFEBBE9D
+        FAF6F364A3FE63A2FE5F9FFE5C9DFE5798FE5395FE4C8FFE468AFE4183FE3C7E
+        FEFAF6F3D39A6EFFFFFFFFFFFFEEC5A7FAF6F3FAF6F3FAF6F3FAF6F3FAF6F3FA
+        F6F3FAF6F3FAF6F3FAF6F3FAF6F3FAF6F3FAF6F3D7A277FFFFFFFFFFFFF7E0D1
+        F0C7ABECBF9EEABD9CEABB99E8B995E6B692E5B48FE3B18BE1AE87DFAB83DCA8
+        7FDBA47CE1B595FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      ButtonWidth = 18
+      NumGlyphs = 1
+      TabOrder = 0
+      OnEnter = DBDateEdit3Enter
+      OnExit = DBDateEdit3Exit
+      OnKeyPress = DBDateEdit3KeyPress
+    end
+    object DBEdit1: TDBEdit
+      Left = 95
+      Top = 44
+      Width = 325
+      Height = 21
+      DataField = 'DESTINO'
+      DataSource = dscheque2
+      TabOrder = 2
+      OnEnter = DBEdit1Enter
+      OnExit = DBEdit1Exit
+      OnKeyPress = DBDateEdit3KeyPress
+    end
+    object DBEdit2: TDBEdit
+      Left = 95
+      Top = 76
+      Width = 322
+      Height = 21
+      DataField = 'OBS1'
+      DataSource = dscheque2
+      TabOrder = 3
+      OnEnter = DBEdit2Enter
+      OnExit = DBEdit2Exit
+      OnKeyPress = DBDateEdit3KeyPress
+    end
+    object DBEdit3: TDBEdit
+      Left = 95
+      Top = 100
+      Width = 322
+      Height = 21
+      DataField = 'OBS2'
+      DataSource = dscheque2
+      TabOrder = 4
+      OnEnter = DBEdit3Enter
+      OnExit = DBEdit3Exit
+      OnKeyPress = DBEdit3KeyPress
+    end
+    object PCONTA: TFlatPanel
+      Left = 5
+      Top = 40
+      Width = 416
+      Height = 34
+      ParentColor = True
+      ColorHighLight = clBtnFace
+      ColorShadow = clBtnFace
+      TabOrder = 1
+      UseDockManager = True
+      object Label4: TLabel
+        Left = 4
+        Top = 8
+        Width = 79
+        Height = 13
+        Caption = 'Conta Corrente:'
+      end
+      object econta: TDBEdit
+        Left = 88
+        Top = 4
+        Width = 95
+        Height = 21
+        DataField = 'CODCONTA'
+        DataSource = dscheque2
+        TabOrder = 0
+        OnEnter = econtaEnter
+        OnExit = econtaExit
+        OnKeyPress = econtaKeyPress
+      end
+      object blocconta: TBitBtn
+        Left = 184
+        Top = 4
+        Width = 25
+        Height = 21
+        TabOrder = 1
+        OnClick = bloccontaClick
+        Glyph.Data = {
+          36030000424D3603000000000000360000002800000010000000100000000100
+          18000000000000030000C40E0000C40E00000000000000000000FFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFCFDFEE7EEF4FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFAFBFD6494BA2166
+          9C80A8C5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFAFCFD6E9BC1548CBB88B4DC175E96FFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFCFD7AA3C96396C49CC0E36598
+          C63070A4FFFFFFFFFFFFFFFFFFFFFFFFFFFEFEE8CEB9DAB292D2A57FCFA07BD1
+          A684ADA09874A1CBAACAE775A3CD3F7AAEDEE8F1FFFFFFFFFFFFFFFFFFFFFEFE
+          E8C9AFE7C8ADF4E0CCF6E4D2F6E4D0F2DCC7DEB99BC6A79085ADD44F86BAE1EA
+          F3FFFFFFFFFFFFFFFFFFFFFFFFF1DBC7ECCFB6F7E7D8F4DDC7F2D7BCF2D5BAF3
+          DAC1F6E3D1DEBA9C9F9694E3ECF5FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEDCDB1
+          F6E6D6F5E0CBF3DAC1F3D9BFF2D7BCF2D6BAF3DAC1F2DDC8D1A787FFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFEFCDAEF8EBDEF4DEC7F4DCC5F3DBC2F3D9C0F2
+          D8BDF2D6BCF7E5D2D2A57FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF3D2B4
+          F8ECE0F5E0CBF4DEC8F4DDC6F3DBC3F3DAC1F3D9BFF7E6D5D6AA86FFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFF7DBC0F8EADDF6E6D5F5E0CBF4DFC9F4DDC7F4
+          DCC4F5E0CAF4E1CFDEB898FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBE9D7
+          F7E1CBF9EDE2F6E6D5F5E1CDF5E0CAF5E2CFF8E9DCEBCEB4EBD3BEFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFAE3CDF8E1CCF9EBDDF8EDE1F8ECE1F7
+          E8D9EFD4BCECCFB6FFFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFBEAD9F9DCC2F5D5B8F3D2B4F2D3B7F4E0CDFFFFFEFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      end
+      object Edit1: TEdit
+        Left = 208
+        Top = 4
+        Width = 204
+        Height = 21
+        TabOrder = 2
+      end
+    end
+    object pdesconto: TFlatPanel
+      Left = 2
+      Top = 152
+      Width = 425
+      Height = 34
+      ParentColor = True
+      Visible = False
+      ColorHighLight = clBtnFace
+      ColorShadow = clBtnFace
+      Align = alBottom
+      TabOrder = 6
+      UseDockManager = True
+      object Label5: TLabel
+        Left = 39
+        Top = 12
+        Width = 49
+        Height = 13
+        Alignment = taRightJustify
+        Caption = 'Desconto:'
+      end
+      object Label6: TLabel
+        Left = 205
+        Top = 12
+        Width = 37
+        Height = 13
+        Caption = 'L'#237'quido:'
+      end
+      object DBEdit4: TDBEdit
+        Left = 92
+        Top = 6
+        Width = 106
+        Height = 21
+        DataField = 'DESCONTO'
+        DataSource = dscheque2
+        TabOrder = 0
+        OnEnter = DBEdit2Enter
+        OnExit = DBEdit4Exit
+        OnKeyPress = DBEdit4KeyPress
+      end
+      object DBEdit5: TDBEdit
+        Left = 252
+        Top = 6
+        Width = 106
+        Height = 21
+        DataField = 'LIQUIDO'
+        DataSource = dscheque2
+        Enabled = False
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Verdana'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        OnEnter = DBEdit2Enter
+        OnExit = DBEdit2Exit
+        OnKeyPress = DBEdit5KeyPress
+      end
+    end
+    object DBEdit6: TDBEdit
+      Left = 95
+      Top = 124
+      Width = 322
+      Height = 21
+      DataField = 'DESTINO'
+      DataSource = dscheque2
+      TabOrder = 5
+      OnEnter = DBEdit3Enter
+      OnExit = DBEdit3Exit
+      OnKeyPress = DBEdit6KeyPress
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 198
+    Width = 591
+    Height = 56
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = clWhite
+    TabOrder = 2
+    object bgravar: TAdvGlowButton
+      Left = 183
+      Top = 4
+      Width = 122
+      Height = 48
+      Caption = 'F2 | Gravar'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ImageIndex = 49
+      FocusType = ftHot
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      Picture.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200802000000FC18ED
+        A30000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000032069545874584D4C3A636F6D2E61646F62652E786D7000
+        000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+        4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+        6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+        786D70746B3D2241646F626520584D5020436F726520352E302D633036302036
+        312E3133343737372C20323031302F30322F31322D31373A33323A3030202020
+        2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+        3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+        7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+        626F75743D222220786D6C6E733A786D703D22687474703A2F2F6E732E61646F
+        62652E636F6D2F7861702F312E302F2220786D6C6E733A786D704D4D3D226874
+        74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F6D6D2F222078
+        6D6C6E733A73745265663D22687474703A2F2F6E732E61646F62652E636F6D2F
+        7861702F312E302F73547970652F5265736F75726365526566232220786D703A
+        43726561746F72546F6F6C3D2241646F62652050686F746F73686F7020435335
+        2057696E646F77732220786D704D4D3A496E7374616E636549443D22786D702E
+        6969643A45373633344644333539453931314532393943394438464337423937
+        343131332220786D704D4D3A446F63756D656E7449443D22786D702E6469643A
+        4537363334464434353945393131453239394339443846433742393734313133
+        223E203C786D704D4D3A4465726976656446726F6D2073745265663A696E7374
+        616E636549443D22786D702E6969643A45373633344644313539453931314532
+        39394339443846433742393734313133222073745265663A646F63756D656E74
+        49443D22786D702E6469643A4537363334464432353945393131453239394339
+        443846433742393734313133222F3E203C2F7264663A4465736372697074696F
+        6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E203C3F787061
+        636B657420656E643D2272223F3E6EAB814E0000013F4944415478DA6264D870
+        978196808981C660D482A16F41A28EF0547371063E365C0A18294AA6CAFCFF75
+        84214C9B9BEF8FDE784F551F70B2BC561784F38E00D9D8FC41BE056B8DC54458
+        11DA6F7EFBCDF0E917F52C50E60F12E64016D038F9927A91CCC7060F7A780460
+        753E99161C361243E61EF9F80B6BF4926981B586A00D3F4A64DA9E7B45BD7CC0
+        C7760429E5E00F1CDC16F0B1ADB5916290E5A53070208005D3F4D73652C0F4F7
+        5F988311C87DFC99ECC0C1EE0388E910F67F2351843F480F1C1C3E4005403B40
+        FE78F1052D70D6BDFD413070B0FB40F4C8B337BFFFA1D9B1D65C123970800A82
+        CFBE2232596044F2A75F9876A0655A5160E07CFF4341718DCD0EE4C061B8FB91
+        E2FA00871D24050EA18C86CD0E920287889C8C6A07A98143543285D8315553F0
+        C5EF7FCD97DF905132328EB6EC462DA018000418009BF696518CE34DFB000000
+        0049454E44AE426082}
+      Transparent = True
+      TabOrder = 0
+      OnClick = bgravarClick
+      Appearance.BorderColor = 14727579
+      Appearance.BorderColorHot = 10079963
+      Appearance.BorderColorDown = 4548219
+      Appearance.BorderColorChecked = clBlack
+      Appearance.Color = 15653832
+      Appearance.ColorTo = 16178633
+      Appearance.ColorChecked = 7915518
+      Appearance.ColorCheckedTo = 11918331
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 7778289
+      Appearance.ColorDownTo = 4296947
+      Appearance.ColorHot = 15465983
+      Appearance.ColorHotTo = 11332863
+      Appearance.ColorMirror = 15586496
+      Appearance.ColorMirrorTo = 16245200
+      Appearance.ColorMirrorHot = 5888767
+      Appearance.ColorMirrorHotTo = 10807807
+      Appearance.ColorMirrorDown = 946929
+      Appearance.ColorMirrorDownTo = 5021693
+      Appearance.ColorMirrorChecked = 10480637
+      Appearance.ColorMirrorCheckedTo = 5682430
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Appearance.GradientHot = ggVertical
+      Appearance.GradientMirrorHot = ggVertical
+      Appearance.GradientDown = ggVertical
+      Appearance.GradientMirrorDown = ggVertical
+      Appearance.GradientChecked = ggVertical
+    end
+    object bcancelar: TAdvGlowButton
+      Left = 308
+      Top = 4
+      Width = 123
+      Height = 48
+      Caption = 'ESC | Cancelar'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ImageIndex = 49
+      FocusType = ftHot
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      Picture.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200802000000FC18ED
+        A30000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000032069545874584D4C3A636F6D2E61646F62652E786D7000
+        000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+        4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+        6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+        786D70746B3D2241646F626520584D5020436F726520352E302D633036302036
+        312E3133343737372C20323031302F30322F31322D31373A33323A3030202020
+        2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+        3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+        7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+        626F75743D222220786D6C6E733A786D703D22687474703A2F2F6E732E61646F
+        62652E636F6D2F7861702F312E302F2220786D6C6E733A786D704D4D3D226874
+        74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F6D6D2F222078
+        6D6C6E733A73745265663D22687474703A2F2F6E732E61646F62652E636F6D2F
+        7861702F312E302F73547970652F5265736F75726365526566232220786D703A
+        43726561746F72546F6F6C3D2241646F62652050686F746F73686F7020435335
+        2057696E646F77732220786D704D4D3A496E7374616E636549443D22786D702E
+        6969643A45313334394633303539453931314532394537334231414446373130
+        413237412220786D704D4D3A446F63756D656E7449443D22786D702E6469643A
+        4531333439463331353945393131453239453733423141444637313041323741
+        223E203C786D704D4D3A4465726976656446726F6D2073745265663A696E7374
+        616E636549443D22786D702E6969643A45313334394632453539453931314532
+        39453733423141444637313041323741222073745265663A646F63756D656E74
+        49443D22786D702E6469643A4531333439463246353945393131453239453733
+        423141444637313041323741222F3E203C2F7264663A4465736372697074696F
+        6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E203C3F787061
+        636B657420656E643D2272223F3EBDA47AE8000001F94944415478DAEC56BD4E
+        024110DE45209C064D3C6930C49218A968C197D027C047B0C7427A5FC127D0F8
+        0E72AD15C6505018238D8201A290433DBFE3E76E6E77EF8E9F40E554E476E6FB
+        D899F96696B3BB065BA545D88A6DE504D17097ED7821BD75BEA71D691BD9CD18
+        3ED4BF868FFD9FABF7BEF1DC63FDEFE0681E54033D7173B87BA22702E26F5B83
+        D3A7366B0DE64C518C9772BA554C07A3C3E00037382364E61BC4F87D61BFB813
+        9F2BD7D58E796CBCB2A115768385D0610841A07C0F91A094DD5D00DDE1407860
+        8A46095DB22F79B5496BEEB9017A460EB878E9F15A4B01546BE148FE2E80101D
+        6851B96700517978B3E1CC5F2B9F72D1F11147A3DF9799A4D057900EEB9AE20D
+        0A0749F9EF543A133FC0F11193832E3A1083301537805665572BA7E3BF4FE0C0
+        31259B1C67927090A30065B00F91009340593464863BA034E9402749A346A1DC
+        148DE78C1F07F3263A005D805AE3B8C68CF46D6D5255B9E6B25128970013381C
+        1D897272E5CF41A15C02CC77A59A3C3D934F79EAE1A3410AE51218CD4FD9B5EC
+        CC255255CA51560D2E7B112994DC35B13D04318F550A3509FD6EF76E3C027441
+        C6E31544D7DC7A871D0ECE1A9D65D0ED70EFFA1475705D6F5755E365C6A586F0
+        B08D36B4B0F916E09879654E39E6CA159C95E8EB78B6F0F0B7A916C5AA503FBC
+        209DAEB9C4C3EBFFF16BDB9F00030055DCFF4CF82584B10000000049454E44AE
+        426082}
+      Transparent = True
+      TabOrder = 1
+      OnClick = bcancelarClick
+      Appearance.BorderColor = 14727579
+      Appearance.BorderColorHot = 10079963
+      Appearance.BorderColorDown = 4548219
+      Appearance.BorderColorChecked = clBlack
+      Appearance.Color = 15653832
+      Appearance.ColorTo = 16178633
+      Appearance.ColorChecked = 7915518
+      Appearance.ColorCheckedTo = 11918331
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 7778289
+      Appearance.ColorDownTo = 4296947
+      Appearance.ColorHot = 15465983
+      Appearance.ColorHotTo = 11332863
+      Appearance.ColorMirror = 15586496
+      Appearance.ColorMirrorTo = 16245200
+      Appearance.ColorMirrorHot = 5888767
+      Appearance.ColorMirrorHotTo = 10807807
+      Appearance.ColorMirrorDown = 946929
+      Appearance.ColorMirrorDownTo = 5021693
+      Appearance.ColorMirrorChecked = 10480637
+      Appearance.ColorMirrorCheckedTo = 5682430
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Appearance.GradientHot = ggVertical
+      Appearance.GradientMirrorHot = ggVertical
+      Appearance.GradientDown = ggVertical
+      Appearance.GradientMirrorDown = ggVertical
+      Appearance.GradientChecked = ggVertical
+    end
+  end
+  object dscheque2: TDataSource
+    DataSet = frmcheque_menu.qrcheque
+    Left = 536
+    Top = 16
+  end
+  object Pop2: TPopupMenu
+    Left = 12
+    Top = 213
+    object Gravar1: TMenuItem
+      Caption = 'Gravar'
+      ShortCut = 113
+      OnClick = bgravarClick
+    end
+    object Cancelar1: TMenuItem
+      Caption = 'Cancelar'
+      ShortCut = 27
+      OnClick = bcancelarClick
+    end
+  end
+end

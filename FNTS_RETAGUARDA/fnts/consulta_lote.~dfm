@@ -1,0 +1,357 @@
+object frmConsultaLote: TfrmConsultaLote
+  Left = 259
+  Top = 160
+  BorderStyle = bsToolWindow
+  Caption = 'LOTE | CONSULTA DE VENDAS'
+  ClientHeight = 472
+  ClientWidth = 1075
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  PopupMenu = PopupMenu1
+  Position = poMainFormCenter
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Bevel1: TBevel
+    Left = 0
+    Top = 41
+    Width = 1075
+    Height = 2
+    Align = alTop
+  end
+  object Bevel2: TBevel
+    Left = 0
+    Top = 439
+    Width = 1075
+    Height = 2
+    Align = alBottom
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 0
+    Width = 1075
+    Height = 41
+    Align = alTop
+    BevelOuter = bvNone
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 16
+      Top = 16
+      Width = 126
+      Height = 13
+      Caption = 'Informe o N'#250'mero do Lote:'
+    end
+    object Label12: TLabel
+      Left = 488
+      Top = 15
+      Width = 49
+      Height = 13
+      Caption = 'Registros:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lqtde_cupom: TLabel
+      Left = 542
+      Top = 15
+      Width = 26
+      Height = 18
+      Alignment = taCenter
+      AutoSize = False
+      Caption = '12'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clRed
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      Transparent = True
+    end
+    object eloc: TRzEdit
+      Left = 160
+      Top = 13
+      Width = 305
+      Height = 21
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlue
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      FocusColor = 10550008
+      ParentFont = False
+      TabOrder = 0
+      OnKeyPress = elocKeyPress
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 441
+    Width = 1075
+    Height = 31
+    Align = alBottom
+    BevelOuter = bvNone
+    TabOrder = 1
+    object bfechar: TAdvGlowButton
+      Left = 453
+      Top = 3
+      Width = 114
+      Height = 24
+      Caption = 'ESC | Sair'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ImageIndex = 49
+      FocusType = ftHot
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      Picture.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000467414D410000AFC837058AE90000001974455874536F6674776172
+        650041646F626520496D616765526561647971C9653C000002A04944415478DA
+        62FCFFFF3F032500208058D005FEB6652BFFFBFF3FEAFFBF7F71FFFEFD930062
+        06207E01C48BFEFDFDB74CA063D15D64F50001C488EC82DFAD59C1FFFFFD9FFC
+        95914D924D598581858F0F22FEE923C3B7EBD71998BE7D7CFEEFDFDF5CB1BE95
+        6B617A0002086EC0AF964CA0E67F0B7F8AC97173A9A932FC7DF690E11F108300
+        93A41C0393943CC3A76BD7197EDCBAFCF5DFDFBFF1B2D336800D010820B0013F
+        9B3294804E3CFC4B424E8A5B4D8DE1D7D15D608D5CB573C0F497FA2406867FFF
+        19D86CDD183E5EB9CAF0E5FAF9677FFFFDB35599BBFD1E40003181FDFDF74FCC
+        3726768466A0A140AFC0BDF6EFCF3F86BF7FFE337CDBBB9D814F438BE13F8FB0
+        D49FDFBF63407200010436E0CF9F3FB1ECAA40673FB90FD6F8EF2FD000A02664
+        03FEFDFECBF0F7D73F869FF7EE32F06BE830FCFEFD3B16240710403003A45905
+        0418FE3CBE0FD608B3111E33408D7F7F43C47FDCB9CBC02A20C4F0E7F71F6990
+        1C4000410CF8FD87E13FD0569846988DBF6F5D4178E137D490BF409701F19F3F
+        BFC17200010475C1EFA73FDFBC0386B63CDCA920C5DF8FEC65F8B26139DCF67F
+        409A455681E1DB9B37204B9F82F4020410CC058B3F5CB9C4C02CA500570CA2F9
+        92F219780222C11AFF82C48036B32B2831BCBA701AE4EDC520BD000104360018
+        204B7EBD7DF6ECFDD52B0C5C4E9E7043DE4DEE62783BB913AC11C417F0F26178
+        7DE502C3FBC7B79F010D5802D20B1040F084742DD639189840160A689B710B02
+        43F9C7FD7BE00003C9B32B2A81F11BA0E647C7777D05A69978A77D37C0090920
+        805092F28550EB60600299CC21242529AC63C4C02E20084A120C3FDEBF637879
+        FE24C3FB27778049F95FAECB819BF0A40C10408CE8B9F1A49F893250511430B4
+        8199E92F6A66FAF76F99EBC1DB28990920801829CDCE0001060095D1AF4C86CE
+        FBDD0000000049454E44AE426082}
+      TabOrder = 0
+      OnClick = bfecharClick
+      Appearance.BorderColor = 12179676
+      Appearance.BorderColorHot = clHighlight
+      Appearance.BorderColorDown = clHighlight
+      Appearance.BorderColorChecked = clBlack
+      Appearance.ColorTo = 12179676
+      Appearance.ColorChecked = 12179676
+      Appearance.ColorCheckedTo = 12179676
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 11899524
+      Appearance.ColorDownTo = 11899524
+      Appearance.ColorHot = 15717318
+      Appearance.ColorHotTo = 15717318
+      Appearance.ColorMirror = 12179676
+      Appearance.ColorMirrorTo = 12179676
+      Appearance.ColorMirrorHot = 15717318
+      Appearance.ColorMirrorHotTo = 15717318
+      Appearance.ColorMirrorDown = 11899524
+      Appearance.ColorMirrorDownTo = 11899524
+      Appearance.ColorMirrorChecked = 12179676
+      Appearance.ColorMirrorCheckedTo = 12179676
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Appearance.GradientHot = ggVertical
+      Appearance.GradientMirrorHot = ggVertical
+      Appearance.GradientDown = ggVertical
+      Appearance.GradientMirrorDown = ggVertical
+      Appearance.GradientChecked = ggVertical
+    end
+  end
+  object wwDBGrid1: TwwDBGrid
+    Left = 0
+    Top = 43
+    Width = 1075
+    Height = 363
+    DittoAttributes.ShortCutDittoField = 0
+    DittoAttributes.ShortCutDittoRecord = 0
+    DittoAttributes.Options = []
+    DisableThemesInTitle = False
+    Selected.Strings = (
+      'CODCLIENTE'#9'6'#9'C'#211'DIGO'#9'T'#9
+      'NOME'#9'40'#9'NOME'#9'T'#9
+      'CODPRODUTO'#9'6'#9'CODPRODUTO'#9'T'#9
+      'LOTE_FABRICACAO'#9'30'#9'LOTE'#9'T'#9
+      'UNITARIO'#9'10'#9'UNIT'#9'T'#9
+      'QTDE'#9'10'#9'QTDE'#9'T'#9
+      'TOTAL'#9'15'#9'TOTAL'#9'T'#9
+      'DATA'#9'11'#9'DATA'#9'T'#9
+      'CUPOM_NUMERO'#9'10'#9'NOTA FISCAL'#9'T'#9
+      'CODNOTA'#9'15'#9'NR. VENDA'#9'T'#9)
+    IniAttributes.Delimiter = ';;'
+    TitleColor = clBtnFace
+    FixedCols = 0
+    ShowHorzScrollBar = True
+    Align = alClient
+    DataSource = dslote
+    TabOrder = 2
+    TitleAlignment = taLeftJustify
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    TitleLines = 1
+    TitleButtons = False
+  end
+  object pnlote: TRzPanel
+    Left = 0
+    Top = 406
+    Width = 1075
+    Height = 33
+    Align = alBottom
+    TabOrder = 3
+    object lbllote: TcxLabel
+      Left = 16
+      Top = 10
+      Caption = 'Estoque'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clNavy
+      Style.Font.Height = -11
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = [fsBold]
+      Style.IsFontAssigned = True
+    end
+    object lblqtde: TcxLabel
+      Left = 124
+      Top = 2
+      Caption = '100'
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clRed
+      Style.Font.Height = -20
+      Style.Font.Name = 'MS Sans Serif'
+      Style.Font.Style = [fsBold]
+      Style.IsFontAssigned = True
+    end
+  end
+  object qrlote: TZQuery
+    Connection = frmmodulo.Conexao
+    CachedUpdates = False
+    SQL.Strings = (
+      
+        'selecT C.NOME,V.CODPRODUTO,V.lote_fabricacao, V.UNITARIO, V.TOTA' +
+        'L,V.DATA, V.CODCLIENTE,V.CODVENDEDOR, V.QTDE, V.CUPOM_NUMERO, V.' +
+        'CODNOTA FROM c000007 C INNER join c000032 V ON C.CODIGO = V.codc' +
+        'liente')
+    ParamCheck = True
+    Params = <>
+    ShowRecordTypes = [usUnmodified, usModified, usInserted]
+    UpdateMode = umUpdateChanged
+    WhereMode = wmWhereKeyOnly
+    Options = [doCalcDefaults]
+    Left = 1032
+    Top = 280
+    object qrloteCODCLIENTE: TStringField
+      DisplayLabel = 'C'#211'DIGO'
+      DisplayWidth = 6
+      FieldName = 'CODCLIENTE'
+      Size = 6
+    end
+    object qrloteNOME: TStringField
+      DisplayWidth = 40
+      FieldName = 'NOME'
+      Size = 80
+    end
+    object qrloteCODPRODUTO: TStringField
+      DisplayWidth = 6
+      FieldName = 'CODPRODUTO'
+      Size = 6
+    end
+    object qrloteLOTE_FABRICACAO: TStringField
+      DisplayLabel = 'LOTE'
+      DisplayWidth = 30
+      FieldName = 'LOTE_FABRICACAO'
+      Size = 10
+    end
+    object qrloteUNITARIO: TFloatField
+      DisplayLabel = 'UNIT'
+      DisplayWidth = 10
+      FieldName = 'UNITARIO'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object qrloteQTDE: TFloatField
+      DisplayWidth = 10
+      FieldName = 'QTDE'
+    end
+    object qrloteTOTAL: TFloatField
+      DisplayWidth = 15
+      FieldName = 'TOTAL'
+      DisplayFormat = '###,###,##0.00'
+    end
+    object qrloteDATA: TDateTimeField
+      Alignment = taCenter
+      DisplayWidth = 11
+      FieldName = 'DATA'
+    end
+    object qrloteCUPOM_NUMERO: TStringField
+      Alignment = taCenter
+      DisplayLabel = 'NOTA FISCAL'
+      DisplayWidth = 10
+      FieldName = 'CUPOM_NUMERO'
+      Size = 10
+    end
+    object qrloteCODNOTA: TStringField
+      DisplayLabel = 'NR. VENDA'
+      DisplayWidth = 15
+      FieldName = 'CODNOTA'
+      Size = 15
+    end
+    object qrloteCODVENDEDOR: TStringField
+      DisplayWidth = 6
+      FieldName = 'CODVENDEDOR'
+      Visible = False
+      Size = 6
+    end
+  end
+  object dslote: TDataSource
+    DataSet = qrlote
+    Left = 1032
+    Top = 312
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 1032
+    Top = 344
+    object Sair1: TMenuItem
+      Caption = 'Sair'
+      ShortCut = 27
+      OnClick = Sair1Click
+    end
+  end
+  object qrloteestoque: TZQuery
+    Connection = frmmodulo.Conexao
+    CachedUpdates = False
+    SQL.Strings = (
+      'select ESTOQUE from C000131')
+    ParamCheck = True
+    Params = <>
+    ShowRecordTypes = [usUnmodified, usModified, usInserted]
+    UpdateMode = umUpdateChanged
+    WhereMode = wmWhereKeyOnly
+    Options = [doCalcDefaults]
+    Left = 1032
+    Top = 248
+    object qrloteestoqueESTOQUE: TFloatField
+      FieldName = 'ESTOQUE'
+    end
+  end
+end
