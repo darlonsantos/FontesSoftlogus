@@ -12,8 +12,6 @@ uses
 type
   TfrmPre_Venda = class(TForm)
     pnFundo: TPanel;
-    Image1: TImage;
-    Image2: TImage;
     lb_cliente: TRzLabel;
     img_cliente: TAdvOfficeImage;
     LB_MENU_FISCAL: TRzLabel;
@@ -42,7 +40,6 @@ type
     qrPre_Venda: TIBCQuery;
     tm_Atualiza: TTimer;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormCreate(Sender: TObject);
     procedure Retornar1Click(Sender: TObject);
     procedure tm_AtualizaTimer(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -74,16 +71,6 @@ procedure TfrmPre_Venda.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   action := cafree;
-end;
-
-procedure TfrmPre_Venda.FormCreate(Sender: TObject);
-begin
-  left := 0;
-  top := 0;
-
-  if FileExists('.\img\fundo_pdv.jpg') then
-    Image2.Picture.LoadFromFile('.\img\fundo_pdv.jpg');
-
 end;
 
 procedure TfrmPre_Venda.Retornar1Click(Sender: TObject);
