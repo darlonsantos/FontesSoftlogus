@@ -1,0 +1,161 @@
+object FGerarBackup: TFGerarBackup
+  Left = 281
+  Top = 85
+  Width = 615
+  Height = 511
+  HelpContext = 2
+  BorderIcons = [biSystemMenu, biMaximize]
+  Caption = 'Backup'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  DesignSize = (
+    607
+    477)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object BTGeraBack: TButton
+    Left = 351
+    Top = 445
+    Width = 121
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Caption = 'Gerar backup'
+    Default = True
+    TabOrder = 0
+    OnClick = BTGeraBackClick
+  end
+  object Button2: TButton
+    Left = 479
+    Top = 445
+    Width = 121
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Cancel = True
+    Caption = 'Sair'
+    TabOrder = 1
+    OnClick = Button2Click
+  end
+  object Memo1: TMemo
+    Left = 8
+    Top = 64
+    Width = 592
+    Height = 374
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    ReadOnly = True
+    ScrollBars = ssBoth
+    TabOrder = 2
+    WordWrap = False
+  end
+  object GroupBox2: TGroupBox
+    Left = 8
+    Top = 11
+    Width = 592
+    Height = 46
+    Anchors = [akLeft, akTop, akRight]
+    Caption = 'Configura'#231#245'es'
+    TabOrder = 3
+    object CBRecoLixo: TCheckBox
+      Left = 8
+      Top = 19
+      Width = 81
+      Height = 17
+      Caption = 'Recolher lixo'
+      Checked = True
+      State = cbChecked
+      TabOrder = 0
+    end
+    object CBIgnoChec: TCheckBox
+      Left = 184
+      Top = 19
+      Width = 145
+      Height = 17
+      Caption = 'Ignorar erros de checksum'
+      Enabled = False
+      TabOrder = 1
+    end
+    object CBIgnoLimb: TCheckBox
+      Left = 336
+      Top = 19
+      Width = 153
+      Height = 17
+      Caption = 'Ignorar transa'#231#245'es em limbo'
+      TabOrder = 2
+    end
+    object CBTran: TCheckBox
+      Left = 96
+      Top = 19
+      Width = 89
+      Height = 17
+      Caption = 'Transport'#225'vel'
+      Checked = True
+      State = cbChecked
+      TabOrder = 3
+    end
+    object CBDetalhes: TCheckBox
+      Left = 496
+      Top = 19
+      Width = 89
+      Height = 17
+      Caption = 'Detalhamento'
+      Checked = True
+      State = cbChecked
+      TabOrder = 4
+    end
+  end
+  object StaticText1: TStaticText
+    Left = 8
+    Top = 448
+    Width = 137
+    Height = 17
+    Alignment = taCenter
+    Anchors = [akLeft, akBottom]
+    AutoSize = False
+    BorderStyle = sbsSunken
+    Caption = 'Rafael Stavarengo'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = 10987431
+    Font.Height = -11
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+    Transparent = False
+  end
+  object IBBackupService1: TIBBackupService
+    ServerName = 'LocalHost'
+    Protocol = TCP
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey')
+    LoginPrompt = False
+    TraceFlags = []
+    Verbose = True
+    BlockingFactor = 0
+    DatabaseName = 'DADOS.fdb'
+    Options = []
+    Left = 152
+    Top = 136
+  end
+  object IBConfigService1: TIBConfigService
+    TraceFlags = []
+    Left = 184
+    Top = 136
+  end
+  object SDArquBack: TSaveDialog
+    DefaultExt = 'FBK'
+    FileName = 'DADOS.FBK'
+    Filter = 'Backup do Firebird(*.fbk)|*.fbk|Todos os arquivos(*.*)|*.*'
+    FilterIndex = 0
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofShowHelp, ofExtensionDifferent, ofPathMustExist, ofEnableSizing]
+    Left = 216
+    Top = 139
+  end
+end
