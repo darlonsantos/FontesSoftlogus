@@ -102,7 +102,7 @@
 			<VerInfo_MinorVer>0</VerInfo_MinorVer>
 			<Icon_MainIcon>PDV_Icon1.ico</Icon_MainIcon>
 			<VerInfo_MajorVer>1</VerInfo_MajorVer>
-			<DCC_UnitSearchPath>C:\FNTS_PDV_NFC-e\sintegra;C:\FNTS_PDV_NFC-e\sintegra\Codificacao;C:\FNTS_PDV_NFC-e\sintegra\Validacao_CFOP;C:\FNTS_PDV_NFC-e\sintegra\Validacao_NCM;C:\FNTS_PDV_NFC-e\sintegra\Validacao_Sintegra;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_UnitSearchPath>C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_ SPED_Pis_Cofins;C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_balanco;C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_Banco;C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_Colector;C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_Config;C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_Gback;C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_Pre_vendas;C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_Proutupdate;C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_Servidor;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<VerInfo_Keys>CompanyName=Softlogus Sistemas ;FileDescription=;FileVersion=1.0.0.29;InternalName=;LegalCopyright=Softlogus Sistemas;LegalTrademarks=;OriginalFilename=;ProductName=Softlogus Sistemas;ProductVersion=1.0.0.29;Comments=Desenvolvedor - Darlon Santos</VerInfo_Keys>
 			<VerInfo_Locale>1033</VerInfo_Locale>
 		</PropertyGroup>
@@ -381,13 +381,13 @@
 				</Platforms>
 				<ModelSupport>False</ModelSupport>
 				<Deployment>
-					<DeployFile Class="ProjectOutput" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.exe">
-						<Platform Name="Win32"/>
-					</DeployFile>
 					<DeployFile Class="DebugSymbols" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.rsm">
 						<Platform Name="Win32">
 							<RemoteName>PDV.rsm</RemoteName>
 						</Platform>
+					</DeployFile>
+					<DeployFile Class="ProjectOutput" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.exe">
+						<Platform Name="Win32"/>
 					</DeployFile>
 					<DeployClass Name="ProjectOutput" Required="true">
 						<Platform Name="OSX32">
