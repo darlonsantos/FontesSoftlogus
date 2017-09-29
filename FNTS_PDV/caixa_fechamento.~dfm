@@ -1,0 +1,1279 @@
+object frmCaixa_Fechamento: TfrmCaixa_Fechamento
+  Left = 224
+  Top = 54
+  Width = 660
+  Height = 524
+  Caption = 'Caixa - Fechamento'
+  Color = 15254641
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PopupMenu = pop_fechamento
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Bevel2: TBevel
+    Left = 0
+    Top = 95
+    Width = 652
+    Height = 2
+    Align = alTop
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 439
+    Width = 652
+    Height = 32
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = 15830313
+    TabOrder = 0
+    object bt_ok: TButton
+      Left = 4
+      Top = 3
+      Width = 90
+      Height = 27
+      Caption = '&Fechar Caixa'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      OnClick = bt_okClick
+    end
+    object bt_cancelar: TButton
+      Left = 558
+      Top = 3
+      Width = 90
+      Height = 27
+      Caption = 'Esc|Sair'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      OnClick = bt_cancelarClick
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 42
+    Width = 652
+    Height = 53
+    Align = alTop
+    BevelOuter = bvNone
+    Color = 15264234
+    Enabled = False
+    ParentBackground = True
+    TabOrder = 1
+    object Label1: TLabel
+      Left = 0
+      Top = 7
+      Width = 105
+      Height = 13
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Data do Movimento:'
+    end
+    object Label2: TLabel
+      Left = 200
+      Top = 7
+      Width = 57
+      Height = 13
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Operador:'
+    end
+    object Label3: TLabel
+      Left = 0
+      Top = 31
+      Width = 105
+      Height = 13
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'N'#250'mero do ECF:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object ed_operador: TRzEdit
+      Left = 264
+      Top = 4
+      Width = 169
+      Height = 21
+      TabOrder = 0
+    end
+    object ed_data: TDateEdit
+      Left = 112
+      Top = 4
+      Width = 81
+      Height = 21
+      ButtonWidth = 0
+      NumGlyphs = 2
+      TabOrder = 1
+    end
+    object ed_ecf: TRzEdit
+      Left = 112
+      Top = 28
+      Width = 321
+      Height = 21
+      TabOrder = 2
+    end
+    object bt_cupom_encerrante: TButton
+      Left = 564
+      Top = 28
+      Width = 75
+      Height = 25
+      Caption = 'Cp Encerrante'
+      TabOrder = 3
+      Visible = False
+      OnClick = bt_cupom_encerranteClick
+    end
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Top = 97
+    Width = 652
+    Height = 342
+    ActivePage = TabFechamento
+    Align = alClient
+    TabOrder = 2
+    object TabSheet1: TTabSheet
+      Caption = 'Resumo'
+      object grid_resumo: TNextGrid
+        Left = 0
+        Top = 0
+        Width = 644
+        Height = 314
+        Align = alClient
+        HideScrollBar = False
+        Options = [goGrid, goHeader, goSelectFullRow]
+        TabOrder = 0
+        TabStop = True
+        OnCellFormating = grid_resumoCellFormating
+        object NxNumberColumn2: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 24
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'ID'
+          ParentFont = False
+          Position = 0
+          SortType = stNumeric
+          Width = 24
+          FormatMask = '0#'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxTextColumn1: TNxTextColumn
+          DefaultWidth = 389
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Descri'#231#227'o'
+          ParentFont = False
+          Position = 1
+          SortType = stAlphabetic
+          Width = 389
+        end
+        object NxNumberColumn1: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 83
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Valor-R$'
+          ParentFont = False
+          Position = 2
+          SortType = stNumeric
+          Width = 83
+          FormatMask = '###,###,##0.00'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Formas Pagto.'
+      ImageIndex = 1
+      object grid_forma: TNextGrid
+        Left = 0
+        Top = 0
+        Width = 644
+        Height = 314
+        Align = alClient
+        HideScrollBar = False
+        Options = [goGrid, goHeader, goSelectFullRow]
+        TabOrder = 0
+        TabStop = True
+        object NxNumberColumn3: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 24
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'ID'
+          ParentFont = False
+          Position = 0
+          SortType = stNumeric
+          Width = 24
+          FormatMask = '0#'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxTextColumn2: TNxTextColumn
+          DefaultWidth = 385
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Descri'#231#227'o'
+          ParentFont = False
+          Position = 1
+          SortType = stAlphabetic
+          Width = 385
+        end
+        object NxNumberColumn4: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 83
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Valor-R$'
+          ParentFont = False
+          Position = 2
+          SortType = stNumeric
+          Width = 83
+          FormatMask = '###,###,##0.00'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Al'#237'quotas'
+      ImageIndex = 2
+      object grid_aliquota: TNextGrid
+        Left = 0
+        Top = 0
+        Width = 644
+        Height = 314
+        Align = alClient
+        HideScrollBar = False
+        Options = [goGrid, goHeader, goSelectFullRow]
+        TabOrder = 0
+        TabStop = True
+        object NxNumberColumn5: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 24
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'ID'
+          ParentFont = False
+          Position = 0
+          SortType = stNumeric
+          Width = 24
+          FormatMask = '0#'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxTextColumn3: TNxTextColumn
+          DefaultWidth = 386
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Descri'#231#227'o'
+          ParentFont = False
+          Position = 1
+          SortType = stAlphabetic
+          Width = 386
+        end
+        object NxNumberColumn6: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 83
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Valor-R$'
+          ParentFont = False
+          Position = 2
+          SortType = stNumeric
+          Width = 83
+          FormatMask = '###,###,##0.00'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = 'Outros'
+      ImageIndex = 3
+      object grid_outros: TNextGrid
+        Left = 0
+        Top = 0
+        Width = 644
+        Height = 314
+        Align = alClient
+        HideScrollBar = False
+        Options = [goGrid, goHeader, goSelectFullRow]
+        TabOrder = 0
+        TabStop = True
+        object NxNumberColumn7: TNxTextColumn
+          Alignment = taRightJustify
+          DefaultValue = '0'
+          DefaultWidth = 24
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'ID'
+          Options = [coCanClick, coCanInput, coCanSort, coPublicUsing]
+          ParentFont = False
+          Position = 0
+          SortType = stAlphabetic
+          Width = 24
+        end
+        object NxTextColumn4: TNxTextColumn
+          DefaultWidth = 385
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Descri'#231#227'o'
+          ParentFont = False
+          Position = 1
+          SortType = stAlphabetic
+          Width = 385
+        end
+        object NxNumberColumn8: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 83
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Valor-R$'
+          ParentFont = False
+          Position = 2
+          SortType = stNumeric
+          Width = 83
+          FormatMask = '###,###,##0.00'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+      end
+    end
+    object TabSheet5: TTabSheet
+      Caption = 'Pr'#233'-vendas'
+      ImageIndex = 4
+      object grid_venda: TNextGrid
+        Left = 0
+        Top = 0
+        Width = 644
+        Height = 314
+        Align = alClient
+        HideScrollBar = False
+        Options = [goGrid, goHeader, goSelectFullRow]
+        TabOrder = 0
+        TabStop = True
+        object NxTextColumn8: TNxTextColumn
+          DefaultWidth = 43
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'C'#243'digo'
+          ParentFont = False
+          Position = 0
+          SortType = stAlphabetic
+          Width = 43
+        end
+        object NxDateColumn2: TNxDateColumn
+          DefaultValue = '16/06/2009'
+          DefaultWidth = 71
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Data'
+          ParentFont = False
+          Position = 1
+          SortType = stDate
+          Width = 71
+        end
+        object NxTextColumn9: TNxTextColumn
+          DefaultWidth = 221
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Cliente'
+          ParentFont = False
+          Position = 2
+          SortType = stAlphabetic
+          Width = 221
+        end
+        object NxNumberColumn14: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 64
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Valor'
+          ParentFont = False
+          Position = 3
+          SortType = stNumeric
+          Width = 64
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxTextColumn10: TNxTextColumn
+          DefaultWidth = 93
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Vendedor'
+          ParentFont = False
+          Position = 4
+          SortType = stAlphabetic
+          Width = 93
+        end
+        object NxNumberColumn15: TNxNumberColumn
+          Alignment = taLeftJustify
+          DefaultValue = '0'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'cod_cliente'
+          ParentFont = False
+          Position = 5
+          SortType = stNumeric
+          Visible = False
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxNumberColumn16: TNxNumberColumn
+          Alignment = taLeftJustify
+          DefaultValue = '0'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'cod_vendedor'
+          ParentFont = False
+          Position = 6
+          SortType = stNumeric
+          Visible = False
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxNumberColumn17: TNxNumberColumn
+          Alignment = taLeftJustify
+          DefaultValue = '0'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'desconto'
+          ParentFont = False
+          Position = 7
+          SortType = stNumeric
+          Visible = False
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxNumberColumn18: TNxNumberColumn
+          Alignment = taLeftJustify
+          DefaultValue = '0'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'acrescimo'
+          ParentFont = False
+          Position = 8
+          SortType = stNumeric
+          Visible = False
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+      end
+    end
+    object TabSheet6: TTabSheet
+      Caption = 'DAVs'
+      ImageIndex = 5
+      object grid_dav: TNextGrid
+        Left = 0
+        Top = 0
+        Width = 644
+        Height = 314
+        Align = alClient
+        HideScrollBar = False
+        Options = [goGrid, goHeader, goSelectFullRow]
+        TabOrder = 0
+        TabStop = True
+        object NxTextColumn5: TNxTextColumn
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'COO'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 0
+          SortType = stAlphabetic
+        end
+        object NxTextColumn12: TNxTextColumn
+          DefaultWidth = 111
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'N'#250'mero'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 1
+          SortType = stAlphabetic
+          Width = 111
+        end
+        object NxTextColumn7: TNxTextColumn
+          DefaultWidth = 209
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'T'#237'tulo'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 2
+          SortType = stAlphabetic
+          Width = 209
+        end
+        object NxTextColumn11: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 93
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Valor-R$'
+          Header.Alignment = taCenter
+          Options = [coCanClick, coCanInput, coCanSort, coPublicUsing, coShowTextFitHint]
+          ParentFont = False
+          Position = 3
+          SortType = stNumeric
+          Width = 93
+          FormatMask = '###,###,##0.00'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+      end
+    end
+    object TabSheet7: TTabSheet
+      Caption = 'Abast.Pendentes'
+      ImageIndex = 6
+      object grid_abastecimento: TNextGrid
+        Left = 0
+        Top = 0
+        Width = 644
+        Height = 273
+        Align = alClient
+        AppearanceOptions = [aoHighlightSlideCells]
+        HideScrollBar = False
+        Options = [goGrid, goHeader, goSelectFullRow]
+        TabOrder = 0
+        TabStop = True
+        object NxDateColumn1: TNxDateColumn
+          DefaultValue = '19/08/2009'
+          DefaultWidth = 66
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Data'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 0
+          SortType = stDate
+          Width = 66
+        end
+        object NxTextColumn6: TNxTextColumn
+          DefaultWidth = 36
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Hora'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 1
+          SortType = stAlphabetic
+          Width = 36
+        end
+        object NxTextColumn13: TNxTextColumn
+          DefaultWidth = 23
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'N'#186
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 2
+          SortType = stAlphabetic
+          Width = 23
+        end
+        object NxTextColumn14: TNxTextColumn
+          DefaultWidth = 27
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Bico'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 3
+          SortType = stAlphabetic
+          Width = 27
+        end
+        object NxTextColumn15: TNxTextColumn
+          DefaultWidth = 100
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Produto'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 4
+          SortType = stAlphabetic
+          Width = 100
+        end
+        object NxNumberColumn20: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 44
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Qtde.'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 5
+          SortType = stNumeric
+          Width = 44
+          FormatMask = '###,###,##0.000'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxNumberColumn21: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 44
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Unit'#225'rio'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 6
+          SortType = stNumeric
+          Width = 44
+          FormatMask = '###,###,##0.000'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxNumberColumn22: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 54
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Total-R$'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 7
+          SortType = stNumeric
+          Width = 54
+          FormatMask = '###,###,##0.00'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxNumberColumn23: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 51
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'E.I.'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 8
+          SortType = stNumeric
+          Width = 51
+          FormatMask = '###,###,##0.000'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxNumberColumn24: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 52
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'E.F.'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 9
+          SortType = stNumeric
+          Width = 52
+          FormatMask = '###,###,##0.000'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxNumberColumn25: TNxNumberColumn
+          DefaultValue = '0'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Codigo'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 10
+          SortType = stNumeric
+          Visible = False
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxTextColumn17: TNxTextColumn
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Tanque'
+          ParentFont = False
+          Position = 11
+          SortType = stAlphabetic
+          Visible = False
+        end
+      end
+      object Panel3: TPanel
+        Left = 0
+        Top = 273
+        Width = 644
+        Height = 41
+        Align = alBottom
+        BevelOuter = bvNone
+        TabOrder = 1
+        object Button1: TButton
+          Left = 176
+          Top = 8
+          Width = 161
+          Height = 25
+          Caption = 'Finalizar Todos'
+          TabOrder = 0
+          OnClick = Button1Click
+        end
+      end
+    end
+    object TabSheet8: TTabSheet
+      Caption = 'Mesas Abert.'
+      ImageIndex = 7
+      object grid_mesa: TNextGrid
+        Left = 0
+        Top = 0
+        Width = 644
+        Height = 314
+        Align = alClient
+        AppearanceOptions = [aoHighlightSlideCells]
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        HideScrollBar = False
+        Options = [goGrid, goHeader, goSelectFullRow]
+        ParentFont = False
+        TabOrder = 0
+        TabStop = True
+        object NxNumberColumn9: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 78
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'N'#250'mero'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 0
+          SortType = stNumeric
+          Width = 78
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+        object NxDateColumn3: TNxDateColumn
+          DefaultValue = '26/08/2009'
+          DefaultWidth = 102
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Data'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 1
+          SortType = stDate
+          Width = 102
+        end
+        object NxTextColumn16: TNxTextColumn
+          DefaultWidth = 98
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Hora'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 2
+          SortType = stAlphabetic
+          Width = 98
+        end
+        object NxNumberColumn10: TNxNumberColumn
+          DefaultValue = '0'
+          DefaultWidth = 105
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Consumo'
+          Header.Alignment = taCenter
+          ParentFont = False
+          Position = 3
+          SortType = stNumeric
+          Width = 105
+          FormatMask = '###,###,##0.00'
+          Increment = 1.000000000000000000
+          Precision = 0
+        end
+      end
+    end
+    object TabFechamento: TTabSheet
+      Caption = 'Fechamento'
+      ImageIndex = 8
+      object GridFechamento: TNextGrid
+        Left = 0
+        Top = 0
+        Width = 644
+        Height = 314
+        Align = alClient
+        AppearanceOptions = [aoHighlightSlideCells]
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        GridLinesStyle = lsActiveRows
+        HideScrollBar = False
+        Options = [goHeader, goSelectFullRow]
+        ParentFont = False
+        TabOrder = 0
+        TabStop = True
+        object NxNumberColumn11: TNxTextColumn
+          Alignment = taRightJustify
+          DefaultValue = '0'
+          DefaultWidth = 29
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'C'#243'd'
+          Options = [coCanClick, coCanInput, coCanSort, coPublicUsing]
+          ParentFont = False
+          Position = 0
+          SortType = stAlphabetic
+          Width = 29
+        end
+        object NxTextColumn18: TNxTextColumn
+          DefaultWidth = 172
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Operador'
+          ParentFont = False
+          Position = 1
+          SortType = stAlphabetic
+          Width = 172
+        end
+        object NxTextColumn19: TNxTextColumn
+          DefaultWidth = 207
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Forma'
+          ParentFont = False
+          Position = 2
+          SortType = stAlphabetic
+          Width = 207
+        end
+        object NxNumberColumn12: TNxTextColumn
+          Alignment = taRightJustify
+          DefaultValue = '0'
+          DefaultWidth = 110
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          Header.Caption = 'Valor'
+          Options = [coCanClick, coCanInput, coCanSort, coPublicUsing]
+          ParentFont = False
+          Position = 3
+          SortType = stAlphabetic
+          Width = 110
+        end
+      end
+    end
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 471
+    Width = 652
+    Height = 19
+    Panels = <
+      item
+        Text = 'F8 - Menu Fiscal'
+        Width = 50
+      end>
+  end
+  object pnTitulo: TPanel
+    Left = 0
+    Top = 0
+    Width = 652
+    Height = 42
+    Align = alTop
+    Caption = 'Fechamento do CAIXA'
+    Color = 15830313
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentBackground = False
+    ParentFont = False
+    TabOrder = 4
+    object Image5: TImage
+      Left = 1
+      Top = 1
+      Width = 48
+      Height = 40
+      Align = alLeft
+      AutoSize = True
+      Center = True
+      Picture.Data = {
+        0A54504E474F626A65637489504E470D0A1A0A0000000D494844520000003000
+        00003008060000005702F9870000001974455874536F6674776172650041646F
+        626520496D616765526561647971C9653C0000101B4944415478DAED590B7454
+        D5B9FECF9977924926EFD724040224204208860009844008C84B546EA94554E8
+        B5F68AB7E0A35A5CDE85AED6BA6A2D5AA1B5B560545A04510B9414042C8477C0
+        A42144F21AC88B2424999064DEAF3373FFFFCC39C36192A9B4ABD7B56E57F75A
+        FFDAFBEC99D9E7FBFEFDBFF61EC6E7F3C1FFE7C6FC9BC0BF3281050B16407777
+        37381C0E6059969FA3F7310C035E9F171FC03FF6D29CFF336CAC52A90CC3798D
+        42A1D0793C9E51313131995EAF770A8E2FD5D6D6FE96D61371FF9F1228292981
+        AEAE2E9E0001159A8E65D85860201AE7A2104234CB3299087ABC4AA5CA94CBE5
+        89F1F1F111E1E1E1111AB53AC2D87F539E90100FBDBDBD2093C9BACACBCBB3DC
+        6EB7E51B21B064C9124D5F5FDF7A8EE3D2509B290A857C8C52A94AC5712C8295
+        4744444064642450CFB232DA1F7E67DC2E37B85C2E703A9D30149D0820930397
+        360654DDEDA68F5F7B390B31DFF84608AC5FBF7E766363E3497A8756AB053405
+        888D8DE57BD7E871A08BD2417F4C12A8544AB8CAA8017706AEF9E4BC4919DC32
+        BE0712CE0B0CF60B865A3D1FDC573809976EFC46082CDCB4F911EFDC7B3F08D7
+        46405F641CB072395CF5CAFDA046128E7A2FDF330270E9DC1C6737EC5959988F
+        982F7C2304A6BDF2C68FBB57FEE74B230316C12158022A12088CBDB79E857E96
+        CC04071E9E3D1FCDEB2FC3082C5AB4887734ABD50A9D9D9D80768AEFF006C088
+        DFA35E8C242868C291E8846CB25AAD4EB6DBED9EC1C1C1AF0C06C335FAEECCD7
+        B6BDDB56BAEA7111A8D41CBE0EECAD5ED811ECA7699C70E4F1A26518140E0608
+        FCF8E9E23BD2E6FB07DA55085885430DF65A8C08C97171712924E8A449F81C87
+        E007D1690FE58F8D39A67039E0F2DCEFEE6E99B16CD548E6203ECBF17B8BAC57
+        A0D9A18446EDF80068268800F5776B7D50B1A1F82154D4EE90048E56719118B2
+        262B55AA14D46CAA52A188C71097A8F63705460FA546A3010C7780F3808B01E2
+        E67BDCB5BEF6F6F60348E04F44A06AC6A39F77E52D290DA5E128632BAC90B5C0
+        C6713E38D6E981E71D738681968E33B52CD4BCB2F87193C9B43D2481BAEEC467
+        FA7A7BE78463688BC568919494048989897CE4888A8AE213126A9BEF89049202
+        8CD97C94292B2BBBBE67CF9E034593528E1081EAFC755F764E289E160C46EEB0
+        C2FCF67278EA6E35E4E6DD031E9319FE78A1119E36CF1F81802FB023C9E12CB4
+        BEB36A03EEF2569FC06018019B7AC6DBB9B9B9E92929293C788AD3A471F20902
+        2C2624F20F349D80848585C1C68D1B9B3EFAE8A37DCB0B269C2502B5F94F34B6
+        E9F3C64BCD416937C306EE0B78EABE7CF0791970992DD0DED20C2F9FB4C3E9D8
+        D220F3B9DD4F22552C58F63DF112EEF216C46F1F46E0442D1BB679F3E61D8585
+        851A4A22FC171030695B0A5C042FED89C0DAB56BABF7EFDFB7EFA1D2BC5AB9D3
+        0175F9EB5BDB7413478940347D067829E22C94E44D84948C31E0737BA0E15235
+        BC516983A34AD43E12BACDA9BD5202FEE788EA4D6F353434BC8A048CC3081CBF
+        C4A46FDDBAF56DBD5ECF471AD154A404683E980409EDD2FD0F3C70E6D8D1A3FB
+        1E5B56D0ECC368D698BFB1AB4D353A995E1E66ED819F26FF154A73C7811B8144
+        E9743068EC85570F37C127F6926140A5613620F8EEB88EADBB6A2E9EFA11E2E8
+        1846E0F415E5D4F7DF7F7F33D935352220EE80349C8AA0C531F5E4D0C5C5C59F
+        575555FDE9D16505D719746A43DE0FFB5B3D0931E1F63EF89F8CCBF0ED45F958
+        02B1E0C55261D0D807E7ABEAE087F553C0E28B0D9DDC284FF86E11D0DB3EF9FC
+        DCF1CF7E80EF6C1A46A0AE2BBE78FBF61D1BA80E919A8E28620E1045042FEECE
+        DCD905FB53A37C97B2D2D33853FFCD8EA629CFB7F40C72913FC9AE8755F7CF01
+        1F960A3ECE03D69E3E38555903DB5B3261409686BE80EBD15AC22E68E45ED069
+        5049011FF3E2471CBD946D3CFD6E85E14AE5F3948D05027303045A4D99ABB66D
+        DBF6102533297049253902098E69BD7C21A9F9FCE1B16AB783BD3B7B8C462963
+        555F355FBBF1B3DDC74E3C71DFBCF9DF5AB9349E55A8002182CFE184D6C67A78
+        EE9DCF7EFF4555C3712FE7752338370275A142DCB8A61B5FE311843229278CC5
+        DE8AD28BDF1BE209BCB671210FECB5F7CE316B1E5EF3DC9637B71498CDE60060
+        29016936169BE1CCAEDC88C1C134A7D30AA3D3D1773837586D36E8EEE9050742
+        B9277F062831CC2274340580BECEEB5075F94AD38715B539A86CBB4437B0F7CF
+        A7EEB44AB9856FD39A65FCE0CDBDC7A25E7C71D32B2FBCF0428694C0DF6A9D57
+        1B74D15D178BBABA3B2121361A940A19DC1C3481D96A87B8C424481F93093234
+        1B32052AE406FB8D70CD70D57BBCA6FEDE01BBFD888C656E5BEFA76587FF7E02
+        4F3F308F1F94FDA57AC27BEFBDB779F9F2E56ACAAA52CD07F7D4101473E9D36D
+        B3A3658E681F02542B15D03F6401B7C70369E9A3409F9505A09483C7EE04CE6C
+        058BC50C3D5DD7A1ADADADFDDD03A7EFE27C3E0B733B7ED85FD9F40F105851C4
+        0FF65C685EF1FAEBAF3F969A9A0A36340172643CF9F080388F0731725E3CD2E1
+        D0E3C579AFA2A761EABD39FA6C1B9255A3E607CC76FC8D9BCFDAFA71E380D1A8
+        79C21E93059C645258201A7BBAC0E7B279779EA89DA8908737A6C7EAFD474BA1
+        FDA86CD7DF4F60E3EC99FCE0AD53E7F4D825A1B8E096137112111D8AFBAF7933
+        0B7EB0B6F45319052A9CB2393D604383D762F99181E0E5585630F4091E25399B
+        1D9CA88CAB8666B8D1D10A4E37E768BE31704AA68AD9BBE3C4A54FD09F587429
+        8CD3D4FB285EF382E479C1908ED627976360E96E6A6A320D23509039F18ED992
+        F3E2AAB2671F293C999B9D3ACB8E1185F37060757278EA93C1A88C0C08C71317
+        2610F06296F5582CC0E2D882E5C297172F80B1AF1774D13190969C0855D7872A
+        777C51B75B044A58B05C61D102582C1859DC692AF5592C6598EEEE6E060BCCAF
+        CE9D3BB777188155F74FBE63022E34A7DCD4512F7EA7F09E57F1058006057637
+        855380949464888C8B2314403EE1B151A9E2CF259D18792A4E9E02399E6D274E
+        CCE663FED136D7EFB9B0B8768AF364A66EC164C974696DEAE93280E6847A6BE0
+        C891236F2129CF6D049EFDF69D9D0778EDB36CFA8305936B122235D10E3A7863
+        6EE17C0CD0AD8116CFB72C666302C70975141DD48964CBB556387FE12256AC11
+        30313B8BAA069F396DE6EFA293D38DE2E19D020709E520F2411A13011222D4D5
+        D565FAF0C30F7F8D38280FF80401E6C56FCD1F0E96077CFB9C1B4D655266F296
+        3993473DED70A1F631887BB0F88A8F8B050D1672AC5C410A07F474BF66D02AC8
+        0FAC6846866B2DD071BD13921213201E4D4C1D16019A69F7BD9B917DB751AA20
+        31BF88195E143429D8B56B976BF5EAD5BFC18FFB057FE46132DF5B5E3C0CBC86
+        C59A5DA4C82F88C5589832E73FE64EFA12238ECCE5A117307846880695503711
+        58C951134586A4DD60B3DAA0ABBB078BB74808D384F155ABCDE9762BA62EFF4D
+        6AC658B3B42C09AEB1C431158A870E1DF6AD5CF960193E774A028C8F995F5212
+        004FB6C6E0B62BEC837057AA063F95F1F3183960E6587DD9AC49698F99AC2EB2
+        0D8889D6F1051C9F612970887943527E58113C6D3F15854AA50AF094873F65A0
+        A6EE5A6FD186D7B74B337B28F024545C565454C0D2A54B3FC6793A6F3B05125E
+        A6248800399DD56E83C29C1430F777E21C802E4C3575F5CC9CF3182E9454E1EA
+        A222FDE085ABC1006810C6B806399FFF4CC1F0C079CDA36DD30D9B317CFCC1E2
+        556B6BA5A6232D0E4732A13367CEC0E2C58B0F22C646FC1945080AF7DC300204
+        04AB2B989D9703C6BDBBC1171DA9BC77C5CC8AAC949819E4B451E888720C99A4
+        7746AA7501BCD81C4EAC6851DB0A8532709A1B1C1884BA01F662E9BAE78EFAFD
+        64E40A37D80F68072A2B2B61E1C2855FE08E5EC68F6DE22E8C4C001DB6206F32
+        988F7C0633664CFE55CEF4AC2719B4790D2E2493B10278DEF085F28209F801D5
+        3C0CEB373D1902A74FBC140AD194EADAFBBAEE7978D34E95268C13C18BBB20DD
+        0D29786AB403B5B5B5306FFEBC334E87B30AFC15A92324014A504B1714C52758
+        EA5FCE4D8F7D52A55463A4091702AF5813B10209868F3832342919DA39E3BF66
+        E6C5279CDA1C9813DA8CE6A198FC151F674E9AD6276A3F54040A9E23736D6E6E
+        863973E6546298BD109280E0703AAC67B67D77DDBAE533A7DEA5E57A9AA0FF72
+        0538077B51BB4ADE81FD66E327C03BBD5AE3BF26278721EDF911D041044C162B
+        B45919C35D4BD61D8C4948B1059F2F827720183C3532C18E8E0E282C28AC1E1C
+        1A3C8F53A661047CFC0BB988ECECEC435AADB6B0BFBF1F70AB61D1E2255032B7
+        10D8CE4BD079BE1CEB1B2C0F142A10B5C8F0C74D86D7B4FFE4E73701FA6CC8E6
+        720FE8B20F4F5FBCEAB214742802C163B191FF188D4634E71975D89FC6A92181
+        809B41C7E07F8451433976ECD84F636262969A4C262C7F2D40E702FA61AA3E0D
+        9EDAB0110AF373A0FB6819985B2F63D6D5F080F96A55004FC0A8C6F7A0B37739
+        D8F6989CD2A39993A7F704030A26100AB8D828325246CECFCF6FC09D20023785
+        48E427400B6211F5019ACE234343437CB813533AC9CD9B37F9E7871F7D0C9E7D
+        E619B0D61D83A14B47C08D99988EB13299FF5F16E390CD58777DC09053F240E7
+        B8E9C5CD7285D20BFF8426129E356BD6D5C6C6463AB6F5060894969616EA74BA
+        D513264CF83E693C9880D8D38ED0DF4553A6E4C0CF7FB90DF48C11AC5F1E0039
+        DA67F780C55059DFFEE4F9FA8EBF6A46E7ACDDB973A74E7A3120B56BE9659834
+        7C7E1D0132A3A2A2A2CE9A9A9A0A9CEA0C10400F7F1065DDF8F1E31767E1298A
+        4216910826403DC9C0C000C462FDF3E63B3B607A3C074317CB5BFF70FACABCB7
+        F79F6FA380111E1E5E989696A68FF0B730548E12CD52919292224B4A4E62F4A9
+        7A2CFE12200E2B57FA6746BCF513AF2CA5B9417A7946B8D05AFA4E62C3F7B480
+        3F17B819C1C662F0C58770C1E9999999FC75A214B4744CD9955E98AAD7C3CFDE
+        F805541DDCF5ECDB1FECDD62757B49D518A6200C452B08C55E95304FE5954210
+        152A4D81D959890143258812C92AE2E3E3892C9B9A92CAA4EA53019F79A16BCE
+        356BD658CBCBCB8FE3EF1B05022E460C6BB8A00E172943222B44CD50492BFA01
+        9910F5344F17BD74FA1A9F3D11EAEAAFCC3234D49F134012380D4A244A048A5A
+        00CE4A2C2294BD88A731854494FE2024A79D55A0F27CE8CC5770AEF93602E24D
+        336A964170BFC41DF86F56A867E8EA5CDC019A23F0D1D1D1FC7F5DB8A8E5C489
+        135371E1EB82A6E542AF15C08B734C08E0E29C342C312188D17729280CA05064
+        B3F204442711EF40C9F6A2A2A21ECDC8C8D88A76A7A508D4D2D2C29321E02201
+        3ABCD7D7D7BF6A3018DE12CC869A4CD09AD46C44ED7312D0DE20528CA4674210
+        A1EAD32100B7DC4620D8E96961B4CF69E8D8EFA0EDE551054924C83748F3E484
+        38F7E7EAEAEA9784AD0E1C1D04C08C04B80F865F0CF846786728111BFDCE2544
+        1F4BC0844620201334C86054481C3D7AF4CB989DBF833B20BB71E306BF031819
+        DAB1BC7D014B0F87F012D28E3B48C439F196C32510F08E009CFD9AB1A8085ACF
+        2980F787D1103B4004A25074285AD4FC829C9C9C27D16CF498A53D67CF9EFD15
+        E60C83F07D714B49CC82D8E156CDEE96683F58DBC1CFA18888DFE5244AF197D3
+        10BA91FD926D8B1105AD29693A6ADD89E5C557C26266893DDA041B15EF947C30
+        DC9E993B98FB5BA624FA4FE0DEEA7F01F3A818A4B012F90A0000000049454E44
+        AE426082}
+      Proportional = True
+    end
+  end
+  object query: TIBCQuery
+    Connection = frmModulo.conexao
+    Left = 249
+    Top = 177
+  end
+  object pop_fechamento: TAdvPopupMenu
+    MenuStyler = frmModulo.estilo_menu
+    Version = '2.5.4.0'
+    Left = 249
+    Top = 145
+    object InformaesdoECF1: TMenuItem
+      Caption = 'Informa'#231#245'es do ECF'
+      object VendaBruta1: TMenuItem
+        Caption = 'Venda Bruta '
+        OnClick = VendaBruta1Click
+      end
+      object otalizadorGeral1: TMenuItem
+        Caption = 'Totalizador Geral'
+        OnClick = otalizadorGeral1Click
+      end
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object MenuFiscal1: TMenuItem
+      Caption = 'Menu Fiscal'
+      ShortCut = 119
+      OnClick = MenuFiscal1Click
+    end
+    object Cancelar1: TMenuItem
+      Caption = 'Cancelar'
+      ShortCut = 27
+      OnClick = Cancelar1Click
+    end
+  end
+  object qrPre_Venda: TIBCQuery
+    Connection = frmModulo.Conexao_Servidor
+    SQL.Strings = (
+      'select '
+      '  c000074.*,'
+      '  c000007.Nome Cliente,'
+      '  c000008.Nome Vendedor'
+      'from '
+      '  c000074, c000007, c000008'
+      'where'
+      '  c000074.codcliente = c000007.codigo and'
+      '  c000074.codvendedor = c000008.codigo')
+    Left = 281
+    Top = 177
+  end
+  object qrArquivo: TIBCQuery
+    Connection = frmModulo.conexao
+    Left = 313
+    Top = 177
+  end
+  object qrDAV: TIBCQuery
+    Connection = frmModulo.conexao
+    Left = 377
+    Top = 145
+  end
+  object qrAbastecimento: TIBCQuery
+    Connection = frmModulo.conexao
+    Left = 281
+    Top = 145
+  end
+  object qrMesa: TIBCQuery
+    Connection = frmModulo.Conexao_Servidor
+    SQL.Strings = (
+      'select '
+      '  c000074.*,'
+      '  c000007.Nome Cliente,'
+      '  c000008.Nome Vendedor'
+      'from '
+      '  c000074, c000007, c000008'
+      'where'
+      '  c000074.codcliente = c000007.codigo and'
+      '  c000074.codvendedor = c000008.codigo')
+    Left = 313
+    Top = 145
+  end
+  object qrEncerrante: TIBCQuery
+    Connection = frmModulo.conexao
+    Left = 345
+    Top = 145
+  end
+  object qrFechamento: TIBCQuery
+    Connection = frmModulo.conexao
+    Left = 349
+    Top = 177
+  end
+  object XPManifest1: TXPManifest
+    Left = 500
+    Top = 137
+  end
+end
