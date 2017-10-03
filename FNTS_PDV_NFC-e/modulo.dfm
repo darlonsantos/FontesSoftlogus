@@ -9,10 +9,10 @@ object frmModulo: TfrmModulo
     Port = '3050'
     Username = 'SYSDBA'
     Server = 'localhost'
-    Connected = True
+    AutoCommit = False
     LoginPrompt = False
-    Left = 140
-    Top = 592
+    Left = 116
+    Top = 432
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object query: TIBCQuery
@@ -732,9 +732,11 @@ object frmModulo: TfrmModulo
     Port = '3050'
     Username = 'SYSDBA'
     Server = 'localhost'
+    AutoCommit = False
+    Connected = True
     LoginPrompt = False
-    Left = 40
-    Top = 296
+    Left = 192
+    Top = 320
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object query_servidor: TIBCQuery
@@ -1612,14 +1614,14 @@ object frmModulo: TfrmModulo
         'EXECUTE PROCEDURE NFCE_INSERT(:PNUMERO, :PDATA, :PTOTAL, :PCLIEN' +
         'TE, :PCHAVE, :PXML, :PSITUACAO, :PTROCO)')
     CachedUpdates = True
-    Left = 500
-    Top = 224
+    Left = 508
+    Top = 288
     ParamData = <
       item
         DataType = ftInteger
-        Precision = 10
         Name = 'PNUMERO'
         ParamType = ptInput
+        Value = 0
       end
       item
         DataType = ftDateTime
@@ -1630,37 +1632,38 @@ object frmModulo: TfrmModulo
         DataType = ftFloat
         Name = 'PTOTAL'
         ParamType = ptInput
+        Value = 0.000000000000000000
       end
       item
         DataType = ftString
         Name = 'PCLIENTE'
         ParamType = ptInput
-        Size = 255
+        Value = ''
       end
       item
         DataType = ftString
         Name = 'PCHAVE'
         ParamType = ptInput
-        Size = 255
+        Value = ''
       end
       item
         DataType = ftString
         Name = 'PXML'
         ParamType = ptInput
-        Size = 255
+        Value = ''
       end
       item
         DataType = ftInteger
-        Precision = 10
         Name = 'PSITUACAO'
         ParamType = ptInput
+        Value = 0
       end
       item
         DataType = ftFloat
         Name = 'PTROCO'
         ParamType = ptInput
+        Value = 0.000000000000000000
       end>
-    CommandStoredProcName = 'NFCE_INSERT'
   end
   object ACBrBAL1: TACBrBAL
     Porta = 'COM1'
