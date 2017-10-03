@@ -381,13 +381,13 @@
 				</Platforms>
 				<ModelSupport>False</ModelSupport>
 				<Deployment>
+					<DeployFile Class="ProjectOutput" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.exe">
+						<Platform Name="Win32"/>
+					</DeployFile>
 					<DeployFile Class="DebugSymbols" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.rsm">
 						<Platform Name="Win32">
 							<RemoteName>PDV.rsm</RemoteName>
 						</Platform>
-					</DeployFile>
-					<DeployFile Class="ProjectOutput" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.exe">
-						<Platform Name="Win32"/>
 					</DeployFile>
 					<DeployClass Name="ProjectOutput" Required="true">
 						<Platform Name="OSX32">

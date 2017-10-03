@@ -5455,7 +5455,7 @@ begin
             copy(ChaveNFCE, 4, 47) + '-nfe.xml';
           spNFCE_Insert.ParamByName('psituacao').asinteger := 0;
           spNFCE_Insert.ParamByName('ptroco').asfloat := ed_troco.value;
-          spNFCE_Insert.ExecProc;
+           spNFCE_Insert.ExecProc;
           Conexao_Servidor.AutoCommit := false;
           Conexao_Servidor.Commit;
         end;
