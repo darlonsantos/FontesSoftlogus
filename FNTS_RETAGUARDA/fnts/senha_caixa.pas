@@ -20,9 +20,8 @@ type
     lfuncao: TLabel;
     button1: TAdvGlowButton;
     button2: TAdvGlowButton;
-    AdvReflectionImage1: TAdvReflectionImage;
     Label3: TLabel;
-    Label5: TLabel;
+    Image2: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);

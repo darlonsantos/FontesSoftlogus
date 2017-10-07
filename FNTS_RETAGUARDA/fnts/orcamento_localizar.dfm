@@ -66,7 +66,6 @@ object frmOrcamento_localizar: TfrmOrcamento_localizar
     OnKeyPress = wwDBGrid1KeyPress
     PaintOptions.AlternatingRowColor = 16053492
     PaintOptions.ActiveRecordColor = clBlack
-    ExplicitHeight = 258
   end
   object Panel1: TPanel
     Left = 0
@@ -78,7 +77,6 @@ object frmOrcamento_localizar: TfrmOrcamento_localizar
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 349
     object bfechar: TAdvGlowButton
       Left = 193
       Top = 4
@@ -162,7 +160,7 @@ object frmOrcamento_localizar: TfrmOrcamento_localizar
     Height = 73
     Align = alTop
     BevelOuter = bvNone
-    Color = 15574106
+    Color = clWhite
     ParentBackground = False
     TabOrder = 2
     object GroupBox1: TGroupBox

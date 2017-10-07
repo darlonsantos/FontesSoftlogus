@@ -791,7 +791,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
     end
   end
   object fxorcamento: TfrxReport
-    Version = '4.12.2'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -848,6 +848,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 334.819110000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
@@ -856,7 +857,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 6.000000000000000000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'NOME'
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
@@ -874,7 +874,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 32.456710000000000000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
           DisplayFormat.DecimalSeparator = ','
@@ -894,7 +893,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 21.118120000000000000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'ENDERECO'
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
@@ -912,7 +910,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 43.795300000000000000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
           DisplayFormat.DecimalSeparator = ','
@@ -930,7 +927,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 55.133889999999990000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
           DisplayFormat.DecimalSeparator = ','
@@ -948,7 +944,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 66.472480000000000000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
           DisplayFormat.DecimalSeparator = ','
@@ -966,7 +961,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 81.590600000000000000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
           DisplayFormat.DecimalSeparator = ','
@@ -984,7 +978,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 96.708720000000000000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
           DisplayFormat.DecimalSeparator = ','
@@ -1002,28 +995,24 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 21.118120000000000000
           Width = 204.094620000000000000
           Height = 22.677180000000000000
-          ShowHint = False
         end
         object Shape2: TfrxShapeView
           Left = 510.236550000000000000
           Top = 47.574830000000010000
           Width = 204.094620000000000000
           Height = 22.677180000000000000
-          ShowHint = False
         end
         object Shape3: TfrxShapeView
           Left = 510.236550000000000000
           Top = 74.031540000000010000
           Width = 204.094620000000000000
           Height = 22.677180000000000000
-          ShowHint = False
         end
         object Memo10: TfrxMemoView
           Left = 514.016080000000000000
           Top = 28.677180000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1039,7 +1028,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 55.133889999999990000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1055,7 +1043,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 81.590600000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1071,7 +1058,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 25.677180000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CODIGO'
           DataSet = fsorcamento
           DataSetName = 'fsorcamento'
@@ -1090,7 +1076,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 53.354360000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = fsorcamento
           DataSetName = 'fsorcamento'
           DisplayFormat.DecimalSeparator = ','
@@ -1109,7 +1094,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 78.590600000000000000
           Width = 120.944960000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA1'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1126,14 +1110,13 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 157.181200000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
-          ShowHint = False
-          Color = clBtnFace
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -9
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Fill.BackColor = clBtnFace
           HAlign = haCenter
           Memo.UTF8W = (
             'DADOS DO CLIENTE')
@@ -1144,14 +1127,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 180.637910000000000000
           Width = 60.472480000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo17: TfrxMemoView
           Left = 16.897650000000000000
           Top = 180.637910000000000000
           Width = 34.015770000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1167,7 +1148,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 189.417440000000000000
           Width = 52.913420000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CODCLIENTE'
           DataSet = fsorcamento
           DataSetName = 'fsorcamento'
@@ -1186,14 +1166,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 180.858380000000000000
           Width = 642.520100000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo19: TfrxMemoView
           Left = 71.811070000000000000
           Top = 180.858380000000000000
           Width = 102.047310000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1209,7 +1187,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 189.637910000000000000
           Width = 631.181510000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA2'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1227,14 +1204,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 210.094620000000000000
           Width = 706.772110000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo21: TfrxMemoView
           Left = 7.559060000000000000
           Top = 210.094620000000000000
           Width = 102.047310000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1250,7 +1225,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 218.874150000000000000
           Width = 695.433520000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = fsorcamento_cliente
           DataSetName = 'fsorcamento_cliente'
           DisplayFormat.DecimalSeparator = ','
@@ -1268,14 +1242,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 240.330860000000000000
           Width = 253.228510000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo23: TfrxMemoView
           Left = 7.559060000000000000
           Top = 240.330860000000000000
           Width = 102.047310000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1291,7 +1263,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 249.110390000000000000
           Width = 245.669450000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CIDADE'
           DataSet = fsorcamento_cliente
           DataSetName = 'fsorcamento_cliente'
@@ -1309,14 +1280,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 240.330860000000000000
           Width = 34.015770000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo25: TfrxMemoView
           Left = 264.567100000000000000
           Top = 240.330860000000000000
           Width = 15.118120000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1332,7 +1301,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 249.110390000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'UF'
           DataSet = fsorcamento_cliente
           DataSetName = 'fsorcamento_cliente'
@@ -1350,14 +1318,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 240.330860000000000000
           Width = 83.149660000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo27: TfrxMemoView
           Left = 302.362400000000000000
           Top = 240.330860000000000000
           Width = 18.897650000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1373,7 +1339,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 249.110390000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CEP'
           DataSet = fsorcamento_cliente
           DataSetName = 'fsorcamento_cliente'
@@ -1391,14 +1356,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 240.330860000000000000
           Width = 325.039580000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo29: TfrxMemoView
           Left = 389.291590000000000000
           Top = 240.330860000000000000
           Width = 64.252010000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1414,7 +1377,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 249.110390000000000000
           Width = 313.700990000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'COMPLEMENTO'
           DataSet = fsorcamento_cliente
           DataSetName = 'fsorcamento_cliente'
@@ -1432,14 +1394,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 270.567100000000000000
           Width = 291.023810000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo31: TfrxMemoView
           Left = 7.559060000000000000
           Top = 270.567100000000000000
           Width = 52.913420000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1455,7 +1415,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 279.346630000000000000
           Width = 279.685220000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = fsorcamento_cliente
           DataSetName = 'fsorcamento_cliente'
           DisplayFormat.DecimalSeparator = ','
@@ -1476,14 +1435,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 270.567100000000000000
           Width = 215.433210000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo33: TfrxMemoView
           Left = 302.362400000000000000
           Top = 270.567100000000000000
           Width = 41.574830000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1499,7 +1456,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 279.346630000000000000
           Width = 204.094620000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CPF'
           DataSet = fsorcamento_cliente
           DataSetName = 'fsorcamento_cliente'
@@ -1518,14 +1474,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 270.567100000000000000
           Width = 192.756030000000000000
           Height = 26.456710000000000000
-          ShowHint = False
         end
         object Memo35: TfrxMemoView
           Left = 521.575140000000000000
           Top = 270.567100000000000000
           Width = 181.417440000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1541,7 +1495,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 279.346630000000000000
           Width = 181.417440000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'RG'
           DataSet = fsorcamento_cliente
           DataSetName = 'fsorcamento_cliente'
@@ -1558,14 +1511,13 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 304.582870000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
-          ShowHint = False
-          Color = clBtnFace
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -9
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Fill.BackColor = clBtnFace
           HAlign = haCenter
           Memo.UTF8W = (
             'DISCRIMINA'#199#195'O DOS PRODUTOS')
@@ -1576,7 +1528,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 321.700990000000000000
           Width = 41.574830000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1592,7 +1543,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 321.700990000000000000
           Width = 294.803340000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1608,7 +1558,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 321.700990000000000000
           Width = 18.897650000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1624,7 +1573,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 321.700990000000000000
           Width = 68.031540000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1641,7 +1589,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 321.700990000000000000
           Width = 86.929190000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1658,7 +1605,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 321.700990000000000000
           Width = 68.031540000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1675,7 +1621,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 321.480520000000000000
           Width = 60.472480000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1692,7 +1637,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 321.480520000000000000
           Width = 60.472480000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1708,7 +1652,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = -7.559060000000000000
           Top = 334.819110000000000000
           Width = 718.110700000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Style = fsDot
           Diagonal = True
         end
@@ -1716,7 +1660,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 2.220469999999999000
           Width = 200.315090000000000000
           Height = 117.165430000000000000
-          ShowHint = False
           Picture.Data = {
             07544269746D617002720700424D02720700000000003600000028000000F101
             0000470100000100180000000000CC7107000000000000000000000000000000
@@ -16975,7 +16918,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 119.385900000000000000
           Width = 718.110700000000000000
           Height = 34.015770000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -16993,11 +16935,12 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
         object Line8: TfrxLineView
           Top = 113.385900000000000000
           Width = 718.110700000000000000
-          ShowHint = False
+          Color = clBlack
           Diagonal = True
         end
       end
       object MasterData3: TfrxMasterData
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 415.748300000000000000
         Width = 718.110700000000000000
@@ -17008,7 +16951,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 3.779530000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CODPRODUTO'
           DataSet = fsorcamento_produto
           DataSetName = 'fsorcamento_produto'
@@ -17026,7 +16968,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 49.133890000000000000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'PRODUTO'
           DataSet = fsorcamento_produto
           DataSetName = 'fsorcamento_produto'
@@ -17044,7 +16985,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 343.937230000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'NUMERACAO'
           DataSet = fsorcamento_produto
           DataSetName = 'fsorcamento_produto'
@@ -17062,7 +17002,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 377.953000000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'QTDE'
           DataSet = fsorcamento_produto
           DataSetName = 'fsorcamento_produto'
@@ -17081,7 +17020,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 442.205010000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'UNITARIO'
           DataSet = fsorcamento_produto
           DataSetName = 'fsorcamento_produto'
@@ -17100,7 +17038,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 642.520100000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'TOTAL'
           DataSet = fsorcamento_produto
           DataSetName = 'fsorcamento_produto'
@@ -17119,7 +17056,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 514.016080000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'DESCONTO'
           DataSet = fsorcamento_produto
           DataSetName = 'fsorcamento_produto'
@@ -17138,7 +17074,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 578.268090000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'ACRESCIMO'
           DataSet = fsorcamento_produto
           DataSetName = 'fsorcamento_produto'
@@ -17155,12 +17090,13 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
         end
       end
       object Footer1: TfrxFooter
+        FillType = ftBrush
         Height = 136.842610000000000000
         Top = 457.323130000000000000
         Width = 718.110700000000000000
         object Line2: TfrxLineView
           Width = 718.110700000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Style = fsDot
           Diagonal = True
         end
@@ -17168,8 +17104,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 4.559059999999932000
           Width = 718.110700000000000000
           Height = 98.267780000000000000
-          ShowHint = False
-          Color = clBtnFace
+          Fill.BackColor = clBtnFace
           Frame.Color = clWhite
           Frame.Width = 0.100000000000000000
         end
@@ -17178,8 +17113,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 11.338589999999900000
           Width = 124.724490000000000000
           Height = 17.007874020000000000
-          ShowHint = False
-          Color = clWhite
+          Fill.BackColor = clWhite
           Frame.Color = clWhite
         end
         object Shape16: TfrxShapeView
@@ -17187,8 +17121,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 34.015769999999970000
           Width = 124.724490000000000000
           Height = 17.007874020000000000
-          ShowHint = False
-          Color = clWhite
+          Fill.BackColor = clWhite
           Frame.Color = clWhite
         end
         object Shape17: TfrxShapeView
@@ -17196,8 +17129,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 78.370130000000240000
           Width = 124.724490000000000000
           Height = 17.007874020000000000
-          ShowHint = False
-          Color = clWhite
+          Fill.BackColor = clWhite
           Frame.Color = clWhite
         end
         object Memo1: TfrxMemoView
@@ -17205,7 +17137,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 14.118119999999920000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17222,7 +17153,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 36.015769999999970000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17239,7 +17169,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 79.590600000000220000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17256,8 +17185,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 11.338589999999900000
           Width = 408.189240000000000000
           Height = 83.905526460000000000
-          ShowHint = False
-          Color = clWhite
+          Fill.BackColor = clWhite
           Frame.Color = clWhite
         end
         object Memo56: TfrxMemoView
@@ -17265,7 +17193,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 15.118119999999920000
           Width = 102.047310000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17281,7 +17208,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 22.677180000000190000
           Width = 396.850650000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA3'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -17299,7 +17225,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 34.015769999999970000
           Width = 396.850650000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA4'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -17317,7 +17242,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 45.354360000000100000
           Width = 396.850650000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA5'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -17335,7 +17259,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 56.692950000000110000
           Width = 396.850650000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA6'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -17353,7 +17276,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 11.338589999999900000
           Width = 117.165430000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'SUBTOTAL'
           DataSet = fsorcamento
           DataSetName = 'fsorcamento'
@@ -17372,7 +17294,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 34.015769999999970000
           Width = 117.165430000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'DESCONTO'
           DataSet = fsorcamento
           DataSetName = 'fsorcamento'
@@ -17391,7 +17312,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 77.370130000000240000
           Width = 117.165430000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'TOTAL'
           DataSet = fsorcamento
           DataSetName = 'fsorcamento'
@@ -17409,14 +17329,13 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 105.826840000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
-          ShowHint = False
-          Color = clBtnFace
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -9
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Fill.BackColor = clBtnFace
           HAlign = haCenter
           Memo.UTF8W = (
             'CONDI'#199#213'ES DE PAGAMENTO')
@@ -17427,7 +17346,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 122.590026380000000000
           Width = 98.267780000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17444,7 +17362,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 122.590026380000000000
           Width = 60.472480000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17458,7 +17375,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
         object Line3: TfrxLineView
           Top = 135.063080000000000000
           Width = 238.110390000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Style = fsDot
           Diagonal = True
         end
@@ -17467,8 +17384,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 56.692950000000110000
           Width = 124.724490000000000000
           Height = 17.007874020000000000
-          ShowHint = False
-          Color = clWhite
+          Fill.BackColor = clWhite
           Frame.Color = clWhite
         end
         object Memo44: TfrxMemoView
@@ -17476,7 +17392,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 58.692950000000330000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17493,7 +17408,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 56.692950000000110000
           Width = 117.165430000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'ACRESCIMO'
           DataSet = fsorcamento
           DataSetName = 'fsorcamento'
@@ -17509,6 +17423,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
         end
       end
       object MasterData2: TfrxMasterData
+        FillType = ftBrush
         Height = 15.118120000000000000
         Top = 616.063390000000000000
         Width = 718.110700000000000000
@@ -17519,7 +17434,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 8.338590000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'DATA_VENCIMENTO'
           DataSet = fsorcamento_receber
           DataSetName = 'fsorcamento_receber'
@@ -17537,7 +17451,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 165.299320000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'VALOR_ORIGINAL'
           DataSet = fsorcamento_receber
           DataSetName = 'fsorcamento_receber'
@@ -17554,6 +17467,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 83.149660000000000000
         Top = 691.653990000000000000
         Width = 718.110700000000000000
@@ -17561,14 +17475,13 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 3.779530000000022000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
-          ShowHint = False
-          Color = clBtnFace
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -9
           Font.Name = 'Verdana'
           Font.Style = [fsBold]
+          Fill.BackColor = clBtnFace
           HAlign = haCenter
           Memo.UTF8W = (
             'ASSINATURAS')
@@ -17578,21 +17491,18 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 21.677180000000020000
           Width = 336.378170000000000000
           Height = 56.692950000000000000
-          ShowHint = False
         end
         object Shape20: TfrxShapeView
           Left = 343.937230000000000000
           Top = 21.677180000000020000
           Width = 374.173470000000000000
           Height = 56.692950000000000000
-          ShowHint = False
         end
         object Memo71: TfrxMemoView
           Left = 3.779530000000000000
           Top = 25.456710000000040000
           Width = 136.063080000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17608,7 +17518,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 25.456710000000040000
           Width = 136.063080000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17624,7 +17533,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 70.252010000000040000
           Width = 11.338590000000000000
           Height = -15.118120000000000000
-          ShowHint = False
+          Color = clBlack
           Diagonal = True
         end
         object Line5: TfrxLineView
@@ -17632,14 +17541,14 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 70.252010000000040000
           Width = 11.338590000000000000
           Height = -15.118120000000000000
-          ShowHint = False
+          Color = clBlack
           Diagonal = True
         end
         object Line6: TfrxLineView
           Left = 375.275820000000000000
           Top = 70.432450870000030000
           Width = 102.047310000000000000
-          ShowHint = False
+          Color = clBlack
           Diagonal = True
         end
         object Memo73: TfrxMemoView
@@ -17647,7 +17556,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 59.692950000000000000
           Width = 26.456710000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -17662,7 +17570,7 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Left = 536.693260000000000000
           Top = 70.432450870000030000
           Width = 170.078850000000000000
-          ShowHint = False
+          Color = clBlack
           Diagonal = True
         end
         object Memo74: TfrxMemoView
@@ -17670,7 +17578,6 @@ object frmorcamento_impressao: Tfrmorcamento_impressao
           Top = 59.472480000000010000
           Width = 56.692950000000000000
           Height = 9.448818900000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
