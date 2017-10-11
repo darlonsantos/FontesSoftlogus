@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2014/03/07 19:59:56.687,C:\Acbr\Exemplos\ACBrConsultaCNPJ\Delphi\CNPJ.pas=C:\Acbr\Exemplos\ACBrConsultaCNPJ\Delphi\U_Principal.pas</Transaction>
-    <Transaction>2014/03/07 19:59:56.687,C:\Acbr\Exemplos\ACBrConsultaCNPJ\Delphi\CNPJ.dfm=C:\Acbr\Exemplos\ACBrConsultaCNPJ\Delphi\U_Principal.dfm</Transaction>
+	<Transactions>
+    <Transaction>2014/03/07 19:59:56.000.687,C:\Acbr\Exemplos\ACBrConsultaCNPJ\Delphi\U_Principal.pas=C:\Acbr\Exemplos\ACBrConsultaCNPJ\Delphi\CNPJ.pas</Transaction>
+    <Transaction>2014/03/07 19:59:56.000.687,C:\Acbr\Exemplos\ACBrConsultaCNPJ\Delphi\U_Principal.dfm=C:\Acbr\Exemplos\ACBrConsultaCNPJ\Delphi\CNPJ.dfm</Transaction>
   </Transactions>
 </BorlandProject>

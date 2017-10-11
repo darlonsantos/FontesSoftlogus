@@ -14,8 +14,8 @@
     <Transaction>2013/03/25 07:43:52.000.485,C:\Documents and Settings\Administrador\Meus documentos\iCloud Retaguarda\FNTS_siscom82\SERVER\fnts\relnf.pas=</Transaction>
     <Transaction>2013/03/25 07:44:20.000.063,C:\Documents and Settings\Administrador\Meus documentos\iCloud Retaguarda\FNTS_siscom82\SERVER\fnts\rel_nf_backup.pas=</Transaction>
     <Transaction>2013/03/25 09:35:55.000.610,C:\Documents and Settings\Administrador\Meus documentos\iCloud Retaguarda\FNTS_siscom82\SERVER\fnts\backup.pas=</Transaction>
-    <Transaction>2013/03/27 15:50:49.000.712,C:\Documents and Settings\Administrador\Meus documentos\iCloud Retaguarda\FNTS_siscom82\SERVER\fnts\ativacao.pas=</Transaction>
     <Transaction>2013/03/27 15:50:49.000.884,C:\Documents and Settings\Administrador\Meus documentos\iCloud Retaguarda\FNTS_siscom82\SERVER\fnts\ativacao2.pas=</Transaction>
+    <Transaction>2013/03/27 15:50:49.000.712,C:\Documents and Settings\Administrador\Meus documentos\iCloud Retaguarda\FNTS_siscom82\SERVER\fnts\ativacao.pas=</Transaction>
     <Transaction>2013/03/27 15:52:31.000.243,C:\Documents and Settings\Administrador\Meus documentos\iCloud Retaguarda\FNTS_siscom82\SERVER\fnts\aviso_expirado.pas=</Transaction>
     <Transaction>2013/03/27 15:54:33.000.712,C:\Documents and Settings\Administrador\Meus documentos\iCloud Retaguarda\FNTS_siscom82\SERVER\fnts\acesso.pas=</Transaction>
     <Transaction>2013/03/27 16:06:01.000.665,C:\Documents and Settings\Administrador\Meus documentos\iCloud Retaguarda\FNTS_siscom82\SERVER\fnts\boleto_impressao.pas=</Transaction>
@@ -34,17 +34,17 @@
     <Transaction>2013/05/23 09:28:19.000.654,=C:\Documents and Settings\Administrador\Meus documentos\icloud xe2\FNTS_siscom82\SERVER\fnts\senha_supervisor.pas</Transaction>
     <Transaction>2013/05/23 12:31:44.000.013,C:\Documents and Settings\Administrador\Meus documentos\icloud xe2\FNTS_siscom82\SERVER\fnts\senha_supervisor.pas=</Transaction>
     <Transaction>2013/06/02 01:44:17.000.855,=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas</Transaction>
-    <Transaction>2013/06/02 01:47:54.000.074,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\orcamento_grade.dfm=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.dfm</Transaction>
     <Transaction>2013/06/02 01:47:54.000.074,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\orcamento_grade.pas=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas</Transaction>
+    <Transaction>2013/06/02 01:47:54.000.074,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\orcamento_grade.dfm=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.dfm</Transaction>
     <Transaction>2013/06/03 12:09:23.000.742,=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas</Transaction>
     <Transaction>2013/06/03 12:13:37.000.570,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.dfm=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\orcamento_serial.dfm</Transaction>
     <Transaction>2013/06/03 12:13:37.000.570,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\orcamento_serial.pas</Transaction>
     <Transaction>2013/06/04 18:53:42.000.774,=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas</Transaction>
-    <Transaction>2013/06/04 19:00:28.000.305,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\formas_pgto.pas</Transaction>
     <Transaction>2013/06/04 19:00:28.000.305,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.dfm=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\formas_pgto.dfm</Transaction>
+    <Transaction>2013/06/04 19:00:28.000.305,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\formas_pgto.pas</Transaction>
     <Transaction>2013/06/05 09:44:45.000.625,=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas</Transaction>
-    <Transaction>2013/06/05 09:48:19.000.109,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.dfm=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\os_item_3.dfm</Transaction>
     <Transaction>2013/06/05 09:48:19.000.109,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\os_item_3.pas</Transaction>
+    <Transaction>2013/06/05 09:48:19.000.109,C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.dfm=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\fnts\os_item_3.dfm</Transaction>
     <Transaction>2013/06/05 17:57:12.000.765,=C:\Documents and Settings\Administrador\Meus documentos\icloudretaguradaxe2\FNTS_siscom82\SERVER\Unit1.pas</Transaction>
     <Transaction>2013/06/25 09:23:19.000.521,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\passagem_cte.pas</Transaction>
     <Transaction>2013/06/25 09:33:48.000.546,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\notafiscal_cte.pas</Transaction>
@@ -56,8 +56,8 @@
     <Transaction>2013/06/25 09:37:39.000.938,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\infcarga_cte.pas</Transaction>
     <Transaction>2013/06/25 09:37:39.000.834,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\inf_conteiner_cte.pas</Transaction>
     <Transaction>2013/06/25 09:38:21.000.562,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\lacre_conteiner_cte.pas</Transaction>
-    <Transaction>2013/06/25 09:41:06.000.941,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\doc_ant_nfe.pas</Transaction>
     <Transaction>2013/06/25 09:41:06.000.825,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\doc_ant_cte.pas</Transaction>
+    <Transaction>2013/06/25 09:41:06.000.941,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\doc_ant_nfe.pas</Transaction>
     <Transaction>2013/06/25 09:41:07.000.043,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\doc_ant_papel_cte.pas</Transaction>
     <Transaction>2013/06/25 09:41:45.000.660,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\seguro_cte.pas</Transaction>
     <Transaction>2013/06/25 09:42:11.000.009,=F:\Projetos Delphi\Retaguardaxe2\FNTS_siscom82\SERVER\fnts\prod_perigoso_cte.pas</Transaction>
@@ -95,14 +95,14 @@
     <Transaction>2014/02/10 11:23:26.000.885,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\uporcent.pas</Transaction>
     <Transaction>2014/02/10 11:23:26.000.885,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.dfm=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\uporcent.dfm</Transaction>
     <Transaction>2014/02/10 18:12:00.000.019,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
-    <Transaction>2014/02/10 18:33:52.000.597,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\uporcent.pas=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
     <Transaction>2014/02/10 18:33:52.000.597,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\uporcent.dfm=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.dfm</Transaction>
+    <Transaction>2014/02/10 18:33:52.000.597,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\uporcent.pas=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
     <Transaction>2014/02/10 18:56:22.000.379,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
-    <Transaction>2014/02/10 19:01:38.000.472,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\uMargem.dfm=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.dfm</Transaction>
     <Transaction>2014/02/10 19:01:38.000.472,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\uMargem.pas=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
+    <Transaction>2014/02/10 19:01:38.000.472,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\uMargem.dfm=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.dfm</Transaction>
     <Transaction>2014/02/10 19:59:58.000.593,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
-    <Transaction>2014/02/10 20:02:35.000.140,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\uMargem.pas</Transaction>
     <Transaction>2014/02/10 20:02:35.000.140,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.dfm=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\uMargem.dfm</Transaction>
+    <Transaction>2014/02/10 20:02:35.000.140,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\uMargem.pas</Transaction>
     <Transaction>2014/02/12 02:30:44.000.324,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\uBuscaXml.pas</Transaction>
     <Transaction>2014/02/12 02:35:19.000.606,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\GifImage.pas</Transaction>
     <Transaction>2014/02/12 02:38:18.000.106,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\RecuperarXML\ACBrHTMLtoXML.pas</Transaction>
@@ -119,8 +119,8 @@
     <Transaction>2014/02/28 18:41:47.000.093,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\UAguarde.pas</Transaction>
     <Transaction>2014/03/07 18:48:30.000.343,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\ACBrConsultaCPF\U_CPF.pas</Transaction>
     <Transaction>2014/03/07 18:58:33.000.843,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
-    <Transaction>2014/03/07 19:02:23.000.078,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\cpf\ucpf.pas=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
     <Transaction>2014/03/07 19:02:23.000.078,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\cpf\ucpf.dfm=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.dfm</Transaction>
+    <Transaction>2014/03/07 19:02:23.000.078,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\cpf\ucpf.pas=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
     <Transaction>2014/03/07 19:16:03.000.093,C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\cpf\ucpf.pas=</Transaction>
     <Transaction>2014/03/07 20:03:11.000.062,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\fnts\novo form\CNPJ\CNPJ.pas</Transaction>
     <Transaction>2014/03/07 20:30:22.000.343,=C:\Documents and Settings\Administrador\Meus documentos\Athenas_Retaguarda\SERVER\Unit1.pas</Transaction>
@@ -145,6 +145,9 @@
     <Transaction>2017/05/04 21:43:57.000.832,C:\# FONTES\FNTS_RETAGUARDA\fnts\backup.pas=</Transaction>
     <Transaction>2017/05/04 21:44:15.000.944,=C:\# FONTES\FNTS_RETAGUARDA\fnts\backup\FBackup.pas</Transaction>
     <Transaction>2017/05/04 21:57:23.000.065,C:\# FONTES\FNTS_RETAGUARDA\fnts\backup\FBackup.pas=</Transaction>
+    <Transaction>2017/10/07 21:09:11.602,=C:\FontesSoftlogus\FNTS_RETAGUARDA\Unit1.pas</Transaction>
+    <Transaction>2017/10/07 21:11:22.501,C:\FontesSoftlogus\FNTS_RETAGUARDA\fnts\ubackup.pas=C:\FontesSoftlogus\FNTS_RETAGUARDA\Unit1.pas</Transaction>
+    <Transaction>2017/10/07 21:11:22.501,C:\FontesSoftlogus\FNTS_RETAGUARDA\fnts\ubackup.dfm=C:\FontesSoftlogus\FNTS_RETAGUARDA\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="fnts"/>
@@ -973,5 +976,7 @@
     <File Path="fnts\xloc_veiculo.dfm"/>
     <File Path="fnts\os_item_2.pas"/>
     <File Path="fnts\os_item_2.dfm"/>
+    <File Path="fnts\ubackup.pas"/>
+    <File Path="fnts\ubackup.dfm"/>
   </ProjectSortOrder>
 </BorlandProject>

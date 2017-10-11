@@ -1414,12 +1414,12 @@ end;
 
 procedure Tfrmcaixa.brelatorioClick(Sender: TObject);
 begin
-  if frmprincipal.acesso(codigo_usuario, '06.04') = 'NAO' then
-  begin
-    application.MessageBox('Acesso não permitido!', 'Atenção',
-      mb_ok + mb_iconerror);
-    exit;
-  end;
+//  if frmprincipal.acesso(codigo_usuario, '06.04') = 'NAO' then
+//  begin
+//    application.MessageBox('Acesso não permitido!', 'Atenção',
+//      mb_ok + mb_iconerror);
+//    exit;
+//  end;
 
   FRMLISTA_CAIXA2 := TFRMLISTA_CAIXA2.create(self);
   FRMLISTA_CAIXA2.ShowModal;
