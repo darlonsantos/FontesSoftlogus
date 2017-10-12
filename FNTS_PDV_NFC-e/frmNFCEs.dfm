@@ -5,7 +5,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   BorderStyle = bsDialog
   Caption = 'Notas Fiscais de Consumidor Final'
   ClientHeight = 568
-  ClientWidth = 929
+  ClientWidth = 758
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,6 +13,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  PopupMenu = PopupActionBar1
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
@@ -20,12 +21,13 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 929
+    Width = 758
     Height = 73
     Align = alTop
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 929
     object Label1: TLabel
       Left = 8
       Top = 32
@@ -68,9 +70,9 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     object btn_buscar: TsSpeedButton
       Left = 487
       Top = 24
-      Width = 98
+      Width = 138
       Height = 28
-      Caption = 'Localizar'
+      Caption = 'Localizar F3'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -154,14 +156,15 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object Panel2: TPanel
     Left = 0
     Top = 520
-    Width = 929
+    Width = 758
     Height = 48
     Align = alBottom
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 929
     object btn_imprimir: TsSpeedButton
-      Left = 225
+      Left = 129
       Top = 6
       Width = 137
       Height = 33
@@ -182,7 +185,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       Images = ImageList2
     end
     object btn_Consultar: TsSpeedButton
-      Left = 368
+      Left = 272
       Top = 6
       Width = 137
       Height = 33
@@ -201,7 +204,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       Images = ImageList2
     end
     object btn_cancelar: TsSpeedButton
-      Left = 511
+      Left = 415
       Top = 6
       Width = 137
       Height = 33
@@ -223,7 +226,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object wwDBGrid1: TwwDBGrid
     Left = 0
     Top = 73
-    Width = 929
+    Width = 758
     Height = 447
     ControlType.Strings = (
       'SITUACAO;ImageIndex;Original Size')
@@ -257,14 +260,15 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     TitleLines = 1
     TitleButtons = False
     ImageList = ImageList2
+    ExplicitWidth = 929
   end
   object qrNFCE: TZQuery
     Connection = frmModulo.conBASE
     SQL.Strings = (
       'select * from NFCE order by data,numero')
     Params = <>
-    Left = 736
-    Top = 304
+    Left = 584
+    Top = 280
     object qrNFCENUMERO: TIntegerField
       Alignment = taCenter
       DisplayWidth = 5
@@ -319,7 +323,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 704
     Top = 368
     Bitmap = {
-      494C010105000700100010001000FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C010105000700140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -587,6 +591,36 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       F3FFFFFF00000000E1FF87C300000000C0FF838300000000807FC10700000000
       803FE00F000000008C1FF01F000000009E0FF83F00000000FF07F01F00000000
       FF83E00F00000000FFC3C10700000000FFE3838300000000FFF387C300000000
-      FFFFFFFF00000000FFFFFFFF00000000}
+      FFFFFFFF00000000FFFFFFFF0000000000000000000000000000000000000000
+      000000000000}
+  end
+  object PopupActionBar1: TPopupActionBar
+    Left = 608
+    Top = 176
+    object L1: TMenuItem
+      Caption = 'Localizar '
+      ShortCut = 114
+      OnClick = btn_buscarClick
+    end
+    object S1: TMenuItem
+      Caption = 'Voltar'
+      ShortCut = 123
+      OnClick = S1Click
+    end
+    object I1: TMenuItem
+      Caption = 'I&mprimir'
+      ShortCut = 16464
+      OnClick = btn_imprimirClick
+    end
+    object C1: TMenuItem
+      Caption = 'Consultar'
+      ShortCut = 16454
+      OnClick = btn_ConsultarClick
+    end
+    object C2: TMenuItem
+      Caption = 'Cancelar Cupom'
+      ShortCut = 16472
+      OnClick = btn_cancelarClick
+    end
   end
 end

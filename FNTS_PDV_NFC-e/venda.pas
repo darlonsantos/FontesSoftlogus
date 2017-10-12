@@ -451,7 +451,8 @@ uses modulo, Math, funcoes, cliente_consulta, preco_consulta,
   TEF_Cancelamento, senha, menu_cupom, Lista_DAV, pre_venda, msg_Operador,
   Meios_pagamento, Orcamento_Abrir, menu_fiscal, IniFiles, contasreceber, os,
   caixa_abertura, mesas, fabricacao, senha_supervisor, ComObj, Constantes,
-  Vendedor, UFuncoes, Comanda, ufrmStatus, frmNatOperacao, xloc_modelo;
+  Vendedor, UFuncoes, Comanda, ufrmStatus, frmNatOperacao, xloc_modelo,
+  frmNFCEs;
 
 {$R *.dfm}
 
@@ -7239,8 +7240,10 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.Cupons1Click(Sender: TObject);
 begin
-  frmcupom_menu := tfrmcupom_menu.create(self);
-  frmcupom_menu.showmodal;
+ frmNotasconsumidor := TfrmNotasconsumidor.create(self);
+ frmNotasconsumidor.showmodal;
+//  frmcupom_menu := tfrmcupom_menu.create(self);
+//  frmcupom_menu.showmodal;
 end;
 
 // -------------------------------------------------------------------------- //
