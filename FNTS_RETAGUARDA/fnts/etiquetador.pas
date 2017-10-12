@@ -3214,10 +3214,7 @@ begin
         qretiq.FIELDBYNAME('qtde').ASFLOAT := query.FIELDBYNAME('qtde').ASFLOAT;
       end;
 
-      qretiq.FIELDBYNAME('valor').ASFLOAT :=
-        query.FIELDBYNAME('precovenda').ASFLOAT;
-      qretiq.FIELDBYNAME('unidade').ASSTRING :=
-        query.FIELDBYNAME('unidade').ASSTRING;
+      qretiq.FIELDBYNAME('valor').ASFLOAT := query.FIELDBYNAME('precovenda').ASFLOAT;
       qretiq.FIELDBYNAME('TEXTO').ASSTRING := '3';
       qretiq.POST;
       query.NEXT;

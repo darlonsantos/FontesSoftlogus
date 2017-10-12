@@ -145,9 +145,9 @@
     <Transaction>2017/05/04 21:43:57.000.832,C:\# FONTES\FNTS_RETAGUARDA\fnts\backup.pas=</Transaction>
     <Transaction>2017/05/04 21:44:15.000.944,=C:\# FONTES\FNTS_RETAGUARDA\fnts\backup\FBackup.pas</Transaction>
     <Transaction>2017/05/04 21:57:23.000.065,C:\# FONTES\FNTS_RETAGUARDA\fnts\backup\FBackup.pas=</Transaction>
-    <Transaction>2017/10/07 21:09:11.602,=C:\FontesSoftlogus\FNTS_RETAGUARDA\Unit1.pas</Transaction>
-    <Transaction>2017/10/07 21:11:22.501,C:\FontesSoftlogus\FNTS_RETAGUARDA\fnts\ubackup.pas=C:\FontesSoftlogus\FNTS_RETAGUARDA\Unit1.pas</Transaction>
-    <Transaction>2017/10/07 21:11:22.501,C:\FontesSoftlogus\FNTS_RETAGUARDA\fnts\ubackup.dfm=C:\FontesSoftlogus\FNTS_RETAGUARDA\Unit1.dfm</Transaction>
+    <Transaction>2017/10/07 21:09:11.000.602,=C:\FontesSoftlogus\FNTS_RETAGUARDA\Unit1.pas</Transaction>
+    <Transaction>2017/10/07 21:11:22.000.501,C:\FontesSoftlogus\FNTS_RETAGUARDA\fnts\ubackup.pas=C:\FontesSoftlogus\FNTS_RETAGUARDA\Unit1.pas</Transaction>
+    <Transaction>2017/10/07 21:11:22.000.501,C:\FontesSoftlogus\FNTS_RETAGUARDA\fnts\ubackup.dfm=C:\FontesSoftlogus\FNTS_RETAGUARDA\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="fnts"/>

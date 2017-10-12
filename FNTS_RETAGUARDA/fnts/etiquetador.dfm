@@ -4,7 +4,7 @@ object frmetiquetador: Tfrmetiquetador
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'ETIQUETAS DE PRODUTOS | Impress'#227'o'
-  ClientHeight = 482
+  ClientHeight = 498
   ClientWidth = 611
   Color = clWhite
   Font.Charset = ANSI_CHARSET
@@ -48,7 +48,7 @@ object frmetiquetador: Tfrmetiquetador
     FixedCols = 0
     ShowHorzScrollBar = True
     Align = alTop
-    Color = 15461355
+    Color = clWhite
     DataSource = dsetiq
     KeyOptions = [dgEnterToTab, dgAllowDelete, dgAllowInsert]
     TabOrder = 0
@@ -727,8 +727,8 @@ object frmetiquetador: Tfrmetiquetador
     Appearance.GradientChecked = ggVertical
   end
   object BitBtn2: TAdvGlowButton
-    Left = 394
-    Top = 491
+    Left = 327
+    Top = 435
     Width = 135
     Height = 48
     Caption = 'Importar NF Entrada'
@@ -786,8 +786,8 @@ object frmetiquetador: Tfrmetiquetador
       C0E285415D10970286EF7FC8F701B0E0051981BF64A6281FFCFE1F7CE4193573
       322264C900C81183E90382C14D3C400E552622839B24D391238671B46D3AE016
       0004180089D07F3C6C69A0F10000000049454E44AE426082}
+    Transparent = True
     TabOrder = 8
-    Visible = False
     OnClick = BitBtn2Click
     Appearance.BorderColor = 14727579
     Appearance.BorderColorHot = 10079963
@@ -1479,7 +1479,7 @@ object frmetiquetador: Tfrmetiquetador
     Top = 180
   end
   object fxproduto: TfrxReport
-    Version = '4.14'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1516,6 +1516,7 @@ object frmetiquetador: Tfrmetiquetador
       TopMargin = 12.000000000000000000
       ColumnWidth = 98.000000000000000000
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 96.000000000000000000
         Top = 18.897650000000000000
         Width = 758.173718000000100000
@@ -1529,7 +1530,6 @@ object frmetiquetador: Tfrmetiquetador
           Left = 7.559060000000000000
           Width = 355.275820000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'PRODUTO'
           DataSet = fsproduto
           DataSetName = 'fsproduto'
@@ -1548,7 +1548,6 @@ object frmetiquetador: Tfrmetiquetador
           Top = 15.118120000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CODIGO'
           DataSet = fsproduto
           DataSetName = 'fsproduto'
@@ -1567,7 +1566,6 @@ object frmetiquetador: Tfrmetiquetador
           Top = 30.236240000000000000
           Width = 355.275820000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'FORNECEDOR'
           DataSet = fsproduto
           DataSetName = 'fsproduto'
@@ -1586,7 +1584,6 @@ object frmetiquetador: Tfrmetiquetador
           Top = 45.354360000000000000
           Width = 355.275820000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'MARCA'
           DataSet = fsproduto
           DataSetName = 'fsproduto'
@@ -1605,7 +1602,6 @@ object frmetiquetador: Tfrmetiquetador
           Top = 60.472480000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'PRECO'
           DataSet = fsproduto
           DataSetName = 'fsproduto'
@@ -1627,7 +1623,6 @@ object frmetiquetador: Tfrmetiquetador
           Top = 15.118120000000000000
           Width = 238.110390000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CODBARRA'
           DataSet = fsproduto
           DataSetName = 'fsproduto'
@@ -1646,7 +1641,6 @@ object frmetiquetador: Tfrmetiquetador
           Top = 60.472480000000000000
           Width = 211.653680000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'RESTRITO'
           DataSet = fsproduto
           DataSetName = 'fsproduto'

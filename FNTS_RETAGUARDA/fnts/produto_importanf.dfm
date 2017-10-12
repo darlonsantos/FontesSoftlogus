@@ -53,7 +53,6 @@ object frmproduto_importanf: Tfrmproduto_importanf
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 314
     object bincluir: TAdvGlowButton
       Left = 182
       Top = -1
@@ -296,11 +295,10 @@ object frmproduto_importanf: Tfrmproduto_importanf
     Height = 34
     Align = alBottom
     BevelOuter = bvNone
-    Color = 15461355
+    Color = clWhite
     Enabled = False
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 288
     object Label22: TLabel
       Left = 338
       Top = 12
@@ -407,8 +405,6 @@ object frmproduto_importanf: Tfrmproduto_importanf
     OnKeyPress = GRIDKeyPress
     PaintOptions.AlternatingRowColor = 16250871
     PaintOptions.ActiveRecordColor = clBlack
-    ExplicitTop = 41
-    ExplicitHeight = 244
   end
   object Panel3: TPanel
     Left = 0
@@ -417,6 +413,8 @@ object frmproduto_importanf: Tfrmproduto_importanf
     Height = 43
     Align = alTop
     BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 5
     object Label56: TLabel
       Left = 5
@@ -749,7 +747,7 @@ object frmproduto_importanf: Tfrmproduto_importanf
     Left = 480
     Top = 216
     Bitmap = {
-      494C010171007200080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101710072000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000D0010000010020000000000000D0
       010000000000000000000000000000000000000000003E3E3E0017171700FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -4590,6 +4588,15 @@ object frmproduto_importanf: Tfrmproduto_importanf
     Top = 214
   end
   object AdvToolBarOfficeStyler1: TAdvToolBarOfficeStyler
+    AppColor.AppButtonColor = 13005312
+    AppColor.AppButtonHoverColor = 16755772
+    AppColor.TextColor = clWhite
+    AppColor.HoverColor = 16246477
+    AppColor.HoverTextColor = clBlack
+    AppColor.HoverBorderColor = 15187578
+    AppColor.SelectedColor = 15187578
+    AppColor.SelectedTextColor = clBlack
+    AppColor.SelectedBorderColor = 15187578
     Style = bsOffice2007Luna
     BorderColor = 14668485
     BorderColorHot = 14731181
@@ -4707,6 +4714,7 @@ object frmproduto_importanf: Tfrmproduto_importanf
     GlowButtonAppearance.GradientDown = ggVertical
     GlowButtonAppearance.GradientMirrorDown = ggVertical
     GlowButtonAppearance.GradientChecked = ggVertical
+    GroupAppearance.Background = clInfoBk
     GroupAppearance.BorderColor = 12763842
     GroupAppearance.Color = 15851212
     GroupAppearance.ColorTo = 14213857
