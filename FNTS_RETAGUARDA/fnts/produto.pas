@@ -177,9 +177,6 @@ type
     PageSheet5: TPageSheet;
     PageSheet8: TPageSheet;
     PageSheet1: TPageSheet;
-    graf_venda: TChart;
-    Series1: TBarSeries;
-    BarSeries1: TBarSeries;
     pficha3: TPanel;
     Bevel3: TBevel;
     Label1: TLabel;
@@ -3869,31 +3866,31 @@ begin
       qrvenda_mesColumn_9.DisplayLabel := mes02;
       qrvenda_mesColumn_10.DisplayLabel := mes01;
 
-      Series1.clear;
-      Series1.AddY(qrvenda_mesCOLUMN_0.asfloat,
-        qrvenda_mesCOLUMN_0.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn.asfloat,
-        qrvenda_mesColumn.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_1.asfloat,
-        qrvenda_mesColumn_1.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_2.asfloat,
-        qrvenda_mesColumn_2.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_3.asfloat,
-        qrvenda_mesColumn_3.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_4.asfloat,
-        qrvenda_mesColumn_4.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_5.asfloat,
-        qrvenda_mesColumn_5.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_6.asfloat,
-        qrvenda_mesColumn_6.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_7.asfloat,
-        qrvenda_mesColumn_7.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_8.asfloat,
-        qrvenda_mesColumn_8.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_9.asfloat,
-        qrvenda_mesColumn_9.DisplayLabel, clred);
-      Series1.AddY(qrvenda_mesColumn_10.asfloat,
-        qrvenda_mesColumn_10.DisplayLabel, clred);
+//      Series1.clear;
+//      Series1.AddY(qrvenda_mesCOLUMN_0.asfloat,
+//        qrvenda_mesCOLUMN_0.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn.asfloat,
+//        qrvenda_mesColumn.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_1.asfloat,
+//        qrvenda_mesColumn_1.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_2.asfloat,
+//        qrvenda_mesColumn_2.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_3.asfloat,
+//        qrvenda_mesColumn_3.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_4.asfloat,
+//        qrvenda_mesColumn_4.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_5.asfloat,
+//        qrvenda_mesColumn_5.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_6.asfloat,
+//        qrvenda_mesColumn_6.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_7.asfloat,
+//        qrvenda_mesColumn_7.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_8.asfloat,
+//        qrvenda_mesColumn_8.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_9.asfloat,
+//        qrvenda_mesColumn_9.DisplayLabel, clred);
+//      Series1.AddY(qrvenda_mesColumn_10.asfloat,
+//        qrvenda_mesColumn_10.DisplayLabel, clred);
 
       qrvenda_mes.close;
       qrvenda_mes.sql.clear;
@@ -3964,32 +3961,32 @@ begin
       qrvenda_mesColumn_8.DisplayLabel := mes03;
       qrvenda_mesColumn_9.DisplayLabel := mes02;
       qrvenda_mesColumn_10.DisplayLabel := mes01;
-
-      BarSeries1.clear;
-      BarSeries1.AddY(qrvenda_mesCOLUMN_0.asfloat,
-        qrvenda_mesCOLUMN_0.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn.asfloat,
-        qrvenda_mesColumn.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_1.asfloat,
-        qrvenda_mesColumn_1.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_2.asfloat,
-        qrvenda_mesColumn_2.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_3.asfloat,
-        qrvenda_mesColumn_3.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_4.asfloat,
-        qrvenda_mesColumn_4.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_5.asfloat,
-        qrvenda_mesColumn_5.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_6.asfloat,
-        qrvenda_mesColumn_6.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_7.asfloat,
-        qrvenda_mesColumn_7.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_8.asfloat,
-        qrvenda_mesColumn_8.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_9.asfloat,
-        qrvenda_mesColumn_9.DisplayLabel, CLBLUE);
-      BarSeries1.AddY(qrvenda_mesColumn_10.asfloat,
-        qrvenda_mesColumn_10.DisplayLabel, CLBLUE);
+//
+//      BarSeries1.clear;
+//      BarSeries1.AddY(qrvenda_mesCOLUMN_0.asfloat,
+//        qrvenda_mesCOLUMN_0.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn.asfloat,
+//        qrvenda_mesColumn.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_1.asfloat,
+//        qrvenda_mesColumn_1.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_2.asfloat,
+//        qrvenda_mesColumn_2.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_3.asfloat,
+//        qrvenda_mesColumn_3.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_4.asfloat,
+//        qrvenda_mesColumn_4.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_5.asfloat,
+//        qrvenda_mesColumn_5.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_6.asfloat,
+//        qrvenda_mesColumn_6.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_7.asfloat,
+//        qrvenda_mesColumn_7.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_8.asfloat,
+//        qrvenda_mesColumn_8.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_9.asfloat,
+//        qrvenda_mesColumn_9.DisplayLabel, CLBLUE);
+//      BarSeries1.AddY(qrvenda_mesColumn_10.asfloat,
+//        qrvenda_mesColumn_10.DisplayLabel, CLBLUE);
 
     end;
 
@@ -4775,34 +4772,34 @@ var
   vestoque, vestoque_anterior: double;
 begin
 
-  {
 
-    vrecno := frmmodulo.qrproduto.RecNo;
-    vestoque_anterior := frmmodulo.qrprodutoESTOQUE.AsFloat;
-    vestoque := 0;
+//
+//    vrecno := frmmodulo.qrproduto.RecNo;
+//    vestoque_anterior := frmmodulo.qrprodutoESTOQUE.AsFloat;
+//    vestoque := 0;
+//
+//
+//    qrPRODUTO.close;
+//    qrproduto.sql.clear;
+//    qrproduto.sql.Add('select * from c000025 where codigo = '''+resultado_pesquisa1+'''');
+//    qrproduto.open;
+//
+//    QRENTRADA.close;
+//    QRENTRADA.sql.clear;
+//    QRENTRADA.sql.add('select sum(qtde) ENTRADA FROM C000032 WHERE CODPRODUTO = '''+FRMMODULO.QRPRODUTO.FIELDBYNAME('CODIGO').ASSTRING+'''');
+//    QRENTRADA.SQL.ADD('AND movimento in (0,1,7,8,10,13,16)');
+//    QRENTRADA.open;
+//
+//    QRSAIDA.close;
+//    QRSAIDA.sql.clear;
+//    QRSAIDA.sql.add('select sum(qtde) SAIDA FROM C000032 WHERE CODPRODUTO = '''+FRMMODULO.QRPRODUTO.FIELDBYNAME('CODIGO').ASSTRING+'''');
+//    QRSAIDA.SQL.ADD('AND movimento in (2,3,4,5,6,9,11,12,14,15,17,18,19,20)');
+//    QRSAIDA.open;
+//
+//    RSAIDA.VALUE := QRSAIDA.FIELDBYNAME('SAIDA').ASFLOAT;
+//    RENTRADA.VALUE := QRENTRADA.FIELDBYNAME('ENTRADA').ASFLOAT;
+//    RESTOQUE.VALUE := RENTRADA.VALUE - RSAIDA.VALUE;
 
-
-    qrPRODUTO.close;
-    qrproduto.sql.clear;
-    qrproduto.sql.Add('select * from c000025 where codigo = '''+resultado_pesquisa1+'''');
-    qrproduto.open;
-
-    QRENTRADA.close;
-    QRENTRADA.sql.clear;
-    QRENTRADA.sql.add('select sum(qtde) ENTRADA FROM C000032 WHERE CODPRODUTO = '''+FRMMODULO.QRPRODUTO.FIELDBYNAME('CODIGO').ASSTRING+'''');
-    QRENTRADA.SQL.ADD('AND movimento in (0,1,7,8,10,13,16)');
-    QRENTRADA.open;
-
-    QRSAIDA.close;
-    QRSAIDA.sql.clear;
-    QRSAIDA.sql.add('select sum(qtde) SAIDA FROM C000032 WHERE CODPRODUTO = '''+FRMMODULO.QRPRODUTO.FIELDBYNAME('CODIGO').ASSTRING+'''');
-    QRSAIDA.SQL.ADD('AND movimento in (2,3,4,5,6,9,11,12,14,15,17,18,19,20)');
-    QRSAIDA.open;
-
-    RSAIDA.VALUE := QRSAIDA.FIELDBYNAME('SAIDA').ASFLOAT;
-    RENTRADA.VALUE := QRENTRADA.FIELDBYNAME('ENTRADA').ASFLOAT;
-    RESTOQUE.VALUE := RENTRADA.VALUE - RSAIDA.VALUE;
-  }
 
 end;
 

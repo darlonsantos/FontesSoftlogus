@@ -622,7 +622,7 @@ object frmvenda: Tfrmvenda
             Top = 24
             Width = 80
             Height = 21
-            Margins.Left = 2
+            Margins.Left = 5
             Margins.Top = 1
             AutoSize = False
             DisplayFormat = '###,###,##0.00'
@@ -641,7 +641,7 @@ object frmvenda: Tfrmvenda
             Top = 15
             Width = 150
             Height = 29
-            Margins.Left = 2
+            Margins.Left = 7
             Margins.Top = 1
             AutoSize = False
             DisplayFormat = '###,###,##0.00'

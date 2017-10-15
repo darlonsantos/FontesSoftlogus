@@ -2963,34 +2963,20 @@ begin
               qrinventario.SQL.add('values');
               qrinventario.SQL.add
                 ('(:datax,:data_posteriorx,:anox,:mesx,:tipox,:codprodutox,:produtox,:unidadex,:cstx,:aliquotax,:estoquex,:custox,:vendax,:totalx)');
-              qrinventario.params.parambyname('datax').asdatetime :=
-                vData_Inventario;
-              qrinventario.params.parambyname('data_posteriorx').asdatetime :=
-                vData_Inventario + 1;
-              qrinventario.params.parambyname('anox').AsInteger :=
-                vInventario_ano;
+              qrinventario.params.parambyname('datax').asdatetime := vData_Inventario;
+              qrinventario.params.parambyname('data_posteriorx').asdatetime := vData_Inventario + 1;
+              qrinventario.params.parambyname('anox').AsInteger := vInventario_ano;
               qrinventario.params.parambyname('mesx').AsInteger := Trunc(mes);
-              qrinventario.params.parambyname('tipox').asstring :=
-                qrproduto.FIELDBYNAME('tipo').asstring;
-              qrinventario.params.parambyname('codprodutox').asstring :=
-                qrproduto.FIELDBYNAME('codigo').asstring;
-              qrinventario.params.parambyname('produtox').asstring :=
-                qrproduto.FIELDBYNAME('produto').asstring;
-              qrinventario.params.parambyname('unidadex').asstring :=
-                qrproduto.FIELDBYNAME('unidade').asstring;
-              qrinventario.params.parambyname('cstx').asstring :=
-                qrproduto.FIELDBYNAME('cst').asstring;
-              qrinventario.params.parambyname('aliquotax').asfloat :=
-                qrproduto.FIELDBYNAME('aliquota').asfloat;
-              qrinventario.params.parambyname('custox').asfloat :=
-                qrproduto.FIELDBYNAME('precocusto').asfloat;
-              qrinventario.params.parambyname('estoquex').asfloat :=
-                qrproduto.FIELDBYNAME('estoque_atual').asfloat;
-              qrinventario.params.parambyname('vendax').asfloat :=
-                qrproduto.FIELDBYNAME('precovenda').asfloat;
-              qrinventario.params.parambyname('totalx').asfloat :=
-                qrproduto.FIELDBYNAME('precocusto').asfloat *
-                qrproduto.FIELDBYNAME('estoque_atual').asfloat;
+              qrinventario.params.parambyname('tipox').asstring := qrproduto.FIELDBYNAME('tipo').asstring;
+              qrinventario.params.parambyname('codprodutox').asstring := qrproduto.FIELDBYNAME('codigo').asstring;
+              qrinventario.params.parambyname('produtox').asstring := qrproduto.FIELDBYNAME('produto').asstring;
+              qrinventario.params.parambyname('unidadex').asstring := qrproduto.FIELDBYNAME('unidade').asstring;
+              qrinventario.params.parambyname('cstx').asstring := qrproduto.FIELDBYNAME('cst').asstring;
+              qrinventario.params.parambyname('aliquotax').asfloat := qrproduto.FIELDBYNAME('aliquota').asfloat;
+              qrinventario.params.parambyname('custox').asfloat := qrproduto.FIELDBYNAME('precocusto').asfloat;
+              qrinventario.params.parambyname('estoquex').asfloat := qrproduto.FIELDBYNAME('estoque_atual').asfloat;
+              qrinventario.params.parambyname('vendax').asfloat := qrproduto.FIELDBYNAME('precovenda').asfloat;
+              qrinventario.params.parambyname('totalx').asfloat := qrproduto.FIELDBYNAME('precocusto').asfloat * qrproduto.FIELDBYNAME('estoque_atual').asfloat;
               qrinventario.execsql;
 
               frmmensagem_inventario.bar.PartsComplete :=

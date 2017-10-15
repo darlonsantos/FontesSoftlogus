@@ -277,10 +277,7 @@ begin
   // difinir movimentacao
   // frmOpNatureza := TfrmOpNatureza.create(self);
   // frmOpNatureza.showmodal;
-
-  if ECF_MODELO = 'URANO' then
-    numero_cupomx := ecf_numero_cupom(ECF_MODELO);
-
+   numero_cupomx := ecf_numero_cupom(ECF_MODELO);
   if frmmodulo.natoperacao = 'venda' then
   begin
     if rtotal.Value <= 0 then
