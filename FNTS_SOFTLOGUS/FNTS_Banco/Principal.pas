@@ -9,7 +9,6 @@ uses
   PageView, ZAbstractConnection, sSkinManager, RxToolEdit;
 type
   Tfrmprincipal = class(TForm)
-    Image1: TImage;
     Bevel1: TBevel;
     Label1: TLabel;
     Label2: TLabel;
@@ -17,7 +16,6 @@ type
     Bevel5: TBevel;
     Button1: TButton;
     Button2: TButton;
-    XPManifest1: TXPManifest;
     base: TZConnection;
     dlgOpen1: TOpenDialog;
     PageView1: TPageView;
@@ -63,11 +61,11 @@ type
     Label33: TLabel;
     Label34: TLabel;
     Label35: TLabel;
-    sSkinManager1: TsSkinManager;
     edtFinanceiro: TEdit;
     edtNFe: TEdit;
     Label3: TLabel;
     Label4: TLabel;
+    Image1: TImage;
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
