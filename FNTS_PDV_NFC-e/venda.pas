@@ -1995,7 +1995,7 @@ begin
           spCupom.ParamByName('cod_cliente').clear;
 
         spCupom.ParamByName('cancelado').asinteger := 0;
-        spCupom.ParamByName('cpf_consumidor').asstring := sConsumidor_CPF;
+        spCupom.ParamByName('cpf_consumidor').asstring :=  sConsumidor_CPF;   //DARLON SANTOS
         spCupom.ParamByName('nome_consumidor').asstring :=
           copy(sConsumidor_Nome, 1, 40);
         spCupom.ParamByName('cod_caixa').asinteger := iNumCaixa;
@@ -5434,7 +5434,7 @@ begin
     try
 
       Imprime_display('          AGUARDE...  PREPARANDO NFC-E',
-        clBackground, tiLivre);
+      clBackground, tiLivre);
       grid.Repaint; // aqui prepara o grid
       PrepararNFCE;
       Imprime_display('          AGUARDE...  GRAVANDO NFC-E NO BANCO',
@@ -5450,7 +5450,7 @@ begin
           spNFCE_Insert.ParamByName('pnumero').asinteger := NumeroNFCe;
           spNFCE_Insert.ParamByName('pdata').asdate := Date;
           spNFCE_Insert.ParamByName('ptotal').asfloat := ed_total_pagar.value;
-          spNFCE_Insert.ParamByName('pcliente').asstring := sCli_Nome;
+          spNFCE_Insert.ParamByName('pcliente').asstring := sConsumidor_CPF;   //DARLON SANTOS
           spNFCE_Insert.ParamByName('pchave').asstring := copy(ChaveNFCE, 4, 47);
           spNFCE_Insert.ParamByName('pxml').asstring := 'C:\Softlogus\PDV\xml\' +
             copy(ChaveNFCE, 4, 47) + '-nfe.xml';

@@ -21,7 +21,6 @@ type
     qrNFCE: TZQuery;
     ds_nfce: TDataSource;
     Label1: TLabel;
-    Label2: TLabel;
     Label3: TLabel;
     edt_Numero: TEdit;
     wwDBGrid1: TwwDBGrid;
@@ -46,6 +45,7 @@ type
     I1: TMenuItem;
     C1: TMenuItem;
     C2: TMenuItem;
+    Label4: TLabel;
     procedure Button4Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);

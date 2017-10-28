@@ -27,26 +27,12 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 929
     object Label1: TLabel
-      Left = 8
-      Top = 32
-      Width = 73
+      Left = 129
+      Top = 9
+      Width = 60
       Height = 16
-      Caption = 'Per'#237'odo de '
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label2: TLabel
-      Left = 207
-      Top = 32
-      Width = 8
-      Height = 16
-      Caption = #224
+      Caption = 'Data Fim:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -55,11 +41,11 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 344
-      Top = 12
+      Left = 225
+      Top = 9
       Width = 49
       Height = 16
-      Caption = 'N'#250'mero'
+      Caption = 'N'#186' Nota'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -68,7 +54,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ParentFont = False
     end
     object btn_buscar: TsSpeedButton
-      Left = 487
+      Left = 344
       Top = 24
       Width = 138
       Height = 28
@@ -85,15 +71,28 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ImageIndex = 4
       Images = ImageList2
     end
+    object Label4: TLabel
+      Left = 24
+      Top = 9
+      Width = 74
+      Height = 16
+      Caption = 'Data Inicio:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object edt_Numero: TEdit
-      Left = 344
+      Left = 225
       Top = 31
       Width = 113
       Height = 21
       TabOrder = 0
     end
     object dataini: TsDateEdit
-      Left = 87
+      Left = 24
       Top = 31
       Width = 86
       Height = 21
@@ -123,7 +122,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       GlyphMode.Grayed = False
     end
     object datafin: TsDateEdit
-      Left = 232
+      Left = 129
       Top = 31
       Width = 86
       Height = 21
@@ -162,7 +161,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 929
     object btn_imprimir: TsSpeedButton
       Left = 129
       Top = 6
@@ -260,7 +258,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     TitleLines = 1
     TitleButtons = False
     ImageList = ImageList2
-    ExplicitWidth = 929
   end
   object qrNFCE: TZQuery
     Connection = frmModulo.conBASE
@@ -323,7 +320,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 704
     Top = 368
     Bitmap = {
-      494C010105000700140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105001800180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
