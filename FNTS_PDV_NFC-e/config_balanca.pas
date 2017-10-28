@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, registry, XPMan, IniFiles;
+  Dialogs, StdCtrls, Buttons, registry, XPMan;
 
 type
   Tfrmconfig_balanca = class(TForm)
@@ -13,25 +13,28 @@ type
     Label28: TLabel;
     Label29: TLabel;
     Label30: TLabel;
+    Label37: TLabel;
     Label38: TLabel;
     Label39: TLabel;
     Label40: TLabel;
+    cb_bal_porta: TComboBox;
+    cb_bal_modelo: TComboBox;
+    cb_bal_baudrate: TComboBox;
+    cb_bal_databits: TComboBox;
+    cb_bal_hand: TComboBox;
+    cb_bal_stop: TComboBox;
     cb_bal_time_out: TEdit;
+    cb_parity: TComboBox;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
-    edtModelo: TEdit;
-    edtPorta: TEdit;
-    edtDataBits: TEdit;
-    edtBaudRate: TEdit;
-    edtStopBits: TEdit;
-    edtParity: TEdit;
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure BitBtn2Click(Sender: TObject);
+    XPManifest1: TXPManifest;
     procedure BitBtn1Click(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure BitBtn2Click(Sender: TObject);
   private
-  procedure GravaIni(Balanca: string);
- public
+    { Private declarations }
+  public
     { Public declarations }
   end;
 
@@ -44,52 +47,111 @@ uses modulo;
 
 {$R *.dfm}
 
+procedure Tfrmconfig_balanca.BitBtn1Click(Sender: TObject);
+var Registro: TRegistry;
+begin
+
+  // Abrindo Registro do Windows para buscar configuracoes
+  Registro            := TRegistry.Create;
+  Registro.RootKey    := HKEY_LOCAL_MACHINE;
+
+  Registro.OpenKey('SOFTWARE',false);
+  Registro.OpenKey('S7',false);
+  Registro.OpenKey('PDV',false);
+  if Registro.OpenKey('Balanca',true) then
+  begin
+    Registro.WriteString('Modelo',inttostr(cb_bal_modelo.ItemIndex));
+    Registro.WriteString('Handshaking',inttostr(cb_bal_hand.ItemIndex));
+    Registro.WriteString('Parity',inttostr(cb_parity.ItemIndex));
+    Registro.WriteString('Stopbits',inttostr(cb_parity.ItemIndex));
+    Registro.WriteString('Porta',cb_bal_porta.Text);
+    Registro.WriteString('Databits',cb_bal_databits.Text);
+    Registro.WriteString('Baudrate',cb_bal_baudrate.Text);
+    Registro.WriteString('Timeout',cb_bal_time_out.text);
+  end;
+  Registro.CloseKey;
+  Registro.Free;
+
+  application.messagebox('É necessário reiniciar o sistema para atualizar as novas configurações!','Aviso',
+  mb_ok+MB_ICONINFORMATION);
+
+
+  close;
+
+
+end;
+
 procedure Tfrmconfig_balanca.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
   action := cafree;
 end;
 
-procedure Tfrmconfig_balanca.FormCreate(Sender: TObject);
-var
-  ArqIni: TIniFile;
+procedure Tfrmconfig_balanca.FormShow(Sender: TObject);
+var  Registro: TRegistry;
 begin
- ArqIni := TIniFile.Create('C:\Softlogus\PDV\CFG\balanca.ini');
-   try
-  edtModelo.Text    :=  ArqIni.ReadString('Modelo', 'Modelo', '');
-  edtPorta.Text     :=  ArqIni.ReadString('Porta', 'Porta', '');
-   edtDataBits.Text :=  ArqIni.ReadString('DataBits', 'DataBits', ' ');
-  edtBaudRate.Text  :=  ArqIni.ReadString('BaudRate', 'BaudRate', '');
-  edtStopBits.Text  :=  ArqIni.ReadString('StopBits', 'StopBits', '');
-  edtParity.Text    :=  ArqIni.ReadString('Parity', 'Parity','' );
-  cb_bal_time_out.Text := ArqIni.ReadString('Time-Out', 'Time-Out', '');
-   finally
-    ArqIni.Free;
-  end;
-end;
-procedure Tfrmconfig_balanca.GravaIni(Balanca: string);
-var
-  ArqIni: TIniFile;
-begin
- ArqIni := TIniFile.Create('C:\Softlogus\PDV\CFG\balanca.ini');
-   try
-    ArqIni.WriteString('Modelo', 'Modelo', edtModelo.Text);
-    ArqIni.WriteString('Porta', 'Porta', edtPorta.Text);
-    ArqIni.WriteString('DataBits', 'DataBits', edtDataBits.Text);
-    ArqIni.WriteString('BaudRate', 'BaudRate', edtBaudRate.Text);
-    ArqIni.WriteString('StopBits', 'StopBits', edtStopBits.Text);
-    ArqIni.WriteString('Parity', 'Parity', edtParity.Text);
-    ArqIni.WriteString('Time-Out', 'Time-Out', cb_bal_time_out.Text);
-   finally
-    ArqIni.Free;
-    ShowMessage('Configurações salva com sucesso.');
-  end;
 
- end;
+//  bHabilita_msg := true;
 
-procedure Tfrmconfig_balanca.BitBtn1Click(Sender: TObject);
-begin
-GravaIni('balanca');
+  // Abrindo Registro do Windows para buscar configuracoes
+  Registro            := TRegistry.Create;
+  Registro.RootKey    := HKEY_LOCAL_MACHINE;
+  if Registro.OpenKey('SOFTWARE',false) then
+  begin
+     if Registro.OpenKey('S7',false) then
+     begin
+       if Registro.openkey('PDV',false) then
+       begin
+         (*************** BALANCA ******************)
+         if Registro.OpenKey('Balanca',false) then
+         begin
+           frmModulo.Balanca.Desativar;
+           // Modelos --> 0 --> Nenhum , 1 --> Filizola, 2 --> Toledo
+           IF strtoint(Registro.ReadString('Modelo')) <> 0 THEN
+           BEGIN
+              cb_bal_modelo.itemindex :=  strtoint(Registro.ReadString('Modelo'));
+
+             cb_bal_hand.itemindex :=  strtoint(Registro.ReadString('Handshaking')) ;
+
+             cb_parity.itemindex := strtoint(Registro.ReadString('Parity'));
+
+             cb_bal_stop.itemindex := strtoint(Registro.ReadString('Stopbits'));
+
+             cb_bal_porta.text  := Registro.ReadString('Porta');
+
+             cb_bal_databits.ItemIndex :=  strtoint(Registro.ReadString('Databits'));
+
+             cb_bal_baudrate.ItemIndex :=  strtoint(Registro.ReadString('Baudrate'));
+
+             cb_bal_time_out.text :=  Registro.ReadString('Timeout');
+           END;
+         end
+         else
+         begin
+           application.messagebox('Houve falha na leitura do resgistro da Balança!'+
+           ' Favor contactar o suporte!','Erro',mb_ok+mb_iconerror);
+         end;
+         Registro.CloseKey;
+       end
+       else
+       begin
+          application.messagebox('Houve falha na leitura do resgistro do PDV!'+
+          ' Favor contactar o suporte!','Erro',mb_ok+mb_iconerror);
+       end;
+     end
+     else
+     begin
+       application.messagebox('Houve falha na leitura do registro de configurações!'+
+       ' Favor contactar o suporte!','Erro',mb_ok+mb_iconerror);
+
+     end;
+  end
+  else
+  begin
+    application.messagebox('Houve falha na leitura do registro de configurações!'+
+    ' Favor contactar o suporte!','Erro',mb_ok+mb_iconerror);
+  end;
+  Registro.Free;
 end;
 
 procedure Tfrmconfig_balanca.BitBtn2Click(Sender: TObject);

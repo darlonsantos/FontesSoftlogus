@@ -82,20 +82,27 @@ uses
   frmNFCEs in 'frmNFCEs.pas' {frmNotasconsumidor},
   Vcl.Themes,
   Vcl.Styles;
+
 var
   Hand: THandle;
+
 {$R *.res}
+
 begin
+
   Hand := FindWindow('TApplication', 'Sistema Softlogus' );
+
+
   if Hand = 0 then
   begin
     Application.Initialize;
     Application.Title := 'PDV: Sistema Softlogus';
     Application.CreateForm(TfrmPrincipal, frmPrincipal);
-    Application.CreateForm(TfrmMsg_Operador, frmMsg_Operador);
-    Application.CreateForm(TfrmStatus, frmStatus);
-    Application.Run;
+  Application.CreateForm(TfrmMsg_Operador, frmMsg_Operador);
+  Application.CreateForm(TfrmStatus, frmStatus);
+  Application.Run;
   end
+
   else
   begin
     Application.MessageBox('Já existe uma sessão aberta deste aplicativo!',
@@ -103,4 +110,5 @@ begin
     ShowWindow(Hand, SW_NORMAL);
     Application.terminate;
   end;
+
 end.

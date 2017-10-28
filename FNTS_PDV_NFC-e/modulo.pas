@@ -19,6 +19,7 @@ type
   TfrmModulo = class(TDataModule)
     conexao: TIBCConnection;
     query: TIBCQuery;
+    Balanca: TACBrBAL;
     estilo_menu: TAdvMenuOfficeStyler;
     spCupom: TIBCStoredProc;
     spCupom_Crediario: TIBCStoredProc;
@@ -122,13 +123,11 @@ type
     conBASE: TZConnection;
     qradic_mestre: TZQuery;
     spNFCE_Insert: TIBCStoredProc;
-    ACBrBAL1: TACBrBAL;
-    query_carga: TIBCQuery;
-  procedure DataModuleCreate(Sender: TObject);
+    procedure BalancaLePeso(Peso: Double; Resposta: String);
+    procedure DataModuleCreate(Sender: TObject);
     procedure ACBRNFCeStatusChange(Sender: TObject);
-    procedure ACBrBAL1LePeso(Peso: Double; Resposta: AnsiString);
   private
-    FRespostaList: TStringList;
+    { Private declarations }
   public
     { Public declarations }
     procedure LerConfiguracao;
@@ -187,41 +186,10 @@ var
   edtNatOperacao: string;
 
 implementation
-uses funcoes, principal, ufrmStatus;
-{$R *.dfm}
-procedure TfrmModulo.ACBrBAL1LePeso(Peso: Double; Resposta: AnsiString);
-var valid : integer;  //darlon santos
-begin
-   //darlon santos
-   // Objeto para armazenar as leituras
-    if (not Assigned(FRespostaList)) then
-      FRespostaList := TStringList.Create;
-     if FRespostaList.Count > 0 then
-      FRespostaList.Add(StringOfChar('-', 80));
-  // Buscar o Peso nas balancas PDV's
-  if Peso > 0 then
-  begin
-    // Leitura OK
-    sBal_Resposta := 'Peso Estável';
-    rBal_peso := Peso;
-  end
-  else
-  begin
-    // Leitura retornou ERRO
-  valid := Trunc(ACBrBAL1.UltimoPesoLido);
-    case Trunc(ACBrBAL1.UltimoPesoLido) of
-      0:
-        sBal_Resposta := 'Coloque o produto sobre a Balança!';
-      -1:
-        sBal_Resposta := 'Peso Instavel!';
-      -2:
-        sBal_Resposta := 'Peso Negativo!';
-      -10:
-        sBal_Resposta := 'Sobrepeso!';
-    end;
 
-  end;
-end;
+uses funcoes, principal, ufrmStatus;
+
+{$R *.dfm}
 
 procedure TfrmModulo.ACBRNFCeStatusChange(Sender: TObject);
 begin
@@ -337,6 +305,32 @@ begin
       end;
   end;
   Application.ProcessMessages;
+end;
+
+procedure TfrmModulo.BalancaLePeso(Peso: Double; Resposta: String);
+begin
+  // Buscar o Peso nas balancas PDV's
+  if Peso > 0 then
+  begin
+    // Leitura OK
+    sBal_Resposta := 'Peso Estável';
+    rBal_peso := Peso;
+  end
+  else
+  begin
+    // Leitura retornou ERRo
+    case Trunc(Balanca.UltimoPesoLido) of
+      0:
+        sBal_Resposta := 'Coloque o produto sobre a Balança!';
+      -1:
+        sBal_Resposta := 'Peso Instavel!';
+      -2:
+        sBal_Resposta := 'Peso Negativo!';
+      -10:
+        sBal_Resposta := 'Sobrepeso!';
+    end;
+    rBal_peso := 0;
+  end;
 end;
 
 function TfrmModulo.codifica(TABELA: string): string;

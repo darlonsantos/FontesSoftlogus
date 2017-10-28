@@ -11,8 +11,7 @@ uses
   system.IniFiles, filectrl,
   ACBrNFe, pcnConversao, ACBrNFeDANFEClass, ACBrNFeDANFERave, ACBrUtil,
   pcnNFeW, pcnNFeRTXT, pcnAuxiliar, ACBrDFeUtil,
-  XMLIntf, XMLDoc, ACBrNFeDANFERaveCB, ACBrNFeDANFEFR, Vcl.Grids, Wwdbigrd, Wwdbgrid,
-  ACBrECF, ACBrBase, ACBrGAV;
+  XMLIntf, XMLDoc, ACBrNFeDANFERaveCB, ACBrNFeDANFEFR, Vcl.Grids, Wwdbigrd, Wwdbgrid;
 
 type
   TfrmConfig = class(TForm)
@@ -166,15 +165,6 @@ type
     Label42: TLabel;
     img3: TImage;
     wwDBGrid1: TwwDBGrid;
-    gbGaveta: TGroupBox;
-    Label43: TLabel;
-    cbxModelo: TComboBox;
-    cbxPorta: TComboBox;
-    Label44: TLabel;
-    ACBrGAV1: TACBrGAV;
-    ACBrECF1: TACBrECF;
-    btTestar: TBitBtn;
-    btEstado: TBitBtn;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -189,8 +179,6 @@ type
     procedure btnSalvarConfigClick(Sender: TObject);
     procedure sbtnLogoMarcaClick(Sender: TObject);
     procedure sbtnPathSalvarClick(Sender: TObject);
-    procedure btTestarClick(Sender: TObject);
-    procedure btEstadoClick(Sender: TObject);
   private
     { Private declarations }
     procedure GravaConfiguracoesLocais;
@@ -233,6 +221,7 @@ begin
   LerConfiguracao;
 
 end;
+
 procedure TfrmConfig.BitBtn1Click(Sender: TObject);
 begin
   GravarParametro('INFORMAR_VENDEDOR_CHECKOUT', 'B', chkVendedor.Checked);
@@ -554,32 +543,6 @@ begin
   Combo_Caixa.Text := LerINI(sConfiguracoes, 'CAIXA', 'NUMERO', '99');
   iNumCaixa := frmPrincipal.IsInteger(Combo_Caixa.Text);
 
-end;
-
-procedure TfrmConfig.btTestarClick(Sender: TObject);
-begin
-  btTestar.Enabled := false ;
-  try
-     ACBrGAV1.AbreGaveta ;
-     btEstadoClick(Sender);
-  finally
-     btTestar.Enabled := True ;
-  end ;
-end;
-
-procedure TfrmConfig.btEstadoClick(Sender: TObject);
-begin
-//DARLON SANTOS FUNÇÃO ABRIR E FECHAR A GAVETA DO CAIXA.
-  if not ACBrGAV1.Ativo then
-     ACBrGAV1.Ativar ;
-  if ACBrGAV1.GavetaAberta then
-   begin
-     ShowMessage('GAVETA ABERTA') ;
-   end
-  else
-   begin
-   ShowMessage('GAVETA FECHADA');
-   end ;
 end;
 
 procedure TfrmConfig.btn1Click(Sender: TObject);

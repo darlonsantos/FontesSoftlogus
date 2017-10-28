@@ -11,7 +11,6 @@ type
     Timer1: TTimer;
     Label1: TLabel;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
-    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,11 +29,6 @@ uses modulo;
 procedure TfrmProtetor_tela.FormKeyPress(Sender: TObject; var Key: Char);
 begin
   close;
-end;
-
-procedure TfrmProtetor_tela.Timer1Timer(Sender: TObject);
-begin
- with Label1 do Visible := not Visible;
 end;
 
 end.

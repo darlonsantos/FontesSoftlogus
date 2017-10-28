@@ -2,8 +2,8 @@ object frmconfig_balanca: Tfrmconfig_balanca
   Left = 630
   Top = 293
   BorderStyle = bsDialog
-  Caption = 'Balan'#231'a PDV'
-  ClientHeight = 271
+  Caption = 'Balan'#231'a'
+  ClientHeight = 300
   ClientWidth = 237
   Color = clWhite
   Font.Charset = ANSI_CHARSET
@@ -14,14 +14,14 @@ object frmconfig_balanca: Tfrmconfig_balanca
   OldCreateOrder = False
   Position = poMainFormCenter
   OnClose = FormClose
-  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox6: TGroupBox
     Left = 13
     Top = 10
     Width = 212
-    Height = 206
+    Height = 242
     Caption = 'Balan'#231'a PDV'
     TabOrder = 0
     object Label27: TLabel
@@ -59,9 +59,18 @@ object frmconfig_balanca: Tfrmconfig_balanca
       AutoSize = False
       Caption = 'DataBits:'
     end
-    object Label38: TLabel
+    object Label37: TLabel
       Left = 8
       Top = 130
+      Width = 80
+      Height = 13
+      Alignment = taRightJustify
+      AutoSize = False
+      Caption = 'Handshaking:'
+    end
+    object Label38: TLabel
+      Left = 8
+      Top = 156
       Width = 80
       Height = 13
       Alignment = taRightJustify
@@ -70,7 +79,7 @@ object frmconfig_balanca: Tfrmconfig_balanca
     end
     object Label39: TLabel
       Left = 8
-      Top = 180
+      Top = 206
       Width = 80
       Height = 13
       Alignment = taRightJustify
@@ -79,73 +88,146 @@ object frmconfig_balanca: Tfrmconfig_balanca
     end
     object Label40: TLabel
       Left = 8
-      Top = 154
+      Top = 180
       Width = 80
       Height = 13
       Alignment = taRightJustify
       AutoSize = False
       Caption = 'Parity:'
     end
+    object cb_bal_porta: TComboBox
+      Left = 94
+      Top = 53
+      Width = 100
+      Height = 21
+      ItemHeight = 13
+      ItemIndex = 0
+      TabOrder = 0
+      Text = 'COM1'
+      Items.Strings = (
+        'COM1'
+        'COM2'
+        'COM3'
+        'COM4'
+        'COM5'
+        'COM6'
+        'COM7'
+        'COM8'
+        'COM9')
+    end
+    object cb_bal_modelo: TComboBox
+      Left = 94
+      Top = 28
+      Width = 100
+      Height = 21
+      Style = csDropDownList
+      ItemHeight = 13
+      ItemIndex = 0
+      TabOrder = 1
+      Text = 'Nenhuma'
+      Items.Strings = (
+        'Nenhuma'
+        'Filizola'
+        'Toledo')
+    end
+    object cb_bal_baudrate: TComboBox
+      Left = 94
+      Top = 103
+      Width = 100
+      Height = 21
+      Style = csDropDownList
+      ItemHeight = 13
+      ItemIndex = 6
+      TabOrder = 2
+      Text = '9600'
+      Items.Strings = (
+        '110'
+        '300'
+        '600'
+        '1200'
+        '2400'
+        '4800'
+        '9600'
+        '14400'
+        '19200'
+        '38400'
+        '56000'
+        '57600')
+    end
+    object cb_bal_databits: TComboBox
+      Left = 94
+      Top = 78
+      Width = 100
+      Height = 21
+      Style = csDropDownList
+      ItemHeight = 13
+      ItemIndex = 3
+      TabOrder = 3
+      Text = '8'
+      Items.Strings = (
+        '5'
+        '6'
+        '7'
+        '8')
+    end
+    object cb_bal_hand: TComboBox
+      Left = 94
+      Top = 128
+      Width = 100
+      Height = 21
+      ItemHeight = 13
+      TabOrder = 4
+      Text = 'Nenhum'
+      Items.Strings = (
+        'Nenhum'
+        'XON/XOFF'
+        'RTS/CTS'
+        'DTR/DSR')
+    end
+    object cb_bal_stop: TComboBox
+      Left = 94
+      Top = 153
+      Width = 100
+      Height = 21
+      Style = csDropDownList
+      ItemHeight = 13
+      ItemIndex = 0
+      TabOrder = 5
+      Text = 's1'
+      Items.Strings = (
+        's1'
+        's1,5'
+        's2')
+    end
     object cb_bal_time_out: TEdit
       Left = 94
-      Top = 177
-      Width = 113
+      Top = 203
+      Width = 100
       Height = 21
       TabOrder = 6
       Text = '5000'
     end
-    object edtModelo: TEdit
+    object cb_parity: TComboBox
       Left = 94
-      Top = 27
-      Width = 113
+      Top = 178
+      Width = 100
       Height = 21
-      TabOrder = 0
-      Text = 'Toledo'
-    end
-    object edtPorta: TEdit
-      Left = 94
-      Top = 54
-      Width = 113
-      Height = 21
-      TabOrder = 1
-      Text = 'COM1'
-    end
-    object edtDataBits: TEdit
-      Left = 94
-      Top = 80
-      Width = 113
-      Height = 21
-      TabOrder = 2
-      Text = '8'
-    end
-    object edtBaudRate: TEdit
-      Left = 94
-      Top = 103
-      Width = 113
-      Height = 21
-      TabOrder = 3
-      Text = '2400'
-    end
-    object edtStopBits: TEdit
-      Left = 94
-      Top = 130
-      Width = 113
-      Height = 21
-      TabOrder = 4
-      Text = '0'
-    end
-    object edtParity: TEdit
-      Left = 94
-      Top = 154
-      Width = 113
-      Height = 21
-      TabOrder = 5
-      Text = 'none'
+      Style = csDropDownList
+      ItemHeight = 13
+      ItemIndex = 2
+      TabOrder = 7
+      Text = 'pNone'
+      Items.Strings = (
+        'pEven'
+        'pMark'
+        'pNone'
+        'pOdd'
+        'pSpace')
     end
   end
   object BitBtn1: TBitBtn
     Left = 13
-    Top = 226
+    Top = 264
     Width = 100
     Height = 25
     Caption = 'Gravar'
@@ -154,11 +236,15 @@ object frmconfig_balanca: Tfrmconfig_balanca
   end
   object BitBtn2: TBitBtn
     Left = 125
-    Top = 226
+    Top = 264
     Width = 100
     Height = 25
     Caption = 'Cancelar'
     TabOrder = 2
     OnClick = BitBtn2Click
+  end
+  object XPManifest1: TXPManifest
+    Left = 29
+    Top = 202
   end
 end

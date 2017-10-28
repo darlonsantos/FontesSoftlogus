@@ -40,7 +40,7 @@ object frmConsulta_Estoque: TfrmConsulta_Estoque
   end
   object MENU_FISCAL: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
-    Version = '2.5.4.3'
+    Version = '2.5.4.0'
     Left = 40
     Top = 160
     object Fechar1: TMenuItem

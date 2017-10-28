@@ -31,8 +31,7 @@ uses
   Vcl.RibbonLunaStyleActnCtrls, Vcl.ActnMenus, Vcl.RibbonActnMenus, Vcl.ActnList, dxStatusBar, dxRibbonStatusBar,
   dxRibbonSkins, dxSkinsdxRibbonPainter, dxSkinsdxBarPainter, cxPC, dxBar, dxDockControl, dxDockPanel, dxRibbon,
   dxRibbonMiniToolbar, dxBarApplicationMenu, dxRibbonGallery, dxBarDBNav, Vcl.PlatformDefaultStyleActnCtrls, cxCalc,
-  cxImage, cxBlobEdit, cxBarEditItem, Data.DB, DBAccess, Vcl.ActnPopup,
-  dxSkinsForm;
+  cxImage, cxBlobEdit, cxBarEditItem, Data.DB, DBAccess;
 
 type
   TImpressora = (SemImpressora, NaoFiscal, Fiscal);
@@ -54,21 +53,20 @@ type
     dxTile: TdxTileControl;
     dxTiledxTileControlGroup1: TdxTileControlGroup;
     tlPhotos: TdxTileControlItem;
+    dxtlcntrltmfrmPhotosdxTileControlItemFrame1: TdxTileControlItemFrame;
+    dxtlcntrltmfrmPhotosdxTileControlItemFrame2: TdxTileControlItemFrame;
     tlUserManagement: TdxTileControlItem;
     tlSystemInformation: TdxTileControlItem;
     tlAgents: TdxTileControlItem;
     tlResearch: TdxTileControlItem;
     dxtlcntrltmTileItem1: TdxTileControlItem;
     dxTileItem1: TdxTileControlItem;
+    dxTileItem2: TdxTileControlItem;
     dxTileItem3: TdxTileControlItem;
     dxDockPanel1: TdxDockPanel;
     dxFloatDockSite1: TdxFloatDockSite;
-    dxTileGroup1: TdxTileControlGroup;
-    Label2: TLabel;
-    PopupActionBar1: TPopupActionBar;
-    A1: TMenuItem;
-    Venda_simples: TdxTileControlItem;
-    dxTileGroup2: TdxTileControlGroup;
+    lbl1: TLabel;
+    dxTileItem4: TdxTileControlItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -100,8 +98,6 @@ type
     procedure dxBarButton2Click(Sender: TObject);
     procedure dxBarButton3Click(Sender: TObject);
     procedure dxBarLargeButton3Click(Sender: TObject);
-    procedure A1Click(Sender: TObject);
-    procedure dxTileItem2Click(Sender: TdxTileControlItem);
   private
     iImpressora, iGaveta: Integer;
     { Private declarations }
@@ -213,7 +209,7 @@ var
   (* Classificar o tipo de venda do sistema *)
   iTipo_Venda: Integer; // 1 Super 2 Prevenda 3 Posto
   (* Configuraçoes do Banco de Dados *)
-  iTamanho_codigo_ACBrBAL1: Integer; // tamanho do codigo da balaca 4 ou 5
+  iTamanho_codigo_balanca: Integer; // tamanho do codigo da balaca 4 ou 5
   bTruncar_valor: Boolean;
   // config para nao permitir arredondamento do valor total do item
   bMuda_qtde: Boolean; // configuracao para permitir a edicao da qtde
@@ -226,7 +222,7 @@ var
 
   iBal_time: Integer; // configuracao de time out da balanca
   sBal_Resposta: string; // resposta da balanca
-  rBal_peso: Real; // peso lido na balanca
+  rBal_peso: real; // peso lido na balanca
 
   iTeclado_Modelo: Integer; // modelo do teclado
   sTeclado_porta: string; // porta do teclado
@@ -1078,7 +1074,6 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 var
-  ArqIni: TIniFile;
   Registro: TRegistry;
 begin
   // Configurações para gaveta e tipo de impressora - nao remover o extractfilepath
@@ -1156,21 +1151,43 @@ begin
       begin
         bServidor_Conexao := false;
       end;
-     // balanca
-      frmmodulo.ACBrBAL1.Desativar;
+
+      // balanca
+      frmmodulo.Balanca.Desativar;
       // Modelos --> 0 --> Nenhum , 1 --> Filizola, 2 --> Toledo
-        //DARLON SANTOS
-   BEGIN
-        frmmodulo.ACBrBAL1.Modelo := TACBrBALModelo(StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'Balanca', 'Modelo', '2')));
-        frmmodulo.ACBrBAL1.Device.HandShake :=  TACBrHandShake (StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +  'CFG\cfg.ini', 'Balanca', 'Handshaking', '-1')));
-        frmmodulo.ACBrBAL1.Device.Parity := TACBrSerialParity(StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +   'CFG\cfg.ini', 'Balanca', 'Parity', '0')));
-        frmmodulo.ACBrBAL1.Device.Stop :=  TACBrSerialStop(StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'Balanca', 'Stopbits', '0')));
-        frmmodulo.ACBrBAL1.Device.Porta :=   frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +  'CFG\cfg.ini', 'Balanca', 'Porta', 'COM1');
-        frmmodulo.ACBrBAL1.Device.Baud :=  StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +  'CFG\cfg.ini', 'Balanca', 'Baudrate', '2400'));
-        frmmodulo.ACBrBAL1.Device.Data :=   StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'Balanca', 'Databits', '3'));
-        iBal_time := StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'Balanca', 'Timeout', ''));
+      IF StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
+        'CFG\cfg.ini', 'Balanca', 'Modelo', '0')) <> 0 THEN
+      BEGIN
+        frmmodulo.Balanca.Modelo :=
+          TACBrBALModelo
+          (StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
+          'CFG\cfg.ini', 'Balanca', 'Modelo', '0')));
+        frmmodulo.Balanca.Device.HandShake :=
+          TACBrHandShake
+          (StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
+          'CFG\cfg.ini', 'Balanca', 'Handshaking', '-1')));
+        frmmodulo.Balanca.Device.Parity :=
+          TACBrSerialParity
+          (StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
+          'CFG\cfg.ini', 'Balanca', 'Parity', '2')));
+        frmmodulo.Balanca.Device.Stop :=
+          TACBrSerialStop
+          (StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
+          'CFG\cfg.ini', 'Balanca', 'Stopbits', '2')));
+        frmmodulo.Balanca.Device.Porta :=
+          frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
+          'CFG\cfg.ini', 'Balanca', 'Porta', 'COM1');
+        frmmodulo.Balanca.Device.Data :=
+          StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
+          'CFG\cfg.ini', 'Balanca', 'Databits', '8'));
+        frmmodulo.Balanca.Device.Baud :=
+          StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
+          'CFG\cfg.ini', 'Balanca', 'Baudrate', '8'));
+        iBal_time :=
+          StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
+          'CFG\cfg.ini', 'Balanca', 'Timeout', ''));
       END;
-  
+
       // ecf porta
       sECF_Porta := frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
         'CFG\cfg.ini', 'Impressora', 'Porta', '');
@@ -1479,7 +1496,7 @@ begin
   sArquivo_config := 'cfg.ini';
   sConfiguracoes := sPasta_config + '\' + sArquivo_config;
 
-  iTamanho_codigo_ACBrBAL1 := StrToInt(LerIni(sConfiguracoes, 'BALANCA',
+  iTamanho_codigo_balanca := StrToInt(LerIni(sConfiguracoes, 'BALANCA',
     'NDIGITOS', '5'));
 
   bBusca_foto_produto := StrToBool(LerIni(sConfiguracoes, 'PDV', 'HAB_IMG',
@@ -1617,11 +1634,6 @@ begin
 end;
 
 // -------------------------------------------------------------------------- //
-procedure TfrmPrincipal.A1Click(Sender: TObject);
-begin
- CarregaSistemaVenda;
-end;
-
 procedure TfrmPrincipal.act_vendasExecute(Sender: TObject);
 begin
   CarregaSistemaVenda;
@@ -2813,12 +2825,6 @@ end;
 procedure TfrmPrincipal.dxTileItem1Click(Sender: TdxTileControlItem);
 begin
   close;
-end;
-
-procedure TfrmPrincipal.dxTileItem2Click(Sender: TdxTileControlItem);
-begin
-  frmOrcamento := tfrmOrcamento.create(self);
-  frmOrcamento.ShowModal;
 end;
 
 end.

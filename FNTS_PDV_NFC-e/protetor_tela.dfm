@@ -14,18 +14,13 @@ object frmProtetor_tela: TfrmProtetor_tela
   OldCreateOrder = False
   WindowState = wsMaximized
   OnKeyPress = FormKeyPress
-  DesignSize = (
-    790
-    532)
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 120
-    Top = 272
+    Left = 96
+    Top = 264
     Width = 594
     Height = 77
-    Alignment = taCenter
-    Anchors = [akLeft, akTop, akRight, akBottom]
     Caption = 'Caixa Indispon'#237'vel'
     Font.Charset = ANSI_CHARSET
     Font.Color = clYellow
@@ -35,8 +30,7 @@ object frmProtetor_tela: TfrmProtetor_tela
     ParentFont = False
   end
   object Timer1: TTimer
-    Interval = 500
-    OnTimer = Timer1Timer
+    Interval = 5000
     Left = 488
     Top = 136
   end

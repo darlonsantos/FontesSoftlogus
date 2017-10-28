@@ -202,6 +202,10 @@ object frmOrcamento: TfrmOrcamento
         TabOrder = 0
         object TabSheet1: TTabSheet
           Caption = 'Observa'#231#245'es'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object ed_obs1: TEdit
             Left = 0
             Top = 0
@@ -227,6 +231,10 @@ object frmOrcamento: TfrmOrcamento
         object TabSheet2: TTabSheet
           Caption = 'Parcelamento'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label13: TLabel
             Left = 14
             Top = 19

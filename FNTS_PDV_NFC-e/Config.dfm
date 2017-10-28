@@ -26,6 +26,7 @@ object frmConfig: TfrmConfig
     Align = alBottom
     Color = clWhite
     TabOrder = 0
+    ExplicitWidth = 716
     object BitBtn1: TBitBtn
       Left = -4
       Top = 62
@@ -253,6 +254,7 @@ object frmConfig: TfrmConfig
     TabOrder = 1
     TabStyle = tsWhidbey
     TopIndent = 3
+    ExplicitWidth = 716
     object PageSheet1: TPageSheet
       Left = 0
       Top = 21
@@ -268,7 +270,7 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitTop = 23
+      ExplicitWidth = 716
       object AdvReflectionImage1: TAdvReflectionImage
         Left = 504
         Top = 16
@@ -1311,121 +1313,6 @@ object frmConfig: TfrmConfig
           TabOrder = 1
         end
       end
-      object gbGaveta: TGroupBox
-        Left = 268
-        Top = 139
-        Width = 169
-        Height = 156
-        Caption = 'Configura'#231#227'o gaveta'
-        TabOrder = 4
-        object Label43: TLabel
-          Left = 10
-          Top = 20
-          Width = 87
-          Height = 13
-          Caption = '&Modelo Gaveta'
-          FocusControl = cbxModelo
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 11
-          Font.Name = 'MS Sans Serif'
-          Font.Pitch = fpVariable
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label44: TLabel
-          Left = 10
-          Top = 66
-          Width = 31
-          Height = 13
-          Caption = '&Porta'
-          FocusControl = cbxPorta
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = 11
-          Font.Name = 'MS Sans Serif'
-          Font.Pitch = fpVariable
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object cbxModelo: TComboBox
-          Left = 10
-          Top = 39
-          Width = 143
-          Height = 21
-          Style = csDropDownList
-          TabOrder = 0
-          Items.Strings = (
-            'gavNenhuma'
-            'gavSerialMenno'
-            'gavSerialGerbo'
-            'gavImpressoraECF'
-            'gavImpressoraComum')
-        end
-        object cbxPorta: TComboBox
-          Left = 9
-          Top = 85
-          Width = 143
-          Height = 21
-          TabOrder = 1
-          Text = 'COM1'
-          Items.Strings = (
-            'COM1'
-            'COM2'
-            'COM3'
-            'COM4'
-            'COM5'
-            'LPT1'
-            'LPT2'
-            'LPT3')
-        end
-        object btTestar: TBitBtn
-          Left = 9
-          Top = 119
-          Width = 75
-          Height = 25
-          Caption = '&Testa'
-          Glyph.Data = {
-            76010000424D7601000000000000760000002800000020000000100000000100
-            04000000000000010000120B0000120B00001000000000000000000000000000
-            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
-            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00500000000000
-            000557777777777777750BBBBBBBBBBBBBB07F5555FFFFFFF5570BBBB0000000
-            BBB07F5557777777FF570BBB077BBB770BB07F557755555775570BBBBBBBBBBB
-            BBB07F5555FFFFFFF5570BBBB0000000BBB07F5557777777F5570BBBB0FFFFF0
-            BBB07F5557FFFFF7F5570BBBB0000000BBB07F555777777755570BBBBBBBBBBB
-            BBB07FFFFFFFFFFFFFF700000000000000007777777777777777500FFFFFFFFF
-            F005577FF555FFFFF7755500FFF00000005555775FF7777777F5550F777FFFFF
-            F055557F777FFF5557F5550000000FFF00555577777775FF77F5550777777000
-            7055557FFFFFF777F7F555000000000000555577777777777755}
-          NumGlyphs = 2
-          TabOrder = 2
-          OnClick = btTestarClick
-        end
-        object btEstado: TBitBtn
-          Left = 90
-          Top = 119
-          Width = 75
-          Height = 25
-          Caption = '&Status'
-          Glyph.Data = {
-            76010000424D7601000000000000760000002800000020000000100000000100
-            04000000000000010000120B0000120B00001000000000000000000000000000
-            800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
-            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
-            3333333333FFFFF3333333333F797F3333333333F737373FF333333BFB999BFB
-            33333337737773773F3333BFBF797FBFB33333733337333373F33BFBFBFBFBFB
-            FB3337F33333F33337F33FBFBFB9BFBFBF3337333337F333373FFBFBFBF97BFB
-            FBF37F333337FF33337FBFBFBFB99FBFBFB37F3333377FF3337FFBFBFBFB99FB
-            FBF37F33333377FF337FBFBF77BF799FBFB37F333FF3377F337FFBFB99FB799B
-            FBF373F377F3377F33733FBF997F799FBF3337F377FFF77337F33BFBF99999FB
-            FB33373F37777733373333BFBF999FBFB3333373FF77733F7333333BFBFBFBFB
-            3333333773FFFF77333333333FBFBF3333333333377777333333}
-          NumGlyphs = 2
-          TabOrder = 3
-          OnClick = btEstadoClick
-        end
-      end
     end
     object PageSheet2: TPageSheet
       Left = 0
@@ -1442,6 +1329,7 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
+      ExplicitWidth = 716
       object GroupBox1: TGroupBox
         Left = 797
         Top = 303
@@ -1618,6 +1506,7 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
+      ExplicitWidth = 716
       object img2: TAdvReflectionImage
         Left = 504
         Top = 16
@@ -2615,6 +2504,7 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
+      ExplicitWidth = 716
       object Panel2: TPanel
         Left = 0
         Top = 0
@@ -3380,6 +3270,7 @@ object frmConfig: TfrmConfig
         Height = 521
         Align = alClient
         TabOrder = 1
+        ExplicitWidth = 419
         object img3: TImage
           Left = 1
           Top = 1
@@ -10108,6 +9999,7 @@ object frmConfig: TfrmConfig
     ParentBackground = False
     ParentFont = False
     TabOrder = 2
+    ExplicitWidth = 716
     object Image5: TImage
       Left = 1
       Top = 1
@@ -10124,13 +10016,13 @@ object frmConfig: TfrmConfig
     Connection = frmModulo.conexao
     SQL.Strings = (
       'select * from config')
-    Left = 32
-    Top = 392
+    Left = 296
+    Top = 240
   end
   object dsconfig: TIBCDataSource
     DataSet = qrconfig
-    Left = 32
-    Top = 344
+    Left = 312
+    Top = 280
   end
   object OpenPictureDialog1: TOpenPictureDialog
     Left = 280
@@ -10144,65 +10036,5 @@ object frmConfig: TfrmConfig
     Title = 'Selecione a NFe'
     Left = 752
     Top = 72
-  end
-  object ACBrGAV1: TACBrGAV
-    Modelo = gavImpressoraECF
-    ECF = ACBrECF1
-    Left = 80
-    Top = 344
-  end
-  object ACBrECF1: TACBrECF
-    QuebraLinhaRodape = False
-    Modelo = ecfBematech
-    Porta = 'COM2'
-    MsgAguarde = 'Aguardando a resposta da Impressora: %d segundos'
-    MsgTrabalhando = 'Impressora est'#225' trabalhando'
-    MsgRelatorio = 'Imprimindo %s  %d'#170' Via '
-    MsgPausaRelatorio = 'Destaque a %d'#170' via, <ENTER> proxima, %d seg.'
-    PaginaDeCodigo = 850
-    MemoParams.Strings = (
-      '[Cabecalho]'
-      'LIN000=<center><b>Nome da Empresa</b></center>'
-      'LIN001=<center>Nome da Rua , 1234  -  Bairro</center>'
-      'LIN002=<center>Cidade  -  UF  -  99999-999</center>'
-      
-        'LIN003=<center>CNPJ: 01.234.567/0001-22    IE: 012.345.678.90</c' +
-        'enter>'
-      
-        'LIN004=<table width=100%><tr><td align=left><code>Data</code> <c' +
-        'ode>Hora</code></td><td align=right>COO: <b><code>NumCupom</code' +
-        '></b></td></tr></table>'
-      'LIN005=<hr>'
-      ' '
-      '[Cabecalho_Item]'
-      'LIN000=ITEM   CODIGO      DESCRICAO'
-      'LIN001=QTD         x UNITARIO       Aliq     VALOR (R$)'
-      'LIN002=<hr>'
-      
-        'MascaraItem=III CCCCCCCCCCCCCC DDDDDDDDDDDDDDDDDDDDDDDDDDDDDQQQQ' +
-        'QQQQ UU x VVVVVVVVVVVVV AAAAAA TTTTTTTTTTTTT'
-      ' '
-      '[Rodape]'
-      'LIN000=<hr>'
-      
-        'LIN001=<table width=100%><tr><td align=left><code>Data</code> <c' +
-        'ode>Hora</code></td><td align=right>Projeto ACBr: <b><code>ACBR<' +
-        '/code></b></td></tr></table>'
-      'LIN002=<center>Obrigado Volte Sempre</center>'
-      'LIN003=<hr>'
-      ' '
-      '[Formato]'
-      'Colunas=48'
-      'HTML=1'
-      'HTML_Title_Size=2'
-      'HTML_Font=<font size="2" face="Lucida Console">')
-    Device.HandShake = hsRTS_CTS
-    Device.HardFlow = True
-    ConfigBarras.MostrarCodigo = True
-    ConfigBarras.LarguraLinha = 0
-    ConfigBarras.Altura = 0
-    InfoRodapeCupom.Imposto.ModoCompacto = False
-    Left = 88
-    Top = 408
   end
 end

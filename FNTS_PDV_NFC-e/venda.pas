@@ -359,7 +359,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure MemoDadosChange(Sender: TObject);
   private
-    FRespostaList: TStringList;
+    { Private declarations }
     a, b: word;
     iImpressora: Integer;
     function ImgTipoImpressora(i: Integer): TImpressora;
@@ -376,7 +376,6 @@ type
     function Localizar_Produto(referencia: string): boolean;
     function TEF_Pagamento(Tef_tipo: TTef_Tipo): boolean;
     procedure SetScreenResolution(AWidth, AHeigth: Integer);
-    Function Converte( cmd : String) : String;
   end;
 
 Const
@@ -451,8 +450,7 @@ uses modulo, Math, funcoes, cliente_consulta, preco_consulta,
   TEF_Cancelamento, senha, menu_cupom, Lista_DAV, pre_venda, msg_Operador,
   Meios_pagamento, Orcamento_Abrir, menu_fiscal, IniFiles, contasreceber, os,
   caixa_abertura, mesas, fabricacao, senha_supervisor, ComObj, Constantes,
-  Vendedor, UFuncoes, Comanda, ufrmStatus, frmNatOperacao, xloc_modelo,
-  frmNFCEs;
+  Vendedor, UFuncoes, Comanda, ufrmStatus, frmNatOperacao, xloc_modelo;
 
 {$R *.dfm}
 
@@ -1661,7 +1659,7 @@ begin
           // extrair o codigo do produto na etiqueta de codigo de barras conf. o tamanho
           // do codigo da balanca configurado previamente
           query.sql.add('where cod_barra = ''' +
-            inttostr(strtoint(copy(referencia, 2, iTamanho_codigo_ACBrBAL1)
+            inttostr(strtoint(copy(referencia, 2, iTamanho_codigo_balanca)
             )) + '''');
 
           query.Open;
@@ -1995,7 +1993,7 @@ begin
           spCupom.ParamByName('cod_cliente').clear;
 
         spCupom.ParamByName('cancelado').asinteger := 0;
-        spCupom.ParamByName('cpf_consumidor').asstring :=  sConsumidor_CPF;   //DARLON SANTOS
+        spCupom.ParamByName('cpf_consumidor').asstring := sConsumidor_CPF;
         spCupom.ParamByName('nome_consumidor').asstring :=
           copy(sConsumidor_Nome, 1, 40);
         spCupom.ParamByName('cod_caixa').asinteger := iNumCaixa;
@@ -3142,18 +3140,6 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-//desenvolvimento: DARLON SANTOS
-//SALVA O LOG DA BALANÇA
-  if frmmodulo.ACBrBAL1.Ativo then
-  begin
-   frmmodulo.ACBrBAL1.Desativar;
-   end;
-   if Assigned(FRespostaList) then
-  begin
-    FRespostaList.SaveToFile(ChangeFileExt(ParamStr(0), '.log'));
-    FRespostaList.Free;
-  end;
-
   // verificar se ha cupom aberto, nao permitindo a saida do sistema
   if bVenda then
   begin
@@ -3306,12 +3292,13 @@ begin
       ed_barra.setfocus;
       exit;
     end;
+
     if timer_balanca.Enabled then
     begin
       timer_balanca.Enabled := false;
       try
-        frmmodulo.ACBrBAL1.Ativar;
-        frmmodulo.ACBrBAL1.Ativo := true;
+        frmmodulo.balanca.desativar;
+        frmmodulo.balanca.Ativo := false;
       except
       end;
       bDados_balanca := true;
@@ -3763,8 +3750,8 @@ begin
   if timer_balanca.Enabled then
   begin
     timer_balanca.Enabled := false;
-    frmmodulo.ACBrBAL1.Ativo := false;
-    frmmodulo.ACBrBAL1.desativar;
+    frmmodulo.balanca.Ativo := false;
+    frmmodulo.balanca.desativar;
     Imprime_display('Informe o Produto...', clBackground, tiLivre);
   end;
 end;
@@ -5434,7 +5421,7 @@ begin
     try
 
       Imprime_display('          AGUARDE...  PREPARANDO NFC-E',
-      clBackground, tiLivre);
+        clBackground, tiLivre);
       grid.Repaint; // aqui prepara o grid
       PrepararNFCE;
       Imprime_display('          AGUARDE...  GRAVANDO NFC-E NO BANCO',
@@ -5450,7 +5437,7 @@ begin
           spNFCE_Insert.ParamByName('pnumero').asinteger := NumeroNFCe;
           spNFCE_Insert.ParamByName('pdata').asdate := Date;
           spNFCE_Insert.ParamByName('ptotal').asfloat := ed_total_pagar.value;
-          spNFCE_Insert.ParamByName('pcliente').asstring := sConsumidor_CPF;   //DARLON SANTOS
+          spNFCE_Insert.ParamByName('pcliente').asstring := sConsumidor_cpf;  //TESTE01 DARLON SANTOS
           spNFCE_Insert.ParamByName('pchave').asstring := copy(ChaveNFCE, 4, 47);
           spNFCE_Insert.ParamByName('pxml').asstring := 'C:\Softlogus\PDV\xml\' +
             copy(ChaveNFCE, 4, 47) + '-nfe.xml';
@@ -7049,28 +7036,25 @@ end;
 
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.timer_balancaTimer(Sender: TObject);
-
 begin
-  frmmodulo.ACBrBAL1.LePeso(ibal_time);
-  Imprime_display('Peso: ' + formatfloat('###,###,##0.000', rBal_peso),  clBackground, tiPeso);
+  frmmodulo.balanca.LePeso(ibal_time);
+  Imprime_display('Peso: ' + formatfloat('###,###,##0.000', rBal_peso),
+    clBackground, tiPeso);
   application.ProcessMessages;
 end;
 
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.AcionaBalana1Click(Sender: TObject);
 begin
-  if frmmodulo.ACBrBAL1.Modelo <>  balNenhum then
- begin
+  if frmmodulo.balanca.Modelo <> balNenhum then
+  begin
     try
-     frmmodulo.ACBrBAL1.ativar;
-      frmmodulo.ACBrBAL1.Ativo := true;
+      frmmodulo.balanca.ativar;
+      frmmodulo.balanca.Ativo := true;
     except
-     frmmodulo.ACBrBAL1.LePeso(ibal_time);
     end;
-     timer_balanca.Enabled := true;
-  end
-  ELSE
-   ShowMessage('Balança não encontrada!');
+    timer_balanca.Enabled := true;
+  end;
 end;
 
 // -------------------------------------------------------------------------- //
@@ -7202,22 +7186,6 @@ begin
   Imprime_display_anterior;
 end;
 
-function TfrmVenda.Converte(cmd: String): String;
-var A : Integer ;
-begin
-  Result := '' ;
-  For A := 1 to length( cmd ) do
-  begin
-     if not (cmd[A] in ['A'..'Z','a'..'z','0'..'9',
-                        ' ','.',',','/','?','<','>',';',':',']','[','{','}',
-                        '\','|','=','+','-','_',')','(','*','&','^','%','$',
-                        '#','@','!','~',']' ]) then
-        Result := Result + '#' + IntToStr(ord( cmd[A] )) + ' '
-     else
-        Result := Result + cmd[A] + ' ';
-  end ;
-end;
-
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.Opes1Click(Sender: TObject);
 begin
@@ -7240,10 +7208,8 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.Cupons1Click(Sender: TObject);
 begin
- frmNotasconsumidor := TfrmNotasconsumidor.create(self);
- frmNotasconsumidor.showmodal;
-//  frmcupom_menu := tfrmcupom_menu.create(self);
-//  frmcupom_menu.showmodal;
+  frmcupom_menu := tfrmcupom_menu.create(self);
+  frmcupom_menu.showmodal;
 end;
 
 // -------------------------------------------------------------------------- //
@@ -7290,15 +7256,11 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.AcionaGaveta1Click(Sender: TObject);
 begin
-//  FUNÇÃO ABRIR E FECHAR GAVETA DO CAIXA!
   try
-    if not (frmPrincipal.GavetaImpressora = GavImpFiscal) then
-      begin
-        ShowMessage('Não existe gaveta conectada a impressora.');
-      end;
-       if frmPrincipal.GavetaImpressora = GavImpFiscal then
-        cECF_Abre_Gaveta(iECF_Modelo)
-       else if frmPrincipal.GavetaImpressora = GavImpNaoFiscal then
+
+    if frmPrincipal.GavetaImpressora = GavImpFiscal then
+      cECF_Abre_Gaveta(iECF_Modelo)
+    else if frmPrincipal.GavetaImpressora = GavImpNaoFiscal then
       AcionaGavetaNaoFiscal(sPortaGaveta);
 
   except
@@ -8188,8 +8150,8 @@ begin
             3:
               tPag := fpCreditoLoja;
           end;
-               //DARLON SANTOS RESOLVIDO
-          vPag := ed_totalizador.Value;
+
+          vPag := ed_total_pagar.value;
         end;
 
         InfAdic.infCpl := '';
@@ -8225,15 +8187,26 @@ end;
 procedure TfrmVenda.PrepararNFCE;
 
 begin
+
+
   nfce_autorizada := false;
+
   frmmodulo.LerConfiguracao;
+
   vAux := frmmodulo.codifica('888888');
+
+
   vSincrono := '1';
+
   vNumLote := '1';
+
   Sincrono := true;
+
   with frmmodulo do
   begin
+              //DARLON SANTOS
     try
+
       ACBRNFCe.NotasFiscais.clear;
       Imprime_display('          AGUARDE...  GERANDO NFC-E', clBackground, tiLivre);
       grid.Repaint;
@@ -8243,8 +8216,12 @@ begin
       ACBrNFce.NotasFiscais.GerarNFe;
        ACBrNFce.NotasFiscais.Assinar;
        ACBrNFce.NotasFiscais.Valida;
+     
+
       ACBrNFce.Enviar(vNumLote,true,sincrono);
-    if not ACBRNFCe.NotasFiscais.Items[0].Confirmada then
+
+
+      if not ACBRNFCe.NotasFiscais.Items[0].Confirmada then
       begin
           cStatus := 100;
            ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
@@ -8268,6 +8245,7 @@ begin
       ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\Schemas\DANFeNFCe.fr3';
       if FileExists(frmPrincipal.LerINi(sConfiguracoes, 'PDV', 'CAMINHO_LOGO', '')) then
         ACBRDANFENFCe.Logo := frmPrincipal.LerINi(sConfiguracoes, 'PDV',  'CAMINHO_LOGO', '');
+
       ACBRDANFENFCe.Detalhado := true;
      ACBRDANFENFCe.vTroco := ed_troco.value;
     ACBRNFCe.NotasFiscais.Imprimir;
@@ -8281,17 +8259,22 @@ begin
        begin
         nfce_autorizada := false;
        end;
+
     except
       on e: exception do
       begin
+
         application.messagebox(pwidechar('Erro na geração da NFCE' + #13 +
           'Erro: ' + e.Message), 'Erro', mb_ok + MB_ICONERROR);
         nfce_autorizada := false;
         // TESTE DARLON SANTOS
 
       end;
+
     end;
+
   end;
+
 end;
 
 // -------------------------------------------------------------------------- //

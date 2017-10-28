@@ -1,5 +1,5 @@
 unit cliente_consulta;
-//
+
 interface
 
 uses
@@ -10,6 +10,7 @@ uses
 
 type
   TfrmCliente_consulta = class(TForm)
+    Image1: TImage;
     img_cliente: TAdvOfficeImage;
     lb_cliente: TRzLabel;
     lb_status: TRzLabel;

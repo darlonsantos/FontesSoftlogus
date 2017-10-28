@@ -78,8 +78,10 @@ object frmIdentifica: TfrmIdentifica
     Height = 30
     Align = alBottom
     BevelOuter = bvNone
-    Color = 15830313
+    Color = clWhite
+    ParentBackground = False
     TabOrder = 3
+    ExplicitTop = 83
     object bt_ok: TButton
       Left = 123
       Top = 2

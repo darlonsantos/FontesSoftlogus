@@ -11,8 +11,7 @@ uses
   NxColumns,
   NxScrollControl, NxCustomGridControl, NxCustomGrid, NxDBGrid, Vcl.ImgList,
   Wwdbigrd, Wwdbgrid, Vcl.Mask, sMaskEdit, sCustomComboEdit, sTooledit,
-  pcnConversao, Vcl.Buttons, sSpeedButton, Vcl.Menus,
-  Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnPopup;
+  pcnConversao, Vcl.Buttons, sSpeedButton;
 
 type
   TfrmNotasconsumidor = class(TForm)
@@ -21,6 +20,7 @@ type
     qrNFCE: TZQuery;
     ds_nfce: TDataSource;
     Label1: TLabel;
+    Label2: TLabel;
     Label3: TLabel;
     edt_Numero: TEdit;
     wwDBGrid1: TwwDBGrid;
@@ -39,13 +39,6 @@ type
     btn_Consultar: TsSpeedButton;
     btn_cancelar: TsSpeedButton;
     btn_buscar: TsSpeedButton;
-    PopupActionBar1: TPopupActionBar;
-    L1: TMenuItem;
-    S1: TMenuItem;
-    I1: TMenuItem;
-    C1: TMenuItem;
-    C2: TMenuItem;
-    Label4: TLabel;
     procedure Button4Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -54,7 +47,6 @@ type
     procedure btn_buscarClick(Sender: TObject);
     procedure btn_ConsultarClick(Sender: TObject);
     procedure btn_cancelarClick(Sender: TObject);
-    procedure S1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -264,11 +256,6 @@ begin
   qrNFCE.Close;
   dataini.Date := now;
   datafin.Date := now;
-end;
-
-procedure TfrmNotasconsumidor.S1Click(Sender: TObject);
-begin
-close;
 end;
 
 procedure TfrmNotasconsumidor.btn_cancelarClick(Sender: TObject);
