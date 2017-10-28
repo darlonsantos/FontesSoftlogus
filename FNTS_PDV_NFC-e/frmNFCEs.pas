@@ -11,34 +11,43 @@ uses
   NxColumns,
   NxScrollControl, NxCustomGridControl, NxCustomGrid, NxDBGrid, Vcl.ImgList,
   Wwdbigrd, Wwdbgrid, Vcl.Mask, sMaskEdit, sCustomComboEdit, sTooledit,
-  pcnConversao, Vcl.Buttons, sSpeedButton;
+  pcnConversao, Vcl.Buttons, sSpeedButton, MemDS, DBAccess, IBC;
 
 type
   TfrmNotasconsumidor = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
-    qrNFCE: TZQuery;
+    qrNFCE_old: TZQuery;
     ds_nfce: TDataSource;
     Label1: TLabel;
-    Label2: TLabel;
     Label3: TLabel;
     edt_Numero: TEdit;
     wwDBGrid1: TwwDBGrid;
-    qrNFCENUMERO: TIntegerField;
-    qrNFCETOTAL: TFloatField;
-    qrNFCEDATA: TDateTimeField;
-    qrNFCECLIENTE: TWideStringField;
-    qrNFCECHAVE: TWideStringField;
-    qrNFCEXML: TWideStringField;
-    qrNFCESITUACAO: TIntegerField;
+    qrNFCE_oldNUMERO: TIntegerField;
+    qrNFCE_oldTOTAL: TFloatField;
+    qrNFCE_oldDATA: TDateTimeField;
+    qrNFCE_oldCLIENTE: TWideStringField;
+    qrNFCE_oldCHAVE: TWideStringField;
+    qrNFCE_oldXML: TWideStringField;
+    qrNFCE_oldSITUACAO: TIntegerField;
     ImageList2: TImageList;
     dataini: TsDateEdit;
     datafin: TsDateEdit;
-    qrNFCETROCO: TFloatField;
+    qrNFCE_oldTROCO: TFloatField;
     btn_imprimir: TsSpeedButton;
     btn_Consultar: TsSpeedButton;
     btn_cancelar: TsSpeedButton;
     btn_buscar: TsSpeedButton;
+    Label2: TLabel;
+    qrNFCE: TIBCQuery;
+    qrNFCENUMERO: TIntegerField;
+    qrNFCEDATA: TDateTimeField;
+    qrNFCETOTAL: TFloatField;
+    qrNFCECLIENTE: TStringField;
+    qrNFCECHAVE: TStringField;
+    qrNFCEXML: TStringField;
+    qrNFCESITUACAO: TIntegerField;
+    qrNFCETROCO: TFloatField;
     procedure Button4Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);

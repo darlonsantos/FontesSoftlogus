@@ -5,7 +5,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   BorderStyle = bsDialog
   Caption = 'Notas Fiscais de Consumidor Final'
   ClientHeight = 568
-  ClientWidth = 929
+  ClientWidth = 824
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,31 +20,21 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 929
+    Width = 824
     Height = 73
     Align = alTop
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 8
+    ExplicitTop = 168
+    ExplicitWidth = 929
     object Label1: TLabel
       Left = 8
-      Top = 32
-      Width = 73
+      Top = 12
+      Width = 74
       Height = 16
-      Caption = 'Per'#237'odo de '
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label2: TLabel
-      Left = 207
-      Top = 32
-      Width = 8
-      Height = 16
-      Caption = #224
+      Caption = 'Data Inicio:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -53,11 +43,11 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 344
-      Top = 12
+      Left = 192
+      Top = 9
       Width = 49
       Height = 16
-      Caption = 'N'#250'mero'
+      Caption = 'N'#186' Nota'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -66,7 +56,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ParentFont = False
     end
     object btn_buscar: TsSpeedButton
-      Left = 487
+      Left = 311
       Top = 24
       Width = 98
       Height = 28
@@ -83,16 +73,29 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ImageIndex = 4
       Images = ImageList2
     end
+    object Label2: TLabel
+      Left = 100
+      Top = 12
+      Width = 60
+      Height = 16
+      Caption = 'Data Fim:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object edt_Numero: TEdit
-      Left = 344
+      Left = 192
       Top = 31
       Width = 113
       Height = 21
       TabOrder = 0
     end
     object dataini: TsDateEdit
-      Left = 87
-      Top = 31
+      Left = 8
+      Top = 34
       Width = 86
       Height = 21
       AutoSize = False
@@ -121,7 +124,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       GlyphMode.Grayed = False
     end
     object datafin: TsDateEdit
-      Left = 232
+      Left = 100
       Top = 31
       Width = 86
       Height = 21
@@ -154,12 +157,13 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object Panel2: TPanel
     Left = 0
     Top = 520
-    Width = 929
+    Width = 824
     Height = 48
     Align = alBottom
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 929
     object btn_imprimir: TsSpeedButton
       Left = 225
       Top = 6
@@ -223,7 +227,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object wwDBGrid1: TwwDBGrid
     Left = 0
     Top = 73
-    Width = 929
+    Width = 824
     Height = 447
     ControlType.Strings = (
       'SITUACAO;ImageIndex;Original Size')
@@ -257,69 +261,70 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     TitleLines = 1
     TitleButtons = False
     ImageList = ImageList2
+    ExplicitWidth = 929
   end
-  object qrNFCE: TZQuery
+  object qrNFCE_old: TZQuery
     Connection = frmModulo.conBASE
     SQL.Strings = (
       'select * from NFCE order by data,numero')
     Params = <>
-    Left = 736
-    Top = 304
-    object qrNFCENUMERO: TIntegerField
+    Left = 496
+    Top = 232
+    object qrNFCE_oldNUMERO: TIntegerField
       Alignment = taCenter
       DisplayWidth = 5
       FieldName = 'NUMERO'
     end
-    object qrNFCETOTAL: TFloatField
+    object qrNFCE_oldTOTAL: TFloatField
       Alignment = taCenter
       DisplayWidth = 10
       FieldName = 'TOTAL'
       DisplayFormat = '###,###,###0.00'
     end
-    object qrNFCEDATA: TDateTimeField
+    object qrNFCE_oldDATA: TDateTimeField
       Alignment = taCenter
       DisplayWidth = 10
       FieldName = 'DATA'
     end
-    object qrNFCECLIENTE: TWideStringField
+    object qrNFCE_oldCLIENTE: TWideStringField
       Alignment = taCenter
       DisplayWidth = 30
       FieldName = 'CLIENTE'
       Size = 200
     end
-    object qrNFCECHAVE: TWideStringField
+    object qrNFCE_oldCHAVE: TWideStringField
       Alignment = taCenter
       DisplayWidth = 50
       FieldName = 'CHAVE'
       Size = 250
     end
-    object qrNFCESITUACAO: TIntegerField
+    object qrNFCE_oldSITUACAO: TIntegerField
       Alignment = taCenter
       DisplayLabel = 'X'
       DisplayWidth = 2
       FieldName = 'SITUACAO'
     end
-    object qrNFCEXML: TWideStringField
+    object qrNFCE_oldXML: TWideStringField
       Alignment = taCenter
       FieldName = 'XML'
       Visible = False
       Size = 250
     end
-    object qrNFCETROCO: TFloatField
+    object qrNFCE_oldTROCO: TFloatField
       FieldName = 'TROCO'
       Visible = False
     end
   end
   object ds_nfce: TDataSource
     DataSet = qrNFCE
-    Left = 688
+    Left = 488
     Top = 304
   end
   object ImageList2: TImageList
-    Left = 704
-    Top = 368
+    Left = 480
+    Top = 392
     Bitmap = {
-      494C010105000700100010001000FFFFFFFFFF00FFFFFFFFFFFFFFFF424D3600
+      494C010105001400140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -587,6 +592,42 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       F3FFFFFF00000000E1FF87C300000000C0FF838300000000807FC10700000000
       803FE00F000000008C1FF01F000000009E0FF83F00000000FF07F01F00000000
       FF83E00F00000000FFC3C10700000000FFE3838300000000FFF387C300000000
-      FFFFFFFF00000000FFFFFFFF00000000}
+      FFFFFFFF00000000FFFFFFFF0000000000000000000000000000000000000000
+      000000000000}
+  end
+  object qrNFCE: TIBCQuery
+    Connection = frmModulo.conexao
+    SQL.Strings = (
+      'select * from NFCE order by data,numero')
+    Left = 248
+    Top = 368
+    object qrNFCENUMERO: TIntegerField
+      FieldName = 'NUMERO'
+      Required = True
+    end
+    object qrNFCEDATA: TDateTimeField
+      FieldName = 'DATA'
+    end
+    object qrNFCETOTAL: TFloatField
+      FieldName = 'TOTAL'
+    end
+    object qrNFCECLIENTE: TStringField
+      FieldName = 'CLIENTE'
+      Size = 255
+    end
+    object qrNFCECHAVE: TStringField
+      FieldName = 'CHAVE'
+      Size = 255
+    end
+    object qrNFCEXML: TStringField
+      FieldName = 'XML'
+      Size = 255
+    end
+    object qrNFCESITUACAO: TIntegerField
+      FieldName = 'SITUACAO'
+    end
+    object qrNFCETROCO: TFloatField
+      FieldName = 'TROCO'
+    end
   end
 end
