@@ -61,8 +61,9 @@ var
 begin
   // testando a conexao com o servidor
   try
-    frmModulo.Conexao_Servidor.Connected := false;
-    frmModulo.Conexao_Servidor.Connected := true;
+    //DARLON SANTOS 28/10/2017
+    frmModulo.conexao.Connected := false;
+    frmModulo.conexao.Connected := true;
     bServidor_Conexao := true;
   except
     bServidor_Conexao := false;

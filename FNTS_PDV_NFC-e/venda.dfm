@@ -4839,13 +4839,12 @@ object frmVenda: TfrmVenda
       object RzLabel6: TRzLabel
         Left = 204
         Top = 661
-        Width = 154
+        Width = 285
         Height = 74
         AutoSize = False
         Caption = 
           'F7 - Consulta de Clientes'#13'F8 - Menu Fiscal'#13'F10 - Aciona Balan'#231'a'#13 +
-          'CTRL+P - Cupons'#13'CTRL+E - Mesas'#13#13'CTRL+P - Cupons                 ' +
-          '     CTRL+E - Mesas'
+          'CTRL+P - Cupom Simples'#13#10'CTRL+E -  Cupom Eletr'#243'nico'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -4853,7 +4852,6 @@ object frmVenda: TfrmVenda
         Font.Style = [fsBold]
         ParentFont = False
         Transparent = True
-        CenterPoint = cpUpperLeft
         ShadowColor = clBlack
       end
       object lbl3: TRzLabel
@@ -6454,8 +6452,18 @@ object frmVenda: TfrmVenda
     end
     object Cupons1: TMenuItem
       Caption = 'Cupons'
-      ShortCut = 16464
       OnClick = Cupons1Click
+      object lblCupomSimples: TMenuItem
+        Caption = 'Cupom Simples'
+        RadioItem = True
+        ShortCut = 16464
+        OnClick = lblCupomSimplesClick
+      end
+      object lblCupomEletronico: TMenuItem
+        Caption = 'Cupom Eletronico'
+        ShortCut = 16453
+        OnClick = lblCupomEletronicoClick
+      end
     end
     object Atendimento1: TMenuItem
       Caption = 'Atendimento'
@@ -6547,6 +6555,7 @@ object frmVenda: TfrmVenda
       Visible = False
       object AtualizarPDV1: TMenuItem
         Caption = 'Atualizar PDV'
+        Visible = False
         OnClick = AtualizarPDV1Click
       end
       object N1: TMenuItem
@@ -6555,6 +6564,7 @@ object frmVenda: TfrmVenda
       end
       object AtualizarServidor1: TMenuItem
         Caption = 'Atualizar Servidor'
+        OnClick = AtualizarServidor1Click
       end
       object N3: TMenuItem
         Caption = '-'
@@ -6621,8 +6631,8 @@ object frmVenda: TfrmVenda
     Enabled = False
     Interval = 2000
     OnTimer = timer_bicoTimer
-    Left = 485
-    Top = 561
+    Left = 533
+    Top = 433
   end
   object timer_abastecimento: TTimer
     Enabled = False
@@ -6673,8 +6683,8 @@ object frmVenda: TfrmVenda
     Connection = frmModulo.conexao
     SQL.Strings = (
       'select CODIGO, NOME,COD_BARRA,NCM,CST from ESTOQUE')
-    Left = 445
-    Top = 633
+    Left = 533
+    Top = 601
   end
   object qrapoio: TIBCQuery
     Connection = frmModulo.conexao
@@ -6684,10 +6694,9 @@ object frmVenda: TfrmVenda
     Top = 545
   end
   object QRCSOSN: TIBCQuery
-    Connection = frmModulo.Conexao_Servidor
     SQL.Strings = (
       'select CSOSN from C000025')
-    Left = 661
-    Top = 601
+    Left = 517
+    Top = 697
   end
 end

@@ -5,13 +5,14 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, RzEdit, AdvOfficeImage,  ExtCtrls,
-  pngimage, RxGIF;
+  pngimage, RxGIF, acPNG;
 
 type
   TfrmSenha_Supervisor = class(TForm)
+    Image1: TImage;
     Label1: TLabel;
-    ed_senha: TRzEdit;
     AdvOfficeImage3: TAdvOfficeImage;
+    ed_senha: TRzEdit;
     procedure ed_senhaKeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);

@@ -11,29 +11,20 @@ uses
   NxColumns,
   NxScrollControl, NxCustomGridControl, NxCustomGrid, NxDBGrid, Vcl.ImgList,
   Wwdbigrd, Wwdbgrid, Vcl.Mask, sMaskEdit, sCustomComboEdit, sTooledit,
-  pcnConversao, Vcl.Buttons, sSpeedButton, MemDS, DBAccess, IBC;
+  pcnConversao, Vcl.Buttons, sSpeedButton, MemDS, DBAccess, IBC, Vcl.Menus;
 
 type
   TfrmNotasconsumidor = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
-    qrNFCE_old: TZQuery;
     ds_nfce: TDataSource;
     Label1: TLabel;
     Label3: TLabel;
     edt_Numero: TEdit;
     wwDBGrid1: TwwDBGrid;
-    qrNFCE_oldNUMERO: TIntegerField;
-    qrNFCE_oldTOTAL: TFloatField;
-    qrNFCE_oldDATA: TDateTimeField;
-    qrNFCE_oldCLIENTE: TWideStringField;
-    qrNFCE_oldCHAVE: TWideStringField;
-    qrNFCE_oldXML: TWideStringField;
-    qrNFCE_oldSITUACAO: TIntegerField;
     ImageList2: TImageList;
     dataini: TsDateEdit;
     datafin: TsDateEdit;
-    qrNFCE_oldTROCO: TFloatField;
     btn_imprimir: TsSpeedButton;
     btn_Consultar: TsSpeedButton;
     btn_cancelar: TsSpeedButton;
@@ -48,6 +39,9 @@ type
     qrNFCEXML: TStringField;
     qrNFCESITUACAO: TIntegerField;
     qrNFCETROCO: TFloatField;
+    PopupMenu1: TPopupMenu;
+    lblSair: TMenuItem;
+    l1: TMenuItem;
     procedure Button4Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -56,6 +50,7 @@ type
     procedure btn_buscarClick(Sender: TObject);
     procedure btn_ConsultarClick(Sender: TObject);
     procedure btn_cancelarClick(Sender: TObject);
+    procedure lblSairClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -265,6 +260,11 @@ begin
   qrNFCE.Close;
   dataini.Date := now;
   datafin.Date := now;
+end;
+
+procedure TfrmNotasconsumidor.lblSairClick(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TfrmNotasconsumidor.btn_cancelarClick(Sender: TObject);

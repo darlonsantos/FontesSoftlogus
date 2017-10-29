@@ -6,21 +6,25 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, RzEdit, AdvOfficeImage, ExtCtrls,
   AdvReflectionLabel, RzLabel, RzBckgnd, pngimage, AdvReflectionImage, jpeg,
-  acPNG;
+  acPNG, Vcl.Buttons;
 
 type
   Tfrmsenha = class(TForm)
-    Label1: TLabel;
-    ed_codigo: TRzEdit;
-    ed_senha: TRzEdit;
-    Label2: TLabel;
     Image1: TImage;
     img1: TImage;
-    Label3: TLabel;
+    Label2: TLabel;
+    ed_senha: TRzEdit;
+    Label1: TLabel;
+    ed_codigo: TRzEdit;
+    Image2: TImage;
+    btn_entrar: TSpeedButton;
+    btn_cancelar: TSpeedButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ed_senhaKeyPress(Sender: TObject; var Key: Char);
     procedure ed_codigoKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
+    procedure btn_cancelarClick(Sender: TObject);
+    procedure btn_entrarClick(Sender: TObject);
   private
     { Private declarations }
     function GeraMD5PAFECF: String;
@@ -48,12 +52,11 @@ procedure Tfrmsenha.ed_senhaKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
   begin
-    if ed_codigo.Text = '' then
+     if ed_codigo.Text = '' then
       exit;
     if ed_senha.Text = '' then
       exit;
-
-    if not Executa_Login(ed_codigo.Text, ed_senha.Text, sfuncao_senha) then
+   if not Executa_Login(ed_codigo.Text, ed_senha.Text, sfuncao_senha) then
     begin
       application.messagebox('Acesso não autorizado!', 'Erro',
         mb_ok + mb_iconerror);
@@ -78,7 +81,25 @@ begin
     end;
   end;
 end;
-
+procedure Tfrmsenha.btn_cancelarClick(Sender: TObject);
+begin
+application.Terminate;
+end;
+procedure Tfrmsenha.btn_entrarClick(Sender: TObject);
+begin
+   if not Executa_Login(ed_codigo.Text, ed_senha.Text, sfuncao_senha) then
+    begin
+      application.messagebox('Acesso não autorizado!', 'Erro',
+        mb_ok + mb_iconerror);
+      busuario_Autenticado := false;
+      exit;
+    end
+    else
+      begin
+       busuario_Autenticado := true;
+        close;
+      end;
+  end;
 procedure Tfrmsenha.ed_codigoKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
@@ -103,6 +124,7 @@ end;
 procedure Tfrmsenha.FormShow(Sender: TObject);
 begin
   Brush.Style := bsClear;
+  ed_codigo.SetFocus;
   // GeraMD5PAFECF;
 end;
 

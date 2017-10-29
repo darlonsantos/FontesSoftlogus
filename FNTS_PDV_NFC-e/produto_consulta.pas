@@ -13,13 +13,11 @@ type
   TfrmProduto_consulta = class(TForm)
     query: TIBCQuery;
     pnFundo: TPanel;
-    Image1: TImage;
     RzLabel1: TRzLabel;
     img_cliente: TAdvOfficeImage;
     lb_produto: TRzLabel;
     lb_status: TRzLabel;
     RzLabel2: TRzLabel;
-    LB_MENU_FISCAL: TRzLabel;
     ed_barra: TRzEdit;
     grid: TNextGrid;
     NxNumberColumn1: TNxTextColumn;

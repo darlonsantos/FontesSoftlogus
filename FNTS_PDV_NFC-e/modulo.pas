@@ -121,8 +121,9 @@ type
     ACBRDANFENFCe: TACBrNFeDANFEFR;
     ACBrEAD1: TACBrEAD;
     conBASE: TZConnection;
-    qradic_mestre: TZQuery;
+    qradic_mestre_odl: TZQuery;
     spNFCE_Insert: TIBCStoredProc;
+    qradic_mestre: TIBCQuery;
     procedure BalancaLePeso(Peso: Double; Resposta: String);
     procedure DataModuleCreate(Sender: TObject);
     procedure ACBRNFCeStatusChange(Sender: TObject);
@@ -318,6 +319,7 @@ begin
   end
   else
   begin
+   //DARLON BALANÇA 29/10/2017
     // Leitura retornou ERRo
     case Trunc(Balanca.UltimoPesoLido) of
       0:
@@ -335,30 +337,29 @@ end;
 
 function TfrmModulo.codifica(TABELA: string): string;
 begin
+ //DARLON SANTOS 29/10/2017
   qradic_mestre.open;
-  qradic_mestre.CommitUpdates;
   qradic_mestre.Refresh;
   if qradic_mestre.Locate('codigo', TABELA, [loCaseInsensitive]) then
   begin
-
-    if qradic_mestre.FIELDBYNAME('sequencia').AsInteger < 1 then
+     if qradic_mestre.FIELDBYNAME('sequencias').AsInteger < 1 then
     begin
       result := '000001';
       qradic_mestre.Edit;
-      qradic_mestre.FIELDBYNAME('sequencia').AsInteger := 2;
+      qradic_mestre.FIELDBYNAME('sequencias').AsInteger := 2;
       qradic_mestre.Post;
     end
     else
     begin
-      result := Zerar(IntToStr(frmModulo.qradic_mestre.FIELDBYNAME('sequencia')
+      result := Zerar(IntToStr(frmModulo.qradic_mestre.FIELDBYNAME('sequencias')
         .AsInteger), 6);
       qradic_mestre.Edit;
-      qradic_mestre.FIELDBYNAME('sequencia').AsInteger :=
-        qradic_mestre.FIELDBYNAME('sequencia').AsInteger + 1;
+      qradic_mestre.FIELDBYNAME('sequencias').AsInteger :=
+      qradic_mestre.FIELDBYNAME('sequencias').AsInteger + 1;
       qradic_mestre.Post;
 
     end;
-    conBASE.Commit;
+    conexao.Commit;
   end
   else
   begin

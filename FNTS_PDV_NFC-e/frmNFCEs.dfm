@@ -13,6 +13,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  PopupMenu = PopupMenu1
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
@@ -26,9 +27,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 168
-    ExplicitWidth = 929
     object Label1: TLabel
       Left = 8
       Top = 12
@@ -57,9 +55,9 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     end
     object btn_buscar: TsSpeedButton
       Left = 311
-      Top = 24
+      Top = 28
       Width = 98
-      Height = 28
+      Height = 24
       Caption = 'Localizar'
       Flat = True
       Font.Charset = DEFAULT_CHARSET
@@ -95,7 +93,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     end
     object dataini: TsDateEdit
       Left = 8
-      Top = 34
+      Top = 31
       Width = 86
       Height = 21
       AutoSize = False
@@ -163,7 +161,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 929
     object btn_imprimir: TsSpeedButton
       Left = 225
       Top = 6
@@ -261,59 +258,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     TitleLines = 1
     TitleButtons = False
     ImageList = ImageList2
-    ExplicitWidth = 929
-  end
-  object qrNFCE_old: TZQuery
-    Connection = frmModulo.conBASE
-    SQL.Strings = (
-      'select * from NFCE order by data,numero')
-    Params = <>
-    Left = 496
-    Top = 232
-    object qrNFCE_oldNUMERO: TIntegerField
-      Alignment = taCenter
-      DisplayWidth = 5
-      FieldName = 'NUMERO'
-    end
-    object qrNFCE_oldTOTAL: TFloatField
-      Alignment = taCenter
-      DisplayWidth = 10
-      FieldName = 'TOTAL'
-      DisplayFormat = '###,###,###0.00'
-    end
-    object qrNFCE_oldDATA: TDateTimeField
-      Alignment = taCenter
-      DisplayWidth = 10
-      FieldName = 'DATA'
-    end
-    object qrNFCE_oldCLIENTE: TWideStringField
-      Alignment = taCenter
-      DisplayWidth = 30
-      FieldName = 'CLIENTE'
-      Size = 200
-    end
-    object qrNFCE_oldCHAVE: TWideStringField
-      Alignment = taCenter
-      DisplayWidth = 50
-      FieldName = 'CHAVE'
-      Size = 250
-    end
-    object qrNFCE_oldSITUACAO: TIntegerField
-      Alignment = taCenter
-      DisplayLabel = 'X'
-      DisplayWidth = 2
-      FieldName = 'SITUACAO'
-    end
-    object qrNFCE_oldXML: TWideStringField
-      Alignment = taCenter
-      FieldName = 'XML'
-      Visible = False
-      Size = 250
-    end
-    object qrNFCE_oldTROCO: TFloatField
-      FieldName = 'TROCO'
-      Visible = False
-    end
   end
   object ds_nfce: TDataSource
     DataSet = qrNFCE
@@ -324,7 +268,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 480
     Top = 392
     Bitmap = {
-      494C010105001400140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105001C001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -628,6 +572,21 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     end
     object qrNFCETROCO: TFloatField
       FieldName = 'TROCO'
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 464
+    Top = 184
+    object lblSair: TMenuItem
+      Caption = 'Sair'
+      ShortCut = 27
+      OnClick = lblSairClick
+    end
+    object l1: TMenuItem
+      Caption = 'localizar venda'
+      SubMenuImages = ImageList2
+      ShortCut = 114
+      OnClick = btn_buscarClick
     end
   end
 end

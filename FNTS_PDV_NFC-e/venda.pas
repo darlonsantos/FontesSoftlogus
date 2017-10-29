@@ -240,6 +240,8 @@ type
     lbl5: TRzLabel;
     lbl2: TLabel;
     lbl6: TRzLabel;
+    lblCupomSimples: TMenuItem;
+    lblCupomEletronico: TMenuItem;
 
     function TEF_Cartao(bandeira: Tbandeira_tef): boolean;
     function TEF_Cheque(bandeira: Tbandeira_tef): boolean;
@@ -358,6 +360,9 @@ type
     procedure TimerTrocoTimer(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure MemoDadosChange(Sender: TObject);
+    procedure lblCupomSimplesClick(Sender: TObject);
+    procedure lblCupomEletronicoClick(Sender: TObject);
+    procedure AtualizarServidor1Click(Sender: TObject);
   private
     { Private declarations }
     a, b: word;
@@ -450,7 +455,8 @@ uses modulo, Math, funcoes, cliente_consulta, preco_consulta,
   TEF_Cancelamento, senha, menu_cupom, Lista_DAV, pre_venda, msg_Operador,
   Meios_pagamento, Orcamento_Abrir, menu_fiscal, IniFiles, contasreceber, os,
   caixa_abertura, mesas, fabricacao, senha_supervisor, ComObj, Constantes,
-  Vendedor, UFuncoes, Comanda, ufrmStatus, frmNatOperacao, xloc_modelo;
+  Vendedor, UFuncoes, Comanda, ufrmStatus, frmNatOperacao, xloc_modelo,
+  frmNFCEs;
 
 {$R *.dfm}
 
@@ -2889,6 +2895,18 @@ end;
 procedure TfrmVenda.Imprime_display_anterior();
 begin
   Imprime_display(sTexto_anterior, clCor_anterior, TiImagem_anterior);
+end;
+
+procedure TfrmVenda.lblCupomEletronicoClick(Sender: TObject);
+begin
+    frmNotasconsumidor := TfrmNotasconsumidor.Create(self);
+  frmNotasconsumidor.showmodal
+end;
+
+procedure TfrmVenda.lblCupomSimplesClick(Sender: TObject);
+begin
+ frmcupom_menu := tfrmcupom_menu.create(self);
+  frmcupom_menu.showmodal;
 end;
 
 // -------------------------------------------------------------------------- //
@@ -5444,8 +5462,9 @@ begin
           spNFCE_Insert.ParamByName('psituacao').asinteger := 0;
           spNFCE_Insert.ParamByName('ptroco').asfloat := ed_troco.value;
           spNFCE_Insert.ExecProc;
-          Conexao_Servidor.AutoCommit := false;
-          Conexao_Servidor.Commit;
+          //DARLON SANTOS 28/10/2017
+          conexao.AutoCommit := false;
+          conexao.Commit;
         end;
 
       end
@@ -7208,8 +7227,7 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.Cupons1Click(Sender: TObject);
 begin
-  frmcupom_menu := tfrmcupom_menu.create(self);
-  frmcupom_menu.showmodal;
+ 
 end;
 
 // -------------------------------------------------------------------------- //
@@ -7990,9 +8008,9 @@ begin
                 // prepar query
                 QRCSOSN.close;
                 QRCSOSN.sql.clear;
-                QRCSOSN.sql.add('select csosn from C000025 ');
-                QRCSOSN.sql.add('where codigo = :pcodigo');
-                QRCSOSN.ParamByName('pcodigo').asstring :=
+                QRCSOSN.sql.add('SELECT CSOSN FROM ESTOQUE ');
+                QRCSOSN.sql.add('WHERE CODIGO = :PCODIGO');
+                QRCSOSN.ParamByName('PCODIGO').asstring :=
                   IntToStrZero(grid.Cell[3, i].asinteger, 6);
                 QRCSOSN.Open;
 
@@ -8185,28 +8203,18 @@ begin
 end;
 
 procedure TfrmVenda.PrepararNFCE;
-
 begin
 
-
   nfce_autorizada := false;
-
   frmmodulo.LerConfiguracao;
-
-  vAux := frmmodulo.codifica('888888');
-
-
+  vAux := frmmodulo.codifica('915');
   vSincrono := '1';
-
   vNumLote := '1';
-
   Sincrono := true;
-
   with frmmodulo do
   begin
               //DARLON SANTOS
     try
-
       ACBRNFCe.NotasFiscais.clear;
       Imprime_display('          AGUARDE...  GERANDO NFC-E', clBackground, tiLivre);
       grid.Repaint;
@@ -8216,12 +8224,8 @@ begin
       ACBrNFce.NotasFiscais.GerarNFe;
        ACBrNFce.NotasFiscais.Assinar;
        ACBrNFce.NotasFiscais.Valida;
-     
-
       ACBrNFce.Enviar(vNumLote,true,sincrono);
-
-
-      if not ACBRNFCe.NotasFiscais.Items[0].Confirmada then
+    if not ACBRNFCe.NotasFiscais.Items[0].Confirmada then
       begin
           cStatus := 100;
            ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
@@ -8231,11 +8235,9 @@ begin
       begin
        Imprime_display(ACBRNFCe.WebServices.Enviar.xMotivo, clBackground, tiLivre);
        end;
-
          Imprime_display('          AGUARDE...  GERANDO QRCODE DA NFC-E',
         clBackground, tiLivre);
           grid.Repaint;
-
       GerarQrCode;
       Zint.Barcode.Data := MemoDados.text;
       bc := TBitmap.create;
@@ -8606,6 +8608,11 @@ begin
     Atualizar_PDV;
     Imprime_display_anterior;
    }
+end;
+
+procedure TfrmVenda.AtualizarServidor1Click(Sender: TObject);
+begin
+
 end;
 
 // -------------------------------------------------------------------------- //

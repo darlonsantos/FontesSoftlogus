@@ -323,6 +323,10 @@ object frmPrincipal: TfrmPrincipal
     object TabSheet1: TTabSheet
       Caption = 'Log'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Memo1: TMemo
         Left = 0
         Top = 0
@@ -1163,7 +1167,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 64
     Top = 394
     Bitmap = {
-      494C010102000400300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102004000400010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1306,7 +1310,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 232
     Top = 210
     Bitmap = {
-      494C010102000F00180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102002800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1452,8 +1456,8 @@ object frmPrincipal: TfrmPrincipal
     Port = '3050'
     Username = 'SYSDBA'
     LoginPrompt = False
-    Left = 168
-    Top = 426
+    Left = 152
+    Top = 402
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object qrServidor: TIBCQuery
@@ -1467,13 +1471,13 @@ object frmPrincipal: TfrmPrincipal
     Username = 'SYSDBA'
     LoginPrompt = False
     Left = 240
-    Top = 370
+    Top = 354
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object qrPDV: TIBCQuery
     Connection = conexao_pdv
-    Left = 112
-    Top = 578
+    Left = 80
+    Top = 506
   end
   object Timer1: TTimer
     Enabled = False
@@ -1528,8 +1532,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object qrMestre: TIBCQuery
     Connection = conexao_servidor
-    Left = 504
-    Top = 482
+    Left = 592
+    Top = 450
   end
   object qrpdv2: TIBCQuery
     Connection = conexao_pdv
@@ -1570,7 +1574,7 @@ object frmPrincipal: TfrmPrincipal
   end
   object pm_Atualizacoes: TPopupMenu
     Images = il1
-    Left = 584
+    Left = 664
     Top = 528
     object A1: TMenuItem
       Caption = 'Atualizar caixas'
@@ -1595,7 +1599,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 592
     Top = 248
     Bitmap = {
-      494C010106000A00180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106002800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

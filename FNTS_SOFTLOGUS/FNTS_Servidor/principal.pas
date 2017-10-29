@@ -450,30 +450,22 @@ begin
                 if qrconfig.RecordCount > 0 then
                 begin
                   lForma_Cheque := TStringList.Create;
-                  lForma_Cheque.CommaText :=
-                    qrconfig.FieldByName('forma_cheque').asstring;
+                  lForma_Cheque.CommaText :=qrconfig.FieldByName('forma_cheque').asstring;
 
                   lForma_Cartao_cred := TStringList.Create;
-                  lForma_Cartao_cred.CommaText :=
-                    qrconfig.FieldByName('forma_cartao_cred').asstring;
+                  lForma_Cartao_cred.CommaText := qrconfig.FieldByName('forma_cartao_cred').asstring;
 
                   lForma_Cartao_deb := TStringList.Create;
-                  lForma_Cartao_deb.CommaText :=
-                  qrconfig.FieldByName('forma_cartao_deb').asstring;
-
-                
+                  lForma_Cartao_deb.CommaText := qrconfig.FieldByName('forma_cartao_deb').asstring;
 
                   lForma_Crediario := TStringList.Create;
-                  lForma_Crediario.CommaText :=
-                    qrconfig.FieldByName('forma_crediario').asstring;
+                  lForma_Crediario.CommaText := qrconfig.FieldByName('forma_crediario').asstring;
 
                   lForma_Convenio := TStringList.Create;
-                  lForma_Convenio.CommaText :=
-                    qrconfig.FieldByName('forma_convenio').asstring;
+                  lForma_Convenio.CommaText := qrconfig.FieldByName('forma_convenio').asstring;
 
                   lForma_dinheiro := TStringList.Create;
-                  lForma_dinheiro.CommaText :=
-                    qrconfig.FieldByName('forma_dinheiro').asstring;
+                  lForma_dinheiro.CommaText := qrconfig.FieldByName('forma_dinheiro').asstring;
                 end;
 
                 qrPDV.close;
@@ -855,8 +847,7 @@ begin
                     qrServidor.sql.Clear;
                     qrServidor.sql.add('insert into c000032');
                     qrServidor.sql.add('(codigo,codnota,serial,numeronota,');
-                    qrServidor.sql.add
-                      ('codproduto,qtde,movimento_estoque,unitario,desconto,acrescimo,');
+                    qrServidor.sql.add ('codproduto,qtde,movimento_estoque,unitario,desconto,acrescimo,');
                     qrServidor.sql.add('total,unidade,aliquota,');
                     qrServidor.sql.add('cupom_item,cupom_numero,cupom_modelo,');
                     qrServidor.sql.add
@@ -1345,7 +1336,8 @@ begin
                             qrPDV.sql.add('IPPT,');
                             qrPDV.sql.add('SITUACAO,'); // mizael
                             qrPDV.sql.add('NCM,');
-                            qrPDV.sql.add('ALIQNACIONAL');
+                            qrPDV.sql.add('ALIQNACIONAL,');
+                            qrPDV.SQL.Add('CSOSN'); // DARLON SANTOS 28/10/2017
 
                             qrPDV.sql.add(') values (');
 
@@ -1366,73 +1358,24 @@ begin
                             qrPDV.sql.add(':IPPT,');
                             qrPDV.sql.add(':SITUACAO,');
                             qrPDV.sql.add(':NCM,');
-                            qrPDV.sql.add(':ALIQNACIONAL');
+                            qrPDV.sql.add(':ALIQNACIONAL,');
+                            qrPDV.SQL.Add(':CSOSN');  //DARLON SANTOS 28/10/2017
 
                             qrPDV.sql.add(')');
-
-                            qrPDV.ParamByName('CODIGO').asstring :=
-                              qrServidor_Tabela.FieldByName('codigo').asstring;
-                            qrPDV.ParamByName('COD_BARRA').asstring :=
-                              copy(qrServidor_Tabela.FieldByName('codbarra')
-                              .asstring, 1, 15);
-                            qrPDV.ParamByName('NOME').asstring :=
-                              copy(qrServidor_Tabela.FieldByName('produto')
-                              .asstring, 1, 80);
-                            qrPDV.ParamByName('UNIDADE').asstring :=
-                              qrServidor_Tabela.FieldByName('unidade').asstring;
-                            qrPDV.ParamByName('PRECO_VENDA').asfloat :=
-                              qrServidor_Tabela.FieldByName
-                              ('precovenda').asfloat;
-                            qrPDV.ParamByName('PRECO_PROMOCAO').asfloat :=
-                              qrServidor_Tabela.FieldByName
-                              ('preco_promocao').asfloat;
-                            qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime :=
-                              qrServidor_Tabela.FieldByName('data_promocao')
-                              .asdatetime;
-                            qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime :=
-                              qrServidor_Tabela.FieldByName('fim_promocao')
-                              .asdatetime;
-                            qrPDV.ParamByName('CST').asstring :=
-                              qrServidor_Tabela.FieldByName('cst').asstring;
-                            qrPDV.ParamByName('ALIQUOTA').asfloat :=
-                              qrServidor_Tabela.FieldByName('aliquota').asfloat;
+//                             DARLON SANTOS
+                            qrPDV.ParamByName('CODIGO').asstring := qrServidor_Tabela.FieldByName('codigo').asstring;
+                            qrPDV.ParamByName('COD_BARRA').asstring := copy(qrServidor_Tabela.FieldByName('codbarra').asstring, 1, 15);
+                            qrPDV.ParamByName('NOME').asstring := copy(qrServidor_Tabela.FieldByName('produto').asstring, 1, 80);
+                            qrPDV.ParamByName('UNIDADE').asstring := qrServidor_Tabela.FieldByName('unidade').asstring;
+                            qrPDV.ParamByName('PRECO_VENDA').asfloat :=  qrServidor_Tabela.FieldByName('precovenda').asfloat;
+                            qrPDV.ParamByName('PRECO_PROMOCAO').asfloat :=  qrServidor_Tabela.FieldByName('preco_promocao').asfloat;
+                            qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime :=  qrServidor_Tabela.FieldByName('data_promocao').asdatetime;
+                            qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime := qrServidor_Tabela.FieldByName('fim_promocao').asdatetime;
+                            qrPDV.ParamByName('CST').asstring := qrServidor_Tabela.FieldByName('cst').asstring;
+                            qrPDV.ParamByName('ALIQUOTA').asfloat :=  qrServidor_Tabela.FieldByName('aliquota').asfloat;
                             qrPDV.ParamByName('DESCONTO_MAXIMO').asfloat := 0;
-                            qrPDV.ParamByName('SITUACAO').asinteger := 0;
-
-                            if (qrServidor_Tabela.FieldByName
-                              ('CLASSIFICACAO_FISCAL').asstring = 'null') or
-                              (qrServidor_Tabela.FieldByName
-                              ('CLASSIFICACAO_FISCAL').asstring = '') then
-                              qrPDV.ParamByName('NCM').asstring := '0101.90.00'
-                            else
-                              qrPDV.ParamByName('NCM').asstring :=
-                                OnlyNumber
-                                (qrServidor_Tabela.FieldByName
-                                ('CLASSIFICACAO_FISCAL').asstring);
-
-                            XNCM := qrPDV.ParamByName('NCM').asstring;
-
-                            // MIZAEL CORRECAO LEI TRANSPARENCIA
-                            QRY_IBPT.close;
-                            QRY_IBPT.sql.Clear;
-                            QRY_IBPT.sql.add
-                              ('SELECT * FROM IBPT_ALIQUOTAS WHERE NCM = :NCM');
-                            QRY_IBPT.ParamByName('NCM').asstring :=
-                              OnlyNumber(XNCM);
-                            QRY_IBPT.Open();
-
-                            if not QRY_IBPT.IsEmpty then
-                            begin
-                              qrPDV.ParamByName('ALIQNACIONAL').Value :=
-                                QRY_IBPT.FieldByName('ALIQNAC').Value;
-                            end
-                            else
-                              qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
-
-                            scst := qrServidor_Tabela.FieldByName
-                              ('cst').asstring;
-
-                            if (scst = '060') or (scst = '010') or (scst = '070')
+                            scst := qrServidor_Tabela.FieldByName('cst').asstring;
+                              if (scst = '060') or (scst = '010') or (scst = '070')
                             then
                               qrPDV.Params.ParamByName('st').asstring := 'F'
                             else if (scst = '040') or (scst = '030') then
@@ -1441,15 +1384,30 @@ begin
                               (scst = '051') or (scst = '090') then
                               qrPDV.Params.ParamByName('st').asstring := 'N'
                             else
-                              qrPDV.ParamByName('st').asstring := 'T';
+                            qrPDV.ParamByName('st').asstring := 'T';
+                            qrPDV.ParamByName('ESTOQUE').asfloat :=  qrServidor_Tabela.FieldByName('estoque_atual').asfloat;
+                            qrPDV.ParamByName('IAT').asstring := qrServidor_Tabela.FieldByName('IAT').asstring;
+                            qrPDV.ParamByName('IPPT').asstring :=  qrServidor_Tabela.FieldByName('IPPT').asstring;
+                            qrPDV.ParamByName('SITUACAO').asinteger := 0;
+                           if (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring = 'null') or (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring = '') then
+                              qrPDV.ParamByName('NCM').asstring := '0101.90.00'
+                            else
+                             qrPDV.ParamByName('NCM').asstring := OnlyNumber(qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring);
+                             XNCM := qrPDV.ParamByName('NCM').asstring;
+                             QRY_IBPT.close;
+                            QRY_IBPT.sql.Clear;
+                            QRY_IBPT.sql.add('SELECT * FROM IBPT_ALIQUOTAS WHERE NCM = :NCM');
+                            QRY_IBPT.ParamByName('NCM').asstring := OnlyNumber(XNCM);
+                            QRY_IBPT.Open();
+                            if not QRY_IBPT.IsEmpty then
+                            begin
+                              qrPDV.ParamByName('ALIQNACIONAL').Value := QRY_IBPT.FieldByName('ALIQNAC').Value;
+                              end
+                            else
+                             qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
+                             qrPDV.ParamByName('CSOSN').Value := qrServidor_Tabela.FieldByName('CSOSN').Value;  //DARLON SANTOS 28/10/2017
 
-                            qrPDV.ParamByName('ESTOQUE').asfloat :=
-                              qrServidor_Tabela.FieldByName
-                              ('estoque_atual').asfloat;
-                            qrPDV.ParamByName('IAT').asstring :=
-                              qrServidor_Tabela.FieldByName('IAT').asstring;
-                            qrPDV.ParamByName('IPPT').asstring :=
-                              qrServidor_Tabela.FieldByName('IPPT').asstring;
+
                             qrPDV.ExecSQL;
                           except
                             on E: Exception do
@@ -1489,16 +1447,13 @@ begin
 
                         if qrServidor_Tabela.RecordCount > 0 then
                         begin
-
+//                        DARLON SANTOS 28/10/2017
                           qrPDV_Tabela.close;
                           qrPDV_Tabela.sql.Clear;
                           qrPDV_Tabela.sql.add
-                            ('select * from ESTOQUE where codigo = ' +
-                            inttostr(StrToInt(qrServidor_Tabela.FieldByName
-                            ('codigo').asstring)));
+                            ('select * from ESTOQUE where codigo = ' +  inttostr(StrToInt(qrServidor_Tabela.FieldByName('codigo').asstring)));
                           qrPDV_Tabela.Open;
-
-                          if qrPDV_Tabela.RecordCount > 0 then
+                           if qrPDV_Tabela.RecordCount > 0 then
                           begin
                             // achou o registro e processar com a atualizacao
                             Memo1.Lines.add('PDV' + grid.cell[0, i].asstring +
@@ -1512,95 +1467,35 @@ begin
                               qrPDV.sql.add('NOME = :NOME,');
                               qrPDV.sql.add('UNIDADE = :UNIDADE,');
                               qrPDV.sql.add('PRECO_VENDA = :PRECO_VENDA,');
-                              qrPDV.sql.add
-                                ('PRECO_PROMOCAO = :PRECO_PROMOCAO,');
-                              qrPDV.sql.add
-                                ('INICIO_PROMOCAO = :INICIO_PROMOCAO,');
-                              qrPDV.sql.add
-                                ('FINAL_PROMOCAO = :FINAL_PROMOCAO,');
+                              qrPDV.sql.add('PRECO_PROMOCAO = :PRECO_PROMOCAO,');
+                              qrPDV.sql.add('INICIO_PROMOCAO = :INICIO_PROMOCAO,');
+                              qrPDV.sql.add('FINAL_PROMOCAO = :FINAL_PROMOCAO,');
                               qrPDV.sql.add('CST = :CST,');
                               qrPDV.sql.add('ALIQUOTA = :ALIQUOTA,');
-                              qrPDV.sql.add
-                                ('DESCONTO_MAXIMO = :DESCONTO_MAXIMO,');
+                              qrPDV.sql.add('DESCONTO_MAXIMO = :DESCONTO_MAXIMO,');
                               qrPDV.sql.add('ST = :ST,');
                               qrPDV.sql.add('ESTOQUE = :ESTOQUE,');
                               qrPDV.sql.add('IAT = :IAT,');
                               qrPDV.sql.add('IPPT = :IPPT,');
                               qrPDV.sql.add('SITUACAO = :SITUACAO,');
                               qrPDV.sql.add('NCM = :NCM,');
-                              qrPDV.sql.add('ALIQNACIONAL = :ALIQNACIONAL');
+                              qrPDV.sql.add('ALIQNACIONAL = :ALIQNACIONAL,');
+                              qrPDV.SQL.Add('CSOSN = :CSOSN'); //DARLON SANTOS 28/10/2017
                               qrPDV.sql.add('where codigo = :codigo');
-
-                              qrPDV.ParamByName('CODIGO').asinteger :=
-                                StrToInt(qrServidor_Tabela.FieldByName('codigo')
-                                .asstring);
-                              qrPDV.ParamByName('COD_BARRA').asstring :=
-                                copy(qrServidor_Tabela.FieldByName('codbarra')
-                                .asstring, 1, 15);
-                              qrPDV.ParamByName('NOME').asstring :=
-                                copy(qrServidor_Tabela.FieldByName('produto')
-                                .asstring, 1, 80);
-                              qrPDV.ParamByName('UNIDADE').asstring :=
-                                qrServidor_Tabela.FieldByName
-                                ('unidade').asstring;
-                              qrPDV.ParamByName('PRECO_VENDA').asfloat :=
-                                qrServidor_Tabela.FieldByName
-                                ('precovenda').asfloat;
-                              qrPDV.ParamByName('PRECO_PROMOCAO').asfloat :=
-                                qrServidor_Tabela.FieldByName
-                                ('preco_promocao').asfloat;
-                              qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime :=
-                                qrServidor_Tabela.FieldByName('data_promocao')
-                                .asdatetime;
-                              qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime :=
-                                qrServidor_Tabela.FieldByName('fim_promocao')
-                                .asdatetime;
-                              qrPDV.ParamByName('CST').asstring :=
-                                qrServidor_Tabela.FieldByName('cst').asstring;
-                              qrPDV.ParamByName('ALIQUOTA').asfloat :=
-                                qrServidor_Tabela.FieldByName
-                                ('aliquota').asfloat;
+                                     //DARLON SANTOS
+                              qrPDV.ParamByName('CODIGO').asinteger :=  StrToInt(qrServidor_Tabela.FieldByName('codigo').asstring);
+                              qrPDV.ParamByName('COD_BARRA').asstring := copy(qrServidor_Tabela.FieldByName('codbarra').asstring, 1, 15);
+                              qrPDV.ParamByName('NOME').asstring := copy(qrServidor_Tabela.FieldByName('produto').asstring, 1, 80);
+                              qrPDV.ParamByName('UNIDADE').asstring := qrServidor_Tabela.FieldByName('unidade').asstring;
+                              qrPDV.ParamByName('PRECO_VENDA').asfloat := qrServidor_Tabela.FieldByName('precovenda').asfloat;
+                              qrPDV.ParamByName('PRECO_PROMOCAO').asfloat := qrServidor_Tabela.FieldByName('preco_promocao').asfloat;
+                              qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime := qrServidor_Tabela.FieldByName('data_promocao').asdatetime;
+                              qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime := qrServidor_Tabela.FieldByName('fim_promocao').asdatetime;
+                              qrPDV.ParamByName('CST').asstring := qrServidor_Tabela.FieldByName('cst').asstring;
+                              qrPDV.ParamByName('ALIQUOTA').asfloat := qrServidor_Tabela.FieldByName('aliquota').asfloat;
                               qrPDV.ParamByName('DESCONTO_MAXIMO').asfloat := 0;
-                              qrPDV.ParamByName('SITUACAO').asinteger :=
-                                qrServidor_Tabela.FieldByName('SITUACAO')
-                                .asinteger;
-
-                              if (qrServidor_Tabela.FieldByName
-                                ('CLASSIFICACAO_FISCAL').asstring = 'null') or
-                                (qrServidor_Tabela.FieldByName
-                                ('CLASSIFICACAO_FISCAL').asstring = '') then
-                                qrPDV.ParamByName('NCM').asstring :=
-                                  '0101.90.00'
-                              else
-                                qrPDV.ParamByName('NCM').asstring :=
-                                  OnlyNumber
-                                  (qrServidor_Tabela.FieldByName
-                                  ('CLASSIFICACAO_FISCAL').asstring);
-
-                              XNCM := qrPDV.ParamByName('NCM').asstring;
-
-
-                              QRY_IBPT.close;
-                              QRY_IBPT.sql.Clear;
-                              QRY_IBPT.sql.add
-                                ('SELECT * FROM IBPT_ALIQUOTAS WHERE NCM = :NCM');
-                              QRY_IBPT.ParamByName('NCM').asstring :=
-                                OnlyNumber(XNCM);
-                              QRY_IBPT.Open();
-
-                              if not QRY_IBPT.IsEmpty then
-                              begin
-                                qrPDV.ParamByName('ALIQNACIONAL').Value :=
-                                  QRY_IBPT.FieldByName('ALIQNAC').Value;
-                              end
-                              else
-                                qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
-
-                              scst := qrServidor_Tabela.FieldByName
-                                ('cst').asstring;
-
-                              if (scst = '060') or (scst = '010') or
-                                (scst = '070') then
+                                scst := qrServidor_Tabela.FieldByName('cst').asstring;
+                              if (scst = '060') or (scst = '010') or (scst = '070') then
                                 qrPDV.Params.ParamByName('st').asstring := 'F'
                               else if (scst = '040') or (scst = '030') then
                                 qrPDV.Params.ParamByName('st').asstring := 'I'
@@ -1609,15 +1504,31 @@ begin
                                 qrPDV.Params.ParamByName('st').asstring := 'N'
                               else
                                 qrPDV.ParamByName('st').asstring := 'T';
+                                qrPDV.ParamByName('ESTOQUE').asfloat :=  qrServidor_Tabela.FieldByName('estoque_atual').asfloat;
+                                qrPDV.ParamByName('IAT').asstring := qrServidor_Tabela.FieldByName('IAT').asstring;
+                                qrPDV.ParamByName('IPPT').asstring := qrServidor_Tabela.FieldByName('IPPT').asstring;
+                                qrPDV.ParamByName('SITUACAO').asinteger := qrServidor_Tabela.FieldByName('SITUACAO').asinteger;
+                               if (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring = 'null') or (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring = '') then
+                                qrPDV.ParamByName('NCM').asstring :='0101.90.00'
+                               else
+                                qrPDV.ParamByName('NCM').asstring := OnlyNumber(qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring);
+                                XNCM := qrPDV.ParamByName('NCM').asstring;
+                                QRY_IBPT.close;
+                                QRY_IBPT.sql.Clear;
+                                QRY_IBPT.sql.add
+                                ('SELECT * FROM IBPT_ALIQUOTAS WHERE NCM = :NCM');
+                              QRY_IBPT.ParamByName('NCM').asstring := OnlyNumber(XNCM);
+                              QRY_IBPT.Open();
+                              if not QRY_IBPT.IsEmpty then
+                              begin
+                                qrPDV.ParamByName('ALIQNACIONAL').Value := QRY_IBPT.FieldByName('ALIQNAC').Value;
+                                qrPDV.ParamByName('CSOSN').Value := qrServidor_Tabela.FieldByName('CSOSN').Value;  //DARLON SANTOS 28/10/2017
 
-                              qrPDV.ParamByName('ESTOQUE').asfloat :=
-                                qrServidor_Tabela.FieldByName
-                                ('estoque_atual').asfloat;
-                              qrPDV.ParamByName('IAT').asstring :=
-                                qrServidor_Tabela.FieldByName('IAT').asstring;
-                              qrPDV.ParamByName('IPPT').asstring :=
-                                qrServidor_Tabela.FieldByName('IPPT').asstring;
-                              qrPDV.ExecSQL;
+                               end
+                              else
+                                qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
+
+                                qrPDV.ExecSQL;
                             except
                               Memo1.Lines.add('PDV' + grid.cell[0, i].asstring +
                                 ' ERRO - ALT - PRODUTO - ' +
@@ -1630,6 +1541,7 @@ begin
                             // nao existe este registro no pdv... fazer a inclusao
 
                             try
+                            //DARLON SANTOS
                               Memo1.Lines.add('PDV' + grid.cell[0, i].asstring +
                                 ' - INC - PRODUTO - ' + qrServidor.FieldByName
                                 ('codregistro').asstring);
@@ -1651,9 +1563,10 @@ begin
                               qrPDV.sql.add('ESTOQUE,');
                               qrPDV.sql.add('IAT,');
                               qrPDV.sql.add('IPPT,');
-                              qrPDV.sql.add(':SITUACAO,');
-                              qrPDV.sql.add(':NCM,');
-                              qrPDV.sql.add(':ALIQNACIONAL');
+                              qrPDV.sql.add('SITUACAO,');
+                              qrPDV.sql.add('NCM,');
+                              qrPDV.sql.add('ALIQNACIONAL,');
+                              qrPDV.SQL.Add('CSOSN');
 
                               qrPDV.sql.add(') values (');
 
@@ -1674,80 +1587,23 @@ begin
                               qrPDV.sql.add(':IPPT,');
                               qrPDV.sql.add(':SITUACAO,');
                               qrPDV.sql.add(':NCM,');
-                              qrPDV.sql.add(':ALIQNACIONAL');
-
-                              qrPDV.sql.add(')');
-
-                              qrPDV.ParamByName('CODIGO').asstring :=
-                                qrServidor_Tabela.FieldByName('codigo')
-                                .asstring;
-                              qrPDV.ParamByName('COD_BARRA').asstring :=
-                                copy(qrServidor_Tabela.FieldByName('codbarra')
-                                .asstring, 1, 15);
-                              qrPDV.ParamByName('NOME').asstring :=
-                                copy(qrServidor_Tabela.FieldByName('produto')
-                                .asstring, 1, 80);
-                              qrPDV.ParamByName('UNIDADE').asstring :=
-                                qrServidor_Tabela.FieldByName
-                                ('unidade').asstring;
-                              qrPDV.ParamByName('PRECO_VENDA').asfloat :=
-                                qrServidor_Tabela.FieldByName
-                                ('precovenda').asfloat;
-                              qrPDV.ParamByName('PRECO_PROMOCAO').asfloat :=
-                                qrServidor_Tabela.FieldByName
-                                ('preco_promocao').asfloat;
-                              qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime :=
-                                qrServidor_Tabela.FieldByName('data_promocao')
-                                .asdatetime;
-                              qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime :=
-                                qrServidor_Tabela.FieldByName('fim_promocao')
-                                .asdatetime;
-                              qrPDV.ParamByName('CST').asstring :=
-                                qrServidor_Tabela.FieldByName('cst').asstring;
-                              qrPDV.ParamByName('ALIQUOTA').asfloat :=
-                                qrServidor_Tabela.FieldByName
-                                ('aliquota').asfloat;
+                              qrPDV.sql.add(':ALIQNACIONAL,');
+                              qrPDV.SQL.Add(':CSOSN');
+                               qrPDV.sql.add(')');
+//                              PARAMETROS
+                              qrPDV.ParamByName('CODIGO').asstring := qrServidor_Tabela.FieldByName('codigo').asstring;
+                              qrPDV.ParamByName('COD_BARRA').asstring := copy(qrServidor_Tabela.FieldByName('codbarra').asstring, 1, 15);
+                              qrPDV.ParamByName('NOME').asstring := copy(qrServidor_Tabela.FieldByName('produto').asstring, 1, 80);
+                              qrPDV.ParamByName('UNIDADE').asstring := qrServidor_Tabela.FieldByName('unidade').asstring;
+                              qrPDV.ParamByName('PRECO_VENDA').asfloat := qrServidor_Tabela.FieldByName('precovenda').asfloat;
+                              qrPDV.ParamByName('PRECO_PROMOCAO').asfloat := qrServidor_Tabela.FieldByName('preco_promocao').asfloat;
+                              qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime := qrServidor_Tabela.FieldByName('data_promocao').asdatetime;
+                              qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime := qrServidor_Tabela.FieldByName('fim_promocao').asdatetime;
+                              qrPDV.ParamByName('CST').asstring := qrServidor_Tabela.FieldByName('cst').asstring;
+                              qrPDV.ParamByName('ALIQUOTA').asfloat := qrServidor_Tabela.FieldByName('aliquota').asfloat;
                               qrPDV.ParamByName('DESCONTO_MAXIMO').asfloat := 0;
-                              qrPDV.ParamByName('SITUACAO').asinteger :=
-                                qrServidor_Tabela.FieldByName('SITUACAO')
-                                .asinteger;
-
-                              if (qrServidor_Tabela.FieldByName
-                                ('CLASSIFICACAO_FISCAL').asstring = 'null') or
-                                (qrServidor_Tabela.FieldByName
-                                ('CLASSIFICACAO_FISCAL').asstring = '') then
-                                qrPDV.ParamByName('NCM').asstring :=
-                                  '0101.90.00'
-                              else
-                                qrPDV.ParamByName('NCM').asstring :=
-                                  OnlyNumber
-                                  (qrServidor_Tabela.FieldByName
-                                  ('CLASSIFICACAO_FISCAL').asstring);
-
-                              XNCM := qrPDV.ParamByName('NCM').asstring;
-
-
-                              QRY_IBPT.close;
-                              QRY_IBPT.sql.Clear;
-                              QRY_IBPT.sql.add
-                                ('SELECT * FROM IBPT_ALIQUOTAS WHERE NCM = :NCM');
-                              QRY_IBPT.ParamByName('NCM').asstring :=
-                                OnlyNumber(XNCM);
-                              QRY_IBPT.Open();
-
-                              if not QRY_IBPT.IsEmpty then
-                              begin
-                                qrPDV.ParamByName('ALIQNACIONAL').Value :=
-                                  QRY_IBPT.FieldByName('ALIQNAC').Value;
-                              end
-                              else
-                                qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
-
-                              scst := qrServidor_Tabela.FieldByName
-                                ('cst').asstring;
-
-                              if (scst = '060') or (scst = '010') or
-                                (scst = '070') then
+                               scst := qrServidor_Tabela.FieldByName('cst').asstring;
+                              if (scst = '060') or (scst = '010') or (scst = '070') then
                                 qrPDV.Params.ParamByName('st').asstring := 'F'
                               else if (scst = '040') or (scst = '030') then
                                 qrPDV.Params.ParamByName('st').asstring := 'I'
@@ -1755,15 +1611,31 @@ begin
                                 (scst = '051') or (scst = '090') then
                                 qrPDV.Params.ParamByName('st').asstring := 'N'
                               else
-                                qrPDV.ParamByName('st').asstring := 'T';
+                              qrPDV.ParamByName('st').asstring := 'T';
+                              qrPDV.ParamByName('ESTOQUE').asfloat := qrServidor_Tabela.FieldByName('estoque_atual').asfloat;
+                              qrPDV.ParamByName('IAT').asstring := qrServidor_Tabela.FieldByName('IAT').asstring;
+                              qrPDV.ParamByName('IPPT').asstring := qrServidor_Tabela.FieldByName('IPPT').asstring;
+                              qrPDV.ParamByName('SITUACAO').asinteger :=  qrServidor_Tabela.FieldByName('SITUACAO').asinteger;
+                              if (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring = 'null') or (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring = '') then
+                                qrPDV.ParamByName('NCM').asstring :='0101.90.00'
+                              else
+                                qrPDV.ParamByName('NCM').asstring := OnlyNumber(qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring);
+                                XNCM := qrPDV.ParamByName('NCM').asstring;
+                                QRY_IBPT.close;
+                               QRY_IBPT.sql.Clear;
+                               QRY_IBPT.sql.add
+                                ('SELECT * FROM IBPT_ALIQUOTAS WHERE NCM = :NCM');
+                                QRY_IBPT.ParamByName('NCM').asstring := OnlyNumber(XNCM);
+                                QRY_IBPT.Open();
+                              if not QRY_IBPT.IsEmpty then
+                              begin
+                                qrPDV.ParamByName('ALIQNACIONAL').Value := QRY_IBPT.FieldByName('ALIQNAC').Value;
+                                qrPDV.ParamByName('CSOSN').Value := qrServidor_Tabela.FieldByName('CSOSN').Value;  //DARLON SANTOS 28/10/2017
+                              end
+                              else
+                                qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
 
-                              qrPDV.ParamByName('ESTOQUE').asfloat :=
-                                qrServidor_Tabela.FieldByName
-                                ('estoque_atual').asfloat;
-                              qrPDV.ParamByName('IAT').asstring :=
-                                qrServidor_Tabela.FieldByName('IAT').asstring;
-                              qrPDV.ParamByName('IPPT').asstring :=
-                                qrServidor_Tabela.FieldByName('IPPT').asstring;
+
                               qrPDV.ExecSQL;
                             except
                               Memo1.Lines.add('PDV' + grid.cell[0, i].asstring +
@@ -2377,6 +2249,7 @@ begin
               if qrPDV.RecordCount = 0 then
               begin
                 try
+                 //DARLON SANTOS
                   Memo1.Lines.add('PDV' + grid.cell[0, i].asstring +
                     ' - INC - PRODUTO - ' + qrServidor_Tabela.FieldByName
                     ('codigo').asstring);
@@ -2400,7 +2273,8 @@ begin
                   qrPDV.sql.add('IPPT,');
                   qrPDV.sql.add('SITUACAO,');
                   qrPDV.sql.add('NCM,');
-                  qrPDV.sql.add('ALIQNACIONAL');
+                  qrPDV.sql.add('ALIQNACIONAL,');
+                  qrPDV.SQL.Add('CSOSN');
 
                   qrPDV.sql.add(') values (');
 
@@ -2421,35 +2295,22 @@ begin
                   qrPDV.sql.add(':IPPT,');
                   qrPDV.sql.add(':SITUACAO,');
                   qrPDV.sql.add(':NCM,');
-                  qrPDV.sql.add(':ALIQNACIONAL');
+                  qrPDV.sql.add(':ALIQNACIONAL,');
+                  qrPDV.SQL.Add(':CSOSN');
 
                   qrPDV.sql.add(')');
-
-                  qrPDV.ParamByName('CODIGO').asstring :=
-                    qrServidor_Tabela.FieldByName('codigo').asstring;
-                  qrPDV.ParamByName('COD_BARRA').asstring :=
-                    copy(qrServidor_Tabela.FieldByName('codbarra')
-                    .asstring, 1, 15);
-                  qrPDV.ParamByName('NOME').asstring :=
-                    copy(qrServidor_Tabela.FieldByName('produto')
-                    .asstring, 1, 80);
-                  qrPDV.ParamByName('UNIDADE').asstring :=
-                    qrServidor_Tabela.FieldByName('unidade').asstring;
-                  qrPDV.ParamByName('PRECO_VENDA').asfloat :=
-                    qrServidor_Tabela.FieldByName('precovenda').asfloat;
-                  qrPDV.ParamByName('PRECO_PROMOCAO').asfloat :=
-                    qrServidor_Tabela.FieldByName('preco_promocao').asfloat;
-                  qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime :=
-                    qrServidor_Tabela.FieldByName('data_promocao').asdatetime;
-                  qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime :=
-                    qrServidor_Tabela.FieldByName('fim_promocao').asdatetime;
-                  qrPDV.ParamByName('CST').asstring :=
-                    qrServidor_Tabela.FieldByName('cst').asstring;
-                  qrPDV.ParamByName('ALIQUOTA').asfloat :=
-                    qrServidor_Tabela.FieldByName('aliquota').asfloat;
+                               //DARLON SANTOS
+                  qrPDV.ParamByName('CODIGO').asstring :=qrServidor_Tabela.FieldByName('codigo').asstring;
+                  qrPDV.ParamByName('COD_BARRA').asstring := copy(qrServidor_Tabela.FieldByName('codbarra').asstring, 1, 15);
+                  qrPDV.ParamByName('NOME').asstring := copy(qrServidor_Tabela.FieldByName('produto').asstring, 1, 80);
+                  qrPDV.ParamByName('UNIDADE').asstring := qrServidor_Tabela.FieldByName('unidade').asstring;
+                  qrPDV.ParamByName('PRECO_VENDA').asfloat := qrServidor_Tabela.FieldByName('precovenda').asfloat;
+                  qrPDV.ParamByName('PRECO_PROMOCAO').asfloat :=qrServidor_Tabela.FieldByName('preco_promocao').asfloat;
+                  qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime := qrServidor_Tabela.FieldByName('data_promocao').asdatetime;
+                  qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime := qrServidor_Tabela.FieldByName('fim_promocao').asdatetime;
+                  qrPDV.ParamByName('CST').asstring := qrServidor_Tabela.FieldByName('cst').asstring;
+                  qrPDV.ParamByName('ALIQUOTA').asfloat := qrServidor_Tabela.FieldByName('aliquota').asfloat;
                   qrPDV.ParamByName('DESCONTO_MAXIMO').asfloat := 0;
-                  qrPDV.ParamByName('SITUACAO').asinteger :=
-                    qrServidor_Tabela.FieldByName('SITUACAO').asinteger;
 
                   scst := qrServidor_Tabela.FieldByName('cst').asstring;
 
@@ -2462,15 +2323,11 @@ begin
                     qrPDV.Params.ParamByName('st').asstring := 'N'
                   else
                     qrPDV.ParamByName('st').asstring := 'T';
-
-                  qrPDV.ParamByName('ESTOQUE').asfloat :=
-                    qrServidor_Tabela.FieldByName('estoque_atual').asfloat;
-                  qrPDV.ParamByName('IAT').asstring :=
-                    qrServidor_Tabela.FieldByName('IAT').asstring;
-                  qrPDV.ParamByName('IPPT').asstring :=
-                    qrServidor_Tabela.FieldByName('IPPT').asstring;
-
-                  if (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL')
+                   qrPDV.ParamByName('ESTOQUE').asfloat := qrServidor_Tabela.FieldByName('estoque_atual').asfloat;
+                   qrPDV.ParamByName('IAT').asstring := qrServidor_Tabela.FieldByName('IAT').asstring;
+                    qrPDV.ParamByName('IPPT').asstring := qrServidor_Tabela.FieldByName('IPPT').asstring;
+                    qrPDV.ParamByName('SITUACAO').asinteger := qrServidor_Tabela.FieldByName('SITUACAO').asinteger;
+                    if (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL')
                     .asstring = 'null') or
                     (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL')
                     .asstring = '') then
@@ -2492,12 +2349,16 @@ begin
 
                   if not QRY_IBPT.IsEmpty then
                   begin
-                    qrPDV.ParamByName('ALIQNACIONAL').Value :=
-                      QRY_IBPT.FieldByName('ALIQNAC').Value;
-                  end
+                    qrPDV.ParamByName('ALIQNACIONAL').Value := QRY_IBPT.FieldByName('ALIQNAC').Value;
+                    end
                   else
+                   //DARLON SANTOS
                     qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
+                    qrPDV.ParamByName('CSOSN').Value := qrServidor_Tabela.FieldByName('CSOSN').Value;
+
                   qrPDV.ExecSQL;
+
+
                 except
                   on E: Exception do
                   begin
@@ -2533,66 +2394,22 @@ begin
                   qrPDV.sql.add('IPPT = :IPPT, ');
                   qrPDV.sql.add('SITUACAO = :SITUACAO,');
                   qrPDV.sql.add('NCM = :NCM,');
-                  qrPDV.sql.add('ALIQNACIONAL = :ALIQNACIONAL');
+                  qrPDV.sql.add('ALIQNACIONAL = :ALIQNACIONAL,');
+                  qrPDV.SQL.Add('CSOSN = :CSOSN'); // DARLON SANTOS 28/10/2017
                   qrPDV.sql.add('where codigo = :codigo');
 
-                  qrPDV.ParamByName('CODIGO').asinteger :=
-                    StrToInt(qrServidor_Tabela.FieldByName('codigo').asstring);
-                  qrPDV.ParamByName('COD_BARRA').asstring :=
-                    copy(qrServidor_Tabela.FieldByName('codbarra')
-                    .asstring, 1, 15);
-                  qrPDV.ParamByName('NOME').asstring :=
-                    copy(qrServidor_Tabela.FieldByName('produto')
-                    .asstring, 1, 80);
-                  qrPDV.ParamByName('UNIDADE').asstring :=
-                    qrServidor_Tabela.FieldByName('unidade').asstring;
-                  qrPDV.ParamByName('PRECO_VENDA').asfloat :=
-                    qrServidor_Tabela.FieldByName('precovenda').asfloat;
-                  qrPDV.ParamByName('PRECO_PROMOCAO').asfloat :=
-                    qrServidor_Tabela.FieldByName('preco_promocao').asfloat;
-                  qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime :=
-                    qrServidor_Tabela.FieldByName('data_promocao').asdatetime;
-                  qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime :=
-                    qrServidor_Tabela.FieldByName('fim_promocao').asdatetime;
-                  qrPDV.ParamByName('CST').asstring :=
-                    qrServidor_Tabela.FieldByName('cst').asstring;
-                  qrPDV.ParamByName('ALIQUOTA').asfloat :=
-                    qrServidor_Tabela.FieldByName('aliquota').asfloat;
+                  qrPDV.ParamByName('CODIGO').asinteger := StrToInt(qrServidor_Tabela.FieldByName('codigo').asstring);
+                  qrPDV.ParamByName('COD_BARRA').asstring := copy(qrServidor_Tabela.FieldByName('codbarra').asstring, 1, 15);
+                  qrPDV.ParamByName('NOME').asstring := copy(qrServidor_Tabela.FieldByName('produto').asstring, 1, 80);
+                  qrPDV.ParamByName('UNIDADE').asstring := qrServidor_Tabela.FieldByName('unidade').asstring;
+                  qrPDV.ParamByName('PRECO_VENDA').asfloat := qrServidor_Tabela.FieldByName('precovenda').asfloat;
+                  qrPDV.ParamByName('PRECO_PROMOCAO').asfloat := qrServidor_Tabela.FieldByName('preco_promocao').asfloat;
+                  qrPDV.ParamByName('INICIO_PROMOCAO').asdatetime := qrServidor_Tabela.FieldByName('data_promocao').asdatetime;
+                  qrPDV.ParamByName('FINAL_PROMOCAO').asdatetime := qrServidor_Tabela.FieldByName('fim_promocao').asdatetime;
+                  qrPDV.ParamByName('CST').asstring := qrServidor_Tabela.FieldByName('cst').asstring;
+                  qrPDV.ParamByName('ALIQUOTA').asfloat := qrServidor_Tabela.FieldByName('aliquota').asfloat;
                   qrPDV.ParamByName('DESCONTO_MAXIMO').asfloat := 0;
-                  qrPDV.ParamByName('SITUACAO').asinteger :=
-                    qrServidor_Tabela.FieldByName('SITUACAO').asinteger;
-
-                  if (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL')
-                    .asstring = 'null') or
-                    (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL')
-                    .asstring = '') then
-                    qrPDV.ParamByName('NCM').asstring := '0101.90.00'
-                  else
-                    qrPDV.ParamByName('NCM').asstring :=
-                      OnlyNumber
-                      (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL')
-                      .asstring);
-
-                  XNCM := qrPDV.ParamByName('NCM').asstring;
-
-
-                  QRY_IBPT.close;
-                  QRY_IBPT.sql.Clear;
-                  QRY_IBPT.sql.add
-                    ('SELECT * FROM IBPT_ALIQUOTAS WHERE NCM = :NCM');
-                  QRY_IBPT.ParamByName('NCM').asstring := OnlyNumber(XNCM);
-                  QRY_IBPT.Open();
-
-                  if not QRY_IBPT.IsEmpty then
-                  begin
-                    qrPDV.ParamByName('ALIQNACIONAL').Value :=
-                      QRY_IBPT.FieldByName('ALIQNAC').Value;
-                  end
-                  else
-                    qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
-
-                  scst := qrServidor_Tabela.FieldByName('cst').asstring;
-
+                    scst := qrServidor_Tabela.FieldByName('cst').asstring;
                   if (scst = '060') or (scst = '010') or (scst = '070') then
                     qrPDV.Params.ParamByName('st').asstring := 'F'
                   else if (scst = '040') or (scst = '030') then
@@ -2601,17 +2418,40 @@ begin
                     (scst = '090') then
                     qrPDV.Params.ParamByName('st').asstring := 'N'
                   else
-                    qrPDV.ParamByName('st').asstring := 'T';
+                  qrPDV.ParamByName('st').asstring := 'T';
+                  qrPDV.ParamByName('ESTOQUE').asfloat := qrServidor_Tabela.FieldByName('estoque_atual').asfloat;
+                  qrPDV.ParamByName('IAT').asstring := qrServidor_Tabela.FieldByName('IAT').asstring;
+                  qrPDV.ParamByName('IPPT').asstring := qrServidor_Tabela.FieldByName('IPPT').asstring;
+                  qrPDV.ParamByName('SITUACAO').asinteger := qrServidor_Tabela.FieldByName('SITUACAO').asinteger;
+                    //DARLON SANTOS
 
-                  qrPDV.ParamByName('ESTOQUE').asfloat :=
-                    qrServidor_Tabela.FieldByName('estoque_atual').asfloat;
-                  qrPDV.ParamByName('IAT').asstring :=
-                    qrServidor_Tabela.FieldByName('IAT').asstring;
-                  qrPDV.ParamByName('IPPT').asstring :=
-                    qrServidor_Tabela.FieldByName('IPPT').asstring;
+                  if (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring = 'null') or (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL').asstring = '') then
+                    qrPDV.ParamByName('NCM').asstring := '0101.90.00'
+                  else
+                    qrPDV.ParamByName('NCM').asstring :=
+                      OnlyNumber
+                      (qrServidor_Tabela.FieldByName('CLASSIFICACAO_FISCAL')
+                      .asstring);
+                     XNCM := qrPDV.ParamByName('NCM').asstring;
+                     QRY_IBPT.close;
+                     QRY_IBPT.sql.Clear;
+                     QRY_IBPT.sql.add
+                    ('SELECT * FROM IBPT_ALIQUOTAS WHERE NCM = :NCM');
+                  QRY_IBPT.ParamByName('NCM').asstring := OnlyNumber(XNCM);
+                  QRY_IBPT.Open();
+
+                  if not QRY_IBPT.IsEmpty then
+                  begin
+                    qrPDV.ParamByName('ALIQNACIONAL').Value := QRY_IBPT.FieldByName('ALIQNAC').Value;
+
+                  end
+                  else
+                    qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
+                    qrPDV.ParamByName('CSOSN').Value := qrServidor_Tabela.FieldByName('CSOSN').Value;
+
                   qrPDV.ExecSQL;
                 except
-                  on E: Exception do
+                 on E: Exception do
                   begin
                     Memo1.Lines.add('PDV' + grid.cell[0, i].asstring +
                       ' ERRO - ALT - PRODUTO - ' + qrServidor_Tabela.FieldByName

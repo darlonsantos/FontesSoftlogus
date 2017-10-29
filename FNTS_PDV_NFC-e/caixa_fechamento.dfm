@@ -37,7 +37,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 771
     object bt_ok: TButton
       Left = 200
       Top = 2
@@ -80,7 +79,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Enabled = False
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 771
     object Label1: TLabel
       Left = 0
       Top = 7
@@ -159,10 +157,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     ParentShowHint = False
     ShowHint = False
     TabOrder = 2
-    ExplicitWidth = 771
     object TabSheet1: TTabSheet
       Caption = 'Resumo'
-      ExplicitWidth = 763
       object grid_resumo: TNextGrid
         Left = 0
         Top = 0
@@ -174,7 +170,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         TabOrder = 0
         TabStop = True
         OnCellFormating = grid_resumoCellFormating
-        ExplicitWidth = 763
         object NxNumberColumn2: TNxNumberColumn
           DefaultValue = '0'
           DefaultWidth = 24
@@ -227,7 +222,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     object TabSheet2: TTabSheet
       Caption = 'Formas Pagto.'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 763
+      ExplicitHeight = 0
       object grid_forma: TNextGrid
         Left = 0
         Top = 0
@@ -291,7 +289,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     object TabSheet3: TTabSheet
       Caption = 'Al'#237'quotas'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 763
+      ExplicitHeight = 0
       object grid_aliquota: TNextGrid
         Left = 0
         Top = 0
@@ -355,7 +356,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     object TabSheet4: TTabSheet
       Caption = 'Outros'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 763
+      ExplicitHeight = 0
       object grid_outros: TNextGrid
         Left = 0
         Top = 0
@@ -419,7 +423,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Caption = 'Pr'#233'-vendas'
       ImageIndex = 4
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 763
+      ExplicitHeight = 0
       object grid_venda: TNextGrid
         Left = 0
         Top = 64
@@ -570,7 +577,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Caption = 'DAVs'
       ImageIndex = 5
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 763
+      ExplicitHeight = 0
       object grid_dav: TNextGrid
         Left = -3
         Top = 72
@@ -645,7 +655,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Caption = 'Abast.Pendentes'
       ImageIndex = 6
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 763
+      ExplicitHeight = 0
       object grid_abastecimento: TNextGrid
         Left = 3
         Top = 56
@@ -872,7 +885,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Caption = 'Mesas Abert.'
       ImageIndex = 7
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 763
+      ExplicitHeight = 0
       object grid_mesa: TNextGrid
         Left = 0
         Top = 64
@@ -960,7 +976,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     object TabFechamento: TTabSheet
       Caption = 'Fechamento'
       ImageIndex = 8
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 763
+      ExplicitHeight = 0
       object GridFechamento: TNextGrid
         Left = 0
         Top = 0
@@ -1047,7 +1066,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Width = 615
     Height = 19
     Panels = <>
-    ExplicitWidth = 771
   end
   object pnTitulo: TPanel
     Left = 0
@@ -1065,7 +1083,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     ParentBackground = False
     ParentFont = False
     TabOrder = 4
-    ExplicitWidth = 771
     object Image5: TImage
       Left = 1
       Top = 1
