@@ -1153,34 +1153,34 @@ begin
       end;
 
       // balanca
-      frmmodulo.Balanca.Desativar;
+      frmmodulo.Balancas.Desativar;
       // Modelos --> 0 --> Nenhum , 1 --> Filizola, 2 --> Toledo
       IF StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
         'CFG\cfg.ini', 'Balanca', 'Modelo', '0')) <> 0 THEN
       BEGIN
-        frmmodulo.Balanca.Modelo :=
+        frmmodulo.Balancas.Modelo :=
           TACBrBALModelo
           (StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
           'CFG\cfg.ini', 'Balanca', 'Modelo', '0')));
-        frmmodulo.Balanca.Device.HandShake :=
+        frmmodulo.Balancas.Device.HandShake :=
           TACBrHandShake
           (StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
           'CFG\cfg.ini', 'Balanca', 'Handshaking', '-1')));
-        frmmodulo.Balanca.Device.Parity :=
+        frmmodulo.Balancas.Device.Parity :=
           TACBrSerialParity
           (StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
           'CFG\cfg.ini', 'Balanca', 'Parity', '2')));
-        frmmodulo.Balanca.Device.Stop :=
+        frmmodulo.Balancas.Device.Stop :=
           TACBrSerialStop
           (StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
           'CFG\cfg.ini', 'Balanca', 'Stopbits', '2')));
-        frmmodulo.Balanca.Device.Porta :=
+        frmmodulo.Balancas.Device.Porta :=
           frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
           'CFG\cfg.ini', 'Balanca', 'Porta', 'COM1');
-        frmmodulo.Balanca.Device.Data :=
+        frmmodulo.Balancas.Device.Data :=
           StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
           'CFG\cfg.ini', 'Balanca', 'Databits', '8'));
-        frmmodulo.Balanca.Device.Baud :=
+        frmmodulo.Balancas.Device.Baud :=
           StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
           'CFG\cfg.ini', 'Balanca', 'Baudrate', '8'));
         iBal_time :=

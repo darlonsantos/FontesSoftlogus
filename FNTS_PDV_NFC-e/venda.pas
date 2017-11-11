@@ -3304,25 +3304,26 @@ begin
   if Key = #13 then
   begin
     sx_barra := Trim(ed_barra.text);
-
     if sx_barra = '' then
     begin
       ed_barra.setfocus;
       exit;
     end;
-
     if timer_balanca.Enabled then
     begin
-      timer_balanca.Enabled := false;
+      //Acionar o botão da balança que recebi o peso
+     timer_balanca.Enabled := false;
       try
-        frmmodulo.balanca.desativar;
-        frmmodulo.balanca.Ativo := false;
+        frmmodulo.Balancas.Ativar;
+        frmmodulo.Balancas.Ativo := false;
       except
       end;
       bDados_balanca := true;
     end
     else
       bDados_balanca := false;
+
+
 
     if not bVenda then
     begin
@@ -3768,8 +3769,8 @@ begin
   if timer_balanca.Enabled then
   begin
     timer_balanca.Enabled := false;
-    frmmodulo.balanca.Ativo := false;
-    frmmodulo.balanca.desativar;
+    frmmodulo.Balancas.Ativo := false;
+    frmmodulo.Balancas.desativar;
     Imprime_display('Informe o Produto...', clBackground, tiLivre);
   end;
 end;
@@ -7056,7 +7057,7 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.timer_balancaTimer(Sender: TObject);
 begin
-  frmmodulo.balanca.LePeso(ibal_time);
+  frmmodulo.Balancas.LePeso(ibal_time);
   Imprime_display('Peso: ' + formatfloat('###,###,##0.000', rBal_peso),
     clBackground, tiPeso);
   application.ProcessMessages;
@@ -7065,15 +7066,18 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.AcionaBalana1Click(Sender: TObject);
 begin
-  if frmmodulo.balanca.Modelo <> balNenhum then
-  begin
+  if frmmodulo.Balancas.Modelo <>  balNenhum then
+ begin
     try
-      frmmodulo.balanca.ativar;
-      frmmodulo.balanca.Ativo := true;
+     frmmodulo.Balancas.ativar;
+     frmmodulo.Balancas.Ativo := true;
     except
+     frmmodulo.Balancas.LePeso(ibal_time);
     end;
-    timer_balanca.Enabled := true;
-  end;
+     timer_balanca.Enabled := true;
+  end
+  ELSE
+   ShowMessage('Balança não encontrada!');
 end;
 
 // -------------------------------------------------------------------------- //

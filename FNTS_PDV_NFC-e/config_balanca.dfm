@@ -100,7 +100,6 @@ object frmconfig_balanca: Tfrmconfig_balanca
       Top = 53
       Width = 100
       Height = 21
-      ItemHeight = 13
       ItemIndex = 0
       TabOrder = 0
       Text = 'COM1'
@@ -121,7 +120,6 @@ object frmconfig_balanca: Tfrmconfig_balanca
       Width = 100
       Height = 21
       Style = csDropDownList
-      ItemHeight = 13
       ItemIndex = 0
       TabOrder = 1
       Text = 'Nenhuma'
@@ -136,7 +134,6 @@ object frmconfig_balanca: Tfrmconfig_balanca
       Width = 100
       Height = 21
       Style = csDropDownList
-      ItemHeight = 13
       ItemIndex = 6
       TabOrder = 2
       Text = '9600'
@@ -160,7 +157,6 @@ object frmconfig_balanca: Tfrmconfig_balanca
       Width = 100
       Height = 21
       Style = csDropDownList
-      ItemHeight = 13
       ItemIndex = 3
       TabOrder = 3
       Text = '8'
@@ -175,7 +171,6 @@ object frmconfig_balanca: Tfrmconfig_balanca
       Top = 128
       Width = 100
       Height = 21
-      ItemHeight = 13
       TabOrder = 4
       Text = 'Nenhum'
       Items.Strings = (
@@ -190,7 +185,6 @@ object frmconfig_balanca: Tfrmconfig_balanca
       Width = 100
       Height = 21
       Style = csDropDownList
-      ItemHeight = 13
       ItemIndex = 0
       TabOrder = 5
       Text = 's1'
@@ -213,7 +207,6 @@ object frmconfig_balanca: Tfrmconfig_balanca
       Width = 100
       Height = 21
       Style = csDropDownList
-      ItemHeight = 13
       ItemIndex = 2
       TabOrder = 7
       Text = 'pNone'

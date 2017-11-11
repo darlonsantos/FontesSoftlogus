@@ -19,11 +19,6 @@ object frmModulo: TfrmModulo
     Left = 856
     Top = 68
   end
-  object Balanca: TACBrBAL
-    Porta = 'COM1'
-    Left = 104
-    Top = 400
-  end
   object estilo_menu: TAdvMenuOfficeStyler
     AntiAlias = aaNone
     AutoThemeAdapt = False
@@ -926,7 +921,7 @@ object frmModulo: TfrmModulo
   object spDav_Codigo: TIBCStoredProc
     StoredProcName = 'SPCODIGO_DAV'
     Connection = Conexao_Servidor
-    Left = 12
+    Left = 20
     Top = 540
     ParamData = <
       item
@@ -1672,5 +1667,12 @@ object frmModulo: TfrmModulo
       'SELECT * FROM SEQUENCIA')
     Left = 392
     Top = 528
+  end
+  object Balancas: TACBrBAL
+    Modelo = balToledo
+    Porta = 'COM1'
+    OnLePeso = BalancasLePeso
+    Left = 96
+    Top = 440
   end
 end

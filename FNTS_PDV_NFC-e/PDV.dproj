@@ -350,7 +350,7 @@
 						<VersionInfo Name="MajorVer">4</VersionInfo>
 						<VersionInfo Name="MinorVer">5</VersionInfo>
 						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">33</VersionInfo>
+						<VersionInfo Name="Build">34</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -362,7 +362,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription">Frente de Caixa</VersionInfoKeys>
-						<VersionInfoKeys Name="FileVersion">4.5.0.33</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.5.0.34</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>
@@ -384,13 +384,13 @@
 				</Platforms>
 				<ModelSupport>False</ModelSupport>
 				<Deployment>
-					<DeployFile Class="ProjectOutput" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.exe">
-						<Platform Name="Win32"/>
-					</DeployFile>
 					<DeployFile Class="DebugSymbols" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.rsm">
 						<Platform Name="Win32">
 							<RemoteName>PDV.rsm</RemoteName>
 						</Platform>
+					</DeployFile>
+					<DeployFile Class="ProjectOutput" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.exe">
+						<Platform Name="Win32"/>
 					</DeployFile>
 					<DeployClass Name="ProjectOutput" Required="true">
 						<Platform Name="OSX32">

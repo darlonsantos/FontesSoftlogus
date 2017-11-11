@@ -58,9 +58,9 @@ begin
   Registro.OpenKey('SOFTWARE',false);
   Registro.OpenKey('S7',false);
   Registro.OpenKey('PDV',false);
-  if Registro.OpenKey('Balanca',true) then
-  begin
-    Registro.WriteString('Modelo',inttostr(cb_bal_modelo.ItemIndex));
+//  if Registro.OpenKey('Balanca',true) then
+ // begin
+    Registro.WriteString('Modelo',IntToStr(cb_bal_modelo.ItemIndex));
     Registro.WriteString('Handshaking',inttostr(cb_bal_hand.ItemIndex));
     Registro.WriteString('Parity',inttostr(cb_parity.ItemIndex));
     Registro.WriteString('Stopbits',inttostr(cb_parity.ItemIndex));
@@ -68,7 +68,7 @@ begin
     Registro.WriteString('Databits',cb_bal_databits.Text);
     Registro.WriteString('Baudrate',cb_bal_baudrate.Text);
     Registro.WriteString('Timeout',cb_bal_time_out.text);
-  end;
+ // end;
   Registro.CloseKey;
   Registro.Free;
 
@@ -103,9 +103,9 @@ begin
        if Registro.openkey('PDV',false) then
        begin
          (*************** BALANCA ******************)
-         if Registro.OpenKey('Balanca',false) then
+         if Registro.OpenKey('Balancas',false) then
          begin
-           frmModulo.Balanca.Desativar;
+           frmModulo.Balancas.Desativar;
            // Modelos --> 0 --> Nenhum , 1 --> Filizola, 2 --> Toledo
            IF strtoint(Registro.ReadString('Modelo')) <> 0 THEN
            BEGIN
