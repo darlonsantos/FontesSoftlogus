@@ -9,7 +9,6 @@ uses
 
 type
   TfrmPreco_consulta = class(TForm)
-    Image1: TImage;
     LB_MENU_FISCAL: TRzLabel;
     lb_status: TRzLabel;
     img_pgto: TAdvOfficeImage;
@@ -20,12 +19,10 @@ type
     ed_barra: TRzEdit;
     img_foto: TImage;
     pop_principal: TAdvPopupMenu;
-    MenuFiscal2: TMenuItem;
     N2: TMenuItem;
     Retornar1: TMenuItem;
     Estoque1: TMenuItem;
     query: TIBCQuery;
-    imgFundo: TImage;
     pnFundo: TPanel;
     RzLabel1: TRzLabel;
     lblcifrao: TRzLabel;
@@ -33,7 +30,6 @@ type
     procedure ed_barraEnter(Sender: TObject);
     procedure ed_barraKeyPress(Sender: TObject; var Key: Char);
     procedure Retornar1Click(Sender: TObject);
-    procedure MenuFiscal2Click(Sender: TObject);
     procedure Estoque1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormResize(Sender: TObject);
@@ -113,6 +109,7 @@ begin
       end
       else
       begin
+      // DARLON SANTOS
         img_foto.Picture := nil;
         lb_preco.Caption := '---';
         lb_promocao.Visible := false;
@@ -123,7 +120,7 @@ begin
         lb_produto.caption := 'Nenhum produto encontrado!';
         Application.ProcessMessages;
         Sleep(1500);
-        lb_produto.Font.color := clwhite;
+        lb_produto.Font.color := clBlack;
         lb_produto.Caption := 'Consulta de produto';
         ED_barra.TEXT := '';
         if iTeclado_Modelo = 1 then
@@ -149,12 +146,6 @@ end;
 procedure TfrmPreco_consulta.Retornar1Click(Sender: TObject);
 begin
   close;
-end;
-
-procedure TfrmPreco_consulta.MenuFiscal2Click(Sender: TObject);
-begin
-  frmMenu_fiscal := tfrmMenu_fiscal.create(self);
-  frmMenu_fiscal.showmodal;
 end;
 
 procedure TfrmPreco_consulta.Estoque1Click(Sender: TObject);
@@ -194,7 +185,7 @@ begin
   sImgFundo := ExtractFilePath(Application.ExeName) + 'img\fundo_pdv.jpg';
 
   if FileExists(sImgFundo) then
-    imgFundo.Picture.LoadFromFile(sImgFundo);
+   // imgFundo.Picture.LoadFromFile(sImgFundo);
 
 end;
 
