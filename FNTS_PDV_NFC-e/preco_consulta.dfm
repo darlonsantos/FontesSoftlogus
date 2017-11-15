@@ -3,7 +3,7 @@ object frmPreco_consulta: TfrmPreco_consulta
   Top = 2
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'frmPreco_consulta'
+  Caption = 'Consulta de Pre'#231'o'
   ClientHeight = 414
   ClientWidth = 710
   Color = clBlack
