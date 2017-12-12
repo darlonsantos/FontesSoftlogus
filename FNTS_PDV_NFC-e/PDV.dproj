@@ -97,13 +97,19 @@
 			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+			<VerInfo_Build>28</VerInfo_Build>
+			<VerInfo_AutoGenVersion>false</VerInfo_AutoGenVersion>
+			<VerInfo_Release>1</VerInfo_Release>
+			<VerInfo_Debug>true</VerInfo_Debug>
+			<VerInfo_Special>true</VerInfo_Special>
+			<VerInfo_Private>true</VerInfo_Private>
 			<VerInfo_PreRelease>true</VerInfo_PreRelease>
 			<DCC_ExeOutput>C:\Softlogus\PDV\</DCC_ExeOutput>
-			<VerInfo_MinorVer>0</VerInfo_MinorVer>
+			<VerInfo_MinorVer>2</VerInfo_MinorVer>
 			<Icon_MainIcon>PDV_Icon1.ico</Icon_MainIcon>
-			<VerInfo_MajorVer>1</VerInfo_MajorVer>
+			<VerInfo_MajorVer>2</VerInfo_MajorVer>
 			<DCC_UnitSearchPath>C:\FNTS_PDV_NFC-e\sintegra;C:\FNTS_PDV_NFC-e\sintegra\Codificacao;C:\FNTS_PDV_NFC-e\sintegra\Validacao_CFOP;C:\FNTS_PDV_NFC-e\sintegra\Validacao_NCM;C:\FNTS_PDV_NFC-e\sintegra\Validacao_Sintegra;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-			<VerInfo_Keys>CompanyName=Softlogus Sistemas ;FileDescription=;FileVersion=1.0.0.27;InternalName=;LegalCopyright=Softlogus Sistemas;LegalTrademarks=;OriginalFilename=;ProductName=Softlogus Sistemas;ProductVersion=1.0.0.0;Comments=Desenvolvedor - Darlon Santos</VerInfo_Keys>
+			<VerInfo_Keys>CompanyName=Softlogus Sistemas ;FileDescription=;FileVersion=2.2.1.28;InternalName=;LegalCopyright=Softlogus Sistemas;LegalTrademarks=;OriginalFilename=;ProductName=Softlogus Sistemas;ProductVersion=1.0.0.0;Comments=Desenvolvedor - Darlon Santos;PrivateBuild=;SpecialBuild=</VerInfo_Keys>
 			<VerInfo_Locale>1033</VerInfo_Locale>
 		</PropertyGroup>
 		<ItemGroup>
@@ -350,7 +356,7 @@
 						<VersionInfo Name="MajorVer">4</VersionInfo>
 						<VersionInfo Name="MinorVer">5</VersionInfo>
 						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">34</VersionInfo>
+						<VersionInfo Name="Build">35</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -362,7 +368,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription">Frente de Caixa</VersionInfoKeys>
-						<VersionInfoKeys Name="FileVersion">4.5.0.34</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.5.0.35</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>
@@ -372,10 +378,7 @@
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
 					<Excluded_Packages>
-						<Excluded_Packages Name="C:\Documents and Settings\All Users\Documentos\RAD Studio\9.0\Bpl\oraprovider160.bpl">(untitled)</Excluded_Packages>
-						<Excluded_Packages Name="C:\Documents and Settings\All Users\Documentos\RAD Studio\9.0\Bpl\myprovider160.bpl">(untitled)</Excluded_Packages>
-						<Excluded_Packages Name="C:\Documents and Settings\All Users\Documentos\RAD Studio\9.0\Bpl\ibprovider160.bpl">(untitled)</Excluded_Packages>
-						<Excluded_Packages Name="C:\Arquivos de programas\FastReports\LibD16\dclfstee16.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dcloffice2k160.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
 					</Excluded_Packages>
 				</Delphi.Personality>
 				<Platforms>

@@ -5,7 +5,7 @@ object frmsenha: Tfrmsenha
   BorderStyle = bsSingle
   Caption = 'Softlogus Sistemas'
   ClientHeight = 294
-  ClientWidth = 384
+  ClientWidth = 389
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -13,7 +13,7 @@ object frmsenha: Tfrmsenha
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
@@ -21,7 +21,7 @@ object frmsenha: Tfrmsenha
   object Image1: TImage
     Left = 0
     Top = 113
-    Width = 384
+    Width = 389
     Height = 181
     Align = alClient
     AutoSize = True
@@ -33,7 +33,7 @@ object frmsenha: Tfrmsenha
   object img1: TImage
     Left = 0
     Top = 113
-    Width = 384
+    Width = 389
     Height = 181
     Align = alClient
     Picture.Data = {
@@ -30392,7 +30392,7 @@ object frmsenha: Tfrmsenha
   object Image2: TImage
     Left = 0
     Top = 0
-    Width = 384
+    Width = 389
     Height = 113
     Align = alTop
     Picture.Data = {

@@ -3,8 +3,8 @@ object frmUtiSplash: TfrmUtiSplash
   Top = 314
   BorderStyle = bsNone
   Caption = 'Softlogus'
-  ClientHeight = 242
-  ClientWidth = 308
+  ClientHeight = 453
+  ClientWidth = 744
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -20,8 +20,8 @@ object frmUtiSplash: TfrmUtiSplash
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 308
-    Height = 156
+    Width = 744
+    Height = 367
     Align = alClient
     Picture.Data = {
       0B54504E474772617068696376460100424D7646010000000000360000002800
@@ -2637,6 +2637,7 @@ object frmUtiSplash: TfrmUtiSplash
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFF00}
+    ExplicitWidth = 308
     ExplicitHeight = 169
   end
   object lb_total: TRzLabel
@@ -2678,8 +2679,8 @@ object frmUtiSplash: TfrmUtiSplash
   end
   object lb_msg: TLabel
     Left = 0
-    Top = 164
-    Width = 308
+    Top = 375
+    Width = 744
     Height = 52
     Align = alBottom
     Alignment = taCenter
@@ -2701,8 +2702,8 @@ object frmUtiSplash: TfrmUtiSplash
   end
   object Label1: TLabel
     Left = 0
-    Top = 156
-    Width = 308
+    Top = 367
+    Width = 744
     Height = 8
     Align = alBottom
     Alignment = taCenter
@@ -2721,8 +2722,8 @@ object frmUtiSplash: TfrmUtiSplash
   end
   object p: TRzProgressBar
     Left = 0
-    Top = 216
-    Width = 308
+    Top = 427
+    Width = 744
     Height = 26
     Align = alBottom
     BackColorStop = clWindow
@@ -2744,9 +2745,8 @@ object frmUtiSplash: TfrmUtiSplash
     ShowPercent = False
     ThemeAware = False
     TotalParts = 0
-    ExplicitLeft = 8
-    ExplicitTop = 370
-    ExplicitWidth = 787
+    ExplicitTop = 222
+    ExplicitWidth = 308
   end
   object Image3: TImage
     Left = -462

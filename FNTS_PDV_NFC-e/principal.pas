@@ -31,7 +31,8 @@ uses
   Vcl.RibbonLunaStyleActnCtrls, Vcl.ActnMenus, Vcl.RibbonActnMenus, Vcl.ActnList, dxStatusBar, dxRibbonStatusBar,
   dxRibbonSkins, dxSkinsdxRibbonPainter, dxSkinsdxBarPainter, cxPC, dxBar, dxDockControl, dxDockPanel, dxRibbon,
   dxRibbonMiniToolbar, dxBarApplicationMenu, dxRibbonGallery, dxBarDBNav, Vcl.PlatformDefaultStyleActnCtrls, cxCalc,
-  cxImage, cxBlobEdit, cxBarEditItem, Data.DB, DBAccess;
+  cxImage, cxBlobEdit, cxBarEditItem, Data.DB, DBAccess, AdvReflectionLabel,
+  ExeInfo;
 
 type
   TImpressora = (SemImpressora, NaoFiscal, Fiscal);
@@ -46,9 +47,7 @@ type
     query: TIBCQuery;
     qrForma: TIBCQuery;
     Bevel1: TBevel;
-    pstatus: TAdvOfficeStatusBar;
     AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler;
-    Panel1: TPanel;
     AdvPanelStyler1: TAdvPanelStyler;
     dxTile: TdxTileControl;
     dxTiledxTileControlGroup1: TdxTileControlGroup;
@@ -67,6 +66,9 @@ type
     dxFloatDockSite1: TdxFloatDockSite;
     lbl1: TLabel;
     dxTileItem4: TdxTileControlItem;
+    ExeInfo1: TExeInfo;
+    StatusBar1: TStatusBar;
+    lblVersao: TAdvReflectionLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -1225,8 +1227,9 @@ begin
   // LAUDO
   sPAF_Laudo := Cript('D', Arquivo_ini.ReadString('D37DEB63', '2329383D', ''));
 
-  pstatus.Panels[1].Text := sPAF_Nome + ' - ' + sPAF_Versao;
-  pstatus.Panels[2].Text := 'Laudo PAF-ECF: ' + sPAF_Laudo;
+   //darlon santos
+  //  pstatus.Panels[1].Text := sPAF_Nome + ' - ' + sPAF_Versao;
+//  pstatus.Panels[2].Text := 'Laudo PAF-ECF: ' + sPAF_Laudo;
 
   // EXECUTAVEL
   sPAF_Executavel := Cript('D', Arquivo_ini.ReadString('D37DEB63',
@@ -1570,8 +1573,14 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
-
-end;
+ //DARLON SANTOS
+  Brush.Style := bsClear;
+  lblVersao.HTMLText.Clear;
+  lblVersao.HTMLText.Add('<P align=' + QuotedStr('right')
+    + '>Versão ' + ExeInfo1.FileVersion + '</P>');
+   StatusBar1.Panels.Items[0].Text := 'Versão do Sistema :';
+       StatusBar1.Panels.Items[1].Text := lblVersao.Text;
+ end;
 
 // -------------------------------------------------------------------------- //
 procedure TfrmPrincipal.ECF1Click(Sender: TObject);
@@ -1579,14 +1588,11 @@ begin
   frmConfig_ecf := tfrmConfig_ECF.Create(self);
   frmConfig_ecf.showmodal;
 end;
-
 // -------------------------------------------------------------------------- //
 procedure TfrmPrincipal.FormDestroy(Sender: TObject);
 begin
-  // encerrrar comunicacao com o ecf
   cECF_Fecha(iECF_Modelo);
 end;
-
 // -------------------------------------------------------------------------- //
 procedure TfrmPrincipal.Sair1Click(Sender: TObject);
 begin
