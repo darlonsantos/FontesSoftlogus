@@ -46,6 +46,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<VCL_Custom_Styles>&quot;Iceberg Classico|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\9.0\Styles\IcebergClassico.vsf&quot;</VCL_Custom_Styles>
 			<VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
 			<DCC_UnitSearchPath>$(DELPHI)\Lib\Debug;C:\Desenvolvimento\BR Sistemas\FNTS_BRSistemas\brPDV;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
 			<VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
@@ -97,20 +98,18 @@
 			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-			<VerInfo_Build>28</VerInfo_Build>
 			<VerInfo_AutoGenVersion>false</VerInfo_AutoGenVersion>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<VerInfo_Build>29</VerInfo_Build>
 			<VerInfo_Release>1</VerInfo_Release>
 			<VerInfo_Debug>true</VerInfo_Debug>
-			<VerInfo_Special>true</VerInfo_Special>
-			<VerInfo_Private>true</VerInfo_Private>
 			<VerInfo_PreRelease>true</VerInfo_PreRelease>
 			<DCC_ExeOutput>C:\Softlogus\PDV\</DCC_ExeOutput>
 			<VerInfo_MinorVer>2</VerInfo_MinorVer>
 			<Icon_MainIcon>PDV_Icon1.ico</Icon_MainIcon>
 			<VerInfo_MajorVer>2</VerInfo_MajorVer>
 			<DCC_UnitSearchPath>C:\FNTS_PDV_NFC-e\sintegra;C:\FNTS_PDV_NFC-e\sintegra\Codificacao;C:\FNTS_PDV_NFC-e\sintegra\Validacao_CFOP;C:\FNTS_PDV_NFC-e\sintegra\Validacao_NCM;C:\FNTS_PDV_NFC-e\sintegra\Validacao_Sintegra;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-			<VerInfo_Keys>CompanyName=Softlogus Sistemas ;FileDescription=;FileVersion=2.2.1.28;InternalName=;LegalCopyright=Softlogus Sistemas;LegalTrademarks=;OriginalFilename=;ProductName=Softlogus Sistemas;ProductVersion=1.0.0.0;Comments=Desenvolvedor - Darlon Santos;PrivateBuild=;SpecialBuild=</VerInfo_Keys>
-			<VerInfo_Locale>1033</VerInfo_Locale>
+			<VerInfo_Keys>CompanyName=Softlogus Sistemas ;FileDescription=;FileVersion=2.2.1.29;InternalName=;LegalCopyright=Softlogus Sistemas;LegalTrademarks=;OriginalFilename=;ProductName=Softlogus Sistemas;ProductVersion=1.0.0.0;Comments=Desenvolvedor - Darlon Santos</VerInfo_Keys>
 		</PropertyGroup>
 		<ItemGroup>
 			<DelphiCompile Include="$(MainSource)">
@@ -387,13 +386,13 @@
 				</Platforms>
 				<ModelSupport>False</ModelSupport>
 				<Deployment>
+					<DeployFile Class="ProjectOutput" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.exe">
+						<Platform Name="Win32"/>
+					</DeployFile>
 					<DeployFile Class="DebugSymbols" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.rsm">
 						<Platform Name="Win32">
 							<RemoteName>PDV.rsm</RemoteName>
 						</Platform>
-					</DeployFile>
-					<DeployFile Class="ProjectOutput" Configuration="Debug" LocalName="C:\Softlogus\PDV\PDV.exe">
-						<Platform Name="Win32"/>
 					</DeployFile>
 					<DeployClass Name="ProjectOutput" Required="true">
 						<Platform Name="OSX32">

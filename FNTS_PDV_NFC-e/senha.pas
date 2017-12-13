@@ -83,7 +83,7 @@ begin
 end;
 procedure Tfrmsenha.btn_cancelarClick(Sender: TObject);
 begin
-application.Terminate;
+frmsenha.close;
 end;
 procedure Tfrmsenha.btn_entrarClick(Sender: TObject);
 begin

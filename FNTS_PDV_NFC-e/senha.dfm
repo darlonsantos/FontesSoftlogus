@@ -2,10 +2,10 @@ object frmsenha: Tfrmsenha
   Left = 390
   Top = 296
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
+  BorderStyle = bsNone
   Caption = 'Softlogus Sistemas'
-  ClientHeight = 294
-  ClientWidth = 389
+  ClientHeight = 322
+  ClientWidth = 489
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -20,9 +20,9 @@ object frmsenha: Tfrmsenha
   TextHeight = 13
   object Image1: TImage
     Left = 0
-    Top = 113
-    Width = 389
-    Height = 181
+    Top = 128
+    Width = 489
+    Height = 194
     Align = alClient
     AutoSize = True
     Center = True
@@ -32,9 +32,9 @@ object frmsenha: Tfrmsenha
   end
   object img1: TImage
     Left = 0
-    Top = 113
-    Width = 389
-    Height = 181
+    Top = 128
+    Width = 489
+    Height = 194
     Align = alClient
     Picture.Data = {
       0B54504E474772617068696346CD0E00424D46CD0E0000000000360000002800
@@ -30358,8 +30358,8 @@ object frmsenha: Tfrmsenha
     ExplicitHeight = 247
   end
   object Label2: TLabel
-    Left = 46
-    Top = 166
+    Left = 97
+    Top = 182
     Width = 53
     Height = 13
     Alignment = taRightJustify
@@ -30374,8 +30374,8 @@ object frmsenha: Tfrmsenha
     Transparent = True
   end
   object Label1: TLabel
-    Left = 52
-    Top = 118
+    Left = 110
+    Top = 134
     Width = 60
     Height = 13
     Alignment = taRightJustify
@@ -30392,8 +30392,8 @@ object frmsenha: Tfrmsenha
   object Image2: TImage
     Left = 0
     Top = 0
-    Width = 389
-    Height = 113
+    Width = 489
+    Height = 128
     Align = alTop
     Picture.Data = {
       0B54504E474772617068696392C00200424D92C0020000000000360400002800
@@ -36035,11 +36035,10 @@ object frmsenha: Tfrmsenha
       0000000000000000000000000000000000000000000000000000000000000000
       0000}
     Stretch = True
-    ExplicitWidth = 421
   end
   object btn_entrar: TSpeedButton
-    Left = 59
-    Top = 232
+    Left = 110
+    Top = 248
     Width = 118
     Height = 49
     Caption = 'Entrar'
@@ -36344,8 +36343,8 @@ object frmsenha: Tfrmsenha
     OnClick = btn_entrarClick
   end
   object btn_cancelar: TSpeedButton
-    Left = 203
-    Top = 232
+    Left = 254
+    Top = 248
     Width = 118
     Height = 49
     Caption = 'Cancelar'
@@ -36650,11 +36649,11 @@ object frmsenha: Tfrmsenha
     OnClick = btn_cancelarClick
   end
   object ed_senha: TRzEdit
-    Left = 59
-    Top = 185
+    Left = 110
+    Top = 201
     Width = 262
-    Height = 20
-    Ctl3D = True
+    Height = 18
+    Ctl3D = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
@@ -36670,12 +36669,12 @@ object frmsenha: Tfrmsenha
     OnKeyPress = ed_senhaKeyPress
   end
   object ed_codigo: TRzEdit
-    Left = 59
-    Top = 137
+    Left = 110
+    Top = 153
     Width = 262
-    Height = 21
+    Height = 19
     CharCase = ecUpperCase
-    Ctl3D = True
+    Ctl3D = False
     FocusColor = 12713983
     FrameColor = 12615680
     FrameVisible = True
