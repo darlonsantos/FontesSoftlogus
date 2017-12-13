@@ -32,7 +32,7 @@ uses
   dxRibbonSkins, dxSkinsdxRibbonPainter, dxSkinsdxBarPainter, cxPC, dxBar, dxDockControl, dxDockPanel, dxRibbon,
   dxRibbonMiniToolbar, dxBarApplicationMenu, dxRibbonGallery, dxBarDBNav, Vcl.PlatformDefaultStyleActnCtrls, cxCalc,
   cxImage, cxBlobEdit, cxBarEditItem, Data.DB, DBAccess, AdvReflectionLabel,
-  ExeInfo;
+  ExeInfo, dxScreenTip, dxRibbonRadialMenu, dxBarExtItems;
 
 type
   TImpressora = (SemImpressora, NaoFiscal, Fiscal);
@@ -49,26 +49,36 @@ type
     Bevel1: TBevel;
     AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler;
     AdvPanelStyler1: TAdvPanelStyler;
-    dxTile: TdxTileControl;
-    dxTiledxTileControlGroup1: TdxTileControlGroup;
-    tlPhotos: TdxTileControlItem;
-    dxtlcntrltmfrmPhotosdxTileControlItemFrame1: TdxTileControlItemFrame;
-    dxtlcntrltmfrmPhotosdxTileControlItemFrame2: TdxTileControlItemFrame;
-    tlUserManagement: TdxTileControlItem;
-    tlSystemInformation: TdxTileControlItem;
-    tlAgents: TdxTileControlItem;
-    tlResearch: TdxTileControlItem;
-    dxtlcntrltmTileItem1: TdxTileControlItem;
-    dxTileItem1: TdxTileControlItem;
-    dxTileItem2: TdxTileControlItem;
-    dxTileItem3: TdxTileControlItem;
     dxDockPanel1: TdxDockPanel;
     dxFloatDockSite1: TdxFloatDockSite;
     lbl1: TLabel;
-    dxTileItem4: TdxTileControlItem;
     ExeInfo1: TExeInfo;
-    StatusBar1: TStatusBar;
     lblVersao: TAdvReflectionLabel;
+    ActionManager1: TActionManager;
+    actVendas: TAction;
+    cxImageList1: TcxImageList;
+    dxBarManager1: TdxBarManager;
+    dxRibbon1: TdxRibbon;
+    dxRibbonPopupMenu1: TdxRibbonPopupMenu;
+    dxBarApplicationMenu1: TdxBarApplicationMenu;
+    status: TdxRibbonStatusBar;
+    dxRibbonMiniToolbar1: TdxRibbonMiniToolbar;
+    dxRibbonRadialMenu1: TdxRibbonRadialMenu;
+    dxBarPopupMenu1: TdxBarPopupMenu;
+    dxBarButton1: TdxBarButton;
+    dxBarGroup1: TdxBarGroup;
+    dxBarGroup2: TdxBarGroup;
+    dxBarGroup3: TdxBarGroup;
+    dxRibbon1Tab3: TdxRibbonTab;
+    dxBarManager1Bar1: TdxBar;
+    dxBarLargeButton1: TdxBarLargeButton;
+    dxBarLargeButton2: TdxBarLargeButton;
+    actRelatorio: TAction;
+    dxRibbon1Tab1: TdxRibbonTab;
+    dxBarManager1Bar2: TdxBar;
+    dxBarLargeButton4: TdxBarLargeButton;
+    actConfiguracoes: TAction;
+    imgm_imagens: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -100,6 +110,9 @@ type
     procedure dxBarButton2Click(Sender: TObject);
     procedure dxBarButton3Click(Sender: TObject);
     procedure dxBarLargeButton3Click(Sender: TObject);
+    procedure actVendasExecute(Sender: TObject);
+    procedure actRelatorioExecute(Sender: TObject);
+    procedure actConfiguracoesExecute(Sender: TObject);
   private
     iImpressora, iGaveta: Integer;
     { Private declarations }
@@ -1574,12 +1587,13 @@ end;
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
  //DARLON SANTOS
+ imgm_imagens.Picture.LoadFromFile('C:\Softlogus\server\img\logo.jpg');
   Brush.Style := bsClear;
   lblVersao.HTMLText.Clear;
   lblVersao.HTMLText.Add('<P align=' + QuotedStr('right')
     + '>Versão ' + ExeInfo1.FileVersion + '</P>');
-   StatusBar1.Panels.Items[0].Text := 'Versão do Sistema :';
-       StatusBar1.Panels.Items[1].Text := lblVersao.Text;
+   status.Panels.Items[0].Text := 'Versão do Sistema:';
+       status.Panels.Items[1].Text := lblVersao.Text;
  end;
 
 // -------------------------------------------------------------------------- //
@@ -1640,6 +1654,23 @@ begin
 end;
 
 // -------------------------------------------------------------------------- //
+procedure TfrmPrincipal.actConfiguracoesExecute(Sender: TObject);
+begin
+ frmconfig := tfrmconfig.Create(self);
+  frmconfig.showmodal;
+end;
+
+procedure TfrmPrincipal.actRelatorioExecute(Sender: TObject);
+begin
+ frmNotasconsumidor := TfrmNotasconsumidor.Create(self);
+  frmNotasconsumidor.showmodal
+end;
+
+procedure TfrmPrincipal.actVendasExecute(Sender: TObject);
+begin
+CarregaSistemaVenda;
+end;
+
 procedure TfrmPrincipal.act_vendasExecute(Sender: TObject);
 begin
   CarregaSistemaVenda;
