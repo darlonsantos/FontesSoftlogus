@@ -228,7 +228,6 @@ type
     TimerTroco: TTimer;
     AdvReflectionImage1: TAdvReflectionImage;
     Zint: TZintBarcodeComponent;
-    MemoLog: TMemo;
     MemoDados: TMemo;
     qrProdNCFE: TIBCQuery;
     qrapoio: TIBCQuery;
@@ -363,6 +362,7 @@ type
     procedure lblCupomSimplesClick(Sender: TObject);
     procedure lblCupomEletronicoClick(Sender: TObject);
     procedure AtualizarServidor1Click(Sender: TObject);
+    procedure flChange(Sender: TObject);
   private
     { Private declarations }
     a, b: word;
@@ -4043,6 +4043,11 @@ begin
     sleep(1000);
     Imprime_display_anterior;
   end;
+end;
+
+procedure TfrmVenda.flChange(Sender: TObject);
+begin
+
 end;
 
 // -------------------------------------------------------------------------- //

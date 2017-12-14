@@ -1670,7 +1670,7 @@ object frmModulo: TfrmModulo
   end
   object Balancas: TACBrBAL
     Modelo = balToledo
-    Porta = 'COM1'
+    Porta = 'COM2'
     OnLePeso = BalancasLePeso
     Left = 96
     Top = 440

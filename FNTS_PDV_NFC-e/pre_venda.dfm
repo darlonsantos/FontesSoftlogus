@@ -986,7 +986,7 @@ object frmPre_Venda: TfrmPre_Venda
       '  c000074.codcliente = c000007.codigo and'
       '  c000074.codvendedor = c000008.codigo')
     Left = 40
-    Top = 499
+    Top = 467
   end
   object tm_Atualiza: TTimer
     Enabled = False

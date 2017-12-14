@@ -68,9 +68,8 @@ object frmPrincipal: TfrmPrincipal
     BarManager = dxBarManager1
     ColorSchemeName = 'Blue'
     Contexts = <>
-    TabOrder = 6
+    TabOrder = 5
     TabStop = False
-    ExplicitTop = -4
     object dxRibbon1Tab3: TdxRibbonTab
       Active = True
       Caption = 'Menu'
@@ -111,8 +110,6 @@ object frmPrincipal: TfrmPrincipal
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    ExplicitLeft = 8
-    ExplicitTop = 771
   end
   object XPManifest1: TXPManifest
     Left = 40
@@ -1646,9 +1643,9 @@ object frmPrincipal: TfrmPrincipal
               FF00}
             Items = <
               item
-                Caption = 'ActionClientItem0'
+                Caption = '&ActionClientItem0'
               end>
-            Caption = 'ActionClientItem0'
+            Caption = '&ActionClientItem0'
             KeyTip = 'F'
             NewCol = True
             NewRow = True
@@ -1672,7 +1669,7 @@ object frmPrincipal: TfrmPrincipal
       end>
     Left = 1056
     Top = 48
-    StyleName = 'Ribbon - Luna'
+    StyleName = 'Platform Default'
     object actVendas: TAction
       Caption = 'Vendas'
       ShortCut = 16470

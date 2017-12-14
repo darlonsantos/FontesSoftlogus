@@ -894,6 +894,7 @@ object frmVenda: TfrmVenda
     ShowGlyphs = True
     TabOrder = 1
     Visible = False
+    OnChange = flChange
     Version = '1.2.1.1'
   end
   object PN_POSTO: TFlatPanel
@@ -1385,9 +1386,9 @@ object frmVenda: TfrmVenda
         Width = 1024
         Height = 768
         Align = alClient
-        ExplicitLeft = 1
-        ExplicitWidth = 1353
-        ExplicitHeight = 604
+        ExplicitLeft = -136
+        ExplicitTop = 37
+        ExplicitWidth = 1373
       end
       object Image1: TImage
         Left = 0
@@ -2026,6 +2027,8 @@ object frmVenda: TfrmVenda
           77A2C1725C8F514647A8A8A8A2C1725C8F514647A8A8A8A2C1725C8F514647A8
           A8A8A2C1724247A8A2A23451619FFFD9}
         Stretch = True
+        ExplicitLeft = 8
+        ExplicitTop = 138
         ExplicitWidth = 1023
       end
       object lb_produto: TRzLabel
@@ -2046,8 +2049,8 @@ object frmVenda: TfrmVenda
         ShadowColor = clBlack
       end
       object lb_total: TRzLabel
-        Left = 706
-        Top = 662
+        Left = 700
+        Top = 677
         Width = 327
         Height = 67
         Alignment = taCenter
@@ -4837,7 +4840,7 @@ object frmVenda: TfrmVenda
         Visible = False
       end
       object RzLabel6: TRzLabel
-        Left = 204
+        Left = 206
         Top = 661
         Width = 285
         Height = 74
@@ -5007,6 +5010,7 @@ object frmVenda: TfrmVenda
         Width = 201
         Height = 41
         Color = clWhite
+        Ctl3D = True
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -24
@@ -5015,6 +5019,7 @@ object frmVenda: TfrmVenda
         FrameStyle = fsNone
         FrameVisible = True
         FramingPreference = fpCustomFraming
+        ParentCtl3D = False
         ParentFont = False
         TabOrder = 0
         OnEnter = ed_barraEnter
@@ -5493,8 +5498,8 @@ object frmVenda: TfrmVenda
       end
     end
     object pn_fechamento: TFlatPanel
-      Left = 700
-      Top = 174
+      Left = 601
+      Top = 211
       Width = 305
       Height = 395
       Color = 13612943
@@ -5519,8 +5524,8 @@ object frmVenda: TfrmVenda
         ShadowColor = clBlack
       end
       object RzLabel48: TRzLabel
-        Left = 10
-        Top = 6
+        Left = 18
+        Top = 8
         Width = 287
         Height = 27
         Alignment = taCenter
@@ -5964,8 +5969,8 @@ object frmVenda: TfrmVenda
       end
     end
     object pn_cancelar_item: TFlatPanel
-      Left = 706
-      Top = 332
+      Left = 209
+      Top = 417
       Width = 427
       Height = 79
       Color = 13612943
@@ -5983,7 +5988,7 @@ object frmVenda: TfrmVenda
         Pen.Width = 4
       end
       object lb_cancelar_item: TRzLabel
-        Left = 83
+        Left = 85
         Top = 20
         Width = 209
         Height = 42
@@ -5999,7 +6004,7 @@ object frmVenda: TfrmVenda
         ShadowColor = clBlack
       end
       object AdvOfficeImage1: TAdvOfficeImage
-        Left = 16
+        Left = 24
         Top = 14
         Width = 53
         Height = 46
@@ -6204,8 +6209,8 @@ object frmVenda: TfrmVenda
       end
     end
     object pn_senha_cancelar: TFlatPanel
-      Left = 618
-      Top = 347
+      Left = 211
+      Top = 417
       Width = 427
       Height = 79
       Color = 13612943
@@ -6358,24 +6363,14 @@ object frmVenda: TfrmVenda
       end
     end
   end
-  object MemoLog: TMemo
-    Left = 1169
-    Top = 425
-    Width = 185
-    Height = 89
-    Lines.Strings = (
-      'MemoLog')
-    TabOrder = 4
-    Visible = False
-  end
   object MemoDados: TMemo
-    Left = 1184
-    Top = 494
+    Left = 721
+    Top = 263
     Width = 185
     Height = 89
     Lines.Strings = (
       'Memo1')
-    TabOrder = 5
+    TabOrder = 4
     Visible = False
     OnChange = MemoDadosChange
   end
@@ -6393,8 +6388,8 @@ object frmVenda: TfrmVenda
   object pop_principal: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
     Version = '2.5.4.3'
-    Left = 133
-    Top = 585
+    Left = 181
+    Top = 433
     object Opes1: TMenuItem
       Caption = 'Op'#231#245'es'
       ShortCut = 112
@@ -6624,8 +6619,8 @@ object frmVenda: TfrmVenda
     Top = 569
   end
   object qrAbastecimento: TIBCQuery
-    Left = 437
-    Top = 617
+    Left = 261
+    Top = 633
   end
   object timer_bico: TTimer
     Enabled = False
@@ -6663,8 +6658,8 @@ object frmVenda: TfrmVenda
     end
   end
   object actmgr1: TActionManager
-    Left = 493
-    Top = 617
+    Left = 413
+    Top = 641
     StyleName = 'XP Style'
     object act1: TAction
       Caption = 'Troca Impress'#227'o'
@@ -6696,7 +6691,7 @@ object frmVenda: TfrmVenda
   object QRCSOSN: TIBCQuery
     SQL.Strings = (
       'select CSOSN from C000025')
-    Left = 517
-    Top = 697
+    Left = 221
+    Top = 617
   end
 end
