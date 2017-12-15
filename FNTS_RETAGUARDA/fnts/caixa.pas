@@ -193,6 +193,7 @@ type
     qrcaixa_movconta: TStringField;
     qrcaixa_movDESCRICAO_MOVIMENTO: TStringField;
     UCControls1: TUCControls;
+    F1: TMenuItem;
     procedure qrcaixa_movCalcFields(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -1414,17 +1415,9 @@ end;
 
 procedure Tfrmcaixa.brelatorioClick(Sender: TObject);
 begin
-  if frmprincipal.acesso(codigo_usuario, '06.04') = 'NAO' then
-  begin
-    application.MessageBox('Acesso não permitido!', 'Atenção',
-      mb_ok + mb_iconerror);
-    exit;
-  end;
-
   FRMLISTA_CAIXA2 := TFRMLISTA_CAIXA2.create(self);
   FRMLISTA_CAIXA2.ShowModal;
 end;
-
 procedure Tfrmcaixa.bexcluirClick(Sender: TObject);
 begin
   if (qrcaixa_mov.FieldByName('movimento').asinteger = 1) or

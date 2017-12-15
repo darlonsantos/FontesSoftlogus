@@ -457,7 +457,7 @@ object frmcaixa: Tfrmcaixa
             Top = 33
             Width = 156
             Height = 30
-            Margins.Left = 1
+            Margins.Left = 6
             Margins.Top = 0
             AutoSize = False
             BorderStyle = bsNone
@@ -3504,12 +3504,15 @@ object frmcaixa: Tfrmcaixa
       ImageIndex = 25
       OnClick = ReaberturadeCaixa1Click
     end
+    object F1: TMenuItem
+      Caption = 'Fechar caixa por Operador'
+    end
   end
   object ImageList1: TImageList
     Left = 104
     Top = 320
     Bitmap = {
-      494C01014F005100100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014F006400140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004001000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

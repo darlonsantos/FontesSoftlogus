@@ -106,9 +106,6 @@ begin
     else
       combo_caixa.ItemIndex := 0;
 
-
-//    combo_caixa.Items.Add(frmmodulo.qrcaixa_operador.fieldbyname('CODIGO').asstring + ' ' + frmmodulo.qrcaixa_operador.fieldbyname('nome').asstring);
-//    combo_caixa.ItemIndex := combo_caixa.Items.Count - 1;
   end;
 end;
 
