@@ -900,7 +900,7 @@ object frmlista_caixa2: Tfrmlista_caixa2
     end
   end
   object fxcaixa: TfrxReport
-    Version = '4.12.2'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -945,19 +945,20 @@ object frmlista_caixa2: Tfrmlista_caixa2
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 35.015770000000000000
         Top = 98.267780000000000000
         Width = 740.409927000000000000
         object Line1: TfrxLineView
           Top = 15.118120000000000000
           Width = 740.787880000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line2: TfrxLineView
           Top = 32.015770000000000000
           Width = 740.787880000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo2: TfrxMemoView
@@ -965,7 +966,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 0.779529999999994000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '000#'
           DisplayFormat.Kind = fkNumeric
@@ -984,7 +984,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 18.141732283464600000
           Width = 177.637910000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1000,7 +999,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 18.118120000000000000
           Width = 275.905690000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1016,7 +1014,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 18.118120000000000000
           Width = 60.472480000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1033,7 +1030,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 18.118120000000000000
           Width = 64.252010000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1050,7 +1046,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 17.897650000000000000
           Width = 71.811070000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1066,7 +1061,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 18.141732280000000000
           Width = 64.252010000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1079,6 +1073,7 @@ object frmlista_caixa2: Tfrmlista_caixa2
         end
       end
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 15.338590000000000000
         Top = 192.756030000000000000
         Width = 740.409927000000000000
@@ -1090,7 +1085,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 0.220470000000000000
           Width = 177.637910000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'descricao_movimento'
           DataSet = fscaixa
           DataSetName = 'fscaixa'
@@ -1109,7 +1103,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 0.220470000000000000
           Width = 275.905690000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'HISTORICO'
           DataSet = fscaixa
           DataSetName = 'fscaixa'
@@ -1128,7 +1121,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 0.220470000000006000
           Width = 60.472480000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR'
           DataSet = fscaixa
           DataSetName = 'fscaixa'
@@ -1150,7 +1142,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 0.220470000000006000
           Width = 64.252010000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'ENTRADA'
           DataSet = fscaixa
           DataSetName = 'fscaixa'
@@ -1171,7 +1162,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Left = 668.976810000000000000
           Width = 71.811070000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'SAIDA'
           DataSet = fscaixa
           DataSetName = 'fscaixa'
@@ -1191,7 +1181,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
         object Memo89: TfrxMemoView
           Width = 64.252010000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'DATA'
           DataSet = fscaixa
           DataSetName = 'fscaixa'
@@ -1207,20 +1196,20 @@ object frmlista_caixa2: Tfrmlista_caixa2
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 521.575140000000000000
         Width = 740.409927000000000000
         object Line3: TfrxLineView
           Top = 3.779530000000080000
           Width = 740.787880000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo15: TfrxMemoView
           Top = 3.779530000000080000
           Width = 245.669450000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1236,7 +1225,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 3.779530000000080000
           Width = 268.346630000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1253,7 +1241,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 3.779530000000080000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1267,12 +1254,13 @@ object frmlista_caixa2: Tfrmlista_caixa2
         end
       end
       object Footer1: TfrxFooter
+        FillType = ftBrush
         Height = 230.551330000000000000
         Top = 230.551330000000000000
         Width = 740.409927000000000000
         object Line4: TfrxLineView
           Width = 740.787880000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo20: TfrxMemoView
@@ -1280,7 +1268,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 3.779527559999930000
           Width = 124.724490000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1297,7 +1284,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 3.779530000000050000
           Width = 260.787570000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1311,7 +1297,7 @@ object frmlista_caixa2: Tfrmlista_caixa2
         object Line5: TfrxLineView
           Top = 37.795299999999900000
           Width = 740.787880000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Style = fsDot
           Diagonal = True
         end
@@ -1320,14 +1306,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 52.913419999999700000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo13: TfrxMemoView
           Left = 8.338590000000000000
           Top = 54.692949999999900000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1343,14 +1327,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 68.031539999999600000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo28: TfrxMemoView
           Left = 8.338590000000000000
           Top = 69.811069999999600000
           Width = 86.929190000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1366,14 +1348,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 52.913419999999700000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo29: TfrxMemoView
           Left = 3.779530000000000000
           Top = 41.574829999999900000
           Width = 154.960730000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1390,21 +1370,18 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 68.031539999999600000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape5: TfrxShapeView
           Left = 3.779530000000000000
           Top = 83.149659999999710000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo30: TfrxMemoView
           Left = 8.338590000000000000
           Top = 84.929189999999710000
           Width = 90.708720000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1420,14 +1397,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 98.267779999999800000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo31: TfrxMemoView
           Left = 8.338590000000000000
           Top = 100.047310000000000000
           Width = 90.708720000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1443,28 +1418,24 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 83.149659999999710000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape8: TfrxShapeView
           Left = 98.267780000000000000
           Top = 98.267779999999800000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape9: TfrxShapeView
           Left = 3.779530000000000000
           Top = 113.385900000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo32: TfrxMemoView
           Left = 8.338590000000000000
           Top = 115.165430000000000000
           Width = 86.929190000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1480,14 +1451,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 128.504020000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo34: TfrxMemoView
           Left = 8.338590000000000000
           Top = 130.283550000000000000
           Width = 75.590600000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1503,21 +1472,18 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 113.385900000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape12: TfrxShapeView
           Left = 98.267780000000000000
           Top = 128.504020000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo35: TfrxMemoView
           Left = 102.047310000000000000
           Top = 55.692950000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR4'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1539,7 +1505,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 69.811070000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR6'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1561,7 +1526,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 84.929190000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR7'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1583,7 +1547,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 100.047310000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR8'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1605,7 +1568,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 115.165430000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR9'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1627,7 +1589,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 130.283550000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR5'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1649,14 +1610,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 158.622140000000000000
           Width = 94.488250000000000000
           Height = 34.015770000000000000
-          ShowHint = False
         end
         object Memo41: TfrxMemoView
           Left = 8.338590000000000000
           Top = 167.960730000000000000
           Width = 75.590600000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1672,14 +1631,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 158.622140000000000000
           Width = 60.472480000000000000
           Height = 34.015770000000000000
-          ShowHint = False
         end
         object Memo42: TfrxMemoView
           Left = 102.047310000000000000
           Top = 168.960730000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR10'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1701,14 +1658,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 52.913420000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo43: TfrxMemoView
           Left = 397.630180000000000000
           Top = 54.692950000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1724,14 +1679,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 68.031540000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo44: TfrxMemoView
           Left = 397.630180000000000000
           Top = 69.811070000000000000
           Width = 86.929190000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1747,14 +1700,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 52.913420000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo45: TfrxMemoView
           Left = 393.071120000000000000
           Top = 41.574830000000000000
           Width = 154.960730000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1771,21 +1722,18 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 68.031540000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape19: TfrxShapeView
           Left = 393.071120000000000000
           Top = 83.149660000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo46: TfrxMemoView
           Left = 397.630180000000000000
           Top = 84.929190000000000000
           Width = 90.708720000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1801,14 +1749,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 98.267780000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo47: TfrxMemoView
           Left = 397.630180000000000000
           Top = 100.047310000000000000
           Width = 90.708720000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1824,28 +1770,24 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 83.149660000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape22: TfrxShapeView
           Left = 487.559370000000000000
           Top = 98.267780000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape23: TfrxShapeView
           Left = 393.071120000000000000
           Top = 113.385900000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo48: TfrxMemoView
           Left = 397.630180000000000000
           Top = 115.165430000000000000
           Width = 86.929190000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1861,14 +1803,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 131.504020000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo49: TfrxMemoView
           Left = 397.630180000000000000
           Top = 133.283550000000000000
           Width = 75.590600000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1884,21 +1824,18 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 113.385900000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape26: TfrxShapeView
           Left = 487.559370000000000000
           Top = 131.504020000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo50: TfrxMemoView
           Left = 491.338900000000000000
           Top = 55.692950000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR11'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1920,7 +1857,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 69.811070000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR12'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1942,7 +1878,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 84.929190000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR13'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1964,7 +1899,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 100.047310000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR14'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1986,7 +1920,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 115.165430000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR17'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2008,7 +1941,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 133.283550000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR18'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2030,14 +1962,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 150.401670000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo56: TfrxMemoView
           Left = 397.630180000000000000
           Top = 152.181200000000000000
           Width = 75.590600000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2053,14 +1983,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 150.401670000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo57: TfrxMemoView
           Left = 491.338900000000000000
           Top = 152.181200000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR15'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2082,14 +2010,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 165.519790000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo58: TfrxMemoView
           Left = 397.630180000000000000
           Top = 167.299320000000000000
           Width = 75.590600000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2105,14 +2031,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 165.519790000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo59: TfrxMemoView
           Left = 491.338900000000000000
           Top = 167.299320000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR16'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2134,14 +2058,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 52.913420000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo60: TfrxMemoView
           Left = 582.827150000000000000
           Top = 54.692950000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2157,14 +2079,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 68.031540000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo61: TfrxMemoView
           Left = 582.827150000000000000
           Top = 69.811070000000000000
           Width = 86.929190000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2180,14 +2100,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 52.913420000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo62: TfrxMemoView
           Left = 578.268090000000000000
           Top = 41.574830000000000000
           Width = 154.960730000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2204,21 +2122,18 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 68.031540000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape35: TfrxShapeView
           Left = 578.268090000000000000
           Top = 83.149660000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo63: TfrxMemoView
           Left = 582.827150000000000000
           Top = 84.929190000000000000
           Width = 90.708720000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2234,28 +2149,24 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 98.267780000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape37: TfrxShapeView
           Left = 672.756340000000000000
           Top = 83.149660000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape38: TfrxShapeView
           Left = 672.756340000000000000
           Top = 98.267780000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo64: TfrxMemoView
           Left = 676.535870000000000000
           Top = 55.692950000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR19'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2277,7 +2188,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 69.811070000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR20'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2299,7 +2209,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 84.929190000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR21'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2321,7 +2230,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 100.267780000000000000
           Width = 90.708720000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2337,7 +2245,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 100.267780000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR22'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2359,7 +2266,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 23.677179999999800000
           Width = 124.724490000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2376,7 +2282,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 22.677179999999800000
           Width = 139.842610000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR3'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2399,7 +2304,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 3.779530000000050000
           Width = 64.252010000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR1'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2422,7 +2326,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 3.779530000000050000
           Width = 64.252010000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR2'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2445,14 +2348,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 143.622140000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo69: TfrxMemoView
           Left = 8.338590000000000000
           Top = 145.401670000000000000
           Width = 75.590600000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2468,14 +2369,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 143.622140000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo72: TfrxMemoView
           Left = 102.047310000000000000
           Top = 145.401670000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR35'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2497,14 +2396,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 52.913420000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo73: TfrxMemoView
           Left = 170.858380000000000000
           Top = 54.692950000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2520,14 +2417,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 68.031540000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo74: TfrxMemoView
           Left = 170.858380000000000000
           Top = 69.811070000000000000
           Width = 86.929190000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2543,14 +2438,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 52.913420000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo75: TfrxMemoView
           Left = 166.299320000000000000
           Top = 41.574830000000000000
           Width = 154.960730000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2567,21 +2460,18 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 68.031540000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape45: TfrxShapeView
           Left = 166.299320000000000000
           Top = 83.149660000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo76: TfrxMemoView
           Left = 170.858380000000000000
           Top = 84.929190000000000000
           Width = 90.708720000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2597,14 +2487,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 98.267780000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo77: TfrxMemoView
           Left = 170.858380000000000000
           Top = 100.047310000000000000
           Width = 90.708720000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2620,28 +2508,24 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 83.149660000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape48: TfrxShapeView
           Left = 260.787570000000000000
           Top = 98.267780000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape49: TfrxShapeView
           Left = 166.299320000000000000
           Top = 113.385900000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo78: TfrxMemoView
           Left = 170.858380000000000000
           Top = 115.165430000000000000
           Width = 86.929190000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2657,14 +2541,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 128.504020000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo79: TfrxMemoView
           Left = 170.858380000000000000
           Top = 130.283550000000000000
           Width = 75.590600000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2680,21 +2562,18 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 113.385900000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Shape52: TfrxShapeView
           Left = 260.787570000000000000
           Top = 128.504020000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
         end
         object Memo80: TfrxMemoView
           Left = 264.567100000000000000
           Top = 55.692950000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR26'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2716,7 +2595,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 69.811070000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR27'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2738,7 +2616,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 84.929190000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR28'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2760,7 +2637,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 100.047310000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR29'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2782,7 +2658,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 115.165430000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR30'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2804,7 +2679,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 130.283550000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR31'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2826,14 +2700,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 143.504020000000000000
           Width = 94.488250000000000000
           Height = 49.133890000000000000
-          ShowHint = False
         end
         object Memo86: TfrxMemoView
           Left = 170.858380000000000000
           Top = 167.960730000000000000
           Width = 75.590600000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2849,14 +2721,12 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 143.504020000000000000
           Width = 60.472480000000000000
           Height = 49.133890000000000000
-          ShowHint = False
         end
         object Memo87: TfrxMemoView
           Left = 264.567100000000000000
           Top = 168.960730000000000000
           Width = 52.913420000000000000
           Height = 11.338590000000000000
-          ShowHint = False
           DataField = 'VALOR32'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2875,13 +2745,13 @@ object frmlista_caixa2: Tfrmlista_caixa2
         end
       end
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 56.692950000000000000
         Top = 18.897650000000000000
         Width = 740.409927000000000000
         object LEMPRESA: TfrxMemoView
           Width = 185.196970000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'NOME'
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
@@ -2899,7 +2769,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Left = 188.976500000000000000
           Width = 434.645950000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA1'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2919,7 +2788,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 3.000000000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
           DisplayFormat.Kind = fkDateTime
@@ -2937,7 +2805,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 18.897650000000000000
           Width = 298.582869999998000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA2'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2955,7 +2822,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 30.236240000000000000
           Width = 298.582869999998000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA3'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2973,7 +2839,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 41.574830000000000000
           Width = 298.582869999998000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA4'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -2992,7 +2857,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 18.897650000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
           DisplayFormat.Kind = fkDateTime
@@ -3011,7 +2875,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 18.897650000000000000
           Width = 298.582870000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA5'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -3030,7 +2893,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 30.236240000000000000
           Width = 298.582870000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA6'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -3049,7 +2911,6 @@ object frmlista_caixa2: Tfrmlista_caixa2
           Top = 41.574830000000000000
           Width = 298.582870000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA7'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'

@@ -196,7 +196,7 @@ begin
     frmxloc_cliente := tfrmxloc_cliente.create(self);
     frmxloc_cliente.showmodal;
 
-
+     //201254693  chave
     if RESULTADO_PESQUISA1 <> '' then
     begin
       combo_cliente.Items.Add(resultado_pesquisa1 + ' ' + resultado_pesquisa2);

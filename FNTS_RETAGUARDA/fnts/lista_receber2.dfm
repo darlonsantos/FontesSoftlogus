@@ -37,7 +37,6 @@ object frmlista_receber2: Tfrmlista_receber2
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 329
     object bimprimir: TAdvGlowButton
       Left = 183
       Top = 1
@@ -951,7 +950,7 @@ object frmlista_receber2: Tfrmlista_receber2
     end
   end
   object fxcontas_receber: TfrxReport
-    Version = '4.12.2'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1001,6 +1000,7 @@ object frmlista_receber2: Tfrmlista_receber2
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       object MasterData1: TfrxMasterData
+        FillType = ftBrush
         Height = 18.897650000000000000
         Top = 136.063080000000000000
         Width = 740.409927000000000000
@@ -1011,7 +1011,6 @@ object frmlista_receber2: Tfrmlista_receber2
         object Memo1: TfrxMemoView
           Width = 64.252010000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1027,7 +1026,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Left = 64.252010000000000000
           Width = 676.535870000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'CIDADE'
           DataSet = frmlista_cliente2.frxDBDataset1
           DataSetName = 'fxcliente2'
@@ -1044,20 +1042,20 @@ object frmlista_receber2: Tfrmlista_receber2
         end
       end
       object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
         Height = 22.677180000000000000
         Top = 306.141930000000000000
         Width = 740.409927000000000000
         object Line3: TfrxLineView
           Top = 3.779530000000022000
           Width = 740.787880000000000000
-          ShowHint = False
+          Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo15: TfrxMemoView
           Top = 3.779530000000022000
           Width = 245.669450000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1073,7 +1071,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 3.779530000000022000
           Width = 268.346630000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1090,7 +1087,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 3.779530000000022000
           Width = 219.212740000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1104,6 +1100,7 @@ object frmlista_receber2: Tfrmlista_receber2
         end
       end
       object DetailData1: TfrxDetailData
+        FillType = ftBrush
         Height = 68.031540000000000000
         Top = 177.637910000000000000
         Width = 740.409927000000000000
@@ -1115,7 +1112,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 3.779529999999994000
           Width = 298.582870000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1131,7 +1127,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 3.779529999999994000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CODIGO'
           DataSet = frmlista_cliente2.fscliente
           DataSetName = 'fxcliente'
@@ -1150,7 +1145,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 49.133887560000010000
           Width = 124.724490000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CPF'
           DataSet = frmlista_cliente2.fscliente
           DataSetName = 'fxcliente'
@@ -1168,7 +1162,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 3.779529999999994000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1184,7 +1177,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 49.133890000000010000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1200,7 +1192,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 3.779529999999994000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1216,7 +1207,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 3.779529999999994000
           Width = 222.992270000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1232,7 +1222,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 49.133890000000010000
           Width = 124.724490000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CPF'
           DataSet = frmlista_cliente2.fscliente
           DataSetName = 'fxcliente'
@@ -1251,7 +1240,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 49.133892440000010000
           Width = 37.795300000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1267,7 +1255,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 49.133890000000010000
           Width = 291.023810000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataSet = frmlista_cliente2.fscliente
           DataSetName = 'fxcliente'
           DisplayFormat.DecimalSeparator = ','
@@ -1286,7 +1273,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 49.133892440000010000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1302,7 +1288,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 18.897650000000000000
           Width = 347.716760000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'ENDERECO'
           DataSet = frmlista_cliente2.fscliente
           DataSetName = 'fxcliente'
@@ -1320,7 +1305,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 18.897650000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1336,7 +1320,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 18.897650000000000000
           Width = 272.126160000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'BAIRRO'
           DataSet = frmlista_cliente2.fscliente
           DataSetName = 'fxcliente'
@@ -1355,7 +1338,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 18.897650000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1371,7 +1353,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 34.015770000000010000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CEP'
           DataSet = frmlista_cliente2.fscliente
           DataSetName = 'fxcliente'
@@ -1389,7 +1370,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 34.015770000000010000
           Width = 34.015770000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1405,7 +1385,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 34.015770000000010000
           Width = 196.535560000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'CEP'
           DataSet = frmlista_cliente2.fscliente
           DataSetName = 'fxcliente'
@@ -1424,7 +1403,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 34.015770000000010000
           Width = 79.370130000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1440,7 +1418,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 34.015770000000010000
           Width = 279.685220000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'EMAIL'
           DataSet = frmlista_cliente2.fscliente
           DataSetName = 'fxcliente'
@@ -1459,7 +1436,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 34.015770000000010000
           Width = 34.015770000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -1473,18 +1449,18 @@ object frmlista_receber2: Tfrmlista_receber2
         object Line1: TfrxLineView
           Top = 68.031540000000010000
           Width = 740.787880000000000000
-          ShowHint = False
+          Color = clBlack
           Diagonal = True
         end
       end
       object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
         Height = 56.692950000000000000
         Top = 18.897650000000000000
         Width = 740.409927000000000000
         object Memo24: TfrxMemoView
           Width = 185.196970000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'NOME'
           DataSet = frmmodulo.fxemitente
           DataSetName = 'fxemitente'
@@ -1502,7 +1478,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Left = 188.976500000000000000
           Width = 434.645950000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA1'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1522,7 +1497,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 3.000000000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
           DisplayFormat.Kind = fkDateTime
@@ -1540,7 +1514,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 18.897650000000000000
           Width = 298.582870000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA2'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1558,7 +1531,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 30.236240000000000000
           Width = 298.582870000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA3'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1576,7 +1548,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 41.574830000000000000
           Width = 298.582870000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA4'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1595,7 +1566,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 18.897650000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = 'dd/mm/yyyy'
           DisplayFormat.Kind = fkDateTime
@@ -1614,7 +1584,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 18.897650000000000000
           Width = 298.582870000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA5'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1633,7 +1602,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 30.236240000000000000
           Width = 298.582870000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DataField = 'LINHA6'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1652,7 +1620,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 41.574830000000000000
           Width = 298.582870000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DataField = 'LINHA7'
           DataSet = frmmodulo.fxrelatorio
           DataSetName = 'fxrelatorio'
@@ -1671,7 +1638,6 @@ object frmlista_receber2: Tfrmlista_receber2
           Top = 37.795300000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '000#'
           DisplayFormat.Kind = fkNumeric
@@ -1688,7 +1654,7 @@ object frmlista_receber2: Tfrmlista_receber2
         object Line2: TfrxLineView
           Top = 56.692949999999990000
           Width = 740.787880000000000000
-          ShowHint = False
+          Color = clBlack
           Diagonal = True
         end
       end
@@ -1760,8 +1726,8 @@ object frmlista_receber2: Tfrmlista_receber2
     Top = 16
   end
   object PopupMenu1: TPopupMenu
-    Left = 16
-    Top = 64
+    Left = 40
+    Top = 176
     object Fechar1: TMenuItem
       Caption = 'Fechar'
       ShortCut = 27
@@ -2176,8 +2142,8 @@ object frmlista_receber2: Tfrmlista_receber2
     Params = <>
     MasterFields = 'CODIGO'
     IndexFieldNames = 'CODCLIENTE Asc'
-    Left = 84
-    Top = 64
+    Left = 92
+    Top = 168
     object qrcontasreceber1CODCONTA: TWideStringField
       FieldName = 'CODCONTA'
       Size = 9
