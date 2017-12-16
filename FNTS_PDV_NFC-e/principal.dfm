@@ -23,7 +23,7 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object Bevel1: TBevel
     Left = 0
-    Top = 116
+    Top = 126
     Width = 1135
     Height = 2
     Align = alTop
@@ -51,25 +51,24 @@ object frmPrincipal: TfrmPrincipal
   end
   object imgm_imagens: TImage
     Left = 0
-    Top = 118
+    Top = 128
     Width = 1135
-    Height = 749
+    Height = 739
     Align = alClient
     Stretch = True
     ExplicitLeft = 16
     ExplicitTop = 400
-    ExplicitHeight = 739
   end
   object dxRibbon1: TdxRibbon
     Left = 0
     Top = 0
     Width = 1135
-    Height = 116
+    Height = 126
     ApplicationButton.Menu = dxBarApplicationMenu1
     BarManager = dxBarManager1
     ColorSchemeName = 'Blue'
     Contexts = <>
-    TabOrder = 4
+    TabOrder = 3
     TabStop = False
     object dxRibbon1Tab3: TdxRibbonTab
       Active = True
@@ -245,12 +244,15 @@ object frmPrincipal: TfrmPrincipal
   end
   object dxFloatDockSite1: TdxFloatDockSite
     Left = 0
-    Top = 0
-    Width = 185
-    Height = 131
+    Top = 118
+    Width = 1135
+    Height = 749
     Visible = False
     FloatLeft = 964
     FloatTop = 633
+    ExplicitTop = 0
+    ExplicitWidth = 185
+    ExplicitHeight = 131
     DockingType = 0
     OriginalWidth = 185
     OriginalHeight = 131
@@ -5826,8 +5828,8 @@ object frmPrincipal: TfrmPrincipal
     AutoHideEmptyBars = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
     Font.Style = []
     Backgrounds.Bar.Data = {
       32A90000424D32A9000000000000360000002800000069000000670000000100
