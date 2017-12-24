@@ -4,7 +4,7 @@
 			<MainSource>Softlogus.dpr</MainSource>
 			<Base>True</Base>
 			<Config Condition="'$(Config)'==''">Release</Config>
-			<TargetedPlatforms>1</TargetedPlatforms>
+			<TargetedPlatforms>3</TargetedPlatforms>
 			<AppType>Application</AppType>
 			<FrameworkType>VCL</FrameworkType>
 			<ProjectVersion>13.4</ProjectVersion>
@@ -46,6 +46,7 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<VCL_Custom_Styles>&quot;Iceberg Classico|VCLSTYLE|$(PUBLIC)\Documents\RAD Studio\9.0\Styles\IcebergClassico.vsf&quot;</VCL_Custom_Styles>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
 			<DCC_UsePackage>vcl;rtl;vclx;indy;inet;xmlrtl;vclie;inetdbbde;inetdbxpress;dbrtl;dsnap;dsnapcon;vcldb;soaprtl;VclSmp;dbexpress;dbxcds;inetdb;bdertl;vcldbx;webdsnap;websnap;adortl;ibxpress;teeui;teedb;tee;dss;visualclx;visualdbclx;vclactnband;vclshlctrls;IntrawebDB_50_70;Intraweb_50_70;dclOfficeXP;RxDB7;RxCtl7;RxBDE7;TMSD7;tmsexd7;tmswizd7;tmsxlsd7;dxCoreD7;dxGDIPlusD7;cxLibraryD7;cxEditorsD7;dxmdsD7;dxBarD7;dxBarDBNavD7;dxBarExtDBItemsD7;dxBarExtItemsD7;dxRibbonD7;cxBarEditItemD7;dxdbtrD7;dxtrmdD7;dxDockingD7;dxThemeD7;dxFlowChartD7;cxPageControlD7;dxComnD7;cxPageControldxBarPopupMenuD7;dxTabbedMDID7;dxLayoutControlD7;dxNavBarD7;dxorgcD7;dxdborD7;cxGridD7;cxPivotGridD7;cxPivotGridChartD7;cxPivotGridOLAPD7;cxTreeListD7;cxTreeListdxBarPopupMenuD7;cxSchedulerD7;cxSchedulerGridD7;dcldxSkinsCoreD7;dxSkinsCoreD7;dxSkinscxPCPainterD7;dxSkinscxSchedulerPainterD7;dxSkinsdxDLPainterD7;dxSkinsdxBarPainterD7;dxSkinsdxNavBarPainterD7;dxSpellCheckerD7;cxSpreadSheetD7;cxVerticalGridD7;dxPSCoreD7;dxPSLnksD7;dxPScxCommonD7;dxPScxExtCommonD7;dxPScxGridLnkD7;dxPSdxLCLnkD7;dxPScxPivotGridLnkD7;dxPScxSchedulerLnkD7;dxPScxSSLnkD7;dxPScxTLLnkD7;dxPScxVGridLnkD7;dxPSTeeChartD7;dxPSDBTeeChartD7;dxPSdxOCLnkD7;dxPSdxDBOCLnkD7;dxPSdxDBTVLnkD7;dxPSdxFCLnkD7;dxPScxPCProdD7;dxPsPrVwAdvD7;dxPSPrVwRibbonD7;dxSkinsdxRibbonPainterD7;fs7;frx7;fsDB7;frxDB7;fsBDE7;frxBDE7;fsADO7;frxADO7;fsIBX7;frxIBX7;frxDBX7;frxe7;fsTee7;frxTee7;ip4000clientvcl7;ip4000v7;RaizeComponentsVcl;RaizeComponentsVclDb;fc4000v7;QR5RunD7;Rave70VCL;Rave70CLX;CPF;DELPRINT7;$(DCC_UsePackage)</DCC_UsePackage>
 			<VerInfo_Keys>CompanyName=Sistema iCloud;FileDescription=Sistemas de Automação Comercial;FileVersion=1.5.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.5;Comments=</VerInfo_Keys>
@@ -62,6 +63,10 @@
 			<DCC_E>false</DCC_E>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base_Win64)'!=''">
+			<VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+			<DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+			<VerInfo_Locale>1033</VerInfo_Locale>
+			<Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
 			<DCC_UsePackage>vclimg;$(DCC_UsePackage)</DCC_UsePackage>
 			<Icon_MainIcon>iCloud_retaguarda_Icon.ico</Icon_MainIcon>
 		</PropertyGroup>
@@ -82,7 +87,7 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
 			<VerInfo_Debug>true</VerInfo_Debug>
-			<VerInfo_Build>32</VerInfo_Build>
+			<VerInfo_Build>33</VerInfo_Build>
 			<VerInfo_PreRelease>true</VerInfo_PreRelease>
 			<VerInfo_Release>2</VerInfo_Release>
 			<VerInfo_MajorVer>2</VerInfo_MajorVer>
@@ -92,7 +97,7 @@
 			<VerInfo_MinorVer>2</VerInfo_MinorVer>
 			<DCC_MapFile>3</DCC_MapFile>
 			<DCC_DebugInformation>true</DCC_DebugInformation>
-			<VerInfo_Keys>CompanyName=Softlogus Sistemas engenharia em softwares;FileDescription=Módulo Retaguarda;FileVersion=2.2.2.32;InternalName=Softlogus Sistemas;LegalCopyright=Todos os  direitos reservados a Softlogus sistemas;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=2.2.2.31;Comments=</VerInfo_Keys>
+			<VerInfo_Keys>CompanyName=Softlogus Sistemas engenharia em softwares;FileDescription=Módulo Retaguarda;FileVersion=2.2.2.33;InternalName=Softlogus Sistemas;LegalCopyright=Todos os  direitos reservados a Softlogus sistemas;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=2.2.2.31;Comments=</VerInfo_Keys>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -1390,7 +1395,7 @@
 					</Excluded_Packages>
 				</Delphi.Personality>
 				<Platforms>
-					<Platform value="Win64">False</Platform>
+					<Platform value="Win64">True</Platform>
 					<Platform value="Win32">True</Platform>
 				</Platforms>
 				<ModelSupport>False</ModelSupport>

@@ -53,8 +53,6 @@ object frmloc_banco: Tfrmloc_banco
     OnKeyPress = DBGrid1KeyPress
     PaintOptions.AlternatingRowColor = 14671839
     PaintOptions.ActiveRecordColor = clBlack
-    ExplicitWidth = 345
-    ExplicitHeight = 294
   end
   object Panel1: TPanel
     Left = 0
@@ -65,7 +63,6 @@ object frmloc_banco: Tfrmloc_banco
     BevelOuter = bvNone
     Color = clWhite
     TabOrder = 1
-    ExplicitWidth = 345
     object Label1: TLabel
       Left = 8
       Top = 8

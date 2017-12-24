@@ -986,48 +986,6 @@ object frmconfig: Tfrmconfig
           Height = 13
           Caption = 'Total da Nota:'
         end
-        object RxDBCalcEdit1: TRxDBCalcEdit
-          Left = 96
-          Top = 16
-          Width = 81
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 1
-          DataField = 'DESCONTO_PRODUTO'
-          DataSource = dsconfig
-          DisplayFormat = '###,###,##0.00%'
-          ButtonWidth = 0
-          NumGlyphs = 2
-          TabOrder = 0
-        end
-        object RxDBCalcEdit2: TRxDBCalcEdit
-          Left = 96
-          Top = 40
-          Width = 81
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 1
-          DisplayFormat = '###,###,##0.00%'
-          Enabled = False
-          ButtonWidth = 0
-          NumGlyphs = 2
-          TabOrder = 1
-        end
-        object RxDBCalcEdit3: TRxDBCalcEdit
-          Left = 96
-          Top = 64
-          Width = 81
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 1
-          DataField = 'DESCONTO_TOTALNOTA'
-          DataSource = dsconfig
-          DecimalPlaces = 15
-          DisplayFormat = '###,###,##0.00%'
-          ButtonWidth = 0
-          NumGlyphs = 2
-          TabOrder = 2
-        end
       end
       object GroupBox25: TGroupBox
         Left = 204
@@ -1197,49 +1155,6 @@ object frmconfig: Tfrmconfig
           Height = 13
           Caption = 'Presta'#231#227'o Vencida:'
         end
-        object RxDBCalcEdit4: TRxDBCalcEdit
-          Left = 117
-          Top = 16
-          Width = 103
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 1
-          DataField = 'CONTASRECEBER_TAXAJUROS'
-          DataSource = dsconfig
-          DecimalPlaces = 3
-          DisplayFormat = '###,###,##0.000% ao dia'
-          ButtonWidth = 0
-          NumGlyphs = 2
-          TabOrder = 0
-        end
-        object RxDBCalcEdit5: TRxDBCalcEdit
-          Left = 117
-          Top = 40
-          Width = 103
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 1
-          DataField = 'CONTASRECEBER_MULTA'
-          DataSource = dsconfig
-          DisplayFormat = '###,###,##0.000%'
-          ButtonWidth = 0
-          NumGlyphs = 2
-          TabOrder = 1
-        end
-        object RxDBCalcEdit6: TRxDBCalcEdit
-          Left = 117
-          Top = 64
-          Width = 103
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 1
-          DataField = 'CONTASRECEBER_CARENCIA'
-          DataSource = dsconfig
-          DisplayFormat = '###,###,##0 dias'
-          ButtonWidth = 0
-          NumGlyphs = 2
-          TabOrder = 2
-        end
         object DBCheckBox6: TDBCheckBox
           Left = 7
           Top = 119
@@ -1248,38 +1163,9 @@ object frmconfig: Tfrmconfig
           Caption = 'Permitir Desconto'
           DataField = 'CONTASRECEBER_DESCONTO_PERMITIR'
           DataSource = dsconfig
-          TabOrder = 3
+          TabOrder = 0
           ValueChecked = '1'
           ValueUnchecked = '0'
-        end
-        object RxDBCalcEdit7: TRxDBCalcEdit
-          Left = 128
-          Top = 135
-          Width = 89
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 1
-          DataField = 'CONTASRECEBER_DESCONTO_PERCENT'
-          DataSource = dsconfig
-          DisplayFormat = '###,###,##0.000'
-          ButtonWidth = 0
-          NumGlyphs = 2
-          TabOrder = 4
-        end
-        object RxDBCalcEdit8: TRxDBCalcEdit
-          Left = 117
-          Top = 89
-          Width = 103
-          Height = 21
-          Margins.Left = 4
-          Margins.Top = 1
-          DataField = 'CONTASRECEBER_BLOQUEIO'
-          DataSource = dsconfig
-          DecimalPlaces = 0
-          DisplayFormat = '###,###,##0 dias'
-          ButtonWidth = 0
-          NumGlyphs = 2
-          TabOrder = 5
         end
       end
       object GroupBox14: TGroupBox
@@ -4708,7 +4594,7 @@ object frmconfig: Tfrmconfig
         ShowCustomColor = True
         ShowDefaultColor = True
         BorderOuter = fsFlat
-        FlatColor = 11183783
+        FlatColor = 11775403
         TabOrder = 4
       end
       object GroupBox26: TGroupBox
@@ -5504,7 +5390,6 @@ object frmconfig: Tfrmconfig
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 442
     object bcancelar: TAdvGlowButton
       Left = 229
       Top = 8

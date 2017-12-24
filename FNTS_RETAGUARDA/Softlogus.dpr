@@ -430,6 +430,7 @@ var
   HprevHist: HWND;
 begin
   Application.Initialize;
+  TStyleManager.TrySetStyle('Iceberg Classico');
   Application.Title := 'Softlogus Sistemas';
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(Tfrmsplash, frmsplash);
