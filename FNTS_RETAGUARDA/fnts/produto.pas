@@ -1384,6 +1384,8 @@ type
     procedure W7ActiveLabel544Click(Sender: TObject);
     procedure W7ActiveLabel5001Click(Sender: TObject);
     procedure W7ActiveLabel5222Click(Sender: TObject);
+    procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
+    procedure RzDBButtonEdit2ButtonClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -1417,7 +1419,7 @@ uses modulo, principal, loc_grupo,
   xloc_produto, produto_atualizapreco, xloc_cst, industrializacao,
   inventario, baixa_estoque, servico, loc_aliquota, Produto_consultaserial,
   produto_movimentar, unNFe2, produto_serial_ficha, fornecedor_codigo, Ncm,
-  xloc_csosn;
+  xloc_csosn, xloc_cliente, xloc_cfop;
 
 {$R *.dfm}
 
@@ -5067,6 +5069,34 @@ procedure Tfrmproduto.DBEdit22KeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
     batu.SetFocus;
+end;
+
+procedure Tfrmproduto.RzDBButtonEdit1ButtonClick(Sender: TObject);
+begin
+   parametro_pesquisa := ' is not null ';
+  frmXLOC_cfop := tfrmXLOC_cfop.create(self);
+  frmXLOC_cfop.showmodal;
+  if resultado_pesquisa1 <> '' then
+  begin
+    frmmodulo.qrCFOP.Open;
+    frmmodulo.qrcfop.Locate('cfop', resultado_pesquisa1, [loCaseInsensitive]);
+    if (qrproduto.STATE = DSEDIT) or (qrproduto.State = DSINSERT) then
+      qrproduto.FIELDBYNAME('IND_CFOP_VENDA_DENTRO').ASSTRING := RESULTADO_PESQUISA1;
+ end;
+end;
+
+procedure Tfrmproduto.RzDBButtonEdit2ButtonClick(Sender: TObject);
+begin
+ parametro_pesquisa := ' is not null ';
+  frmXLOC_cfop := tfrmXLOC_cfop.create(self);
+  frmXLOC_cfop.showmodal;
+  if resultado_pesquisa1 <> '' then
+  begin
+    frmmodulo.qrCFOP.Open;
+    frmmodulo.qrcfop.Locate('cfop', resultado_pesquisa1, [loCaseInsensitive]);
+    if (qrproduto.STATE = DSEDIT) or (qrproduto.State = DSINSERT) then
+      qrproduto.FIELDBYNAME('IND_CFOP_VENDA_FORA').ASSTRING := RESULTADO_PESQUISA1;
+ end;
 end;
 
 procedure Tfrmproduto.RzDBNumericEdit10KeyPress(Sender: TObject; var Key: Char);

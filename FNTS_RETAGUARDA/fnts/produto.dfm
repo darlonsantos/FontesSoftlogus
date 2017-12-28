@@ -5,7 +5,7 @@ object frmproduto: Tfrmproduto
   BorderStyle = bsSingle
   Caption = 'PRODUTOS | Ficha de Cadastro'
   ClientHeight = 547
-  ClientWidth = 1011
+  ClientWidth = 1002
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -23,7 +23,7 @@ object frmproduto: Tfrmproduto
   object Bevel7: TBevel
     Left = 0
     Top = 503
-    Width = 1011
+    Width = 1002
     Height = 3
     Align = alBottom
     ExplicitLeft = 62
@@ -141,13 +141,13 @@ object frmproduto: Tfrmproduto
   object Panel2: TPanel
     Left = 0
     Top = 506
-    Width = 1011
+    Width = 1002
     Height = 41
     Align = alBottom
     BevelOuter = bvNone
     Color = clWhite
     TabOrder = 2
-    ExplicitWidth = 1369
+    ExplicitWidth = 1011
     object bincluir: TAdvGlowButton
       Left = 105
       Top = 2
@@ -1311,7 +1311,6 @@ object frmproduto: Tfrmproduto
         ActivePage = PageSheet10
         ActivePageIndex = 0
         AdaptiveColors = True
-        Align = alTop
         BackgroundColor = 13230308
         BackgroundKind = bkSolid
         Indent = 2
@@ -1338,6 +1337,8 @@ object frmproduto: Tfrmproduto
           TabColor = clWindow
           TabWidth = 0
           TransparentColor = clNone
+          ExplicitLeft = 4
+          ExplicitTop = -3
           object pficha2: TPanel
             Left = 0
             Top = 0
@@ -1348,6 +1349,8 @@ object frmproduto: Tfrmproduto
             Color = clWhite
             ParentBackground = False
             TabOrder = 0
+            ExplicitLeft = 416
+            ExplicitTop = 56
             object Label94: TLabel
               Left = 288
               Top = 122
@@ -2996,6 +2999,7 @@ object frmproduto: Tfrmproduto
               ButtonShortCut = 117
               AltBtnWidth = 15
               ButtonWidth = 24
+              OnButtonClick = RzDBButtonEdit1ButtonClick
             end
             object DBEdit73: TDBEdit
               Left = 238
@@ -3055,6 +3059,7 @@ object frmproduto: Tfrmproduto
               ButtonShortCut = 117
               AltBtnWidth = 15
               ButtonWidth = 24
+              OnButtonClick = RzDBButtonEdit2ButtonClick
             end
             object DBEdit74: TDBEdit
               Left = 238
@@ -9483,7 +9488,7 @@ object frmproduto: Tfrmproduto
           0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000008B49444154384F63F8FFFF3F434545C55E20
+          0EBC00000EBC0195BC72490000008B49444154384F63F8FFFF3F434545C55E20
           FE4F22DE03D20BD2CC5C5555056443C0BF7FFFF06298BACACA4A90854C2806CC
           9E3D9BA02B162F5E0C3603C30090CD202FE003BF7EFDFA5F5353439C01D3B75D
           FB1FD8BAEB7F48FBEEFF2036089064404CEFFEFF611D7BC018C4FEF5FB2F6906
@@ -9531,7 +9536,7 @@ object frmproduto: Tfrmproduto
           00000010080200000090916836000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000004649444154384F63085DD341126220493550
+          0EBC00000EBC0195BC72490000004649444154384F63085DD341126220493550
           311D34646666FEFDFBF73F7100A8980188FFFDFB479CFAFF281A129000443FA6
           C8A80DB40F2562E20E140F191919408A4800540C00276B2189044D358B000000
           0049454E44AE426082}
@@ -9577,7 +9582,7 @@ object frmproduto: Tfrmproduto
           0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000008B49444154384F63F8FFFF3F434545C55E20
+          0EBC00000EBC0195BC72490000008B49444154384F63F8FFFF3F434545C55E20
           FE4F22DE03D20BD2CC5C5555056443C0BF7FFFF06298BACACA4A90854C2806CC
           9E3D9BA02B162F5E0C3603C30090CD202FE003BF7EFDFA5F5353439C01D3B75D
           FB1FD8BAEB7F48FBEEFF2036089064404CEFFEFF611D7BC018C4FEF5FB2F6906
@@ -9625,7 +9630,7 @@ object frmproduto: Tfrmproduto
           00000010080200000090916836000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000004649444154384F63085DD341126220493550
+          0EBC00000EBC0195BC72490000004649444154384F63085DD341126220493550
           311D34646666FEFDFBF73F7100A8980188FFFDFB479CFAFF281A129000443FA6
           C8A80DB40F2562E20E140F191919408A4800540C00276B2189044D358B000000
           0049454E44AE426082}
@@ -9671,7 +9676,7 @@ object frmproduto: Tfrmproduto
           00000010080200000090916836000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000004649444154384F63085DD341126220493550
+          0EBC00000EBC0195BC72490000004649444154384F63085DD341126220493550
           311D34646666FEFDFBF73F7100A8980188FFFDFB479CFAFF281A129000443FA6
           C8A80DB40F2562E20E140F191919408A4800540C00276B2189044D358B000000
           0049454E44AE426082}
@@ -9717,7 +9722,7 @@ object frmproduto: Tfrmproduto
           0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000008B49444154384F63F8FFFF3F434545C55E20
+          0EBC00000EBC0195BC72490000008B49444154384F63F8FFFF3F434545C55E20
           FE4F22DE03D20BD2CC5C5555056443C0BF7FFFF06298BACACA4A90854C2806CC
           9E3D9BA02B162F5E0C3603C30090CD202FE003BF7EFDFA5F5353439C01D3B75D
           FB1FD8BAEB7F48FBEEFF2036089064404CEFFEFF611D7BC018C4FEF5FB2F6906
@@ -9765,7 +9770,7 @@ object frmproduto: Tfrmproduto
           00000010080200000090916836000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000004649444154384F63085DD341126220493550
+          0EBC00000EBC0195BC72490000004649444154384F63085DD341126220493550
           311D34646666FEFDFBF73F7100A8980188FFFDFB479CFAFF281A129000443FA6
           C8A80DB40F2562E20E140F191919408A4800540C00276B2189044D358B000000
           0049454E44AE426082}
@@ -9811,7 +9816,7 @@ object frmproduto: Tfrmproduto
           00000010080200000090916836000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000004649444154384F63085DD341126220493550
+          0EBC00000EBC0195BC72490000004649444154384F63085DD341126220493550
           311D34646666FEFDFBF73F7100A8980188FFFDFB479CFAFF281A129000443FA6
           C8A80DB40F2562E20E140F191919408A4800540C00276B2189044D358B000000
           0049454E44AE426082}
@@ -9857,7 +9862,7 @@ object frmproduto: Tfrmproduto
           0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000008B49444154384F63F8FFFF3F434545C55E20
+          0EBC00000EBC0195BC72490000008B49444154384F63F8FFFF3F434545C55E20
           FE4F22DE03D20BD2CC5C5555056443C0BF7FFFF06298BACACA4A90854C2806CC
           9E3D9BA02B162F5E0C3603C30090CD202FE003BF7EFDFA5F5353439C01D3B75D
           FB1FD8BAEB7F48FBEEFF2036089064404CEFFEFF611D7BC018C4FEF5FB2F6906
@@ -9905,7 +9910,7 @@ object frmproduto: Tfrmproduto
           00000010080200000090916836000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000004649444154384F63085DD341126220493550
+          0EBC00000EBC0195BC72490000004649444154384F63085DD341126220493550
           311D34646666FEFDFBF73F7100A8980188FFFDFB479CFAFF281A129000443FA6
           C8A80DB40F2562E20E140F191919408A4800540C00276B2189044D358B000000
           0049454E44AE426082}
@@ -9951,7 +9956,7 @@ object frmproduto: Tfrmproduto
           0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000008B49444154384F63F8FFFF3F434545C55E20
+          0EBC00000EBC0195BC72490000008B49444154384F63F8FFFF3F434545C55E20
           FE4F22DE03D20BD2CC5C5555056443C0BF7FFFF06298BACACA4A90854C2806CC
           9E3D9BA02B162F5E0C3603C30090CD202FE003BF7EFDFA5F5353439C01D3B75D
           FB1FD8BAEB7F48FBEEFF2036089064404CEFFEFF611D7BC018C4FEF5FB2F6906
@@ -9999,7 +10004,7 @@ object frmproduto: Tfrmproduto
           00000010080200000090916836000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000004649444154384F63085DD341126220493550
+          0EBC00000EBC0195BC72490000004649444154384F63085DD341126220493550
           311D34646666FEFDFBF73F7100A8980188FFFDFB479CFAFF281A129000443FA6
           C8A80DB40F2562E20E140F191919408A4800540C00276B2189044D358B000000
           0049454E44AE426082}
@@ -10045,7 +10050,7 @@ object frmproduto: Tfrmproduto
           00000010080200000090916836000000017352474200AECE1CE9000000046741
           4D410000B18F0BFC6105000000206348524D00007A26000080840000FA000000
           80E8000075300000EA6000003A98000017709CBA513C00000009704859730000
-          0EBF00000EBF01380553240000004649444154384F63085DD341126220493550
+          0EBC00000EBC0195BC72490000004649444154384F63085DD341126220493550
           311D34646666FEFDFBF73F7100A8980188FFFDFB479CFAFF281A129000443FA6
           C8A80DB40F2562E20E140F191919408A4800540C00276B2189044D358B000000
           0049454E44AE426082}
@@ -10142,8 +10147,8 @@ object frmproduto: Tfrmproduto
   object dsproduto2: TDataSource
     DataSet = qrproduto
     OnDataChange = dsproduto2DataChange
-    Left = 1188
-    Top = 120
+    Left = 692
+    Top = 264
   end
   object dsproduto: TDataSource
     Left = 1176
@@ -10157,13 +10162,13 @@ object frmproduto: Tfrmproduto
   end
   object dsgrade_produto: TDataSource
     DataSet = frmmodulo.qrgrade_produto
-    Left = 1160
+    Left = 1184
     Top = 128
   end
   object dsserial_produto: TDataSource
     DataSet = frmmodulo.qrserial_produto
-    Left = 1204
-    Top = 272
+    Left = 1116
+    Top = 320
   end
   object dscomposicao_produto: TDataSource
     DataSet = qrcomposicao_produto
@@ -10218,8 +10223,8 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000025')
     Params = <>
-    Left = 1164
-    Top = 112
+    Left = 1372
+    Top = 88
     object qrproduto_locCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Required = True
@@ -10763,8 +10768,8 @@ object frmproduto: Tfrmproduto
   end
   object qrinfnutricional_produto: TDataSource
     DataSet = frmmodulo.qrinfnutricional_produto
-    Left = 1196
-    Top = 256
+    Left = 1124
+    Top = 232
   end
   object OpenPictureDialog1: TOpenPictureDialog
     Left = 1188
@@ -10775,16 +10780,16 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000025')
     Params = <>
-    Left = 1192
-    Top = 112
+    Left = 1328
+    Top = 272
   end
   object qradic: TZQuery
     Connection = frmmodulo.Conexao
     SQL.Strings = (
       'select * from c000025')
     Params = <>
-    Left = 1196
-    Top = 240
+    Left = 1220
+    Top = 208
   end
   object dsadic: TDataSource
     DataSet = qradic
@@ -10797,25 +10802,25 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000055')
     Params = <>
-    Left = 1184
-    Top = 144
+    Left = 1128
+    Top = 264
   end
   object dscodbarra: TDataSource
     DataSet = qrcodbarra
-    Left = 1188
-    Top = 96
+    Left = 1356
+    Top = 128
   end
   object qrbarra: TZQuery
     Connection = frmmodulo.Conexao
     SQL.Strings = (
       'select * from c000025')
     Params = <>
-    Left = 1164
-    Top = 152
+    Left = 1228
+    Top = 280
   end
   object pop_barra: TPopupMenu
     Left = 1168
-    Top = 160
+    Top = 336
     object excluircodigodebarra1: TMenuItem
       Caption = 'excluir codigo de barra'
       ShortCut = 122
@@ -10829,14 +10834,14 @@ object frmproduto: Tfrmproduto
   object qrentrada: TZQuery
     Connection = frmmodulo.Conexao
     Params = <>
-    Left = 1176
-    Top = 104
+    Left = 1272
+    Top = 304
   end
   object qrsaida: TZQuery
     Connection = frmmodulo.Conexao
     Params = <>
-    Left = 1148
-    Top = 144
+    Left = 1260
+    Top = 232
   end
   object qrmov_entrada: TZQuery
     Connection = frmmodulo.Conexao
@@ -10844,8 +10849,8 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000032')
     Params = <>
-    Left = 1160
-    Top = 128
+    Left = 1352
+    Top = 240
     object qrmov_entradacliente: TStringField
       DisplayLabel = 'CLIENTE'
       DisplayWidth = 28
@@ -11059,8 +11064,8 @@ object frmproduto: Tfrmproduto
   end
   object dsmov_entrada: TDataSource
     DataSet = qrmov_entrada
-    Left = 1168
-    Top = 160
+    Left = 1064
+    Top = 256
   end
   object qrproduto_mov: TZQuery
     Connection = frmmodulo.Conexao
@@ -11068,8 +11073,8 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000032')
     Params = <>
-    Left = 1148
-    Top = 352
+    Left = 1300
+    Top = 392
   end
   object qrmov_saida: TZQuery
     Connection = frmmodulo.Conexao
@@ -11077,8 +11082,8 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000032')
     Params = <>
-    Left = 1160
-    Top = 160
+    Left = 1128
+    Top = 368
     object StringField14: TStringField
       DisplayLabel = 'CLIENTE'
       DisplayWidth = 28
@@ -11288,16 +11293,16 @@ object frmproduto: Tfrmproduto
   end
   object dsmov_saida: TDataSource
     DataSet = qrmov_saida
-    Left = 1264
-    Top = 376
+    Left = 784
+    Top = 312
   end
   object qrestoque: TZQuery
     Connection = frmmodulo.Conexao
     SQL.Strings = (
       'select * from c000100')
     Params = <>
-    Left = 1292
-    Top = 112
+    Left = 1332
+    Top = 240
   end
   object dsrentabilidade: TDataSource
     DataSet = QRRENTABILIDADE
@@ -11312,8 +11317,8 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000078')
     Params = <>
-    Left = 1268
-    Top = 200
+    Left = 1276
+    Top = 296
     object QRRENTABILIDADERENTABILIDADE: TWideStringField
       FieldName = 'RENTABILIDADE'
       Required = True
@@ -11534,8 +11539,8 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000025')
     Params = <>
-    Left = 1248
-    Top = 304
+    Left = 456
+    Top = 232
     object qrprodutogrupo: TStringField
       FieldKind = fkLookup
       FieldName = 'grupo'
@@ -12198,8 +12203,8 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000026')
     Params = <>
-    Left = 1192
-    Top = 352
+    Left = 1328
+    Top = 376
     object qrprecoCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Required = True
@@ -12558,8 +12563,8 @@ object frmproduto: Tfrmproduto
   object QUERY1: TZQuery
     Connection = frmmodulo.Conexao
     Params = <>
-    Left = 1248
-    Top = 392
+    Left = 1376
+    Top = 432
   end
   object qrvenda_mes: TZQuery
     Connection = frmmodulo.Conexao
@@ -12578,8 +12583,8 @@ object frmproduto: Tfrmproduto
       '(select sum(qtde) from c000032)  '
       ' from c000032')
     Params = <>
-    Left = 1156
-    Top = 312
+    Left = 1076
+    Top = 384
     object qrvenda_mesCOLUMN_0: TFloatField
       DisplayLabel = 'janeiro'
       DisplayWidth = 9
@@ -12659,8 +12664,8 @@ object frmproduto: Tfrmproduto
     SQL.Strings = (
       'select * from c000025')
     Params = <>
-    Left = 1192
-    Top = 424
+    Left = 1360
+    Top = 384
   end
   object qrcondicional: TZQuery
     Connection = frmmodulo.Conexao
@@ -12670,13 +12675,13 @@ object frmproduto: Tfrmproduto
       'where mov.codcliente = cli.codigo'
       'order by vencimento')
     Params = <>
-    Left = 1068
-    Top = 408
+    Left = 1396
+    Top = 368
   end
   object dscondicional: TDataSource
     DataSet = qrcondicional
-    Left = 1112
-    Top = 232
+    Left = 840
+    Top = 176
   end
   object IdSocksInfo1: TIdSocksInfo
     Left = 1168
@@ -12686,7 +12691,7 @@ object frmproduto: Tfrmproduto
     GroupName = 'Form.Produto'
     UserControl = frmPrincipal.iCloud
     NotAllowed = naDisabled
-    Left = 1136
-    Top = 280
+    Left = 1104
+    Top = 360
   end
 end
