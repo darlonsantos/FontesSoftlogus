@@ -5771,10 +5771,10 @@ end.
 
 
 }
-  wwDBGrid4.DefaultDrawDataCell
-(Rect, Field, State);
+ // wwDBGrid4.DefaultDrawDataCell
+//(Rect, Field, State);
 
 // NULO = 0,10
 // ENTRADA = 1,3,7,8,12,13,16
 // SAIDA   = 2,4,5,6,9,11,14,15,17,18,19,20
-}
+//}

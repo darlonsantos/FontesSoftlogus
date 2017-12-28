@@ -13,7 +13,6 @@ object frmmodulo: Tfrmmodulo
       'controls_cp=CP_UTF16')
     ReadOnly = True
     TransactIsolationLevel = tiReadCommitted
-    Connected = True
     SQLHourGlass = True
     Port = 0
     Database = 'C:\Softlogus\server\bd\BASE.FDB'
@@ -2276,7 +2275,6 @@ object frmmodulo: Tfrmmodulo
   object qrmarca: TZQuery
     Connection = Conexao
     BeforePost = qrmarcaBeforePost
-    Active = True
     SQL.Strings = (
       'select * from c000019')
     Params = <>
@@ -16297,8 +16295,8 @@ object frmmodulo: Tfrmmodulo
       'WHERE'
       '  NOTAS_MANIFESTACAO.COD = :OLD_COD')
     UseSequenceFieldForRefreshSQL = False
-    Left = 584
-    Top = 1104
+    Left = 880
+    Top = 880
     ParamData = <
       item
         DataType = ftUnknown

@@ -491,6 +491,11 @@ type
     dxBarButton71: TdxBarButton;
     pnl1: TPanel;
     imgm_imagens: TImage;
+    dxBarButton72: TdxBarButton;
+    dxBarLargeButton31: TdxBarLargeButton;
+    dxBarLargeButton32: TdxBarLargeButton;
+    dxRibbonQuickAccessGroupButton1: TdxRibbonQuickAccessGroupButton;
+    dxBarButton73: TdxBarButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
