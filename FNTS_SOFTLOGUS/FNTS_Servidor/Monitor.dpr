@@ -1,4 +1,4 @@
-program Servidor_Softlogus;
+program Monitor;
 
 uses
   Forms,

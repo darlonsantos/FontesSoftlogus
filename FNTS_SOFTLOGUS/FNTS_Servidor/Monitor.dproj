@@ -1,7 +1,7 @@
 ﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
 			<ProjectGuid>{EF27ADD7-5996-48C4-BA10-3E807593F91A}</ProjectGuid>
-			<MainSource>Servidor_Softlogus.dpr</MainSource>
+			<MainSource>Monitor.dpr</MainSource>
 			<FrameworkType>VCL</FrameworkType>
 			<ProjectVersion>13.4</ProjectVersion>
 			<Base>True</Base>
@@ -115,7 +115,7 @@
 			<BorlandProject>
 				<Delphi.Personality>
 					<Source>
-						<Source Name="MainSource">Servidor_Softlogus.dpr</Source>
+						<Source Name="MainSource">Monitor.dpr</Source>
 					</Source>
 					<VersionInfo>
 						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
