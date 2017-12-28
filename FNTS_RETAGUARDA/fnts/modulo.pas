@@ -14,7 +14,7 @@ uses
   Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr, ACBrBoleto,
   ACBrBoletoFCFR, ACBrBase, ZSqlUpdate, ACBrNFe, USincronizaManifestacao, UCBase; // NeoKeyUnit,frxExportImage,frxExportRTF,
 
-type
+type           //
   Tfrmmodulo = class(TDataModule)
     Conexao: TZConnection;
     qrLog: TZQuery;

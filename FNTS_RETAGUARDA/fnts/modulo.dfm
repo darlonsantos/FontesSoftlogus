@@ -15698,7 +15698,7 @@ object frmmodulo: Tfrmmodulo
     Top = 24
   end
   object frxReport1: TfrxReport
-    Version = '4.12.2'
+    Version = '5.1.9'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
