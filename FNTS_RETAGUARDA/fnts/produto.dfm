@@ -147,7 +147,6 @@ object frmproduto: Tfrmproduto
     BevelOuter = bvNone
     Color = clWhite
     TabOrder = 2
-    ExplicitWidth = 1011
     object bincluir: TAdvGlowButton
       Left = 105
       Top = 2
@@ -1337,8 +1336,8 @@ object frmproduto: Tfrmproduto
           TabColor = clWindow
           TabWidth = 0
           TransparentColor = clNone
-          ExplicitLeft = 4
-          ExplicitTop = -3
+          ExplicitLeft = 301
+          ExplicitTop = 125
           object pficha2: TPanel
             Left = 0
             Top = 0
@@ -1349,8 +1348,8 @@ object frmproduto: Tfrmproduto
             Color = clWhite
             ParentBackground = False
             TabOrder = 0
-            ExplicitLeft = 416
-            ExplicitTop = 56
+            ExplicitLeft = 149
+            ExplicitTop = 37
             object Label94: TLabel
               Left = 288
               Top = 122
@@ -3119,6 +3118,7 @@ object frmproduto: Tfrmproduto
               ButtonShortCut = 117
               AltBtnWidth = 15
               ButtonWidth = 24
+              OnButtonClick = RzDBButtonEdit3ButtonClick
             end
             object DBEdit75: TDBEdit
               Left = 238
@@ -3178,6 +3178,7 @@ object frmproduto: Tfrmproduto
               ButtonShortCut = 117
               AltBtnWidth = 15
               ButtonWidth = 24
+              OnButtonClick = RzDBButtonEdit4ButtonClick
             end
             object DBEdit76: TDBEdit
               Left = 238
@@ -3237,6 +3238,7 @@ object frmproduto: Tfrmproduto
               ButtonShortCut = 117
               AltBtnWidth = 15
               ButtonWidth = 24
+              OnButtonClick = RzDBButtonEdit6ButtonClick
             end
             object RzDBButtonEdit5: TRzDBButtonEdit
               Left = 166
@@ -3285,6 +3287,7 @@ object frmproduto: Tfrmproduto
               ButtonShortCut = 117
               AltBtnWidth = 15
               ButtonWidth = 24
+              OnButtonClick = RzDBButtonEdit5ButtonClick
             end
             object DBEdit77: TDBEdit
               Left = 238

@@ -1386,6 +1386,10 @@ type
     procedure W7ActiveLabel5222Click(Sender: TObject);
     procedure RzDBButtonEdit1ButtonClick(Sender: TObject);
     procedure RzDBButtonEdit2ButtonClick(Sender: TObject);
+    procedure RzDBButtonEdit3ButtonClick(Sender: TObject);
+    procedure RzDBButtonEdit4ButtonClick(Sender: TObject);
+    procedure RzDBButtonEdit5ButtonClick(Sender: TObject);
+    procedure RzDBButtonEdit6ButtonClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -5097,6 +5101,62 @@ begin
     if (qrproduto.STATE = DSEDIT) or (qrproduto.State = DSINSERT) then
       qrproduto.FIELDBYNAME('IND_CFOP_VENDA_FORA').ASSTRING := RESULTADO_PESQUISA1;
  end;
+end;
+
+procedure Tfrmproduto.RzDBButtonEdit3ButtonClick(Sender: TObject);
+begin
+   parametro_pesquisa := ' is not null ';
+  frmXLOC_cfop := tfrmXLOC_cfop.create(self);
+  frmXLOC_cfop.showmodal;
+  if resultado_pesquisa1 <> '' then
+  begin
+    frmmodulo.qrCFOP.Open;
+    frmmodulo.qrcfop.Locate('cfop', resultado_pesquisa1, [loCaseInsensitive]);
+    if (qrproduto.STATE = DSEDIT) or (qrproduto.State = DSINSERT) then
+      qrproduto.FIELDBYNAME('IND_CFOP_DEVOLUCAO_DENTRO').ASSTRING := RESULTADO_PESQUISA1;
+ end;
+end;
+procedure Tfrmproduto.RzDBButtonEdit4ButtonClick(Sender: TObject);
+begin
+   parametro_pesquisa := ' is not null ';
+  frmXLOC_cfop := tfrmXLOC_cfop.create(self);
+  frmXLOC_cfop.showmodal;
+  if resultado_pesquisa1 <> '' then
+  begin
+    frmmodulo.qrCFOP.Open;
+    frmmodulo.qrcfop.Locate('cfop', resultado_pesquisa1, [loCaseInsensitive]);
+    if (qrproduto.STATE = DSEDIT) or (qrproduto.State = DSINSERT) then
+      qrproduto.FIELDBYNAME('IND_CFOP_DEVOLUCAO_FORA').ASSTRING := RESULTADO_PESQUISA1;
+ end;
+end;
+
+procedure Tfrmproduto.RzDBButtonEdit5ButtonClick(Sender: TObject);
+begin
+  parametro_pesquisa := ' is not null ';
+  frmXLOC_cfop := tfrmXLOC_cfop.create(self);
+  frmXLOC_cfop.showmodal;
+  if resultado_pesquisa1 <> '' then
+  begin
+    frmmodulo.qrCFOP.Open;
+    frmmodulo.qrcfop.Locate('cfop', resultado_pesquisa1, [loCaseInsensitive]);
+    if (qrproduto.STATE = DSEDIT) or (qrproduto.State = DSINSERT) then
+      qrproduto.FIELDBYNAME('IND_CFOP_GARANTIA_DENTRO').ASSTRING := RESULTADO_PESQUISA1;
+ end;
+end;
+
+procedure Tfrmproduto.RzDBButtonEdit6ButtonClick(Sender: TObject);
+begin
+ parametro_pesquisa := ' is not null ';
+  frmXLOC_cfop := tfrmXLOC_cfop.create(self);
+  frmXLOC_cfop.showmodal;
+  if resultado_pesquisa1 <> '' then
+  begin
+    frmmodulo.qrCFOP.Open;
+    frmmodulo.qrcfop.Locate('cfop', resultado_pesquisa1, [loCaseInsensitive]);
+    if (qrproduto.STATE = DSEDIT) or (qrproduto.State = DSINSERT) then
+      qrproduto.FIELDBYNAME('IND_CFOP_GARANTIA_FORA').ASSTRING := RESULTADO_PESQUISA1;
+ end;
+
 end;
 
 procedure Tfrmproduto.RzDBNumericEdit10KeyPress(Sender: TObject; var Key: Char);
