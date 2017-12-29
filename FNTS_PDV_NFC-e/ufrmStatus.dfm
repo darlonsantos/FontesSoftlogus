@@ -2,10 +2,10 @@ object frmStatus: TfrmStatus
   Left = 231
   Top = 166
   BorderIcons = []
-  BorderStyle = bsSingle
+  BorderStyle = bsNone
   Caption = 'NFC-e'
-  ClientHeight = 70
-  ClientWidth = 563
+  ClientHeight = 68
+  ClientWidth = 564
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -761,8 +761,8 @@ object frmStatus: TfrmStatus
       FDEEE7D0D2A7ECE9C61D925F723FFFD9}
   end
   object lblStatus: TLabel
-    Left = 61
-    Top = 52
+    Left = 125
+    Top = 18
     Width = 82
     Height = 18
     Caption = 'Status NFe'

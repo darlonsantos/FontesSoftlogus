@@ -1561,7 +1561,7 @@ object frmModulo: TfrmModulo
     TamanhoFonte_DemaisCampos = 10
     ProdutosPorPagina = 0
     ImprimirDetalhamentoEspecifico = False
-    NFeCancelada = False
+    NFeCancelada = True
     LocalImpCanhoto = 0
     ImprimeItens = True
     ViaConsumidor = True

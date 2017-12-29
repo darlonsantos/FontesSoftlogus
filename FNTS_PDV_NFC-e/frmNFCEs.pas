@@ -64,7 +64,7 @@ implementation
 
 {$R *.dfm}
 
-uses modulo, principal;
+uses modulo, principal, ufrmStatus;
 
 procedure TfrmNotasconsumidor.btn_buscarClick(Sender: TObject);
 var
@@ -279,7 +279,8 @@ begin
       idLote := '1';
       CNPJ := copy(Chave, 7, 14);
       Protocolo := '';
-      Justificativa := 'Justificativa do Cancelamento';
+
+    Justificativa := 'Justificativa do Cancelamento';
       if not(InputQuery('WebServices Eventos: Cancelamento',
         'Justificativa do Cancelamento', Justificativa)) then
         exit;
@@ -292,15 +293,17 @@ begin
 
         idLote := '1';
         ACBRNFCe.EventoNFe.Evento.Clear;
-        ACBRNFCe.EventoNFe.idLote := strtoint(idLote);
+       // ACBRNFCe.EventoNFe.idLote := strtoint(idLote);
         with ACBRNFCe.EventoNFe.Evento.Add do
         begin
+          infEvento.chNFe := Chave;
+          InfEvento.CNPJ := CNPJ;
           infEvento.dhEvento := now;
           infEvento.tpEvento := teCancelamento;
           infEvento.detEvento.xJust := Justificativa;
+          infEvento.detEvento.nProt := Protocolo;
          end;
-         ACBRNFCe.EnviarEventoNFe(strtoint(idLote));
-
+           ACBRNFCe.EnviarEventoNFe(strtoint(idLote));
         if ACBRNFCe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0]
           .RetInfEvento.cStat = 135 then
         begin

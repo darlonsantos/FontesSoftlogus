@@ -5,7 +5,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   BorderStyle = bsDialog
   Caption = 'Notas Fiscais de Consumidor Final'
   ClientHeight = 568
-  ClientWidth = 824
+  ClientWidth = 850
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,12 +21,13 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 824
+    Width = 850
     Height = 73
     Align = alTop
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 824
     object Label1: TLabel
       Left = 8
       Top = 12
@@ -155,12 +156,13 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object Panel2: TPanel
     Left = 0
     Top = 520
-    Width = 824
+    Width = 850
     Height = 48
     Align = alBottom
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 824
     object btn_imprimir: TsSpeedButton
       Left = 225
       Top = 6
@@ -224,7 +226,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object wwDBGrid1: TwwDBGrid
     Left = 0
     Top = 73
-    Width = 824
+    Width = 850
     Height = 447
     ControlType.Strings = (
       'SITUACAO;ImageIndex;Original Size')
@@ -258,6 +260,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     TitleLines = 1
     TitleButtons = False
     ImageList = ImageList2
+    ExplicitWidth = 824
   end
   object ds_nfce: TDataSource
     DataSet = qrNFCE
@@ -268,7 +271,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 480
     Top = 392
     Bitmap = {
-      494C010105001C001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105001C00200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF

@@ -14,7 +14,6 @@ type
     Label1: TLabel;
     dsusuario: TDataSource;
     ds: TDataSource;
-    Image1: TImage;
     lfuncao: TLabel;
     Label2: TLabel;
     button1: TAdvGlowButton;
@@ -24,7 +23,6 @@ type
     EditUsuario: TEdit;
     EditSenha: TEdit;
     ACBrEnterTab1: TACBrEnterTab;
-    AdvReflectionImage1: TAdvReflectionImage;
     LbUsuario: TLabel;
     LbSenha: TLabel;
     Label3: TLabel;
