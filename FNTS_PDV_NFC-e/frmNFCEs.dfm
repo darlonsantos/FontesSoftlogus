@@ -27,7 +27,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 824
     object Label1: TLabel
       Left = 8
       Top = 12
@@ -162,7 +161,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 824
     object btn_imprimir: TsSpeedButton
       Left = 225
       Top = 6
@@ -260,7 +258,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     TitleLines = 1
     TitleButtons = False
     ImageList = ImageList2
-    ExplicitWidth = 824
   end
   object ds_nfce: TDataSource
     DataSet = qrNFCE
@@ -271,7 +268,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 480
     Top = 392
     Bitmap = {
-      494C010105001C00200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105001C00240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF

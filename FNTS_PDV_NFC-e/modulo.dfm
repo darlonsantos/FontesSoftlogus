@@ -9,6 +9,7 @@ object frmModulo: TfrmModulo
     Port = '3050'
     Username = 'SYSDBA'
     Server = 'localhost'
+    Connected = True
     LoginPrompt = False
     Left = 380
     Top = 264
@@ -115,7 +116,7 @@ object frmModulo: TfrmModulo
     NotesFont.Name = 'Tahoma'
     NotesFont.Style = []
     MenuBorderColor = clSilver
-    Left = 380
+    Left = 436
     Top = 184
   end
   object spCupom: TIBCStoredProc
@@ -242,8 +243,8 @@ object frmModulo: TfrmModulo
   object spCupom_Crediario: TIBCStoredProc
     StoredProcName = 'ST_CUPOM_CREDIARIO_INSERT'
     Connection = conexao
-    Left = 536
-    Top = 288
+    Left = 448
+    Top = 320
     ParamData = <
       item
         DataType = ftString
@@ -295,8 +296,8 @@ object frmModulo: TfrmModulo
       
         'EXECUTE PROCEDURE ST_CUPOM_FORMA_INSERT(:CODIGO, :COD_CUPOM, :FO' +
         'RMA, :VALOR, :PRESTACAO, :TIPO)')
-    Left = 56
-    Top = 188
+    Left = 48
+    Top = 212
     ParamData = <
       item
         DataType = ftString
@@ -336,7 +337,7 @@ object frmModulo: TfrmModulo
   object spCupom_Consumidor: TIBCStoredProc
     StoredProcName = 'ST_CUPOM_CONSUMIDOR_INSERT'
     Connection = conexao
-    Left = 368
+    Left = 464
     Top = 136
     ParamData = <
       item
@@ -429,8 +430,8 @@ object frmModulo: TfrmModulo
   object spCodigo_Global: TIBCStoredProc
     StoredProcName = 'ST_CODIGO_GLOBAL'
     Connection = conexao
-    Left = 172
-    Top = 148
+    Left = 92
+    Top = 252
     ParamData = <
       item
         DataType = ftInteger
@@ -441,8 +442,8 @@ object frmModulo: TfrmModulo
   end
   object docValidador: TACBrValidador
     IgnorarChar = './-'
-    Left = 264
-    Top = 344
+    Left = 288
+    Top = 448
   end
   object tbForma_Pgto: TVirtualTable
     IndexFieldNames = 'id'
@@ -464,8 +465,8 @@ object frmModulo: TfrmModulo
         Name = 'id'
         DataType = ftInteger
       end>
-    Left = 748
-    Top = 228
+    Left = 868
+    Top = 292
     Data = {
       0300040004004E6F6D6501001400000000000F0056616C6F725F4163756D756C
       61646F0600000000000000120056616C6F725F556C74696D6F5F4375706F6D06
@@ -486,8 +487,8 @@ object frmModulo: TfrmModulo
   object spNao_Fiscal: TIBCStoredProc
     StoredProcName = 'ST_NAO_FISCAL'
     Connection = conexao
-    Left = 280
-    Top = 244
+    Left = 320
+    Top = 228
     ParamData = <
       item
         DataType = ftString
@@ -674,8 +675,8 @@ object frmModulo: TfrmModulo
   object spReducaoZ_Total_Parcial: TIBCStoredProc
     StoredProcName = 'ST_REDUCAOZ_TOTAL_PARCIAL'
     Connection = conexao
-    Left = 68
-    Top = 340
+    Left = 76
+    Top = 364
     ParamData = <
       item
         DataType = ftString
@@ -712,7 +713,7 @@ object frmModulo: TfrmModulo
         Name = 'Aliquota'
         DataType = ftFloat
       end>
-    Left = 664
+    Left = 760
     Top = 244
     Data = {
       030002000600436F6469676F01001400000000000800416C6971756F74610600
@@ -732,8 +733,8 @@ object frmModulo: TfrmModulo
     Username = 'SYSDBA'
     Server = 'localhost'
     LoginPrompt = False
-    Left = 448
-    Top = 264
+    Left = 920
+    Top = 584
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object query_servidor: TIBCQuery
@@ -744,8 +745,8 @@ object frmModulo: TfrmModulo
   object spCupom_Temp: TIBCStoredProc
     StoredProcName = 'ST_CUPOM_TEMP_INSERT'
     Connection = conexao
-    Left = 220
-    Top = 260
+    Left = 252
+    Top = 252
     ParamData = <
       item
         DataType = ftString
@@ -778,8 +779,8 @@ object frmModulo: TfrmModulo
   object spCupom_Temp_delete: TIBCStoredProc
     StoredProcName = 'ST_CUPOM_TEMP_DELETE'
     Connection = conexao
-    Left = 136
-    Top = 260
+    Left = 176
+    Top = 300
   end
   object spCupom_Temp_Edit: TIBCStoredProc
     StoredProcName = 'ST_CUPOM_TEMP_EDIT'
@@ -806,7 +807,7 @@ object frmModulo: TfrmModulo
   object Dlg_arquivo: TOpenDialog
     Filter = 'Arquivo Texto|*.txt'
     Left = 160
-    Top = 340
+    Top = 428
   end
   object qrcliente: TIBCQuery
     Connection = Conexao_Servidor
@@ -921,8 +922,8 @@ object frmModulo: TfrmModulo
   object spDav_Codigo: TIBCStoredProc
     StoredProcName = 'SPCODIGO_DAV'
     Connection = Conexao_Servidor
-    Left = 508
-    Top = 236
+    Left = 516
+    Top = 268
     ParamData = <
       item
         DataType = ftInteger
@@ -933,8 +934,8 @@ object frmModulo: TfrmModulo
   object spDAV: TIBCStoredProc
     StoredProcName = 'ST_DAV'
     Connection = conexao
-    Left = 528
-    Top = 108
+    Left = 504
+    Top = 172
     ParamData = <
       item
         DataType = ftString
@@ -1073,8 +1074,8 @@ object frmModulo: TfrmModulo
   object St_Abastecimento_codigo: TIBCStoredProc
     StoredProcName = 'ST_ABASTECIMENTO_CODIGO'
     Connection = conexao
-    Left = 496
-    Top = 144
+    Left = 488
+    Top = 224
     ParamData = <
       item
         DataType = ftInteger
@@ -1167,8 +1168,8 @@ object frmModulo: TfrmModulo
   object st_bico_movimento: TIBCStoredProc
     StoredProcName = 'ST_BICO_MOVIMENTO'
     Connection = conexao
-    Left = 420
-    Top = 144
+    Left = 372
+    Top = 184
     ParamData = <
       item
         DataType = ftInteger
@@ -1194,7 +1195,7 @@ object frmModulo: TfrmModulo
   object spCupom_Item_Temp: TIBCStoredProc
     StoredProcName = 'ST_CUPOM_ITEM_TEMP_INSERT'
     Connection = conexao
-    Left = 300
+    Left = 380
     Top = 144
     ParamData = <
       item
@@ -1579,8 +1580,8 @@ object frmModulo: TfrmModulo
     Top = 152
   end
   object ACBrEAD1: TACBrEAD
-    Left = 636
-    Top = 224
+    Left = 660
+    Top = 216
   end
   object conBASE: TZConnection
     ControlsCodePage = cCP_UTF16
@@ -1592,8 +1593,8 @@ object frmModulo: TfrmModulo
     User = 'sysdba'
     Password = 'masterkey'
     Protocol = 'firebird-2.5'
-    Left = 684
-    Top = 140
+    Left = 876
+    Top = 564
   end
   object qradic_mestre_odl: TZQuery
     Connection = conBASE
@@ -1611,8 +1612,8 @@ object frmModulo: TfrmModulo
         'EXECUTE PROCEDURE NFCE_INSERT(:PNUMERO, :PDATA, :PTOTAL, :PCLIEN' +
         'TE, :PCHAVE, :PXML, :PSITUACAO, :PTROCO)')
     CachedUpdates = True
-    Left = 556
-    Top = 184
+    Left = 652
+    Top = 256
     ParamData = <
       item
         DataType = ftInteger
@@ -1674,6 +1675,6 @@ object frmModulo: TfrmModulo
     Device.Baud = 2400
     OnLePeso = BalancasLePeso
     Left = 352
-    Top = 344
+    Top = 424
   end
 end

@@ -244,9 +244,9 @@ object frmPrincipal: TfrmPrincipal
   end
   object dxFloatDockSite1: TdxFloatDockSite
     Left = 0
-    Top = 118
+    Top = 128
     Width = 1135
-    Height = 749
+    Height = 739
     Visible = False
     FloatLeft = 964
     FloatTop = 633

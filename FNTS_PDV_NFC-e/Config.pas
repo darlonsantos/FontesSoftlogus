@@ -165,6 +165,7 @@ type
     Label42: TLabel;
     img3: TImage;
     wwDBGrid1: TwwDBGrid;
+    wwDBGrid1IButton: TwwIButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);

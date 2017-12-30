@@ -26,7 +26,6 @@ object frmConfig: TfrmConfig
     Align = alBottom
     Color = clWhite
     TabOrder = 0
-    ExplicitWidth = 716
     object BitBtn1: TBitBtn
       Left = -4
       Top = 62
@@ -237,12 +236,12 @@ object frmConfig: TfrmConfig
     Top = 42
     Width = 778
     Height = 542
-    ActivePage = PageSheet1
-    ActivePageIndex = 0
+    ActivePage = PageSheet2
+    ActivePageIndex = 1
     AdaptiveColors = True
     Align = alClient
     BackgroundColor = 15254641
-    BackgroundKind = bkSolid
+    BackgroundKind = bkInveseVertGradient
     Color = clWhite
     Indent = 2
     Margin = 0
@@ -254,7 +253,6 @@ object frmConfig: TfrmConfig
     TabOrder = 1
     TabStyle = tsWhidbey
     TopIndent = 3
-    ExplicitWidth = 716
     object PageSheet1: TPageSheet
       Left = 0
       Top = 21
@@ -270,7 +268,6 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitWidth = 716
       object AdvReflectionImage1: TAdvReflectionImage
         Left = 504
         Top = 16
@@ -1329,7 +1326,6 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitWidth = 716
       object GroupBox1: TGroupBox
         Left = 797
         Top = 303
@@ -1471,10 +1467,11 @@ object frmConfig: TfrmConfig
           'CODIGO'#9'10'#9'CODIGO'
           'FORMA_CREDIARIO'#9'50'#9'CREDIARIO'
           'FORMA_CHEQUE'#9'50'#9'CHEQUE A VISTA'
-          'FORMA_CARTAO'#9'50'#9'CARTAO DE CRED'
+          'FORMA_CARTAO'#9'50'#9'CART'#195'O DE CREDITO'
           'FORMA_CONVENIO'#9'50'#9'CONVENIO'
           'FORMA_DINHEIRO'#9'50'#9'DINHEIRO'
-          'FORMA_CARTAO_DEB'#9'50'#9'CARTAO DE DEB')
+          'FORMA_CARTAO_DEB'#9'50'#9'CART'#195'O DE DEBITO'
+          'FORMA_CHEQUE_AP'#9'50'#9'CHEQUE A PRAZO')
         IniAttributes.Delimiter = ';;'
         TitleColor = clBtnFace
         FixedCols = 0
@@ -1489,6 +1486,13 @@ object frmConfig: TfrmConfig
         TitleFont.Style = []
         TitleLines = 1
         TitleButtons = False
+        object wwDBGrid1IButton: TwwIButton
+          Left = 0
+          Top = 0
+          Width = 13
+          Height = 22
+          AllowAllUp = True
+        end
       end
     end
     object PageSheet3: TPageSheet
@@ -1506,7 +1510,6 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitWidth = 716
       object img2: TAdvReflectionImage
         Left = 504
         Top = 16
@@ -2504,7 +2507,6 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitWidth = 716
       object Panel2: TPanel
         Left = 0
         Top = 0
@@ -3270,7 +3272,6 @@ object frmConfig: TfrmConfig
         Height = 521
         Align = alClient
         TabOrder = 1
-        ExplicitWidth = 419
         object img3: TImage
           Left = 1
           Top = 1
@@ -9999,7 +10000,6 @@ object frmConfig: TfrmConfig
     ParentBackground = False
     ParentFont = False
     TabOrder = 2
-    ExplicitWidth = 716
     object Image5: TImage
       Left = 1
       Top = 1
@@ -10034,7 +10034,7 @@ object frmConfig: TfrmConfig
       'Arquivos NFE (*-nfe.XML)|*-nfe.XML|Arquivos XML (*.XML)|*.XML|To' +
       'dos os Arquivos (*.*)|*.*'
     Title = 'Selecione a NFe'
-    Left = 752
-    Top = 72
+    Left = 560
+    Top = 152
   end
 end

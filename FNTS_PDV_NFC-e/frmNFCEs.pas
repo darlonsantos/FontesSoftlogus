@@ -260,6 +260,7 @@ begin
   qrNFCE.Close;
   dataini.Date := now;
   datafin.Date := now;
+  btn_buscarClick(Sender);
 end;
 
 procedure TfrmNotasconsumidor.lblSairClick(Sender: TObject);

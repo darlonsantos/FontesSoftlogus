@@ -170,7 +170,7 @@ var
   (* Lista de aliquotas *)
   laliquota: TstringList;
   (* Lista de Formas de Pagamento que exigem tratamento especial no fechamento da venda *)
-  lForma_Cheque,  lForma_Crediario, lForma_Cartao_cred,lForma_Cartao_deb, lForma_dinheiro,
+  lForma_Cheque, lForma_Cheque_ap,  lForma_Crediario, lForma_Cartao_cred,lForma_Cartao_deb, lForma_dinheiro,
     lForma_Convenio: TstringList;
   (* Dados do ECF *)
   sECF_Serial: string; // numero de serie do ECF registrado no sistema
