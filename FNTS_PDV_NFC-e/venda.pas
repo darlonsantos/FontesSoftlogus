@@ -5454,7 +5454,7 @@ begin
       if nfce_autorizada then
       begin
         // lancar nfce no banco de dados do servidor
-
+        //DARLON
         with frmmodulo do
         begin
           spNFCE_Insert.close;
@@ -5467,8 +5467,10 @@ begin
             copy(ChaveNFCE, 4, 47) + '-nfe.xml';
           spNFCE_Insert.ParamByName('psituacao').asinteger := 0;
           spNFCE_Insert.ParamByName('ptroco').asfloat := ed_troco.value;
-          spNFCE_Insert.ExecProc;
-          //DARLON SANTOS 28/10/2017
+          spNFCE_Insert.Prepare;
+          spNFCE_Insert.Execute;
+
+               //DARLON SANTOS 28/10/2017
           conexao.AutoCommit := false;
           conexao.Commit;
         end;

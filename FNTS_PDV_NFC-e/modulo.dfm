@@ -10,8 +10,8 @@ object frmModulo: TfrmModulo
     Username = 'SYSDBA'
     Server = 'localhost'
     LoginPrompt = False
-    Left = 12
-    Top = 360
+    Left = 380
+    Top = 264
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object query: TIBCQuery
@@ -242,8 +242,8 @@ object frmModulo: TfrmModulo
   object spCupom_Crediario: TIBCStoredProc
     StoredProcName = 'ST_CUPOM_CREDIARIO_INSERT'
     Connection = conexao
-    Left = 488
-    Top = 224
+    Left = 504
+    Top = 608
     ParamData = <
       item
         DataType = ftString
@@ -732,8 +732,8 @@ object frmModulo: TfrmModulo
     Username = 'SYSDBA'
     Server = 'localhost'
     LoginPrompt = False
-    Left = 752
-    Top = 224
+    Left = 448
+    Top = 264
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object query_servidor: TIBCQuery
@@ -921,7 +921,7 @@ object frmModulo: TfrmModulo
   object spDav_Codigo: TIBCStoredProc
     StoredProcName = 'SPCODIGO_DAV'
     Connection = Conexao_Servidor
-    Left = 20
+    Left = 52
     Top = 540
     ParamData = <
       item
