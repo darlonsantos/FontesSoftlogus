@@ -3974,10 +3974,10 @@ begin
     // // img_shape.Visible := false;
     img_produto.Visible := false;
     img_fundo.Visible := false;
-         //darlon
+         //201254693
     pn_fechamento.Enabled := true;
     pn_fechamento.Height := 395;
-    pn_fechamento.left := 392;
+    pn_fechamento.left := 10;
 
     cb_desc_acre.ItemIndex := 0;
     ED_DESC_ACRE.value := 0;

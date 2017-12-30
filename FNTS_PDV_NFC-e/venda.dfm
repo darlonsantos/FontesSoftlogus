@@ -5498,8 +5498,8 @@ object frmVenda: TfrmVenda
       end
     end
     object pn_fechamento: TFlatPanel
-      Left = 601
-      Top = 211
+      Left = 10
+      Top = 160
       Width = 305
       Height = 395
       Color = 13612943
