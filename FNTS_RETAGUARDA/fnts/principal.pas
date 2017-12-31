@@ -868,7 +868,6 @@ type
     procedure AdvGlowButton24455Click(Sender: TObject);
     procedure dxBarButton70Click(Sender: TObject);
     procedure btn_inventarioClick(Sender: TObject);
-    procedure dxBarLargeButton33Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -1028,7 +1027,7 @@ uses modulo, senha, filial, papelparede, cliente,
   xloc_csosn, consulta_lote, importa_nfe, sobre, // FMapa,
   form_ativacaoicloud, pUCGeral, OpNatureza, Bicos, LMC, Tanque, AberFechLMC,
   Bombas, Encerrantes,
-  Combustivel, LMCImpressao, inventario, backup, FBackup;
+  Combustivel, LMCImpressao, inventario, backup;
 
 {$R *.dfm}
 
@@ -5657,12 +5656,6 @@ end;
 procedure TfrmPrincipal.dxBarLargeButton30Click(Sender: TObject);
 begin
   WinExec('C:\Softlogus\server\Athenas_SPED.exe', SW_SHOW);
-end;
-
-procedure TfrmPrincipal.dxBarLargeButton33Click(Sender: TObject);
-begin
- frmBackup := TfrmBackup.Create(Self);
- frmBackup.ShowModal;
 end;
 
 procedure TfrmPrincipal.dxTileItem1Click(Sender: TdxTileControlItem);
