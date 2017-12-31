@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2017/12/31 14:42:36.926,=C:\Users\darlonsantos\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/12/31 14:58:21.337,C:\FontesSoftlogus\Softlogus_Mobile\Uprincipal.pas=C:\Users\darlonsantos\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2017/12/31 14:58:21.338,C:\FontesSoftlogus\Softlogus_Mobile\Uprincipal.fmx=C:\Users\darlonsantos\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>2017/12/31 14:59:01.582,C:\FontesSoftlogus\Softlogus_Mobile\Softlogus.dproj=C:\Users\darlonsantos\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+  </Transactions>
+  <ActiveMobileDevice>   <NoProfile iOSSimulator="iPhone5" Android="BY900FJCH7"/>
+  </ActiveMobileDevice>
+</BorlandProject>
