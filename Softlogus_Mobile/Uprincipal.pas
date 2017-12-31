@@ -11,6 +11,7 @@ type
   TForm1 = class(TForm)
     ToolBar1: TToolBar;
     SpeedButton1: TSpeedButton;
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,5 +24,10 @@ var
 implementation
 
 {$R *.fmx}
+
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+begin
+ ShowMessage('Sistema em desenvolvimento');
+end;
 
 end.
