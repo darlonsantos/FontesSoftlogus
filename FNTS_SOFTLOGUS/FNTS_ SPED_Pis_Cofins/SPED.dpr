@@ -15,6 +15,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  TStyleManager.TrySetStyle('Iceberg Classico');
   Application.Title := 'Softlogus - SPED';
   Application.CreateForm(TFPrincipal, FPrincipal);
   Application.CreateForm(TDm, Dm);

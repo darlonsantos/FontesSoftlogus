@@ -422,7 +422,8 @@ uses
   msg_Operador in 'fnts\msg_Operador.pas' {frmMsg_Operador},
   Func in 'fnts\Protecao\Func.pas',
   UDialog in 'fnts\Protecao\UDialog.pas' {frmDialog},
-  os_item_2 in 'fnts\os_item_2.pas' {frmOS_item_2};
+  os_item_2 in 'fnts\os_item_2.pas' {frmOS_item_2},
+  FBackup in 'fnts\backup\FBackup.pas' {frmBackup};
 
 {$R *.res}
 
@@ -434,6 +435,7 @@ begin
   Application.Title := 'Softlogus Sistemas';
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(Tfrmsplash, frmsplash);
+  Application.CreateForm(TfrmBackup, frmBackup);
   frmsplash.ShowModal;
   Application.CreateForm(TFCNPJ, FCNPJ);
   Application.CreateForm(TfrmOPC, frmOPC);
