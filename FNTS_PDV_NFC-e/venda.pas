@@ -7888,7 +7888,7 @@ begin
         Ide.hSaiEnt := Now;
         Ide.tpNF := tnSaida;
         Ide.tpEmis := teNormal;
-        Ide.tpAmb := taHomologacao;
+        Ide.tpAmb := taProducao;
         // DARLON SANTOS ALTERAR PARA AMBIENTE DE PRODUÇÃO
 
         Ide.cUF := NotaUtil.UFtoCUF(edtEmitUF);
@@ -7897,7 +7897,6 @@ begin
         Ide.tpImp := tiNFCe;
         Ide.indFinal := cfConsumidorFinal;
         Ide.indPres := pcPresencial;
-
         ACBRNFCe.Configuracoes.Geral.VersaoDF := ve310;
         // ALTERAÇÃO DARLON SANTOS  TESTE
 

@@ -236,8 +236,8 @@ object frmConfig: TfrmConfig
     Top = 42
     Width = 778
     Height = 542
-    ActivePage = PageSheet2
-    ActivePageIndex = 1
+    ActivePage = PageSheet4
+    ActivePageIndex = 3
     AdaptiveColors = True
     Align = alClient
     BackgroundColor = 15254641
@@ -2528,7 +2528,7 @@ object frmConfig: TfrmConfig
             Top = 15
             Width = 277
             Height = 360
-            ActivePage = TabSheet1
+            ActivePage = TabSheet3
             Align = alClient
             MultiLine = True
             TabOrder = 0

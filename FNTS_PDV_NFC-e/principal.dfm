@@ -71,7 +71,6 @@ object frmPrincipal: TfrmPrincipal
     TabOrder = 3
     TabStop = False
     object dxRibbon1Tab3: TdxRibbonTab
-      Active = True
       Caption = 'Menu'
       Groups = <
         item
@@ -82,6 +81,7 @@ object frmPrincipal: TfrmPrincipal
       Index = 0
     end
     object dxRibbon1Tab1: TdxRibbonTab
+      Active = True
       Caption = 'Configura'#231#245'es'
       Groups = <
         item

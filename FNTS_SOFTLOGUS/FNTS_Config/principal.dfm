@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 476
   Top = 147
   BorderIcons = [biSystemMenu]
-  Caption = 'Softlogus- Configura'#231#245'es de ECF'
+  Caption = 'Configura'#231#245'es avan'#231'adas do PDV'
   ClientHeight = 539
   ClientWidth = 773
   Color = clWhite
@@ -434,7 +434,7 @@ object frmPrincipal: TfrmPrincipal
       Height = 432
       AdvOfficePagerStyler = AdvOfficePagerOfficeStyler1
       Align = alClient
-      ActivePage = TabBD
+      ActivePage = TabECF
       ButtonSettings.CloseButtonPicture.Data = {
         424DA20400000000000036040000280000000900000009000000010008000000
         00006C000000C30E0000C30E00000001000000010000427B8400DEEFEF00FFFF
@@ -724,14 +724,14 @@ object frmPrincipal: TfrmPrincipal
       OnChanging = TabEmpresaChanging
       TabOrder = 2
       ExplicitLeft = 8
-      ExplicitTop = 192
+      ExplicitTop = 40
       NextPictureChanged = False
       PrevPictureChanged = False
       object TabECF: TAdvOfficePage
         Left = 1
         Top = 26
         Width = 771
-        Height = 404
+        Height = 405
         Caption = 'ECF'
         PageAppearance.BorderColor = 13948116
         PageAppearance.Color = clWhite
@@ -1342,7 +1342,7 @@ object frmPrincipal: TfrmPrincipal
         Left = 1
         Top = 26
         Width = 771
-        Height = 404
+        Height = 405
         Caption = 'Banco de Dados'
         PageAppearance.BorderColor = 13948116
         PageAppearance.Color = clWhite
@@ -2886,7 +2886,7 @@ object frmPrincipal: TfrmPrincipal
         Left = 1
         Top = 26
         Width = 771
-        Height = 404
+        Height = 405
         Caption = 'Hardwares'
         PageAppearance.BorderColor = 13948116
         PageAppearance.Color = clWhite
@@ -5936,7 +5936,7 @@ object frmPrincipal: TfrmPrincipal
         Left = 1
         Top = 26
         Width = 771
-        Height = 404
+        Height = 405
         Caption = 'Funcionalidades'
         PageAppearance.BorderColor = 13948116
         PageAppearance.Color = clWhite
@@ -8950,7 +8950,7 @@ object frmPrincipal: TfrmPrincipal
         Left = 1
         Top = 26
         Width = 771
-        Height = 404
+        Height = 405
         Caption = 'Empresa'
         PageAppearance.BorderColor = 13948116
         PageAppearance.Color = clWhite
@@ -9962,12 +9962,13 @@ object frmPrincipal: TfrmPrincipal
   end
   object conexao: TIBCConnection
     Database = 'C:\Softlogus\PDV\BD\DATPDV.FDB'
+    Port = '3050'
     Username = 'SYSDBA'
-    Password = 'masterkey'
     Server = 'localhost'
     LoginPrompt = False
     Left = 573
     Top = 64
+    EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object qrpaf: TIBCQuery
     Connection = conexao
@@ -10010,7 +10011,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 100
   end
   object AdvOfficePagerOfficeStyler1: TAdvOfficePagerOfficeStyler
-    Style = psOffice2013White
+    Style = psCustom
     GlowButtonAppearance.BorderColor = 13948116
     GlowButtonAppearance.BorderColorHot = 15381630
     GlowButtonAppearance.BorderColorDown = 15048022
