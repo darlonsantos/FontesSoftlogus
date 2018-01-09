@@ -96,8 +96,7 @@ begin
   if Hand = 0 then
   begin
     Application.Initialize;
-    TStyleManager.TrySetStyle('Iceberg Classico');
-  Application.Title := 'PDV: Sistema Softlogus';
+    Application.Title := 'PDV: Sistema Softlogus';
     Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmMsg_Operador, frmMsg_Operador);
   Application.CreateForm(TfrmStatus, frmStatus);

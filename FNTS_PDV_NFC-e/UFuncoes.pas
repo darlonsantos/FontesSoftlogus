@@ -458,8 +458,8 @@ begin
 end;
 
 function Imp_Sangria(sPorta: string; valor: real): string;
-begin
-  if frmPrincipal.TipoImpressora = NaoFiscal then
+begin   // DARLON SANTOS 201254693
+  if (frmPrincipal.TipoImpressora = NaoFiscal)then
   begin
     InicializaVariaveis;
     Imp.Porta := sPorta;
@@ -474,6 +474,7 @@ begin
     Imp.Imprime('', []);
     Imp.Imprime('---------------------', [Centraliza]);
     Imp.Imprime('Responsavel', [Centraliza]);
+    Imp.Imprime('Horas: ' + TimeToStr(Now), [Esquerda]);
   end;
 
   Result := 'OK';

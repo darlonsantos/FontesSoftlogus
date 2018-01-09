@@ -406,7 +406,7 @@ implementation
 uses modulo, funcoes, venda, senha, unECF, msg_Operador, config_ecf, unTEF,
   TEF_Cancelamento, Orcamento, produto_consulta, Orcamento_Abrir, Math,
   caixa_abertura, menu_fiscal, notafiscal_menu, config_balanca, Config,
-  UtiSplash, UFuncoes, GerarNotaFiscalPaulista, frmNFCEs;
+  UtiSplash, UFuncoes, GerarNotaFiscalPaulista, frmNFCEs, senha_supervisor;
 
 {$R *.dfm}
 (*
@@ -1097,7 +1097,7 @@ begin
     'CFG\cfg.ini', 'IMPRESSORA', 'TIPO', '0'));
   iGaveta := StrToInt(frmPrincipal.LerIni(ExtractFilePath(Application.ExeName) +
     'CFG\cfg.ini', 'GAVETA', 'LOCAL', '0'));
-
+       //DARLON SANTOS
   case iImpressora of
     0:
       begin // Sem Impressora
@@ -1579,6 +1579,7 @@ begin
     (DaysBetween(Date, Registro1.Licenca.DataValidade) <= Registro1.Licenca.AvisarFaltanto );
   }
   { TODO -oMizael -cNFC-e : No projeto nfce nao imprime na impressora fiscal }
+  {201254691}
   TipoImpressora := SemImpressora;
 
 end;
@@ -1656,14 +1657,28 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmPrincipal.actConfiguracoesExecute(Sender: TObject);
 begin
- frmconfig := tfrmconfig.Create(self);
+// frmsenha_supervisor := tfrmsenha_supervisor.create(self);
+//  frmsenha_supervisor.showmodal;
+//
+//  if not bSupervisor_autenticado then
+//    Exit;
+  frmconfig := tfrmconfig.create(self);
   frmconfig.showmodal;
+// frmconfig := tfrmconfig.Create(self);
+//  frmconfig.showmodal;
 end;
 
 procedure TfrmPrincipal.actRelatorioExecute(Sender: TObject);
 begin
- frmNotasconsumidor := TfrmNotasconsumidor.Create(self);
-  frmNotasconsumidor.showmodal
+// frmsenha_supervisor := tfrmsenha_supervisor.create(self);
+//  frmsenha_supervisor.showmodal;
+//
+//  if not bSupervisor_autenticado then
+//    Exit;
+
+  frmNotasconsumidor := tfrmNotasconsumidor.create(self);
+  frmNotasconsumidor.showmodal;
+  FreeAndNil(frmNotasconsumidor);
 end;
 
 procedure TfrmPrincipal.actVendasExecute(Sender: TObject);

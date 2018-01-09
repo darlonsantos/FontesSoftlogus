@@ -5,7 +5,7 @@ object frmSangria: TfrmSangria
   Caption = 'Retirada'
   ClientHeight = 164
   ClientWidth = 261
-  Color = clBtnFace
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -19,10 +19,11 @@ object frmSangria: TfrmSangria
   TextHeight = 13
   object Bevel1: TBevel
     Left = 0
-    Top = 111
+    Top = 130
     Width = 261
     Height = 2
     Align = alBottom
+    ExplicitTop = 111
   end
   object Bevel2: TBevel
     Left = 0
@@ -46,13 +47,14 @@ object frmSangria: TfrmSangria
   end
   object Panel1: TPanel
     Left = 0
-    Top = 113
+    Top = 132
     Width = 261
     Height = 32
     Align = alBottom
     BevelOuter = bvNone
     Color = 15830313
     TabOrder = 1
+    ExplicitTop = 113
     object bt_ok: TButton
       Left = 53
       Top = 3
@@ -80,11 +82,13 @@ object frmSangria: TfrmSangria
     Align = alTop
     BevelOuter = bvNone
     Caption = 'Sangria de Caixa'
+    Color = clWhite
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
     Font.Name = 'Tahoma'
     Font.Style = []
+    ParentBackground = False
     ParentFont = False
     TabOrder = 2
   end
@@ -104,22 +108,11 @@ object frmSangria: TfrmSangria
     IntegersOnly = False
     DisplayFormat = 'R$ ###,###,##0.00'
   end
-  object StatusBar1: TStatusBar
-    Left = 0
-    Top = 145
-    Width = 261
-    Height = 19
-    Panels = <
-      item
-        Text = 'F8 - Menu Fiscal'
-        Width = 50
-      end>
-  end
   object pop_fechamento: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
     Version = '2.5.4.3'
-    Left = 128
-    Top = 48
+    Left = 168
+    Top = 80
     object MenuFiscal1: TMenuItem
       Caption = 'Menu Fiscal'
       ShortCut = 119

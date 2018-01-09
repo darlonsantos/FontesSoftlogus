@@ -60,7 +60,6 @@ object frmagenda: Tfrmagenda
     OptionsView.ResourcesPerPage = 3
     OptionsView.WorkDays = [dMonday, dTuesday, dWednesday, dThursday, dFriday, dSaturday]
     OptionsView.WorkFinish = 0.791666666666666600
-    Storage = cxSchedulerDBStorage1
     TabOrder = 0
     Splitters = {
       DB020000FB000000F903000000010000D602000001000000DB020000B2020000}
@@ -446,7 +445,7 @@ object frmagenda: Tfrmagenda
     Left = 416
     Top = 88
     Bitmap = {
-      494C010107000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010107000900080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -750,42 +749,6 @@ object frmagenda: Tfrmagenda
       ShortCut = 113
       OnClick = A1Click
     end
-  end
-  object cxSchedulerDBStorage1: TcxSchedulerDBStorage
-    Reminders.DefaultReminder = True
-    Reminders.ReminderByResource = True
-    Resources.Items = <>
-    Resources.DataSource = dsfucnionarios
-    Resources.ResourceID = 'CODIGO'
-    Resources.ResourceName = 'NOME'
-    CustomFields = <>
-    DataSource = dsagenda2
-    FieldNames.ActualFinish = 'ACTUALFINISH'
-    FieldNames.ActualStart = 'ACTUALSTART'
-    FieldNames.Caption = 'CAPTION'
-    FieldNames.GroupID = 'GROUPID'
-    FieldNames.EventType = 'EVENTTYPE'
-    FieldNames.Finish = 'FINISH'
-    FieldNames.ID = 'ID'
-    FieldNames.LabelColor = 'LABELCOLOR'
-    FieldNames.Location = 'LOCATION'
-    FieldNames.Message = 'MESSAGEM'
-    FieldNames.Options = 'OPTIONS'
-    FieldNames.ParentID = 'PARENTID'
-    FieldNames.RecurrenceIndex = 'RECURRENCEINDEX'
-    FieldNames.RecurrenceInfo = 'RECURRENCEINFO'
-    FieldNames.ReminderDate = 'REMINDERDATE'
-    FieldNames.ReminderMinutesBeforeStart = 'REMINDERMINUTESBEFORESTART'
-    FieldNames.ReminderResourcesData = 'REMINDERDATE'
-    FieldNames.ResourceID = 'RESOURCEID'
-    FieldNames.Start = 'START_AGE'
-    FieldNames.State = 'STATE'
-    FieldNames.TaskCompleteField = 'TASKCOMPLETEFIELD'
-    FieldNames.TaskIndexField = 'TASKINDEXFIELD'
-    FieldNames.TaskLinksField = 'TASKLINKSFIELD'
-    FieldNames.TaskStatusField = 'TASKSTATUSFIELD'
-    Left = 144
-    Top = 192
   end
   object qrAgenda: TZQuery
     Connection = frmmodulo.Conexao

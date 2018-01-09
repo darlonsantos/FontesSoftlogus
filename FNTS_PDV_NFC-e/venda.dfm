@@ -5500,7 +5500,7 @@ object frmVenda: TfrmVenda
     object pn_fechamento: TFlatPanel
       Left = 10
       Top = 160
-      Width = 305
+      Width = 303
       Height = 395
       Color = 13612943
       Visible = False

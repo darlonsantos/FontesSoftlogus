@@ -497,6 +497,7 @@ type
     dxRibbonQuickAccessGroupButton1: TdxRibbonQuickAccessGroupButton;
     dxBarButton73: TdxBarButton;
     dxBarLargeButton33: TdxBarLargeButton;
+    dxBarLargeButton34: TdxBarLargeButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -868,6 +869,7 @@ type
     procedure AdvGlowButton24455Click(Sender: TObject);
     procedure dxBarButton70Click(Sender: TObject);
     procedure btn_inventarioClick(Sender: TObject);
+    procedure dxBarLargeButton34Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -5656,6 +5658,11 @@ end;
 procedure TfrmPrincipal.dxBarLargeButton30Click(Sender: TObject);
 begin
   WinExec('C:\Softlogus\server\Athenas_SPED.exe', SW_SHOW);
+end;
+
+procedure TfrmPrincipal.dxBarLargeButton34Click(Sender: TObject);
+begin
+ShowMessage('Em desenvolvimento');
 end;
 
 procedure TfrmPrincipal.dxTileItem1Click(Sender: TdxTileControlItem);

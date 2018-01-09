@@ -56,8 +56,8 @@ object frmPrincipal: TfrmPrincipal
     Height = 739
     Align = alClient
     Stretch = True
-    ExplicitLeft = 16
-    ExplicitTop = 400
+    ExplicitLeft = -192
+    ExplicitTop = 122
   end
   object dxRibbon1: TdxRibbon
     Left = 0
@@ -70,7 +70,9 @@ object frmPrincipal: TfrmPrincipal
     Contexts = <>
     TabOrder = 3
     TabStop = False
+    ExplicitTop = -4
     object dxRibbon1Tab3: TdxRibbonTab
+      Active = True
       Caption = 'Menu'
       Groups = <
         item
@@ -81,7 +83,6 @@ object frmPrincipal: TfrmPrincipal
       Index = 0
     end
     object dxRibbon1Tab1: TdxRibbonTab
-      Active = True
       Caption = 'Configura'#231#245'es'
       Groups = <
         item
@@ -244,15 +245,12 @@ object frmPrincipal: TfrmPrincipal
   end
   object dxFloatDockSite1: TdxFloatDockSite
     Left = 0
-    Top = 128
-    Width = 1135
-    Height = 739
+    Top = 0
+    Width = 185
+    Height = 131
     Visible = False
     FloatLeft = 964
     FloatTop = 633
-    ExplicitTop = 0
-    ExplicitWidth = 185
-    ExplicitHeight = 131
     DockingType = 0
     OriginalWidth = 185
     OriginalHeight = 131
@@ -1693,7 +1691,7 @@ object frmPrincipal: TfrmPrincipal
     ShareImages = True
     Width = 32
     FormatVersion = 1
-    DesignInfo = 3146624
+    DesignInfo = 17826568
     ImageInfo = <
       item
         Image.Data = {
@@ -8659,8 +8657,8 @@ object frmPrincipal: TfrmPrincipal
     Ribbon = dxRibbon1
     UseOwnFont = True
     UseRecentItems = True
-    Left = 1016
-    Top = 40
+    Left = 784
+    Top = 216
   end
   object dxBarApplicationMenu1: TdxBarApplicationMenu
     BarManager = dxBarManager1
@@ -8668,15 +8666,15 @@ object frmPrincipal: TfrmPrincipal
     ExtraPane.Items = <>
     ItemLinks = <>
     UseOwnFont = False
-    Left = 736
-    Top = 184
+    Left = 568
+    Top = 216
   end
   object dxRibbonMiniToolbar1: TdxRibbonMiniToolbar
     Images = cxImageList1
     ItemLinks = <>
     Ribbon = dxRibbon1
-    Left = 920
-    Top = 48
+    Left = 952
+    Top = 208
   end
   object dxRibbonRadialMenu1: TdxRibbonRadialMenu
     Glyph.Data = {

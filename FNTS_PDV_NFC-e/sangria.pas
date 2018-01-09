@@ -19,7 +19,6 @@ type
     ed_valor: TRzNumericEdit;
     pop_fechamento: TAdvPopupMenu;
     Cancelar1: TMenuItem;
-    StatusBar1: TStatusBar;
     MenuFiscal1: TMenuItem;
     XPManifest1: TXPManifest;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -60,29 +59,24 @@ begin
     ed_valor.setfocus;
     exit;
   end;
-
   repeat
-    // extrair do ecf
-    if frmPrincipal.TipoImpressora = fiscal then
+   if frmPrincipal.TipoImpressora = Fiscal then
     begin
       sNumero_cupom := cECF_COO_Nao_Fiscal(iECF_Modelo);
       sMsg := cECF_Sangria(iECF_Modelo,ed_valor.Value);
     end
     else
-    begin
+      begin
       sNumero_cupom := zerar(FloatToStr( max('')),5);
       sMsg := Imp_Sangria(sPortaNaoFiscal,ed_valor.Value);
-      //if Length(sNumero_Cupom) = 5 then
-      //sNumero_Cupom := '9' + sNumero_Cupom;
-    end;
-
+      end;
     if sMsg <> 'OK' then
     begin
-      if application.MessageBox(pwidechar('Erro a lançar a sangria no ECF!'+#13+
+      if application.MessageBox(pwidechar('Erro a lançar a sangria na impresora!'+#13+
                                           'Mensagem: '+sMsg+#13+
                                           'Deseja tentar outra vez?'),'Erro',mb_yesno+mb_iconerror)=
                                           idno then
-                                                break;
+              break;
     end
     else
     begin

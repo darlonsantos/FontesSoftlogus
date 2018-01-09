@@ -86,8 +86,9 @@
 			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+			<VerInfo_Special>true</VerInfo_Special>
 			<VerInfo_Debug>true</VerInfo_Debug>
-			<VerInfo_Build>35</VerInfo_Build>
+			<VerInfo_Build>36</VerInfo_Build>
 			<VerInfo_PreRelease>true</VerInfo_PreRelease>
 			<VerInfo_Release>3</VerInfo_Release>
 			<VerInfo_MajorVer>2</VerInfo_MajorVer>
@@ -97,7 +98,7 @@
 			<VerInfo_MinorVer>2</VerInfo_MinorVer>
 			<DCC_MapFile>3</DCC_MapFile>
 			<DCC_DebugInformation>true</DCC_DebugInformation>
-			<VerInfo_Keys>CompanyName=Softlogus Sistemas engenharia em softwares;FileDescription=Módulo Retaguarda;FileVersion=2.2.3.35;InternalName=Softlogus Sistemas;LegalCopyright=Todos os  direitos reservados a Softlogus sistemas;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=2.2.2.31;Comments=</VerInfo_Keys>
+			<VerInfo_Keys>CompanyName=Softlogus Sistemas engenharia em softwares;FileDescription=Módulo Retaguarda;FileVersion=2.2.3.36;InternalName=Softlogus Sistemas;LegalCopyright=Todos os  direitos reservados a Softlogus sistemas;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=2.2.2.31;Comments=;SpecialBuild=</VerInfo_Keys>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -1390,7 +1391,9 @@
 						<VersionInfoKeys Name="ProductVersion">1.5</VersionInfoKeys>
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
-					<Excluded_Packages/>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDSBIN)\dcloffice2k160.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+					</Excluded_Packages>
 				</Delphi.Personality>
 				<Platforms>
 					<Platform value="Win64">True</Platform>

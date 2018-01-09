@@ -2528,7 +2528,7 @@ object frmConfig: TfrmConfig
             Top = 15
             Width = 277
             Height = 360
-            ActivePage = TabSheet3
+            ActivePage = TabSheet1
             Align = alClient
             MultiLine = True
             TabOrder = 0

@@ -4451,6 +4451,7 @@ var
 
 begin
 
+
   ED_FOCUS.setfocus;
 
   bFinalizado := false;
@@ -4828,8 +4829,8 @@ begin
         Acréscimo - %:
         Acréscimo - R$:
       }
-
-      if frmPrincipal.TipoImpressora = NaoFiscal then
+       //DARLON SANTOS
+      if frmPrincipal.TipoImpressora = Fiscal then
       begin
         repeat
           case cb_desc_acre.ItemIndex of
@@ -4857,7 +4858,7 @@ begin
             frmmodulo.spCupom_Temp_Edit.Execute;
           end
           else
-          begin
+             begin
             if application.messagebox
               (pwidechar('Erro no ECF!' + #13 + 'Mensagem: ' + sMsg + #13 +
               'Deseja tentar outra vez?'), 'Erro', mb_yesno + MB_ICONERROR) = idno
@@ -4869,7 +4870,7 @@ begin
         until sMsg = ok;
 
       end
-      else // Se nao for fiscal ou sem impressora
+      else
       begin
         bTotalizado := true;
         frmmodulo.spCupom_Temp_Edit.close;
@@ -4894,8 +4895,7 @@ begin
         end;
 
       end;
-
-      if sMsg <> ok then
+        if sMsg <> ok then
       begin
         Imprime_display(sMsg, clred, tiErro);
         bt_confirmar_fechamento.Enabled := true;
@@ -5364,6 +5364,7 @@ begin
           if frmPrincipal.TipoImpressora = Fiscal then
             sMsg := cECF_Forma_Pgto(iECF_Modelo, cb_forma3.text,
               ed_forma3.value)
+              //DARLON SANTOS
           else
             sMsg := Imp_Forma_Pgto(sPortaNaoFiscal, cb_forma3.text,
               ed_forma3.value);
@@ -5441,6 +5442,9 @@ begin
         sVendedorNome, 37, ' ', taEsquerda) + #10
     else
       sIdentificarVendedor := '';
+      //TESTE
+    if frmPrincipal.TipoImpressora = NaoFiscal then
+     begin
 
     try
 
@@ -5496,6 +5500,7 @@ begin
       end;
 
     end;
+     end;
 
     // identificacao do consumidor no cupom
     if sCli_Nome <> '' then
@@ -7888,7 +7893,7 @@ begin
         Ide.hSaiEnt := Now;
         Ide.tpNF := tnSaida;
         Ide.tpEmis := teNormal;
-        Ide.tpAmb := taProducao;
+        Ide.tpAmb := taHomologacao;
         // DARLON SANTOS ALTERAR PARA AMBIENTE DE PRODUÇÃO
 
         Ide.cUF := NotaUtil.UFtoCUF(edtEmitUF);
@@ -8229,15 +8234,16 @@ begin
       Imprime_display('          AGUARDE...  GERANDO NFC-E', clBackground, tiLivre);
       grid.Repaint;
       GerarNFCe(vAux);
+
       Imprime_display('          AGUARDE...  ENVIANDO NFC-E', clBackground, tiLivre);
       grid.Repaint;
       ACBrNFce.NotasFiscais.GerarNFe;
        ACBrNFce.NotasFiscais.Assinar;
        ACBrNFce.NotasFiscais.Valida;
-      ACBrNFce.Enviar(vNumLote,true,sincrono);
+      ACBrNFce.Enviar(vNumLote,False,sincrono);
     if not ACBRNFCe.NotasFiscais.Items[0].Confirmada then
       begin
-          cStatus := 100;
+           cStatus := 100;
            ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
            NumeroNFCe := strtoint(vAux);
       end

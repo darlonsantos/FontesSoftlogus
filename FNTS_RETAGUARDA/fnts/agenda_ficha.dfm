@@ -242,7 +242,9 @@ object frmagenda_ficha: Tfrmagenda_ficha
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
+    ParentBackground = False
     TabOrder = 1
+    ExplicitTop = -3
     object Label1: TLabel
       Left = 8
       Top = 11

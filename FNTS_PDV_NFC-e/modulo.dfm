@@ -1538,8 +1538,8 @@ object frmModulo: TfrmModulo
     Configuracoes.WebServices.IntervaloTentativas = 1000
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     DANFE = ACBRDANFENFCe
-    Left = 624
-    Top = 272
+    Left = 616
+    Top = 336
   end
   object ACBRDANFENFCe: TACBrNFeDANFEFR
     ACBrNFe = ACBRNFCe
