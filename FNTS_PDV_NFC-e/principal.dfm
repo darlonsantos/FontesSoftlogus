@@ -70,7 +70,6 @@ object frmPrincipal: TfrmPrincipal
     Contexts = <>
     TabOrder = 3
     TabStop = False
-    ExplicitTop = -4
     object dxRibbon1Tab3: TdxRibbonTab
       Active = True
       Caption = 'Menu'
@@ -245,12 +244,15 @@ object frmPrincipal: TfrmPrincipal
   end
   object dxFloatDockSite1: TdxFloatDockSite
     Left = 0
-    Top = 0
-    Width = 185
-    Height = 131
+    Top = 128
+    Width = 1135
+    Height = 739
     Visible = False
     FloatLeft = 964
     FloatTop = 633
+    ExplicitTop = 0
+    ExplicitWidth = 185
+    ExplicitHeight = 131
     DockingType = 0
     OriginalWidth = 185
     OriginalHeight = 131
@@ -8617,7 +8619,7 @@ object frmPrincipal: TfrmPrincipal
     end
     object dxBarLargeButton1: TdxBarLargeButton
       Action = actVendas
-      Caption = 'Vendas Nfce'
+      Caption = 'Caixa'
       Category = 0
       HotImageIndex = 4
       SyncImageIndex = False
