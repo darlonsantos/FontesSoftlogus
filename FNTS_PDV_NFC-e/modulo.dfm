@@ -11,8 +11,8 @@ object frmModulo: TfrmModulo
     Server = 'localhost'
     Connected = True
     LoginPrompt = False
-    Left = 380
-    Top = 264
+    Left = 460
+    Top = 400
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object query: TIBCQuery
@@ -785,8 +785,8 @@ object frmModulo: TfrmModulo
   object spCupom_Temp_Edit: TIBCStoredProc
     StoredProcName = 'ST_CUPOM_TEMP_EDIT'
     Connection = conexao
-    Left = 368
-    Top = 268
+    Left = 264
+    Top = 332
     ParamData = <
       item
         DataType = ftString
@@ -1601,8 +1601,8 @@ object frmModulo: TfrmModulo
     SQL.Strings = (
       'select * from C000000')
     Params = <>
-    Left = 800
-    Top = 240
+    Left = 864
+    Top = 384
   end
   object spNFCE_Insert: TIBCStoredProc
     StoredProcName = 'NFCE_INSERT'
@@ -1666,8 +1666,8 @@ object frmModulo: TfrmModulo
     Connection = conexao
     SQL.Strings = (
       'SELECT * FROM SEQUENCIA')
-    Left = 608
-    Top = 72
+    Left = 560
+    Top = 464
   end
   object Balancas: TACBrBAL
     Modelo = balToledo

@@ -11,7 +11,20 @@ uses
   system.IniFiles, filectrl,
   ACBrNFe, pcnConversao, ACBrNFeDANFEClass, ACBrNFeDANFERave, ACBrUtil,
   pcnNFeW, pcnNFeRTXT, pcnAuxiliar, ACBrDFeUtil,
-  XMLIntf, XMLDoc, ACBrNFeDANFERaveCB, ACBrNFeDANFEFR, Vcl.Grids, Wwdbigrd, Wwdbgrid;
+  XMLIntf, XMLDoc, ACBrNFeDANFERaveCB, ACBrNFeDANFEFR, Vcl.Grids, Wwdbigrd, Wwdbgrid, Vcl.Printers,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
+  cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalc;
 
 type
   TfrmConfig = class(TForm)
@@ -154,18 +167,41 @@ type
     cbEmailSSL: TCheckBox;
     mmEmailMsg: TMemo;
     btnSalvarConfig: TBitBtn;
-    Panel3: TPanel;
     OpenPictureDialog1: TOpenPictureDialog;
     OpenDialog1: TOpenDialog;
     edtIdToken: TEdit;
     edtNumeroToken: TEdit;
     Label40: TLabel;
     Label41: TLabel;
-    CFOP: TEdit;
-    Label42: TLabel;
-    img3: TImage;
     wwDBGrid1: TwwDBGrid;
     wwDBGrid1IButton: TwwIButton;
+    tbImpressao: TTabSheet;
+    lblImpressao: TLabel;
+    edImpressora: TComboBox;
+    EdFormatoOff: TRadioGroup;
+    Label43: TLabel;
+    edDescEsta: TEdit;
+    edPreview: TCheckBox;
+    Label44: TLabel;
+    edMargem: TSpinEdit;
+    GroupBox14: TGroupBox;
+    Label45: TLabel;
+    Label46: TLabel;
+    Label47: TLabel;
+    Label48: TLabel;
+    edMargDir: TcxCalcEdit;
+    edMargEsq: TcxCalcEdit;
+    edMargSup: TcxCalcEdit;
+    edMarginf: TcxCalcEdit;
+    edSchemas: TEdit;
+    SpeedButton1: TSpeedButton;
+    Label49: TLabel;
+    Label50: TLabel;
+    edCFOP: TEdit;
+    Label42: TLabel;
+    edSequencia: TEdit;
+    Label51: TLabel;
+    edSerie: TEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -180,6 +216,7 @@ type
     procedure btnSalvarConfigClick(Sender: TObject);
     procedure sbtnLogoMarcaClick(Sender: TObject);
     procedure sbtnPathSalvarClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
     procedure GravaConfiguracoesLocais;
@@ -214,9 +251,25 @@ begin
 end;
 
 procedure TfrmConfig.FormShow(Sender: TObject);
+var
+  I:integer;
 begin
   chkVendedor.Checked := LerParametro('INFORMAR_VENDEDOR_CHECKOUT', 'B', False);
   qrconfig.open;
+  edImpressora.items.clear;
+   for I := 1 to Printer.Printers.Count do
+   begin
+    edImpressora.items.add(Printer.Printers.Strings[I-1]);
+  end;
+    with frmModulo do begin
+    qradic_mestre.open;
+    qradic_mestre.Refresh;
+    if qradic_mestre.Locate('codigo', '915', [loCaseInsensitive]) then
+      edSequencia.Text := qradic_mestre.FieldByName('sequencias').Text
+    else
+      edSequencia.Clear;
+  end;
+
 
   LerConfiguracoes;
   LerConfiguracao;
@@ -273,8 +326,13 @@ Var
   Ini: TIniFile;
   StreamMemo: TMemoryStream;
 begin
-  IniFile := sConfiguracoes;
 
+    if (edSchemas.Text = '') or not(DirectoryExists(edSchemas.Text)) then begin
+      Application.MessageBox('A Pasta e Schemas informada no Config é inválida!','Atenção!',MB_ICONINFORMATION);
+      Exit;
+    end;
+
+  IniFile := sConfiguracoes;
   Ini := TIniFile.Create(IniFile);
   try
     Ini.WriteString('Certificado', 'Caminho', edtCaminho.Text);
@@ -288,10 +346,14 @@ begin
     Ini.WriteString('Geral', 'LogoMarca', edtLogoMarca.Text);
     Ini.WriteBool('Geral', 'Salvar', ckSalvar.Checked);
     Ini.WriteString('Geral', 'PathSalvar', edtPathLogs.Text);
+     //DARLON SANTOS
+    Ini.WriteString('Geral', 'PathSchemas', edSchemas.Text);
+    Ini.WriteString('Geral', 'CFOP_PADRAO', edCFOP.Text);
 
     Ini.WriteString('WebService', 'UF', cbUF.Text);
     Ini.WriteInteger('WebService', 'Ambiente', rgTipoAmb.ItemIndex);
     Ini.WriteBool('WebService', 'Visualizar', ckVisualizar.Checked);
+    Ini.WriteInteger('WebService', 'FormatoOFF', EdFormatoOff.ItemIndex);
 
     Ini.WriteString('Proxy', 'Host', edtProxyHost.Text);
     Ini.WriteString('Proxy', 'Porta', edtProxyPorta.Text);
@@ -311,13 +373,25 @@ begin
     Ini.WriteString('Emitente', 'CodCidade', edtEmitCodCidade.Text);
     Ini.WriteString('Emitente', 'Cidade', edtEmitCidade.Text);
     Ini.WriteString('Emitente', 'UF', edtEmitUF.Text);
-    Ini.WriteString('Emitente', 'CFOP', CFOP.Text);
+    Ini.WriteString('Emitente', 'Serie', edSerie.Text);
+    //Ini.WriteString('Emitente', 'CFOP', CFOP.Text);
+    //configurações de email   DARLON SANTOS
     Ini.WriteString('Email', 'Host', edtSmtpHost.Text);
     Ini.WriteString('Email', 'Port', edtSmtpPort.Text);
     Ini.WriteString('Email', 'User', edtSmtpUser.Text);
     Ini.WriteString('Email', 'Pass', edtSmtpPass.Text);
     Ini.WriteString('Email', 'Assunto', edtEmailAssunto.Text);
     Ini.WriteBool('Email', 'SSL', cbEmailSSL.Checked);
+   //configurações da impressoras   DARLON SANTOS
+    Ini.WriteString('Impressao', 'Impressora', edImpressora.Text);
+    Ini.WriteString('Impressao', 'Descricao via estabelecimento', edDescEsta.Text);
+    Ini.WriteBool('Impressao', 'Preview', edPreview.Checked);
+    Ini.WriteInteger('Impressao', 'Espessura Margem', edMargem.Value);
+    Ini.WriteFloat('Impressao', 'Margem Esquerda', edMargEsq.Value);
+    Ini.WriteFloat('Impressao', 'Margem Direita', edMargDir.Value);
+    Ini.WriteFloat('Impressao', 'Margem Superior', edMargSup.Value);
+    Ini.WriteFloat('Impressao', 'Margem Inferior', edMarginf.Value);
+
     StreamMemo := TMemoryStream.Create;
     mmEmailMsg.Lines.SaveToStream(StreamMemo);
     StreamMemo.Seek(0, soFromBeginning);
@@ -344,7 +418,6 @@ begin
 {$IFDEF ACBrNFeOpenSSL}
       edtCaminho.Text := Ini.ReadString('Certificado', 'Caminho', '');
       edtSenha.Text := Ini.ReadString('Certificado', 'Senha', '');
-
       ACBRNFCe.Configuracoes.Certificados.Certificado := edtCaminho.Text;
       ACBRNFCe.Configuracoes.Certificados.Senha := edtSenha.Text;
       edtNumSerie.Visible := False;
@@ -354,20 +427,14 @@ begin
       edtNumSerie.Text := Ini.ReadString('Certificado', 'NumSerie', '');
       ACBRNFCe.Configuracoes.Certificados.NumeroSerie := edtNumSerie.Text;
       edtNumSerie.Text := ACBRNFCe.Configuracoes.Certificados.NumeroSerie;
-      Label1.Caption := 'Informe o número de série do certificado'#13 +
-        'Disponível no Internet Explorer no menu'#13 +
-        'Ferramentas - Opções da Internet - Conteúdo '#13 +
-        'Certificados - Exibir - Detalhes - '#13 + 'Número do certificado';
-      Label2.Visible := False;
-      edtCaminho.Visible := False;
-      edtSenha.Visible := False;
-      sbtnCaminhoCert.Visible := False;
 {$ENDIF}
       edtIdToken.Text := Ini.ReadString('Certificado', 'IDToken', '');
       edtNumeroToken.Text := Ini.ReadString('Certificado', 'TokenNumero', '');
       rgFormaEmissao.ItemIndex := Ini.ReadInteger('Geral', 'FormaEmissao', 0);
       ckSalvar.Checked := Ini.ReadBool('Geral', 'Salvar', True);
       edtPathLogs.Text := Ini.ReadString('Geral', 'PathSalvar', '');
+      edSchemas.Text := Ini.ReadString('Geral', 'PathSchemas', '');
+      edCFOP.Text := Ini.ReadString('Geral', 'CFOP_PADRAO', '5101');
       ACBRNFCe.Configuracoes.Geral.FormaEmissao :=
         StrToTpEmis(Ok, IntToStr(rgFormaEmissao.ItemIndex + 1));
       ACBRNFCe.Configuracoes.Geral.Salvar := ckSalvar.Checked;
@@ -378,9 +445,9 @@ begin
       rgTipoAmb.ItemIndex := Ini.ReadInteger('WebService', 'Ambiente', 0);
       ckVisualizar.Checked := Ini.ReadBool('WebService', 'Visualizar', False);
       ACBRNFCe.Configuracoes.WebServices.UF := cbUF.Text;
-      ACBRNFCe.Configuracoes.WebServices.Ambiente :=
-        StrToTpAmb(Ok, IntToStr(rgTipoAmb.ItemIndex + 1));
-      ACBRNFCe.Configuracoes.WebServices.Visualizar := ckVisualizar.Checked;
+      ACBRNFCe.Configuracoes.WebServices.Ambiente := StrToTpAmb(Ok, IntToStr(rgTipoAmb.ItemIndex + 1));
+ ACBRNFCe.Configuracoes.WebServices.Visualizar := ckVisualizar.Checked;
+      EdFormatoOff.ItemIndex := Ini.ReadInteger('WebService', 'FormatoOFF', 0);
 
       edtProxyHost.Text := Ini.ReadString('Proxy', 'Host', '');
       edtProxyPorta.Text := Ini.ReadString('Proxy', 'Porta', '');
@@ -395,9 +462,9 @@ begin
       edtLogoMarca.Text := Ini.ReadString('Geral', 'LogoMarca', '');
       if ACBRNFCe.DANFE <> nil then
       begin
-        ACBRNFCe.DANFE.TipoDANFE :=
+         ACBRNFCe.DANFE.TipoDANFE :=
           StrToTpImp(Ok, IntToStr(rgTipoDanfe.ItemIndex + 1));
-        ACBRNFCe.DANFE.Logo := edtLogoMarca.Text;
+         ACBRNFCe.DANFE.Logo := edtLogoMarca.Text;
       end;
 
       edtEmitCNPJ.Text := Ini.ReadString('Emitente', 'CNPJ', '');
@@ -413,7 +480,8 @@ begin
       edtEmitCodCidade.Text := Ini.ReadString('Emitente', 'CodCidade', '');
       edtEmitCidade.Text := Ini.ReadString('Emitente', 'Cidade', '');
       edtEmitUF.Text := Ini.ReadString('Emitente', 'UF', '');
-      CFOP.Text := Ini.ReadString('Emitente', 'CFOP', '');
+      edSerie.Text := Ini.ReadString('Emitente', 'Serie', '1');
+
 
       edtSmtpHost.Text := Ini.ReadString('Email', 'Host', '');
       edtSmtpPort.Text := Ini.ReadString('Email', 'Port', '');
@@ -421,6 +489,19 @@ begin
       edtSmtpPass.Text := Ini.ReadString('Email', 'Pass', '');
       edtEmailAssunto.Text := Ini.ReadString('Email', 'Assunto', '');
       cbEmailSSL.Checked := Ini.ReadBool('Email', 'SSL', False);
+
+    edImpressora.Text := Ini.ReadString('Impressao', 'Impressora', '');
+    edDescEsta.Text := Ini.ReadString('Impressao', 'Descricao via estabelecimento', 'Via do Consumidor');
+    edPreview.Checked := Ini.ReadBool('Impressao', 'Preview', True);
+    edMargem.Value := Ini.ReadInteger('Impressao', 'Espessura Margem', 1);
+    edMargEsq.Value := Ini.ReadFloat('Impressao', 'Margem Esquerda', 0.6);
+    edMargDir.Value := Ini.ReadFloat('Impressao', 'Margem Direita', 0.51);
+    edMargSup.Value := Ini.ReadFloat('Impressao', 'Margem Superior', 0.8);
+    edMarginf.Value := Ini.ReadFloat('Impressao', 'Margem Inferior', 0.8);
+
+
+
+
       StreamMemo := TMemoryStream.Create;
       Ini.ReadBinaryStream('Email', 'Mensagem', StreamMemo);
       mmEmailMsg.Lines.LoadFromStream(StreamMemo);
@@ -497,6 +578,18 @@ begin
     edtPathLogs.Text := Dir;
 end;
 
+procedure TfrmConfig.SpeedButton1Click(Sender: TObject);
+var
+  Dir: string;
+begin
+  if length(edSchemas.Text) <= 0 then
+    Dir := ExtractFileDir(application.ExeName)
+  else
+    Dir := edSchemas.Text;
+   //PathClick(edtPathLogs);
+  if frmPrincipal.DIretorio.Execute then
+    edSchemas.Text := frmPrincipal.DIretorio.Directory;
+end;
 procedure TfrmConfig.EditLogoMarcaClickBtn(Sender: TObject);
 begin
   if OpenPictureDialog1.Execute then

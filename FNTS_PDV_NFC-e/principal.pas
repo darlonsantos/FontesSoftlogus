@@ -32,7 +32,8 @@ uses
   dxRibbonSkins, dxSkinsdxRibbonPainter, dxSkinsdxBarPainter, cxPC, dxBar, dxDockControl, dxDockPanel, dxRibbon,
   dxRibbonMiniToolbar, dxBarApplicationMenu, dxRibbonGallery, dxBarDBNav, Vcl.PlatformDefaultStyleActnCtrls, cxCalc,
   cxImage, cxBlobEdit, cxBarEditItem, Data.DB, DBAccess, AdvReflectionLabel,
-  ExeInfo, dxScreenTip, dxRibbonRadialMenu, dxBarExtItems;
+  ExeInfo, dxScreenTip, dxRibbonRadialMenu, dxBarExtItems, JvBaseDlg,
+  JvSelectDirectory;
 
 type
   TImpressora = (SemImpressora, NaoFiscal, Fiscal);
@@ -79,6 +80,7 @@ type
     dxBarLargeButton4: TdxBarLargeButton;
     actConfiguracoes: TAction;
     imgm_imagens: TImage;
+    DIretorio: TJvSelectDirectory;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
