@@ -1433,8 +1433,6 @@ object frmConfig: TfrmConfig
     Align = alBottom
     Color = clWhite
     TabOrder = 0
-    ExplicitTop = 584
-    ExplicitWidth = 778
     object BitBtn1: TBitBtn
       Left = -4
       Top = 62
@@ -1468,8 +1466,8 @@ object frmConfig: TfrmConfig
       OnClick = BitBtn2Click
     end
     object btn1: TAdvGlowButton
-      Left = 111
-      Top = 8
+      Left = 245
+      Top = 6
       Width = 100
       Height = 48
       Caption = 'Salvar'
@@ -1551,8 +1549,8 @@ object frmConfig: TfrmConfig
       Appearance.GradientChecked = ggVertical
     end
     object btn2: TAdvGlowButton
-      Left = 249
-      Top = 8
+      Left = 390
+      Top = 6
       Width = 100
       Height = 48
       Caption = 'Cancelar'
@@ -1645,8 +1643,8 @@ object frmConfig: TfrmConfig
     Top = 42
     Width = 777
     Height = 546
-    ActivePage = PageSheet4
-    ActivePageIndex = 3
+    ActivePage = PageSheet1
+    ActivePageIndex = 0
     AdaptiveColors = True
     Align = alClient
     BackgroundColor = clWhite
@@ -1662,8 +1660,6 @@ object frmConfig: TfrmConfig
     TabOrder = 1
     TabStyle = tsWhidbey
     TopIndent = 3
-    ExplicitWidth = 778
-    ExplicitHeight = 542
     object PageSheet1: TPageSheet
       Left = 0
       Top = 21
@@ -1679,8 +1675,6 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitWidth = 778
-      ExplicitHeight = 521
       object AdvReflectionImage1: TAdvReflectionImage
         Left = 504
         Top = 16
@@ -2739,8 +2733,6 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitWidth = 778
-      ExplicitHeight = 521
       object GroupBox1: TGroupBox
         Left = 797
         Top = 303
@@ -2925,8 +2917,6 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitWidth = 778
-      ExplicitHeight = 521
       object img2: TAdvReflectionImage
         Left = 504
         Top = 16
@@ -3924,8 +3914,6 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitWidth = 778
-      ExplicitHeight = 521
       object Panel2: TPanel
         Left = 0
         Top = 0
@@ -3935,7 +3923,6 @@ object frmConfig: TfrmConfig
         Color = clWhite
         ParentBackground = False
         TabOrder = 0
-        ExplicitHeight = 521
         object GroupBox9: TGroupBox
           Left = 4
           Top = 1
@@ -3948,14 +3935,14 @@ object frmConfig: TfrmConfig
             Top = 15
             Width = 464
             Height = 423
-            ActivePage = TabSheet4
+            ActivePage = TabSheet1
             Align = alClient
             MultiLine = True
             TabOrder = 0
+            ExplicitLeft = 3
+            ExplicitTop = 17
             object TabSheet1: TTabSheet
               Caption = 'Certificado'
-              ExplicitWidth = 269
-              ExplicitHeight = 332
               object GroupBox10: TGroupBox
                 Left = 0
                 Top = 4
@@ -4081,10 +4068,6 @@ object frmConfig: TfrmConfig
             object TabSheet2: TTabSheet
               Caption = 'Geral'
               ImageIndex = 1
-              ExplicitLeft = -12
-              ExplicitTop = 25
-              ExplicitWidth = 269
-              ExplicitHeight = 332
               object GroupBox11: TGroupBox
                 Left = 3
                 Top = 8
@@ -4252,10 +4235,6 @@ object frmConfig: TfrmConfig
             object TabSheet3: TTabSheet
               Caption = 'WebService'
               ImageIndex = 2
-              ExplicitLeft = 2
-              ExplicitTop = 39
-              ExplicitWidth = 269
-              ExplicitHeight = 377
               object GroupBox12: TGroupBox
                 Left = 0
                 Top = 4
@@ -4430,7 +4409,6 @@ object frmConfig: TfrmConfig
             object TabSheet4: TTabSheet
               Caption = 'Emitente'
               ImageIndex = 3
-              ExplicitWidth = 309
               object Label20: TLabel
                 Left = 8
                 Top = 4
@@ -4649,8 +4627,6 @@ object frmConfig: TfrmConfig
             object TabSheet7: TTabSheet
               Caption = 'Email'
               ImageIndex = 4
-              ExplicitWidth = 269
-              ExplicitHeight = 332
               object GroupBox13: TGroupBox
                 Left = 1
                 Top = 4
@@ -4755,10 +4731,6 @@ object frmConfig: TfrmConfig
             object tbImpressao: TTabSheet
               Caption = 'Impress'#227'o'
               ImageIndex = 5
-              ExplicitLeft = 2
-              ExplicitTop = 39
-              ExplicitWidth = 269
-              ExplicitHeight = 314
               object lblImpressao: TLabel
                 Left = 2
                 Top = 8
@@ -4883,8 +4855,8 @@ object frmConfig: TfrmConfig
           end
         end
         object btnSalvarConfig: TBitBtn
-          Left = 128
-          Top = 470
+          Left = 6
+          Top = 448
           Width = 153
           Height = 25
           Caption = 'Salvar Configura'#231#245'es'
@@ -4903,6 +4875,7 @@ object frmConfig: TfrmConfig
             93337FFFF7737777733300000033333333337777773333333333}
           NumGlyphs = 2
           TabOrder = 1
+          Visible = False
           OnClick = btnSalvarConfigClick
         end
       end
@@ -4924,7 +4897,6 @@ object frmConfig: TfrmConfig
     ParentBackground = False
     ParentFont = False
     TabOrder = 2
-    ExplicitWidth = 778
     object Image5: TImage
       Left = 1
       Top = 1

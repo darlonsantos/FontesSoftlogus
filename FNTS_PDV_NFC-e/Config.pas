@@ -269,12 +269,9 @@ begin
     else
       edSequencia.Clear;
   end;
-
-
   LerConfiguracoes;
   LerConfiguracao;
-
-end;
+ end;
 
 procedure TfrmConfig.BitBtn1Click(Sender: TObject);
 begin
@@ -425,6 +422,8 @@ begin
       sbtnGetCert.Visible := False;
 {$ELSE}
       edtNumSerie.Text := Ini.ReadString('Certificado', 'NumSerie', '');
+      edtCaminho.Text := Ini.ReadString('Certificado', 'Caminho', '');
+      edtSenha.Text := Ini.ReadString('Certificado', 'Senha', '');
       ACBRNFCe.Configuracoes.Certificados.NumeroSerie := edtNumSerie.Text;
       edtNumSerie.Text := ACBRNFCe.Configuracoes.Certificados.NumeroSerie;
 {$ENDIF}
@@ -641,16 +640,162 @@ end;
 
 procedure TfrmConfig.btn1Click(Sender: TObject);
 begin
+  // NOVAS IMPLEMETAÇÕES DARLON SANTOS
+  if Trim(edtEmitCNPJ.Text) = '' then begin
+    Application.MessageBox('Informe o CNPJ do Emitente','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edtEmitCNPJ.SetFocus;
+    exit;
+  end;
+  if Trim(edtEmitRazao.Text) = '' then begin
+    Application.MessageBox('Informe a Razão do Emitente','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edtEmitRazao.SetFocus;
+    exit;
+  end;
+  if Trim(edtEmitFantasia.Text) = '' then begin
+    Application.MessageBox('Informe o Nome Fantasia  do Emitente','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edtEmitFantasia.SetFocus;
+    exit;
+  end;
+  if Trim(edtEmitCodCidade.Text) = '' then begin
+    Application.MessageBox('Informe o Código da Cidade do Emitente','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edtEmitCodCidade.SetFocus;
+    exit;
+  end;
+  if Trim(edtEmitCodCidade.Text) = '' then begin
+    Application.MessageBox('Informe o Código da Cidade do Emitente','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edtEmitCodCidade.SetFocus;
+    exit;
+  end;
+  if Trim(edtEmitCidade.Text) = '' then begin
+    Application.MessageBox('Informe o a Cidade do Emitente','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edtEmitCidade.SetFocus;
+    exit;
+  end;
+  if Trim(edtNumSerie.Text) = '' then begin
+    Application.MessageBox('Informe o Número de Série do Certificado clicando no Botão na frente do campos','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edtNumSerie.SetFocus;
+    exit;
+  end;
+
+  if (rgTipoAmb.ItemIndex = 0) and  (Trim(edtNumeroToken.Text) = '') then begin
+    Application.MessageBox('Informe o Número CSC para emissão em Produção','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edtNumeroToken.SetFocus;
+    exit;
+  end;
+
+  if (rgTipoAmb.ItemIndex = 0) and  (Trim(edtIdToken.Text) = '') then begin
+    Application.MessageBox('Informe o ID CSC para emissão em Produção','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edtIdToken.SetFocus;
+    exit;
+  end;
+
+  { TODO 1 : TESTE DE DESENVOLVIMENTO }
+  if (ckSalvar.Checked) and  (Trim(edtPathLogs.Text) = '') then begin
+    Application.MessageBox('Informe o Caminho para salvar os XMLs','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+     edtPathLogs.SetFocus;
+    exit;
+  end;
+
+  if (ckSalvar.Checked) and  not(DirectoryExists(Trim(edtPathLogs.Text))) then begin
+    Application.MessageBox('Informe um Caminho valido para salvar os XMLs','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+     edtPathLogs.SetFocus;
+    exit;
+  end;
+
+  if (Trim(edSchemas.Text) = '') or not(DirectoryExists(Trim(edSchemas.Text))) then begin
+    Application.MessageBox('Informe um Caminho valido de localização do Schemas','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edSchemas.SetFocus;
+    exit;
+  end;
+
+
+  if Trim(edtEmitUF.Text) = '' then begin
+    Application.MessageBox('Informe o UF do Emitente','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+   edtEmitUF.SetFocus;
+    exit;
+  end;
+
+  if Trim(edSequencia.Text) = '' then begin
+    Application.MessageBox('Informe a Sequencia da NFC-e','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edSequencia.SetFocus;
+    exit;
+  end;
+  if Trim(edSerie.Text) = '' then begin
+    Application.MessageBox('Informe a Série da NFC-e','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edSerie.SetFocus;
+    exit;
+  end;
+  if Trim(edCFOP.Text) = '' then begin
+    Application.MessageBox('Informe o CFOP Padrão','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+    edCFOP.SetFocus;
+    exit;
+  end;
+
+  try
+    StrToInt(edSequencia.Text);
+  except
+    Application.MessageBox('Informe uma Sequencia da NFC-e Válida','Atenção!',MB_ICONINFORMATION);
+    pageview1.ActivePage := PageSheet4;
+   edSequencia.SetFocus;
+    exit;
+  end;
+  if edImpressora.Text = '' then begin
+     pageview1.ActivePage := PageSheet4;
+    edImpressora.SetFocus;
+    exit;
+  end;
+
+  { TODO 5 : grava e ler os configurações em arquivos.ini }
+  GravarConfiguracao;
+  LerConfiguracao;
+   { TODO 5 : Configuração no numero seguencial da Nfce de cada caixa }
+   with frmModulo do begin
+    qradic_mestre.open;
+    qradic_mestre.Refresh;
+    if qradic_mestre.Locate('codigo', '915', [loCaseInsensitive]) then begin
+      if qradic_mestre.FIELDBYNAME('sequencias').AsInteger <> StrToInt(edSequencia.Text) then begin
+        qradic_mestre.Edit;
+        qradic_mestre.FIELDBYNAME('sequencias').AsInteger := StrToInt(edSequencia.Text);
+        qradic_mestre.Post;
+      end;
+      conexao.Commit;
+    end else begin
+      qradic_mestre.Edit;
+      qradic_mestre.FIELDBYNAME('CODIGO').AsString := '915';
+      qradic_mestre.FIELDBYNAME('sequencias').AsInteger := StrToInt(edSequencia.Text);
+      qradic_mestre.UpdateRecord;
+    end;
+  end;
+
+
+
+
   GravarParametro('INFORMAR_VENDEDOR_CHECKOUT', 'B', chkVendedor.Checked);
   if qrconfig.state = dsedit then
-    qrconfig.post;
+  qrconfig.post;
   application.messagebox
-    ('É necessário reiniciar o sistema para atualizar as novas configurações!',
-    'Aviso', mb_ok + MB_ICONINFORMATION);
+  ('É necessário reiniciar o sistema para atualizar as novas configurações!',
+  'Aviso', mb_ok + MB_ICONINFORMATION);
   GravaConfiguracoesLocais;
   close;
 
-end;
+ end;
 
 procedure TfrmConfig.btn2Click(Sender: TObject);
 begin
