@@ -24,7 +24,7 @@ uses
   dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
-  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalc;
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalc, ACBrEAD;
 
 type
   TfrmConfig = class(TForm)
@@ -202,6 +202,8 @@ type
     edSequencia: TEdit;
     Label51: TLabel;
     edSerie: TEdit;
+    btn3: TButton;
+    ACBrNFe1: TACBrNFe;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -217,6 +219,7 @@ type
     procedure sbtnLogoMarcaClick(Sender: TObject);
     procedure sbtnPathSalvarClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure btn3Click(Sender: TObject);
   private
     { Private declarations }
     procedure GravaConfiguracoesLocais;
@@ -803,6 +806,25 @@ begin
     qrconfig.cancel;
   close;
 
+end;
+
+procedure TfrmConfig.btn3Click(Sender: TObject);
+var
+ Modelo, Serie, Ano, NumeroInicial, NumeroFinal, Justificativa : String;
+begin
+ if not(InputQuery('WebServices Inutilização ', 'Ano',    Ano)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Modelo', Modelo)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Serie',  Serie)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Número Inicial', NumeroInicial)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Número Final', NumeroFinal)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Justificativa', Justificativa)) then
+    exit;
+  frmconfig.ACBrNFe1.WebServices.Inutiliza(frmconfig.edtEmitCNPJ.Text, Justificativa, StrToInt(Ano), StrToInt(Modelo), StrToInt(Serie), StrToInt(NumeroInicial), StrToInt(NumeroFinal));
 end;
 
 procedure TfrmConfig.btnSalvarConfigClick(Sender: TObject);

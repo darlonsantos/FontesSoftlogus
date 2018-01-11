@@ -1643,8 +1643,8 @@ object frmConfig: TfrmConfig
     Top = 42
     Width = 777
     Height = 546
-    ActivePage = PageSheet1
-    ActivePageIndex = 0
+    ActivePage = PageSheet4
+    ActivePageIndex = 3
     AdaptiveColors = True
     Align = alClient
     BackgroundColor = clWhite
@@ -4064,6 +4064,15 @@ object frmConfig: TfrmConfig
                   TabOrder = 4
                 end
               end
+              object btn3: TButton
+                Left = 279
+                Top = 11
+                Width = 109
+                Height = 25
+                Caption = 'Inutitlizar NFC-e'
+                TabOrder = 1
+                OnClick = btn3Click
+              end
             end
             object TabSheet2: TTabSheet
               Caption = 'Geral'
@@ -4933,5 +4942,18 @@ object frmConfig: TfrmConfig
     Title = 'Selecione a NFe'
     Left = 640
     Top = 504
+  end
+  object ACBrNFe1: TACBrNFe
+    Configuracoes.Geral.PathSalvar = 'C:\Program Files (x86)\Embarcadero\RAD Studio\9.0\bin\'
+    Configuracoes.Geral.ExibirErroSchema = True
+    Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
+    Configuracoes.Geral.RetirarAcentos = True
+    Configuracoes.Geral.ValidarDigest = False
+    Configuracoes.WebServices.UF = 'SP'
+    Configuracoes.WebServices.AguardarConsultaRet = 0
+    Configuracoes.WebServices.IntervaloTentativas = 0
+    Configuracoes.WebServices.AjustaAguardaConsultaRet = False
+    Left = 544
+    Top = 416
   end
 end
