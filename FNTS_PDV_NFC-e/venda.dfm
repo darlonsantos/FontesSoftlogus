@@ -2027,9 +2027,8 @@ object frmVenda: TfrmVenda
           77A2C1725C8F514647A8A8A8A2C1725C8F514647A8A8A8A2C1725C8F514647A8
           A8A8A2C1724247A8A2A23451619FFFD9}
         Stretch = True
-        ExplicitLeft = 8
-        ExplicitTop = 138
-        ExplicitWidth = 1023
+        ExplicitLeft = -8
+        ExplicitTop = -67
       end
       object lb_produto: TRzLabel
         Left = 167

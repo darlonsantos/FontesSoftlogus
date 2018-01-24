@@ -161,6 +161,7 @@ var
 
   StreamMemo: TMemoryStream;
   edtNumSerie: string;
+  edtcfop: string;
   edtProxyHost: string;
   edtProxyPorta: string;
   edtProxyUser: string;
@@ -185,8 +186,15 @@ var
   edtEmitNumero: string;
   edtEmitComp: string;
   edtIdToken: string;
+  edtSerie:string;
   edtTokenNumero: string;
   edtNatOperacao: string;
+  edtPathLogs: string;
+  edImpressora,edDescEsta, edtSchema, MotivoContigencia: string;
+  edPreview, ckSalvar, ckVisualizar:Boolean;
+  edMargem, rgFormaEmissao, EdFormatoOff:Integer;
+  edMargEsq,edMargDir,edMargSup,edMarginf:Double;
+
 
 implementation
 
@@ -231,117 +239,117 @@ end;
 
 procedure TfrmModulo.ACBRNFCeStatusChange(Sender: TObject);
 begin
-  case ACBRNFCe.Status of
-    stIdle:
-      begin
-        if (frmStatus <> nil) then
-          frmStatus.Hide;
-      end;
-    stNFeStatusServico:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Verificando Status do servico...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNFeRecepcao:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Enviando dados da NFCe...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNfeRetRecepcao:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Recebendo dados da NFCe...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNfeConsulta:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Consultando NFCe...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNfeCancelamento:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Enviando cancelamento de NFCe...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNfeInutilizacao:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Enviando pedido de Inutilização...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNFeRecibo:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Consultando Recibo de Lote...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNFeCadastro:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Consultando Cadastro...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNFeEnvDPEC:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Enviando DPEC...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNFeConsultaDPEC:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Consultando DPEC...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNFeEmail:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Enviando Email...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNFeCCe:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Enviando Carta de Correção...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-    stNFeEvento:
-      begin
-        if (frmStatus = nil) then
-          frmStatus := TfrmStatus.Create(Application);
-        frmStatus.lblStatus.Caption := 'Enviando Evento...';
-        frmStatus.Show;
-        frmStatus.BringToFront;
-      end;
-  end;
+//  case ACBRNFCe.Status of
+//    stIdle:
+//      begin
+//        if (frmStatus <> nil) then
+//          frmStatus.Hide;
+//      end;
+//    stNFeStatusServico:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Verificando Status do servico...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNFeRecepcao:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Enviando dados da NFCe...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNfeRetRecepcao:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Recebendo dados da NFCe...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNfeConsulta:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Consultando NFCe...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNfeCancelamento:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Enviando cancelamento de NFCe...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNfeInutilizacao:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Enviando pedido de Inutilização...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNFeRecibo:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Consultando Recibo de Lote...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNFeCadastro:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Consultando Cadastro...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNFeEnvDPEC:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Enviando DPEC...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNFeConsultaDPEC:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Consultando DPEC...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNFeEmail:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Enviando Email...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNFeCCe:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Enviando Carta de Correção...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//    stNFeEvento:
+//      begin
+//        if (frmStatus = nil) then
+//          frmStatus := TfrmStatus.Create(Application);
+//        frmStatus.lblStatus.Caption := 'Enviando Evento...';
+//        frmStatus.Show;
+//        frmStatus.BringToFront;
+//      end;
+//  end;
   Application.ProcessMessages;
 end;
 
@@ -416,6 +424,7 @@ end;
 
 procedure TfrmModulo.DataModuleCreate(Sender: TObject);
 begin
+  MotivoContigencia := 'Sem conexão com a internet';
   Qremitente.open;
   emitente_nome := Qremitente.FIELDBYNAME('nome').asstring;
   emitente_fantasia := Qremitente.FIELDBYNAME('fantasia').asstring;
@@ -430,7 +439,7 @@ begin
   emitente_uf := Qremitente.FIELDBYNAME('uf').asstring;
   Qremitente.Close;
 end;
-
+      { TODO : DARLON SANTOS }
 function TfrmModulo.GetSiteConsulta(UF: string;
   Ambiente: TpcnTipoAmbiente): string;
 const
@@ -502,13 +511,10 @@ Var
   IniFile: String;
   Ini: TIniFile;
   Ok: Boolean;
-
-begin
-
-  qrfilial.open;
-  IniFile := sConfiguracoes;
-
-  Ini := TIniFile.Create(IniFile);
+ begin
+   qrfilial.open;
+   IniFile := sConfiguracoes;
+   Ini := TIniFile.Create(IniFile);
   try
     edtNumSerie := Ini.ReadString('Certificado', 'NumSerie', '');
     edtIdToken := Ini.ReadString('Certificado', 'IDToken', '');
@@ -517,37 +523,47 @@ begin
     ACBRNFCe.Configuracoes.Certificados.NumeroSerie := edtNumSerie;
     edtNumSerie := ACBRNFCe.Configuracoes.Certificados.NumeroSerie;
 
-    ACBRNFCe.Configuracoes.WebServices.UF := qrfilial.FIELDBYNAME('UF')
-      .asstring;
-       {DEPOIS ALTERAR PARA MODO DE PRODUÇÃO}
+//------------------------------------------------------------------------------
+// ACBRNFCe.Configuracoes.WebServices.UF := Ini.ReadString('WebService', 'UF', '');
+//------------------------------------------------------------------------------
+    ACBRNFCe.Configuracoes.WebServices.UF := qrfilial.FIELDBYNAME('UF').asstring;
     if Ini.ReadInteger('WebService', 'Ambiente', 0) = 0 then
-     BEGIN
-     ACBRNFCe.Configuracoes.WebServices.Ambiente := taProducao;
-     END
+    ACBRNFCe.Configuracoes.WebServices.Ambiente := taProducao
     else
-     BEGIN
-      ACBRNFCe.Configuracoes.WebServices.Ambiente := taHomologacao;
-     END;
-
-
+    ACBRNFCe.Configuracoes.WebServices.Ambiente := taHomologacao;
     ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\DANFeNFCe.fr3';
-
-    edtProxyHost := Ini.ReadString('Proxy', 'Host', '');
+   edtProxyHost := Ini.ReadString('Proxy', 'Host', '');
     edtProxyPorta := Ini.ReadString('Proxy', 'Porta', '');
     edtProxyUser := Ini.ReadString('Proxy', 'User', '');
     edtProxySenha := Ini.ReadString('Proxy', 'Pass', '');
+
     ACBRNFCe.Configuracoes.WebServices.ProxyHost := edtProxyHost;
     ACBRNFCe.Configuracoes.WebServices.ProxyPort := edtProxyPorta;
     ACBRNFCe.Configuracoes.WebServices.ProxyUser := edtProxyUser;
     ACBRNFCe.Configuracoes.WebServices.ProxyPass := edtProxySenha;
-    ACBRNFCe.Configuracoes.Geral.PathSchemas := 'C:\Softlogus\PDV\Schemas';
+    edtSchema := Ini.ReadString('Geral', 'PathSchemas', '');
+    if (edtSchema = '') or not(DirectoryExists(edtSchema)) then begin
+      ShowMessage('A Pasta e Schemas informada no Config é inválida!');
+      Abort;
+    end;
+    ACBRNFCe.Configuracoes.Geral.PathSchemas := edtSchema;
     edtLogoMarca := Ini.ReadString('Geral', 'LogoMarca', '');
 
     if ACBRNFCe.DANFE <> nil then
-    begin
-      ACBRNFCe.DANFE.TipoDANFE := tiNFCe;
-      ACBRNFCe.DANFE.Logo := edtLogoMarca;
-    end;
+    ACBRNFCe.DANFE.TipoDANFE := tiNFCe;
+   if (edtLogoMarca <> '') and (FileExists(edtLogoMarca)) then
+    ACBRNFCe.DANFE.Logo := edtLogoMarca;
+     { TODO : DARLON SANTOS }
+    ckSalvar := Ini.ReadBool('Geral', 'Salvar', True);
+    edtPathLogs := Ini.ReadString('Geral', 'PathSalvar', 'C:\Softlogus\pdv\xml');
+    ACBRNFCe.Configuracoes.Arquivos.Salvar := ckSalvar;
+    ACBRNFCe.Configuracoes.Geral.PathSalvar := edtPathLogs;
+    rgFormaEmissao := Ini.ReadInteger('Geral', 'FormaEmissao', 0);
+    edtcfop := Ini.ReadString('Geral', 'CFOP_PADRAO', '5101');
+    EdFormatoOff := Ini.ReadInteger('WebService', 'FormatoOFF', 0);
+    ckVisualizar := Ini.ReadBool('WebService', 'Visualizar', False);
+    ACBRNFCe.Configuracoes.WebServices.Visualizar := ckVisualizar;
+
 
     edtEmitCNPJ := Ini.ReadString('Emitente', 'CNPJ', '');
     edtEmitIE := Ini.ReadString('Emitente', 'IE', '');
@@ -562,6 +578,7 @@ begin
     edtEmitCodCidade := Ini.ReadString('Emitente', 'CodCidade', '');
     edtEmitCidade := Ini.ReadString('Emitente', 'Cidade', '');
     edtEmitUF := Ini.ReadString('Emitente', 'UF', '');
+    edtSerie := Ini.ReadString('Emitente', 'Serie', '');
 
     edtSmtpHost := Ini.ReadString('Email', 'Host', '');
     edtSmtpPort := Ini.ReadString('Email', 'Port', '');
@@ -572,6 +589,18 @@ begin
     StreamMemo := TMemoryStream.Create;
     Ini.ReadBinaryStream('Email', 'Mensagem', StreamMemo);
     StreamMemo.Free;
+
+    edImpressora := Ini.ReadString('Impressao', 'Impressora', '');
+    edDescEsta  := Ini.ReadString('Impressao', 'Descricao via estabelecimento', 'Via do Consumidor');
+    edPreview   := Ini.ReadBool('Impressao', 'Preview', True);
+    edMargem    := Ini.ReadInteger('Impressao', 'Espessura Margem', 1);
+    edMargEsq   := Ini.ReadFloat('Impressao', 'Margem Esquerda', 0.6);
+    edMargDir   := Ini.ReadFloat('Impressao', 'Margem Direita', 0.51);
+    edMargSup   := Ini.ReadFloat('Impressao', 'Margem Superior', 0.8);
+    edMarginf   := Ini.ReadFloat('Impressao', 'Margem Inferior', 0.8);
+
+
+
   finally
     Ini.Free;
   end;
@@ -606,4 +635,6 @@ end;
 
 end.
 
-  Nome: String[20]; Valor_Acumulado: real; Valor_Ultimo_Cupom: real;
+  Nome: String[20];
+  Valor_Acumulado: real;
+  Valor_Ultimo_Cupom: real;

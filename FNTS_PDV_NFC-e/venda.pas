@@ -387,6 +387,7 @@ Const
   SEPARADOR = '------------------------------------------------' + #10;
 
 var
+  frmtOffLine:TpcnTipoEmissao;
   frmVenda: TfrmVenda;
   // resolução da tela
   OldWidth: Integer;
@@ -432,7 +433,8 @@ var
   sVendedorNome: String;
 
   // variaveis nfce
-  vAux, vNumLote, vSincrono: String;
+  vAux, vNumLote, vSincrono, vcontingencia, vgerado_nfce: String;
+  vNumNFCe:Integer;
   Sincrono: boolean;
   bc: TBitmap;
   url, cDest, tpAmb: string;
@@ -4443,7 +4445,7 @@ var
   rValor_Temp: real;
   i, icont: Integer;
   rvalor_total_convenio: real;
-  scod_cupom: string;
+  NomeArquivo, scod_cupom: string;
   bLanca_comprovante_crediario, bLanca_Comprovante_Prestacao: boolean;
   sCOO_crediario, sGNF_Crediario: string;
   sCOO_Prestacao, sGNF_Prestacao, sGRG_Prestacao: string;
@@ -4508,34 +4510,38 @@ begin
     // do cupom
     rValor_Total_Cartao := 0;
     icont := 0;
-    for i := 0 to lForma_Cartao_cred.Count - 1 do
-    begin
-
-      if ed_forma1.value > 0 then
+   begin
+     if ed_forma1.value > 0 then
+     begin
+      if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
+         (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
       begin
-        if ansiuppercase(cb_forma1.text) = ansiuppercase(lForma_Cartao_cred[i]) then
-        begin
-          rValor_Total_Cartao := rValor_Total_Cartao + ed_forma1.value;
-          Inc(icont);
-        end;
-      end;
-      if ed_forma2.value > 0 then
-      begin
-        if ansiuppercase(cb_forma2.text) = ansiuppercase(lForma_Cartao_cred[i]) then
-        begin
-          rValor_Total_Cartao := rValor_Total_Cartao + ed_forma2.value;
-          Inc(icont);
-        end;
-      end;
-      if ed_forma3.value > 0 then
-      begin
-        if ansiuppercase(cb_forma3.text) = ansiuppercase(lForma_Cartao_cred[i]) then
-        begin
-          rValor_Total_Cartao := rValor_Total_Cartao + ed_forma3.value;
-          Inc(icont);
-        end;
+        rValor_Total_Cartao := rValor_Total_Cartao + ed_forma1.Value;
+        inc(icont);
       end;
     end;
+      if ed_forma2.value > 0 then
+      begin
+      if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
+         (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
+      begin
+        rValor_Total_Cartao := rValor_Total_Cartao + ed_forma2.Value;
+        inc(icont);
+      end;
+    end;
+
+      if ed_forma3.value > 0 then
+      begin
+      if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
+         (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
+      begin
+        rValor_Total_Cartao := rValor_Total_Cartao + ed_forma3.Value;
+        inc(icont);
+      end;
+    end;
+    end;
+
+
     // verificar se o pagamento está sendo feito com múltiplos cartões pelo TEF
     if (icont > 1) and (bTef) then
     begin
@@ -4557,97 +4563,89 @@ begin
       exit;
     end;
 
-    if bTef then
+    if btef then
     begin
       bContinua := true;
       // rodar as formas de pagamento para verificar se eh cartao
-      for i := 0 to lForma_Cartao_cred.Count - 1 do
+      if (ed_forma1.value > 0) and
+        (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
+        (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
       begin
-
-        if (ed_forma1.value > 0) and
-          (ansiuppercase(cb_forma1.text) = ansiuppercase(lForma_Cartao_cred[i])) then
+        if ed_forma2.Value > 0 then
         begin
-          if ed_forma2.value > 0 then
+          Application.MessageBox('Favor informar a forma de pagamento Cartão ou Cheque (Consultado) por último!', 'Erro',
+            MB_OK + mb_iconerror);
+          bContinua := false;
+        end;
+      end
+      else
+      begin
+        if (ed_forma2.value > 0) and
+          (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
+          (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
+        begin
+          if (ed_forma3.value > 0) then
           begin
-            application.messagebox
-              ('Favor informar a forma de pagamento Cartão ou Cheque (Consultado) por último!',
-              'Erro', mb_ok + MB_ICONERROR);
+            Application.MessageBox('Favor informar a forma de pagamento Cartão ou Cheque (Consultado) por último!', 'Erro',
+              MB_OK + mb_iconerror);
             bContinua := false;
-            break;
-          end;
-        end
-        else
-        begin
-          if (ed_forma2.value > 0) and
-            (ansiuppercase(cb_forma2.text) = ansiuppercase(lForma_Cartao_cred[i]))
-          then
-          begin
-            if (ed_forma3.value > 0) then
-            begin
-              application.messagebox
-                ('Favor informar a forma de pagamento Cartão ou Cheque (Consultado) por último!',
-                'Erro', mb_ok + MB_ICONERROR);
-              bContinua := false;
-              break;
-            end;
           end;
         end;
       end;
 
-      if not bContinua then
-        exit;
+      if not bcontinua then exit;
     end;
 
     // verificar se tem lancamento para cheque...
 
-    rvalor_total_cheque := 0;
-    for i := 0 to lForma_cheque.Count - 1 do
+    rValor_Total_cheque := 0;
+    if ed_forma1.value > 0 then
     begin
-
-      if ed_forma1.value > 0 then
+      if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+         (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cheque_Aprazo)) then
       begin
-        if ansiuppercase(cb_forma1.text) = ansiuppercase(lForma_cheque[i]) then
-        begin
-          rvalor_total_cheque := rvalor_total_cheque + ed_forma1.value;
-        end;
-      end;
-      if ed_forma2.value > 0 then
-      begin
-        if ansiuppercase(cb_forma2.text) = ansiuppercase(lForma_cheque[i]) then
-        begin
-          rvalor_total_cheque := rvalor_total_cheque + ed_forma2.value;
-        end;
-      end;
-      if ed_forma3.value > 0 then
-      begin
-        if ansiuppercase(cb_forma3.text) = ansiuppercase(lForma_cheque[i]) then
-        begin
-          rvalor_total_cheque := rvalor_total_cheque + ed_forma3.value;
-        end;
+        rValor_Total_cheque := rValor_Total_cheque + ed_forma1.Value;
       end;
     end;
+    if ed_forma2.value > 0 then
+    begin
+      if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+         (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cheque_Aprazo)) then
+      begin
+        rValor_Total_cheque := rValor_Total_cheque + ed_forma2.Value;
+      end;
+    end;
+    if ed_forma3.value > 0 then
+    begin
+      if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+         (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cheque_Aprazo)) then
+      begin
+        rValor_Total_cheque := rValor_Total_cheque + ed_forma3.Value;
+      end;
+    end;
+
+
     // verificar se o cheque serah consultado pelo tef e se existe venda no cartao conjugado
-    if bTef then
+   if bTEF then
     begin
       bTEF_Cheque := false;
       if rvalor_total_cheque > 0 then
       begin
-        if application.messagebox('O cheque será consultado via TEF?',
-          'Mensagem TEF', mb_yesno + MB_ICONQUESTION) = idyes then
+        if application.MessageBox('O cheque será consultado via TEF?', 'Mensagem TEF', mb_yesno +
+          MB_ICONQUESTION) = idYes then
         begin
           if rValor_Total_Cartao > 0 then
           begin
-            if application.messagebox
-              ('O sistema não permite utilizar duas formas' +
+            if application.MessageBox('O sistema não permite utilizar duas formas' +
               ' de pagamento por TEF! Deseja prosseguir apenas com o cartão?',
-              'Atenção', mb_yesno + MB_ICONWARNING) = idno then
+              'Atenção', mb_yesno + mb_iconwarning) = idNo then
             begin
               bt_confirmar_fechamento.Enabled := true;
-              bt_confirmar_fechamento.setfocus;
+              bt_confirmar_fechamento.SetFocus;
               exit;
             end
             else
-              bTEF_Cheque := false;
+              bTef_cheque := false;
           end
           else
             bTEF_Cheque := true;
@@ -4659,40 +4657,32 @@ begin
 
     // verificar se tem lancamento para crediario
 
-    rvalor_total_crediario := 0;
-    for i := 0 to lForma_crediario.Count - 1 do
+   rValor_Total_crediario := 0;
+    if ed_forma1.value > 0 then
     begin
-
-      if ed_forma1.value > 0 then
+      if AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Crediario) then
       begin
-        if ansiuppercase(cb_forma1.text) = ansiuppercase(lForma_crediario[i])
-        then
-        begin
-          rvalor_total_crediario := rvalor_total_crediario + ed_forma1.value;
-          sCrediario_Nome := cb_forma1.text;
-        end;
-      end;
-      if ed_forma2.value > 0 then
-      begin
-        if ansiuppercase(cb_forma2.text) = ansiuppercase(lForma_crediario[i])
-        then
-        begin
-          rvalor_total_crediario := rvalor_total_crediario + ed_forma2.value;
-          sCrediario_Nome := cb_forma2.text;
-        end;
-      end;
-      if ed_forma3.value > 0 then
-      begin
-        if ansiuppercase(cb_forma3.text) = ansiuppercase(lForma_crediario[i])
-        then
-        begin
-          rvalor_total_crediario := rvalor_total_crediario + ed_forma3.value;
-          sCrediario_Nome := cb_forma3.text;
-        end;
+        rValor_Total_crediario := rValor_Total_crediario + ed_forma1.Value;
+        sCrediario_Nome := cb_forma1.text;
       end;
     end;
-
-    // GUIO: Identificação do Vendedor, caso o parametro para identificação
+    if ed_forma2.value > 0 then
+    begin
+      if AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Crediario) then
+      begin
+        rValor_Total_crediario := rValor_Total_crediario + ed_forma2.Value;
+        sCrediario_Nome := cb_forma2.text;
+      end;
+    end;
+    if ed_forma3.value > 0 then
+    begin
+      if AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Crediario) then
+      begin
+        rValor_Total_crediario := rValor_Total_crediario + ed_forma3.Value;
+        sCrediario_Nome := cb_forma3.text;
+      end;
+    end;
+    // SADRAQUE: Identificação do Vendedor, caso o parametro para identificação
     // esteja habilidade no programa
 
     iVendedorCodigo := 0;
@@ -4700,18 +4690,17 @@ begin
 
     if bIdentificarVendedor then
     begin
-      application.CreateForm(TFrmVendedor, FrmVendedor);
+      Application.CreateForm(TFrmVendedor, FrmVendedor);
 
       try
-        if FrmVendedor.showmodal = mrOk then
+        if FrmVendedor.ShowModal = mrOk then
         begin
-          iVendedorCodigo := strtoint(frmmodulo.query.fieldbyname('CODIGO')
-            .asstring);
-          sVendedorNome := frmmodulo.query.fieldbyname('NOME').asstring;
+          iVendedorCodigo := StrToInt(frmModulo.Query.FieldByName('CODIGO').AsString);
+          sVendedorNome := frmModulo.Query.FieldByName('NOME').AsString;
         end
         else
         begin
-          bt_confirmar_fechamento.Enabled := true;
+          bt_confirmar_fechamento.enabled := True;
           bt_confirmar_fechamento.setfocus;
           exit;
         end
@@ -4723,92 +4712,99 @@ begin
 
     // identificacao do Consumidor
 
-    sCli_Nome := '';
-    sCli_Endereco := '';
-    sCli_CPF := '';
-    sCli_Cidade := '';
-    sCli_Placa := '';
-    sCli_Km := '';
-    scli_cep := '';
-    sCli_uf := '';
-    sCli_codigo := '';
+
+    sCli_Nome := ''; sCli_Endereco := ''; sCli_CPF := ''; sCli_Cidade := '';
+    sCli_Placa := ''; sCli_Km := ''; sCli_cep := ''; sCli_uf := ''; sCli_codigo := '';
 
     if (bCadastra_Crediario) and (rvalor_total_crediario > 0) then
     begin
       // abrir tela de lancamento de cliente e de crediario
-      bContinua := false;
+      bcontinua := false;
 
-      frmvenda_crediario := tfrmvenda_crediario.create(self);
+      frmvenda_crediario := tfrmvenda_crediario.Create(self);
       if sConsumidor_CPF <> '' then
-        frmvenda_crediario.ed_cred_cliente.text := sConsumidor_CPF;
-      frmvenda_crediario.showmodal;
+        frmVenda_Crediario.ed_cred_cliente.Text := sConsumidor_CPF;
+      frmvenda_crediario.ShowModal;
 
-      if not bContinua then
+
+      if not bcontinua then
       begin
-        bt_confirmar_fechamento.Enabled := true;
+        bt_confirmar_fechamento.enabled := true;
         bt_confirmar_fechamento.setfocus;
         exit;
       end;
-
-      tipo_pgto := 1;
     end
     else
     begin
-      // abrir tela simples de identificacao de Cliente
+       // abrir tela simples de identificacao de Cliente
       bContinua := false;
       frmconsumidor := tfrmconsumidor.create(self);
 
       if sConsumidor_CPF <> '' then
       begin
-        frmconsumidor.ed_consumid_cpf.text := sConsumidor_CPF;
-        frmconsumidor.ed_consumid_nome.text := sConsumidor_Nome;
-        frmconsumidor.ed_consumid_endereco.text := sConsumidor_Endereco;
+        frmConsumidor.ed_consumid_cpf.Text := sConsumidor_CPF;
+        if sConsumidor_Nome = '' then
+        begin
+          sConsumidor_Nome := 'Consumidor Final';
+          sCli_Nome := 'Consumidor Final';
+        end;
+
+        frmConsumidor.ed_consumid_nome.Text := sConsumidor_Nome;
+        frmConsumidor.ed_consumid_endereco.Text := sConsumidor_Endereco;
+      end
+      else
+      begin
+        sConsumidor_Nome := 'Consumidor Final';
+        sCli_Nome := 'Consumidor Final';
+        sCli_codigo := '000001';
       end;
 
       try
-        frmconsumidor.showmodal;
+        if not bIdentifica_consumidor and (frmPrincipal.TipoImpressora = Fiscal) then
+        begin
+          frmconsumidor.showmodal;
+        end
+        else
+          bcontinua := True;
+
       finally
         FreeAndNil(frmconsumidor);
       end;
 
-      if not bContinua then
+      if not bcontinua then
       begin
-        bt_confirmar_fechamento.Enabled := true;
+        bt_confirmar_fechamento.enabled := true;
         bt_confirmar_fechamento.setfocus;
         exit;
       end;
     end;
 
+
+
+
     application.ProcessMessages;
 
     // verificar se tem lancamento para convenio
-    rvalor_total_convenio := 0;
-    for i := 0 to lForma_convenio.Count - 1 do
+   rValor_Total_convenio := 0;
+    if ed_forma1.value > 0 then
     begin
-
-      if ed_forma1.value > 0 then
+      if AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Convenio) then
       begin
-        if ansiuppercase(cb_forma1.text) = ansiuppercase(lForma_convenio[i])
-        then
-        begin
-          rvalor_total_convenio := rvalor_total_convenio + ed_forma1.value;
-        end;
+        rValor_Total_convenio := rValor_Total_convenio + ed_forma1.Value;
       end;
-      if ed_forma2.value > 0 then
+    end;
+    if ed_forma2.value > 0 then
+    begin
+      if AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Convenio) then
       begin
-        if ansiuppercase(cb_forma2.text) = ansiuppercase(lForma_convenio[i])
-        then
-        begin
-          rvalor_total_convenio := rvalor_total_convenio + ed_forma2.value;
-        end;
+        rValor_Total_convenio := rValor_Total_convenio + ed_forma2.Value;
       end;
-      if ed_forma3.value > 0 then
+    end;
+    if ed_forma3.value > 0 then
+    begin
+      if AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Convenio) then
       begin
-        if ansiuppercase(cb_forma3.text) = ansiuppercase(lForma_convenio[i])
-        then
-        begin
-          rvalor_total_convenio := rvalor_total_convenio + ed_forma3.value;
-        end;
+        rValor_Total_convenio := rValor_Total_convenio + ed_forma3.Value;
       end;
     end;
 
@@ -5004,25 +5000,53 @@ begin
       // registrar Meio de Pagamento Nº 1
       if ed_forma1.value > 0 then
       begin
-        // TEF
-        if bTef then
+         // TEF
+        if btef then
         begin
-          // rodar as formas de pagamento para verificar se eh cartao
-          for i := 0 to lForma_Cartao_cred.Count - 1 do
+           // rodar as formas de pagamento para verificar se eh cartao
+          if (ed_forma1.value > 0) and
+            ((AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
+             (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito))) then
           begin
-            if (ed_forma1.value > 0) and
-              (ansiuppercase(cb_forma1.text) = ansiuppercase(lForma_Cartao_cred[i]))
-            then
+             // armazenar o nome da forma de pagamento para CNFV
+            sForma_Temp := cb_forma1.Text;
+            Imprime_display('TEF', CLWHITE, tiPgto);
+            if not TEF_Pagamento(Tef_Venda_Cartao) then
             begin
-              // armazenar o nome da forma de pagamento para CNFV
-              sForma_Temp := cb_forma1.text;
-              Imprime_display('TEF', clBackground, tiPgto);
-              if not TEF_Pagamento(Tef_Venda_Cartao) then
+              application.messagebox
+                (pwidechar
+                ('Não foi possível prosseguir com a venda no cartão!' + #13 +
+                'Favor tentar outra vez ou utilizar outra' +
+                ' forma de pagamento!'), 'Mensagem TEF',
+                mb_ok + MB_ICONERROR);
+              bt_confirmar_fechamento.Enabled := true;
+              bt_confirmar_fechamento.setfocus;
+              exit;
+            end
+            else
+            begin
+              bTef_finaliza := true;
+            end;
+          end;
+           // verificar se vai consultar o cheque pelo tef
+          if bTEF_Cheque then
+          begin
+
+             // rodar as formas de pagamento para verificar se eh cheque
+            if (ed_forma1.value > 0) and
+              ((AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+              (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cheque_Aprazo))) then
+            begin
+              Imprime_display('TEF', CLWHITE, tiPgto);
+               // armazenar o nome da forma de pagamento para CNFV
+              sForma_Temp := cb_forma1.Text;
+
+              if not TEF_Pagamento(Tef_Venda_Cheque) then
               begin
                 application.messagebox
                   (pwidechar
-                  ('Não foi possível prosseguir com a venda no cartão!' + #13 +
-                  'Favor tentar outra vez ou utilizar outra' +
+                  ('Não foi possível prosseguir com a venda no cartão!' + #13
+                  + 'Favor tentar outra vez ou utilizar outra' +
                   ' forma de pagamento!'), 'Mensagem TEF',
                   mb_ok + MB_ICONERROR);
                 bt_confirmar_fechamento.Enabled := true;
@@ -5032,79 +5056,40 @@ begin
               else
               begin
                 bTef_finaliza := true;
-                break;
-              end;
-            end;
-          end;
-          // verificar se vai consultar o cheque pelo tef
-          if bTEF_Cheque then
-          begin
-
-            // rodar as formas de pagamento para verificar se eh cheque
-            for i := 0 to lForma_cheque.Count - 1 do
-            begin
-              if (ed_forma1.value > 0) and
-                (ansiuppercase(cb_forma1.text) = ansiuppercase(lForma_cheque[i]))
-              then
-              begin
-                Imprime_display('TEF', clBackground, tiPgto);
-                // armazenar o nome da forma de pagamento para CNFV
-                sForma_Temp := cb_forma1.text;
-
-                if not TEF_Pagamento(Tef_Venda_Cheque) then
-                begin
-                  application.messagebox
-                    (pwidechar
-                    ('Não foi possível prosseguir com a venda no cartão!' + #13
-                    + 'Favor tentar outra vez ou utilizar outra' +
-                    ' forma de pagamento!'), 'Mensagem TEF',
-                    mb_ok + MB_ICONERROR);
-                  bt_confirmar_fechamento.Enabled := true;
-                  bt_confirmar_fechamento.setfocus;
-                  exit;
-                end
-                else
-                begin
-                  bTef_finaliza := true;
-                  break;
-                end;
               end;
             end;
           end;
         end; // final do tef
 
-        // enviar para o ecf
+          // enviar para o ecf
         repeat
-          // BlockInput(true);
-               //DARLON SANTOS
           if frmPrincipal.TipoImpressora = Fiscal then
-            sMsg := cECF_Forma_Pgto(iECF_Modelo, cb_forma1.text,
-              ed_forma1.value)
+            sMsg := cECF_Forma_Pgto(iECF_Modelo, cb_forma1.Text, ed_forma1.Value)
           else
-            sMsg := Imp_Forma_Pgto(sPortaNaoFiscal, cb_forma1.text,
-              ed_forma1.value);
+            sMsg := Imp_Forma_Pgto(sPortaNaoFiscal, cb_forma1.Text, ed_forma1.Value);
 
-          if sMsg = ok then
+          if sMsg = OK then
           begin
             grid.AddRow(1);
-            grid.Cell[0, grid.LastAddedRow].asstring := '</b></i>' +
-              texto_justifica(ansiuppercase(cb_forma1.text), 45, ' ',
-              taEsquerda) + texto_justifica(formatfloat('###,###,##0.00',
-              ed_forma1.value), 10, ' ', taDireita) + '</b></i>';
+            grid.cell[0, grid.LastAddedRow].asstring := '</b></i>' + texto_justifica(
+              ansiuppercase(cb_forma1.Text),
+              45, ' ', taEsquerda) + texto_justifica(
+              formatfloat('###,###,##0.00', ed_forma1.Value),
+              10, ' ', taDireita) + '</b></i>';
             grid.SelectLastRow;
 
-            TRY
-              grid.setfocus;
-            EXCEPT
-            END;
+            try
+              grid.SetFocus;
+            except
+            end;
             bPago1 := true;
-            frmmodulo.spCupom_Temp_Edit.close;
-            frmmodulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring
-              := 'PAGO1';
-            frmmodulo.spCupom_Temp_Edit.Prepare;
-            frmmodulo.spCupom_Temp_Edit.Execute;
+            frmModulo.spCupom_Temp_Edit.Close;
+            frmModulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring := 'PAGO1';
+            frmModulo.spCupom_Temp_Edit.Prepare;
+            frmModulo.spCupom_Temp_Edit.execute;
 
-            application.ProcessMessages;
+
+            Application.ProcessMessages;
           end
           else
           begin
@@ -5115,26 +5100,26 @@ begin
               mb_yesno + MB_ICONERROR) = idno then
             begin
               // BlockInput(true);
-              if bTef and bTef_finaliza then
+              if bTEF and bTef_finaliza then
               begin
-                // TEF apresentou erro
+                    // TEF apresentou erro
                 Imprime_display('Cancelando TEF', clred, tiErro);
                 TEFVerificaGerenciadorAtivo;
                 TEFNaoConfirmaOperacao;
                 TEFVerificaArquivosPendentes;
                 TEFVerificaOperacaoPendente;
-              END;
+              end;
               break;
             end;
           end;
-        until sMsg = ok;
+        until sMsg = OK;
       end;
 
-      if sMsg <> ok then
+      if sMsg <> OK then
       begin
         Imprime_display(sMsg, clred, tiErro);
         bt_confirmar_fechamento.Enabled := true;
-        bt_confirmar_fechamento.setfocus;
+        bt_confirmar_fechamento.SetFocus;
         exit;
       end;
     end;
@@ -5143,29 +5128,55 @@ begin
 
     // verificar se a forma1 jah foi lancado no ecf
     if not bPago2 then
-    begin
-      // TEF
-      if bTef then
-      begin
-        // rodar as formas de pagamento para verificar se eh cartao
-        for i := 0 to lForma_Cartao_cred.Count - 1 do
+   begin
+         // TEF
+      if btef then begin
+           // rodar as formas de pagamento para verificar se eh cartao
+        if (ed_forma2.value > 0) and
+          ((AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
+          (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito))) then
         begin
+          Imprime_display('TEF', CLWHITE, tiPgto);
+             // armazenar o nome da forma de pagamento para CNFV
+          sForma_Temp := cb_forma2.Text;
 
-          if (ed_forma2.value > 0) and
-            (ansiuppercase(cb_forma2.text) = ansiuppercase(lForma_Cartao_cred[i]))
-          then
+          if not TEF_Pagamento(Tef_Venda_Cartao) then
           begin
-            Imprime_display('TEF', clBackground, tiPgto);
-            // armazenar o nome da forma de pagamento para CNFV
-            sForma_Temp := cb_forma2.text;
+            BlockInput(false);
+            application.messagebox
+              (pwidechar('Não foi possível prosseguir com a venda no cartão!'
+              + #13 + 'Favor tentar outra vez ou utilizar outra' +
+              ' forma de pagamento!'), 'Mensagem TEF', mb_ok + MB_ICONERROR);
+            bt_confirmar_fechamento.Enabled := true;
+            bt_confirmar_fechamento.setfocus;
+            exit;
+          end
+          else
+          begin
+            bTef_finaliza := true;
+          end;
+        end;
+           // verificar se vai consultar o cheque pelo tef
 
-            if not TEF_Pagamento(Tef_Venda_Cartao) then
+        if bTEF_Cheque then
+        begin
+             // rodar as formas de pagamento para verificar se eh cheque
+          if (ed_forma2.value > 0) and
+            ((AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+            (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista))) then
+          begin
+            Imprime_display('TEF', CLWHITE, tiPgto);
+               // armazenar o nome da forma de pagamento para CNFV
+            sForma_Temp := cb_forma2.Text;
+            if not TEF_Pagamento(Tef_Venda_Cheque) then
             begin
-              BlockInput(false);
+             BlockInput(false);
               application.messagebox
-                (pwidechar('Não foi possível prosseguir com a venda no cartão!'
-                + #13 + 'Favor tentar outra vez ou utilizar outra' +
-                ' forma de pagamento!'), 'Mensagem TEF', mb_ok + MB_ICONERROR);
+                (pwidechar
+                ('Não foi possível prosseguir com a venda no cheque!' + #13 +
+                'Favor tentar outra vez ou utilizar outra' +
+                ' forma de pagamento!'), 'Mensagem TEF',
+                mb_ok + MB_ICONERROR);
               bt_confirmar_fechamento.Enabled := true;
               bt_confirmar_fechamento.setfocus;
               exit;
@@ -5173,83 +5184,46 @@ begin
             else
             begin
               bTef_finaliza := true;
-              break;
-            end;
-          end;
-        end;
-        // verificar se vai consultar o cheque pelo tef
-        // BlockInput(true);
-        if bTEF_Cheque then
-        begin
-
-          // rodar as formas de pagamento para verificar se eh cheque
-          for i := 0 to lForma_cheque.Count - 1 do
-          begin
-            if (ed_forma2.value > 0) and
-              (ansiuppercase(cb_forma2.text) = ansiuppercase(lForma_cheque[i]))
-            then
-            begin
-              Imprime_display('TEF', clBackground, tiPgto);
-              // armazenar o nome da forma de pagamento para CNFV
-              sForma_Temp := cb_forma2.text;
-              if not TEF_Pagamento(Tef_Venda_Cheque) then
-              begin
-                BlockInput(false);
-                application.messagebox
-                  (pwidechar
-                  ('Não foi possível prosseguir com a venda no cheque!' + #13 +
-                  'Favor tentar outra vez ou utilizar outra' +
-                  ' forma de pagamento!'), 'Mensagem TEF',
-                  mb_ok + MB_ICONERROR);
-                bt_confirmar_fechamento.Enabled := true;
-                bt_confirmar_fechamento.setfocus;
-                exit;
-              end
-              else
-              begin
-                bTef_finaliza := true;
-                break;
-              end;
             end;
           end;
         end;
       end; // final do tef
 
-      // BlockInput(true);
-      // Lancar os meios de pagamento
+
+      //BlockInput(true);
+     // Lancar os meios de pagamento
       // registrar Meio de Pagamento Nº 2
       if ed_forma2.value > 0 then
       begin
-        // enviar para o ecf
+         // enviar para o ecf
         repeat
-          if frmPrincipal.TipoImpressora = Fiscal then
-            sMsg := cECF_Forma_Pgto(iECF_Modelo, cb_forma2.text,
-              ed_forma2.value)
+          if frmPrincipal.TipoImpressora = fiscal then
+            sMsg := cECF_Forma_Pgto(iECF_Modelo, cb_forma2.Text, ed_forma2.Value)
           else
-            sMsg := Imp_Forma_Pgto(sPortaNaoFiscal, cb_forma2.text,
-              ed_forma2.value);
+            sMsg := Imp_Forma_Pgto(sPortaNaoFiscal, cb_forma2.Text, ed_forma2.Value);
 
-          if sMsg = ok then
+          if sMsg = OK then
           begin
             grid.AddRow(1);
-            grid.Cell[0, grid.LastAddedRow].asstring := '</b></i>' +
-              texto_justifica(ansiuppercase(cb_forma2.text), 45, ' ',
-              taEsquerda) + texto_justifica(formatfloat('###,###,##0.00',
-              ed_forma2.value), 10, ' ', taDireita) + '</b></i>';
+            grid.cell[0, grid.LastAddedRow].asstring := '</b></i>' + texto_justifica(
+              ansiuppercase(cb_forma2.Text),
+              45, ' ', taEsquerda) + texto_justifica(
+              formatfloat('###,###,##0.00',
+              ed_forma2.Value),
+              10, ' ', taDireita) + '</b></i>';
             grid.SelectLastRow;
 
-            TRY
-              grid.setfocus;
-            EXCEPT
-            END;
+            try
+              grid.SetFocus;
+            except
+            end;
             bPago2 := true;
-            frmmodulo.spCupom_Temp_Edit.close;
-            frmmodulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring :=
-              'TOTALIZADO';
-            frmmodulo.spCupom_Temp_Edit.Prepare;
-            frmmodulo.spCupom_Temp_Edit.Execute;
+            frmModulo.spCupom_Temp_Edit.Close;
+            frmModulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring := 'TOTALIZADO';
+            frmModulo.spCupom_Temp_Edit.Prepare;
+            frmModulo.spCupom_Temp_Edit.execute;
 
-            application.ProcessMessages;
+            Application.ProcessMessages;
           end
           else
           begin
@@ -5265,12 +5239,14 @@ begin
         until sMsg = ok;
       end;
 
-      // BlockInput(true);
-      if sMsg <> ok then
+
+
+      //BlockInput(true);
+      if sMsg <> OK then
       begin
         Imprime_display(sMsg, clred, tiErro);
         bt_confirmar_fechamento.Enabled := true;
-        bt_confirmar_fechamento.setfocus;
+        bt_confirmar_fechamento.SetFocus;
         exit;
       end;
     end;
@@ -5278,29 +5254,58 @@ begin
     // verificar se a forma1 jah foi lancado no ecf
     if not bPago3 then
     begin
-
-      // TEF
-      if bTef then
+         // TEF
+      if btef then
       begin
-        // rodar as formas de pagamento para verificar se eh cartao
-        for i := 0 to lForma_Cartao_cred.Count - 1 do
+           // rodar as formas de pagamento para verificar se eh cartao
+
+        if (ed_forma3.value > 0) and
+          ((AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
+          (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito))) then
+        begin
+          Imprime_display('TEF', CLWHITE, tiPgto);
+             // armazenar o nome da forma de pagamento para CNFV
+          sForma_Temp := cb_forma3.Text;
+
+          if not TEF_Pagamento(Tef_Venda_Cartao) then
+          begin
+            BlockInput(false);
+            application.messagebox
+              (pwidechar('Não foi possível prosseguir com a venda no cartão!'
+              + #13 + 'Favor tentar outra vez ou utilizar outra' +
+              ' forma de pagamento!'), 'Mensagem TEF', mb_ok + MB_ICONERROR);
+            bt_confirmar_fechamento.Enabled := true;
+            bt_confirmar_fechamento.setfocus;
+            exit;
+          end
+          else
+          begin
+            bTef_finaliza := true;
+          end;
+        end;
+
+           //BlockInput(true);
+           // verificar se vai consultar o cheque pelo tef
+        if bTEF_Cheque then
         begin
 
+             // rodar as formas de pagamento para verificar se eh cheque
           if (ed_forma3.value > 0) and
-            (ansiuppercase(cb_forma3.text) = ansiuppercase(lForma_Cartao_cred[i]))
-          then
+            ((AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+            (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista))) then
           begin
-            Imprime_display('TEF', clBackground, tiPgto);
-            // armazenar o nome da forma de pagamento para CNFV
-            sForma_Temp := cb_forma3.text;
-
-            if not TEF_Pagamento(Tef_Venda_Cartao) then
+            Imprime_display('TEF', CLWHITE, tiPgto);
+               // armazenar o nome da forma de pagamento para CNFV
+            sForma_Temp := cb_forma3.Text;
+            if not TEF_Pagamento(Tef_Venda_Cheque) then
             begin
               BlockInput(false);
               application.messagebox
-                (pwidechar('Não foi possível prosseguir com a venda no cartão!'
-                + #13 + 'Favor tentar outra vez ou utilizar outra' +
-                ' forma de pagamento!'), 'Mensagem TEF', mb_ok + MB_ICONERROR);
+                (pwidechar
+                ('Não foi possível prosseguir com a venda no cartão!' + #13 +
+                'Favor tentar outra vez ou utilizar outra' +
+                ' forma de pagamento!'), 'Mensagem TEF',
+                mb_ok + MB_ICONERROR);
               bt_confirmar_fechamento.Enabled := true;
               bt_confirmar_fechamento.setfocus;
               exit;
@@ -5308,44 +5313,6 @@ begin
             else
             begin
               bTef_finaliza := true;
-              break;
-            end;
-          end;
-        end;
-
-        // BlockInput(true);
-        // verificar se vai consultar o cheque pelo tef
-        if bTEF_Cheque then
-        begin
-
-          // rodar as formas de pagamento para verificar se eh cheque
-          for i := 0 to lForma_cheque.Count - 1 do
-          begin
-            if (ed_forma3.value > 0) and
-              (ansiuppercase(cb_forma3.text) = ansiuppercase(lForma_cheque[i]))
-            then
-            begin
-              Imprime_display('TEF', clBackground, tiPgto);
-              // armazenar o nome da forma de pagamento para CNFV
-              sForma_Temp := cb_forma3.text;
-              if not TEF_Pagamento(Tef_Venda_Cheque) then
-              begin
-                BlockInput(false);
-                application.messagebox
-                  (pwidechar
-                  ('Não foi possível prosseguir com a venda no cartão!' + #13 +
-                  'Favor tentar outra vez ou utilizar outra' +
-                  ' forma de pagamento!'), 'Mensagem TEF',
-                  mb_ok + MB_ICONERROR);
-                bt_confirmar_fechamento.Enabled := true;
-                bt_confirmar_fechamento.setfocus;
-                exit;
-              end
-              else
-              begin
-                bTef_finaliza := true;
-                break;
-              end;
             end;
           end;
         end;
@@ -5353,43 +5320,42 @@ begin
 
 
 
-      // BlockInput(true);
+      //BlockInput(true);
+
+
 
       // Lancar os meios de pagamento
       // registrar Meio de Pagamento Nº 3
       if ed_forma3.value > 0 then
       begin
-        // enviar para o ecf
+         // enviar para o ecf
         repeat
           if frmPrincipal.TipoImpressora = Fiscal then
-            sMsg := cECF_Forma_Pgto(iECF_Modelo, cb_forma3.text,
-              ed_forma3.value)
-              //DARLON SANTOS
+            sMsg := cECF_Forma_Pgto(iECF_Modelo, cb_forma3.Text, ed_forma3.Value)
           else
-            sMsg := Imp_Forma_Pgto(sPortaNaoFiscal, cb_forma3.text,
-              ed_forma3.value);
+            sMsg := Imp_Forma_Pgto(sPortaNaoFiscal, cb_forma3.Text, ed_forma3.Value);
 
-          if sMsg = ok then
+          if sMsg = OK then
           begin
             grid.AddRow(1);
-            grid.Cell[0, grid.LastAddedRow].asstring := '</b></i>' +
-              texto_justifica(ansiuppercase(cb_forma3.text), 45, ' ',
-              taEsquerda) + texto_justifica(formatfloat('###,###,##0.00',
-              ed_forma3.value), 10, ' ', taDireita) + '</b></i>';
+            grid.cell[0, grid.LastAddedRow].asstring := '</b></i>' + texto_justifica(
+              ansiuppercase(cb_forma3.Text),
+              45, ' ', taEsquerda) + texto_justifica(
+              formatfloat('###,###,##0.00', ed_forma3.Value),
+              10, ' ', taDireita) + '</b></i>';
             grid.SelectLastRow;
 
-            TRY
-              grid.setfocus;
-            EXCEPT
-            END;
+            try
+              grid.SetFocus;
+            except
+            end;
             bPago3 := true;
-            frmmodulo.spCupom_Temp_Edit.close;
-            frmmodulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring
-              := 'PAGO3';
-            frmmodulo.spCupom_Temp_Edit.Prepare;
-            frmmodulo.spCupom_Temp_Edit.Execute;
+            frmModulo.spCupom_Temp_Edit.Close;
+            frmModulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring := 'PAGO3';
+            frmModulo.spCupom_Temp_Edit.Prepare;
+            frmModulo.spCupom_Temp_Edit.execute;
 
-            application.ProcessMessages;
+            Application.ProcessMessages;
           end
           else
           begin
@@ -5405,11 +5371,11 @@ begin
         until sMsg = ok;
       end;
 
-      if sMsg <> ok then
+      if sMsg <> OK then
       begin
         Imprime_display(sMsg, clred, tiErro);
         bt_confirmar_fechamento.Enabled := true;
-        bt_confirmar_fechamento.setfocus;
+        bt_confirmar_fechamento.SetFocus;
         exit;
       end;
     end;
@@ -5442,98 +5408,119 @@ begin
         sVendedorNome, 37, ' ', taEsquerda) + #10
     else
       sIdentificarVendedor := '';
-      //TESTE
-    if frmPrincipal.TipoImpressora = NaoFiscal then
+     if frmPrincipal.TipoImpressora = NaoFiscal then
      begin
-
-    try
-
-      Imprime_display('          AGUARDE...  PREPARANDO NFC-E',
-        clBackground, tiLivre);
-      grid.Repaint; // aqui prepara o grid
-      PrepararNFCE;
-      Imprime_display('          AGUARDE...  GRAVANDO NFC-E NO BANCO',
-       clBackground, tiLivre);
+     try
+      Imprime_display('          AGUARDE...  PREPARANDO NFC-E', clBackground, tiLivre);
+      grid.Repaint;
+       PrepararNFCE;
+      Imprime_display('          AGUARDE...  GRAVANDO NFC-E NO BANCO', clBackground, tiLivre);
        grid.Repaint;
       if nfce_autorizada then
       begin
         // lancar nfce no banco de dados do servidor
-        //DARLON
+        vgerado_nfce := 'S';
         with frmmodulo do
         begin
+        { TODO :
+TEM QUE ATUALIZAR OS COMPONENTES DO ACBR DO
+TRUNK PARA TRUNK2  01:15  13/01/2018 }
+//          if edtPathLogs <> '' then
+//              NomeArquivo := edtPathLogs
+//            else
+//              NomeArquivo := 'C:\Softlogus\PDV\xml';
+//            if ACBRNFCe.Configuracoes.Arquivos.SepararPorModelo then
+//              NomeArquivo:=NomeArquivo + '\NFCe\';
+//            if ACBRNFCe.Configuracoes.Arquivos.SepararPorMes then
+//              NomeArquivo := NomeArquivo + FormatDateTime('YYYYMM',Date)+'\';
+//             NomeArquivo := NomeArquivo + copy(ChaveNFCE, 4, 47) + '-nfe.xml';
+
+
           spNFCE_Insert.close;
           spNFCE_Insert.ParamByName('pnumero').asinteger := NumeroNFCe;
           spNFCE_Insert.ParamByName('pdata').asdate := Date;
           spNFCE_Insert.ParamByName('ptotal').asfloat := ed_total_pagar.value;
-          spNFCE_Insert.ParamByName('pcliente').asstring := sConsumidor_cpf;  //TESTE01 DARLON SANTOS
+          spNFCE_Insert.ParamByName('pcliente').asstring := sConsumidor_cpf;  { TODO : DARLON SANTOS 00:51  13/01/2018 }
           spNFCE_Insert.ParamByName('pchave').asstring := copy(ChaveNFCE, 4, 47);
-          spNFCE_Insert.ParamByName('pxml').asstring := 'C:\Softlogus\PDV\xml\' +
-            copy(ChaveNFCE, 4, 47) + '-nfe.xml';
+          spNFCE_Insert.ParamByName('pxml').asstring := 'C:\Softlogus\PDV\xml\' + copy(ChaveNFCE, 4, 47) + '-nfe.xml';
           spNFCE_Insert.ParamByName('psituacao').asinteger := 0;
           spNFCE_Insert.ParamByName('ptroco').asfloat := ed_troco.value;
-          spNFCE_Insert.Prepare;
-          spNFCE_Insert.Execute;
+          spNFCE_Insert.ParamByName('phora').asstring := FormatDateTime('HH:MM:SS',Time); { TODO : DARLON SANTOS 01:08  13/01/2018 }
+          { TODO : AQUI VERIFICA SE O CAIXA ESTA OFFILINE 1:15  13/01/2018 }
 
-               //DARLON SANTOS 28/10/2017
-          conexao.AutoCommit := false;
-          conexao.Commit;
+          if frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine then
+           begin
+              vcontingencia := 'S';
+              spNFCE_Insert.ParamByName('pcontingencia').asstring := 'S';
+              spNFCE_Insert.ParamByName('pmotivoContigencia').asstring := MotivoContigencia;
+            end
+             else
+             begin
+              vcontingencia := 'N';
+              spNFCE_Insert.ParamByName('pcontingencia').asstring := 'N';
+              spNFCE_Insert.ParamByName('pmotivocontingencia').asstring := '';
+            end;
+            spNFCE_Insert.ParamByName('penviadocontingencia').asstring := 'N';
+            //spNFCE_Insert.ParamByName('pxmlenvio').LoadFromFile(NomeArquivo,ftBlob);
+            spNFCE_Insert.ParamByName('pxmlenvio').asstring := '';
+            spNFCE_Insert.ParamByName('pxmlcacnelamento').asstring := '';
+            spNFCE_Insert.Prepare;
+            spNFCE_Insert.Execute;
+            { TODO : DARLON SANTOS 1:19  13/01/2018 }
+           conexao.AutoCommit := false;
+           conexao.Commit;
         end;
-
-      end
+       end
       ELSE
       BEGIN
-        Imprime_display('ERRO  ' + frmmodulo.ACBRNFCe.WebServices.Enviar.xMotivo,
-          clBackground, tiLivre);
+      Imprime_display('ERRO  ' + frmmodulo.ACBRNFCe.WebServices.Enviar.xMotivo,
+        clBackground, tiLivre);
         pn_fechamento.Visible := false;
-//        img_fechamento.Visible := false;
-        frmVenda.PopupMenu := pop_principal;
-        pn_principal.Enabled := true;
-        ed_barra.setfocus;
-        exit;
+    //        img_fechamento.Visible := false;
+      frmVenda.PopupMenu := pop_principal;
+      pn_principal.Enabled := true;
+      ed_barra.setfocus;
+            exit;
       END;
 
     Except
       on e: exception do
       begin
         Imprime_display('ERRO NFCE: ' + e.Message, clBackground, tiLivre);
+         bt_confirmar_fechamento.Enabled := true;
+         bt_confirmar_fechamento.SetFocus;
         exit;
       end;
-
-    end;
      end;
-
+   end
+    else
+    begin
+     vgerado_nfce := 'N';
+      vcontingencia := 'N';
+    end;
     // identificacao do consumidor no cupom
     if sCli_Nome <> '' then
     begin
-
-      repeat
-
-        // BlockInput(true);
-
+   repeat
         if sConsumidor_CPF = '' then
         begin
           if not bCadastra_Placa then
           begin
 
             if frmPrincipal.TipoImpressora = Fiscal then
-              sMsg := cECF_Termina_Fechamento(iECF_Modelo,
-                sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero + sPosto_rodape
-                + sMesa_numero + #10 + SEPARADOR + sIdentificarVendedor +
-                'Cliente: ' + texto_justifica(sCli_Nome, 37, ' ', taEsquerda) +
-                #10 + 'Enderec: ' + texto_justifica(sCli_Endereco, 37, ' ',
-                taEsquerda) + #10 + 'Cida/UF: ' + texto_justifica(sCli_Cidade +
-                ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 + 'CPF....: ' +
-                texto_justifica(sCli_CPF, 37, ' ', taEsquerda))
+              sMsg := cECF_Termina_Fechamento(iECF_Modelo, sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero +
+                sPosto_rodape + sMesa_numero + #10 + SEPARADOR + sIdentificarVendedor +
+                'Cliente: ' + texto_justifica(sCli_nome, 37, ' ', taEsquerda) + #10 +
+                'Enderec: ' + texto_justifica(sCli_endereco, 37, ' ', taEsquerda) + #10 +
+                'Cida/UF: ' + texto_justifica(sFF + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 +
+                'CPF....: ' + texto_justifica(sCli_cpf, 37, ' ', taEsquerda))
             else
-              sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal,
-                sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero +
-                #10 + SEPARADOR + sIdentificarVendedor + 'Cliente: ' +
-                texto_justifica(sCli_Nome, 37, ' ', taEsquerda) + #10 +
-                'Enderec: ' + texto_justifica(sCli_Endereco, 37, ' ',
-                taEsquerda) + #10 + 'Cida/UF: ' + texto_justifica(sCli_Cidade +
-                ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 + 'CPF....: ' +
-                texto_justifica(sCli_CPF, 37, ' ', taEsquerda),
-                ed_totalizador.value, ed_troco.value);
+              sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal, sPre_Venda_Numero + sDav_numero +
+                sPosto_rodape + sMesa_numero + #10 + SEPARADOR + sIdentificarVendedor +
+                'Cliente: ' + texto_justifica(sCli_nome, 37, ' ', taEsquerda) + #10 +
+                'Enderec: ' + texto_justifica(sCli_endereco, 37, ' ', taEsquerda) + #10 +
+                'Cida/UF: ' + texto_justifica(sCli_cidade + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 +
+                'CPF....: ' + texto_justifica(sCli_cpf, 37, ' ', taEsquerda), ed_totalizador.Value, ed_troco.Value);
 
           end
           else
@@ -5541,29 +5528,27 @@ begin
 
             if frmPrincipal.TipoImpressora = Fiscal then
               sMsg := cECF_Termina_Fechamento(iECF_Modelo,
-                sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero + sPosto_rodape
-                + sMesa_numero + #10 + SEPARADOR + sIdentificarVendedor +
-                'Cliente: ' + texto_justifica(sCli_Nome, 37, ' ', taEsquerda) +
-                #10 + 'Enderec: ' + texto_justifica(sCli_Endereco, 37, ' ',
-                taEsquerda) + #10 + 'Cida/UF: ' + texto_justifica(sCli_Cidade +
-                ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 + 'CPF....: ' +
-                texto_justifica(sCli_CPF, 37, ' ', taEsquerda) + #10 +
+                sPAF_MD5 + #10 +
+                sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+                SEPARADOR + sIdentificarVendedor +
+                'Cliente: ' + texto_justifica(sCli_nome, 37, ' ', taEsquerda) + #10 +
+                'Enderec: ' + texto_justifica(sCli_endereco, 37, ' ', taEsquerda) + #10 +
+                'Cida/UF: ' + texto_justifica(sCli_cidade + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 +
+                'CPF....: ' + texto_justifica(sCli_cpf, 37, ' ', taEsquerda) + #10 +
                 'Placa..: ' + texto_justifica(sCli_Placa, 10, ' ', taEsquerda) +
-                'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) + 'VD: '
-                + texto_justifica(sCli_vendedor, 17, ' ', taEsquerda))
+                'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) +
+                'VD: ' + texto_justifica(scli_vendedor, 17, ' ', taEsquerda))
             else
               sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal,
-                sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero +
-                #10 + SEPARADOR + sIdentificarVendedor + 'Cliente: ' +
-                texto_justifica(sCli_Nome, 37, ' ', taEsquerda) + #10 +
-                'Enderec: ' + texto_justifica(sCli_Endereco, 37, ' ',
-                taEsquerda) + #10 + 'Cida/UF: ' + texto_justifica(sCli_Cidade +
-                ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 + 'CPF....: ' +
-                texto_justifica(sCli_CPF, 37, ' ', taEsquerda) + #10 +
+                sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+                SEPARADOR + sIdentificarVendedor +
+                'Cliente: ' + texto_justifica(sCli_nome, 37, ' ', taEsquerda) + #10 +
+                'Enderec: ' + texto_justifica(sCli_endereco, 37, ' ', taEsquerda) + #10 +
+                'Cida/UF: ' + texto_justifica(sCli_cidade + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 +
+                'CPF....: ' + texto_justifica(sCli_cpf, 37, ' ', taEsquerda) + #10 +
                 'Placa..: ' + texto_justifica(sCli_Placa, 10, ' ', taEsquerda) +
-                'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) + 'VD: '
-                + texto_justifica(sCli_vendedor, 17, ' ', taEsquerda),
-                ed_totalizador.value, ed_troco.value);
+                'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) +
+                'VD: ' + texto_justifica(scli_vendedor, 17, ' ', taEsquerda), ed_totalizador.Value, ed_troco.Value);
 
           end;
         end
@@ -5576,24 +5561,23 @@ begin
 
               if frmPrincipal.TipoImpressora = Fiscal then
                 sMsg := cECF_Termina_Fechamento(iECF_Modelo,
-                  sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero +
-                  sPosto_rodape + sMesa_numero + #10 + SEPARADOR +
-                  sIdentificarVendedor + 'Cliente: ' +
-                  texto_justifica(sCli_Nome, 37, ' ', taEsquerda) + #10 +
-                  'Enderec: ' + texto_justifica(sCli_Endereco, 37, ' ',
-                  taEsquerda) + #10 + 'Cida/UF: ' + texto_justifica(sCli_Cidade
-                  + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 + 'CPF....: ' +
-                  texto_justifica(sCli_CPF, 37, ' ', taEsquerda))
+                  sPAF_MD5 + #10 +
+                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+                  SEPARADOR + sIdentificarVendedor +
+                  'Cliente: ' + texto_justifica(sCli_nome, 37, ' ', taEsquerda) + #10 +
+                  'Enderec: ' + texto_justifica(sCli_endereco, 37, ' ', taEsquerda) + #10 +
+                  'Cida/UF: ' + texto_justifica(sCli_cidade + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 +
+                  'CPF....: ' + texto_justifica(sCli_cpf, 37, ' ', taEsquerda))
               else
                 sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal,
-                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero
-                  + #10 + SEPARADOR + sIdentificarVendedor + 'Cliente: ' +
-                  texto_justifica(sCli_Nome, 37, ' ', taEsquerda) + #10 +
-                  'Enderec: ' + texto_justifica(sCli_Endereco, 37, ' ',
-                  taEsquerda) + #10 + 'Cida/UF: ' + texto_justifica(sCli_Cidade
-                  + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 + 'CPF....: ' +
-                  texto_justifica(sCli_CPF, 37, ' ', taEsquerda),
-                  ed_totalizador.value, ed_troco.value);
+                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+                  SEPARADOR + sIdentificarVendedor +
+                  'Cliente: ' + texto_justifica(sCli_nome, 37, ' ', taEsquerda) + #10 +
+                  'Enderec: ' + texto_justifica(sCli_endereco, 37, ' ', taEsquerda) + #10 +
+                  'Cida/UF: ' + texto_justifica(sCli_cidade + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 +
+                  'CPF....: ' + texto_justifica(sCli_cpf, 37, ' ', taEsquerda), ed_totalizador.Value, ed_troco.Value);
+
+
 
             end
             else
@@ -5601,28 +5585,25 @@ begin
 
               if frmPrincipal.TipoImpressora = Fiscal then
                 sMsg := cECF_Termina_Fechamento(iECF_Modelo,
-                  sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero +
-                  sPosto_rodape + sMesa_numero + #10 + SEPARADOR +
-                  sIdentificarVendedor + 'Cliente: ' +
-                  texto_justifica(sCli_Nome, 37, ' ', taEsquerda) + #10 +
-                  'Enderec: ' + texto_justifica(sCli_Endereco, 37, ' ',
-                  taEsquerda) + #10 + 'Cida/UF: ' + texto_justifica(sCli_Cidade
-                  + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 + 'Placa..: ' +
-                  texto_justifica(sCli_Placa, 10, ' ', taEsquerda) + 'KM: ' +
-                  texto_justifica(sCli_Km, 10, ' ', taEsquerda) + 'VD: ' +
-                  texto_justifica(sCli_vendedor, 17, ' ', taEsquerda))
+                  sPAF_MD5 + #10 +
+                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+                  SEPARADOR + sIdentificarVendedor +
+                  'Cliente: ' + texto_justifica(sCli_nome, 37, ' ', taEsquerda) + #10 +
+                  'Enderec: ' + texto_justifica(sCli_endereco, 37, ' ', taEsquerda) + #10 +
+                  'Cida/UF: ' + texto_justifica(sCli_cidade + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 +
+                  'Placa..: ' + texto_justifica(sCli_Placa, 10, ' ', taEsquerda) +
+                  'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) +
+                  'VD: ' + texto_justifica(scli_vendedor, 17, ' ', taEsquerda))
               else
                 sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal,
-                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero
-                  + #10 + SEPARADOR + sIdentificarVendedor + 'Cliente: ' +
-                  texto_justifica(sCli_Nome, 37, ' ', taEsquerda) + #10 +
-                  'Enderec: ' + texto_justifica(sCli_Endereco, 37, ' ',
-                  taEsquerda) + #10 + 'Cida/UF: ' + texto_justifica(sCli_Cidade
-                  + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 + 'Placa..: ' +
-                  texto_justifica(sCli_Placa, 10, ' ', taEsquerda) + 'KM: ' +
-                  texto_justifica(sCli_Km, 10, ' ', taEsquerda) + 'VD: ' +
-                  texto_justifica(sCli_vendedor, 17, ' ', taEsquerda),
-                  ed_totalizador.value, ed_troco.value);
+                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+                  SEPARADOR + sIdentificarVendedor +
+                  'Cliente: ' + texto_justifica(sCli_nome, 37, ' ', taEsquerda) + #10 +
+                  'Enderec: ' + texto_justifica(sCli_endereco, 37, ' ', taEsquerda) + #10 +
+                  'Cida/UF: ' + texto_justifica(sCli_cidade + ' ' + sCli_uf, 37, ' ', taEsquerda) + #10 +
+                  'Placa..: ' + texto_justifica(sCli_Placa, 10, ' ', taEsquerda) +
+                  'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) +
+                  'VD: ' + texto_justifica(scli_vendedor, 17, ' ', taEsquerda), ed_totalizador.Value, ed_troco.Value);
 
             end;
           end
@@ -5633,34 +5614,32 @@ begin
             begin
               if frmPrincipal.TipoImpressora = Fiscal then
                 sMsg := cECF_Termina_Fechamento(iECF_Modelo,
-                  sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero +
-                  sPosto_rodape + sMesa_numero + #10 + SEPARADOR +
-                  sIdentificarVendedor)
+                  sPAF_MD5 + #10 +
+                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10
+                  + SEPARADOR + sIdentificarVendedor)
               else
                 sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal,
-                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero
-                  + #10 + SEPARADOR + sIdentificarVendedor,
-                  ed_totalizador.value, ed_troco.value);
+                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10
+                  + SEPARADOR + sIdentificarVendedor, ed_totalizador.Value, ed_troco.Value);
 
             end
             else
             begin
               if frmPrincipal.TipoImpressora = Fiscal then
                 sMsg := cECF_Termina_Fechamento(iECF_Modelo,
-                  sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero +
-                  sPosto_rodape + sMesa_numero + #10 + SEPARADOR +
-                  sIdentificarVendedor + 'Placa..: ' +
-                  texto_justifica(sCli_Placa, 10, ' ', taEsquerda) + 'KM: ' +
-                  texto_justifica(sCli_Km, 10, ' ', taEsquerda) + 'VD: ' +
-                  texto_justifica(sCli_vendedor, 17, ' ', taEsquerda))
+                  sPAF_MD5 + #10 +
+                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+                  SEPARADOR + sIdentificarVendedor +
+                  'Placa..: ' + texto_justifica(sCli_Placa, 10, ' ', taEsquerda) +
+                  'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) +
+                  'VD: ' + texto_justifica(scli_vendedor, 17, ' ', taEsquerda))
               else
                 sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal,
-                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero
-                  + #10 + SEPARADOR + sIdentificarVendedor + 'Placa..: ' +
-                  texto_justifica(sCli_Placa, 10, ' ', taEsquerda) + 'KM: ' +
-                  texto_justifica(sCli_Km, 10, ' ', taEsquerda) + 'VD: ' +
-                  texto_justifica(sCli_vendedor, 17, ' ', taEsquerda),
-                  ed_totalizador.value, ed_troco.value);
+                  sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+                  SEPARADOR + sIdentificarVendedor +
+                  'Placa..: ' + texto_justifica(sCli_Placa, 10, ' ', taEsquerda) +
+                  'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) +
+                  'VD: ' + texto_justifica(scli_vendedor, 17, ' ', taEsquerda), ed_totalizador.Value, ed_troco.Value);
 
             end;
           end;
@@ -7864,49 +7843,46 @@ end;
 procedure TfrmVenda.GerarNFCe(NumNFe: String);
 var
   i, nItem: Integer;
-  total_produtos, total_icms, total_base, total_trib: real;
+  total_produtos, total_icms, total_base, total_trib, PTroco: real;
 begin
-
-  try
-
+ try
     with frmmodulo do
-
     begin
       qrfilial.Open;
-
-      with ACBRNFCe.NotasFiscais.add.NFe do
+  with ACBRNFCe.NotasFiscais.add.NFe do
       begin
 
         Ide.cNF := strtoint(NumNFe);
         Ide.natOp := 'VENDA AO CONSUMIDOR FINAL';
-
         if tipo_pgto = 1 then
           Ide.indPag := ipPrazo
         else
           Ide.indPag := ipVista;
              {MODELO DA NOTA FISCAL ELETRONICA}
         Ide.Modelo := 65;
-        Ide.Serie := 2;
+        Ide.Serie := StrToInt(edtSerie);
         Ide.nNF := strtoint(NumNFe);
         Ide.dEmi := Now;
         Ide.dSaiEnt := Now;
         Ide.hSaiEnt := Now;
+        if frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine then
+         begin
+          Ide.dhCont  := Now;
+          Ide.xJust := MotivoContigencia;
+         end;
         Ide.tpNF := tnSaida;
-        Ide.tpEmis := teNormal;
-        Ide.tpAmb := taHomologacao;
-        // DARLON SANTOS ALTERAR PARA AMBIENTE DE PRODUÇÃO
-
+        Ide.tpEmis := ACBRNFCe.Configuracoes.Geral.FormaEmissao;
+        Ide.tpAmb := ACBRNFCe.Configuracoes.WebServices.Ambiente;
         Ide.cUF := NotaUtil.UFtoCUF(edtEmitUF);
         Ide.cMunFG := strtoint(edtEmitCodCidade);
         Ide.finNFe := fnNormal;
         Ide.tpImp := tiNFCe;
         Ide.indFinal := cfConsumidorFinal;
         Ide.indPres := pcPresencial;
+        ACBRNFCe.Configuracoes.Geral.ModeloDF := moNFCe;
         ACBRNFCe.Configuracoes.Geral.VersaoDF := ve310;
-        // ALTERAÇÃO DARLON SANTOS  TESTE
 
-
-
+        Ide.verProc := '1.0';
         Emit.CNPJCPF := edtEmitCNPJ;
         Emit.IE := edtEmitIE;
         Emit.xNome := edtEmitRazao;
@@ -7934,10 +7910,9 @@ begin
         else
           Emit.CRT := crtRegimeNormal;
 
-        Dest.CNPJCPF := OnlyNumber(sCli_CPF);
-        // Dest.IE                := '687138770110'; //NFC-e não aceita IE
-        Dest.ISUF := '';
-        Dest.xNome := sCli_Nome;
+        Dest.CNPJCPF := OnlyNumber(sConsumidor_CPF);
+         Dest.ISUF := '';
+        Dest.xNome := sConsumidor_Nome;
         Dest.indIEDest := inNaoContribuinte;
         Dest.EnderDest.fone := '';
         if scli_cep <> '' then
@@ -7949,7 +7924,7 @@ begin
         Dest.EnderDest.nro := '';
         Dest.EnderDest.xCpl := 'casa';
         Dest.EnderDest.xBairro := '';
-        Dest.EnderDest.cMun := 0; // analisar funcao
+        Dest.EnderDest.cMun := 0;
         Dest.EnderDest.xMun := sCli_Cidade;
         Dest.EnderDest.UF := sCli_uf;
         Dest.EnderDest.cPais := 1058;
@@ -8000,15 +7975,40 @@ begin
               Prod.xProd := qrProdNCFE.fieldbyname('NOME').asstring;
               Prod.NCM := somenteNumero(qrProdNCFE.fieldbyname('NCM').asstring);
               // Tabela NCM disponível em  http://www.receita.fazenda.gov.br/Aliquotas/DownloadArqTIPI.htm
-              Prod.EXTIPI := '';
-              Prod.CFOP := iCFOP; // CFOP DEFAULT 5102
+               Prod.EXTIPI := '';
+               Prod.CFOP := '5101';//iCFOP;
+//              if trim(qrProdNCFE.fieldbyname('CFOP').AsString)  <> '' then
+//                Prod.CFOP := trim(qrProdNCFE.fieldbyname('CFOP').AsString)
+//              else
+//                Prod.CFOP := edtcfop;
 
-              Prod.qCom := grid.Cell[5, i].asfloat;
-              Prod.qTrib := grid.Cell[5, i].asfloat;
-              Prod.vUnCom := grid.Cell[6, i].asfloat;
-              Prod.vUnTrib := grid.Cell[6, i].asfloat;
-              Prod.vProd := Prod.vUnCom * Prod.qCom;
-              Prod.vDesc := grid.Cell[7, i].asfloat;
+              Prod.qCom := RoundTo(grid.Cell[5, i].asfloat,-2);
+              Prod.qTrib := RoundTo(grid.Cell[5, i].asfloat,-2);
+              Prod.vUnCom := RoundTo(grid.Cell[6, i].asfloat+grid.Cell[7, i].asfloat ,-2); // miza
+              Prod.vUnTrib := RoundTo(grid.Cell[6, i].asfloat+grid.Cell[7, i].asfloat ,-2);
+              Prod.vProd := RoundTo(Prod.vUnCom * Prod.qCom,-2);
+              Prod.vDesc := RoundTo(grid.Cell[7, i].asfloat,-2);
+              if rTotal_Desconto > 0 then
+                Prod.vDesc := RoundTo(Prod.vDesc + ((Prod.vProd/rTotal_Venda)*rTotal_Desconto),-2);
+
+//              Prod.qCom := grid.Cell[5, i].asfloat;
+//              Prod.qTrib := grid.Cell[5, i].asfloat;
+//              Prod.vUnCom := grid.Cell[6, i].asfloat;
+//              Prod.vUnTrib := grid.Cell[6, i].asfloat;
+//              Prod.vProd := Prod.vUnCom * Prod.qCom;
+//              Prod.vDesc := grid.Cell[7, i].asfloat;
+              { TODO : ATUALIZAR O ACBR 1:19  13/01/2018 }
+              // prepar query
+//              QRCSOSN.close;
+//              QRCSOSN.sql.clear;
+//              QRCSOSN.sql.add('select csosn, aliquota icms, cest from ESTOQUE ');
+//              QRCSOSN.sql.add('where codigo = :pcodigo');
+//              QRCSOSN.ParamByName('pcodigo').asstring :=
+//              IntToStrZero(grid.Cell[3, i].asinteger, 6);
+//              QRCSOSN.Open;
+//              if (trim(QRCSOSN.fieldbyname('cest').asstring) <> '') and (trim(QRCSOSN.fieldbyname('cest').asstring)<>'0') then
+//                Prod.arma CEST   := QRCSOSN.fieldbyname('cest').asstring;
+
 
               Prod.vOutro := 0;
               Prod.vFrete := 0;
@@ -8171,6 +8171,43 @@ begin
         Total.ICMSTot.vTotTrib := total_trib;
 
         Transp.modFrete := mfSemFrete; // NFC-e não pode ter FRETE
+        PTroco := 0;
+        if ed_troco.Value > 0 then begin
+          if ed_forma1.value > 0 then begin
+            if ed_forma2.value > 0 then begin
+              if ed_forma3.value > 0 then begin
+                PTroco := (ed_troco.Value/3);
+              end else begin
+                PTroco := (ed_troco.Value/2);
+              end;
+            end else begin
+              PTroco := ed_troco.Value;
+            end;
+          end;
+        end;
+
+        if ed_forma1.value > 0 then begin
+          with pag.add do // PAGAMENTOS apenas para NFC-e
+          begin
+            if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+               (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) then
+              tPag := fpCheque;
+            if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Crediario)) then
+              tPag := fpCreditoLoja;
+            if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) then
+              tPag := fpCartaoDebito;
+            if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
+              tPag := fpCartaoCredito;
+            if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_dinheiro)) then
+              tPag := fpDinheiro;
+            if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Convenio)) then
+              tPag := fpCreditoLoja;
+            vPag := ed_forma1.value - PTroco;
+          end;
+        end;
+
+
+
         with pag.add do // PAGAMENTOS apenas para NFC-e
         begin
           case cb_forma1.ItemIndex of
@@ -8218,76 +8255,98 @@ begin
 end;
 
 procedure TfrmVenda.PrepararNFCE;
+{ TODO 5 : DARLON SANTOS 22:13 11/01/2018 }
 begin
 
   nfce_autorizada := false;
   frmmodulo.LerConfiguracao;
+  if EdFormatoOff = 0 then
+    frmtOffLine := teContingencia
+  else
+  frmtOffLine := teOffLine;
   vAux := frmmodulo.codifica('915');
+  vNumNFCe := StrToInt(vAux);
   vSincrono := '1';
-  vNumLote := '1';
+  vNumLote :=  vAux;
   Sincrono := true;
   with frmmodulo do
   begin
-              //DARLON SANTOS
     try
       ACBRNFCe.NotasFiscais.clear;
+
       Imprime_display('          AGUARDE...  GERANDO NFC-E', clBackground, tiLivre);
       grid.Repaint;
       GerarNFCe(vAux);
-
-      Imprime_display('          AGUARDE...  ENVIANDO NFC-E', clBackground, tiLivre);
-      grid.Repaint;
-      ACBrNFce.NotasFiscais.GerarNFe;
+      Imprime_display('          AGUARDE...  ASSINANDO NFC-E', clBackground, tiLivre);
+       grid.Repaint;
        ACBrNFce.NotasFiscais.Assinar;
-       ACBrNFce.NotasFiscais.Valida;
-      ACBrNFce.Enviar(vNumLote,False,sincrono);
-    if not ACBRNFCe.NotasFiscais.Items[0].Confirmada then
-      begin
+       Imprime_display('          AGUARDE...  VALIDANDO NFC-E', clBackground, tiLivre);
+       grid.Repaint;
+       ACBRNFCe.NotasFiscais.Valida;
+
+
+   if ACBRNFCe.Configuracoes.Geral.FormaEmissao <> frmtOffLine  then
+    begin
+     Imprime_display('          AGUARDE...  ENVIANDO NFC-E', clBackground, tiLivre);
+       grid.Repaint;
+        ACBrNFce.Enviar(vNumLote,true,sincrono);
+      if not ACBRNFCe.NotasFiscais.Items[0].Confirmada then
+       begin
+          If ACBRNFCe.WebServices.Enviar.cStat = 100 then
+        begin
            cStatus := 100;
            ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
            NumeroNFCe := strtoint(vAux);
-      end
+        end;
+     end
       else
       begin
        Imprime_display(ACBRNFCe.WebServices.Enviar.xMotivo, clBackground, tiLivre);
        end;
-         Imprime_display('          AGUARDE...  GERANDO QRCODE DA NFC-E',
-        clBackground, tiLivre);
-          grid.Repaint;
-      GerarQrCode;
-      Zint.Barcode.Data := MemoDados.text;
-      bc := TBitmap.create;
-      Zint.Barcode.GetBarcode(bc);
-      bc.SaveToFile('C:\Softlogus\PDV\xml\qrcode' + copy(ChaveNFCE, 4, 47)+ '.bmp');
-      FreeAndNil(bc);
-      ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\Schemas\DANFeNFCe.fr3';
+    end
+    else
+    begin
+        ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
+        NumeroNFCe := strtoint(vAux);
+      end;
+//      Imprime_display('          AGUARDE...  GERANDO QRCODE DA NFC-E',
+//      clBackground, tiLivre);
+//      grid.Repaint;
+//      GerarQrCode;
+//      Zint.Barcode.Data := MemoDados.text;
+//      bc := TBitmap.create;
+//      Zint.Barcode.GetBarcode(bc);
+//      bc.SaveToFile('C:\Softlogus\PDV\xml\qrcode' + copy(ChaveNFCE, 4, 47)+ '.bmp');
+ //      FreeAndNil(bc);
+       ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\Schemas\DANFeNFCe.fr3';
       if FileExists(frmPrincipal.LerINi(sConfiguracoes, 'PDV', 'CAMINHO_LOGO', '')) then
         ACBRDANFENFCe.Logo := frmPrincipal.LerINi(sConfiguracoes, 'PDV',  'CAMINHO_LOGO', '');
 
       ACBRDANFENFCe.Detalhado := true;
-     ACBRDANFENFCe.vTroco := ed_troco.value;
-    ACBRNFCe.NotasFiscais.Imprimir;
+      ACBRDANFENFCe.vTroco := ed_troco.value;
+      ACBRDANFENFCe.Impressora := edImpressora;
+      ACBRDANFENFCe.DescricaoViaEstabelec := edDescEsta;
+      ACBRDANFENFCe.EspessuraBorda := edMargem;
+      ACBRDANFENFCe.MargemDireita  := edMargDir;
+      ACBRDANFENFCe.MargemEsquerda := edMargEsq;
+      ACBRDANFENFCe.MargemSuperior := edMargSup;
+      ACBRDANFENFCe.MargemInferior := edMarginf;
+      ACBRDANFENFCe.MostrarPreview := edPreview;
+      ACBRNFCe.NotasFiscais.Imprimir;
       ACBRNFCe.NotasFiscais.clear;
-     //DARLON SANTOS
-      if cStatus = 100 then
-        begin
-            nfce_autorizada := true;
-        end
-     else
-       begin
-        nfce_autorizada := false;
-       end;
-
-    except
+      //DARLON SANTOS
+      if (cStatus = 100) or (frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine) then
+         nfce_autorizada := false
+        else
+        nfce_autorizada := true;
+     except
       on e: exception do
       begin
-
-        application.messagebox(pwidechar('Erro na geração da NFCE' + #13 +
+      application.messagebox(pwidechar('Erro na geração da NFCE' + #13 +
           'Erro: ' + e.Message), 'Erro', mb_ok + MB_ICONERROR);
         nfce_autorizada := false;
         // TESTE DARLON SANTOS
-
-      end;
+     end;
 
     end;
 

@@ -458,13 +458,18 @@ begin
 end;
 
 function Imp_Sangria(sPorta: string; valor: real): string;
-begin   // DARLON SANTOS 201254693
+begin
+ { TODO 5 : DARLON SANTOS 22:13 11/01/2018 }
   if (frmPrincipal.TipoImpressora = NaoFiscal)then
   begin
     InicializaVariaveis;
     Imp.Porta := sPorta;
     Imp.Concomitante := True;
     Imp.Imprime('**** SANGRIA ****', [Centraliza]);
+    Imp.Imprime('COMPROVANTE DE RETIRADA ', [Centraliza]);
+    Imp.Imprime('FUNDO DE TROCO', [Centraliza]);
+    Imp.Imprime('Operador' + sNome_Operador, [Esquerda]);
+   // Imp.Imprime('Numero Caixa' + iNumCaixa, [Esquerda]);
     Imp.Imprime('', []);
     Imp.Imprime('', []);
     Imp.Imprime('Retirada do caixa: ', [Esquerda]);

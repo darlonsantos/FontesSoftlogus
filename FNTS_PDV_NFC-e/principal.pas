@@ -81,6 +81,9 @@ type
     actConfiguracoes: TAction;
     imgm_imagens: TImage;
     DIretorio: TJvSelectDirectory;
+    btn_configuracaoesAvancadas: TdxBarButton;
+    dxBarLargeButton3: TdxBarLargeButton;
+    dxbrlrgbtn1: TdxBarLargeButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -109,12 +112,11 @@ type
     procedure act_vendasExecute(Sender: TObject);
     procedure AdvGlowButton5Click(Sender: TObject);
     procedure AdvSmoothToggleButton1Click(Sender: TObject);
-    procedure dxBarButton2Click(Sender: TObject);
     procedure dxBarButton3Click(Sender: TObject);
-    procedure dxBarLargeButton3Click(Sender: TObject);
     procedure actVendasExecute(Sender: TObject);
     procedure actRelatorioExecute(Sender: TObject);
     procedure actConfiguracoesExecute(Sender: TObject);
+    procedure dxbrlrgbtn1Click(Sender: TObject);
   private
     iImpressora, iGaveta: Integer;
     { Private declarations }
@@ -171,9 +173,17 @@ var
 
   (* Lista de aliquotas *)
   laliquota: TstringList;
-  (* Lista de Formas de Pagamento que exigem tratamento especial no fechamento da venda *)
-  lForma_Cheque, lForma_Cheque_ap,  lForma_Crediario, lForma_Cartao_cred,lForma_Cartao_deb, lForma_dinheiro,
-    lForma_Convenio: TstringList;
+//  (* Lista de Formas de Pagamento que exigem tratamento especial no fechamento da venda *)
+//    lForma_Cheque, lForma_Cheque_ap,  lForma_Crediario, lForma_Cartao_cred,lForma_Cartao_deb, lForma_dinheiro,
+//    lForma_Convenio: TstringList;
+
+      (* Lista de Formas de Pagamento que exigem tratamento especial no fechamento da venda*)
+   lForma_pgto_Cheque_Avista,lForma_pgto_Cheque_Aprazo, lForma_pgto_Crediario,
+    lForma_pgto_Cartao_Debito,lForma_pgto_Cartao_Credito, lForma_pgto_dinheiro,
+   lForma_pgto_Convenio: string;
+
+
+
   (* Dados do ECF *)
   sECF_Serial: string; // numero de serie do ECF registrado no sistema
   sECF_Caixa: string; // numero do caixa do ECF
@@ -1453,34 +1463,15 @@ begin
 
   // alimentar as variaveis com as formas de pagamentos pre-definidas que exigem tratamentos
   // especiais no fechamento da venda
-  if frmmodulo.query.RecordCount > 0 then
+   if frmmodulo.query.RecordCount > 0 then
   begin
-    lForma_Cheque := TstringList.Create;
-    lForma_Cheque.CommaText := frmmodulo.query.FieldByName
-      ('forma_cheque').asstring;
-
-
-    lForma_Cartao_cred := TstringList.Create;
-    lForma_Cartao_cred.CommaText := frmmodulo.query.FieldByName
-      ('forma_cartao_cred').asstring;
-
-      lForma_Cartao_deb := TstringList.Create;
-    lForma_Cartao_deb.CommaText := frmmodulo.query.FieldByName
-      ('forma_cartao_deb').asstring;
-
-
-
-    lForma_Crediario := TstringList.Create;
-    lForma_Crediario.CommaText := frmmodulo.query.FieldByName
-      ('forma_crediario').asstring;
-
-    lForma_Convenio := TstringList.Create;
-    lForma_Convenio.CommaText := frmmodulo.query.FieldByName
-      ('forma_convenio').asstring;
-
-    lForma_dinheiro := TstringList.Create;
-    lForma_dinheiro.CommaText := frmmodulo.query.FieldByName
-      ('forma_dinheiro').asstring;
+    lForma_pgto_Cheque_Avista := frmmodulo.query.fieldbyname('forma_cheque').asstring;
+    lForma_pgto_Cheque_Aprazo := frmmodulo.query.fieldbyname('FORMA_CHEQUE_AP').asstring;
+    lForma_pgto_Cartao_Debito := frmmodulo.query.fieldbyname('FORMA_CARTAO_DEB').asstring;
+    lForma_pgto_Cartao_Credito := frmmodulo.query.fieldbyname('FORMA_CARTAO_CRED').asstring;
+    lForma_pgto_Crediario := frmmodulo.query.fieldbyname('forma_crediario').asstring;
+    lForma_pgto_Convenio := frmmodulo.query.fieldbyname('forma_convenio').asstring;
+    lForma_pgto_Dinheiro := frmmodulo.query.fieldbyname('forma_dinheiro').asstring;
   end;
 
   LerFormasPagto;
@@ -2622,181 +2613,70 @@ end;
 function TfrmPrincipal.LerFormasPagto: Boolean;
 var
   formas: string;
+  c:integer;
 begin
   try
-    result := false;
-    frmmodulo.tbForma_pgto.close;
-    frmmodulo.tbForma_pgto.Open;
+    Result := False;
+    frmModulo.tbForma_pgto.Close;
+    frmModulo.tbForma_pgto.Open;
 
-    if frmmodulo.tbForma_pgto.RecordCount > 0 then
-      frmmodulo.tbForma_pgto.Delete;
+    if frmModulo.tbForma_pgto.RecordCount > 0 then
+      frmModulo.tbForma_pgto.Delete;
 
-    // Dinheiro
-    frmmodulo.tbForma_pgto.insert;
-    frmmodulo.tbForma_Pgtoid.Value := 1;
-    if Pos(',', lForma_dinheiro.CommaText) > 0 then
-      frmmodulo.tbForma_PgtoNome.Value := copy(lForma_dinheiro.CommaText, 1,
-        Pos(',', lForma_dinheiro.CommaText) - 1)
-    else
-      frmmodulo.tbForma_PgtoNome.Value := copy(lForma_dinheiro.CommaText, 1,
-        Length(lForma_dinheiro.CommaText));
-    frmmodulo.tbForma_pgto.Post;
+    c:=0;
+     //Dinheiro
+    Inc(c);
+    frmModulo.tbForma_pgto.Insert;
+    frmModulo.tbForma_Pgtoid.Value := c;
+    frmModulo.tbForma_PgtoNome.Value := lForma_pgto_dinheiro;
+    frmModulo.tbForma_pgto.Post;
 
-    // Cheque  a vista {DARLON SANTOS}
-    frmmodulo.tbForma_pgto.insert;
-    frmmodulo.tbForma_Pgtoid.Value := 2;
-    if Pos(',', lForma_Cheque.CommaText) > 0 then
-      frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Cheque.CommaText, 1,
-        Pos(',', lForma_Cheque.CommaText) - 1)
-    else
-      frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Cheque.CommaText, 1,
-        Length(lForma_Cheque.CommaText));
-    frmmodulo.tbForma_pgto.Post;
+     //Cheque
+    Inc(c);
+    frmModulo.tbForma_pgto.Insert;
+    frmModulo.tbForma_Pgtoid.Value := c;
+    frmModulo.tbForma_PgtoNome.Value := lForma_pgto_Cheque_Avista;
+    frmModulo.tbForma_pgto.Post;
 
-    // Cartao de cred   //DARLON SANTOS
-    frmmodulo.tbForma_pgto.insert;
-    frmmodulo.tbForma_Pgtoid.Value := 3;
-    if Pos(',', lForma_Cartao_cred.CommaText) > 0 then
-      frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Cartao_cred.CommaText, 1,
-        Pos(',', lForma_Cartao_cred.CommaText) - 1)
-    else
-       frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Cartao_cred.CommaText, 1,
-       Length(lForma_Cartao_cred.CommaText));
-       frmmodulo.tbForma_pgto.Post;
-          // Cartao de deb //DARLON SANTOS
-      frmmodulo.tbForma_pgto.insert;
-      frmmodulo.tbForma_Pgtoid.Value := 3;
-      if Pos(',', lForma_Cartao_deb.CommaText) > 0 then
-       frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Cartao_deb.CommaText, 1,
-        Pos(',', lForma_Cartao_deb.CommaText) - 1)
-     else
-        frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Cartao_deb.CommaText, 1,
-        Length(lForma_Cartao_deb.CommaText));
-        frmmodulo.tbForma_pgto.Post;
+    Inc(c);
+    frmModulo.tbForma_pgto.Insert;
+    frmModulo.tbForma_Pgtoid.Value := c;
+    frmModulo.tbForma_PgtoNome.Value := lForma_pgto_Cheque_Aprazo;
+    frmModulo.tbForma_pgto.Post;
 
+    //Cartao
+    Inc(c);
+    frmModulo.tbForma_pgto.Insert;
+    frmModulo.tbForma_Pgtoid.Value := c;
+    frmModulo.tbForma_PgtoNome.Value := lForma_pgto_Cartao_Debito;
+    frmModulo.tbForma_pgto.Post;
 
-    // Crediario
-    frmmodulo.tbForma_pgto.insert;
-    frmmodulo.tbForma_Pgtoid.Value := 4;
-    if Pos(',', lForma_Crediario.CommaText) > 0 then
-      frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Crediario.CommaText, 1,
-        Pos(',', lForma_Crediario.CommaText) - 1)
-    else
-      frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Crediario.CommaText, 1,
-        Length(lForma_Crediario.CommaText));
-    frmmodulo.tbForma_pgto.Post;
+    Inc(c);
+    frmModulo.tbForma_pgto.Insert;
+    frmModulo.tbForma_Pgtoid.Value := c;
+    frmModulo.tbForma_PgtoNome.Value := lForma_pgto_Cartao_Credito;
+    frmModulo.tbForma_pgto.Post;
 
-    // Convenio
-    frmmodulo.tbForma_pgto.insert;
-    frmmodulo.tbForma_Pgtoid.Value := 5;
-    if Pos(',', lForma_Convenio.CommaText) > 0 then
-      frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Convenio.CommaText, 1,
-        Pos(',', lForma_Convenio.CommaText) - 1)
-    else
-      frmmodulo.tbForma_PgtoNome.Value := copy(lForma_Convenio.CommaText, 1,
-        Length(lForma_Convenio.CommaText));
-    frmmodulo.tbForma_pgto.Post;
+    Inc(c);
+    frmModulo.tbForma_pgto.Insert;
+    frmModulo.tbForma_Pgtoid.Value := c;
+    frmModulo.tbForma_PgtoNome.Value := lForma_pgto_Crediario;
+    frmModulo.tbForma_pgto.Post;
 
-    result := true;
+    //Convenio
+    Inc(c);
+    frmModulo.tbForma_pgto.Insert;
+    frmModulo.tbForma_Pgtoid.Value := c;
+    frmModulo.tbForma_PgtoNome.Value := lForma_pgto_Convenio;
+    frmModulo.tbForma_pgto.Post;
+    Result := True;
   except
-    result := false;
-    Showmessage('Erro ao carregar formas de pagamento');
+    Result := False;
+    ShowMessage('Erro ao carregar formas de pagamento');
 
   end;
-
-  {
-
-    for i := 1 to 919 do Formas := Formas + ' ';
-    iRetorno := Bematech_FI_VerificaFormasPagamentoMFD( Formas );
-
-    ecfMSG := cECF_Analisa_Retorno(cod_ecf);
-    if ecfMSG = OK then
-    begin
-    sRet := cECF_Retorno_Impressora(cod_ecf);
-    if sRet = OK then
-    begin
-    // limpar a tabela de forma de pagamento
-    Y := 0;
-
-    for i := 1 to length(Formas) do
-    begin
-    if Y > 30 then break;
-    if i = 1 then // inicio da variavel
-    x := 1
-    else
-    if i >= length(Formas) then // final da variavel
-    begin
-    frmModulo.tbForma_Pgto.Insert;
-    frmModulo.tbForma_Pgto.FieldByName('id').asinteger := y;
-    frmModulo.tbForma_Pgto.FieldByName('Nome').asstring := copy(Formas,x,16);
-    svalor := copy(Formas,x+16,20);
-    if svalor <> '' then
-    begin
-    svalor := floattostr(strtofloat(svalor));
-    if strtofloat(svalor) > 0 then
-    svalor := floattostr(strtofloat(svalor)/100);
-    end
-    else
-    svalor := '0';
-
-    frmModulo.tbForma_pgto.fieldbyname('Valor_Acumulado').asfloat
-    := strtofloat(svalor);
-
-    svalor := copy(Formas,x+26,20);
-    if svalor <> '' then
-    begin
-    svalor := floattostr(strtofloat(svalor));
-    if strtofloat(svalor) > 0 then
-    svalor := floattostr(strtofloat(svalor)/100);
-    end
-    else
-    svalor := '0';
-
-    frmModulo.tbForma_Pgto.FieldByName('Valor_Ultimo_Cupom').asfloat
-    := strtofloat(svalor);
-    frmModulo.tbForma_Pgto.Post;
-    INC(Y);
-    end
-    else
-    begin
-    if Formas[i] = ',' then
-    begin
-    frmModulo.tbForma_Pgto.Insert;
-    frmModulo.tbForma_Pgto.FieldByName('id').asinteger := y;
-    frmModulo.tbForma_Pgto.FieldByName('Nome').asstring := copy(Formas,x,16);
-    svalor := copy(Formas,x+16,20);
-    if svalor <> '' then
-    begin
-    svalor := floattostr(strtofloat(svalor));
-    if strtofloat(svalor) > 0 then
-    svalor := floattostr(strtofloat(svalor)/100);
-    end
-    else
-    svalor := '0';
-    frmModulo.tbForma_Pgto.FieldByName('Valor_Acumulado').asfloat
-    := strtofloat(svalor);
-    svalor := copy(Formas,x+26,20);
-    if svalor <> '' then
-    begin
-    svalor := floattostr(strtofloat(svalor));
-    if strtofloat(svalor) > 0 then
-    svalor := floattostr(strtofloat(svalor)/100);
-    end
-    else
-    svalor := '0';
-    frmModulo.tbForma_Pgto.FieldByName('Valor_Ultimo_Cupom').asfloat
-    := strtofloat(svalor);
-    INC(Y);
-    x := i + 1;
-    end;
-    end;
-    end;
-    Result := OK;
-    end
-
-  }
-
 end;
+
 
 function TfrmPrincipal.ApenasNumerosStr(pStr: String): String;
 Var
@@ -2860,21 +2740,18 @@ begin
 
 end;
 
-procedure TfrmPrincipal.dxBarButton2Click(Sender: TObject);
-begin
-    CarregaSistemaVenda;
-end;
-
 procedure TfrmPrincipal.dxBarButton3Click(Sender: TObject);
 begin
   frmOrcamento := tfrmOrcamento.create(self);
   frmOrcamento.ShowModal;
 end;
 
-procedure TfrmPrincipal.dxBarLargeButton3Click(Sender: TObject);
+procedure TfrmPrincipal.dxbrlrgbtn1Click(Sender: TObject);
 begin
-   CarregaSistemaVenda;
+
 end;
+
+//CarregaSistemaVenda;
 
 procedure TfrmPrincipal.dxTileItem1Click(Sender: TdxTileControlItem);
 begin

@@ -2823,7 +2823,7 @@ object frmConfig: TfrmConfig
       end
       object GroupBox3: TGroupBox
         Left = 14
-        Top = 431
+        Top = 239
         Width = 410
         Height = 73
         Caption = 'TEF'
@@ -2865,40 +2865,152 @@ object frmConfig: TfrmConfig
           ValueUnchecked = '0'
         end
       end
-      object wwDBGrid1: TwwDBGrid
+      object GroupBox15: TGroupBox
         Left = 14
-        Top = 18
-        Width = 747
-        Height = 407
-        Selected.Strings = (
-          'CODIGO'#9'10'#9'CODIGO'
-          'FORMA_CREDIARIO'#9'50'#9'CREDIARIO'
-          'FORMA_CHEQUE'#9'50'#9'CHEQUE A VISTA'
-          'FORMA_CARTAO'#9'50'#9'CART'#195'O DE CREDITO'
-          'FORMA_CONVENIO'#9'50'#9'CONVENIO'
-          'FORMA_DINHEIRO'#9'50'#9'DINHEIRO'
-          'FORMA_CARTAO_DEB'#9'50'#9'CART'#195'O DE DEBITO'
-          'FORMA_CHEQUE_AP'#9'50'#9'CHEQUE A PRAZO')
-        IniAttributes.Delimiter = ';;'
-        TitleColor = clBtnFace
-        FixedCols = 0
-        ShowHorzScrollBar = True
-        DataSource = dsconfig
+        Top = 23
+        Width = 410
+        Height = 196
+        Caption = 'Formas de Pagametos'
         TabOrder = 2
-        TitleAlignment = taLeftJustify
-        TitleFont.Charset = ANSI_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
-        TitleLines = 1
-        TitleButtons = False
-        object wwDBGrid1IButton: TwwIButton
-          Left = 0
-          Top = 0
-          Width = 13
-          Height = 22
-          AllowAllUp = True
+        object Label52: TLabel
+          Left = 9
+          Top = 25
+          Width = 43
+          Height = 13
+          Caption = 'Dinheiro:'
+        end
+        object Label53: TLabel
+          Left = 9
+          Top = 49
+          Width = 74
+          Height = 13
+          Caption = 'Cheque Avista:'
+        end
+        object Label54: TLabel
+          Left = 9
+          Top = 97
+          Width = 71
+          Height = 13
+          Caption = 'Cart'#227'o D'#233'bito:'
+        end
+        object Label55: TLabel
+          Left = 9
+          Top = 145
+          Width = 47
+          Height = 13
+          Caption = 'Credi'#225'rio:'
+        end
+        object Label56: TLabel
+          Left = 8
+          Top = 169
+          Width = 49
+          Height = 13
+          Caption = 'Conv'#234'nio:'
+        end
+        object Label57: TLabel
+          Left = 9
+          Top = 73
+          Width = 78
+          Height = 13
+          Caption = 'Cheque Aprazo:'
+        end
+        object Label58: TLabel
+          Left = 9
+          Top = 121
+          Width = 75
+          Height = 13
+          Caption = 'Cart'#227'o Cr'#233'dito:'
+        end
+        object DBEdit5: TDBEdit
+          Left = 103
+          Top = 21
+          Width = 297
+          Height = 19
+          Color = 15916445
+          Ctl3D = False
+          DataField = 'FORMA_DINHEIRO'
+          DataSource = dsconfig
+          Enabled = False
+          ParentCtl3D = False
+          TabOrder = 0
+        end
+        object DBEdit7: TDBEdit
+          Left = 103
+          Top = 45
+          Width = 297
+          Height = 19
+          Color = 15916445
+          Ctl3D = False
+          DataField = 'FORMA_CHEQUE'
+          DataSource = dsconfig
+          Enabled = False
+          ParentCtl3D = False
+          TabOrder = 1
+        end
+        object DBEdit8: TDBEdit
+          Left = 103
+          Top = 93
+          Width = 297
+          Height = 19
+          Color = 15916445
+          Ctl3D = False
+          DataField = 'FORMA_CARTAO'
+          DataSource = dsconfig
+          Enabled = False
+          ParentCtl3D = False
+          TabOrder = 2
+        end
+        object DBEdit9: TDBEdit
+          Left = 103
+          Top = 141
+          Width = 297
+          Height = 19
+          Color = 15916445
+          Ctl3D = False
+          DataField = 'FORMA_CREDIARIO'
+          DataSource = dsconfig
+          Enabled = False
+          ParentCtl3D = False
+          TabOrder = 3
+        end
+        object DBEdit10: TDBEdit
+          Left = 103
+          Top = 165
+          Width = 297
+          Height = 19
+          Color = 15916445
+          Ctl3D = False
+          DataField = 'FORMA_CONVENIO'
+          DataSource = dsconfig
+          Enabled = False
+          ParentCtl3D = False
+          TabOrder = 4
+        end
+        object DBEdit11: TDBEdit
+          Left = 103
+          Top = 69
+          Width = 297
+          Height = 19
+          Color = 15916445
+          Ctl3D = False
+          DataField = 'FORMA_CHEQUE_AP'
+          DataSource = dsconfig
+          Enabled = False
+          ParentCtl3D = False
+          TabOrder = 5
+        end
+        object DBEdit12: TDBEdit
+          Left = 103
+          Top = 117
+          Width = 297
+          Height = 19
+          Color = 15916445
+          Ctl3D = False
+          DataField = 'FORMA_CARTAO_CRED'
+          DataSource = dsconfig
+          Enabled = False
+          ParentCtl3D = False
+          TabOrder = 6
         end
       end
     end
@@ -3935,12 +4047,10 @@ object frmConfig: TfrmConfig
             Top = 15
             Width = 464
             Height = 423
-            ActivePage = TabSheet1
+            ActivePage = TabSheet4
             Align = alClient
             MultiLine = True
             TabOrder = 0
-            ExplicitLeft = 3
-            ExplicitTop = 17
             object TabSheet1: TTabSheet
               Caption = 'Certificado'
               object GroupBox10: TGroupBox
@@ -4906,17 +5016,6 @@ object frmConfig: TfrmConfig
     ParentBackground = False
     ParentFont = False
     TabOrder = 2
-    object Image5: TImage
-      Left = 1
-      Top = 1
-      Width = 48
-      Height = 40
-      Align = alLeft
-      AutoSize = True
-      Center = True
-      Proportional = True
-      Visible = False
-    end
   end
   object qrconfig: TIBCQuery
     Connection = frmModulo.conexao
@@ -4927,7 +5026,7 @@ object frmConfig: TfrmConfig
   end
   object dsconfig: TIBCDataSource
     DataSet = qrconfig
-    Left = 576
+    Left = 560
     Top = 504
   end
   object OpenPictureDialog1: TOpenPictureDialog

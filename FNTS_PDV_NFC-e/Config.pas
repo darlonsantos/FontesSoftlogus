@@ -75,7 +75,6 @@ type
     EditSenhaUsuario: TEdit;
     Label10: TLabel;
     pnTitulo: TPanel;
-    Image5: TImage;
     GroupBox8: TGroupBox;
     Label11: TLabel;
     Label9: TLabel;
@@ -173,8 +172,6 @@ type
     edtNumeroToken: TEdit;
     Label40: TLabel;
     Label41: TLabel;
-    wwDBGrid1: TwwDBGrid;
-    wwDBGrid1IButton: TwwIButton;
     tbImpressao: TTabSheet;
     lblImpressao: TLabel;
     edImpressora: TComboBox;
@@ -204,6 +201,21 @@ type
     edSerie: TEdit;
     btn3: TButton;
     ACBrNFe1: TACBrNFe;
+    GroupBox15: TGroupBox;
+    Label52: TLabel;
+    Label53: TLabel;
+    Label54: TLabel;
+    Label55: TLabel;
+    Label56: TLabel;
+    Label57: TLabel;
+    Label58: TLabel;
+    DBEdit5: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
+    DBEdit10: TDBEdit;
+    DBEdit11: TDBEdit;
+    DBEdit12: TDBEdit;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);

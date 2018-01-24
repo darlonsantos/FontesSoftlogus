@@ -98,18 +98,18 @@
 			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+			<VerInfo_AutoGenVersion>false</VerInfo_AutoGenVersion>
 			<DCC_RunTimeTypeInfo>false</DCC_RunTimeTypeInfo>
 			<VerInfo_Locale>1033</VerInfo_Locale>
-			<VerInfo_Build>36</VerInfo_Build>
+			<VerInfo_Build>38</VerInfo_Build>
 			<VerInfo_Release>4</VerInfo_Release>
 			<VerInfo_Debug>true</VerInfo_Debug>
-			<VerInfo_PreRelease>true</VerInfo_PreRelease>
 			<DCC_ExeOutput>C:\Softlogus\PDV\</DCC_ExeOutput>
 			<VerInfo_MinorVer>2</VerInfo_MinorVer>
 			<Icon_MainIcon>PDV_Icon1.ico</Icon_MainIcon>
 			<VerInfo_MajorVer>2</VerInfo_MajorVer>
 			<DCC_UnitSearchPath>C:\FNTS_PDV_NFC-e\sintegra;C:\FNTS_PDV_NFC-e\sintegra\Codificacao;C:\FNTS_PDV_NFC-e\sintegra\Validacao_CFOP;C:\FNTS_PDV_NFC-e\sintegra\Validacao_NCM;C:\FNTS_PDV_NFC-e\sintegra\Validacao_Sintegra;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
-			<VerInfo_Keys>CompanyName=Softlogus Sistemas ;FileDescription=;FileVersion=2.2.4.36;InternalName=;LegalCopyright=Softlogus Sistemas;LegalTrademarks=;OriginalFilename=;ProductName=Softlogus Sistemas;ProductVersion=1.0.0.0;Comments=Desenvolvedor - Darlon Santos</VerInfo_Keys>
+			<VerInfo_Keys>CompanyName=Softlogus Sistemas ;FileDescription=;FileVersion=2.2.4.38;InternalName=;LegalCopyright=Softlogus Sistemas;LegalTrademarks=;OriginalFilename=;ProductName=Softlogus Sistemas;ProductVersion=1.0.0.0;Comments=Desenvolvedor - Darlon Santos</VerInfo_Keys>
 		</PropertyGroup>
 		<ItemGroup>
 			<DelphiCompile Include="$(MainSource)">
@@ -355,7 +355,7 @@
 						<VersionInfo Name="MajorVer">4</VersionInfo>
 						<VersionInfo Name="MinorVer">5</VersionInfo>
 						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">38</VersionInfo>
+						<VersionInfo Name="Build">39</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -367,7 +367,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription">Frente de Caixa</VersionInfoKeys>
-						<VersionInfoKeys Name="FileVersion">4.5.0.38</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">4.5.0.39</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>

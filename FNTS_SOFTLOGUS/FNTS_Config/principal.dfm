@@ -723,8 +723,6 @@ object frmPrincipal: TfrmPrincipal
       OnChange = AbasChange
       OnChanging = TabEmpresaChanging
       TabOrder = 2
-      ExplicitLeft = 8
-      ExplicitTop = 40
       NextPictureChanged = False
       PrevPictureChanged = False
       object TabECF: TAdvOfficePage
@@ -10017,6 +10015,7 @@ object frmPrincipal: TfrmPrincipal
     GlowButtonAppearance.BorderColorDown = 15048022
     GlowButtonAppearance.BorderColorChecked = 16750899
     GlowButtonAppearance.BorderColorDisabled = 11316396
+    GlowButtonAppearance.Color = 15653832
     GlowButtonAppearance.ColorTo = clNone
     GlowButtonAppearance.ColorChecked = clWhite
     GlowButtonAppearance.ColorCheckedTo = clNone

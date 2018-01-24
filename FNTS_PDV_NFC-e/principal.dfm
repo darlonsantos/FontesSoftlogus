@@ -1651,12 +1651,15 @@ object frmPrincipal: TfrmPrincipal
   end
   object dxFloatDockSite1: TdxFloatDockSite
     Left = 0
-    Top = 0
-    Width = 185
-    Height = 131
+    Top = 128
+    Width = 1135
+    Height = 739
     Visible = False
     FloatLeft = 964
     FloatTop = 633
+    ExplicitTop = 0
+    ExplicitWidth = 185
+    ExplicitHeight = 131
     DockingType = 0
     OriginalWidth = 185
     OriginalHeight = 131
@@ -10038,6 +10041,28 @@ object frmPrincipal: TfrmPrincipal
       Action = actConfiguracoes
       Category = 0
       HotImageIndex = 25
+    end
+    object btn_configuracaoesAvancadas: TdxBarButton
+      Caption = 'Avan'#231'ada'
+      Category = 0
+      Hint = 'Avan'#231'ada'
+      Visible = ivAlways
+      ImageIndex = 25
+      LargeImageIndex = 25
+    end
+    object dxBarLargeButton3: TdxBarLargeButton
+      Caption = 'Configura'#231#245'es Avan'#231'adas'
+      Category = 0
+      Hint = 'Configura'#231#245'es Avan'#231'adas'
+      Visible = ivAlways
+      HotImageIndex = 25
+    end
+    object dxbrlrgbtn1: TdxBarLargeButton
+      Caption = 'New Button'
+      Category = 0
+      Hint = 'New Button'
+      Visible = ivAlways
+      OnClick = dxbrlrgbtn1Click
     end
     object dxBarGroup1: TdxBarGroup
       Items = (

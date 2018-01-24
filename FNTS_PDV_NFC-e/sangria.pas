@@ -64,11 +64,16 @@ begin
     begin
       sNumero_cupom := cECF_COO_Nao_Fiscal(iECF_Modelo);
       sMsg := cECF_Sangria(iECF_Modelo,ed_valor.Value);
-    end
-    else
-      begin
+    end;
+     if frmPrincipal.TipoImpressora = NaoFiscal then
+     begin
       sNumero_cupom := zerar(FloatToStr( max('')),5);
       sMsg := Imp_Sangria(sPortaNaoFiscal,ed_valor.Value);
+      end
+      else
+      begin
+        Application.MessageBox('No exite impressora configurada para imitir o relatorio da sangria!','Atenço',mb_ok+MB_ICONINFORMATION);
+       sMsg := 'OK';
       end;
     if sMsg <> 'OK' then
     begin

@@ -813,8 +813,8 @@ object frmModulo: TfrmModulo
     Connection = Conexao_Servidor
     SQL.Strings = (
       'select * from c000007')
-    Left = 408
-    Top = 72
+    Left = 312
+    Top = 96
   end
   object qrcontasreceber: TIBCQuery
     Connection = Conexao_Servidor
@@ -992,7 +992,7 @@ object frmModulo: TfrmModulo
   object query_servidor2: TIBCQuery
     Connection = Conexao_Servidor
     Left = 460
-    Top = 72
+    Top = 80
   end
   object qrfilial: TIBCQuery
     Connection = Conexao_Servidor
@@ -1005,8 +1005,8 @@ object frmModulo: TfrmModulo
     Connection = Conexao_Servidor
     SQL.Strings = (
       'select * from c000010')
-    Left = 624
-    Top = 16
+    Left = 544
+    Top = 56
   end
   object qrcfop: TIBCQuery
     Connection = Conexao_Servidor
@@ -1609,22 +1609,22 @@ object frmModulo: TfrmModulo
     Connection = conexao
     SQL.Strings = (
       
-        'EXECUTE PROCEDURE NFCE_INSERT(:PNUMERO, :PDATA, :PTOTAL, :PCLIEN' +
-        'TE, :PCHAVE, :PXML, :PSITUACAO, :PTROCO)')
+        'EXECUTE PROCEDURE NFCE_INSERT(:pnumero, :pdata, :ptotal, :pclien' +
+        'te, :pchave, :pxml, :psituacao, :ptroco, :phora, :pcontingencia,' +
+        ' :penviadocontingencia, :pmotivocontingencia, :pxmlenvio, :pxmlc' +
+        'acnelamento )')
     CachedUpdates = True
-    Left = 652
-    Top = 256
+    Left = 468
+    Top = 584
     ParamData = <
       item
         DataType = ftInteger
-        Precision = 10
         Name = 'PNUMERO'
         ParamType = ptInput
       end
       item
-        DataType = ftDateTime
-        Name = 'PDATA'
-        ParamType = ptInput
+        DataType = ftUnknown
+        Name = 'pdata'
       end
       item
         DataType = ftFloat
@@ -1651,7 +1651,6 @@ object frmModulo: TfrmModulo
       end
       item
         DataType = ftInteger
-        Precision = 10
         Name = 'PSITUACAO'
         ParamType = ptInput
       end
@@ -1659,8 +1658,31 @@ object frmModulo: TfrmModulo
         DataType = ftFloat
         Name = 'PTROCO'
         ParamType = ptInput
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PHORA'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'pcontingencia'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'penviadocontingencia'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'pmotivocontingencia'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'pxmlenvio'
+      end
+      item
+        DataType = ftUnknown
+        Name = 'pxmlcacnelamento'
       end>
-    CommandStoredProcName = 'NFCE_INSERT'
   end
   object qradic_mestre: TIBCQuery
     Connection = conexao
@@ -1674,7 +1696,7 @@ object frmModulo: TfrmModulo
     Porta = 'COM1'
     Device.Baud = 2400
     OnLePeso = BalancasLePeso
-    Left = 352
-    Top = 424
+    Left = 368
+    Top = 488
   end
 end

@@ -54,9 +54,8 @@ object frmSangria: TfrmSangria
     BevelOuter = bvNone
     Color = 15830313
     TabOrder = 1
-    ExplicitTop = 113
     object bt_ok: TButton
-      Left = 53
+      Left = 52
       Top = 3
       Width = 75
       Height = 25
