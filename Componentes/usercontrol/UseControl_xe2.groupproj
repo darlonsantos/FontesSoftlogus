@@ -1,0 +1,156 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{848C8D1A-1FED-457D-B293-3FEC54E5E30E}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Packages\Base\pckAlcinoe.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Base\pckmd5.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Base\pckUCDataConnector.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Base\pckUserControl_RT.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Base\pckUserControl_DT.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Connectors\UCADOConn\pckUCADOConn.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Connectors\UCDataSnapConn\pckUCDataSnapConn.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Connectors\UCDBXConn\pckUCDBXConn.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Connectors\UCIBXConn\pckUCIBXConn.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Connectors\UCMidasConn\pckUCMidasConn.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Packages\Connectors\UCZeosConn\pckZeosConn.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="pckAlcinoe">
+			<MSBuild Projects="Packages\Base\pckAlcinoe.dproj"/>
+		</Target>
+		<Target Name="pckAlcinoe:Clean">
+			<MSBuild Projects="Packages\Base\pckAlcinoe.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckAlcinoe:Make">
+			<MSBuild Projects="Packages\Base\pckAlcinoe.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckmd5">
+			<MSBuild Projects="Packages\Base\pckmd5.dproj"/>
+		</Target>
+		<Target Name="pckmd5:Clean">
+			<MSBuild Projects="Packages\Base\pckmd5.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckmd5:Make">
+			<MSBuild Projects="Packages\Base\pckmd5.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckUCDataConnector">
+			<MSBuild Projects="Packages\Base\pckUCDataConnector.dproj"/>
+		</Target>
+		<Target Name="pckUCDataConnector:Clean">
+			<MSBuild Projects="Packages\Base\pckUCDataConnector.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckUCDataConnector:Make">
+			<MSBuild Projects="Packages\Base\pckUCDataConnector.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckUserControl_RT">
+			<MSBuild Projects="Packages\Base\pckUserControl_RT.dproj"/>
+		</Target>
+		<Target Name="pckUserControl_RT:Clean">
+			<MSBuild Projects="Packages\Base\pckUserControl_RT.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckUserControl_RT:Make">
+			<MSBuild Projects="Packages\Base\pckUserControl_RT.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckUserControl_DT">
+			<MSBuild Projects="Packages\Base\pckUserControl_DT.dproj"/>
+		</Target>
+		<Target Name="pckUserControl_DT:Clean">
+			<MSBuild Projects="Packages\Base\pckUserControl_DT.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckUserControl_DT:Make">
+			<MSBuild Projects="Packages\Base\pckUserControl_DT.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckUCADOConn">
+			<MSBuild Projects="Packages\Connectors\UCADOConn\pckUCADOConn.dproj"/>
+		</Target>
+		<Target Name="pckUCADOConn:Clean">
+			<MSBuild Projects="Packages\Connectors\UCADOConn\pckUCADOConn.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckUCADOConn:Make">
+			<MSBuild Projects="Packages\Connectors\UCADOConn\pckUCADOConn.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckUCDataSnapConn">
+			<MSBuild Projects="Packages\Connectors\UCDataSnapConn\pckUCDataSnapConn.dproj"/>
+		</Target>
+		<Target Name="pckUCDataSnapConn:Clean">
+			<MSBuild Projects="Packages\Connectors\UCDataSnapConn\pckUCDataSnapConn.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckUCDataSnapConn:Make">
+			<MSBuild Projects="Packages\Connectors\UCDataSnapConn\pckUCDataSnapConn.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckUCDBXConn">
+			<MSBuild Projects="Packages\Connectors\UCDBXConn\pckUCDBXConn.dproj"/>
+		</Target>
+		<Target Name="pckUCDBXConn:Clean">
+			<MSBuild Projects="Packages\Connectors\UCDBXConn\pckUCDBXConn.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckUCDBXConn:Make">
+			<MSBuild Projects="Packages\Connectors\UCDBXConn\pckUCDBXConn.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckUCIBXConn">
+			<MSBuild Projects="Packages\Connectors\UCIBXConn\pckUCIBXConn.dproj"/>
+		</Target>
+		<Target Name="pckUCIBXConn:Clean">
+			<MSBuild Projects="Packages\Connectors\UCIBXConn\pckUCIBXConn.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckUCIBXConn:Make">
+			<MSBuild Projects="Packages\Connectors\UCIBXConn\pckUCIBXConn.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckUCMidasConn">
+			<MSBuild Projects="Packages\Connectors\UCMidasConn\pckUCMidasConn.dproj"/>
+		</Target>
+		<Target Name="pckUCMidasConn:Clean">
+			<MSBuild Projects="Packages\Connectors\UCMidasConn\pckUCMidasConn.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckUCMidasConn:Make">
+			<MSBuild Projects="Packages\Connectors\UCMidasConn\pckUCMidasConn.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="pckZeosConn">
+			<MSBuild Projects="Packages\Connectors\UCZeosConn\pckZeosConn.dproj"/>
+		</Target>
+		<Target Name="pckZeosConn:Clean">
+			<MSBuild Projects="Packages\Connectors\UCZeosConn\pckZeosConn.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="pckZeosConn:Make">
+			<MSBuild Projects="Packages\Connectors\UCZeosConn\pckZeosConn.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="pckAlcinoe;pckmd5;pckUCDataConnector;pckUserControl_RT;pckUserControl_DT;pckUCADOConn;pckUCDataSnapConn;pckUCDBXConn;pckUCIBXConn;pckUCMidasConn;pckZeosConn"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="pckAlcinoe:Clean;pckmd5:Clean;pckUCDataConnector:Clean;pckUserControl_RT:Clean;pckUserControl_DT:Clean;pckUCADOConn:Clean;pckUCDataSnapConn:Clean;pckUCDBXConn:Clean;pckUCIBXConn:Clean;pckUCMidasConn:Clean;pckZeosConn:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="pckAlcinoe:Make;pckmd5:Make;pckUCDataConnector:Make;pckUserControl_RT:Make;pckUserControl_DT:Make;pckUCADOConn:Make;pckUCDataSnapConn:Make;pckUCDBXConn:Make;pckUCIBXConn:Make;pckUCMidasConn:Make;pckZeosConn:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>
