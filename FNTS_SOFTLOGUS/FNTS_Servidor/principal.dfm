@@ -112,7 +112,10 @@ object frmPrincipal: TfrmPrincipal
           Top = 15
           Width = 837
           Height = 190
+          Touch.InteractiveGestures = [igPan, igPressAndTap]
+          Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
           Align = alTop
+          Caption = ''
           EnableVisualStyles = False
           HideScrollBar = False
           Options = [goGrid, goHeader, goSelectFullRow]
@@ -128,6 +131,11 @@ object frmPrincipal: TfrmPrincipal
             Font.Style = []
             Header.Caption = 'PDV'
             Header.Alignment = taCenter
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             ParentFont = False
             Position = 0
             SortType = stNumeric
@@ -144,6 +152,11 @@ object frmPrincipal: TfrmPrincipal
             Font.Style = []
             Header.Caption = 'Computador'
             Header.Alignment = taCenter
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             ParentFont = False
             Position = 1
             SortType = stAlphabetic
@@ -158,6 +171,11 @@ object frmPrincipal: TfrmPrincipal
             Font.Style = []
             Header.Caption = 'Base de Dados'
             Header.Alignment = taCenter
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             ParentFont = False
             Position = 2
             SortType = stAlphabetic
@@ -173,6 +191,11 @@ object frmPrincipal: TfrmPrincipal
             Font.Style = []
             Header.Caption = 'Sit.'
             Header.Alignment = taCenter
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             ParentFont = False
             Position = 3
             SortType = stNumeric
@@ -189,6 +212,11 @@ object frmPrincipal: TfrmPrincipal
             Font.Style = []
             Header.Caption = 'Atualizar?'
             Header.Alignment = taCenter
+            Header.Font.Charset = DEFAULT_CHARSET
+            Header.Font.Color = clWindowText
+            Header.Font.Height = -11
+            Header.Font.Name = 'Tahoma'
+            Header.Font.Style = []
             Options = [coCanClick, coCanInput, coCanSort, coEditing, coPublicUsing]
             ParentFont = False
             Position = 4
@@ -369,7 +397,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 248
     Top = 2
     Bitmap = {
-      494C010102004000480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020040004C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -512,7 +540,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 392
     Top = 2
     Bitmap = {
-      494C010102002800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102002800340010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -801,7 +829,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 696
     Top = 24
     Bitmap = {
-      494C010106002800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106002800340010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
