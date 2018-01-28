@@ -42,7 +42,6 @@ type
     Label3: TLabel;
     ed_server: TEdit;
     ed_server_database: TEdit;
-    TabSheet1: TTabSheet;
     Memo1: TMemo;
     Timer3: TTimer;
     PopupMenu1: TPopupMenu;
@@ -62,7 +61,6 @@ type
     qrcaixa_mov: TIBCQuery;
     pnlAviso: TPanel;
     pnTitulo: TPanel;
-    Image5: TImage;
     ApplicationEvents1: TApplicationEvents;
     QRY_IBPT: TIBCQuery;
     pm_Atualizacoes: TPopupMenu;
