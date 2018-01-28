@@ -8,7 +8,7 @@ uses
   NxColumns, NxScrollControl, NxCustomGridControl, NxCustomGrid, NxGrid,
   inifiles, ACBrUtil,
   DB, MemDS, DBAccess, IBC, Menus, pngimage, XPMan, sSkinManager, Vcl.AppEvnts, RzPanel, Vcl.Grids, Wwdbigrd, Wwdbgrid,
-  Vcl.Imaging.jpeg;
+  Vcl.Imaging.jpeg, System.ImageList;
 
 type
   TfrmPrincipal = class(TForm)

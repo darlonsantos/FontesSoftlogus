@@ -53,6 +53,7 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
       TabOrder = 0
       Visible = False
+      ExplicitTop = -19
     end
   end
   object PageControl1: TPageControl
@@ -390,14 +391,14 @@ object frmPrincipal: TfrmPrincipal
     Icons = ImageList2
     Interval = 500
     OnLButtonDblClick = iconeLButtonDblClick
-    Left = 816
-    Top = 10
+    Left = 672
+    Top = 65522
   end
   object ImageList1: TImageList
     Left = 248
     Top = 2
     Bitmap = {
-      494C0101020040004C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102004000500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -540,7 +541,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 392
     Top = 2
     Bitmap = {
-      494C010102002800340010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102002800380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -722,15 +723,15 @@ object frmPrincipal: TfrmPrincipal
   end
   object qrPDV_Tabela: TIBCQuery
     Connection = conexao_pdv
-    Left = 760
-    Top = 18
+    Left = 600
+    Top = 2
   end
   object Timer3: TTimer
     Enabled = False
     Interval = 1
     OnTimer = Timer3Timer
-    Left = 864
-    Top = 10
+    Left = 624
+    Top = 65530
   end
   object PopupMenu1: TPopupMenu
     Left = 384
@@ -762,8 +763,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object qrMestre: TIBCQuery
     Connection = conexao_servidor
-    Left = 736
-    Top = 10
+    Left = 624
+    Top = 2
   end
   object qrpdv2: TIBCQuery
     Connection = conexao_pdv
@@ -772,8 +773,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object qrpdv3: TIBCQuery
     Connection = conexao_pdv
-    Left = 840
-    Top = 42
+    Left = 680
+    Top = 65522
   end
   object qrForma: TIBCQuery
     Connection = conexao_pdv
@@ -787,8 +788,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object qrcaixa_mov: TIBCQuery
     Connection = conexao_servidor
-    Left = 776
-    Top = 18
+    Left = 640
+    Top = 10
   end
   object ApplicationEvents1: TApplicationEvents
     OnException = ApplicationEvents1Exception
@@ -804,8 +805,7 @@ object frmPrincipal: TfrmPrincipal
   end
   object pm_Atualizacoes: TPopupMenu
     Images = il1
-    Left = 856
-    Top = 16
+    Left = 584
     object A1: TMenuItem
       Caption = 'Atualizar caixas'
       ImageIndex = 6
@@ -826,10 +826,10 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object il1: TImageList
-    Left = 696
-    Top = 24
+    Left = 616
+    Top = 16
     Bitmap = {
-      494C010106002800340010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106002800380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
