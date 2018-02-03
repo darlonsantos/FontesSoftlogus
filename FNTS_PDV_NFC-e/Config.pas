@@ -9,9 +9,9 @@ uses
   pngimage, Spin, wwdbedit, Wwdotdot, Wwdbcomb, XPMan, AdvReflectionImage,
   AdvGlowButton, Vcl.ComCtrls, Vcl.OleCtrls, SHDocVw, uZintBarcode,
   system.IniFiles, filectrl,
-  ACBrNFe, pcnConversao, ACBrNFeDANFEClass, ACBrNFeDANFERave, ACBrUtil,
+  ACBrNFe, pcnConversao, ACBrNFeDANFEClass, ACBrUtil,
   pcnNFeW, pcnNFeRTXT, pcnAuxiliar, ACBrDFeUtil,
-  XMLIntf, XMLDoc, ACBrNFeDANFERaveCB, ACBrNFeDANFEFR, Vcl.Grids, Wwdbigrd, Wwdbgrid, Vcl.Printers,
+  XMLIntf, XMLDoc,  ACBrNFeDANFEFR, Vcl.Grids, Wwdbigrd, Wwdbgrid, Vcl.Printers,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer,
   cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
   dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
@@ -24,7 +24,9 @@ uses
   dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
-  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalc, ACBrEAD;
+  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalc, ACBrEAD, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  ACBrBase, ACBrDFe;
 
 type
   TfrmConfig = class(TForm)
@@ -451,8 +453,8 @@ begin
       edCFOP.Text := Ini.ReadString('Geral', 'CFOP_PADRAO', '5101');
       ACBRNFCe.Configuracoes.Geral.FormaEmissao :=
         StrToTpEmis(Ok, IntToStr(rgFormaEmissao.ItemIndex + 1));
-      ACBRNFCe.Configuracoes.Geral.Salvar := ckSalvar.Checked;
-      ACBRNFCe.Configuracoes.Geral.PathSalvar := edtPathLogs.Text;
+      ACBRNFCe.Configuracoes.Arquivos.Salvar := ckSalvar.Checked;
+      ACBRNFCe.Configuracoes.Arquivos.PathSalvar := edtPathLogs.Text;
 
       cbUF.ItemIndex := cbUF.Items.IndexOf(Ini.ReadString('WebService',
         'UF', 'SP'));
@@ -561,8 +563,7 @@ end;
 procedure TfrmConfig.sbtnGetCertClick(Sender: TObject);
 begin
 {$IFNDEF ACBrNFeOpenSSL}
-  edtNumSerie.Text := frmModulo.ACBRNFCe.Configuracoes.Certificados.
-    SelecionarCertificado;
+  edtNumSerie.Text := frmModulo.ACBRNFCe.SSL.SelecionarCertificado;
 {$ENDIF}
 end;
 

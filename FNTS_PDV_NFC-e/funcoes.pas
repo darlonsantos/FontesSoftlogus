@@ -83,7 +83,7 @@ function RetornarParametroString(psTipo: String; pvValor: Variant): String;
 
 implementation
 
-uses modulo, unECF, principal, Constantes;
+uses modulo,  principal, Constantes, unECF;
 
 const
   // chave privada
@@ -526,18 +526,18 @@ const
 var
   ii: Integer;
 begin
-  ShortDateFormat := 'dd/mm/yyyy';
-  DecimalSeparator := ',';
-  ThousandSeparator := '.';
+  FormatSettings.ShortDateFormat := 'dd/mm/yyyy';
+  FormatSettings.DecimalSeparator := ',';
+  FormatSettings.ThousandSeparator := '.';
   for ii := 1 to 7 do
   begin
-    ShortDayNames[ii] := arrShortDayNames[ii];
-    LongDayNames[ii] := arrLongDayNames[ii];
+    FormatSettings.ShortDayNames[ii] := arrShortDayNames[ii];
+    FormatSettings.LongDayNames[ii] := arrLongDayNames[ii];
   end;
   for ii := 1 to 12 do
   begin
-    ShortMonthNames[ii] := arrShortMonthNames[ii];
-    LongMonthNames[ii] := arrLongMonthNames[ii];
+    FormatSettings.ShortMonthNames[ii] := arrShortMonthNames[ii];
+    FormatSettings.LongMonthNames[ii] := arrLongMonthNames[ii];
   end;
 end;
 

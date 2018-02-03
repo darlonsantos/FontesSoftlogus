@@ -1053,8 +1053,8 @@ begin
 
   if (sDecimais = '') or pbRemovePonto then
   begin
-    if Pos(DecimalSeparator, Result) > 0 then
-      Delete(Result, Pos(DecimalSeparator, Result), 1);
+    if Pos(FormatSettings.DecimalSeparator, Result) > 0 then
+      Delete(Result, Pos(FormatSettings.DecimalSeparator, Result), 1);
   end;
 end;
 
@@ -3851,11 +3851,11 @@ begin
             FieldByName('id').asinteger := StrToInt(Copy(formas, 1, 2));
             FieldByName('Nome').asstring := Copy(formas, 3, 15);
 
-            svalor := Copy(formas, 18, 11) + DecimalSeparator +
+            svalor := Copy(formas, 18, 11) + FormatSettings.DecimalSeparator +
               Copy(formas, 29, 2);
             FieldByName('Valor_Acumulado').AsCurrency := strtofloat(svalor);
 
-            svalor := Copy(formas, 31, 11) + DecimalSeparator +
+            svalor := Copy(formas, 31, 11) + FormatSettings.DecimalSeparator +
               Copy(formas, 42, 2);
             FieldByName('Valor_Ultimo_Cupom').AsCurrency := strtofloat(svalor);
           end;

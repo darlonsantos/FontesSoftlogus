@@ -33,7 +33,9 @@ uses
   dxRibbonMiniToolbar, dxBarApplicationMenu, dxRibbonGallery, dxBarDBNav, Vcl.PlatformDefaultStyleActnCtrls, cxCalc,
   cxImage, cxBlobEdit, cxBarEditItem, Data.DB, DBAccess, AdvReflectionLabel,
   ExeInfo, dxScreenTip, dxRibbonRadialMenu, dxBarExtItems, JvBaseDlg,
-  JvSelectDirectory;
+  JvSelectDirectory, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxRibbonCustomizationForm, System.ImageList, System.Actions;
 
 type
   TImpressora = (SemImpressora, NaoFiscal, Fiscal);

@@ -3943,8 +3943,9 @@ object frmConfig: TfrmConfig
           Color = clWindow
           ReadOnly = False
           TabOrder = 1
+          Text = ''
           Visible = True
-          Version = '1.3.5.0'
+          Version = '1.3.5.1'
           ButtonStyle = bsButton
           ButtonWidth = 18
           Etched = False
@@ -4003,8 +4004,9 @@ object frmConfig: TfrmConfig
           Color = clWindow
           ReadOnly = False
           TabOrder = 1
+          Text = ''
           Visible = True
-          Version = '1.3.5.0'
+          Version = '1.3.5.1'
           ButtonStyle = bsButton
           ButtonWidth = 16
           Etched = False
@@ -4053,6 +4055,10 @@ object frmConfig: TfrmConfig
             TabOrder = 0
             object TabSheet1: TTabSheet
               Caption = 'Certificado'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox10: TGroupBox
                 Left = 0
                 Top = 4
@@ -4187,6 +4193,10 @@ object frmConfig: TfrmConfig
             object TabSheet2: TTabSheet
               Caption = 'Geral'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox11: TGroupBox
                 Left = 3
                 Top = 8
@@ -4354,6 +4364,10 @@ object frmConfig: TfrmConfig
             object TabSheet3: TTabSheet
               Caption = 'WebService'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox12: TGroupBox
                 Left = 0
                 Top = 4
@@ -4528,6 +4542,10 @@ object frmConfig: TfrmConfig
             object TabSheet4: TTabSheet
               Caption = 'Emitente'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label20: TLabel
                 Left = 8
                 Top = 4
@@ -4746,6 +4764,10 @@ object frmConfig: TfrmConfig
             object TabSheet7: TTabSheet
               Caption = 'Email'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox13: TGroupBox
                 Left = 1
                 Top = 4
@@ -4850,6 +4872,10 @@ object frmConfig: TfrmConfig
             object tbImpressao: TTabSheet
               Caption = 'Impress'#227'o'
               ImageIndex = 5
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object lblImpressao: TLabel
                 Left = 2
                 Top = 8
@@ -5043,15 +5069,16 @@ object frmConfig: TfrmConfig
     Top = 504
   end
   object ACBrNFe1: TACBrNFe
-    Configuracoes.Geral.PathSalvar = 'C:\Program Files (x86)\Embarcadero\RAD Studio\9.0\bin\'
-    Configuracoes.Geral.ExibirErroSchema = True
+    Configuracoes.Geral.SSLLib = libNone
+    Configuracoes.Geral.SSLCryptLib = cryNone
+    Configuracoes.Geral.SSLHttpLib = httpNone
+    Configuracoes.Geral.SSLXmlSignLib = xsNone
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.RetirarAcentos = True
     Configuracoes.Geral.ValidarDigest = False
+    Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.WebServices.UF = 'SP'
     Configuracoes.WebServices.AguardarConsultaRet = 0
-    Configuracoes.WebServices.IntervaloTentativas = 0
-    Configuracoes.WebServices.AjustaAguardaConsultaRet = False
+    Configuracoes.WebServices.QuebradeLinha = '|'
     Left = 544
     Top = 416
   end

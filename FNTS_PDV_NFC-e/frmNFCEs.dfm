@@ -68,8 +68,8 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ParentFont = False
       OnClick = btn_buscarClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 4
       Images = ImageList2
+      ImageIndex = 4
     end
     object Label2: TLabel
       Left = 100
@@ -108,15 +108,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ParentFont = False
       TabOrder = 1
       Text = '  /  /    '
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'Tahoma'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
+      CheckOnExit = True
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
       GlyphMode.Grayed = False
@@ -138,15 +130,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ParentFont = False
       TabOrder = 2
       Text = '  /  /    '
-      BoundLabel.Indent = 0
-      BoundLabel.Font.Charset = DEFAULT_CHARSET
-      BoundLabel.Font.Color = clWindowText
-      BoundLabel.Font.Height = -11
-      BoundLabel.Font.Name = 'Tahoma'
-      BoundLabel.Font.Style = []
-      BoundLabel.Layout = sclLeft
-      BoundLabel.MaxWidth = 0
-      BoundLabel.UseSkinColor = True
+      CheckOnExit = True
       SkinData.SkinSection = 'EDIT'
       GlyphMode.Blend = 0
       GlyphMode.Grayed = False
@@ -179,8 +163,8 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ShowHint = True
       OnClick = btn_imprimirClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 3
       Images = ImageList2
+      ImageIndex = 3
     end
     object btn_Consultar: TsSpeedButton
       Left = 368
@@ -198,8 +182,8 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ParentFont = False
       OnClick = btn_ConsultarClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 0
       Images = ImageList2
+      ImageIndex = 0
     end
     object btn_cancelar: TsSpeedButton
       Left = 511
@@ -217,8 +201,8 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ParentFont = False
       OnClick = btn_cancelarClick
       SkinData.SkinSection = 'SPEEDBUTTON'
-      ImageIndex = 1
       Images = ImageList2
+      ImageIndex = 1
     end
   end
   object wwDBGrid1: TwwDBGrid
@@ -236,6 +220,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       'CHAVE'#9'50'#9'CHAVE'#9#9
       'SITUACAO'#9'2'#9'X'#9#9)
     IniAttributes.Delimiter = ';;'
+    IniAttributes.UnicodeIniFile = False
     TitleColor = clBtnFace
     FixedCols = 0
     ShowHorzScrollBar = True
@@ -268,7 +253,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 480
     Top = 392
     Bitmap = {
-      494C010105001C00240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105002800280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF

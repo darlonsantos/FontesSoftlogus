@@ -136,107 +136,127 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'CODIGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'NUMERO'
         ParamType = ptInput
         Size = 12
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CCF'
         ParamType = ptInput
         Size = 12
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'ECF'
         ParamType = ptInput
         Size = 30
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftTime
         Name = 'HORA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'QTDE_ITEM'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_PRODUTO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_DESCONTO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_ACRESCIMO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_TOTAL'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_PAGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_TROCO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'COD_CLIENTE'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'CANCELADO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CPF_CONSUMIDOR'
         ParamType = ptInput
         Size = 20
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'NOME_CONSUMIDOR'
         ParamType = ptInput
         Size = 40
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'COD_VENDEDOR'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'COD_CAIXA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'ECF_CAIXA'
         ParamType = ptInput
         Size = 3
+        Value = nil
       end>
     CommandStoredProcName = 'ST_CUPOM_INSERT'
   end
@@ -250,43 +270,51 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'CODIGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COD_CUPOM'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftTime
         Name = 'HORA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'COD_CLIENTE'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'VENCIMENTO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'DESCRICAO'
         ParamType = ptInput
         Size = 30
+        Value = nil
       end>
   end
   object spCupom_Forma: TIBCStoredProc
@@ -303,34 +331,40 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'CODIGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COD_CUPOM'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'FORMA'
         ParamType = ptInput
         Size = 30
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'PRESTACAO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'TIPO'
         ParamType = ptInput
         Size = 30
+        Value = nil
       end>
     CommandStoredProcName = 'ST_CUPOM_FORMA_INSERT'
   end
@@ -344,87 +378,102 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'CODIGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'COD_CLIENTE'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'NOME'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'ENDERECO'
         ParamType = ptInput
         Size = 80
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'BAIRRO'
         ParamType = ptInput
         Size = 40
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CIDADE'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'UF'
         ParamType = ptInput
         Size = 2
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CEP'
         ParamType = ptInput
         Size = 9
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CPF'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'RG'
         ParamType = ptInput
         Size = 20
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'PLACA'
         ParamType = ptInput
         Size = 10
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'KM'
         ParamType = ptInput
         Size = 10
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'VENDEDOR'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'INFO_ADICIONAL1'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'INFO_ADICIONAL2'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end>
   end
   object spCodigo_Global: TIBCStoredProc
@@ -494,69 +543,82 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'CODIGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'ECF'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'INDICE'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'DESCRICAO'
         ParamType = ptInput
         Size = 30
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COO'
         ParamType = ptInput
         Size = 6
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'GNF'
         ParamType = ptInput
         Size = 6
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'GRG'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CDC'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'DENOMINACAO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftTime
         Name = 'HORA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'CODVENDEDOR'
         ParamType = ptInput
+        Value = nil
       end>
   end
   object spReducaoZ: TIBCStoredProc
@@ -569,107 +631,127 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'CODIGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'ECF'
         ParamType = ptInput
         Size = 30
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'USUARIO'
         ParamType = ptInput
         Size = 2
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CRZ'
         ParamType = ptInput
         Size = 6
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COO'
         ParamType = ptInput
         Size = 6
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CRO'
         ParamType = ptInput
         Size = 6
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'DATA_MOVIMENTO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'DATA_EMISSAO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftTime
         Name = 'HORA_EMISSAO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'TOTALIZADOR_GERAL'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VENDA_BRUTA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'CANCELAMENTO_ICMS'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'DESCONTO_ICMS'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'TOTAL_ISS'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'CANCELAMENTO_ISS'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'DESCONTO_ISS'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VENDA_LIQUIDA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'ACRESCIMO_ICMS'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'ACRESCIMO_ISS'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'ECF_CAIXA'
         ParamType = ptInput
         Size = 3
+        Value = nil
       end>
   end
   object spReducaoZ_Total_Parcial: TIBCStoredProc
@@ -682,23 +764,27 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'CODIGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COD_REDUCAOZ'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'TOTALIZADOR'
         ParamType = ptInput
         Size = 10
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR'
         ParamType = ptInput
+        Value = nil
       end>
   end
   object tbAliquota: TVirtualTable
@@ -752,28 +838,33 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'NUMERO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CCF'
         ParamType = ptInput
         Size = 12
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'ECF'
         ParamType = ptInput
         Size = 30
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftTime
         Name = 'HORA'
         ParamType = ptInput
+        Value = nil
       end>
   end
   object spCupom_Temp_delete: TIBCStoredProc
@@ -792,6 +883,7 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'PROCEDIMENTO'
         ParamType = ptInput
+        Value = nil
       end>
   end
   object qrtotalizador: TIBCQuery
@@ -929,6 +1021,7 @@ object frmModulo: TfrmModulo
         DataType = ftInteger
         Name = 'CODIGO'
         ParamType = ptOutput
+        Value = nil
       end>
   end
   object spDAV: TIBCStoredProc
@@ -941,52 +1034,61 @@ object frmModulo: TfrmModulo
         DataType = ftString
         Name = 'CODIGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'ECF'
         ParamType = ptInput
         Size = 30
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COO'
         ParamType = ptInput
         Size = 6
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'NUMERO'
         ParamType = ptInput
         Size = 10
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'TITULO'
         ParamType = ptInput
         Size = 30
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COO_CUPOM_FISCAL'
         ParamType = ptInput
         Size = 10
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CCF'
         ParamType = ptInput
         Size = 6
+        Value = nil
       end>
   end
   object query_servidor2: TIBCQuery
@@ -1081,6 +1183,7 @@ object frmModulo: TfrmModulo
         DataType = ftInteger
         Name = 'CODIGO'
         ParamType = ptOutput
+        Value = nil
       end>
   end
   object St_Abastecimento: TIBCStoredProc
@@ -1093,76 +1196,90 @@ object frmModulo: TfrmModulo
         DataType = ftInteger
         Name = 'CODIGO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'BOMBA'
         ParamType = ptInput
         Size = 5
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'BICO'
         ParamType = ptInput
         Size = 5
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'HORA'
         ParamType = ptInput
         Size = 10
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'COD_PRODUTO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'QTDE'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'UNITARIO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'TOTAL'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'EI'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'EF'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'SITUACAO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'TANQUE'
         ParamType = ptInput
         Size = 5
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'NUMERO_ABASTECIMENTO'
         ParamType = ptInput
         Size = 6
+        Value = nil
       end>
   end
   object st_bico_movimento: TIBCStoredProc
@@ -1175,21 +1292,25 @@ object frmModulo: TfrmModulo
         DataType = ftInteger
         Name = 'COD_BICO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftDate
         Name = 'DATA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'EF'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VOLUME'
         ParamType = ptInput
+        Value = nil
       end>
   end
   object spCupom_Item_Temp: TIBCStoredProc
@@ -1203,92 +1324,109 @@ object frmModulo: TfrmModulo
         Name = 'CODIGO'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COD_CUPOM'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'ITEM'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'COD_PRODUTO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'UNIDADE'
         ParamType = ptInput
         Size = 10
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'QTDE'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_UNITARIO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_SUBTOTAL'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_DESCONTO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_ACRESCIMO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_TOTAL'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CST'
         ParamType = ptInput
         Size = 3
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'ALIQUOTA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'CANCELADO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COD_TOTALIZADOR'
         ParamType = ptInput
         Size = 7
+        Value = nil
       end
       item
         DataType = ftFixedChar
         Name = 'TAMANHO'
         ParamType = ptInput
         Size = 5
+        Value = nil
       end
       item
         DataType = ftFixedChar
         Name = 'COR'
         ParamType = ptInput
         Size = 5
+        Value = nil
       end>
   end
   object spCupom_Item: TIBCStoredProc
@@ -1302,92 +1440,109 @@ object frmModulo: TfrmModulo
         Name = 'CODIGO'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COD_CUPOM'
         ParamType = ptInput
         Size = 50
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'ITEM'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'COD_PRODUTO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'UNIDADE'
         ParamType = ptInput
         Size = 10
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'QTDE'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_UNITARIO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_SUBTOTAL'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_DESCONTO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_ACRESCIMO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'VALOR_TOTAL'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'CST'
         ParamType = ptInput
         Size = 3
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'ALIQUOTA'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'CANCELADO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'COD_TOTALIZADOR'
         ParamType = ptInput
         Size = 7
+        Value = nil
       end
       item
         DataType = ftFixedChar
         Name = 'TAMANHO'
         ParamType = ptInput
         Size = 5
+        Value = nil
       end
       item
         DataType = ftFixedChar
         Name = 'COR'
         ParamType = ptInput
         Size = 5
+        Value = nil
       end>
   end
   object Qremitente: TIBCQuery
@@ -1524,19 +1679,19 @@ object frmModulo: TfrmModulo
     end
   end
   object ACBRNFCe: TACBrNFe
-    Configuracoes.Geral.Salvar = True
-    Configuracoes.Geral.PathSalvar = 'C:\Softlogus\PDV\xml\'
-    Configuracoes.Geral.ExibirErroSchema = True
+    Configuracoes.Geral.SSLLib = libNone
+    Configuracoes.Geral.SSLCryptLib = cryNone
+    Configuracoes.Geral.SSLHttpLib = httpNone
+    Configuracoes.Geral.SSLXmlSignLib = xsNone
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.RetirarAcentos = True
-    Configuracoes.Geral.ModeloDF = moNFCe
-    Configuracoes.Geral.VersaoDF = ve310
     Configuracoes.Geral.ValidarDigest = False
+    Configuracoes.Geral.ModeloDF = moNFCe
+    Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.WebServices.Visualizar = True
     Configuracoes.WebServices.UF = 'DF'
     Configuracoes.WebServices.AguardarConsultaRet = 15000
-    Configuracoes.WebServices.IntervaloTentativas = 1000
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
+    Configuracoes.WebServices.QuebradeLinha = '|'
     DANFE = ACBRDANFENFCe
     Left = 616
     Top = 336
@@ -1549,33 +1704,47 @@ object frmModulo: TfrmModulo
     MostrarStatus = True
     TipoDANFE = tiNFCe
     NumCopias = 1
+    ImprimeNomeFantasia = False
     ImprimirDescPorc = True
     ImprimirTotalLiquido = True
     MargemInferior = 0.800000000000000000
     MargemSuperior = 0.800000000000000000
     MargemEsquerda = 0.600000000000000000
     MargemDireita = 0.510000000000000000
+    CasasDecimais.Formato = tdetInteger
     CasasDecimais._qCom = 2
     CasasDecimais._vUnCom = 2
+    CasasDecimais._Mask_qCom = ',0.00'
+    CasasDecimais._Mask_vUnCom = ',0.00'
     ExibirResumoCanhoto = False
     FormularioContinuo = False
     TamanhoFonte_DemaisCampos = 10
     ProdutosPorPagina = 0
     ImprimirDetalhamentoEspecifico = False
     NFeCancelada = True
-    LocalImpCanhoto = 0
-    ImprimeItens = True
+    ImprimirItens = True
     ViaConsumidor = True
+    TamanhoLogoHeight = 0
+    TamanhoLogoWidth = 0
+    RecuoEndereco = 0
+    RecuoEmpresa = 0
+    LogoemCima = False
+    TamanhoFonteEndereco = 0
+    RecuoLogo = 0
     EspessuraBorda = 1
     ExibirTotalTributosItem = False
     ExibeCampoFatura = True
     TributosFonte = 'IBPT'
     TributosPercentual = ptValorProdutos
-    ImprimirUnQtVlComercial = True
+    ImprimirUnQtVlComercial = iuComercial
     Detalhado = False
     DescricaoViaEstabelec = 'Via do Consumidor'
     ExpandirDadosAdicionaisAuto = False
     ImprimirDadosArma = True
+    QuebraLinhaEmDetalhamentoEspecifico = True
+    IncorporarBackgroundPdf = True
+    IncorporarFontesPdf = True
+    ImprimirDadosDocReferenciados = True
     Left = 220
     Top = 152
   end
@@ -1585,7 +1754,7 @@ object frmModulo: TfrmModulo
   end
   object conBASE: TZConnection
     ControlsCodePage = cCP_UTF16
-    UTF8StringsAsWideField = True
+    Catalog = ''
     AutoCommit = False
     HostName = 'localhost'
     Port = 0
@@ -1621,67 +1790,81 @@ object frmModulo: TfrmModulo
         DataType = ftInteger
         Name = 'PNUMERO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'pdata'
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'PTOTAL'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'PCLIENTE'
         ParamType = ptInput
         Size = 255
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'PCHAVE'
         ParamType = ptInput
         Size = 255
+        Value = nil
       end
       item
         DataType = ftString
         Name = 'PXML'
         ParamType = ptInput
         Size = 255
+        Value = nil
       end
       item
         DataType = ftInteger
         Name = 'PSITUACAO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftFloat
         Name = 'PTROCO'
         ParamType = ptInput
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'PHORA'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'pcontingencia'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'penviadocontingencia'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'pmotivocontingencia'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'pxmlenvio'
+        Value = nil
       end
       item
         DataType = ftUnknown
         Name = 'pxmlcacnelamento'
+        Value = nil
       end>
   end
   object qradic_mestre: TIBCQuery

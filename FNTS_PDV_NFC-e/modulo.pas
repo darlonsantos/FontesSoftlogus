@@ -8,13 +8,16 @@ uses
   forms, DB, MemDS, DBAccess, IBC, ACBrBase, ACBrBAL, AdvMenus,
   AdvMenuStylers, ACBrValidador, VirtualTable, Dialogs,
   ACBrNFe, pcnConversao,
-  ACBrNFeDANFEClass, ACBrNFeDANFERave, ACBrUtil,
-  pcnNFeW, pcnNFeRTXT, pcnAuxiliar, ACBrDFeUtil,
-  XMLIntf, XMLDoc, ACBrNFeDANFERaveCB, ACBrNFeDANFEFR, ACBrEAD,
-  ZAbstractConnection, ZConnection,
-  ZAbstractRODataset, ZAbstractDataset, ZDataset, ZStoredProcedure,
-  ACBrNFeDANFEFRDM;
-
+  ACBrNFeDANFEClass, ZAbstractRODataset, ZDataset,
+   ZConnection, ACBrEAD, ACBrNFeDANFEFRDM,
+  ACBrDFe, ACBrUtil,
+  pcnNFeW, pcnNFeRTXT, pcnAuxiliar,
+  XMLIntf, XMLDoc, ACBrNFeDANFEFR,
+  ZAbstractConnection, ZAbstractDataset, ZStoredProcedure ;
+        {
+        ACBrNFeDANFERave
+        ACBrNFeDANFERaveCB
+        }
 type
   TfrmModulo = class(TDataModule)
     conexao: TIBCConnection;
@@ -546,7 +549,7 @@ Var
       ShowMessage('A Pasta e Schemas informada no Config é inválida!');
       Abort;
     end;
-    ACBRNFCe.Configuracoes.Geral.PathSchemas := edtSchema;
+    ACBRNFCe.Configuracoes.Arquivos.PathSchemas := edtSchema;
     edtLogoMarca := Ini.ReadString('Geral', 'LogoMarca', '');
 
     if ACBRNFCe.DANFE <> nil then
@@ -557,7 +560,7 @@ Var
     ckSalvar := Ini.ReadBool('Geral', 'Salvar', True);
     edtPathLogs := Ini.ReadString('Geral', 'PathSalvar', 'C:\Softlogus\pdv\xml');
     ACBRNFCe.Configuracoes.Arquivos.Salvar := ckSalvar;
-    ACBRNFCe.Configuracoes.Geral.PathSalvar := edtPathLogs;
+    ACBRNFCe.Configuracoes.Arquivos.PathSalvar := edtPathLogs;
     rgFormaEmissao := Ini.ReadInteger('Geral', 'FormaEmissao', 0);
     edtcfop := Ini.ReadString('Geral', 'CFOP_PADRAO', '5101');
     EdFormatoOff := Ini.ReadInteger('WebService', 'FormatoOFF', 0);

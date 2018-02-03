@@ -11,7 +11,8 @@ uses
   NxColumns,
   NxScrollControl, NxCustomGridControl, NxCustomGrid, NxDBGrid, Vcl.ImgList,
   Wwdbigrd, Wwdbgrid, Vcl.Mask, sMaskEdit, sCustomComboEdit, sTooledit,
-  pcnConversao, Vcl.Buttons, sSpeedButton, MemDS, DBAccess, IBC, Vcl.Menus;
+  pcnConversao, Vcl.Buttons, sSpeedButton, MemDS, DBAccess, IBC, Vcl.Menus,
+  System.ImageList;
 
 type
   TfrmNotasconsumidor = class(TForm)
@@ -181,10 +182,9 @@ begin
           infEvento.tpEvento := teCancelamento;
           infEvento.detEvento.xJust := Justificativa;
         end;
-        ACBRNFCe.EnviarEventoNFe(strtoint(idLote));
+        ACBRNFCe.EventoNFe.idLote := strtoint(idLote);
 
-        if ACBRNFCe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0]
-          .RetInfEvento.cStat = 135 then
+        if ACBRNFCe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0].RetInfEvento.cStat = 135 then
         begin
           qrNFCE.Edit;
           qrNFCE.FieldByName('situacao').AsInteger := 1;
@@ -304,7 +304,7 @@ begin
           infEvento.detEvento.xJust := Justificativa;
           infEvento.detEvento.nProt := Protocolo;
          end;
-           ACBRNFCe.EnviarEventoNFe(strtoint(idLote));
+           ACBRNFCe.EventoNFe.idlote := strtoint(idLote);
         if ACBRNFCe.WebServices.EnvEvento.EventoRetorno.retEvento.Items[0]
           .RetInfEvento.cStat = 135 then
         begin

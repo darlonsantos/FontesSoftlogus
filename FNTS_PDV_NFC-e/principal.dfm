@@ -1430,7 +1430,7 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object Bevel1: TBevel
     Left = 0
-    Top = 126
+    Top = 116
     Width = 1135
     Height = 2
     Align = alTop
@@ -1454,23 +1454,24 @@ object frmPrincipal: TfrmPrincipal
     ReflectionSize = 20
     ReflectionAxis = -5
     URLColor = clBlue
-    Version = '1.5.1.0'
+    Version = '1.5.1.1'
   end
   object imgm_imagens: TImage
     Left = 0
-    Top = 128
+    Top = 118
     Width = 1135
-    Height = 739
+    Height = 749
     Align = alClient
     Stretch = True
     ExplicitLeft = -192
     ExplicitTop = 122
+    ExplicitHeight = 739
   end
   object dxRibbon1: TdxRibbon
     Left = 0
     Top = 0
     Width = 1135
-    Height = 126
+    Height = 116
     ApplicationButton.Menu = dxBarApplicationMenu1
     BarManager = dxBarManager1
     ColorSchemeName = 'Blue'
@@ -1651,9 +1652,9 @@ object frmPrincipal: TfrmPrincipal
   end
   object dxFloatDockSite1: TdxFloatDockSite
     Left = 0
-    Top = 128
+    Top = 118
     Width = 1135
-    Height = 739
+    Height = 749
     Visible = False
     FloatLeft = 964
     FloatTop = 633
@@ -1672,6 +1673,8 @@ object frmPrincipal: TfrmPrincipal
       AllowFloating = True
       AutoHide = False
       Caption = 'Aviso'
+      CustomCaptionButtons.Buttons = <>
+      TabsProperties.CustomButtons.Buttons = <>
       DockingType = 0
       OriginalWidth = 185
       OriginalHeight = 131
@@ -1685,7 +1688,7 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object ExeInfo1: TExeInfo
-    Version = '1.3.1.0'
+    Version = '1.3.3.0'
     Left = 920
     Top = 83
   end
@@ -7235,8 +7238,8 @@ object frmPrincipal: TfrmPrincipal
     AutoHideEmptyBars = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -12
-    Font.Name = 'Segoe UI'
+    Font.Height = -11
+    Font.Name = 'Tahoma'
     Font.Style = []
     Backgrounds.Bar.Data = {
       32A90000424D32A9000000000000360000002800000069000000670000000100

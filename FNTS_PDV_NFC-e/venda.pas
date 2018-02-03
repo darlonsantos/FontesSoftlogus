@@ -13,10 +13,16 @@ uses
   ActnList, XPStyleActnCtrls, ActnMan, StrUtils,
   pngimage, Clipbrd, AdvPicture, AdvGDIPicture, AdvReflectionImage, acPNG,
   uZintBarcode, pcnAuxiliar, pcnConversao, ACBrUtil,
-  ACBrNFe, ACBrNFeDANFEClass, ACBrNFeDANFERave,
+  ACBrNFe, ACBrNFeDANFEClass, System.Actions,
   pcnNFeW, pcnNFeRTXT, ACBrDFeUtil,
-  XMLIntf, XMLDoc, ACBrNFeDANFERaveCB, ACBrNFeDANFEFR, frxClass, frxDesgn,
-  ACBrEAD, ACBrNFeUtil;
+  XMLIntf, XMLDoc, ACBrNFeDANFEFR, frxClass, frxDesgn,
+  ACBrEAD, pcnConversaoNFe ;
+
+  {
+  ACBrNFeDANFERav
+  ACBrNFeDANFERaveCB
+  ACBrNFeUtil
+  }
 
 type
   // tipo de imagens do dislplay
@@ -7870,10 +7876,10 @@ begin
           Ide.dhCont  := Now;
           Ide.xJust := MotivoContigencia;
          end;
-        Ide.tpNF := tnSaida;
+        Ide.tpNF      := tnSaida;
         Ide.tpEmis := ACBRNFCe.Configuracoes.Geral.FormaEmissao;
         Ide.tpAmb := ACBRNFCe.Configuracoes.WebServices.Ambiente;
-        Ide.cUF := NotaUtil.UFtoCUF(edtEmitUF);
+        Ide.cUF := UFtoCUF(edtEmitUF);
         Ide.cMunFG := strtoint(edtEmitCodCidade);
         Ide.finNFe := fnNormal;
         Ide.tpImp := tiNFCe;
@@ -8237,20 +8243,21 @@ begin
 
 end;
 
+{ TODO : DARLON SANTOS }
 procedure TfrmVenda.GerarQrCode;
 begin
   with frmmodulo do
   begin
-    MemoDados.text := NotaUtil.GetURLQRCode
-      (frmmodulo.ACBRNFCe.NotasFiscais.Items[0].NFe.Ide.cUF,
-      ACBRNFCe.NotasFiscais.Items[0].NFe.Ide.tpAmb,
-      SomenteNumeros(ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id),
-      frmmodulo.ACBRNFCe.NotasFiscais.Items[0].NFe.Dest.CNPJCPF,
-      frmmodulo.ACBRNFCe.NotasFiscais.Items[0].NFe.Ide.dEmi,
-      frmmodulo.ACBRNFCe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vNF,
-      frmmodulo.ACBRNFCe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vICMS,
-      frmmodulo.ACBRNFCe.NotasFiscais.Items[0].NFe.signature.DigestValue,
-      edtIdToken, edtTokenNumero);
+//       MemoDados.text :=  ACBRNFCe.Configuracoes.Geral.IncluirQRCodeXMLNFCe
+//      (ACBRNFCe.NotasFiscais.Items[0].NFe.Ide.cUF,
+//      ACBRNFCe.NotasFiscais.Items[0].NFe.Ide.tpAmb,
+//      SomenteNumeros(ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id),
+//      ACBRNFCe.NotasFiscais.Items[0].NFe.Dest.CNPJCPF,
+//      ACBRNFCe.NotasFiscais.Items[0].NFe.Ide.dEmi,
+//      ACBRNFCe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vNF,
+//      ACBRNFCe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vICMS,
+//      ACBRNFCe.NotasFiscais.Items[0].NFe.signature.DigestValue,
+//      edtIdToken, edtTokenNumero);
   end;
 end;
 
@@ -8282,7 +8289,7 @@ begin
        ACBrNFce.NotasFiscais.Assinar;
        Imprime_display('          AGUARDE...  VALIDANDO NFC-E', clBackground, tiLivre);
        grid.Repaint;
-       ACBRNFCe.NotasFiscais.Valida;
+       ACBRNFCe.NotasFiscais.Validar;
 
 
    if ACBRNFCe.Configuracoes.Geral.FormaEmissao <> frmtOffLine  then
