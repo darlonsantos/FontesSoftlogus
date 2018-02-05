@@ -5757,9 +5757,9 @@ object frmVenda: TfrmVenda
     object pn_fechamento: TFlatPanel
       Left = 10
       Top = 160
-      Width = 303
+      Width = 359
       Height = 395
-      Color = 13612943
+      Color = 13162455
       Visible = False
       ColorHighLight = clBlack
       ColorShadow = clBlack
@@ -5830,7 +5830,7 @@ object frmVenda: TfrmVenda
         ShadowColor = clBlack
       end
       object ED_DESC_ACRE: TRzNumericEdit
-        Left = 164
+        Left = 230
         Top = 41
         Width = 122
         Height = 29
@@ -5856,7 +5856,7 @@ object frmVenda: TfrmVenda
         DisplayFormat = '###,###,##0.00'
       end
       object ed_total_pagar: TRzNumericEdit
-        Left = 164
+        Left = 230
         Top = 86
         Width = 122
         Height = 29
@@ -5882,7 +5882,7 @@ object frmVenda: TfrmVenda
         DisplayFormat = '###,###,##0.00'
       end
       object ed_forma1: TRzNumericEdit
-        Left = 164
+        Left = 230
         Top = 137
         Width = 122
         Height = 29
@@ -5911,7 +5911,7 @@ object frmVenda: TfrmVenda
       object cb_forma1: TFlatComboBox
         Left = 11
         Top = 136
-        Width = 129
+        Width = 197
         Height = 24
         Style = csDropDownList
         Color = clWhite
@@ -5940,7 +5940,7 @@ object frmVenda: TfrmVenda
       object cb_desc_acre: TFlatComboBox
         Left = 14
         Top = 45
-        Width = 126
+        Width = 194
         Height = 24
         Style = csDropDownList
         Color = clWhite
@@ -5964,7 +5964,7 @@ object frmVenda: TfrmVenda
         OnChange = cb_desc_acreChange
       end
       object ed_forma2: TRzNumericEdit
-        Left = 164
+        Left = 230
         Top = 177
         Width = 122
         Height = 29
@@ -5993,7 +5993,7 @@ object frmVenda: TfrmVenda
       object cb_forma2: TFlatComboBox
         Left = 11
         Top = 176
-        Width = 129
+        Width = 197
         Height = 24
         Style = csDropDownList
         Color = clWhite
@@ -6020,7 +6020,7 @@ object frmVenda: TfrmVenda
         OnKeyPress = cb_forma2KeyPress
       end
       object ed_forma3: TRzNumericEdit
-        Left = 164
+        Left = 230
         Top = 217
         Width = 122
         Height = 29
@@ -6049,7 +6049,7 @@ object frmVenda: TfrmVenda
       object cb_forma3: TFlatComboBox
         Left = 11
         Top = 216
-        Width = 129
+        Width = 197
         Height = 24
         Style = csDropDownList
         Color = clWhite
@@ -6076,7 +6076,7 @@ object frmVenda: TfrmVenda
         OnKeyPress = cb_forma3KeyPress
       end
       object ed_totalizador: TRzNumericEdit
-        Left = 164
+        Left = 230
         Top = 257
         Width = 122
         Height = 29
@@ -6103,7 +6103,7 @@ object frmVenda: TfrmVenda
         DisplayFormat = '###,###,##0.00'
       end
       object ed_troco: TRzNumericEdit
-        Left = 164
+        Left = 230
         Top = 305
         Width = 122
         Height = 29
@@ -6226,11 +6226,11 @@ object frmVenda: TfrmVenda
       end
     end
     object pn_cancelar_item: TFlatPanel
-      Left = 209
+      Left = 401
       Top = 417
       Width = 427
       Height = 79
-      Color = 13612943
+      Color = 13162455
       Visible = False
       ColorHighLight = clBlack
       ColorShadow = clBlack
@@ -6466,11 +6466,11 @@ object frmVenda: TfrmVenda
       end
     end
     object pn_senha_cancelar: TFlatPanel
-      Left = 211
-      Top = 417
+      Left = 414
+      Top = 438
       Width = 427
       Height = 79
-      Color = 13612943
+      Color = 13162455
       Visible = False
       ColorHighLight = clBlack
       ColorShadow = clBlack
@@ -6628,7 +6628,6 @@ object frmVenda: TfrmVenda
     Lines.Strings = (
       'Memo1')
     TabOrder = 4
-    Visible = False
     OnChange = MemoDadosChange
   end
   object query: TIBCQuery

@@ -1679,18 +1679,19 @@ object frmModulo: TfrmModulo
     end
   end
   object ACBRNFCe: TACBrNFe
-    Configuracoes.Geral.SSLLib = libNone
-    Configuracoes.Geral.SSLCryptLib = cryNone
-    Configuracoes.Geral.SSLHttpLib = httpNone
-    Configuracoes.Geral.SSLXmlSignLib = xsNone
+    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
+    Configuracoes.Geral.SSLCryptLib = cryCapicom
+    Configuracoes.Geral.SSLHttpLib = httpIndy
+    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
-    Configuracoes.Geral.ModeloDF = moNFCe
+    Configuracoes.Arquivos.SepararPorModelo = True
     Configuracoes.Arquivos.OrdenacaoPath = <>
+    Configuracoes.Arquivos.SepararPorMes = True
+    Configuracoes.Arquivos.SalvarEvento = True
     Configuracoes.WebServices.Visualizar = True
     Configuracoes.WebServices.UF = 'DF'
-    Configuracoes.WebServices.AguardarConsultaRet = 15000
-    Configuracoes.WebServices.AjustaAguardaConsultaRet = True
+    Configuracoes.WebServices.AguardarConsultaRet = 0
     Configuracoes.WebServices.QuebradeLinha = '|'
     DANFE = ACBRDANFENFCe
     Left = 616
@@ -1700,12 +1701,13 @@ object frmModulo: TfrmModulo
     ACBrNFe = ACBRNFCe
     Logo = 'C:\Softlogus\PDV\Img\logo-nfce.jpg'
     PathPDF = 'C:\Softlogus\PDV\xml\'
+    Impressora = 'CutePDF Writer'
     MostrarPreview = False
     MostrarStatus = True
     TipoDANFE = tiNFCe
     NumCopias = 1
     ImprimeNomeFantasia = False
-    ImprimirDescPorc = True
+    ImprimirDescPorc = False
     ImprimirTotalLiquido = True
     MargemInferior = 0.800000000000000000
     MargemSuperior = 0.800000000000000000
@@ -1714,13 +1716,13 @@ object frmModulo: TfrmModulo
     CasasDecimais.Formato = tdetInteger
     CasasDecimais._qCom = 2
     CasasDecimais._vUnCom = 2
-    CasasDecimais._Mask_qCom = ',0.00'
-    CasasDecimais._Mask_vUnCom = ',0.00'
+    CasasDecimais._Mask_qCom = '###,###,###,##0.00'
+    CasasDecimais._Mask_vUnCom = '###,###,###,##0.00'
     ExibirResumoCanhoto = False
     FormularioContinuo = False
     TamanhoFonte_DemaisCampos = 10
     ProdutosPorPagina = 0
-    ImprimirDetalhamentoEspecifico = False
+    ImprimirDetalhamentoEspecifico = True
     NFeCancelada = True
     ImprimirItens = True
     ViaConsumidor = True
@@ -1731,8 +1733,9 @@ object frmModulo: TfrmModulo
     LogoemCima = False
     TamanhoFonteEndereco = 0
     RecuoLogo = 0
+    FonteTributos = 'IBPT'
     EspessuraBorda = 1
-    ExibirTotalTributosItem = False
+    ExibirTotalTributosItem = True
     ExibeCampoFatura = True
     TributosFonte = 'IBPT'
     TributosPercentual = ptValorProdutos

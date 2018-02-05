@@ -380,7 +380,7 @@ type
     procedure CentralizarPanel(p: TPanel);
     procedure PrepararNFCE;
     procedure GerarNFCe(NumNFe: String);
-    procedure GerarQrCode;
+   // procedure GerarQrCode;
   public
     { Public declarations }
     procedure EnviaComando(comando: string; timeout: Integer);
@@ -5429,17 +5429,17 @@ begin
         with frmmodulo do
         begin
         { TODO :
-TEM QUE ATUALIZAR OS COMPONENTES DO ACBR DO
-TRUNK PARA TRUNK2  01:15  13/01/2018 }
-//          if edtPathLogs <> '' then
-//              NomeArquivo := edtPathLogs
-//            else
-//              NomeArquivo := 'C:\Softlogus\PDV\xml';
-//            if ACBRNFCe.Configuracoes.Arquivos.SepararPorModelo then
-//              NomeArquivo:=NomeArquivo + '\NFCe\';
-//            if ACBRNFCe.Configuracoes.Arquivos.SepararPorMes then
-//              NomeArquivo := NomeArquivo + FormatDateTime('YYYYMM',Date)+'\';
-//             NomeArquivo := NomeArquivo + copy(ChaveNFCE, 4, 47) + '-nfe.xml';
+          TEM QUE ATUALIZAR OS COMPONENTES DO ACBR DO
+          TRUNK PARA TRUNK2  01:15  13/01/2018 }
+          if edtPathLogs <> '' then
+              NomeArquivo := edtPathLogs
+            else
+              NomeArquivo := 'C:\Softlogus\PDV\xml';
+           if ACBRNFCe.Configuracoes.Arquivos.SepararPorModelo then
+             NomeArquivo:=NomeArquivo + '\NFCe\';
+           if ACBRNFCe.Configuracoes.Arquivos.SepararPorMes then
+             NomeArquivo := NomeArquivo + FormatDateTime('YYYYMM',Date)+'\';
+             NomeArquivo := NomeArquivo + copy(ChaveNFCE, 4, 47) + '-nfe.xml';
 
 
           spNFCE_Insert.close;
@@ -7849,35 +7849,35 @@ end;
 procedure TfrmVenda.GerarNFCe(NumNFe: String);
 var
   i, nItem: Integer;
-  total_produtos, total_icms, total_base, total_trib, PTroco: real;
+  total_desconto, total_produtos, total_icms, total_base, total_trib, PTroco: real;
 begin
- try
+  try
     with frmmodulo do
     begin
       qrfilial.Open;
-  with ACBRNFCe.NotasFiscais.add.NFe do
+      with ACBRNFCe.NotasFiscais.add.NFe do
       begin
-
         Ide.cNF := strtoint(NumNFe);
         Ide.natOp := 'VENDA AO CONSUMIDOR FINAL';
+
         if tipo_pgto = 1 then
           Ide.indPag := ipPrazo
         else
           Ide.indPag := ipVista;
-             {MODELO DA NOTA FISCAL ELETRONICA}
+
         Ide.Modelo := 65;
+        //DARLON SANTOS
         Ide.Serie := StrToInt(edtSerie);
         Ide.nNF := strtoint(NumNFe);
         Ide.dEmi := Now;
         Ide.dSaiEnt := Now;
         Ide.hSaiEnt := Now;
-        if frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine then
-         begin
+        if frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine then begin
           Ide.dhCont  := Now;
           Ide.xJust := MotivoContigencia;
-         end;
-        Ide.tpNF      := tnSaida;
-        Ide.tpEmis := ACBRNFCe.Configuracoes.Geral.FormaEmissao;
+        end;
+        Ide.tpNF := tnSaida;
+        Ide.tpEmis := frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao;
         Ide.tpAmb := ACBRNFCe.Configuracoes.WebServices.Ambiente;
         Ide.cUF := UFtoCUF(edtEmitUF);
         Ide.cMunFG := strtoint(edtEmitCodCidade);
@@ -7916,8 +7916,9 @@ begin
         else
           Emit.CRT := crtRegimeNormal;
 
+        // dados destinatarios sadraque@inovarem.com.br
         Dest.CNPJCPF := OnlyNumber(sConsumidor_CPF);
-         Dest.ISUF := '';
+        Dest.ISUF := '';
         Dest.xNome := sConsumidor_Nome;
         Dest.indIEDest := inNaoContribuinte;
         Dest.EnderDest.fone := '';
@@ -7926,24 +7927,23 @@ begin
         else
           Dest.EnderDest.CEP := 0;
 
-        Dest.EnderDest.xLgr := sCli_Endereco;
+        Dest.EnderDest.xLgr := '';
         Dest.EnderDest.nro := '';
-        Dest.EnderDest.xCpl := 'casa';
+        Dest.EnderDest.xCpl := '';
         Dest.EnderDest.xBairro := '';
-        Dest.EnderDest.cMun := 0;
+        Dest.EnderDest.cMun := 0; // analisar funcao
         Dest.EnderDest.xMun := sCli_Cidade;
         Dest.EnderDest.UF := sCli_uf;
         Dest.EnderDest.cPais := 1058;
         Dest.EnderDest.xPais := 'BRASIL';
 
-
         // Adicionando Produtos
-
         nItem := 1;
         total_produtos := 0;
         total_icms := 0;
         total_base := 0;
         total_trib := 0;
+        total_desconto := 0;
 
         for i := 0 to grid.RowCount - 1 do
         begin
@@ -7951,7 +7951,7 @@ begin
           qrProdNCFE.close;
           qrProdNCFE.sql.clear;
           qrProdNCFE.sql.add
-            ('select CODIGO, NOME,COD_BARRA,NCM,CST,ALIQNACIONAL from ESTOQUE ');
+            ('select CODIGO, NOME,COD_BARRA,NCM,CST,ALIQNACIONAL,CFOP from ESTOQUE ');
           qrProdNCFE.sql.add('where CODIGO = :pcodigo');
           qrProdNCFE.ParamByName('pcodigo').asinteger :=
             grid.Cell[3, i].asinteger;
@@ -7967,6 +7967,7 @@ begin
               Prod.cProd := inttostr(grid.Cell[3, i].asinteger);
               Prod.uCom := grid.Cell[12, i].asstring;
               Prod.uTrib := grid.Cell[12, i].asstring;
+
               if length(qrProdNCFE.fieldbyname('COD_BARRA').asstring) < 13 then
               begin
                 Prod.cEAN := '';
@@ -7981,12 +7982,12 @@ begin
               Prod.xProd := qrProdNCFE.fieldbyname('NOME').asstring;
               Prod.NCM := somenteNumero(qrProdNCFE.fieldbyname('NCM').asstring);
               // Tabela NCM disponível em  http://www.receita.fazenda.gov.br/Aliquotas/DownloadArqTIPI.htm
-               Prod.EXTIPI := '';
-               Prod.CFOP := '5101';//iCFOP;
-//              if trim(qrProdNCFE.fieldbyname('CFOP').AsString)  <> '' then
-//                Prod.CFOP := trim(qrProdNCFE.fieldbyname('CFOP').AsString)
-//              else
-//                Prod.CFOP := edtcfop;
+              Prod.EXTIPI := '';
+//              Prod.CFOP := '5101';//iCFOP;
+              if trim(qrProdNCFE.fieldbyname('CFOP').AsString)  <> '' then
+                Prod.CFOP := trim(qrProdNCFE.fieldbyname('CFOP').AsString)
+              else
+                Prod.CFOP := edtcfop;
 
               Prod.qCom := RoundTo(grid.Cell[5, i].asfloat,-2);
               Prod.qTrib := RoundTo(grid.Cell[5, i].asfloat,-2);
@@ -7997,120 +7998,122 @@ begin
               if rTotal_Desconto > 0 then
                 Prod.vDesc := RoundTo(Prod.vDesc + ((Prod.vProd/rTotal_Venda)*rTotal_Desconto),-2);
 
-//              Prod.qCom := grid.Cell[5, i].asfloat;
-//              Prod.qTrib := grid.Cell[5, i].asfloat;
-//              Prod.vUnCom := grid.Cell[6, i].asfloat;
-//              Prod.vUnTrib := grid.Cell[6, i].asfloat;
-//              Prod.vProd := Prod.vUnCom * Prod.qCom;
-//              Prod.vDesc := grid.Cell[7, i].asfloat;
-              { TODO : ATUALIZAR O ACBR 1:19  13/01/2018 }
-              // prepar query
-//              QRCSOSN.close;
-//              QRCSOSN.sql.clear;
-//              QRCSOSN.sql.add('select csosn, aliquota icms, cest from ESTOQUE ');
-//              QRCSOSN.sql.add('where codigo = :pcodigo');
-//              QRCSOSN.ParamByName('pcodigo').asstring :=
-//              IntToStrZero(grid.Cell[3, i].asinteger, 6);
-//              QRCSOSN.Open;
-//              if (trim(QRCSOSN.fieldbyname('cest').asstring) <> '') and (trim(QRCSOSN.fieldbyname('cest').asstring)<>'0') then
-//                Prod.arma CEST   := QRCSOSN.fieldbyname('cest').asstring;
 
+              // prepar query
+              QRCSOSN.close;
+              QRCSOSN.sql.clear;
+              QRCSOSN.sql.add('select csosn, aliquota icms, cest from ESTOQUE ');
+              QRCSOSN.sql.add('where codigo = :pcodigo');
+              QRCSOSN.ParamByName('pcodigo').asstring :=
+                IntToStrZero(grid.Cell[3, i].asinteger, 6);
+              QRCSOSN.Open;
+
+
+              if (trim(QRCSOSN.fieldbyname('cest').asstring) <> '') and (trim(QRCSOSN.fieldbyname('cest').asstring)<>'0') then
+                Prod.CEST   := QRCSOSN.fieldbyname('cest').asstring;
 
               Prod.vOutro := 0;
               Prod.vFrete := 0;
               Prod.vSeg := 0;
-              total_produtos := total_produtos + Prod.vProd;
+              total_produtos := RoundTo(total_produtos + Prod.vProd,-2);
+              total_desconto := RoundTo(total_desconto + Prod.vDesc,-2);
               with Imposto do
               begin
-                vTotTrib := (Prod.vProd * qrProdNCFE.fieldbyname('ALIQNACIONAL')
-                  .value) / 100;
+                vTotTrib := RoundTo((Prod.vProd * qrProdNCFE.fieldbyname('ALIQNACIONAL')
+                  .AsFloat) / 100,-2);
                 total_trib := total_trib + vTotTrib;
-
-                // prepar query
-                QRCSOSN.close;
-                QRCSOSN.sql.clear;
-                QRCSOSN.sql.add('SELECT CSOSN FROM ESTOQUE ');
-                QRCSOSN.sql.add('WHERE CODIGO = :PCODIGO');
-                QRCSOSN.ParamByName('PCODIGO').asstring :=
-                  IntToStrZero(grid.Cell[3, i].asinteger, 6);
-                QRCSOSN.Open;
-
                 // simples nacional
-                if qrfilial.fieldbyname('CRT').asinteger < 3 then
-                begin
-                  with ICMS do
-                  begin
-
-                    if (grid.Cell[11, i].asstring = '000') then
-                      CST := cst00
-                    else if (grid.Cell[11, i].asstring = '010') then
-                      CST := cst10
-                    else if (grid.Cell[11, i].asstring = '020') then
-                      CST := cst20
-                    else if (grid.Cell[11, i].asstring = '030') then
-                      CST := cst30
-                    else if (grid.Cell[11, i].asstring = '040') then
-                      CST := cst40
-                    else if (grid.Cell[11, i].asstring = '050') then
-                      CST := cst50
-                    else if (grid.Cell[11, i].asstring = '060') then
-                      CST := cst60
-                    else if (grid.Cell[11, i].asstring = '070') then
-                      CST := cst70
-                    else if (grid.Cell[11, i].asstring = '080') then
-                      CST := cst80
-                    else if (grid.Cell[11, i].asstring = '090') then
-                      CST := cst90;
-
-                    if QRCSOSN.fieldbyname('csosn').asstring = '101' then
+                if qrfilial.fieldbyname('CRT').asinteger < 3 then begin
+                  with ICMS do begin
+                    if (QRCSOSN.fieldbyname('csosn').asstring = '101') then
                       ICMS.CSOSN := csosn101
-                    else if QRCSOSN.fieldbyname('csosn').asstring = '102' then
+                    else if (QRCSOSN.fieldbyname('csosn').asstring = '102') then
                       ICMS.CSOSN := csosn102
-                    else if QRCSOSN.fieldbyname('csosn').asstring = '103' then
+                    else if (QRCSOSN.fieldbyname('csosn').asstring = '103') then
                       ICMS.CSOSN := csosn103
-                    else if QRCSOSN.fieldbyname('csosn').asstring = '201' then
-                      ICMS.CSOSN := csosn201
-                    else if QRCSOSN.fieldbyname('csosn').asstring = '202' then
-                      ICMS.CSOSN := csosn202
-                    else if QRCSOSN.fieldbyname('csosn').asstring = '203' then
-                      ICMS.CSOSN := csosn203
-                    else if QRCSOSN.fieldbyname('csosn').asstring = '300' then
-                      ICMS.CSOSN := csosn300
-                    else if QRCSOSN.fieldbyname('csosn').asstring = '400' then
+                    else if (QRCSOSN.fieldbyname('csosn').asstring = '300') then
+                     ICMS.CSOSN := csosn300
+                    else if (QRCSOSN.fieldbyname('csosn').asstring = '400') then
                       ICMS.CSOSN := csosn400
-                    else if QRCSOSN.fieldbyname('csosn').asstring = '500' then
+                    else if (QRCSOSN.fieldbyname('csosn').asstring = '201') then
+                      ICMS.CSOSN := csosn201
+                    else if (QRCSOSN.fieldbyname('csosn').asstring = '202') then
+                      ICMS.CSOSN := csosn202
+                    else if (QRCSOSN.fieldbyname('csosn').asstring = '500') then
                       ICMS.CSOSN := csosn500
-                    else if QRCSOSN.fieldbyname('csosn').asstring = '900' then
-                      ICMS.CSOSN := csosn900
-                    else
-                      ICMS.CSOSN := csosnVazio;
+                    else if (QRCSOSN.fieldbyname('csosn').asstring = '900') then
+                      ICMS.CSOSN := csosn900;
 
-                    ICMS.pCredSN := 0;
-                    ICMS.vCredICMSSN := 0;
-
-                    ICMS.orig := oeNacional;
-                    ICMS.modBC := dbiValorOperacao;
-                    ICMS.vBC := 0;
-                    total_base := 0;
-                    ICMS.pICMS := 0;
-                    ICMS.vICMS := 0;
-                    total_icms := 0;
-                    ICMS.modBCST := dbisMargemValorAgregado;
-                    ICMS.pMVAST := 0;
-                    ICMS.pRedBCST := 0;
-                    ICMS.vBCST := 0;
-                    ICMS.pICMSST := 0;
-                    ICMS.vICMSST := 0;
-                    ICMS.pRedBC := 0;
-
+                    case ICMS.CSOSN of
+                      csosn101:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.pCredSN := 0.0; // Colocar o percentual do Crédito
+                        ICMS.vCredICMSSN := 0.0; // Colocar o valor do Crédito
+                      end;
+                     csosn102:
+                      begin
+                        ICMS.orig    := oeNacional;
+                      end;
+                      csosn201:
+                      begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBCST := dbisMargemValorAgregado;
+                        ICMS.pMVAST := 0;
+                        ICMS.pRedBCST := 00.00;
+                        ICMS.vBCST := 0;
+                        ICMS.pICMSST := 00.00;
+                        ICMS.vICMSST := 0;
+                        ICMS.pCredSN := 0.0; // Colocar o percentual do Crédito
+                        ICMS.vCredICMSSN := 0.0; // Colocar o valor do Crédito
+                      end;
+                      csosn202:
+                      begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBCST := dbisMargemValorAgregado;
+                        ICMS.pMVAST := 0;
+                        ICMS.pRedBCST := 00.00;
+                        ICMS.vBCST := 0;
+                        ICMS.pICMSST := 00.00;
+                        ICMS.vICMSST := 0;
+                      end;
+                      csosn500:
+                      begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.vBCSTRet := 0;
+                        ICMS.vICMSSTRet := 0;
+                      end;
+                      csosn900:
+                      begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBC := dbiValorOperacao;
+                        ICMS.vBC := RoundTo(grid.Cell[9, i].asfloat,-2);
+                        ICMS.pRedBC := 0;
+                        ICMS.pICMS := RoundTo(QRCSOSN.FieldByName('icms').AsFloat,-2);
+                        ICMS.vICMS := RoundTo((ICMS.vBC * ICMS.pICMS) / 100,-2);
+                        ICMS.modBCST := dbisMargemValorAgregado;
+                        ICMS.pMVAST := 0;
+                        ICMS.pRedBCST := 00.00;
+                        ICMS.vBCST := 0;
+                        ICMS.pICMSST := 00.00;
+                        ICMS.vICMSST := 0;
+                        ICMS.pCredSN := 0.0; // Colocar o percentual do Crédito
+                        ICMS.vCredICMSSN := 0.0; // Colocar o valor do Crédito
+                      end;
+                    end;
+                    with ICMSUFDest do
+                    begin
+                      vBCUFDest      := 0.00;
+                      pFCPUFDest     := 0.00;
+                      pICMSUFDest    := 0.00;
+                      pICMSInter     := 0.00;
+                      pICMSInterPart := 0.00;
+                      vFCPUFDest     := 0.00;
+                      vICMSUFDest    := 0.00;
+                      vICMSUFRemet   := 0.00;
+                    end;
                   end;
-
-                end
-                else
-                begin
-                  with ICMS do
-                  begin
-
+                end else begin
+                  with ICMS do begin
                     if (grid.Cell[11, i].asstring = '000') then
                       CST := cst00
                     else if (grid.Cell[11, i].asstring = '010') then
@@ -8131,22 +8134,114 @@ begin
                       CST := cst80
                     else if (grid.Cell[11, i].asstring = '090') then
                       CST := cst90;
-
-                    ICMS.orig := oeNacional;
-                    ICMS.modBC := dbiValorOperacao;
-                    ICMS.vBC := grid.Cell[9, i].asfloat;
-                    total_base := total_base + ICMS.vBC;
-                    ICMS.pICMS := grid.Cell[10, i].asfloat;
-                    ICMS.vICMS := (ICMS.vBC * ICMS.pICMS) / 100;
-                    total_icms := total_icms + ICMS.vICMS;
-                    ICMS.modBCST := dbisMargemValorAgregado;
-                    ICMS.pMVAST := 0;
-                    ICMS.pRedBCST := 0;
-                    ICMS.vBCST := 0;
-                    ICMS.pICMSST := 0;
-                    ICMS.vICMSST := 0;
-                    ICMS.pRedBC := 0;
-
+                    case ICMS.CST of
+                      cst00:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBC := dbiValorOperacao;
+                        ICMS.vBC := RoundTo(grid.Cell[9, i].asfloat,-2);;
+                        ICMS.pICMS := RoundTo(grid.Cell[10, i].asfloat,-2);
+                        ICMS.vICMS := RoundTo((ICMS.vBC * ICMS.pICMS) / 100,-2);
+                        total_icms := total_icms + ICMS.vICMS;
+                        total_base := total_base + ICMS.vBC;
+                      end;
+                      cst10:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBC := dbiValorOperacao;
+                        ICMS.vBC := RoundTo(grid.Cell[9, i].asfloat,-2);;
+                        ICMS.pICMS := RoundTo(grid.Cell[10, i].asfloat,-2);;
+                        ICMS.vICMS := RoundTo((ICMS.vBC * ICMS.pICMS) / 100,-2);
+                        ICMS.modBCST := dbisMargemValorAgregado;
+                        ICMS.pMVAST := 0;
+                        ICMS.pRedBCST := 00.00;
+                        ICMS.vBCST := 0;
+                        ICMS.pICMSST := 00.00;
+                        ICMS.vICMSST := 0;
+                        total_icms := total_icms + ICMS.vICMS;
+                        total_base := total_base + ICMS.vBC;
+                      end;
+                      cst20:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBC := dbiValorOperacao;
+                        ICMS.pRedBC := 0.00;
+                        ICMS.vBC := RoundTo(grid.Cell[9, i].asfloat,-2);;
+                        ICMS.pICMS := RoundTo(grid.Cell[10, i].asfloat,-2);;
+                        ICMS.vICMS := RoundTo((ICMS.vBC * ICMS.pICMS) / 100,-2);
+                        ICMS.vICMSDeson := 0.00;
+                        //icms.motDesICMS :=
+                        total_icms := total_icms + ICMS.vICMS;
+                        total_base := total_base + ICMS.vBC;
+                      end;
+                      cst30:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBCST := dbisMargemValorAgregado;
+                        ICMS.pMVAST := 0.00;
+                        ICMS.pRedBCST := 0.00;
+                        ICMS.vBCST := 0;
+                        ICMS.pICMSST := 0;
+                        ICMS.vICMSST := 0;
+                        ICMS.vICMSDeson := 0.00;
+                        //icms.motDesICMS :=
+                      end;
+                      cst40, cst41, cst50:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.vICMSDeson := 0.00;
+                        //icms.motDesICMS :=
+                      end;
+                      cst51:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBC := dbiValorOperacao;
+                        ICMS.pRedBC := 0.00;
+                        ICMS.vBC := RoundTo(grid.Cell[9, i].asfloat,-2);;
+                        ICMS.pICMS := RoundTo(grid.Cell[10, i].asfloat,-2);;
+                        ICMS.vICMSOp := 0.00;
+                        ICMS.pDif := 0.00;
+                        ICMS.vICMSDif := 0.00;
+                        ICMS.vICMS :=RoundTo((ICMS.vBC * ICMS.pICMS) / 100,-2);
+                        total_icms := total_icms + ICMS.vICMS;
+                        total_base := total_base + ICMS.vBC;
+                      end;
+                      cst60:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.vBCSTRet := 0.00;
+                        ICMS.vICMSSTRet := 0.00;
+                      end;
+                      cst70:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBC := dbiValorOperacao;
+                        ICMS.pRedBC := 0.00;
+                        ICMS.vBC := RoundTo(grid.Cell[9, i].asfloat,-2);;
+                        ICMS.pICMS := RoundTo(grid.Cell[10, i].asfloat,-2);;
+                        ICMS.vICMS := RoundTo((ICMS.vBC * ICMS.pICMS) / 100,-2);
+                        ICMS.modBCST := dbisMargemValorAgregado;
+                        ICMS.pMVAST := 0.00;
+                        ICMS.pRedBCST := 0.00;
+                        ICMS.vBCST := 0.00;
+                        ICMS.pICMSST := 0.00;
+                        ICMS.vICMSST := 0.00;
+                        ICMS.vICMSDeson := 0.00;
+                        //ICMS.motDesICMS
+                        total_icms := total_icms + ICMS.vICMS;
+                        total_base := total_base + ICMS.vBC;
+                      end;
+                      cst90:begin
+                        ICMS.orig    := oeNacional;
+                        ICMS.modBC := dbiValorOperacao;
+                        ICMS.vBC := RoundTo(grid.Cell[9, i].asfloat,-2);;
+                        ICMS.pRedBC := 0.00;
+                        ICMS.pICMS := RoundTo(grid.Cell[10, i].asfloat,-2);;
+                        ICMS.vICMS := RoundTo((ICMS.vBC * ICMS.pICMS) / 100,-2);
+                        ICMS.modBCST := dbisMargemValorAgregado;
+                        ICMS.pMVAST := 0.00;
+                        ICMS.pRedBCST := 0.00;
+                        ICMS.vBCST := 0.00;
+                        ICMS.pICMSST := 0.00;
+                        ICMS.vICMSST := 0.00;
+                        ICMS.vICMSDeson := 0.00;
+                        //ICMS.motDesICMS
+                        total_icms := total_icms + ICMS.vICMS;
+                        total_base := total_base + ICMS.vBC;
+                      end;
+                    end;
                   end;
                 end;
               end;
@@ -8161,13 +8256,18 @@ begin
         Total.ICMSTot.vProd := total_produtos;
         Total.ICMSTot.vFrete := 0;
         Total.ICMSTot.vSeg := 0;
-        Total.ICMSTot.vDesc := 0;
+        Total.ICMSTot.vDesc := RoundTo(total_desconto,-2);
         Total.ICMSTot.vII := 0;
         Total.ICMSTot.vIPI := 0;
         Total.ICMSTot.vPIS := 0;
         Total.ICMSTot.vCOFINS := 0;
         Total.ICMSTot.vOutro := 0;
-        Total.ICMSTot.vNF := total_produtos;
+        Total.ICMSTot.vNF := RoundTo(total_produtos-total_desconto,-2);
+
+        // partilha do icms e fundo de pobreza
+        Total.ICMSTot.vFCPUFDest   := 0.00;
+        Total.ICMSTot.vICMSUFDest  := 0.00;
+        Total.ICMSTot.vICMSUFRemet := 0.00;
 
         Total.ISSQNtot.vServ := 0;
         Total.ISSQNtot.vBC := 0;
@@ -8192,6 +8292,8 @@ begin
           end;
         end;
 
+
+
         if ed_forma1.value > 0 then begin
           with pag.add do // PAGAMENTOS apenas para NFC-e
           begin
@@ -8212,28 +8314,50 @@ begin
           end;
         end;
 
-
-
-        with pag.add do // PAGAMENTOS apenas para NFC-e
-        begin
-          case cb_forma1.ItemIndex of
-            0:
-              tPag := fpDinheiro;
-            1:
+        if ed_forma2.value > 0 then begin
+          with pag.add do // PAGAMENTOS apenas para NFC-e
+          begin
+            if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+               (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) then
               tPag := fpCheque;
-            2:
-              tPag := fpCartaoCredito;
-            3:
+            if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Crediario)) then
               tPag := fpCreditoLoja;
+            if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) then
+              tPag := fpCartaoDebito;
+            if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
+              tPag := fpCartaoCredito;
+            if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_dinheiro)) then
+              tPag := fpDinheiro;
+            if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Convenio)) then
+              tPag := fpCreditoLoja;
+            vPag := ed_forma2.value - PTroco;
           end;
-
-          vPag := ed_total_pagar.value;
         end;
 
+
+
+        if ed_forma3.value > 0 then begin
+          with pag.add do // PAGAMENTOS apenas para NFC-e
+          begin
+            if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+               (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) then
+              tPag := fpCheque;
+            if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Crediario)) then
+              tPag := fpCreditoLoja;
+            if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) then
+              tPag := fpCartaoDebito;
+            if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
+              tPag := fpCartaoCredito;
+            if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_dinheiro)) then
+              tPag := fpDinheiro;
+            if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Convenio)) then
+              tPag := fpCreditoLoja;
+            vPag := ed_forma3.value - PTroco;
+          end;
+        end;
         InfAdic.infCpl := '';
         InfAdic.infAdFisco := '';
       end;
-
     end;
   except
     on e: exception do
@@ -8243,94 +8367,71 @@ begin
 
 end;
 
-{ TODO : DARLON SANTOS }
-procedure TfrmVenda.GerarQrCode;
-begin
-  with frmmodulo do
-  begin
-//       MemoDados.text :=  ACBRNFCe.Configuracoes.Geral.IncluirQRCodeXMLNFCe
-//      (ACBRNFCe.NotasFiscais.Items[0].NFe.Ide.cUF,
-//      ACBRNFCe.NotasFiscais.Items[0].NFe.Ide.tpAmb,
-//      SomenteNumeros(ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id),
-//      ACBRNFCe.NotasFiscais.Items[0].NFe.Dest.CNPJCPF,
-//      ACBRNFCe.NotasFiscais.Items[0].NFe.Ide.dEmi,
-//      ACBRNFCe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vNF,
-//      ACBRNFCe.NotasFiscais.Items[0].NFe.Total.ICMSTot.vICMS,
-//      ACBRNFCe.NotasFiscais.Items[0].NFe.signature.DigestValue,
-//      edtIdToken, edtTokenNumero);
-  end;
-end;
+
 
 procedure TfrmVenda.PrepararNFCE;
 { TODO 5 : DARLON SANTOS 22:13 11/01/2018 }
 begin
-
   nfce_autorizada := false;
+
   frmmodulo.LerConfiguracao;
   if EdFormatoOff = 0 then
     frmtOffLine := teContingencia
   else
-  frmtOffLine := teOffLine;
+    frmtOffLine := teOffLine;
+
   vAux := frmmodulo.codifica('915');
   vNumNFCe := StrToInt(vAux);
   vSincrono := '1';
-  vNumLote :=  vAux;
+  vNumLote := vAux;
   Sincrono := true;
   with frmmodulo do
   begin
     try
       ACBRNFCe.NotasFiscais.clear;
 
-      Imprime_display('          AGUARDE...  GERANDO NFC-E', clBackground, tiLivre);
+      Imprime_display('          AGUARDE...  GERANDO NFC-E', CLWHITE, tiLivre);
       grid.Repaint;
       GerarNFCe(vAux);
-      Imprime_display('          AGUARDE...  ASSINANDO NFC-E', clBackground, tiLivre);
-       grid.Repaint;
-       ACBrNFce.NotasFiscais.Assinar;
-       Imprime_display('          AGUARDE...  VALIDANDO NFC-E', clBackground, tiLivre);
-       grid.Repaint;
-       ACBRNFCe.NotasFiscais.Validar;
+      Imprime_display('          AGUARDE...  ASSINANDO NFC-E', CLWHITE, tiLivre);
+      grid.Repaint;
+      ACBRNFCe.NotasFiscais.Assinar;
+
+      Imprime_display('          AGUARDE...  VALIDANDO NFC-E', CLWHITE, tiLivre);
+      grid.Repaint;
+     ACBRNFCe.NotasFiscais.Validar;
 
 
-   if ACBRNFCe.Configuracoes.Geral.FormaEmissao <> frmtOffLine  then
-    begin
-     Imprime_display('          AGUARDE...  ENVIANDO NFC-E', clBackground, tiLivre);
-       grid.Repaint;
-        ACBrNFce.Enviar(vNumLote,true,sincrono);
-      if not ACBRNFCe.NotasFiscais.Items[0].Confirmada then
-       begin
-          If ACBRNFCe.WebServices.Enviar.cStat = 100 then
+      if ACBRNFCe.Configuracoes.Geral.FormaEmissao <> frmtOffLine  then begin
+        Imprime_display('          AGUARDE...  ENVIANDO NFC-E', CLWHITE, tiLivre);
+        grid.Repaint;
+        ACBRNFCe.Enviar(vNumLote, true, Sincrono);
+        if ACBRNFCe.NotasFiscais.Items[0].Confirmada then
         begin
-           cStatus := 100;
-           ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
-           NumeroNFCe := strtoint(vAux);
+          If ACBRNFCe.WebServices.Enviar.cStat = 100 then
+          begin
+            cStatus := 100;
+            ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
+            NumeroNFCe := strtoint(vAux);
+          end;
+        end
+        else
+        begin
+          Imprime_display(ACBRNFCe.WebServices.Enviar.xMotivo, CLWHITE, tiLivre);
         end;
-     end
-      else
-      begin
-       Imprime_display(ACBRNFCe.WebServices.Enviar.xMotivo, clBackground, tiLivre);
-       end;
-    end
-    else
-    begin
+      end else begin
         ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
         NumeroNFCe := strtoint(vAux);
       end;
-//      Imprime_display('          AGUARDE...  GERANDO QRCODE DA NFC-E',
-//      clBackground, tiLivre);
-//      grid.Repaint;
-//      GerarQrCode;
-//      Zint.Barcode.Data := MemoDados.text;
-//      bc := TBitmap.create;
-//      Zint.Barcode.GetBarcode(bc);
-//      bc.SaveToFile('C:\Softlogus\PDV\xml\qrcode' + copy(ChaveNFCE, 4, 47)+ '.bmp');
- //      FreeAndNil(bc);
-       ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\Schemas\DANFeNFCe.fr3';
-      if FileExists(frmPrincipal.LerINi(sConfiguracoes, 'PDV', 'CAMINHO_LOGO', '')) then
-        ACBRDANFENFCe.Logo := frmPrincipal.LerINi(sConfiguracoes, 'PDV',  'CAMINHO_LOGO', '');
-
+      ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\Schemas\DANFeNFCe.fr3';
+      if FileExists(frmPrincipal.LerINi(sConfiguracoes, 'PDV',
+        'CAMINHO_LOGO', '')) then
+        ACBRDANFENFCe.Logo := frmPrincipal.LerINi(sConfiguracoes, 'PDV',
+          'CAMINHO_LOGO', '');
       ACBRDANFENFCe.Detalhado := true;
       ACBRDANFENFCe.vTroco := ed_troco.value;
+
+      ACBRDANFENFCe.vTroco := ed_troco.Value;
       ACBRDANFENFCe.Impressora := edImpressora;
       ACBRDANFENFCe.DescricaoViaEstabelec := edDescEsta;
       ACBRDANFENFCe.EspessuraBorda := edMargem;
@@ -8339,21 +8440,20 @@ begin
       ACBRDANFENFCe.MargemSuperior := edMargSup;
       ACBRDANFENFCe.MargemInferior := edMarginf;
       ACBRDANFENFCe.MostrarPreview := edPreview;
-      ACBRNFCe.NotasFiscais.Imprimir;
+      //ACBRNFCe.NotasFiscais.Imprimir;
       ACBRNFCe.NotasFiscais.clear;
-      //DARLON SANTOS
-      if (cStatus = 100) or (frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine) then
-         nfce_autorizada := false
-        else
-        nfce_autorizada := true;
-     except
+
+      if (cStatus = 100) or (frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine)  then
+        nfce_autorizada := true
+      else
+        nfce_autorizada := false;
+    except
       on e: exception do
       begin
-      application.messagebox(pwidechar('Erro na geração da NFCE' + #13 +
+        application.messagebox(pwidechar('Erro na geração da NFCE' + #13 +
           'Erro: ' + e.Message), 'Erro', mb_ok + MB_ICONERROR);
         nfce_autorizada := false;
-        // TESTE DARLON SANTOS
-     end;
+      end;
 
     end;
 
@@ -8362,6 +8462,7 @@ begin
 end;
 
 // -------------------------------------------------------------------------- //
+
 procedure TfrmVenda.Sangria1Click(Sender: TObject);
 begin
   if not bVenda then
