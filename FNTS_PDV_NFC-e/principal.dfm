@@ -1463,9 +1463,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 749
     Align = alClient
     Stretch = True
-    ExplicitLeft = -192
-    ExplicitTop = 122
-    ExplicitHeight = 739
+    ExplicitTop = 112
   end
   object dxRibbon1: TdxRibbon
     Left = 0
