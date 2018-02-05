@@ -508,7 +508,7 @@ function TX509Certificate.IsTrusted(CACertificate
   : array of TX509Certificate): boolean;
 var
   cert_ctx: pX509_STORE;
-  // lookup: pX509_LOOKUP;
+   lookup: pX509_LOOKUP;
   csc: pX509_STORE_CTX;
   uchain: pSTACK_OFX509; // Untrusted certs
   i, verify: integer;
