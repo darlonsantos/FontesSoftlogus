@@ -3222,11 +3222,11 @@ end;
 
   if bDebug = false then
   begin
-    If (Screen.Width <> 800) and (Screen.Height <> 600) then
+    If (Screen.Width <> 1024) and (Screen.Height <> 768) then
       if application.messagebox
         ('O PDV opera em resolução de 800x600 deseja ajustar?', 'Pergunta',
         mb_yesno + MB_ICONQUESTION) = ID_YES then
-        TrocaResolucao(800, 600, a, b);
+        TrocaResolucao(1024, 768, a, b);
 
     left := 0;
     top := 0;

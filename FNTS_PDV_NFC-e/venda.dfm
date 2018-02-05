@@ -6628,6 +6628,7 @@ object frmVenda: TfrmVenda
     Lines.Strings = (
       'Memo1')
     TabOrder = 4
+    Visible = False
     OnChange = MemoDadosChange
   end
   object query: TIBCQuery
