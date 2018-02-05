@@ -1643,8 +1643,8 @@ object frmConfig: TfrmConfig
     Top = 42
     Width = 777
     Height = 546
-    ActivePage = PageSheet4
-    ActivePageIndex = 3
+    ActivePage = PageSheet1
+    ActivePageIndex = 0
     AdaptiveColors = True
     Align = alClient
     BackgroundColor = clWhite
@@ -4049,16 +4049,12 @@ object frmConfig: TfrmConfig
             Top = 15
             Width = 464
             Height = 423
-            ActivePage = TabSheet4
+            ActivePage = TabSheet1
             Align = alClient
             MultiLine = True
             TabOrder = 0
             object TabSheet1: TTabSheet
               Caption = 'Certificado'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox10: TGroupBox
                 Left = 0
                 Top = 4
@@ -4364,10 +4360,6 @@ object frmConfig: TfrmConfig
             object TabSheet3: TTabSheet
               Caption = 'WebService'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox12: TGroupBox
                 Left = 0
                 Top = 4
@@ -4542,10 +4534,6 @@ object frmConfig: TfrmConfig
             object TabSheet4: TTabSheet
               Caption = 'Emitente'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label20: TLabel
                 Left = 8
                 Top = 4
@@ -4872,10 +4860,6 @@ object frmConfig: TfrmConfig
             object tbImpressao: TTabSheet
               Caption = 'Impress'#227'o'
               ImageIndex = 5
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object lblImpressao: TLabel
                 Left = 2
                 Top = 8
