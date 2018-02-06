@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 559
   Top = 114
   BorderStyle = bsSingle
-  Caption = 'Softlogus | Frente de Caixa'
+  Caption = 'q'
   ClientHeight = 890
   ClientWidth = 1135
   Color = clWhite
@@ -1650,15 +1650,12 @@ object frmPrincipal: TfrmPrincipal
   end
   object dxFloatDockSite1: TdxFloatDockSite
     Left = 0
-    Top = 118
-    Width = 1135
-    Height = 749
+    Top = 0
+    Width = 185
+    Height = 131
     Visible = False
     FloatLeft = 964
     FloatTop = 633
-    ExplicitTop = 0
-    ExplicitWidth = 185
-    ExplicitHeight = 131
     DockingType = 0
     OriginalWidth = 185
     OriginalHeight = 131

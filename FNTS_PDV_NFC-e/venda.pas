@@ -380,6 +380,7 @@ type
     procedure CentralizarPanel(p: TPanel);
     procedure PrepararNFCE;
     procedure GerarNFCe(NumNFe: String);
+    //procedure OnInternetChange(LANStatus:TLANStatus;InternetStatus:TInternetStatus;xMsg:String='');
    // procedure GerarQrCode;
   public
     { Public declarations }
@@ -8390,20 +8391,20 @@ begin
     try
       ACBRNFCe.NotasFiscais.clear;
 
-      Imprime_display('          AGUARDE...  GERANDO NFC-E', CLWHITE, tiLivre);
+      Imprime_display('          AGUARDE...  GERANDO NFC-E', clBackground, tiLivre);
       grid.Repaint;
       GerarNFCe(vAux);
-      Imprime_display('          AGUARDE...  ASSINANDO NFC-E', CLWHITE, tiLivre);
+      Imprime_display('          AGUARDE...  ASSINANDO NFC-E', clBackground, tiLivre);
       grid.Repaint;
       ACBRNFCe.NotasFiscais.Assinar;
 
-      Imprime_display('          AGUARDE...  VALIDANDO NFC-E', CLWHITE, tiLivre);
+      Imprime_display('          AGUARDE...  VALIDANDO NFC-E', clBackground, tiLivre);
       grid.Repaint;
      ACBRNFCe.NotasFiscais.Validar;
 
 
       if ACBRNFCe.Configuracoes.Geral.FormaEmissao <> frmtOffLine  then begin
-        Imprime_display('          AGUARDE...  ENVIANDO NFC-E', CLWHITE, tiLivre);
+        Imprime_display('          AGUARDE...  ENVIANDO NFC-E', clBackground, tiLivre);
         grid.Repaint;
         ACBRNFCe.Enviar(vNumLote, true, Sincrono);
         if ACBRNFCe.NotasFiscais.Items[0].Confirmada then
@@ -8417,7 +8418,7 @@ begin
         end
         else
         begin
-          Imprime_display(ACBRNFCe.WebServices.Enviar.xMotivo, CLWHITE, tiLivre);
+          Imprime_display(ACBRNFCe.WebServices.Enviar.xMotivo, clBackground, tiLivre);
         end;
       end else begin
         ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
@@ -8440,7 +8441,6 @@ begin
       ACBRDANFENFCe.MargemSuperior := edMargSup;
       ACBRDANFENFCe.MargemInferior := edMarginf;
       ACBRDANFENFCe.MostrarPreview := edPreview;
-      //ACBRNFCe.NotasFiscais.Imprimir;
       ACBRNFCe.NotasFiscais.clear;
 
       if (cStatus = 100) or (frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine)  then

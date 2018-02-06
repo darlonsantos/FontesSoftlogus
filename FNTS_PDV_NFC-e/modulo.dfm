@@ -1690,7 +1690,7 @@ object frmModulo: TfrmModulo
     Configuracoes.Arquivos.SepararPorMes = True
     Configuracoes.Arquivos.SalvarEvento = True
     Configuracoes.WebServices.Visualizar = True
-    Configuracoes.WebServices.UF = 'DF'
+    Configuracoes.WebServices.UF = 'SP'
     Configuracoes.WebServices.AguardarConsultaRet = 0
     Configuracoes.WebServices.QuebradeLinha = '|'
     DANFE = ACBRDANFENFCe
@@ -1702,7 +1702,7 @@ object frmModulo: TfrmModulo
     Logo = 'C:\Softlogus\PDV\Img\logo-nfce.jpg'
     PathPDF = 'C:\Softlogus\PDV\xml\'
     Impressora = 'CutePDF Writer'
-    MostrarPreview = False
+    MostrarPreview = True
     MostrarStatus = True
     TipoDANFE = tiNFCe
     NumCopias = 1
@@ -1734,6 +1734,7 @@ object frmModulo: TfrmModulo
     TamanhoFonteEndereco = 0
     RecuoLogo = 0
     FonteTributos = 'IBPT'
+    QRCodeLateral = True
     EspessuraBorda = 1
     ExibirTotalTributosItem = True
     ExibeCampoFatura = True

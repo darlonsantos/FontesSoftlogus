@@ -4128,16 +4128,16 @@ object frmConfig: TfrmConfig
                 object Label40: TLabel
                   Left = 8
                   Top = 161
-                  Width = 43
+                  Width = 34
                   Height = 13
-                  Caption = 'ID Token'
+                  Caption = 'ID CSC'
                 end
                 object Label41: TLabel
                   Left = 8
                   Top = 217
-                  Width = 71
+                  Width = 60
                   Height = 13
-                  Caption = 'N'#250'mero SEFAZ'
+                  Caption = 'N'#250'mero CSC'
                 end
                 object edtCaminho: TEdit
                   Left = 8
@@ -4189,10 +4189,6 @@ object frmConfig: TfrmConfig
             object TabSheet2: TTabSheet
               Caption = 'Geral'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox11: TGroupBox
                 Left = 3
                 Top = 8
@@ -4752,10 +4748,6 @@ object frmConfig: TfrmConfig
             object TabSheet7: TTabSheet
               Caption = 'Email'
               ImageIndex = 4
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox13: TGroupBox
                 Left = 1
                 Top = 4

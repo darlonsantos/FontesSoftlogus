@@ -534,7 +534,7 @@ Var
     ACBRNFCe.Configuracoes.WebServices.Ambiente := taProducao
     else
     ACBRNFCe.Configuracoes.WebServices.Ambiente := taHomologacao;
-    ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\DANFeNFCe.fr3';
+    ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\Schemas\DANFeNFCe.fr3';
    edtProxyHost := Ini.ReadString('Proxy', 'Host', '');
     edtProxyPorta := Ini.ReadString('Proxy', 'Porta', '');
     edtProxyUser := Ini.ReadString('Proxy', 'User', '');
@@ -556,6 +556,7 @@ Var
 
     if ACBRNFCe.DANFE <> nil then
     ACBRNFCe.DANFE.TipoDANFE := tiNFCe;
+
    if (edtLogoMarca <> '') and (FileExists(edtLogoMarca)) then
     ACBRNFCe.DANFE.Logo := edtLogoMarca;
      { TODO : DARLON SANTOS }
@@ -603,9 +604,6 @@ Var
     edMargDir   := Ini.ReadFloat('Impressao', 'Margem Direita', 0.51);
     edMargSup   := Ini.ReadFloat('Impressao', 'Margem Superior', 0.8);
     edMarginf   := Ini.ReadFloat('Impressao', 'Margem Inferior', 0.8);
-
-
-
   finally
     Ini.Free;
   end;
@@ -639,7 +637,6 @@ begin
 end;
 
 end.
-
-  Nome: String[20];
-  Valor_Acumulado: real;
-  Valor_Ultimo_Cupom: real;
+//  Nome: String[20];
+//  Valor_Acumulado: real;
+//  Valor_Ultimo_Cupom: real;

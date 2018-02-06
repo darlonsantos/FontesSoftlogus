@@ -6621,8 +6621,8 @@ object frmVenda: TfrmVenda
     end
   end
   object MemoDados: TMemo
-    Left = 721
-    Top = 263
+    Left = 1011
+    Top = 262
     Width = 185
     Height = 89
     Lines.Strings = (
