@@ -1472,6 +1472,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 116
     ApplicationButton.Menu = dxBarApplicationMenu1
     BarManager = dxBarManager1
+    ColorSchemeAccent = rcsaOrange
     ColorSchemeName = 'Black'
     Contexts = <>
     TabOrder = 3
