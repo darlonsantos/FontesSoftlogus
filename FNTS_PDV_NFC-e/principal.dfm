@@ -10033,7 +10033,7 @@ object frmPrincipal: TfrmPrincipal
     object dxBarLargeButton2: TdxBarLargeButton
       Action = actRelatorio
       Category = 0
-      HotImageIndex = 17
+      HotImageIndex = 5
     end
     object dxBarLargeButton4: TdxBarLargeButton
       Action = actConfiguracoes
