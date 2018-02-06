@@ -1694,8 +1694,8 @@ object frmModulo: TfrmModulo
     Configuracoes.WebServices.AguardarConsultaRet = 0
     Configuracoes.WebServices.QuebradeLinha = '|'
     DANFE = ACBRDANFENFCe
-    Left = 616
-    Top = 336
+    Left = 592
+    Top = 24
   end
   object ACBRDANFENFCe: TACBrNFeDANFEFR
     ACBrNFe = ACBRNFCe

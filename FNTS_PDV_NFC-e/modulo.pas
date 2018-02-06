@@ -539,6 +539,8 @@ Var
     edtProxyPorta := Ini.ReadString('Proxy', 'Porta', '');
     edtProxyUser := Ini.ReadString('Proxy', 'User', '');
     edtProxySenha := Ini.ReadString('Proxy', 'Pass', '');
+      ACBRNFCe.Configuracoes.Geral.IdCSC := edtIdToken;
+    ACBRNFCe.Configuracoes.Geral.CSC   := edtTokenNumero;
 
     ACBRNFCe.Configuracoes.WebServices.ProxyHost := edtProxyHost;
     ACBRNFCe.Configuracoes.WebServices.ProxyPort := edtProxyPorta;
