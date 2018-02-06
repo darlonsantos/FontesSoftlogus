@@ -1652,24 +1652,22 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmPrincipal.actConfiguracoesExecute(Sender: TObject);
 begin
-// frmsenha_supervisor := tfrmsenha_supervisor.create(self);
-//  frmsenha_supervisor.showmodal;
-//
-//  if not bSupervisor_autenticado then
-//    Exit;
+ frmsenha_supervisor := tfrmsenha_supervisor.create(self);
+ frmsenha_supervisor.showmodal;
+
+  if not bSupervisor_autenticado then
+    Exit;
   frmconfig := tfrmconfig.create(self);
   frmconfig.showmodal;
-// frmconfig := tfrmconfig.Create(self);
-//  frmconfig.showmodal;
 end;
 
 procedure TfrmPrincipal.actRelatorioExecute(Sender: TObject);
 begin
-// frmsenha_supervisor := tfrmsenha_supervisor.create(self);
-//  frmsenha_supervisor.showmodal;
-//
-//  if not bSupervisor_autenticado then
-//    Exit;
+ frmsenha_supervisor := tfrmsenha_supervisor.create(self);
+  frmsenha_supervisor.showmodal;
+
+  if not bSupervisor_autenticado then
+    Exit;
 
   frmNotasconsumidor := tfrmNotasconsumidor.create(self);
   frmNotasconsumidor.showmodal;

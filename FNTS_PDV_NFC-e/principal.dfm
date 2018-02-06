@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 559
   Top = 114
   BorderStyle = bsSingle
-  Caption = 'q'
+  Caption = 'Frente de Caixa'
   ClientHeight = 890
   ClientWidth = 1135
   Color = clWhite
@@ -1472,7 +1472,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 116
     ApplicationButton.Menu = dxBarApplicationMenu1
     BarManager = dxBarManager1
-    ColorSchemeName = 'Blue'
+    ColorSchemeName = 'Black'
     Contexts = <>
     TabOrder = 3
     TabStop = False

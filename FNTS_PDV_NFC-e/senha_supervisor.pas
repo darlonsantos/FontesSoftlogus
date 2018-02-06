@@ -4,17 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Mask, RzEdit, AdvOfficeImage,  ExtCtrls,
-  pngimage, RxGIF, acPNG;
+  Dialogs, StdCtrls, Mask, RzEdit, AdvOfficeImage, ExtCtrls,
+  pngimage, JvGIF, acPNG;
 
 type
   TfrmSenha_Supervisor = class(TForm)
-    Image1: TImage;
-    Label1: TLabel;
-    AdvOfficeImage3: TAdvOfficeImage;
     ed_senha: TRzEdit;
+    img1: TImage;
     procedure ed_senhaKeyPress(Sender: TObject; var Key: Char);
-    procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure ed_senhaEnter(Sender: TObject);
     procedure ed_senhaExit(Sender: TObject);
@@ -29,7 +26,7 @@ var
 
 implementation
 
-uses principal, funcoes, venda;
+uses principal, funcoes;
 
 {$R *.dfm}
 
@@ -69,15 +66,8 @@ begin
   end;
 end;
 
-procedure TfrmSenha_Supervisor.FormClose(Sender: TObject;
-  var Action: TCloseAction);
-begin
-  action := cafree;
-end;
-
 procedure TfrmSenha_Supervisor.FormShow(Sender: TObject);
 begin
-  Brush.Style := bsClear;
   bsupervisor_autenticado := false;
 end;
 
@@ -89,7 +79,6 @@ begin
     CarRet;
   end;
   PopupMenu := nil;
-  frmvenda.Imprime_display('SENHA/CARTÃO DO SUPERVISOR...',clBackground,tiAlerta);
   // controlar a saida do edit de cancelamento de item
   bSair_campo := false;
 end;
