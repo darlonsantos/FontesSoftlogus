@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2014/10/02 12:58:31.000.615,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Athenas_PDV_NFCe.dproj=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Athenas_PDV.dproj</Transaction>
+    <Transaction>2014/10/02 12:58:31.000.615,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Athenas_PDV.dproj=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Athenas_PDV_NFCe.dproj</Transaction>
     <Transaction>2014/10/04 14:03:43.000.802,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\libeay32.pas=</Transaction>
     <Transaction>2014/10/04 14:11:37.000.841,=C:\ACBR\Fontes\ACBrComum\libeay32.pas</Transaction>
     <Transaction>2014/10/04 14:12:27.000.352,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\OpenSSLUtils.pas=</Transaction>
     <Transaction>2014/10/04 22:05:04.000.047,=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\ufrmStatus.pas</Transaction>
     <Transaction>2014/10/08 14:32:51.000.405,=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.pas</Transaction>
-    <Transaction>2014/10/08 14:41:34.000.380,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\frmNatOperacao.dfm=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.dfm</Transaction>
-    <Transaction>2014/10/08 14:41:34.000.380,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\frmNatOperacao.pas=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.pas</Transaction>
+    <Transaction>2014/10/08 14:41:34.000.380,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.pas=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\frmNatOperacao.pas</Transaction>
+    <Transaction>2014/10/08 14:41:34.000.380,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.dfm=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\frmNatOperacao.dfm</Transaction>
     <Transaction>2014/10/08 16:49:46.000.946,=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.pas</Transaction>
-    <Transaction>2014/10/08 17:06:51.000.248,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\frmNFCEs.pas=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.pas</Transaction>
-    <Transaction>2014/10/08 17:06:51.000.248,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\frmNFCEs.dfm=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.dfm</Transaction>
+    <Transaction>2014/10/08 17:06:51.000.248,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.dfm=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\frmNFCEs.dfm</Transaction>
+    <Transaction>2014/10/08 17:06:51.000.248,C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\Unit1.pas=C:\Fontes Projeto Rodrigo\FNTS_PDV_NFC-e\frmNFCEs.pas</Transaction>
     <Transaction>2015/04/16 13:57:01.000.315,C:\FNTS_PDV_NFC-e\Lista_Vendas_Periodo.pas=</Transaction>
-    <Transaction>2017/04/06 21:28:06.000.000,C:\# FONTES\FNTS_PDV_NFC-e\Athenas_PDV_NFCe.dproj=C:\# FONTES\FNTS_PDV_NFC-e\Softlogus.dproj</Transaction>
-    <Transaction>2017/04/11 20:36:12.000.209,C:\# FONTES\FNTS_PDV_NFC-e\PDV.dproj=C:\# FONTES\FNTS_PDV_NFC-e\Softlogus.dproj</Transaction>
+    <Transaction>2017/04/06 21:28:06.000.000,C:\# FONTES\FNTS_PDV_NFC-e\Softlogus.dproj=C:\# FONTES\FNTS_PDV_NFC-e\Athenas_PDV_NFCe.dproj</Transaction>
+    <Transaction>2017/04/11 20:36:12.000.209,C:\# FONTES\FNTS_PDV_NFC-e\Softlogus.dproj=C:\# FONTES\FNTS_PDV_NFC-e\PDV.dproj</Transaction>
     <Transaction>2017/06/08 22:56:07.000.810,=C:\# FONTES\FNTS_ATHENAS\FNTS_Pre_vendas\prevenda\uiprevenda_item.pas</Transaction>
     <Transaction>2017/06/08 22:58:04.000.743,C:\# FONTES\FNTS_ATHENAS\FNTS_Pre_vendas\prevenda\uiprevenda_item.pas=</Transaction>
   </Transactions>

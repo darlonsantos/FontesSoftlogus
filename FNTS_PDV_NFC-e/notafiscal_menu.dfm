@@ -60,6 +60,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       'BASE_CALCULO'#9'10'#9'Base C'#225'lc.'#9'F'#9'ICMS'
       'VALOR_ICMS'#9'10'#9'Valor'#9'F'#9'ICMS')
     IniAttributes.Delimiter = ';;'
+    IniAttributes.UnicodeIniFile = False
     TitleColor = clBtnFace
     OnRowChanged = gridRowChanged
     FixedCols = 0
@@ -322,6 +323,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       Top = 7
       Width = 201
       Height = 21
+      Text = ''
       CharCase = ecUpperCase
       TabOrder = 1
       OnEnter = eclienteEnter
@@ -790,7 +792,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 272
     Top = 144
     Bitmap = {
-      494C010171007300040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010171007800080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000D0010000010020000000000000D0
       010000000000000000000000000000000000000000003E3E3E0017171700FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -4633,7 +4635,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   object pop: TAdvPopupMenu
     Images = ImageList1
     MenuStyler = AdvMenuOfficeStyler1
-    Version = '2.5.4.3'
+    Version = '2.6.1.0'
     Left = 368
     Top = 144
     object Incluir2: TMenuItem
@@ -4658,7 +4660,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     end
   end
   object espelho: TfrxReport
-    Version = '4.12.2'
+    Version = '5.2.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4694,6 +4696,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       TopMargin = 2.000000000000000000
       BottomMargin = 2.000000000000000000
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 105.826840000000000000
         Top = 18.897650000000000000
         Width = 702.992580000000000000
@@ -4702,31 +4705,26 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 22.677180000000000000
           Width = 177.637910000000000000
           Height = 30.236240000000000000
-          ShowHint = False
         end
         object Shape4: TfrxShapeView
           Left = 430.866420000000000000
           Width = 177.637910000000000000
           Height = 22.677180000000000000
-          ShowHint = False
         end
         object Shape5: TfrxShapeView
           Left = 608.504330000000000000
           Width = 92.598425200000000000
           Height = 52.913420000000000000
-          ShowHint = False
         end
         object Shape3: TfrxShapeView
           Width = 430.866420000000000000
           Height = 52.913420000000000000
-          ShowHint = False
         end
         object Memo2: TfrxMemoView
           Left = 3.779530000000000000
           Top = 7.559059999999999000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4742,7 +4740,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 25.677180000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4759,7 +4756,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 26.456710000000000000
           Width = 423.307360000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4775,7 +4771,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 7.559059999999999000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4791,14 +4786,12 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 29.456710000000000000
           Width = 15.118120000000000000
           Height = 18.897637800000000000
-          ShowHint = False
         end
         object Memo5: TfrxMemoView
           Left = 434.645950000000000000
           Top = 3.559059999999999000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4814,7 +4807,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 3.559059999999999000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4830,14 +4822,12 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 29.456710000000000000
           Width = 15.118120000000000000
           Height = 18.897637800000000000
-          ShowHint = False
         end
         object Memo7: TfrxMemoView
           Left = 614.283860000000000000
           Top = 6.779530000000001000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4854,7 +4844,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 32.125984250000000000
           Width = 37.795300000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4870,7 +4859,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 29.236239999999990000
           Width = 15.118120000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4886,7 +4874,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 32.125984250000000000
           Width = 49.133890000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4904,7 +4891,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 304
     Top = 144
     Bitmap = {
-      494C010103000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

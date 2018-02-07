@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, DB, MemDS, DBAccess, IBC, frxClass, Menus, AdvMenus,
   ImgList, AdvMenuStylers, RzDBEdit, RzEdit,  Mask, RzBtnEdt,
-  AdvGlowButton, ExtCtrls, Grids, Wwdbigrd, Wwdbgrid, RxToolEdit;
+  AdvGlowButton, ExtCtrls, Grids, Wwdbigrd, Wwdbgrid, RxToolEdit,
+  System.ImageList;
 
 type
   Tfrmnotafiscal_menu = class(TForm)
