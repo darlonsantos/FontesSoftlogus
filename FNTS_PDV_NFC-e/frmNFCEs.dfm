@@ -1428,7 +1428,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 0
     Top = 0
     Width = 1002
-    Height = 73
+    Height = 97
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
@@ -1473,56 +1473,89 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       Font.Style = []
       ParentFont = False
     end
-    object edt_Numero: TEdit
-      Left = 296
-      Top = 31
-      Width = 113
-      Height = 21
+    object grp1: TGroupBox
+      Left = 0
+      Top = 0
+      Width = 257
+      Height = 97
+      Margins.Left = 0
+      Margins.Right = 20
+      Align = alLeft
+      Caption = 'Filtros'
       TabOrder = 0
-    end
-    object dataini: TsDateEdit
-      Left = 88
-      Top = 31
-      Width = 86
-      Height = 21
-      AutoSize = False
-      Color = clWhite
-      EditMask = '!99/99/9999;1; '
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      MaxLength = 10
-      ParentFont = False
-      TabOrder = 1
-      Text = '  /  /    '
-      CheckOnExit = True
-      SkinData.SkinSection = 'EDIT'
-      GlyphMode.Blend = 0
-      GlyphMode.Grayed = False
-    end
-    object datafin: TsDateEdit
-      Left = 191
-      Top = 31
-      Width = 86
-      Height = 21
-      AutoSize = False
-      Color = clWhite
-      EditMask = '!99/99/9999;1; '
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      MaxLength = 10
-      ParentFont = False
-      TabOrder = 2
-      Text = '  /  /    '
-      CheckOnExit = True
-      SkinData.SkinSection = 'EDIT'
-      GlyphMode.Blend = 0
-      GlyphMode.Grayed = False
+      ExplicitHeight = 91
+      object lbl1: TLabel
+        Left = 8
+        Top = 16
+        Width = 69
+        Height = 13
+        Caption = 'Data  de Inicio'
+      end
+      object lbl2: TLabel
+        Left = 8
+        Top = 54
+        Width = 42
+        Height = 13
+        Caption = 'Data Fim'
+      end
+      object lbl3: TLabel
+        Left = 100
+        Top = 16
+        Width = 52
+        Height = 13
+        Caption = 'N'#186' da nota'
+      end
+      object datafin: TsDateEdit
+        Left = 8
+        Top = 35
+        Width = 86
+        Height = 21
+        AutoSize = False
+        Color = clWhite
+        EditMask = '!99/99/9999;1; '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        MaxLength = 10
+        ParentFont = False
+        TabOrder = 0
+        Text = '  /  /    '
+        CheckOnExit = True
+        SkinData.SkinSection = 'EDIT'
+        GlyphMode.Blend = 0
+        GlyphMode.Grayed = False
+      end
+      object dataini: TsDateEdit
+        Left = 8
+        Top = 71
+        Width = 86
+        Height = 21
+        AutoSize = False
+        Color = clWhite
+        EditMask = '!99/99/9999;1; '
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        MaxLength = 10
+        ParentFont = False
+        TabOrder = 1
+        Text = '  /  /    '
+        CheckOnExit = True
+        SkinData.SkinSection = 'EDIT'
+        GlyphMode.Blend = 0
+        GlyphMode.Grayed = False
+      end
+      object edt_Numero: TEdit
+        Left = 100
+        Top = 35
+        Width = 113
+        Height = 21
+        TabOrder = 2
+      end
     end
   end
   object Panel2: TPanel
@@ -1605,9 +1638,9 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   end
   object JvDBGrid1: TJvDBGrid
     Left = 0
-    Top = 73
+    Top = 97
     Width = 1002
-    Height = 323
+    Height = 299
     Align = alClient
     DataSource = ds_nfce
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleHotTrack]
@@ -1630,7 +1663,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
         FieldName = 'DATA'
         ReadOnly = True
         Title.Caption = 'Data'
-        Width = 64
         Visible = True
       end
       item
@@ -1765,7 +1797,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     end
   end
   object ds_nfce: TDataSource
-    DataSet = qrNFCE
     Left = 460
     Top = 201
   end
@@ -3767,6 +3798,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
         'select nf.*, case when situacao = 0 then '#39'Emitido'#39' else '#39'Cancela' +
         'do'#39' end des_sit'
       'from NFCE nf where 1=1 &filtro order by data,numero')
+    Active = True
     Left = 168
     Top = 248
     MacroData = <

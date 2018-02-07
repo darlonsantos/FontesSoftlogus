@@ -49,6 +49,11 @@ type
     lbEnvio: TLabel;
     lbCancelamento: TLabel;
     qrNFCE: TIBCQuery;
+    btnImprimirDanfe: TcxButton;
+    btnCancelar: TcxButton;
+    btnConsultar: TcxButton;
+    btnInutulizar: TcxButton;
+    btnPesquisar: TcxButton;
     qrNFCENUMERO: TIntegerField;
     qrNFCEDATA: TDateTimeField;
     qrNFCETOTAL: TFloatField;
@@ -66,11 +71,10 @@ type
     qrNFCEXMLCACNELAMENTO: TBlobField;
     qrNFCEXML_CANCELAMENTO: TStringField;
     qrNFCEDES_SIT: TStringField;
-    btnImprimirDanfe: TcxButton;
-    btnCancelar: TcxButton;
-    btnConsultar: TcxButton;
-    btnInutulizar: TcxButton;
-    btnPesquisar: TcxButton;
+    grp1: TGroupBox;
+    lbl1: TLabel;
+    lbl2: TLabel;
+    lbl3: TLabel;
     procedure Button4Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -428,7 +432,7 @@ procedure TfrmNotasconsumidor.FormShow(Sender: TObject);
 begin
   dataini.Date := now;
   datafin.Date := now;
- btnPesquisar.Click;
+  btnPesquisar.Click;
 end;
 
 
