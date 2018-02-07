@@ -1663,6 +1663,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
         FieldName = 'DATA'
         ReadOnly = True
         Title.Caption = 'Data'
+        Width = 64
         Visible = True
       end
       item
@@ -1727,18 +1728,21 @@ object frmNotasconsumidor: TfrmNotasconsumidor
         Expanded = False
         FieldName = 'MOTIVOCONTIGENCIA'
         Title.Caption = 'Motivo da Contig.'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'XMLENVIO'
         Title.Caption = 'XML de Envio'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'XMLCACNELAMENTO'
         Title.Caption = 'XML de Cancelamento'
+        Width = 64
         Visible = True
       end>
   end
@@ -1797,6 +1801,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     end
   end
   object ds_nfce: TDataSource
+    DataSet = qrNFCE
     Left = 460
     Top = 201
   end
@@ -3794,17 +3799,9 @@ object frmNotasconsumidor: TfrmNotasconsumidor
   object qrNFCE: TIBCQuery
     Connection = frmModulo.conexao
     SQL.Strings = (
-      
-        'select nf.*, case when situacao = 0 then '#39'Emitido'#39' else '#39'Cancela' +
-        'do'#39' end des_sit'
-      'from NFCE nf where 1=1 &filtro order by data,numero')
-    Active = True
+      'select * from NFCE order by data,numero')
     Left = 168
     Top = 248
-    MacroData = <
-      item
-        Name = 'filtro'
-      end>
     object qrNFCENUMERO: TIntegerField
       FieldName = 'NUMERO'
       Required = True

@@ -9,7 +9,6 @@ object frmModulo: TfrmModulo
     Port = '3050'
     Username = 'SYSDBA'
     Server = 'localhost'
-    Connected = True
     LoginPrompt = False
     Left = 460
     Top = 400

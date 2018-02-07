@@ -277,12 +277,12 @@ begin
 
   if dataini.Date > 0 then begin
     qrNFCE.SQL.Add('and data >= :pdataini ');
-    qrNFCE.ParamByName('pdataini').AsDateTime := dataini.Date;
+    qrNFCE.ParamByName('pdataini').AsDate := dataini.Date;
   end;
 
   if datafin.Date > 0 then begin
     qrNFCE.SQL.Add('and data <= :pdatafin ');
-    qrNFCE.ParamByName('pdatafin').AsDateTime := datafin.Date;
+    qrNFCE.ParamByName('pdatafin').AsDate := datafin.Date;
   end;
   qrNFCE.SQL.Add('order by numero');
   qrNFCE.Open;
