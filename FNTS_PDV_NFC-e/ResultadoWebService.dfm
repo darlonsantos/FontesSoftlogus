@@ -24,7 +24,7 @@ object frmResultadoWebService: TfrmResultadoWebService
     Align = alTop
     BevelOuter = bvNone
     Caption = 'pnTexto'
-    Color = clHighlight
+    Color = clGray
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -16
@@ -34,10 +34,9 @@ object frmResultadoWebService: TfrmResultadoWebService
     ParentFont = False
     TabOrder = 0
     ExplicitTop = -6
-    ExplicitWidth = 621
     object bfechar1: TAdvMetroButton
-      Left = 580
-      Top = 1
+      Left = 588
+      Top = 2
       Width = 34
       Height = 39
       Appearance.PictureColor = clWhite
@@ -122,11 +121,10 @@ object frmResultadoWebService: TfrmResultadoWebService
     Height = 248
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 144
-    ExplicitWidth = 611
-    ExplicitHeight = 238
+    ExplicitWidth = 534
+    ExplicitHeight = 185
     ControlData = {
-      4C000000313700001F1300000000000000000000000000000000000000000000
+      4C000000CD400000A21900000000000000000000000000000000000000000000
       000000004C000000000000000000000001000000E0D057007335CF11AE690800
       2B2E126200000000000000004C0000000114020000000000C000000000000046
       8000000000000000000000000000000000000000000000000000000000000000
