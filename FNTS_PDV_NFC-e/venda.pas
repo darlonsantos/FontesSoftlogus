@@ -6276,7 +6276,7 @@ begin
         spcupom.ParamByName('cod_caixa').asinteger := iNumCaixa;
         spCupom.ParamByName('ecf_caixa').asstring := Copy(sECF_Caixa, 1, 3);
         spcupom.ParamByName('cod_vendedor').asinteger := icodigo_Usuario;
-       // spcupom.parambyname('pcontingencia').asstring := vcontingencia;
+        spcupom.parambyname('contingencia').asstring := vcontingencia;
         spcupom.parambyname('gerado_nfce').asstring := vgerado_nfce;
         spCupom.Prepare;
         spCupom.Execute;
