@@ -14,10 +14,7 @@ uses
   pcnNFeW, pcnNFeRTXT, pcnAuxiliar,
   XMLIntf, XMLDoc, ACBrNFeDANFEFR,
   ZAbstractConnection, ZAbstractDataset, ZStoredProcedure ;
-        {
-        ACBrNFeDANFERave
-        ACBrNFeDANFERaveCB
-        }
+ 
 type
   TfrmModulo = class(TDataModule)
     conexao: TIBCConnection;
