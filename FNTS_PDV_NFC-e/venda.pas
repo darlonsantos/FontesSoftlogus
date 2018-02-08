@@ -369,6 +369,7 @@ type
     procedure lblCupomEletronicoClick(Sender: TObject);
     procedure AtualizarServidor1Click(Sender: TObject);
     procedure flChange(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
     a, b: word;
@@ -380,6 +381,7 @@ type
     procedure CentralizarPanel(p: TPanel);
     procedure PrepararNFCE;
     procedure GerarNFCe(NumNFe: String);
+    procedure CorEditTotaL;
     //procedure OnInternetChange(LANStatus:TLANStatus;InternetStatus:TInternetStatus;xMsg:String='');
    // procedure GerarQrCode;
   public
@@ -2996,6 +2998,9 @@ begin
       begin
         frmIdentifica := TfrmIdentifica.create(self);
         frmIdentifica.showmodal;
+        if sConsumidor_CPF <> '' then
+          frmPrincipal.TipoImpressora := SemImpressora;
+        CorEditTotaL;
       end;
     end;
 
@@ -4447,56 +4452,62 @@ end;
 
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.bt_confirmar_fechamentoClick(Sender: TObject);
-
 var
   rValor_Temp: real;
-  i, icont: Integer;
+  i, icont: integer;
   rvalor_total_convenio: real;
-  NomeArquivo, scod_cupom: string;
-  bLanca_comprovante_crediario, bLanca_Comprovante_Prestacao: boolean;
+  NomeArquivo, sCod_Cupom: string;
+  bLanca_comprovante_crediario,
+    bLanca_Comprovante_Prestacao: boolean;
   sCOO_crediario, sGNF_Crediario: string;
   sCOO_Prestacao, sGNF_Prestacao, sGRG_Prestacao: string;
-  sIdentificarVendedor: String;
+  sIdentificarVendedor: string;
+
+  str: string;
+  SR: TSearchRec;
+  Origem, Destino: string;
 
 begin
 
-
-  ED_FOCUS.setfocus;
-
-  bFinalizado := false;
+  ED_FOCUS.SETFOCUS;
+  bfinalizado := false;
   try
-
-    if ed_troco.value < 0 then
+    if ed_troco.Value < 0 then
     begin
       Imprime_display('Troco não pode ser negativo!', clred, tiErro);
       sleep(1500);
       Imprime_display_anterior;
       bt_confirmar_fechamento.Enabled := true;
-      bt_confirmar_fechamento.setfocus;
+      bt_confirmar_fechamento.SetFocus;
       exit;
     end;
 
-    if (ed_forma1.value < 0) or (ed_forma2.value < 0) or (ed_forma3.value < 0)
-    then
+    if (ed_forma1.value < 0) or
+      (ed_forma2.value < 0) or
+      (ed_forma3.value < 0)
+      then
     begin
       Imprime_display('Pagamento não pode ser negativo!', clred, tiErro);
       sleep(1500);
       Imprime_display_anterior;
       bt_confirmar_fechamento.Enabled := true;
-      bt_confirmar_fechamento.setfocus;
+      bt_confirmar_fechamento.SetFocus;
       exit;
     end;
 
-    IF (ED_DESC_ACRE.value < 0) OR (ed_total_pagar.value < 0) OR
-      (ed_totalizador.value < 0) THEN
-    BEGIN
+
+    if (ED_DESC_ACRE.Value < 0) or
+      (ed_total_pagar.Value < 0) or
+      (ed_totalizador.Value < 0) then
+    begin
       Imprime_display('Existe valor negativo!', clred, tiErro);
       sleep(1500);
       Imprime_display_anterior;
       bt_confirmar_fechamento.Enabled := true;
-      bt_confirmar_fechamento.setfocus;
+      bt_confirmar_fechamento.SetFocus;
       exit;
-    END;
+    end;
+
 
     bt_confirmar_fechamento.Enabled := false;
     bTef_finaliza := false;
@@ -4504,12 +4515,11 @@ begin
     // Verificar se o total lancado nas formas de pagamento é maior ou igual ao total da venda
     if ed_totalizador.value < ed_total_pagar.value then
     begin
-      Imprime_display('Valor lançado é inferior ao total do cupom!',
-        clred, tiErro);
+      Imprime_display('Valor lançado é inferior ao total do cupom!', clred, tiErro);
       sleep(1500);
       Imprime_display_anterior;
       bt_confirmar_fechamento.Enabled := true;
-      bt_confirmar_fechamento.setfocus;
+      bt_confirmar_fechamento.SetFocus;
       exit;
     end;
 
@@ -4517,9 +4527,7 @@ begin
     // do cupom
     rValor_Total_Cartao := 0;
     icont := 0;
-   begin
-     if ed_forma1.value > 0 then
-     begin
+    if ed_forma1.value > 0 then begin
       if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
          (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
       begin
@@ -4527,8 +4535,8 @@ begin
         inc(icont);
       end;
     end;
-      if ed_forma2.value > 0 then
-      begin
+    if ed_forma2.value > 0 then
+    begin
       if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
          (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
       begin
@@ -4536,9 +4544,8 @@ begin
         inc(icont);
       end;
     end;
-
-      if ed_forma3.value > 0 then
-      begin
+    if ed_forma3.value > 0 then
+    begin
       if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) or
          (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
       begin
@@ -4546,19 +4553,16 @@ begin
         inc(icont);
       end;
     end;
-    end;
-
-
     // verificar se o pagamento está sendo feito com múltiplos cartões pelo TEF
     if (icont > 1) and (bTef) then
     begin
-      application.messagebox
-        ('O sistema não permite pagamento com múltiplos cartões pelo TEF!',
-        'Erro', mb_ok + MB_ICONERROR);
+      application.messagebox('O sistema não permite pagamento com múltiplos cartões pelo TEF!',
+        'Erro', mb_ok + mb_iconerror);
       bt_confirmar_fechamento.Enabled := true;
-      bt_confirmar_fechamento.setfocus;
+      bt_confirmar_fechamento.SetFocus;
       exit;
     end;
+
 
     if rValor_Total_Cartao > (ed_total_pagar.value + 0.0001) then
     begin
@@ -4566,9 +4570,10 @@ begin
       sleep(1500);
       Imprime_display_anterior;
       bt_confirmar_fechamento.Enabled := true;
-      bt_confirmar_fechamento.setfocus;
+      bt_confirmar_fechamento.SetFocus;
       exit;
     end;
+
 
     if btef then
     begin
@@ -4604,7 +4609,6 @@ begin
     end;
 
     // verificar se tem lancamento para cheque...
-
     rValor_Total_cheque := 0;
     if ed_forma1.value > 0 then
     begin
@@ -4630,10 +4634,8 @@ begin
         rValor_Total_cheque := rValor_Total_cheque + ed_forma3.Value;
       end;
     end;
-
-
     // verificar se o cheque serah consultado pelo tef e se existe venda no cartao conjugado
-   if bTEF then
+    if bTEF then
     begin
       bTEF_Cheque := false;
       if rvalor_total_cheque > 0 then
@@ -4663,8 +4665,7 @@ begin
     end;
 
     // verificar se tem lancamento para crediario
-
-   rValor_Total_crediario := 0;
+    rValor_Total_crediario := 0;
     if ed_forma1.value > 0 then
     begin
       if AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Crediario) then
@@ -4786,13 +4787,10 @@ begin
       end;
     end;
 
-
-
-
     application.ProcessMessages;
 
     // verificar se tem lancamento para convenio
-   rValor_Total_convenio := 0;
+    rValor_Total_convenio := 0;
     if ed_forma1.value > 0 then
     begin
       if AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Convenio) then
@@ -4814,54 +4812,44 @@ begin
         rValor_Total_convenio := rValor_Total_convenio + ed_forma3.Value;
       end;
     end;
+    (*************** F E C H A M E N T O   D O   C U P O M ********************)
+    //---> INÍCIO
 
-    //DARLON SANTOS
-    (* ************** F E C H A M E N T O   D O   C U P O M ******************* *)
-    // ---> INÍCIO
+    //-----> TOTALIZAR O CUPOM (lancar o desconto e acrescimo e fechar total do cupom);
 
-    // -----> TOTALIZAR O CUPOM (lancar o desconto e acrescimo e fechar total do cupom);
-
-    If Not bTotalizado then
+    if not bTotalizado then
     begin
 
       // Abrir a gaveta...
       AcionaGaveta1.Click;
 
-      { Desconto - %:
-        Desconto - R$:
-        Acréscimo - %:
-        Acréscimo - R$:
+
+      {Desconto - %:
+       Desconto - R$:
+       Acréscimo - %:
+       Acréscimo - R$:
       }
-       //DARLON SANTOS
+
       if frmPrincipal.TipoImpressora = Fiscal then
       begin
         repeat
           case cb_desc_acre.ItemIndex of
-            0:
-              sMsg := cECF_Inicia_Fechamento(iECF_Modelo, 'D', '%',
-                ED_DESC_ACRE.value);
-            1:
-              sMsg := cECF_Inicia_Fechamento(iECF_Modelo, 'D', '$',
-                ED_DESC_ACRE.value);
-            2:
-              sMsg := cECF_Inicia_Fechamento(iECF_Modelo, 'A', '%',
-                ED_DESC_ACRE.value);
-            3:
-              sMsg := cECF_Inicia_Fechamento(iECF_Modelo, 'A', '$',
-                ED_DESC_ACRE.value);
+            0: sMsg := cECF_Inicia_Fechamento(iECF_Modelo, 'D', '%', ED_DESC_ACRE.value);
+            1: sMsg := cECF_Inicia_Fechamento(iECF_Modelo, 'D', '$', ED_DESC_ACRE.value);
+            2: sMsg := cECF_Inicia_Fechamento(iECF_Modelo, 'A', '%', ED_DESC_ACRE.value);
+            3: sMsg := cECF_Inicia_Fechamento(iECF_Modelo, 'A', '$', ED_DESC_ACRE.value);
           end;
 
-          if sMsg = ok then
+          if sMsg = OK then
           begin
             bTotalizado := true;
-            frmmodulo.spCupom_Temp_Edit.close;
-            frmmodulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring :=
-              'TOTALIZADO';
-            frmmodulo.spCupom_Temp_Edit.Prepare;
-            frmmodulo.spCupom_Temp_Edit.Execute;
+            frmModulo.spCupom_Temp_Edit.Close;
+            frmModulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring := 'TOTALIZADO';
+            frmModulo.spCupom_Temp_Edit.Prepare;
+            frmModulo.spCupom_Temp_Edit.execute;
           end
           else
-             begin
+          begin
             if application.messagebox
               (pwidechar('Erro no ECF!' + #13 + 'Mensagem: ' + sMsg + #13 +
               'Deseja tentar outra vez?'), 'Erro', mb_yesno + MB_ICONERROR) = idno
@@ -4870,124 +4858,126 @@ begin
               break;
             end;
           end;
-        until sMsg = ok;
+        until sMsg = OK;
 
       end
-      else
+      else // Se nao for fiscal ou sem impressora
       begin
         bTotalizado := true;
-        frmmodulo.spCupom_Temp_Edit.close;
-        frmmodulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring :=
-          'TOTALIZADO';
-        frmmodulo.spCupom_Temp_Edit.Prepare;
-        frmmodulo.spCupom_Temp_Edit.Execute;
+        frmModulo.spCupom_Temp_Edit.Close;
+        frmModulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring := 'TOTALIZADO';
+        frmModulo.spCupom_Temp_Edit.Prepare;
+        frmModulo.spCupom_Temp_Edit.execute;
 
         case cb_desc_acre.ItemIndex of
-          0:
-            sMsg := Imp_Inicia_Fechamento(sPortaNaoFiscal, 'D', '%',
-              ED_DESC_ACRE.value);
-          1:
-            sMsg := Imp_Inicia_Fechamento(sPortaNaoFiscal, 'D', '$',
-              ED_DESC_ACRE.value);
-          2:
-            sMsg := Imp_Inicia_Fechamento(sPortaNaoFiscal, 'A', '%',
-              ED_DESC_ACRE.value);
-          3:
-            sMsg := Imp_Inicia_Fechamento(sPortaNaoFiscal, 'A', '$',
-              ED_DESC_ACRE.value);
+          0: sMsg := Imp_Inicia_Fechamento(sPortaNaoFiscal, 'D', '%', ED_DESC_ACRE.value);
+          1: sMsg := Imp_Inicia_Fechamento(sPortaNaoFiscal, 'D', '$', ED_DESC_ACRE.value);
+          2: sMsg := Imp_Inicia_Fechamento(sPortaNaoFiscal, 'A', '%', ED_DESC_ACRE.value);
+          3: sMsg := Imp_Inicia_Fechamento(sPortaNaoFiscal, 'A', '$', ED_DESC_ACRE.value);
         end;
 
       end;
-        if sMsg <> ok then
+
+
+
+      if sMsg <> OK then
       begin
-        Imprime_display(sMsg, clred, tiErro);
-        bt_confirmar_fechamento.Enabled := true;
-        bt_confirmar_fechamento.setfocus;
+        Imprime_display(sMsg, clRed, tiErro);
+        bt_confirmar_fechamento.enabled := true;
+        bt_confirmar_fechamento.SetFocus;
         exit;
       end;
-      // habilitar o panel para focar no grid apos a sua atualizacao para ele posicionar na
-      // ultima linha registrada
-      pn_principal.Enabled := true;
+    // habilitar o panel para focar no grid apos a sua atualizacao para ele posicionar na
+    // ultima linha registrada
+      pn_principal.ENABLED := TRUE;
 
-      Imprime_display('Iniciando o fechamento do Cupom...', clBackground, tiInfo);
+      Imprime_display('Iniciando o fechamento do Cupom...', clwhite, tiInfo);
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring :=
+      grid.cell[0, grid.LastAddedRow].asstring :=
         '--------------------------------------------------------';
       try
         // verificar se possue desconto ou acrescimo
-        if ED_DESC_ACRE.value > 0 then
+        if ed_desc_acre.Value > 0 then
         begin
           grid.AddRow(1);
-          grid.Cell[0, grid.LastAddedRow].asstring :=
-            '</i><b>TOTAL DOS PRODUTOS R$' + '                        ' +
-            texto_justifica(formatfloat('###,###,##0.00', rTotal_Venda), 10,
-            ' ', taDireita) + '</b>';
+          grid.cell[0, grid.LastAddedRow].asstring := '</i><b>TOTAL DOS PRODUTOS R$' +
+            '                        ' +
+            texto_justifica(
+            formatfloat('###,###,##0.00', rTotal_Venda),
+            10, ' ', taDireita) + '</b>';
           case cb_desc_acre.ItemIndex of
-            0:
-              begin // Desconto por %
-                rValor_Temp := (rTotal_Venda * (ED_DESC_ACRE.value / 100));
-                // registrar o desconto em vermelho no grid
+            0: begin // Desconto por %
+                rValor_Temp := (rTotal_Venda * (ed_desc_acre.value / 100));
+                  // registrar o desconto em vermelho no grid
                 grid.AddRow(1);
-                grid.Cell[0, grid.LastAddedRow].asstring :=
-                  '</b></i><FONT color="#FF0000">' + 'DESCONTO R$' +
+                grid.cell[0, grid.LastAddedRow].asstring := '</b></i><FONT color="#FF0000">' +
+                  'DESCONTO R$' +
                   '                                  ' +
-                  texto_justifica(formatfloat('###,###,##0.00', -rValor_Temp),
+                  texto_justifica(
+                  formatfloat('###,###,##0.00',
+                  -rvalor_temp),
                   10, ' ', taDireita) + '</FONT></b></i>';
               end;
-            1:
-              begin // Desconto por R$
-                rValor_Temp := ED_DESC_ACRE.value;
-                // registrar o desconto em vermelho no grid
+            1: begin // Desconto por R$
+                rValor_temp := ed_desc_acre.value;
+                  // registrar o desconto em vermelho no grid
                 grid.AddRow(1);
-                grid.Cell[0, grid.LastAddedRow].asstring :=
-                  '</b></i><FONT color="#FF0000">' + 'DESCONTO R$' +
+                grid.cell[0, grid.LastAddedRow].asstring := '</b></i><FONT color="#FF0000">' +
+                  'DESCONTO R$' +
                   '                                  ' +
-                  texto_justifica(formatfloat('###,###,##0.00', -rValor_Temp),
+                  texto_justifica(
+                  formatfloat('###,###,##0.00',
+                  -rvalor_temp),
                   10, ' ', taDireita) + '</FONT></b></i>';
               end;
-            2:
-              begin // Acrescimo por %
-                rValor_Temp := (rTotal_Venda * (ED_DESC_ACRE.value / 100));
-                // registrar o acrescimo em  no grid
+            2: begin // Acrescimo por %
+                rValor_temp := (rTotal_Venda * (ed_desc_acre.value / 100));
+                  // registrar o acrescimo em  no grid
                 grid.AddRow(1);
-                grid.Cell[0, grid.LastAddedRow].asstring := '</b></i>' +
-                  'ACRÉSCIMO R$' + '                                 ' +
-                  texto_justifica(formatfloat('###,###,##0.00', rValor_Temp),
+                grid.cell[0, grid.LastAddedRow].asstring := '</b></i>' +
+                  'ACRÉSCIMO R$' +
+                  '                                 ' +
+                  texto_justifica(
+                  formatfloat('###,###,##0.00',
+                  rvalor_temp),
                   10, ' ', taDireita) + '</b></i>';
               end;
-            3:
-              begin // Acrescimo por R$
-                rValor_Temp := ED_DESC_ACRE.value;
-                // registrar o acrescimo em  no grid
+            3: begin // Acrescimo por R$
+                rValor_temp := ed_desc_acre.value;
+                  // registrar o acrescimo em  no grid
                 grid.AddRow(1);
-                grid.Cell[0, grid.LastAddedRow].asstring := '</b></i>' +
-                  'ACRÉSCIMO R$' + '                                 ' +
-                  texto_justifica(formatfloat('###,###,##0.00', rValor_Temp),
+                grid.cell[0, grid.LastAddedRow].asstring := '</b></i>' +
+                  'ACRÉSCIMO R$' +
+                  '                                 ' +
+                  texto_justifica(
+                  formatfloat('###,###,##0.00',
+                  rvalor_temp),
                   10, ' ', taDireita) + '</b></i>';
               end;
           end;
           grid.AddRow(1);
-          grid.Cell[0, grid.LastAddedRow].asstring :=
+          grid.cell[0, grid.LastAddedRow].asstring :=
             '                                        ----------------';
         end;
         grid.AddRow(1);
-        grid.Cell[0, grid.LastAddedRow].asstring :=
-          '<b></i>T O T A L   D O   C U P O M   R$' + '             ' +
-          texto_justifica(formatfloat('###,###,##0.00', ed_total_pagar.value),
+        grid.cell[0, grid.LastAddedRow].asstring := '<b></i>T O T A L   D O   C U P O M   R$' +
+          '             ' +
+          texto_justifica(
+          formatfloat('###,###,##0.00',
+          ed_total_pagar.value),
           10, ' ', taDireita) + '</b>';
         grid.SelectLastRow;
-        TRY
-          grid.setfocus;
-        EXCEPT
-        END;
-        application.ProcessMessages;
+        try
+          grid.SetFocus;
+        except
+        end;
+        Application.ProcessMessages;
         // mudar o status da variavel para nao permitir nova totalizacao para este cupom
         bTotalizado := true;
-        frmmodulo.spCupom_Temp_Edit.close;
-        frmmodulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring :=
-          'TOTALIZADO';
-        frmmodulo.spCupom_Temp_Edit.Prepare;
-        frmmodulo.spCupom_Temp_Edit.Execute;
+        frmModulo.spCupom_Temp_Edit.Close;
+        frmModulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring := 'TOTALIZADO';
+        frmModulo.spCupom_Temp_Edit.Prepare;
+        frmModulo.spCupom_Temp_Edit.execute;
 
       except
         // funcao gerou erro, nao mudar o status da variavel de totalizacao
@@ -4999,6 +4989,7 @@ begin
     bVenda_cheque := false;
     bVenda_Cartao := false;
     bVenda_Crediario := false;
+
 
     // verificar se a forma1 jah foi lancado no ecf
     if not bPago1 then
@@ -5131,11 +5122,8 @@ begin
       end;
     end;
 
-    // BlockInput(true);
-
     // verificar se a forma1 jah foi lancado no ecf
-    if not bPago2 then
-   begin
+    if not bPago2 then begin
          // TEF
       if btef then begin
            // rodar as formas de pagamento para verificar se eh cartao
@@ -5378,6 +5366,7 @@ begin
         until sMsg = ok;
       end;
 
+
       if sMsg <> OK then
       begin
         Imprime_display(sMsg, clred, tiErro);
@@ -5387,128 +5376,114 @@ begin
       end;
     end;
 
-    // BlockInput(true);
+    //BlockInput(true);
 
     // TROCO
-    IF ed_troco.value > 0 THEN
-    BEGIN
+    if ed_troco.Value > 0 then
+    begin
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring :=
-        '</b></i><FONT color="#FF0000">' +
+      grid.cell[0, grid.LastAddedRow].asstring := '</b></i><FONT color="#FF0000">' +
         'T R O C O   R$                               ' +
-        texto_justifica(formatfloat('###,###,##0.00', ed_troco.value), 10, ' ',
-        taDireita) + '</b></i></FONT>';
+        texto_justifica(
+        formatfloat('###,###,##0.00', ed_troco.Value),
+        10, ' ', taDireita) + '</b></i></FONT>';
 
       grid.SelectLastRow;
-      TRY
-        grid.setfocus;
-      EXCEPT
-      END;
-      application.ProcessMessages;
-    END;
+      try
+        grid.SetFocus;
+      except
+      end;
+      Application.ProcessMessages;
+    end;
+
+
 
     // GUIO: Caso haja a identificação do vendedor, uma string com os dados
     // será montada para ser impressa no cupom fiscal
     if bIdentificarVendedor then
-      sIdentificarVendedor := 'Vendedor ' +
-        texto_justifica(formatfloat('000', iVendedorCodigo) + ' - ' +
-        sVendedorNome, 37, ' ', taEsquerda) + #10
+      sIdentificarVendedor := 'Vendedor ' + texto_justifica(FormatFloat('000', iVendedorCodigo) + ' - ' + sVendedorNome, 37, ' ', taEsquerda)
+        + #10
     else
       sIdentificarVendedor := '';
-     if frmPrincipal.TipoImpressora = NaoFiscal then
-     begin
-     try
-      Imprime_display('          AGUARDE...  PREPARANDO NFC-E', clBackground, tiLivre);
-      grid.Repaint;
-       PrepararNFCE;
-      Imprime_display('          AGUARDE...  GRAVANDO NFC-E NO BANCO', clBackground, tiLivre);
-       grid.Repaint;
-      if nfce_autorizada then
-      begin
-        // lancar nfce no banco de dados do servidor
-        vgerado_nfce := 'S';
-        with frmmodulo do
+
+    if frmPrincipal.TipoImpressora = SemImpressora then begin
+      try
+        Imprime_display('          AGUARDE...  PREPARANDO NFC-E',
+          clBackground, tiLivre);
+        grid.Repaint;
+         PrepararNFCE;
+        Imprime_display('          AGUARDE...  GRAVANDO NFC-E NO BANCO',
+          clBackground, tiLivre);
+        grid.Repaint;
+        if nfce_autorizada then
         begin
-        { TODO :
-          TEM QUE ATUALIZAR OS COMPONENTES DO ACBR DO
-          TRUNK PARA TRUNK2  01:15  13/01/2018 }
-          if edtPathLogs <> '' then
+          // lancar nfce no banco de dados do servidor
+          vgerado_nfce := 'S';
+
+          with frmmodulo do
+          begin
+            if edtPathLogs <> '' then
               NomeArquivo := edtPathLogs
             else
               NomeArquivo := 'C:\Softlogus\PDV\xml';
-           if ACBRNFCe.Configuracoes.Arquivos.SepararPorModelo then
-             NomeArquivo:=NomeArquivo + '\NFCe\';
-           if ACBRNFCe.Configuracoes.Arquivos.SepararPorMes then
-             NomeArquivo := NomeArquivo + FormatDateTime('YYYYMM',Date)+'\';
-             NomeArquivo := NomeArquivo + copy(ChaveNFCE, 4, 47) + '-nfe.xml';
+            if ACBRNFCe.Configuracoes.Arquivos.SepararPorModelo then
+              NomeArquivo:=NomeArquivo + '\NFCe\';
+            if ACBRNFCe.Configuracoes.Arquivos.SepararPorMes then
+              NomeArquivo := NomeArquivo + FormatDateTime('YYYYMM',Date)+'\';
+            NomeArquivo := NomeArquivo + copy(ChaveNFCE, 4, 47) + '-nfe.xml';
 
 
-          spNFCE_Insert.close;
-          spNFCE_Insert.ParamByName('pnumero').asinteger := NumeroNFCe;
-          spNFCE_Insert.ParamByName('pdata').asdate := Date;
-          spNFCE_Insert.ParamByName('ptotal').asfloat := ed_total_pagar.value;
-          spNFCE_Insert.ParamByName('pcliente').asstring := sConsumidor_cpf;  { TODO : DARLON SANTOS 00:51  13/01/2018 }
-          spNFCE_Insert.ParamByName('pchave').asstring := copy(ChaveNFCE, 4, 47);
-          spNFCE_Insert.ParamByName('pxml').asstring := 'C:\Softlogus\PDV\xml\' + copy(ChaveNFCE, 4, 47) + '-nfe.xml';
-          spNFCE_Insert.ParamByName('psituacao').asinteger := 0;
-          spNFCE_Insert.ParamByName('ptroco').asfloat := ed_troco.value;
-          spNFCE_Insert.ParamByName('phora').asstring := FormatDateTime('HH:MM:SS',Time); { TODO : DARLON SANTOS 01:08  13/01/2018 }
-          { TODO : AQUI VERIFICA SE O CAIXA ESTA OFFILINE 1:15  13/01/2018 }
-
-          if frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine then
-           begin
+            spNFCE_Insert.close;
+            spNFCE_Insert.ParamByName('pnumero').asinteger := NumeroNFCe;
+            spNFCE_Insert.ParamByName('pdata').asdate := Date;
+            spNFCE_Insert.ParamByName('phora').asstring := FormatDateTime('HH:MM:SS',Time);
+            spNFCE_Insert.ParamByName('ptotal').asfloat := ed_total_pagar.value;
+            spNFCE_Insert.ParamByName('pcliente').asstring := sCli_Nome;
+            spNFCE_Insert.ParamByName('pchave').asstring := copy(ChaveNFCE, 4, 47);
+            spNFCE_Insert.ParamByName('pxml').asstring := NomeArquivo;
+            spNFCE_Insert.ParamByName('psituacao').asinteger := 0;
+            spNFCE_Insert.ParamByName('ptroco').asfloat := ed_troco.value;
+            if frmModulo.ACBRNFCe.Configuracoes.Geral.FormaEmissao = frmtOffLine then begin
               vcontingencia := 'S';
               spNFCE_Insert.ParamByName('pcontingencia').asstring := 'S';
-              spNFCE_Insert.ParamByName('pmotivoContigencia').asstring := MotivoContigencia;
-            end
-             else
-             begin
+              spNFCE_Insert.ParamByName('pmotivocontingencia').asstring := MotivoContigencia;
+            end else begin
               vcontingencia := 'N';
               spNFCE_Insert.ParamByName('pcontingencia').asstring := 'N';
               spNFCE_Insert.ParamByName('pmotivocontingencia').asstring := '';
             end;
             spNFCE_Insert.ParamByName('penviadocontingencia').asstring := 'N';
-            //spNFCE_Insert.ParamByName('pxmlenvio').LoadFromFile(NomeArquivo,ftBlob);
-            spNFCE_Insert.ParamByName('pxmlenvio').asstring := '';
+            spNFCE_Insert.ParamByName('pxmlenvio').LoadFromFile(NomeArquivo,ftBlob);
             spNFCE_Insert.ParamByName('pxmlcacnelamento').asstring := '';
-            spNFCE_Insert.Prepare;
-            spNFCE_Insert.Execute;
-            { TODO : DARLON SANTOS 1:19  13/01/2018 }
-           conexao.AutoCommit := false;
-           conexao.Commit;
-        end;
-       end
-      ELSE
-      BEGIN
-      Imprime_display('ERRO  ' + frmmodulo.ACBRNFCe.WebServices.Enviar.xMotivo,
-        clBackground, tiLivre);
-        pn_fechamento.Visible := false;
-    //        img_fechamento.Visible := false;
-      frmVenda.PopupMenu := pop_principal;
-      pn_principal.Enabled := true;
-      ed_barra.setfocus;
-            exit;
-      END;
+            spNFCE_Insert.Prepared;
+            spNFCE_Insert.ExecSQL;
 
-    Except
-      on e: exception do
-      begin
-        Imprime_display('ERRO NFCE: ' + e.Message, clBackground, tiLivre);
-         bt_confirmar_fechamento.Enabled := true;
-         bt_confirmar_fechamento.SetFocus;
-        exit;
+          end;
+
+        end ELSE BEGIN
+          Imprime_display('ERRO ' + frmmodulo.ACBRNFCe.WebServices.Enviar.xMotivo,clBackground, tiLivre);
+          bt_confirmar_fechamento.Enabled := true;
+          bt_confirmar_fechamento.SetFocus;
+          exit;
+        END;
+
+      Except
+        on e: exception do
+        begin
+          Imprime_display('ERRO NFCE: ' + e.Message, CLWHITE, tiLivre);
+          bt_confirmar_fechamento.Enabled := true;
+          bt_confirmar_fechamento.SetFocus;
+          exit;
+        end;
       end;
-     end;
-   end
-    else
-    begin
-     vgerado_nfce := 'N';
+    end else begin
+      vgerado_nfce := 'N';
       vcontingencia := 'N';
     end;
     // identificacao do consumidor no cupom
-    if sCli_Nome <> '' then
+    if sCli_nome <> '' then
     begin
-   repeat
+      repeat
         if sConsumidor_CPF = '' then
         begin
           if not bCadastra_Placa then
@@ -5675,75 +5650,73 @@ begin
       until sMsg = ok;
 
 
-      // BlockInput(true);
+      //BlockInput(true);
 
       sPre_Venda_Numero := '';
       sDav_numero := '';
       sPosto_rodape := '';
       sMesa_numero := '';
 
-      if sMsg <> ok then
+
+      if sMsg <> OK then
       begin
         bt_confirmar_fechamento.Enabled := true;
         bt_confirmar_fechamento.setfocus;
-        Imprime_display(sMsg, clred, tiErro);
+        Imprime_display(sMsg, clred, tierro);
         exit;
       end;
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring :=
+      grid.cell[0, grid.LastAddedRow].asstring :=
         '--------------------------------------------------------';
       if bIdentificarVendedor then
       begin
         grid.AddRow(1);
-        grid.Cell[0, grid.LastAddedRow].asstring := 'Vended. ' +
-          texto_justifica(formatfloat('000', iVendedorCodigo) + ' - ' +
-          sVendedorNome, 47, ' ', taEsquerda);
+        grid.cell[0, grid.LastAddedRow].asstring := 'Vended. '
+          + texto_justifica(FormatFloat('000', iVendedorCodigo)
+          + ' - ' + sVendedorNome, 47, ' ', taEsquerda);
       end;
 
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring := 'Cliente ' +
-        texto_justifica(sCli_Nome, 47, ' ', taEsquerda);
+      grid.cell[0, grid.LastAddedRow].asstring := 'Cliente ' +
+        texto_justifica(sCli_nome, 47, ' ', taEsquerda);
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring := 'Endere: ' +
-        texto_justifica(sCli_Endereco, 47, ' ', taEsquerda);
+      grid.cell[0, grid.LastAddedRow].asstring := 'Endere: ' +
+        texto_justifica(sCli_endereco, 47, ' ', taEsquerda);
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring := 'Cid/UF: ' +
-        texto_justifica(sCli_Cidade + '/' + sCli_uf + ' ' + scli_cep, 47, ' ',
-        taEsquerda);
+      grid.cell[0, grid.LastAddedRow].asstring := 'Cid/UF: ' +
+        texto_justifica(sCli_cidade + '/' + sCli_uf + ' ' + scli_cep, 47, ' ', taEsquerda);
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring := 'CPF...: ' +
-        texto_justifica(sCli_CPF, 47, ' ', taEsquerda);
+      grid.cell[0, grid.LastAddedRow].asstring := 'CPF...: ' +
+        texto_justifica(sCli_cpf, 47, ' ', taEsquerda);
       if bCadastra_Placa then
       begin
-        grid.AddRow(1);
-        grid.Cell[0, grid.LastAddedRow].asstring := 'Placa.: ' +
-          texto_justifica(sCli_Placa + '  Km: ' + sCli_Km + '  Vendedor: ' +
-          sCli_vendedor, 47, ' ', taEsquerda);
+        GRID.ADDROW(1);
+        grid.cell[0, grid.LastAddedRow].asstring := 'Placa.: ' +
+          texto_justifica(sCli_placa + '  Km: ' + scli_km + '  Vendedor: ' +
+          scli_vendedor, 47, ' ', taEsquerda);
       end;
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring :=
+      grid.cell[0, grid.LastAddedRow].asstring :=
         '--------------------------------------------------------';
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring :=
+      grid.cell[0, grid.LastAddedRow].asstring :=
         '              Obrigado!!! Volte Sempre!!!               ';
     end
     else
     begin
 
+
       repeat
-        // BlockInput(true);
+        //BlockInput(true);
         if not bCadastra_Placa then
         begin
 
           if frmPrincipal.TipoImpressora = Fiscal then
-            sMsg := cECF_Termina_Fechamento(iECF_Modelo,
-              sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero + sPosto_rodape +
-              sMesa_numero + SEPARADOR + sIdentificarVendedor)
+            sMsg := cECF_Termina_Fechamento(iECF_Modelo, sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero
+              + SEPARADOR + sIdentificarVendedor)
           else
-            sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal,
-              sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero +
-              SEPARADOR + sIdentificarVendedor, ed_totalizador.value,
-              ed_troco.value);
+            sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal, sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero
+              + SEPARADOR + sIdentificarVendedor, ed_totalizador.Value, ed_troco.Value);
 
         end
         else
@@ -5751,31 +5724,30 @@ begin
 
           if frmPrincipal.TipoImpressora = Fiscal then
             sMsg := cECF_Termina_Fechamento(iECF_Modelo,
-              sPAF_MD5 + #10 + sPre_Venda_Numero + sDav_numero + sPosto_rodape +
-              sMesa_numero + #10 + SEPARADOR + sIdentificarVendedor +
+              sPAF_MD5 + #10 +
+              sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+              SEPARADOR + sIdentificarVendedor +
               'Placa..: ' + texto_justifica(sCli_Placa, 10, ' ', taEsquerda) +
-              'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) + 'VD: ' +
-              texto_justifica(sCli_vendedor, 17, ' ', taEsquerda))
+              'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) +
+              'VD: ' + texto_justifica(scli_vendedor, 17, ' ', taEsquerda))
           else
             sMsg := Imp_Termina_Fechamento(sPortaNaoFiscal,
-              sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero +
-              #10 + SEPARADOR + sIdentificarVendedor + 'Placa..: ' +
-              texto_justifica(sCli_Placa, 10, ' ', taEsquerda) + 'KM: ' +
-              texto_justifica(sCli_Km, 10, ' ', taEsquerda) + 'VD: ' +
-              texto_justifica(sCli_vendedor, 17, ' ', taEsquerda),
-              ed_totalizador.value, ed_troco.value);
+              sPre_Venda_Numero + sDav_numero + sPosto_rodape + sMesa_numero + #10 +
+              SEPARADOR + sIdentificarVendedor +
+              'Placa..: ' + texto_justifica(sCli_Placa, 10, ' ', taEsquerda) +
+              'KM: ' + texto_justifica(sCli_Km, 10, ' ', taEsquerda) +
+              'VD: ' + texto_justifica(scli_vendedor, 17, ' ', taEsquerda), ed_totalizador.Value, ed_troco.Value);
 
         end;
 
-        if sMsg = ok then
+        if sMsg = OK then
         begin
           bFinalizado := true;
 
-          frmmodulo.spCupom_Temp_Edit.close;
-          frmmodulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring :=
-            'FINALIZADO';
-          frmmodulo.spCupom_Temp_Edit.Prepare;
-          frmmodulo.spCupom_Temp_Edit.Execute;
+          frmModulo.spCupom_Temp_Edit.Close;
+          frmModulo.spCupom_Temp_Edit.ParamByName('procedimento').asstring := 'FINALIZADO';
+          frmModulo.spCupom_Temp_Edit.Prepare;
+          frmModulo.spCupom_Temp_Edit.execute;
 
         end
         else
@@ -5791,35 +5763,39 @@ begin
         end;
       until sMsg = ok;
 
-      if sMsg <> ok then
+      if sMsg <> OK then
       begin
         bt_confirmar_fechamento.Enabled := true;
         bt_confirmar_fechamento.setfocus;
-        Imprime_display(sMsg, clred, tiErro);
+        Imprime_display(sMsg, clred, tierro);
         exit;
       end;
 
+
+
       // sem consumidor
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring :=
+      grid.cell[0, grid.LastAddedRow].asstring :=
         '--------------------------------------------------------';
       grid.AddRow(1);
-      grid.Cell[0, grid.LastAddedRow].asstring :=
+      grid.cell[0, grid.LastAddedRow].asstring :=
         '              Obrigado!!! Volte Sempre!!!               ';
     end;
 
     grid.SelectLastRow;
-    TRY
-      grid.setfocus;
-    EXCEPT
-    END;
-    application.ProcessMessages;
+    try
+      grid.SetFocus;
+    except
+    end;
+    Application.ProcessMessages;
     bFinalizado := true;
 
-    // atualizar o totalizador geral do PAF com a do ECF
+
+
+   // atualizar o totalizador geral do PAF com a do ECF
     if frmPrincipal.TipoImpressora = Fiscal then
     begin
-      REPEAT
+      repeat
         // BlockInput(true);
         sMsg := cECF_Grande_Total(iECF_Modelo);
         iF sMsg = 'ERRO' then
@@ -5833,105 +5809,68 @@ begin
 
         end
         else
-          atualiza_totalizador(sMsg);
-      UNTIL sMsg <> 'ERRO';
+          atualiza_totalizador(SMSG);
+      until SmSG <> 'ERRO';
     end;
 
 
-    // ---> FIM
-    (* ************************************************************************ *)
+    //---> FIM
+    (**************************************************************************)
 
-    // BlockInput(true);
+    //BlockInput(true);
 
-    if bTef and bTef_finaliza then
+    if bTEF and bTef_finaliza then
     begin
       if (FileExists(sTEFTemp_Path + 'TEF.Imp')) then
       begin
-        Imprime_display('Impressão comprovante TEF', clBackground, tiInfo);
+        Imprime_display('Impressão comprovante TEF', clwhite, tiInfo);
         TEFImprimeTransacao('V');
       end;
       if sTEFRetorno = '0' then
-      BEGIN
-        // TEF ok
-        Imprime_display('Confirmando TEF', clBackground, tiInfo);
+      begin
+         // TEF ok
+        Imprime_display('Confirmando TEF', clwhite, tiInfo);
         TEFVerificaGerenciadorAtivo;
         TEFFechaOperacao;
-      END
+      end
       else
-      BEGIN
+      begin
         // TEF apresentou erro
         Imprime_display('Cancelando TEF', clred, tiErro);
         TEFVerificaGerenciadorAtivo;
         TEFNaoConfirmaOperacao;
         TEFVerificaArquivosPendentes;
         TEFVerificaOperacaoPendente;
-      END;
-    END;
+      end;
+    end;
 
-    // --> (C U P O M    N A O   F I S C A L )
+
+    //--> (C U P O M    N A O   F I S C A L )
     bLanca_comprovante_crediario := false;
     // comprovante do crediario
-    if (bCadastra_Crediario) and (rvalor_total_crediario > 0) and
-      (iComprovente_Crediario = 1) then
+    if (bCadastra_Crediario) and (rvalor_total_crediario > 0) and (iComprovente_Crediario = 1) then
     begin
-      Imprime_display('Aguarde! Imprimindo Comprovante...', clBackground, tiInfo);
-
-      { Fazer esta rotina apenas qdo houver diferenca do valor do crediario com o valor que o
-        cliente irá pagar... por exemplo qdo houver juros nas prestacoes.
-
-        IF sTotalizador_Crediario <> '' THEN
-        BEGIN
-        repeat
-        sCOO_crediario := cECF_Numero_Cupom(iECF_Modelo);
-        sGNF_crediario := cECF_Numero_Contador_Operacao_NF(iECF_Modelo);
-        sMsg := cECF_Recebimento(iECF_Modelo,sTotalizador_Crediario,rvalor_total_crediario,
-        sCrediario_Nome);
-        if sMsg <> OK then
-        begin
-        If application.MessageBox(pwidechar('Erro no lançamento do Crediário no ECF!'+#13+
-        'Mensagem: '+sMsg+#13+'Deseja tentar outra vez?'),
-        'Erro',mb_yesno+MB_ICONERROR) = idno theN
-        BEGIN
-        break;
-        end
-        else
-        begin
-        sTotalizador_crediario :=
-        inputbox('Crediário','Informe o nome do Totalizador:',sTotalizador_Crediario);
-        end;
-        end
-        else
-        begin
-        bLanca_comprovante_crediario := true;
-        end;
-        until sMsg = OK;
-        END;
-      }
-
+      Imprime_display('Aguarde! Imprimindo Comprovante...', clwhite, tiInfo);
       bLanca_comprovante_crediario := false;
-      sMsg := ok;
-
-      if sMsg = ok then
+      sMsg := OK;
+      if sMSG = OK then
       begin
 
         repeat
-          // BlockInput(true);
-          if frmPrincipal.TipoImpressora = Fiscal then
+          //BlockInput(true);
+          if frmprincipal.TipoImpressora = fiscal then
           begin
-            sMsg := cECF_Abre_Gerencial(iECF_Modelo,
-              'CREDIÁRIO                                       ');
-            sCOO_Prestacao := cECF_Numero_Cupom(iECF_Modelo);
-            sGNF_Prestacao := cECF_Numero_Contador_Operacao_NF(iECF_Modelo);
-            sGRG_Prestacao := cECF_Numero_Contador_Relatorio_Gerencial
-              (iECF_Modelo);
+            sMsg := cECF_Abre_Gerencial(iECF_Modelo, 'CREDIÁRIO                                       ');
+            sCOO_prestacao := cECF_Numero_Cupom(iECF_Modelo);
+            sGNF_prestacao := cECF_Numero_Contador_Operacao_NF(iECF_Modelo);
+            sGRG_prestacao := cECF_Numero_Contador_Relatorio_Gerencial(iECF_Modelo);
           end
           else
           begin
-            sMsg := Imp_Abre_Gerencial(sPortaNaoFiscal,
-              'CREDIÁRIO                                       ');
-            sCOO_Prestacao := sNumero_Cupom;
-            sGNF_Prestacao := sGNF;
-            sGRG_Prestacao := sGRG;
+            sMsg := Imp_Abre_Gerencial(sPortaNaoFiscal, 'CREDIÁRIO                                       ');
+            sCOO_prestacao := snumero_cupom;
+            sGNF_prestacao := sGNF;
+            sGRG_prestacao := sGRG;
           end;
 
           if sMsg = 'ERRO' then
@@ -5947,123 +5886,97 @@ begin
           end;
         until sMsg = ok;
 
+
         // imprimir o comprovante com os produtos
         if iComprovante_Crediario_produto = 1 then
         begin
-          if frmPrincipal.TipoImpressora = Fiscal then
+          if frmprincipal.TipoImpressora = fiscal then
           begin
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              texto_justifica('S E G U N D A   V I A   D O     C U P O M', 48,
+            sMsg := cECF_Usa_Gerencial(iECF_Modelo, texto_justifica('S E G U N D A   V I A   D O     C U P O M', 48, ' ', taCentralizado));
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo,
+              texto_justifica('No: ' + sNumero_Cupom +
+              ' Data:' + DateToStr(dData_Sistema) +
+              ' Hora:' + TimeToStr(time), 48,
               ' ', taCentralizado));
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              texto_justifica('No: ' + sNumero_Cupom + ' Data:' +
-              datetostr(dData_Sistema) + ' Hora:' + TimeToStr(time), 48, ' ',
-              taCentralizado));
 
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              '------------------------------------------------');
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              'Item Codigo        Descricao');
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              '                    Qtde Un.  Vl.Unit    Vl.Item');
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              '------------------------------------------------');
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, '------------------------------------------------');
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, 'Item Codigo        Descricao');
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, '                    Qtde Un.  Vl.Unit    Vl.Item');
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, '------------------------------------------------');
 
           end
           else
           begin
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              texto_justifica('S E G U N D A   V I A    D O    C U P O M', 48,
+            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, texto_justifica('S E G U N D A   V I A    D O    C U P O M', 48, ' ', taCentralizado));
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
+              texto_justifica('No: ' + sNumero_Cupom +
+              ' Data:' + DateToStr(dData_Sistema) +
+              ' Hora:' + TimeToStr(time), 48,
               ' ', taCentralizado));
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              texto_justifica('No: ' + sNumero_Cupom + ' Data:' +
-              datetostr(dData_Sistema) + ' Hora:' + TimeToStr(time), 48, ' ',
-              taCentralizado));
 
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              '------------------------------------------------');
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              'Item Codigo        Descricao');
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              '                    Qtde Un.  Vl.Unit    Vl.Item');
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              '------------------------------------------------');
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '------------------------------------------------');
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, 'Item Codigo        Descricao');
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                    Qtde Un.  Vl.Unit    Vl.Item');
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '------------------------------------------------');
 
           end;
 
+
+
           for i := 0 to grid.RowCount - 1 do
           begin
-            if (grid.Cell[1, i].asinteger = 1) AND
-              (grid.Cell[13, i].asinteger = 0) then
+            if (grid.Cell[1, i].asinteger = 1) and (grid.cell[13, i].asinteger = 0) then
             begin
 
-              if frmPrincipal.TipoImpressora = Fiscal then
+              if frmprincipal.TipoImpressora = fiscal then
               begin
-                sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  texto_justifica(grid.Cell[2, i].asstring, 3, '0', taDireita) +
-                  ' ' + texto_justifica(grid.Cell[3, i].asstring, 13, '0',
-                  taDireita) + ' ' + texto_justifica(grid.Cell[4, i].asstring,
-                  30, ' ', taEsquerda));
+                SMsg := cECF_Usa_Gerencial(iECF_Modelo,
+                  texto_justifica(GRID.CELL[2, I].ASSTRING, 3, '0', taDireita) + ' ' +
+                  texto_justifica(GRID.CELL[3, I].ASSTRING, 13, '0', taDireita) + ' ' +
+                  texto_justifica(GRID.CELL[4, I].ASSTRING, 30, ' ', taEsquerda));
 
-                sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  '              ' + texto_justifica
-                  (formatfloat('###,###,##0.000', grid.Cell[5, i].asfloat), 10,
-                  ' ', taDireita) + texto_justifica(grid.Cell[12, i].asstring,
-                  2, ' ', taEsquerda) + ' ' +
-                  texto_justifica(formatfloat('###,###,##0.000',
-                  grid.Cell[6, i].asfloat), 10, ' ', taDireita) +
-                  texto_justifica(formatfloat('###,###,##0.00',
-                  grid.Cell[9, i].asfloat), 11, ' ', taDireita));
+                SMsg := cECF_Usa_Gerencial(iECF_Modelo, '              ' +
+                  texto_justifica(formatfloat('###,###,##0.000', GRID.CELL[5, I].ASFLOAT), 10, ' ', taDireita) +
+                  texto_justifica(GRID.CELL[12, I].ASSTRING, 2, ' ', taEsquerda) + ' ' +
+                  texto_justifica(formatfloat('###,###,##0.000', GRID.CELL[6, I].ASFLOAT), 10, ' ', taDireita) +
+                  texto_justifica(formatfloat('###,###,##0.00', GRID.CELL[9, I].ASFLOAT), 11, ' ', taDireita));
 
-                if grid.Cell[7, i].asfloat > 0 then
+                if GRID.CELL[7, I].ASFLOAT > 0 then
                 begin
-                  sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                    '              ' + 'Desconto:  -' +
-                    texto_justifica(formatfloat('###,###,##0.00',
-                    grid.Cell[7, i].asfloat), 8, ' ', taDireita));
+                  SMsg := cECF_Usa_Gerencial(iECF_Modelo, '              ' +
+                    'Desconto:  -' + texto_justifica(formatfloat('###,###,##0.00', GRID.Cell[7, I].ASFLOAT), 8, ' ', taDireita));
                 end;
-                if grid.Cell[8, i].asfloat > 0 then
+                if GRID.CELL[8, I].ASFLOAT > 0 then
                 begin
 
-                  sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                    '              ' + 'Acréscimo: +' +
-                    texto_justifica(formatfloat('###,###,##0.00',
-                    grid.Cell[8, i].asfloat), 8, ' ', taDireita));
+                  SMsg := cECF_Usa_Gerencial(iECF_Modelo, '              ' +
+                    'Acréscimo: +' + texto_justifica(formatfloat('###,###,##0.00', GRID.CELL[8, I].ASFLOAT), 8, ' ', taDireita));
                 end;
 
               end
               else
               begin
-                sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  texto_justifica(grid.Cell[2, i].asstring, 3, '0', taDireita) +
-                  ' ' + texto_justifica(grid.Cell[3, i].asstring, 13, '0',
-                  taDireita) + ' ' + texto_justifica(grid.Cell[4, i].asstring,
-                  30, ' ', taEsquerda));
+                SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
+                  texto_justifica(GRID.CELL[2, I].ASSTRING, 3, '0', taDireita) + ' ' +
+                  texto_justifica(GRID.CELL[3, I].ASSTRING, 13, '0', taDireita) + ' ' +
+                  texto_justifica(GRID.CELL[4, I].ASSTRING, 30, ' ', taEsquerda));
 
-                sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  '              ' + texto_justifica
-                  (formatfloat('###,###,##0.000', grid.Cell[5, i].asfloat), 10,
-                  ' ', taDireita) + texto_justifica(grid.Cell[12, i].asstring,
-                  2, ' ', taEsquerda) + ' ' +
-                  texto_justifica(formatfloat('###,###,##0.000',
-                  grid.Cell[6, i].asfloat), 10, ' ', taDireita) +
-                  texto_justifica(formatfloat('###,###,##0.00',
-                  grid.Cell[9, i].asfloat), 11, ' ', taDireita));
+                SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '              ' +
+                  texto_justifica(formatfloat('###,###,##0.000', GRID.CELL[5, I].ASFLOAT), 10, ' ', taDireita) +
+                  texto_justifica(GRID.CELL[12, I].ASSTRING, 2, ' ', taEsquerda) + ' ' +
+                  texto_justifica(formatfloat('###,###,##0.000', GRID.CELL[6, I].ASFLOAT), 10, ' ', taDireita) +
+                  texto_justifica(formatfloat('###,###,##0.00', GRID.CELL[9, I].ASFLOAT), 11, ' ', taDireita));
 
-                if grid.Cell[7, i].asfloat > 0 then
+                if GRID.CELL[7, I].ASFLOAT > 0 then
                 begin
-                  sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                    '              ' + 'Desconto:  -' +
-                    texto_justifica(formatfloat('###,###,##0.00',
-                    grid.Cell[7, i].asfloat), 8, ' ', taDireita));
+                  SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '              ' +
+                    'Desconto:  -' + texto_justifica(formatfloat('###,###,##0.00', GRID.Cell[7, I].ASFLOAT), 8, ' ', taDireita));
                 end;
-                if grid.Cell[8, i].asfloat > 0 then
+                if GRID.CELL[8, I].ASFLOAT > 0 then
                 begin
 
-                  sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                    '              ' + 'Acréscimo: +' +
-                    texto_justifica(formatfloat('###,###,##0.00',
-                    grid.Cell[8, i].asfloat), 8, ' ', taDireita));
+                  SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '              ' +
+                    'Acréscimo: +' + texto_justifica(formatfloat('###,###,##0.00', GRID.CELL[8, I].ASFLOAT), 8, ' ', taDireita));
                 end;
 
               end;
@@ -6071,100 +5984,62 @@ begin
             end;
           end;
 
-          if frmPrincipal.TipoImpressora = Fiscal then
+          if frmprincipal.TipoImpressora = fiscal then
           begin
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              '------------------------------------------------');
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              '                   Subtotal do Cupom:' +
-              texto_justifica(formatfloat('###,###,##0.00', rTotal_Venda), 11,
-              ' ', taDireita));
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              '                            Desconto:' +
-              texto_justifica(formatfloat('###,###,##0.00', rTotal_Desconto),
-              11, ' ', taDireita));
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              '                           Acrescimo:' +
-              texto_justifica(formatfloat('###,###,##0.00', rTotal_Acrescimo),
-              11, ' ', taDireita));
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              '                      Total do Cupom:' +
-              texto_justifica(formatfloat('###,###,##0.00',
-              ed_total_pagar.value), 11, ' ', taDireita));
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-              '------------------------------------------------');
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, '------------------------------------------------');
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, '                   Subtotal do Cupom:' + texto_justifica(formatfloat('###,###,##0.00', rTotal_Venda), 11, ' ', taDireita));
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, '                            Desconto:' + texto_justifica(formatfloat('###,###,##0.00', rTotal_Desconto), 11, ' ', taDireita));
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, '                           Acrescimo:' + texto_justifica(formatfloat('###,###,##0.00', rTotal_Acrescimo), 11, ' ', taDireita));
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, '                      Total do Cupom:' + texto_justifica(formatfloat('###,###,##0.00', ed_total_pagar.VALUE), 11, ' ', taDireita));
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, '------------------------------------------------');
 
-            if cb_forma1.text <> '' then
+            if cb_forma1.Text <> '' then
             begin
-              sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                texto_justifica(cb_forma1.text + ':', 20, ' ', taEsquerda) + ' '
-                + texto_justifica(formatfloat('###,###,##0.00',
-                ed_forma1.value), 11, ' ', taDireita));
+              SMsg := cECF_Usa_Gerencial(iECF_Modelo, texto_justifica(cb_forma1.text + ':', 20, ' ', taEsquerda) + ' ' +
+                texto_justifica(formatfloat('###,###,##0.00', ed_forma1.value), 11, ' ', taDireita));
             end;
-            if cb_forma2.text <> '' then
+            if cb_forma2.Text <> '' then
             begin
-              sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                texto_justifica(cb_forma2.text + ':', 20, ' ', taEsquerda) + ' '
-                + texto_justifica(formatfloat('###,###,##0.00',
-                ed_forma2.value), 11, ' ', taDireita));
+              SMsg := cECF_Usa_Gerencial(iECF_Modelo, texto_justifica(cb_forma2.text + ':', 20, ' ', taEsquerda) + ' ' +
+                texto_justifica(formatfloat('###,###,##0.00', ed_forma2.value), 11, ' ', taDireita));
             end;
-            if cb_forma3.text <> '' then
+            if cb_forma3.Text <> '' then
             begin
-              sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                texto_justifica(cb_forma3.text + ':', 20, ' ', taEsquerda) + ' '
-                + texto_justifica(formatfloat('###,###,##0.00',
-                ed_forma3.value), 11, ' ', taDireita));
+              SMsg := cECF_Usa_Gerencial(iECF_Modelo, texto_justifica(cb_forma3.text + ':', 20, ' ', taEsquerda) + ' ' +
+                texto_justifica(formatfloat('###,###,##0.00', ed_forma3.value), 11, ' ', taDireita));
             end;
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo, ' ');
-            sMsg := cECF_Usa_Gerencial(iECF_Modelo, ' ');
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, ' ');
+            SMsg := cECF_Usa_Gerencial(iECF_Modelo, ' ');
+
 
           end
           else
-          begin // Nao Fiscal
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              '------------------------------------------------');
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              '                   Subtotal do Cupom:' +
-              texto_justifica(formatfloat('###,###,##0.00', rTotal_Venda), 11,
-              ' ', taDireita));
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              '                            Desconto:' +
-              texto_justifica(formatfloat('###,###,##0.00', rTotal_Desconto),
-              11, ' ', taDireita));
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              '                           Acrescimo:' +
-              texto_justifica(formatfloat('###,###,##0.00', rTotal_Acrescimo),
-              11, ' ', taDireita));
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              '                      Total do Cupom:' +
-              texto_justifica(formatfloat('###,###,##0.00',
-              ed_total_pagar.value), 11, ' ', taDireita));
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-              '------------------------------------------------');
+          begin //Nao Fiscal
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '------------------------------------------------');
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                   Subtotal do Cupom:' + texto_justifica(formatfloat('###,###,##0.00', rTotal_Venda), 11, ' ', taDireita));
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                            Desconto:' + texto_justifica(formatfloat('###,###,##0.00', rTotal_Desconto), 11, ' ', taDireita));
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                           Acrescimo:' + texto_justifica(formatfloat('###,###,##0.00', rTotal_Acrescimo), 11, ' ', taDireita));
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                      Total do Cupom:' + texto_justifica(formatfloat('###,###,##0.00', ed_total_pagar.VALUE), 11, ' ', taDireita));
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '------------------------------------------------');
 
-            if cb_forma1.text <> '' then
+            if cb_forma1.Text <> '' then
             begin
-              sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                texto_justifica(cb_forma1.text + ':', 20, ' ', taEsquerda) + ' '
-                + texto_justifica(formatfloat('###,###,##0.00',
-                ed_forma1.value), 11, ' ', taDireita));
+              SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, texto_justifica(cb_forma1.text + ':', 20, ' ', taEsquerda) + ' ' +
+                texto_justifica(formatfloat('###,###,##0.00', ed_forma1.value), 11, ' ', taDireita));
             end;
-            if cb_forma2.text <> '' then
+            if cb_forma2.Text <> '' then
             begin
-              sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                texto_justifica(cb_forma2.text + ':', 20, ' ', taEsquerda) + ' '
-                + texto_justifica(formatfloat('###,###,##0.00',
-                ed_forma2.value), 11, ' ', taDireita));
+              SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, texto_justifica(cb_forma2.text + ':', 20, ' ', taEsquerda) + ' ' +
+                texto_justifica(formatfloat('###,###,##0.00', ed_forma2.value), 11, ' ', taDireita));
             end;
-            if cb_forma3.text <> '' then
+            if cb_forma3.Text <> '' then
             begin
-              sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                texto_justifica(cb_forma3.text + ':', 20, ' ', taEsquerda) + ' '
-                + texto_justifica(formatfloat('###,###,##0.00',
-                ed_forma3.value), 11, ' ', taDireita));
+              SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, texto_justifica(cb_forma3.text + ':', 20, ' ', taEsquerda) + ' ' +
+                texto_justifica(formatfloat('###,###,##0.00', ed_forma3.value), 11, ' ', taDireita));
             end;
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, ' ');
-            sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, ' ');
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, ' ');
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, ' ');
+
 
           end;
 
@@ -6174,12 +6049,13 @@ begin
         for i := 1 to iCrediario_prestacao do
         begin
 
-          if sMsg = ok then
+
+          if sMsg = OK then
           begin
             repeat
-              if frmPrincipal.TipoImpressora = Fiscal then
+              if frmprincipal.TipoImpressora = fiscal then
               begin
-                // BlockInput(true);
+                  //BlockInput(true);
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
                   '------------------------------------------------');
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
@@ -6187,35 +6063,34 @@ begin
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
                   '------------------------------------------------');
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  texto_justifica('CUPOM.....: ' + Zerar(sNumero_Cupom, 6), 48,
-                  ' ', taEsquerda));
+                  Texto_Justifica('CUPOM.....: ' +
+                  zerar(sNumero_Cupom, 6), 48, ' ', taEsquerda));
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  texto_justifica('DOCUMENTO.: ' + Zerar(sNumero_Cupom, 6) + '/'
-                  + inttostr(i), 48, ' ', taEsquerda));
+                  Texto_Justifica('DOCUMENTO.: ' +
+                  zerar(sNumero_Cupom, 6) + '/' + inttostr(i), 48,
+                  ' ', taEsquerda));
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
                   '------------------------------------------------');
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  texto_justifica('CLIENTE...: ' + sCli_codigo + '-' +
-                  sCli_Nome, 48, ' ', taEsquerda));
+                  Texto_Justifica('CLIENTE...: ' +
+                  sCli_codigo + '-' + sCli_Nome, 48, ' ', taEsquerda));
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  texto_justifica('ENDERECO..: ' + sCli_Endereco, 48, ' ',
-                  taEsquerda));
+                  Texto_Justifica('ENDERECO..: ' + sCli_Endereco, 48, ' ', taEsquerda));
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  texto_justifica('CPF/CNPJ..: ' + sCli_CPF, 48, ' ',
-                  taEsquerda));
+                  Texto_Justifica('CPF/CNPJ..: ' + sCli_CPF, 48, ' ', taEsquerda));
 
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
                   '------------------------------------------------');
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  texto_justifica('PARCELA...: ' + Zerar(inttostr(i), 2) + '/' +
-                  Zerar(inttostr(iCrediario_prestacao), 2), 48, ' ',
-                  taEsquerda));
+                  Texto_Justifica('PARCELA...: ' + Zerar(INTTOSTR(I), 2) + '/' +
+                  ZERAR(IntToStr(iCrediario_prestacao), 2), 48, ' ', taEsquerda));
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  texto_justifica('VENCIMENTO: ' +
-                  datetostr(IncMonth(dData_Sistema, i)), 48, ' ', taEsquerda));
+                  Texto_Justifica('VENCIMENTO: ' +
+                  datetostr(IncMonth(dData_sistema, i))
+                  , 48, ' ', taEsquerda));
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
-                  texto_justifica('VALOR.....: ' +
-                  formatfloat('R$ ###,###,##0.00', rvalor_total_crediario /
+                  Texto_Justifica('VALOR.....: ' +
+                  FORMATFLOAT('R$ ###,###,##0.00', rvalor_total_crediario /
                   iCrediario_prestacao), 48, ' ', taEsquerda));
 
                 sMsg := cECF_Usa_Gerencial(iECF_Modelo,
@@ -6246,35 +6121,34 @@ begin
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
                   '------------------------------------------------');
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  texto_justifica('CUPOM.....: ' + Zerar(sNumero_Cupom, 6), 48,
-                  ' ', taEsquerda));
+                  Texto_Justifica('CUPOM.....: ' +
+                  zerar(sNumero_Cupom, 6), 48, ' ', taEsquerda));
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  texto_justifica('DOCUMENTO.: ' + Zerar(sNumero_Cupom, 6) + '/'
-                  + inttostr(i), 48, ' ', taEsquerda));
+                  Texto_Justifica('DOCUMENTO.: ' +
+                  zerar(sNumero_Cupom, 6) + '/' + inttostr(i), 48,
+                  ' ', taEsquerda));
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
                   '------------------------------------------------');
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  texto_justifica('CLIENTE...: ' + sCli_codigo + '-' +
-                  sCli_Nome, 48, ' ', taEsquerda));
+                  Texto_Justifica('CLIENTE...: ' +
+                  sCli_codigo + '-' + sCli_Nome, 48, ' ', taEsquerda));
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  texto_justifica('ENDERECO..: ' + sCli_Endereco, 48, ' ',
-                  taEsquerda));
+                  Texto_Justifica('ENDERECO..: ' + sCli_Endereco, 48, ' ', taEsquerda));
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  texto_justifica('CPF/CNPJ..: ' + sCli_CPF, 48, ' ',
-                  taEsquerda));
+                  Texto_Justifica('CPF/CNPJ..: ' + sCli_CPF, 48, ' ', taEsquerda));
 
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
                   '------------------------------------------------');
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  texto_justifica('PARCELA...: ' + Zerar(inttostr(i), 2) + '/' +
-                  Zerar(inttostr(iCrediario_prestacao), 2), 48, ' ',
-                  taEsquerda));
+                  Texto_Justifica('PARCELA...: ' + Zerar(INTTOSTR(I), 2) + '/' +
+                  ZERAR(IntToStr(iCrediario_prestacao), 2), 48, ' ', taEsquerda));
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  texto_justifica('VENCIMENTO: ' +
-                  datetostr(IncMonth(dData_Sistema, i)), 48, ' ', taEsquerda));
+                  Texto_Justifica('VENCIMENTO: ' +
+                  datetostr(IncMonth(dData_sistema, i))
+                  , 48, ' ', taEsquerda));
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
-                  texto_justifica('VALOR.....: ' +
-                  formatfloat('R$ ###,###,##0.00', rvalor_total_crediario /
+                  Texto_Justifica('VALOR.....: ' +
+                  FORMATFLOAT('R$ ###,###,##0.00', rvalor_total_crediario /
                   iCrediario_prestacao), 48, ' ', taEsquerda));
 
                 sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
@@ -6309,18 +6183,19 @@ begin
                   break;
 
               end;
-            until sMsg = ok;
+            until sMsg = OK;
           end;
         end;
 
         bLanca_Comprovante_Prestacao := false;
 
-        if sMsg = ok then
+
+        if sMsg = OK then
         begin
           // fechar o gerencial
           repeat
-            // BlockInput(true);
-            if frmPrincipal.TipoImpressora = Fiscal then
+            //BlockInput(true);
+            if frmprincipal.TipoImpressora = fiscal then
               sMsg := cECF_Fecha_Gerencial(iECF_Modelo)
             else
               sMsg := Imp_Fecha_Gerencial(sPortaNaoFiscal);
@@ -6335,31 +6210,36 @@ begin
               then
                 break;
 
+
             end
             else
             begin
               bLanca_Comprovante_Prestacao := true;
             end;
-          until sMsg = ok;
+          until sMsg = OK;
         end
         else
-          Imprime_display('Erro na impressaão do crediário!', clred, tiErro);
+          Imprime_display('Erro na impressaão do crediário!', clRed, tiErro);
       end;
     end;
 
-    // BlockInput(true);
+
+    //BlockInput(true);
+
     if bFinalizado then
     begin
-      Imprime_display('Aguarde!Finalizando Venda!', clBackground, tiInfo);
+      Imprime_display('Aguarde!Finalizando Venda!', clwhite, tiInfo);
 
       // cadastrar cheques
-      If (bCadastra_Cheque) and (rvalor_total_cheque > 0) then
+      if (bCadastra_Cheque) and (rvalor_total_cheque > 0) then
       begin
+
 
       end;
       // lancar convenio
       if (bcadastra_convenio) and (rvalor_total_convenio > 0) then
       begin
+
 
       end;
 
@@ -6367,86 +6247,84 @@ begin
       begin
         // lancamento do cupom no banco de dados
         sNumero_Cupom := sNumero_Venda;
-        scod_cupom := codifica_cupom;
+        sCod_Cupom := codifica_cupom;
         spCupom.close;
-        spCupom.ParamByName('codigo').asstring := scod_cupom;
-        spCupom.ParamByName('numero').asstring := sNumero_Cupom;
+        spCupom.ParamByName('codigo').asstring := sCod_Cupom;
+        if vNumNFCe > 0 then
+          spCupom.ParamByName('numero').asstring := IntToStr(vNumNFCe)
+        else
+          spCupom.ParamByName('numero').asstring := sNumero_Cupom;
         spCupom.ParamByName('ccf').asstring := sNumero_contador_cupom;
-        spCupom.ParamByName('ECF').asstring := sECF_Serial;
+        spCupom.ParamByName('ECF').AsString := sECF_Serial;
         spCupom.ParamByName('data').asdate := dData_Sistema;
         spCupom.ParamByName('hora').AsTime := hHora_Cupom;
         spCupom.ParamByName('qtde_item').asinteger := iTotal_Itens;
         spCupom.ParamByName('valor_produto').asfloat := rTotal_Venda;
-        spCupom.ParamByName('Valor_Desconto').asfloat := rTotal_Desconto;
-        spCupom.ParamByName('Valor_Acrescimo').asfloat := rTotal_Acrescimo;
-        spCupom.ParamByName('valor_total').asfloat := ed_total_pagar.value;
+        spCupom.ParambyName('Valor_Desconto').asfloat := rTotal_Desconto;
+        spCupom.ParambyName('Valor_Acrescimo').asfloat := rTotal_Acrescimo;
+        spCupom.ParamByName('valor_total').asfloat := ed_total_pagar.Value;
         spCupom.ParamByName('valor_pago').asfloat := ed_totalizador.value;
         spCupom.ParamByName('valor_troco').asfloat := ed_troco.value;
         if sCli_codigo <> '' then
           spCupom.ParamByName('cod_cliente').asstring := sCli_codigo
         else
-          spCupom.ParamByName('cod_cliente').clear;
+          spCupom.ParamByName('cod_cliente').Clear;
 
         spCupom.ParamByName('cancelado').asinteger := 0;
-        spCupom.ParamByName('cpf_consumidor').asstring := sConsumidor_CPF;
-        spCupom.ParamByName('nome_consumidor').asstring :=
-          copy(sConsumidor_Nome, 1, 40);
-        spCupom.ParamByName('cod_caixa').asinteger := iNumCaixa;
-        spCupom.ParamByName('ecf_caixa').asstring := copy(sECF_Caixa, 1, 3);
-        spCupom.ParamByName('cod_vendedor').asinteger := icodigo_Usuario;
+        spcupom.parambyname('cpf_consumidor').asstring := sConsumidor_CPF;
+        spcupom.ParamByName('nome_consumidor').asstring := copy(sConsumidor_Nome, 1, 40);
+        spcupom.ParamByName('cod_caixa').asinteger := iNumCaixa;
+        spCupom.ParamByName('ecf_caixa').asstring := Copy(sECF_Caixa, 1, 3);
+        spcupom.ParamByName('cod_vendedor').asinteger := icodigo_Usuario;
+       // spcupom.parambyname('pcontingencia').asstring := vcontingencia;
+        spcupom.parambyname('gerado_nfce').asstring := vgerado_nfce;
         spCupom.Prepare;
         spCupom.Execute;
 
         // Excluir os arquivos temporarios
-        frmmodulo.spCupom_Temp_delete.Prepare;
-        frmmodulo.spCupom_Temp_delete.Execute;
+        frmModulo.spCupom_Temp_delete.prepare;
+        frmModulo.spCupom_Temp_delete.execute;
+
 
         if bLanca_pre_venda then
         begin
-
           // atualizar situacao da pre-venda para 2 = concluida
-          frmmodulo.query_servidor.close;
-          frmmodulo.query_servidor.sql.clear;
-          frmmodulo.query_servidor.sql.add
-            ('update c000074 set situacao = 2 where codigo = ''' +
+          frmModulo.query_servidor.close;
+          frmModulo.query_servidor.sql.clear;
+          frmModulo.query_servidor.sql.add('update c000074 set situacao = 2 where codigo = ''' +
             Zerar(inttostr(iPre_venda_codigo), 6) + '''');
           frmmodulo.query_servidor.ExecSQL;
 
           bLanca_pre_venda := false;
         end;
-        if bLanca_OS then
+        if blanca_os then
         begin
           // atualizar a situacao da os para FECHADA
-          frmmodulo.query_servidor.close;
-          frmmodulo.query_servidor.sql.clear;
-          frmmodulo.query_servidor.sql.add
-            ('update c000051 set situacao = ''FECHADA'' where codigo = ''' +
+          frmModulo.query_servidor.close;
+          frmModulo.query_servidor.sql.clear;
+          frmModulo.query_servidor.sql.add('update c000051 set situacao = ''FECHADA'' where codigo = ''' +
             Zerar(inttostr(iOS_codigo), 6) + '''');
           frmmodulo.query_servidor.ExecSQL;
           bLanca_OS := false;
         end;
 
-        if bLanca_Mesa or bLanca_Comanda then
+        if bLanca_mesa or bLanca_Comanda then
         begin
           // excluir a mesa e os itens
-          frmmodulo.query_servidor.close;
+          frMmodulo.query_servidor.close;
           frmmodulo.query_servidor.sql.clear;
-          frmmodulo.query_servidor.sql.add
-            ('delete from r000002 where cod_mesa =' + inttostr(iMesa_codigo));
+          frmmodulo.query_servidor.sql.add('delete from r000002 where cod_mesa =' + IntToStr(iMesa_codigo));
           frmmodulo.query_servidor.ExecSQL;
 
-          frmmodulo.query_servidor.close;
+          frMmodulo.query_servidor.close;
           frmmodulo.query_servidor.sql.clear;
-          frmmodulo.query_servidor.sql.add('delete from r000001 where codigo ='
-            + inttostr(iMesa_codigo));
+          frmmodulo.query_servidor.sql.add('delete from r000001 where codigo =' + IntToStr(imesa_codigo));
           frmmodulo.query_servidor.ExecSQL;
           // inserir a liberacao da mesa para nao aparecer no sistema de frente
           try
-            frmmodulo.query_servidor.close;
+            frMmodulo.query_servidor.close;
             frmmodulo.query_servidor.sql.clear;
-            frmmodulo.query_servidor.sql.add
-              ('insert into r000003 (mesa) values (' +
-              inttostr(iMesa_codigo) + ')');
+            frmmodulo.query_servidor.sql.add('insert into r000003 (mesa) values (' + IntToStr(imesa_codigo) + ')');
             frmmodulo.query_servidor.ExecSQL;
           except
           end;
@@ -6465,56 +6343,46 @@ begin
           if grid.Cell[1, i].asinteger = 1 then
           begin
             spCupom_Item.close;
-            spCupom_Item.ParamByName('codigo').asstring :=
-              codifica_item(grid.Cell[2, i].asinteger);
-            spCupom_Item.ParamByName('cod_cupom').asstring := scod_cupom;
-            spCupom_Item.ParamByName('item').asinteger :=
-              grid.Cell[2, i].asinteger;
-            spCupom_Item.ParamByName('cod_produto').asinteger :=
-              grid.Cell[3, i].asinteger;
-            spCupom_Item.ParamByName('unidade').asstring :=
-              grid.Cell[12, i].asstring;
-            spCupom_Item.ParamByName('qtde').asfloat := grid.Cell[5, i].asfloat;
-            spCupom_Item.ParamByName('valor_unitario').asfloat :=
-              grid.Cell[6, i].asfloat;
-            spCupom_Item.ParamByName('valor_subtotal').asfloat :=
-              grid.Cell[5, i].asfloat * grid.Cell[6, i].asfloat;
-            spCupom_Item.ParamByName('valor_desconto').asfloat :=
-              grid.Cell[7, i].asfloat;
-            spCupom_Item.ParamByName('valor_acrescimo').asfloat :=
-              grid.Cell[8, i].asfloat;
-            spCupom_Item.ParamByName('valor_total').asfloat :=
-              grid.Cell[9, i].asfloat;
-            spCupom_Item.ParamByName('cst').asstring :=
-              grid.Cell[11, i].asstring;
-            spCupom_Item.ParamByName('aliquota').asfloat :=
-              grid.Cell[10, i].asfloat;
-            spCupom_Item.ParamByName('cancelado').asinteger :=
-              grid.Cell[13, i].asinteger;
-            spCupom_Item.ParamByName('tamanho').asstring :=
-              grid.Cell[14, i].asstring;
-            spCupom_Item.ParamByName('cor').asstring :=
-              grid.Cell[15, i].asstring;
+            spCupom_Item.ParamByName('codigo').AsString := codifica_item(grid.Cell[2, i].asinteger);
+            spCupom_Item.parambyname('cod_cupom').asstring := sCod_Cupom;
+            spCupom_Item.parambyname('item').asinteger := grid.cell[2, i].asinteger;
+            spCupom_Item.ParamByName('cod_produto').asinteger := grid.cell[3, i].asinteger;
+            spCupom_Item.parambyname('unidade').asstring := grid.cell[12, i].asstring;
+            spCupom_Item.parambyname('qtde').asfloat := grid.cell[5, i].asfloat;
+            spCupom_Item.parambyname('valor_unitario').asfloat := grid.cell[6, i].asfloat;
+            spCupom_Item.parambyname('valor_subtotal').asfloat := grid.cell[5, i].asfloat *
+              grid.cell[6, i].asfloat;
+            spCupom_Item.parambyname('valor_desconto').asfloat := grid.cell[7, i].asfloat;
+            spCupom_Item.parambyname('valor_acrescimo').asfloat := grid.cell[8, i].asfloat;
+            spCupom_Item.parambyname('valor_total').asfloat := grid.cell[9, i].asfloat;
+            spCupom_Item.parambyname('cst').asstring := grid.cell[11, i].asstring;
+            spCupom_Item.parambyname('aliquota').asfloat := grid.cell[10, i].asfloat;
+            spCupom_Item.parambyname('cancelado').asinteger := grid.cell[13, i].asinteger;
+            spCupom_Item.parambyname('tamanho').AsString := grid.cell[14, i].AsString;
+            spCupom_Item.parambyname('cor').AsString := grid.cell[15, i].AsString;
 
-            if (grid.Cell[11, i].asstring = '060') or
-              (grid.Cell[11, i].asstring = '010') or
-              (grid.Cell[11, i].asstring = '070') then
-              spCupom_Item.ParamByName('cod_totalizador').asstring := 'F1'
-            else if (grid.Cell[11, i].asstring = '040') or
-              (grid.Cell[11, i].asstring = '030') then
-              spCupom_Item.ParamByName('cod_totalizador').asstring := 'I1'
-            else if (grid.Cell[11, i].asstring = '041') or
-              (grid.Cell[11, i].asstring = '050') or
-              (grid.Cell[11, i].asstring = '051') or
-              (grid.Cell[11, i].asstring = '090') then
-              spCupom_Item.ParamByName('cod_totalizador').asstring := 'N1'
-            else if (grid.Cell[11, i].asstring = 'ISS') then
-              spCupom_Item.ParamByName('cod_totalizador').asstring :=
-                '01S' + Retorna_aliquota(grid.Cell[11, i].asstring,
-                grid.Cell[10, i].asfloat)
+            if (grid.cell[11, i].asstring = '060') or
+              (grid.cell[11, i].asstring = '010') or
+              (grid.cell[11, i].asstring = '070') then
+              spCupom_item.ParamByName('cod_totalizador').asstring := 'F1'
             else
-              spCupom_Item.ParamByName('cod_totalizador').asstring :=
-                retorna_codigo_aliquota(grid.Cell[10, i].asfloat);
+              if (grid.cell[11, i].asstring = '040') or
+                (grid.cell[11, i].asstring = '030') then
+                spCupom_item.ParamByName('cod_totalizador').asstring := 'I1'
+              else
+                if (grid.cell[11, i].asstring = '041') or
+                  (grid.cell[11, i].asstring = '050') or
+                  (grid.cell[11, i].asstring = '051') or
+                  (grid.cell[11, i].asstring = '090') then
+                  spCupom_item.ParamByName('cod_totalizador').asstring := 'N1'
+                else
+                  if (grid.cell[11, i].asstring = 'ISS') then
+                    spCupom_item.ParamByName('cod_totalizador').asstring := '01S' +
+                      Retorna_aliquota(grid.cell[11, i].asstring, grid.cell[10, i].asfloat)
+                  else
+                    spCupom_item.ParamByName('cod_totalizador').asstring :=
+                      retorna_codigo_aliquota(grid.cell[10, i].asfloat);
+
 
             spCupom_Item.Prepare;
             spCupom_Item.Execute;
@@ -6522,14 +6390,13 @@ begin
         end;
 
         // lancamento das formas de pagamento
-        if ed_forma1.value > 0 then
+        if ed_forma1.Value > 0 then
         begin
           spCupom_Forma.close;
           spCupom_Forma.ParamByName('codigo').asstring := codifica_forma(1);
-          spCupom_Forma.ParamByName('cod_cupom').asstring := scod_cupom;
-          spCupom_Forma.ParamByName('forma').asstring :=
-            copy(cb_forma1.text, 1, 30);
-          spCupom_Forma.ParamByName('valor').asfloat := ed_forma1.value;
+          spCupom_Forma.ParamByName('cod_cupom').asstring := sCod_Cupom;
+          spCupom_Forma.ParamByName('forma').asstring := copy(cb_forma1.text, 1, 30);
+          spCupom_Forma.ParamByName('valor').asfloat := ed_forma1.Value;
           spCupom_Forma.ParamByName('prestacao').asinteger := 1;
 
           if frmPrincipal.TipoImpressora = Fiscal then
@@ -6540,14 +6407,13 @@ begin
           spCupom_Forma.Prepare;
           spCupom_Forma.Execute;
         end;
-        if ed_forma2.value > 0 then
+        if ed_forma2.Value > 0 then
         begin
           spCupom_Forma.close;
           spCupom_Forma.ParamByName('codigo').asstring := codifica_forma(2);
-          spCupom_Forma.ParamByName('cod_cupom').asstring := scod_cupom;
-          spCupom_Forma.ParamByName('forma').asstring :=
-            copy(cb_forma2.text, 1, 30);
-          spCupom_Forma.ParamByName('valor').asfloat := ed_forma2.value;
+          spCupom_Forma.ParamByName('cod_cupom').asstring := sCod_Cupom;
+          spCupom_Forma.ParamByName('forma').asstring := copy(cb_forma2.text, 1, 30);
+          spCupom_Forma.ParamByName('valor').asfloat := ed_forma2.Value;
           spCupom_Forma.ParamByName('prestacao').asinteger := 2;
 
           if frmPrincipal.TipoImpressora = Fiscal then
@@ -6558,14 +6424,13 @@ begin
           spCupom_Forma.Prepare;
           spCupom_Forma.Execute;
         end;
-        if ed_forma3.value > 0 then
+        if ed_forma3.Value > 0 then
         begin
           spCupom_Forma.close;
           spCupom_Forma.ParamByName('codigo').asstring := codifica_forma(3);
-          spCupom_Forma.ParamByName('cod_cupom').asstring := scod_cupom;
-          spCupom_Forma.ParamByName('forma').asstring :=
-            copy(cb_forma3.text, 1, 30);
-          spCupom_Forma.ParamByName('valor').asfloat := ed_forma3.value;
+          spCupom_Forma.ParamByName('cod_cupom').asstring := sCod_Cupom;
+          spCupom_Forma.ParamByName('forma').asstring := copy(cb_forma3.text, 1, 30);
+          spCupom_Forma.ParamByName('valor').asfloat := ed_forma3.Value;
           spCupom_Forma.ParamByName('prestacao').asinteger := 3;
 
           if frmPrincipal.TipoImpressora = Fiscal then
@@ -6584,19 +6449,15 @@ begin
           for i := 1 to iCrediario_prestacao do
           begin
             spCupom_Crediario.close;
-            spCupom_Crediario.ParamByName('codigo').asstring :=
-              codifica_crediario(i);
+            spCupom_Crediario.ParamByName('codigo').asstring := codifica_crediario(i);
             spCupom_Crediario.ParamByName('cod_cupom').asstring := scod_cupom;
             spCupom_Crediario.ParamByName('data').asdate := dData_Sistema;
-            spCupom_Crediario.ParamByName('Hora').AsTime := time;
-            spCupom_Crediario.ParamByName('cod_cliente').asinteger :=
-              strtoint(sCli_codigo);
-            spCupom_Crediario.ParamByName('vencimento').AsDateTime :=
-              IncMonth(dData_Sistema, i);
-            spCupom_Crediario.ParamByName('valor').asfloat :=
-              rvalor_total_crediario / iCrediario_prestacao;
-            spCupom_Crediario.ParamByName('descricao').asstring :=
-              copy(sCrediario_Nome, 1, 30);
+            spCupom_Crediario.ParamByName('Hora').astime := Time;
+            spCupom_Crediario.ParamByName('cod_cliente').asinteger := strtoint(sCli_codigo);
+            spCupom_crediario.ParamByName('vencimento').asdatetime := IncMonth(dData_sistema, i);
+            spCupom_Crediario.parambyname('valor').asfloat := rvalor_total_crediario /
+              iCrediario_prestacao;
+            spCupom_Crediario.ParamByName('descricao').asstring := copy(sCrediario_Nome, 1, 30);
             spCupom_Crediario.Prepare;
             spCupom_Crediario.Execute;
           end;
@@ -6604,27 +6465,24 @@ begin
         // lancamento do comprovante do crediario
         if bLanca_comprovante_crediario then
         begin
-          sNumero_Cupom := Zerar(somenteNumero(sCOO_crediario), 6);
+          sNumero_Cupom := zerar(somenteNumero(scoo_crediario), 6);
 
           if sNumero_Cupom <> '000000' then
           begin
             spNao_Fiscal.close;
-            spNao_Fiscal.ParamByName('codigo').asstring := codifica_cupom;
-            spNao_Fiscal.ParamByName('ecf').asstring := sECF_Serial;
-            spNao_Fiscal.ParamByName('data').AsDateTime := dData_Sistema;
-            spNao_Fiscal.ParamByName('indice').asstring :=
-              sTotalizador_Crediario;
-            spNao_Fiscal.ParamByName('descricao').asstring :=
-              sNome_Totalizador_Crediario;
-            spNao_Fiscal.ParamByName('valor').asfloat := rvalor_total_crediario;
-            spNao_Fiscal.ParamByName('hora').AsTime :=
-              strtotime(copy(cECF_Data_Hora(iECF_Modelo), 12, 8));
-            spNao_Fiscal.ParamByName('COO').asstring := sCOO_crediario;
-            spNao_Fiscal.ParamByName('GNF').asstring := sGNF_Crediario;
-            spNao_Fiscal.ParamByName('CDC').clear;
-            spNao_Fiscal.ParamByName('GRG').clear;
-            spNao_Fiscal.ParamByName('DENOMINACAO').asstring := 'CN';
-            spNao_Fiscal.Prepare;
+            spNao_Fiscal.parambyname('codigo').asstring := codifica_cupom;
+            spNao_fiscal.ParamByName('ecf').asstring := sECF_Serial;
+            spNao_fiscal.ParamByName('data').asdatetime := dData_Sistema;
+            spNao_Fiscal.ParamByName('indice').AsString := sTotalizador_Crediario;
+            spNao_Fiscal.ParamByName('descricao').AsString := sNome_Totalizador_Crediario;
+            spNao_fiscal.ParamByName('valor').asfloat := rvalor_total_crediario;
+            spNao_fiscal.ParamByName('hora').Astime := strtotime(copy(cECF_Data_Hora(iECF_Modelo), 12, 8));
+            spNao_fiscal.ParamByName('COO').asstring := sCOO_crediario;
+            spNao_fiscal.ParamByName('GNF').asstring := sGNF_Crediario;
+            spNao_fiscal.ParamByName('CDC').Clear;
+            spNao_fiscal.ParamByName('GRG').clear;
+            spNao_fiscal.ParamByName('DENOMINACAO').asstring := 'CN';
+            spnao_fiscal.Prepare;
             spNao_Fiscal.Execute;
           end;
         end;
@@ -6633,85 +6491,71 @@ begin
 
         if bLanca_Comprovante_Prestacao then
         begin
-          sNumero_Cupom := Zerar(somenteNumero(sCOO_Prestacao), 6);
+          sNumero_cupom := zerar(somenteNumero(sCOO_Prestacao), 6);
 
           if sNumero_Cupom <> '000000' then
           begin
             spNao_Fiscal.close;
-            spNao_Fiscal.ParamByName('codigo').asstring := codifica_cupom;
-            spNao_Fiscal.ParamByName('ecf').asstring := sECF_Serial;
-            spNao_Fiscal.ParamByName('data').AsDateTime := dData_Sistema;
-            spNao_Fiscal.ParamByName('hora').AsTime :=
-              strtotime(copy(cECF_Data_Hora(iECF_Modelo), 12, 8));
-            spNao_Fiscal.ParamByName('indice').asstring := 'RG';
-            spNao_Fiscal.ParamByName('Descricao').asstring :=
-              'RELATÓRIO GERENCIAL';
-            spNao_Fiscal.ParamByName('valor').asfloat := 0;
-            spNao_Fiscal.ParamByName('COO').asstring := sCOO_Prestacao;
-            spNao_Fiscal.ParamByName('GNF').asstring := sGNF_Prestacao;
-            spNao_Fiscal.ParamByName('GRG').asstring := sGRG_Prestacao;
-            spNao_Fiscal.ParamByName('CDC').clear;
-            spNao_Fiscal.ParamByName('DENOMINACAO').asstring := 'RG';
-            spNao_Fiscal.Prepare;
+            spNao_Fiscal.parambyname('codigo').asstring := codifica_cupom;
+            spNao_fiscal.ParamByName('ecf').asstring := sECF_Serial;
+            spNao_fiscal.ParamByName('data').asdatetime := dData_Sistema;
+            spNao_fiscal.ParamByName('hora').Astime := strtotime(copy(cECF_Data_Hora(iECF_Modelo), 12, 8));
+            spNao_fiscal.ParamByName('indice').asstring := 'RG';
+            spNao_fiscal.ParamByName('Descricao').asstring := 'RELATÓRIO GERENCIAL';
+            spNao_fiscal.ParamByName('valor').asfloat := 0;
+            spNao_fiscal.ParamByName('COO').asstring := sCOO_Prestacao;
+            spNao_fiscal.ParamByName('GNF').asstring := sGNF_prestacao;
+            spNao_fiscal.ParamByName('GRG').asstring := sGRG_prestacao;
+            spNao_fiscal.ParamByName('CDC').Clear;
+            spNao_fiscal.ParamByName('DENOMINACAO').asstring := 'RG';
+            spnao_fiscal.Prepare;
             spNao_Fiscal.Execute;
           end;
         end;
 
         // lancar os dados do comprador, mesmo sem cadastro ou a vista
-        spCupom_consumidor.close;
-        spCupom_consumidor.ParamByName('codigo').asstring := scod_cupom;
+        spCupom_consumidor.Close;
+        spCupom_consumidor.parambyname('codigo').Asstring := sCod_Cupom;
         if sCli_codigo <> '' then
-          spCupom_consumidor.ParamByName('cod_cliente').asinteger :=
-            strtoint(sCli_codigo)
+          spCupom_consumidor.parambyname('cod_cliente').Asinteger := strtoint(scli_codigo)
         else
-          spCupom_consumidor.ParamByName('cod_cliente').clear;
-        spCupom_consumidor.ParamByName('nome').asstring :=
-          copy(sCli_Nome, 1, 80);
-        spCupom_consumidor.ParamByName('endereco').asstring :=
-          copy(sCli_Endereco, 1, 80);
-        spCupom_consumidor.ParamByName('cidade').asstring :=
-          copy(sCli_Cidade, 1, 50);
-        spCupom_consumidor.ParamByName('uf').asstring := copy(sCli_uf, 1, 2);
-        spCupom_consumidor.ParamByName('cep').asstring := copy(scli_cep, 1, 9);
-        spCupom_consumidor.ParamByName('cpf').asstring := copy(sCli_CPF, 1, 18);
-        spCupom_consumidor.ParamByName('placa').asstring :=
-          copy(sCli_Placa, 1, 10);
-        spCupom_consumidor.ParamByName('km').asstring := copy(sCli_Km, 1, 10);
-        spCupom_consumidor.ParamByName('vendedor').asstring :=
-          copy(sCli_vendedor, 1, 50);
+          spCupom_consumidor.parambyname('cod_cliente').Clear;
+        spCupom_consumidor.parambyname('nome').asstring := copy(sCli_Nome, 1, 80);
+        spCupom_consumidor.parambyname('endereco').asstring := copy(sCli_Endereco, 1, 80);
+        spCupom_consumidor.parambyname('cidade').asstring := copy(sCli_Cidade, 1, 50);
+        spCupom_consumidor.parambyname('uf').asstring := copy(sCli_uf, 1, 2);
+        spCupom_consumidor.parambyname('cep').asstring := copy(scli_cep, 1, 9);
+        spCupom_consumidor.parambyname('cpf').asstring := copy(sCli_CPF, 1, 18);
+        spCupom_consumidor.parambyname('placa').asstring := copy(sCli_Placa, 1, 10);
+        spCupom_consumidor.parambyname('km').asstring := copy(sCli_Km, 1, 10);
+        spCupom_consumidor.parambyname('vendedor').asstring := copy(scli_vendedor, 1, 50);
         spCupom_consumidor.Prepare;
         spCupom_consumidor.Execute;
 
       end;
 
       pn_fechamento.Visible := false;
-//      img_fechamento.Visible := false;
-      frmVenda.PopupMenu := pop_principal;
+      FRMVENDA.PopupMenu := pop_principal;
       pn_principal.Enabled := true;
 
       bVenda := false;
       if bBusca_foto_produto then
       begin
-        // // img_shape.Visible := false;
         img_produto.Picture := nil;
       end;
       if bBusca_foto_produto then
       begin
         img_borda.Visible := true;
-        // // img_shape.Visible := false;
         img_produto.Visible := true;
-        img_fundo.Visible := true;
+        img_fundo.visible := true;
       end;
 
       Limpa_controles;
 
       if ed_troco.value > 0 then
-        Imprime_display('Pago: R$ ' + formatfloat('###,###,##0.00',
-          ed_totalizador.value) + '            ' + 'Troco: R$ ' +
-          formatfloat('###,###,##0.00', ed_troco.value), clBackground, tiPgto)
+        Imprime_display('Pago: R$ ' + formatfloat('###,###,##0.00', ed_totalizador.value) + '            ' + 'Troco: R$ ' + formatfloat('###,###,##0.00', ed_troco.value), clwhite, tiPgto)
       else
-        Imprime_display('             C A I X A    L I V R E', clBackground,
-          tiLivre);
+        Imprime_display('             C A I X A    L I V R E', clWhite, tiLivre);
 
       TimerTroco.Enabled := true; // Apos 5 segundos
 
@@ -6726,7 +6570,7 @@ begin
           query.close;
           query.sql.clear;
           query.sql.add('update posto_abastecimento set situacao = 1');
-          query.sql.add('where codigo = ' + inttostr(iCodigo_abastecimento));
+          query.SQL.add('where codigo = ' + inttostr(iCodigo_abastecimento));
           query.ExecSQL;
 
           grid_abastecimento.DeleteRow(ilinha_abastecimento);
@@ -6741,29 +6585,33 @@ begin
       begin
 
         if bLanca_Mesa then
-          menu_mesaClick(frmVenda)
-        else if bLanca_Comanda then
-          Comandas1Click(frmVenda)
+          menu_mesaClick(frmvenda)
         else
-          ed_barra.setfocus;
+          if bLanca_Comanda then
+            Comandas1Click(frmvenda)
+          else
+            ED_BARRA.SETFOCUS;
 
       end;
     end;
-
   finally
     BlockInput(false);
     bt_confirmar_fechamento.Enabled := true;
   end;
 
-  if bVenda then
-    gravaINI(sConfiguracoes, 'PDV', 'Aberto', 'SIM')
-  else
+  if bVenda then begin
+    gravaINI(sConfiguracoes, 'PDV', 'Aberto', 'SIM');
+  end else begin
     gravaINI(sConfiguracoes, 'PDV', 'Aberto', 'NAO');
+    CorEditTotaL;
+  end;
 
-  { : ACIONAR GUILHOTINA }
-  if frmPrincipal.TipoImpressora = NaoFiscal then
+  {: ACIONAR GUILHOTINA}
+  if frmprincipal.TipoImpressora = NaoFiscal then
     AcionarGuilhotinaNaoFiscal;
-
+  vcontingencia := 'N';
+  vgerado_nfce := 'N';
+  vNumNFCe := 0;
 end;
 
 // -------------------------------------------------------------------------- //
@@ -7207,6 +7055,16 @@ begin
   Imprime_display_anterior;
 end;
 
+procedure TfrmVenda.CorEditTotaL;
+// Alteracao de cores PDV Fiscal ou Nao Fiscal
+begin
+  if frmPrincipal.TipoImpressora = SemImpressora then
+    frmVenda.Color := clWhite
+  else
+    frmVenda.Color := $00646464;
+end;
+
+
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.Opes1Click(Sender: TObject);
 begin
@@ -7308,12 +7166,13 @@ end;
 
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.FormShow(Sender: TObject);
-
 var
   i: Integer;
   sImgFundo: string;
   sCupomAbertoECF: string;
 begin
+  frmPrincipal.TipoImpressora := SemImpressora;
+  CorEditTotaL;
   CentralizarPanel(pnFundo);
   sCupomAbertoECF := '';
 
@@ -9673,6 +9532,18 @@ begin
   END;
 end;
 
+procedure TfrmVenda.FormKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+ if (Key = 66) and (Shift = [ssCtrl]) then
+    if frmPrincipal.TipoImpressora = SemImpressora then
+      frmPrincipal.TipoImpressora := NaoFiscal
+    else
+     frmPrincipal.TipoImpressora := SemImpressora;
+    CorEditTotaL;
+
+end;
+
 // -------------------------------------------------------------------------- //
 procedure TfrmVenda.Abastecimento1Click(Sender: TObject);
 begin
@@ -9781,7 +9652,7 @@ end;
 
 function TfrmVenda.ImgTipoImpressora(i: Integer): TImpressora;
 begin
-
+      { TODO : DARLON SANTOS }
   case i of
     0:
       begin // Sem Impressora

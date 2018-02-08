@@ -1651,12 +1651,15 @@ object frmPrincipal: TfrmPrincipal
   end
   object dxFloatDockSite1: TdxFloatDockSite
     Left = 0
-    Top = 0
-    Width = 185
-    Height = 131
+    Top = 118
+    Width = 1135
+    Height = 749
     Visible = False
     FloatLeft = 964
     FloatTop = 633
+    ExplicitTop = 0
+    ExplicitWidth = 185
+    ExplicitHeight = 131
     DockingType = 0
     OriginalWidth = 185
     OriginalHeight = 131
