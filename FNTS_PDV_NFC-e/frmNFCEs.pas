@@ -234,7 +234,7 @@ begin
           ACBRDANFENFCe.Logo := frmPrincipal.LerIni(sConfiguracoes, 'PDV',
             'CAMINHO_LOGO', '');
         ACBRDANFENFCe.vTroco := qrNFCETROCO.AsFloat;
-        ACBRDANFENFCe.Detalhado := False;
+        ACBRDANFENFCe.Detalhado := false;
         ACBRNFCe.NotasFiscais.Imprimir;
       end;
     end;

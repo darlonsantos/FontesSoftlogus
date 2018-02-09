@@ -1483,7 +1483,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       Align = alLeft
       Caption = 'Filtros'
       TabOrder = 0
-      ExplicitHeight = 91
       object lbl1: TLabel
         Left = 8
         Top = 16
@@ -1568,8 +1567,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 32
-    ExplicitTop = 442
     object btnImprimirDanfe: TcxButton
       Left = 340
       Top = 6
@@ -1728,21 +1725,18 @@ object frmNotasconsumidor: TfrmNotasconsumidor
         Expanded = False
         FieldName = 'MOTIVOCONTIGENCIA'
         Title.Caption = 'Motivo da Contig.'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'XMLENVIO'
         Title.Caption = 'XML de Envio'
-        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'XMLCACNELAMENTO'
         Title.Caption = 'XML de Cancelamento'
-        Width = 64
         Visible = True
       end>
   end
@@ -1757,7 +1751,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = 16767411
     ParentBackground = False
     TabOrder = 3
-    ExplicitTop = 398
     object lbEnvio: TLabel
       Left = 8
       Top = 6
@@ -1784,7 +1777,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = 12683294
     ParentBackground = False
     TabOrder = 4
-    ExplicitTop = 420
     object lbCancelamento: TLabel
       Left = 8
       Top = 5
@@ -1809,7 +1801,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 588
     Top = 273
     Bitmap = {
-      494C01013B003C00440010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013B004800480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000FFFFFF00FFFFFF00C78F4000B871
       0E00B8710E00B8710E00B8710E00B8710E00B8710E00B8710E00B8710E00F7F0

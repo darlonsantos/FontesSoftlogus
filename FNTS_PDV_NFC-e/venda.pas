@@ -5470,7 +5470,7 @@ begin
       Except
         on e: exception do
         begin
-          Imprime_display('ERRO NFCE: ' + e.Message, CLWHITE, tiLivre);
+          Imprime_display('ERRO NFCE: ' + e.Message, clBackground, tiLivre);
           bt_confirmar_fechamento.Enabled := true;
           bt_confirmar_fechamento.SetFocus;
           exit;
@@ -7776,7 +7776,7 @@ begin
         else
           Emit.CRT := crtRegimeNormal;
 
-        // dados destinatarios sadraque@inovarem.com.br
+
         Dest.CNPJCPF := OnlyNumber(sConsumidor_CPF);
         Dest.ISUF := '';
         Dest.xNome := sConsumidor_Nome;
@@ -7851,7 +7851,7 @@ begin
 
               Prod.qCom := RoundTo(grid.Cell[5, i].asfloat,-2);
               Prod.qTrib := RoundTo(grid.Cell[5, i].asfloat,-2);
-              Prod.vUnCom := RoundTo(grid.Cell[6, i].asfloat+grid.Cell[7, i].asfloat ,-2); // miza
+                Prod.vUnCom := RoundTo(grid.Cell[6, i].asfloat+grid.Cell[7, i].asfloat ,-2);
               Prod.vUnTrib := RoundTo(grid.Cell[6, i].asfloat+grid.Cell[7, i].asfloat ,-2);
               Prod.vProd := RoundTo(Prod.vUnCom * Prod.qCom,-2);
               Prod.vDesc := RoundTo(grid.Cell[7, i].asfloat,-2);
@@ -8289,7 +8289,7 @@ begin
         ACBRDANFENFCe.Logo := frmPrincipal.LerINi(sConfiguracoes, 'PDV',
           'CAMINHO_LOGO', '');
       ACBRDANFENFCe.Detalhado := true;
-      ACBRDANFENFCe.vTroco := ed_troco.value;
+    //  ACBRDANFENFCe.vTroco := ed_troco.value;
 
       ACBRDANFENFCe.vTroco := ed_troco.Value;
       ACBRDANFENFCe.Impressora := edImpressora;
