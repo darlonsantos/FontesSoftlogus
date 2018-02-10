@@ -808,8 +808,10 @@ begin
   application.messagebox
   ('É necessário reiniciar o sistema para atualizar as novas configurações!',
   'Aviso', mb_ok + MB_ICONINFORMATION);
-  GravaConfiguracoesLocais;
-  close;
+    GravaConfiguracoesLocais;
+   close;
+     Application .Terminate; { TODO : TERMINA APLICAÇÃO CASO TENHA  ALTERADO ALGUM PARAMETRO }
+
 
  end;
 

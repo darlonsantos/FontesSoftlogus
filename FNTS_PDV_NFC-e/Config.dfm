@@ -4055,6 +4055,10 @@ object frmConfig: TfrmConfig
             TabOrder = 0
             object TabSheet1: TTabSheet
               Caption = 'Certificado'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox10: TGroupBox
                 Left = 0
                 Top = 4
@@ -4189,6 +4193,10 @@ object frmConfig: TfrmConfig
             object TabSheet2: TTabSheet
               Caption = 'Geral'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox11: TGroupBox
                 Left = 3
                 Top = 8
@@ -4356,6 +4364,10 @@ object frmConfig: TfrmConfig
             object TabSheet3: TTabSheet
               Caption = 'WebService'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox12: TGroupBox
                 Left = 0
                 Top = 4
@@ -4530,6 +4542,10 @@ object frmConfig: TfrmConfig
             object TabSheet4: TTabSheet
               Caption = 'Emitente'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label20: TLabel
                 Left = 8
                 Top = 4
@@ -4748,6 +4764,10 @@ object frmConfig: TfrmConfig
             object TabSheet7: TTabSheet
               Caption = 'Email'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox13: TGroupBox
                 Left = 1
                 Top = 4
@@ -4852,6 +4872,10 @@ object frmConfig: TfrmConfig
             object tbImpressao: TTabSheet
               Caption = 'Impress'#227'o'
               ImageIndex = 5
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object lblImpressao: TLabel
                 Left = 2
                 Top = 8
