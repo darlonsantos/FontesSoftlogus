@@ -9927,7 +9927,6 @@ begin
 end;
 
 procedure TfrmVenda.AcionarGuilhotinaNaoFiscal;
-
 var
   sModelo: string;
   bHabGuilhotina: boolean;
@@ -9960,9 +9959,5 @@ procedure TfrmVenda.FormResize(Sender: TObject);
 begin
   CentralizarPanel(pnFundo);
 end;
-
-
-
-
-
 end.
+
