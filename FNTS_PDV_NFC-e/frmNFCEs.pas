@@ -261,11 +261,9 @@ begin
   frmconfig.ACBrNFe1.WebServices.Inutiliza(frmconfig.edtEmitCNPJ.Text, Justificativa, StrToInt(Ano), StrToInt(Modelo), StrToInt(Serie), StrToInt(NumeroInicial), StrToInt(NumeroFinal));
 end;
 
-
-procedure TfrmNotasconsumidor.btnPesquisarClick(Sender: TObject);
+ procedure TfrmNotasconsumidor.btnPesquisarClick(Sender: TObject);
 var
  filtro:String;
- 
 begin
  if dataini.Date > datafin.Date then
   begin
