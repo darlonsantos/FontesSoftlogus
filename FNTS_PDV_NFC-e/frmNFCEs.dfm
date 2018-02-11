@@ -1506,7 +1506,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       end
       object datafin: TsDateEdit
         Left = 8
-        Top = 35
+        Top = 70
         Width = 86
         Height = 21
         AutoSize = False
@@ -1528,7 +1528,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       end
       object dataini: TsDateEdit
         Left = 8
-        Top = 71
+        Top = 35
         Width = 86
         Height = 21
         AutoSize = False
@@ -1801,7 +1801,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 588
     Top = 273
     Bitmap = {
-      494C01013B004800480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013B0048004C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000FFFFFF00FFFFFF00C78F4000B871
       0E00B8710E00B8710E00B8710E00B8710E00B8710E00B8710E00B8710E00F7F0

@@ -264,8 +264,14 @@ end;
 
 procedure TfrmNotasconsumidor.btnPesquisarClick(Sender: TObject);
 var
-  filtro:String;
+ filtro:String;
+ 
 begin
+ if dataini.Date > datafin.Date then
+  begin
+    ShowMessage('A Data Inicio  não pode ser maior que Data Fim!');
+  end
+   else
   qrNFCE.Close;
   qrNFCE.SQL.Clear;
   qrNFCE.SQL.Add('select nf.*, case when situacao = 0 then ' + QuotedStr('Emitido') + ' else ' + QuotedStr('Cancelado') + ' end des_sit ');
