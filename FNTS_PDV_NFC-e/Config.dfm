@@ -4055,10 +4055,6 @@ object frmConfig: TfrmConfig
             TabOrder = 0
             object TabSheet1: TTabSheet
               Caption = 'Certificado'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox10: TGroupBox
                 Left = 0
                 Top = 4
