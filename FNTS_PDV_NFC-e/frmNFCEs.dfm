@@ -1420,6 +1420,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     FFFFFFFFFFFFFF800000FFFFFFFFFFFFFFFFFFFFFFFFFF800000FFFFFFFFFFFF
     FFFFFFFFFFFFFF800000}
   OldCreateOrder = False
+  PopupMenu = pm1
   Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
@@ -1590,13 +1591,14 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       OptionsImage.ImageIndex = 38
       OptionsImage.Images = frmPrincipal.cxImageList1
       OptionsImage.Layout = blGlyphTop
+      PopupMenu = pm1
       TabOrder = 1
       OnClick = btnCancelarClick
     end
     object btnConsultar: TcxButton
-      Left = 243
+      Left = 232
       Top = 6
-      Width = 91
+      Width = 102
       Height = 51
       Caption = 'Consultar'
       Colors.Default = clWhite
@@ -1611,7 +1613,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       Top = 6
       Width = 91
       Height = 51
-      Caption = 'Inutulizar NFC-e'
+      Caption = 'Inutilizar NFC-e'
       Colors.Default = clWhite
       OptionsImage.ImageIndex = 37
       OptionsImage.Images = frmPrincipal.cxImageList1
@@ -1801,7 +1803,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 588
     Top = 273
     Bitmap = {
-      494C01013B0048004C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01013B004800500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000F0000000010020000000000000F0
       000000000000000000000000000000000000FFFFFF00FFFFFF00C78F4000B871
       0E00B8710E00B8710E00B8710E00B8710E00B8710E00B8710E00B8710E00F7F0
@@ -3792,6 +3794,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Connection = frmModulo.conexao
     SQL.Strings = (
       'select * from NFCE order by data,numero')
+    CachedUpdates = True
     Left = 168
     Top = 248
     object qrNFCENUMERO: TIntegerField
@@ -3856,6 +3859,36 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       ReadOnly = True
       FixedChar = True
       Size = 9
+    end
+  end
+  object pm1: TPopupMenu
+    Left = 416
+    Top = 40
+    object c1: TMenuItem
+      Caption = 'Constltar'
+      SubMenuImages = frmPrincipal.cxImageList1
+      ShortCut = 8304
+      OnClick = btnConsultarClick
+    end
+    object I1: TMenuItem
+      Caption = 'Imprimir'
+      ShortCut = 16464
+      OnClick = btnImprimirDanfeClick
+    end
+    object C2: TMenuItem
+      Caption = 'Cancelar'
+      ShortCut = 8307
+      OnClick = btnCancelarClick
+    end
+    object InutilizarNFCe1: TMenuItem
+      Caption = 'Inutilizar NFC-e'
+      ShortCut = 8305
+      OnClick = btnInutulizarClick
+    end
+    object P1: TMenuItem
+      Caption = 'Pesquisar'
+      ShortCut = 16496
+      OnClick = btnPesquisarClick
     end
   end
 end

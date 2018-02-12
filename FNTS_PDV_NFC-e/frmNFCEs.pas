@@ -75,6 +75,12 @@ type
     lbl1: TLabel;
     lbl2: TLabel;
     lbl3: TLabel;
+    pm1: TPopupMenu;
+    c1: TMenuItem;
+    I1: TMenuItem;
+    C2: TMenuItem;
+    InutilizarNFCe1: TMenuItem;
+    P1: TMenuItem;
     procedure Button4Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
