@@ -35,7 +35,7 @@ uses
   ExeInfo, dxScreenTip, dxRibbonRadialMenu, dxBarExtItems, JvBaseDlg,
   JvSelectDirectory, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxRibbonCustomizationForm, System.ImageList, System.Actions;
+  dxRibbonCustomizationForm, System.ImageList, System.Actions,shellapi ;
 
 type
   TImpressora = (SemImpressora, NaoFiscal, Fiscal);
@@ -86,6 +86,12 @@ type
     btn_configuracaoesAvancadas: TdxBarButton;
     dxBarLargeButton3: TdxBarLargeButton;
     dxbrlrgbtn1: TdxBarLargeButton;
+    pm1: TPopupMenu;
+    A1: TMenuItem;
+    R1: TMenuItem;
+    C1: TMenuItem;
+    dxBarLargeButton5: TdxBarLargeButton;
+    S1: TMenuItem;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -119,6 +125,7 @@ type
     procedure actRelatorioExecute(Sender: TObject);
     procedure actConfiguracoesExecute(Sender: TObject);
     procedure dxbrlrgbtn1Click(Sender: TObject);
+    procedure dxBarLargeButton5Click(Sender: TObject);
   private
     iImpressora, iGaveta: Integer;
     { Private declarations }
@@ -2744,6 +2751,13 @@ procedure TfrmPrincipal.dxBarButton3Click(Sender: TObject);
 begin
   frmOrcamento := tfrmOrcamento.create(self);
   frmOrcamento.ShowModal;
+end;
+
+procedure TfrmPrincipal.dxBarLargeButton5Click(Sender: TObject);
+var sCaminho:string;
+begin
+sCaminho := 'C:\Softlogus\programas\softlogus.exe';
+ShellExecute(Handle,'open',pchar(sCaminho),nil,nil,sw_show)
 end;
 
 procedure TfrmPrincipal.dxbrlrgbtn1Click(Sender: TObject);

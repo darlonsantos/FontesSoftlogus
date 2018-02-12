@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Mask, RzEdit, NxColumnClasses, NxColumns,
   NxScrollControl, NxCustomGridControl, NxCustomGrid, NxGrid, ComCtrls, DB,
-  MemDS, DBAccess, IBC, Menus, AdvMenus, pngimage, XPMan, RxToolEdit;
+  MemDS, DBAccess, IBC, Menus, AdvMenus, pngimage, XPMan, RxToolEdit, principal;
 
 type
   TfrmCaixa_Fechamento = class(TForm)
@@ -106,6 +106,7 @@ type
     NxNumberColumn12: TNxTextColumn;
     pnTitulo: TPanel;
     Image5: TImage;
+    lbl1: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure bt_cancelarClick(Sender: TObject);
     procedure grid_resumoCellFormating(Sender: TObject; ACol,
@@ -119,8 +120,9 @@ type
     procedure bt_cupom_encerranteClick(Sender: TObject);
     procedure VendaBruta1Click(Sender: TObject);
     procedure otalizadorGeral1Click(Sender: TObject);
-  private
+   private
     { Private declarations }
+    TipoImp: TImpressora;
     function relatorio_posto():boolean;
     function relatorio_dav():boolean;
     function relatorio_mesa():boolean;
@@ -138,10 +140,11 @@ type
 
 var
   frmCaixa_Fechamento: TfrmCaixa_Fechamento;
+  fechamento: String;
 
 implementation
 
-uses modulo, principal, funcoes, unECF, senha_supervisor, venda,
+uses modulo, funcoes, unECF, senha_supervisor, venda,
   msg_Operador, Math, menu_fiscal, UFuncoes;
 
 {$R *.dfm}
@@ -1492,6 +1495,15 @@ end;
 procedure TfrmCaixa_Fechamento.FormShow(Sender: TObject);
 var i : integer;
 begin
+  TipoImp := frmPrincipal.TipoImpressora;
+  frmPrincipal.TipoImpressora := NaoFiscal;
+
+  qrEncerrante.close;
+  qrEncerrante.sql.clear;
+  qrEncerrante.sql.add('select * from Config Where codigo=0');
+  qrEncerrante.Open;
+  qrEncerrante.First;
+  fechamento := formatdatetime('yyyy-mm-dd hh:mm:ss', qrEncerrante.fieldbyname('fechamento').AsDateTime);
 
   ed_data.Date := dData_Movimento;
 
@@ -1545,7 +1557,7 @@ begin
 //  qrMesa.sql.add('group by r000001.codigo, r000001.data, r000001.hora');
 //  qrMesa.sql.add('order by r000001.codigo');
 //  qrMesa.open;
-
+//
 //  grid_mesa.ClearRows;
 //
 //  qrMesa.First;
@@ -2975,10 +2987,22 @@ end;
 procedure TfrmCaixa_Fechamento.z_fechamento;
 var
   codOperador:string;
-  dValor, dSangria, dSuprimento, dTotal:double;
+  dValor, dSangria, dSuprimento, dTotal, dTroco, dDinheiro:double;
 begin
-  dValor := 0;  dSangria := 0;  dSuprimento := 0;  dTotal := 0;
+  dValor := 0;  dSangria := 0;  dSuprimento := 0;  dTotal := 0; dDinheiro:=0; dTroco := 0;
 
+
+  qrFechamento.close;
+  qrFechamento.sql.clear;
+  qrFechamento.sql.add('select Sum(Valor_Troco) as Troco');
+  qrFechamento.sql.add('from cupom');
+  qrFechamento.sql.add('Where cupom.DATA + cupom.Hora >= :data');
+  qrFechamento.Params.ParamByName('data').asstring := fechamento;
+  qrFechamento.Open;
+  if qrFechamento.RecNo > 0 then
+  begin
+     dTroco :=  qrFechamento.fieldbyName('Troco').AsFloat;
+  end;
 
   codOperador := '';
   qrFechamento.close;
@@ -2993,11 +3017,11 @@ begin
   qrFechamento.sql.add('    cupom.COD_VENDEDOR as CodOperador,');
   qrFechamento.sql.add('    (select info1 from adm where codigo = cupom.COD_VENDEDOR) as Operador,');
   qrFechamento.sql.add('    cupom_forma.FORMA as forma,');
-  qrFechamento.sql.add('    cupom.VALOR_TOTAL as valor');
+  qrFechamento.sql.add('    cupom_forma.VALOR as valor');
   qrFechamento.sql.add('  from');
   qrFechamento.sql.add('    cupom_forma, cupom');
   qrFechamento.sql.add('  where cupom_forma.COD_CUPOM = cupom.CODIGO and');
-  qrFechamento.sql.add('        cupom.DATA = :data');
+  qrFechamento.sql.add('        cupom.DATA + cupom.Hora >= :data');
   qrFechamento.sql.add('union');
   qrFechamento.sql.add('  select');
   qrFechamento.sql.add('    nao_fiscal.CODVENDEDOR as CodOperador,');
@@ -3006,21 +3030,20 @@ begin
   qrFechamento.sql.add('    nao_fiscal.VALOR as valor');
   qrFechamento.sql.add('  from');
   qrFechamento.sql.add('    NAO_FISCAL, cupom_forma');
-  qrFechamento.sql.add('  where nao_fiscal.INDICE <> '+QuotedStr('RG'));
+  qrFechamento.sql.add('  where nao_fiscal.Data + nao_fiscal.hora >= :data and nao_fiscal.INDICE <> '+QuotedStr('RG'));
   qrFechamento.sql.add('  ) as tmp');
   qrFechamento.sql.add('  group by  CodOperador,  Operador,  Forma');
   qrFechamento.sql.add('  order by codoperador');
-  qrFechamento.Params.ParamByName('data').AsDateTime := ed_data.Date;
+  qrFechamento.Params.ParamByName('data').asstring := fechamento;
   qrFechamento.Open;
 
   qrFechamento.First;
 
-
   while not qrFechamento.Eof do
   begin
-    codOperador := qrFechamento.fieldbyname('codoperador').AsString;
+   codOperador := qrFechamento.fieldbyname('codoperador').AsString;
 
-    GridFechamento.AddRow(1);
+   GridFechamento.AddRow(1);
     GridFechamento.Cell[0,GridFechamento.LastAddedRow].AsInteger := qrFechamento.fieldbyname('codoperador').Value;
     GridFechamento.Cell[1,GridFechamento.LastAddedRow].AsString := qrFechamento.fieldbyname('operador').AsString;
 
@@ -3048,26 +3071,105 @@ begin
 
     if codOperador <> qrFechamento.fieldbyname('codoperador').AsString then
     begin
-     GridFechamento.AddRow(1);
+      GridFechamento.AddRow(1);
      GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := 'Sub-Total';
-     GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(dValor + dSuprimento - dSangria,2,false);
+      GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(dValor + dSuprimento - dSangria ,2,false);
       GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
       GridFechamento.Cell[3,GridFechamento.LastAddedRow].FontStyle := [fsBold];
-     dValor := 0;  dSangria := 0;  dSuprimento := 0;  dTotal := 0;
-     GridFechamento.AddRow(1);
+      dValor := 0;  dSangria := 0;  dSuprimento := 0;  dTotal := 0;
+      GridFechamento.AddRow(1);
+      GridFechamento.AddRow(1);
     end;
+  end;      // cmed62
 
-
-  end;
+  GridFechamento.AddRow(1);
+  GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := 'Troco ';
+  GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(-dTroco,2,false);
 
   {totaliza o ultimo usuário}
   begin
    GridFechamento.AddRow(1);
    GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := 'Sub-Total';
-   GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(dValor + dSuprimento - dSangria,2,false);
+   GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(dValor + dSuprimento - dSangria-dTroco,2,false);
    GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
    GridFechamento.Cell[3,GridFechamento.LastAddedRow].FontStyle := [fsBold];
   end;
+
+  qrFechamento.close;
+  qrFechamento.sql.clear;
+  qrFechamento.sql.add('select');
+  qrFechamento.sql.add('  Forma,');
+  qrFechamento.sql.add('  sum(Valor) as total');
+  qrFechamento.sql.add('from');
+  qrFechamento.sql.add(' (select');
+  qrFechamento.sql.add('    cupom_forma.FORMA as forma,');
+  qrFechamento.sql.add('    cupom_forma.VALOR as valor');
+  qrFechamento.sql.add('  from');
+  qrFechamento.sql.add('    cupom_forma, cupom');
+  qrFechamento.sql.add('  where cupom_forma.COD_CUPOM = cupom.CODIGO and');
+  qrFechamento.sql.add('        cupom.DATA + cupom.Hora >= :data and (cupom_forma.Forma =''Dinheiro'')');
+  qrFechamento.sql.add('union');
+  qrFechamento.sql.add('  select');
+  qrFechamento.sql.add('    nao_fiscal.DESCRICAO as forma,');
+  qrFechamento.sql.add('    nao_fiscal.VALOR as valor');
+  qrFechamento.sql.add('  from');
+  qrFechamento.sql.add('    NAO_FISCAL, cupom_forma');
+  qrFechamento.sql.add('  where nao_fiscal.Data + nao_fiscal.Hora >= :data and nao_fiscal.INDICE <> '+QuotedStr('RG'));
+  qrFechamento.sql.add('  ) as tmp');
+  qrFechamento.sql.add('  group by   Forma');
+  qrFechamento.Params.ParamByName('data').asstring := fechamento;
+  qrFechamento.Open;
+  qrFechamento.First;
+
+
+
+  GridFechamento.AddRow(1);
+  GridFechamento.Cell[0,GridFechamento.LastAddedRow].AsString := '-----';
+  GridFechamento.Cell[1,GridFechamento.LastAddedRow].AsString := '----------------------------------------';
+  GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := 'Resumo - Dinheiro em Caixa';
+  GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := '-----------------------';
+  GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
+
+  while not qrFechamento.Eof do
+  begin
+
+    GridFechamento.AddRow(1);
+    if qrFechamento.fieldbyname('forma').AsString = 'SANGRIA' then
+    begin
+      GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := qrFechamento.fieldbyname('forma').AsString + ' (-)';
+      GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(qrFechamento.fieldbyname('total').AsFloat * (-1),2,false);
+      dDinheiro := dDinheiro - qrFechamento.fieldbyname('total').AsFloat;
+    end
+    else
+    if qrFechamento.fieldbyname('forma').AsString = 'SUPRIMENTO' then
+    begin
+      GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := qrFechamento.fieldbyname('forma').AsString + ' (+)';
+      GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(qrFechamento.fieldbyname('total').AsFloat ,2,false);
+      dDinheiro := dDinheiro + qrFechamento.fieldbyname('total').AsFloat;
+    end
+    else
+    begin
+      GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := qrFechamento.fieldbyname('forma').AsString;
+      GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(qrFechamento.fieldbyname('total').AsFloat - dTroco,2,false);
+      dDinheiro := dDinheiro + qrFechamento.fieldbyname('total').AsFloat;
+    end;
+
+
+    qrFechamento.Next;
+
+  end;
+
+//  GridFechamento.AddRow(1);
+//  GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := 'Troco (-)';
+//  GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(-dTroco,2,false);
+
+
+   GridFechamento.AddRow(1);
+   GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := 'TOTAL EM DINHEIRO';
+   GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(dDinheiro-dTroco,2,false);
+   GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
+   GridFechamento.Cell[3,GridFechamento.LastAddedRow].FontStyle := [fsBold];
+
 
 
   qrFechamento.close;
@@ -3078,33 +3180,34 @@ begin
   qrFechamento.sql.add('from');
   qrFechamento.sql.add(' (select');
   qrFechamento.sql.add('    cupom_forma.FORMA as forma,');
-  qrFechamento.sql.add('    cupom.VALOR_TOTAL as valor');
+  qrFechamento.sql.add('    cupom_forma.VALOR as valor');
   qrFechamento.sql.add('  from');
   qrFechamento.sql.add('    cupom_forma, cupom');
   qrFechamento.sql.add('  where cupom_forma.COD_CUPOM = cupom.CODIGO and');
-  qrFechamento.sql.add('        cupom.DATA = :data');
+  qrFechamento.sql.add('        cupom.DATA + cupom.Hora >= :data');
   qrFechamento.sql.add('union');
   qrFechamento.sql.add('  select');
   qrFechamento.sql.add('    nao_fiscal.DESCRICAO as forma,');
   qrFechamento.sql.add('    nao_fiscal.VALOR as valor');
   qrFechamento.sql.add('  from');
   qrFechamento.sql.add('    NAO_FISCAL, cupom_forma');
-  qrFechamento.sql.add('  where nao_fiscal.INDICE <> '+QuotedStr('RG'));
+  qrFechamento.sql.add('  where nao_fiscal.Data + nao_fiscal.Hora >= :data and nao_fiscal.INDICE <> '+QuotedStr('RG'));
   qrFechamento.sql.add('  ) as tmp');
   qrFechamento.sql.add('  group by  Forma');
-  qrFechamento.Params.ParamByName('data').AsDateTime := ed_data.Date;
+  qrFechamento.Params.ParamByName('data').asstring := fechamento;
   qrFechamento.Open;
   qrFechamento.First;
 
 
-  GridFechamento.AddRow(1);  
+
+  GridFechamento.AddRow(1);
   GridFechamento.AddRow(1);
   GridFechamento.Cell[0,GridFechamento.LastAddedRow].AsString := '-----';
   GridFechamento.Cell[1,GridFechamento.LastAddedRow].AsString := '----------------------------------------';
   GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := 'Resumo Geral';
   GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := '-----------------------';
   GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
-  GridFechamento.AddRow(1);  
+  GridFechamento.AddRow(1);
 
   while not qrFechamento.Eof do
   begin
@@ -3114,7 +3217,7 @@ begin
     begin
       GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := qrFechamento.fieldbyname('forma').AsString + ' (-)';
       GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(qrFechamento.fieldbyname('total').AsFloat * (-1),2,false);
-      dSangria := dSangria + qrFechamento.fieldbyname('total').AsFloat;
+      dSangria := dSangria + qrFechamento.fieldbyname('total').AsFloat ;
     end
     else
     if qrFechamento.fieldbyname('forma').AsString = 'SUPRIMENTO' then
@@ -3136,10 +3239,14 @@ begin
   end;
 
    GridFechamento.AddRow(1);
+   GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := 'Troco ';
+   GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(-dTroco,2,false);
+
+   GridFechamento.AddRow(1);
    GridFechamento.Cell[2,GridFechamento.LastAddedRow].AsString := 'TOTAL GERAL';
-   GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(dTotal - dSangria,2,false);
+   GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(dTotal - dSangria - dSangria - dTroco,2,false);
    GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
-   GridFechamento.Cell[3,GridFechamento.LastAddedRow].FontStyle := [fsBold];      
+   GridFechamento.Cell[3,GridFechamento.LastAddedRow].FontStyle := [fsBold];
 
 end;
 

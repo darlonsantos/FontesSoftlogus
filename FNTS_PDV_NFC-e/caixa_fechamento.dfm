@@ -117,6 +117,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Top = 4
       Width = 169
       Height = 21
+      Text = ''
       TabOrder = 0
     end
     object ed_data: TDateEdit
@@ -133,6 +134,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Top = 28
       Width = 321
       Height = 21
+      Text = ''
       TabOrder = 2
     end
     object bt_cupom_encerrante: TButton
@@ -164,7 +166,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         Top = 0
         Width = 607
         Height = 316
+        Touch.InteractiveGestures = [igPan, igPressAndTap]
+        Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
         Align = alClient
+        Caption = ''
         HideScrollBar = False
         Options = [goGrid, goHeader, goSelectFullRow]
         TabOrder = 0
@@ -179,6 +184,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'ID'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 0
           SortType = stNumeric
@@ -195,6 +205,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Descri'#231#227'o'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 1
           SortType = stAlphabetic
@@ -209,6 +224,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Valor-R$'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 2
           SortType = stNumeric
@@ -222,21 +242,19 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     object TabSheet2: TTabSheet
       Caption = 'Formas Pagto.'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 763
-      ExplicitHeight = 0
       object grid_forma: TNextGrid
         Left = 0
         Top = 0
         Width = 607
         Height = 316
+        Touch.InteractiveGestures = [igPan, igPressAndTap]
+        Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
         Align = alClient
+        Caption = ''
         HideScrollBar = False
         Options = [goGrid, goHeader, goSelectFullRow]
         TabOrder = 0
         TabStop = True
-        ExplicitWidth = 763
         object NxNumberColumn3: TNxNumberColumn
           DefaultValue = '0'
           DefaultWidth = 24
@@ -246,6 +264,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'ID'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 0
           SortType = stNumeric
@@ -262,6 +285,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Descri'#231#227'o'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 1
           SortType = stAlphabetic
@@ -276,6 +304,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Valor-R$'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 2
           SortType = stNumeric
@@ -289,21 +322,19 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     object TabSheet3: TTabSheet
       Caption = 'Al'#237'quotas'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 763
-      ExplicitHeight = 0
       object grid_aliquota: TNextGrid
         Left = 0
         Top = 0
         Width = 607
         Height = 316
+        Touch.InteractiveGestures = [igPan, igPressAndTap]
+        Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
         Align = alClient
+        Caption = ''
         HideScrollBar = False
         Options = [goGrid, goHeader, goSelectFullRow]
         TabOrder = 0
         TabStop = True
-        ExplicitWidth = 763
         object NxNumberColumn5: TNxNumberColumn
           DefaultValue = '0'
           DefaultWidth = 24
@@ -313,6 +344,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'ID'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 0
           SortType = stNumeric
@@ -329,6 +365,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Descri'#231#227'o'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 1
           SortType = stAlphabetic
@@ -343,6 +384,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Valor-R$'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 2
           SortType = stNumeric
@@ -356,21 +402,19 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     object TabSheet4: TTabSheet
       Caption = 'Outros'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 763
-      ExplicitHeight = 0
       object grid_outros: TNextGrid
         Left = 0
         Top = 0
         Width = 607
         Height = 316
+        Touch.InteractiveGestures = [igPan, igPressAndTap]
+        Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
         Align = alClient
+        Caption = ''
         HideScrollBar = False
         Options = [goGrid, goHeader, goSelectFullRow]
         TabOrder = 0
         TabStop = True
-        ExplicitWidth = 763
         object NxNumberColumn7: TNxTextColumn
           Alignment = taRightJustify
           DefaultValue = '0'
@@ -381,6 +425,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'ID'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           Options = [coCanClick, coCanInput, coCanSort, coPublicUsing]
           ParentFont = False
           Position = 0
@@ -395,6 +444,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Descri'#231#227'o'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 1
           SortType = stAlphabetic
@@ -409,6 +463,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Valor-R$'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 2
           SortType = stNumeric
@@ -423,15 +482,14 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Caption = 'Pr'#233'-vendas'
       ImageIndex = 4
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 763
-      ExplicitHeight = 0
       object grid_venda: TNextGrid
         Left = 0
         Top = 64
         Width = 763
         Height = 316
+        Touch.InteractiveGestures = [igPan, igPressAndTap]
+        Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
+        Caption = ''
         HideScrollBar = False
         Options = [goGrid, goHeader, goSelectFullRow]
         TabOrder = 0
@@ -444,6 +502,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'C'#243'digo'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 0
           SortType = stAlphabetic
@@ -458,6 +521,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Data'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 1
           SortType = stDate
@@ -473,6 +541,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Cliente'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 2
           SortType = stAlphabetic
@@ -487,6 +560,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Valor'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 3
           SortType = stNumeric
@@ -502,6 +580,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Vendedor'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 4
           SortType = stAlphabetic
@@ -516,6 +599,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'cod_cliente'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 5
           SortType = stNumeric
@@ -532,6 +620,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'cod_vendedor'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 6
           SortType = stNumeric
@@ -548,6 +641,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'desconto'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 7
           SortType = stNumeric
@@ -564,6 +662,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'acrescimo'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 8
           SortType = stNumeric
@@ -577,15 +680,14 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Caption = 'DAVs'
       ImageIndex = 5
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 763
-      ExplicitHeight = 0
       object grid_dav: TNextGrid
         Left = -3
         Top = 72
         Width = 763
         Height = 316
+        Touch.InteractiveGestures = [igPan, igPressAndTap]
+        Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
+        Caption = ''
         HideScrollBar = False
         Options = [goGrid, goHeader, goSelectFullRow]
         TabOrder = 0
@@ -598,6 +700,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'COO'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 0
           SortType = stAlphabetic
@@ -611,6 +718,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'N'#250'mero'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 1
           SortType = stAlphabetic
@@ -625,6 +737,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'T'#237'tulo'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 2
           SortType = stAlphabetic
@@ -640,6 +757,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Valor-R$'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           Options = [coCanClick, coCanInput, coCanSort, coPublicUsing, coShowTextFitHint]
           ParentFont = False
           Position = 3
@@ -655,16 +777,15 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Caption = 'Abast.Pendentes'
       ImageIndex = 6
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 763
-      ExplicitHeight = 0
       object grid_abastecimento: TNextGrid
         Left = 3
         Top = 56
         Width = 763
         Height = 275
+        Touch.InteractiveGestures = [igPan, igPressAndTap]
+        Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
         AppearanceOptions = [aoHighlightSlideCells]
+        Caption = ''
         HideScrollBar = False
         Options = [goGrid, goHeader, goSelectFullRow]
         TabOrder = 0
@@ -679,6 +800,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Data'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 0
           SortType = stDate
@@ -695,6 +821,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Hora'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 1
           SortType = stAlphabetic
@@ -709,6 +840,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'N'#186
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 2
           SortType = stAlphabetic
@@ -723,6 +859,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Bico'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 3
           SortType = stAlphabetic
@@ -737,6 +878,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Produto'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 4
           SortType = stAlphabetic
@@ -752,6 +898,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Qtde.'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 5
           SortType = stNumeric
@@ -770,6 +921,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Unit'#225'rio'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 6
           SortType = stNumeric
@@ -788,6 +944,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Total-R$'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 7
           SortType = stNumeric
@@ -806,6 +967,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'E.I.'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 8
           SortType = stNumeric
@@ -824,6 +990,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'E.F.'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 9
           SortType = stNumeric
@@ -841,6 +1012,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Codigo'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 10
           SortType = stNumeric
@@ -855,6 +1031,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Tanque'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 11
           SortType = stAlphabetic
@@ -869,7 +1050,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitWidth = 763
         object Button1: TButton
           Left = 176
           Top = 8
@@ -885,16 +1065,15 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Caption = 'Mesas Abert.'
       ImageIndex = 7
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 763
-      ExplicitHeight = 0
       object grid_mesa: TNextGrid
         Left = 0
         Top = 64
         Width = 763
         Height = 316
+        Touch.InteractiveGestures = [igPan, igPressAndTap]
+        Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
         AppearanceOptions = [aoHighlightSlideCells]
+        Caption = ''
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -915,6 +1094,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'N'#250'mero'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 0
           SortType = stNumeric
@@ -932,6 +1116,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Data'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 1
           SortType = stDate
@@ -948,6 +1137,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Hora'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 2
           SortType = stAlphabetic
@@ -963,6 +1157,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = []
           Header.Caption = 'Consumo'
           Header.Alignment = taCenter
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 3
           SortType = stNumeric
@@ -976,17 +1175,16 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     object TabFechamento: TTabSheet
       Caption = 'Fechamento'
       ImageIndex = 8
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 763
-      ExplicitHeight = 0
       object GridFechamento: TNextGrid
         Left = 0
         Top = 0
         Width = 607
         Height = 316
+        Touch.InteractiveGestures = [igPan, igPressAndTap]
+        Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
         Align = alClient
         AppearanceOptions = [aoHighlightSlideCells]
+        Caption = ''
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -998,7 +1196,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         ParentFont = False
         TabOrder = 0
         TabStop = True
-        ExplicitWidth = 763
         object NxNumberColumn11: TNxTextColumn
           Alignment = taRightJustify
           DefaultValue = '0'
@@ -1009,6 +1206,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'C'#243'd'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           Options = [coCanClick, coCanInput, coCanSort, coPublicUsing]
           ParentFont = False
           Position = 0
@@ -1023,6 +1225,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Operador'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 1
           SortType = stAlphabetic
@@ -1036,6 +1243,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Forma'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           ParentFont = False
           Position = 2
           SortType = stAlphabetic
@@ -1051,6 +1263,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Name = 'Tahoma'
           Font.Style = []
           Header.Caption = 'Valor'
+          Header.Font.Charset = DEFAULT_CHARSET
+          Header.Font.Color = clWindowText
+          Header.Font.Height = -11
+          Header.Font.Name = 'Tahoma'
+          Header.Font.Style = []
           Options = [coCanClick, coCanInput, coCanSort, coPublicUsing]
           ParentFont = False
           Position = 3
@@ -1083,6 +1300,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     ParentBackground = False
     ParentFont = False
     TabOrder = 4
+    ExplicitTop = -20
     object Image5: TImage
       Left = 1
       Top = 1
@@ -1093,6 +1311,24 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Center = True
       Proportional = True
     end
+    object lbl1: TLabel
+      Left = 49
+      Top = 1
+      Width = 565
+      Height = 40
+      Align = alClient
+      Caption = '                        FECHAMENTO DO CAIXA'
+      Color = clBackground
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -21
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+      ExplicitWidth = 400
+      ExplicitHeight = 25
+    end
   end
   object query: TIBCQuery
     Connection = frmModulo.conexao
@@ -1101,7 +1337,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   end
   object pop_fechamento: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
-    Version = '2.5.4.3'
+    Version = '2.6.1.0'
     Left = 121
     Top = 137
     object InformaesdoECF1: TMenuItem
@@ -1146,8 +1382,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Top = 217
   end
   object ibcqryArquivo: TIBCQuery
-    Left = 17
-    Top = 297
+    Left = 217
+    Top = 337
   end
   object qrDAV: TIBCQuery
     Connection = frmModulo.conexao
@@ -1170,13 +1406,13 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       'where'
       '  c000074.codcliente = c000007.codigo and'
       '  c000074.codvendedor = c000008.codigo')
-    Left = 353
-    Top = 257
+    Left = 433
+    Top = 305
   end
   object qrEncerrante: TIBCQuery
     Connection = frmModulo.conexao
-    Left = 121
-    Top = 217
+    Left = 241
+    Top = 209
   end
   object qrFechamento: TIBCQuery
     Connection = frmModulo.conexao
