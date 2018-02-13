@@ -1300,7 +1300,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     ParentBackground = False
     ParentFont = False
     TabOrder = 4
-    ExplicitTop = -20
     object Image5: TImage
       Left = 1
       Top = 1

@@ -1257,20 +1257,17 @@ begin
   // venda bruta
   query.sql.add('select sum(cupom_item.valor_total) as venda_bruta,');
   // cancelamento icms
-  query.sql.add('       (select sum(cupom_item.valor_total) from cupom_item, cupom where cupom_item.cod_cupom = cupom.codigo and cupom.data = :data and cupom_item.cancelado = 1) as cancelamento_icms,');
+  query.sql.add('       (select sum(cupom_item.valor_total) from cupom_item, cupom where cupom_item.cod_cupom = cupom.codigo and cupom.data + cupom.hora >= :data and cupom_item.cancelado = 1) as cancelamento_icms,');
   // desconto icms
-  query.sql.add('       ((select sum(cupom_item.valor_desconto) from cupom_item, cupom where cupom_item.cod_cupom = cupom.codigo and cupom.data = :data and cupom_item.cancelado = 0)');
-  query.sql.add('       +(select sum(cupom.valor_desconto) from cupom where cupom.data = :data and cupom.cancelado = 0)) as desconto_icms,');
+  query.sql.add('       ((select sum(cupom_item.valor_desconto) from cupom_item, cupom where cupom_item.cod_cupom = cupom.codigo and cupom.data + cupom.hora >= :data and cupom_item.cancelado = 0)');
+  query.sql.add('       +(select sum(cupom.valor_desconto) from cupom where cupom.data + cupom.hora >= :data and cupom.cancelado = 0)) as desconto_icms,');
   // acrescimo icms
-  query.sql.add('       ((select sum(cupom_item.valor_acrescimo) from cupom_item, cupom where cupom_item.cod_cupom = cupom.codigo and cupom.data = :data and cupom_item.cancelado = 0)');
-  query.sql.add('       +(select sum(cupom.valor_acrescimo) from cupom where cupom.data = :data and cupom.cancelado = 0)) as acrescimo_icms');
-  query.sql.add('from cupom_item, cupom where cupom_item.cod_cupom = cupom.codigo and cupom.data = :data and cupom.cod_vendedor = :codvendedor');
-  query.parambyname('data').asdatetime := ed_data.date;
+  query.sql.add('       ((select sum(cupom_item.valor_acrescimo) from cupom_item, cupom where cupom_item.cod_cupom = cupom.codigo and cupom.data + cupom.hora >= :data and cupom_item.cancelado = 0)');
+  query.sql.add('       +(select sum(cupom.valor_acrescimo) from cupom where cupom.data + cupom.hora >= :data and cupom.cancelado = 0)) as acrescimo_icms');
+  query.sql.add('from cupom_item, cupom where cupom_item.cod_cupom = cupom.codigo and cupom.data + cupom.hora >= :data and cupom.cod_vendedor = :codvendedor');
+  query.parambyname('data').AsString := fechamento;
   query.parambyname('codvendedor').Value := icodigo_Usuario;
   query.open;
-
-
-
   // limpar o grid
   grid_resumo.ClearRows;
   // Iniciar a alimentação
@@ -1380,16 +1377,16 @@ begin
   query.sql.add('    from');
   query.sql.add('      (Select');
   query.sql.add('         cupom_forma.forma as Forma,');
-  query.sql.add('         (cupom_forma.valor - cupom.VALOR_TROCO) as Valor');
+  query.sql.add('         cupom_forma.valor as Valor');
   query.sql.add('       from');
   query.sql.add('         cupom_forma, cupom');
   query.sql.add('       where');
   query.sql.add('         cupom_forma.cod_cupom = cupom.codigo and');
-  query.sql.add('         cupom.DATA = :data and');
+  query.sql.add('         cupom.DATA + cupom.hora >= :data and');
   query.sql.add('         cupom.COD_VENDEDOR = :codvendedor');
   query.sql.add('         )');
   query.sql.add('       group by Forma');
-  query.ParamByName('data').asdatetime := ed_data.Date;
+  query.ParamByName('data').AsString := fechamento;
   query.ParamByName('codvendedor').Value := icodigo_Usuario;
   query.open;
 
@@ -1406,6 +1403,7 @@ begin
   end;
 end;
 
+
 // -------------------------------------------------------------------------- //
 procedure tfrmCaixa_Fechamento.z_aliquota();
 begin
@@ -1415,12 +1413,12 @@ begin
   query.sql.add('select cupom_item.cst, cupom_item.aliquota, sum(cupom_item.valor_total) total');
   query.sql.add('from cupom_item, cupom');
   query.sql.add('where cupom_item.cod_cupom = cupom.codigo');
-  query.sql.add('and cupom.data = :data and cupom.cancelado = 0');
-  query.sql.add('and cupom.cod_vendedor = :codvendedor');  
+  query.sql.add('and cupom.data + cupom.hora >= :data and cupom.cancelado = 0');
+  query.sql.add('and cupom.cod_vendedor = :codvendedor');
   query.sql.add('group by cupom_item.cst, cupom_item.aliquota');
   query.sql.add('order by cupom_item.cst, cupom_item.aliquota');
-  query.ParamByName('data').asdatetime := ed_data.Date;
-  query.ParamByName('codvendedor').Value := icodigo_Usuario;  
+  query.ParamByName('data').AsString := fechamento;
+  query.ParamByName('codvendedor').Value := icodigo_Usuario;
   query.open;
   query.first;
   // limpar o grid
@@ -1441,17 +1439,17 @@ end;
 // -------------------------------------------------------------------------- //
 procedure tfrmCaixa_Fechamento.z_outros();
 begin
-  // filtrar a tabela de documentos naos fiscais agrupando por indice e descricao
+   // filtrar a tabela de documentos naos fiscais agrupando por indice e descricao
   query.close;
   query.sql.clear;
   query.sql.add('select indice, descricao, sum(valor) total');
   query.sql.add('from nao_fiscal');
-  query.sql.add('where data = :data');
+  query.sql.add('where data + hora >= :data');
   query.sql.add('and codvendedor = :codvendedor');
   query.sql.add('group by indice, descricao');
   query.sql.add('order by indice');
-  query.parambyname('data').asdatetime := ed_data.Date;
-  query.parambyname('codvendedor').Value := icodigo_Usuario;  
+  query.parambyname('data').AsString := fechamento;
+  query.parambyname('codvendedor').Value := icodigo_Usuario;
   query.open;
   // limpara o grid
   grid_outros.ClearRows;
@@ -1494,13 +1492,15 @@ end;
 // -------------------------------------------------------------------------- //
 procedure TfrmCaixa_Fechamento.FormShow(Sender: TObject);
 var i : integer;
+
 begin
+
   TipoImp := frmPrincipal.TipoImpressora;
   frmPrincipal.TipoImpressora := NaoFiscal;
 
   qrEncerrante.close;
   qrEncerrante.sql.clear;
-  qrEncerrante.sql.add('select * from Config Where codigo=0');
+  qrEncerrante.sql.add('select * from Config Where codigo=2');
   qrEncerrante.Open;
   qrEncerrante.First;
   fechamento := formatdatetime('yyyy-mm-dd hh:mm:ss', qrEncerrante.fieldbyname('fechamento').AsDateTime);
@@ -1680,17 +1680,13 @@ begin
   frmvenda.Imprime_display_anterior;
 
   // verisificar se o supervisor foi logado
-  if bSupervisor_autenticado then
-  begin
+  if bSupervisor_autenticado then begin
     // verificar serial do ecf
     if frmPrincipal.TipoImpressora = Fiscal then
-      if not verifica_ecf then
-      begin
-         application.messagebox('O número de serie do ECF não condiz com o número cadastrado no PAF!'+#13+
-                                'O Procedimento será abortado!','Erro',mb_ok+mb_iconerror);
-
-
-         exit;
+      if not verifica_ecf then begin
+        application.messagebox('O número de serie do ECF não condiz com o número cadastrado no PAF!'+#13+
+                               'O Procedimento será abortado!','Erro',mb_ok+mb_iconerror);
+        exit;
       end;
 
     // imprimir a reducao z
@@ -1698,8 +1694,8 @@ begin
                                         'Após o fechamento do caixa não será mais possível'+
                                         ' efetuar venda nesta data!'+#13+
                                         'Deseja prosseguir?'),
-                                        'Atenção',mb_yesno+mb_iconwarning+MB_DEFBUTTON2) = idyes then
-    begin
+                                        'Atenção',mb_yesno+mb_iconwarning+MB_DEFBUTTON2) = idyes then begin
+
       // verificar se eh a primeira reducao z do mes
       // caso seja, imprimir uma leitura da memoria fiscal
       // do periodo anterior
@@ -1715,12 +1711,9 @@ begin
       query.sql.add('where ecf = '''+sECF_Serial+'''');
       query.open;
 
-      if query.fieldbyname('mes').asstring <> '' then
-      begin
+      if query.fieldbyname('mes').asstring <> '' then begin
         iMes := strtoint(copy(zerar(query.fieldbyname('mes').asstring,7),1,2));
-        if iMes < strtoint(copy(datetostr(dData_Sistema),4,2)) then
-        begin
-
+        if iMes < strtoint(copy(datetostr(dData_Sistema),4,2)) then begin
           repeat
             frmMsg_Operador.lb_msg.caption := 'Emitindo a Leitura da Memória fiscal do mês anterior...';
             frmMsg_Operador.Show;
@@ -1737,51 +1730,40 @@ begin
             else //Se nao for fiscal
               sMsg := 'OK';
 
-            if sMsg <> 'OK' then
-            begin
+            if sMsg <> 'OK' then begin
               frmMsg_Operador.Hide;
               if application.messagebox(pwidechar('ECF retornou erro!'+#13+
                                                'Mensagem: '+sMsg+#13+
                                                'Deseja tentar outra vez?'),'Erro',mb_yesno+mb_iconerror)
-                                               = idNo then
-              begin
+                                               = idNo then begin
                 break;
-              end
-              else
-              begin
+              end else begin
                 frmMsg_Operador.Show;
                 frmMsg_Operador.Refresh;
               end;
-
             end;
           until sMsg = 'OK';
         end;
       end;
 
-
       brefaz_pre_venda := false;
       brefaz_abastecimento := false;
 
-
       (******************* A B A S T E C I M E N T O S ******************************)
       // verificar a existencia de abastecimentos pendentes
-      if frmcaixa_fechamento.grid_abastecimento.RowCount > 0 then
-      begin
+      if frmcaixa_fechamento.grid_abastecimento.RowCount > 0 then begin
         frmMsg_Operador.hide;
         frmMsg_Operador.Refresh;
 
-        for i := 0 to frmcaixa_fechamento.grid_abastecimento.RowCount - 1 do
-        begin
+        for i := 0 to frmcaixa_fechamento.grid_abastecimento.RowCount - 1 do begin
           bLanca_Abastecimento := true;
           frmMsg_Operador.lb_msg.caption := 'Aguarde! Registrando abastecimento pendente...';
           frmMsg_Operador.Show;
           frmMsg_Operador.Refresh;
 
 
-          with frmVenda do
-          begin
-            if not Abre_Venda then
-            begin
+          with frmVenda do begin
+            if not Abre_Venda then begin
               // Caso o comando de abertura de venda retornou false, abortar o processo;
               // fazer o cancelamento apos emissao da reducao Z!
 
@@ -1790,12 +1772,558 @@ begin
                                      'Atenção',mb_ok+MB_ICONWARNING);
               brefaz_abastecimento := true;
               break;
-            end
-            else
-            begin
+            end else begin
+              qrabastecimento.close;
+              qrabastecimento.sql.clear;
+              qrabastecimento.sql.add('select posto_abastecimento.*, estoque.nome produto,');
+              qrabastecimento.sql.add('estoque.unidade,estoque.cst,estoque.aliquota,estoque.cod_barra');
+              qrabastecimento.sql.add('from posto_abastecimento, estoque');
+              qrabastecimento.sql.add('where posto_abastecimento.cod_produto = estoque.codigo');
+              qrabastecimento.sql.add('and posto_abastecimento.situacao = 0');
+              qrabastecimento.sql.add('and posto_abastecimento.codigo = '+
+                                      frmcaixa_fechamento.grid_abastecimento.Cell[10,i].asstring);
+              qrabastecimento.Open;
+              qrabastecimento.first;
+              while not qrabastecimento.eof do begin
+                sProd_nome := qrabastecimento.fieldbyname('produto').asstring;
+                sProd_unidade := qrabastecimento.fieldbyname('unidade').asstring;
+                sProd_CST := qrabastecimento.fieldbyname('cst').asstring;
+                rProd_aliquota := qrabastecimento.fieldbyname('aliquota').asfloat;
+                iProd_codigo := qrabastecimento.fieldbyname('cod_produto').asinteger;
+                sProd_barra := qrabastecimento.fieldbyname('cod_barra').asstring;
+                rProd_qtde    := qrabastecimento.fieldbyname('qtde').asfloat;
+                rProd_preco   := qrabastecimento.fieldbyname('unitario').asfloat;
+                rProd_total := qrabastecimento.fieldbyname('total').asfloat;
+                rProd_desconto := 0;
+                rProd_acrescimo := 0;
+                // registrar o item
+                Registra_Item;
+                Application.ProcessMessages;
+                qrabastecimento.next;
+              end;
+              iCodigo_abastecimento :=  frmCaixa_fechamento.grid_abastecimento.Cell[10,i].asinteger;
+              sPosto_rodape := //'Tanque'+frmcaixa_fechamento.grid_abastecimento.cell[11,i].asstring+
+                               'Bomba'+frmCaixa_fechamento.grid_abastecimento.cell[2,i].asstring+
+                               'Bico'+frmCaixa_fechamento.grid_abastecimento.cell[3,i].asstring+
+                               'EI'+somenteNumero(zerar(
+                               frmCaixa_fechamento.grid_abastecimento.cell[8,i].asstring,6))+
+                               'EF'+somenteNumero(
+                               zerar(frmCaixa_fechamento.grid_abastecimento.cell[9,i].asstring,6));
+              ilinha_abastecimento := grid.SelectedRow;
+              Cancela_cupom_aberto;
+            end;
+          end;
+        end;
+      end;
+      // verificar se existe diferenca de litragem nos encerrantes
+
+      bt_cupom_encerranteClick(frmcaixa_fechamento);
+
+      bLanca_abastecimento := false;
+      if not brefaz_abastecimento then frmcaixa_fechamento.grid_abastecimento.ClearRows;
+
+      (** final dos abastecimentos **)
 
 
 
+      (******************* P R E   -   V E N D A S ******************************)
+      // verificar a existencia de prevendas abertas
+      if grid_venda.RowCount > 0 then
+      begin
+        frmMsg_Operador.hide;
+        frmMsg_Operador.Refresh;
+        if grid_venda.RowCount = 1 then
+          pTexto := pansichar('Existe uma pré-venda em aberto!'+#13+
+                    'Para efetivar a impressão da redução Z, a mesma terá que ser cancelada!'+#13+
+                    'Deseja prosseguir?')
+        else
+          pTexto := pansichar('Existem '+inttostr(grid_venda.RowCount)+' pré-vendas em aberto!'+#13+
+                    'Para efetivar a impressão da redução Z, todas terão que ser canceladas!'+#13+
+                    'Deseja prosseguir?');
+
+        if application.Messagebox(pwidechar(pTexto),'Atenção',mb_yesno+MB_ICONWARNING+MB_DEFBUTTON2) = idNO then
+          EXIT;
+
+        bLanca_pre_venda := true;
+        for i := 0 to grid_venda.RowCount - 1 do begin
+          frmMsg_Operador.lb_msg.caption := 'Aguarde! Cancelando pré-venda nº '+grid_venda.cell[0,i].asstring+'...';
+          frmMsg_Operador.Show;
+          frmMsg_Operador.Refresh;
+          bLanca_pre_venda := true;
+          with frmVenda do begin
+            if not Abre_Venda then begin
+              // Caso o comando de abertura de venda retornou false, abortar o processo;
+              // fazer o cancelamento apos emissao da reducao Z!
+
+              application.MessageBox('Não foi possível cancelar as pré-vendas!'+#13+
+                                     'O sistema repetirá o processo após a emissão da redução Z!',
+                                     'Atenção',mb_ok+MB_ICONWARNING);
+              brefaz_pre_venda := true;
+              break;
+            end else begin
+              iPre_venda_codigo := grid_venda.cell[0,i].AsInteger;
+              sPre_Venda_Numero := 'PV'+ZERAR(grid_venda.Cell[0,i].asSTRING,10);
+              frmmodulo.query_servidor.Close;
+              frmmodulo.query_servidor.SQL.Clear;
+              frmmodulo.query_servidor.SQL.Add('select orc.*, prod.produto, prod.codbarra, prod.cst, prod.comissao, prod.aliquota');
+              frmmodulo.query_servidor.sql.add('from c000075 orc,');
+              frmmodulo.query_servidor.sql.add('c000025 prod where orc.codproduto = prod.codigo and numeronota = '''+
+                              grid_venda.cell[0,i].asstring+'''');
+              frmmodulo.query_servidor.SQL.Add('and data = :vdat');
+              frmmodulo.query_servidor.params.ParamByName('vdat').AsDateTime := grid_venda.Cell[1,i].AsDateTime;
+              frmmodulo.query_servidor.Open;
+
+
+              // vender os itens
+              // rodar a query do modulo filtrada com os produtos da pre-venda
+              frmmodulo.query_servidor.first;
+              while not frmmodulo.query_servidor.eof do begin
+                sProd_nome := frmmodulo.query_servidor.fieldbyname('produto').asstring;
+                sProd_unidade := frmmodulo.query_servidor.fieldbyname('unidade').asstring;
+                sProd_CST := frmmodulo.query_servidor.fieldbyname('cst').asstring;
+                rProd_aliquota := frmmodulo.query_servidor.fieldbyname('aliquota').asfloat;
+                iProd_codigo := frmmodulo.query_servidor.fieldbyname('codproduto').asinteger;
+                sProd_barra := frmmodulo.query_servidor.fieldbyname('codbarra').asstring;
+                rProd_qtde    := frmmodulo.query_servidor.fieldbyname('qtde').asfloat;
+                rProd_preco   := frmmodulo.query_servidor.fieldbyname('unitario').asfloat;
+                rProd_total := frmmodulo.query_servidor.fieldbyname('total').asfloat;
+                rProd_desconto := frmmodulo.query_servidor.fieldbyname('desconto').asfloat;
+                rProd_acrescimo := frmmodulo.query_servidor.fieldbyname('acrescimo').asfloat;
+                // registrar o item
+                Registra_Item;
+                Application.ProcessMessages;
+                frmmodulo.query_servidor.next;
+              end;
+              Cancela_cupom_aberto;
+            end;
+          end;
+          Application.processmessages;
+        end;
+        if not brefaz_pre_venda then
+          grid_venda.ClearRows;
+        bLanca_pre_venda := false;
+        frmMsg_Operador.Hide;
+        frmMsg_Operador.Refresh;
+      end else begin
+
+      end;
+
+      (** final da pre-venda **)
+
+
+      (* DAVS *)
+      (* VERIFICAR SE O CANCELAMENTO DAS PRE-VENDAS DERAM OK - reducao z tirada no mesmo dia *)
+      (* caso contrario emitir o relatorio dos davs apos a emissao da reducao z junto com as pre-vendas *)
+      brefaz_dav := false;
+      if not relatorio_dav() then brefaz_dav := true;
+
+      (* mesas abertas *)
+      if grid_mesa.RowCount > 0 then
+        relatorio_mesa();
+
+      (* ecnerrantes *)
+      brefaz_encerrante := false;
+      if sRamo_Tipo = '3' then
+        if not relatorio_posto() then brefaz_encerrante := true;
+
+
+      if frmPrincipal.TipoImpressora = Fiscal then begin
+        frmMsg_Operador.hide;
+        frmMsg_Operador.lb_msg.caption := 'Aguarde! Emitindo a redução Z...';
+        frmMsg_Operador.show;
+        frmMsg_Operador.Refresh;
+        repeat
+          sMsg := cECF_ReducaoZ(iECF_Modelo);
+          if sMsg <> 'OK' then begin
+            frmMsg_Operador.Hide;
+            if application.messagebox(pwidechar('ECF retornou erro!'+#13+
+                                             'Mensagem: '+sMsg+#13+
+                                             'Deseja tentar outra vez?'),'Erro',mb_yesno+mb_iconerror)
+                                             = idNo then begin
+              break;
+            end else begin
+              frmMsg_Operador.Show;
+              frmMsg_Operador.Refresh;
+            end;
+
+          end;
+        until sMsg = 'OK';
+      end else //Nao Fiscal
+        sMsg := 'OK';
+      if sMsg = 'OK' then begin
+
+      end;
+      if frmPrincipal.TipoImpressora = Fiscal then
+        frmMsg_Operador.lb_msg.caption := 'Aguarde! Salvando informações da Redução Z...'
+      else
+        frmMsg_Operador.lb_msg.caption := 'Aguarde! Salvando informações do fechamento...';
+
+      frmMsg_Operador.show;
+      frmMsg_Operador.Refresh;
+      with frmModulo do begin
+        // lancar reducao z no banco de dados - Tabela ReducaoZ
+        spReducaoZ.Close;
+        sCodRZ := codifica_reducaoZ;
+        spReducaoZ.ParamByName('codigo').AsString := sCodRZ;
+        spReducaoZ.parambyname('ecf').asstring := sECF_Serial;
+        spReducaoZ.ParamByName('usuario').asstring := sECF_usuario;
+          // CRZ
+        if frmPrincipal.TipoImpressora = Fiscal then begin
+          repeat
+            sMsg := cECF_ReducaoZ_Contador_CRZ(iECF_Modelo);
+            if sMsg = 'ERRO' then begin
+              frmMsg_Operador.show;
+              frmMsg_Operador.Refresh;
+              if application.messagebox(pwidechar('Erro ao extrair CRZ!'+#13+
+                                                  'Mensagem: '+sMsg+#13+
+                                                  'Deseja tentar outra vez?'),'Erro',mb_yesno+
+                                                  mb_iconquestion) = idNo then
+                break
+              else
+                frmMsg_Operador.hide;
+
+            end else
+              spReducaoZ.ParamByName('CRZ').asstring := sMsg;
+
+          until sMsg <> 'ERRO';
+          if sMsg = 'ERRO' then
+            exit;
+          // COO
+          repeat
+            sMsg := cECF_ReducaoZ_Contador_COO(iECF_Modelo);
+            if sMsg = 'ERRO' then begin
+              frmMsg_Operador.show;
+              frmMsg_Operador.Refresh;
+              if application.messagebox(pwidechar('Erro ao extrair COO!'+#13+
+                                                  'Mensagem: '+sMsg+#13+
+                                                  'Deseja tentar outra vez?'),'Erro',mb_yesno+
+                                                  mb_iconquestion) = idNo then
+                break
+              else
+                frmMsg_Operador.hide;
+
+            end else
+              spReducaoZ.ParamByName('COO').asstring := sMsg;
+          until sMsg <> 'ERRO';
+          if sMsg = 'ERRO' then
+            exit;
+            // CRO
+          repeat
+            sMsg := cECF_ReducaoZ_Contador_CRO(iECF_Modelo);
+            if sMsg = 'ERRO' then begin
+              frmMsg_Operador.hide;
+              if application.messagebox(pwidechar('Erro ao extrair CRO!'+#13+
+                                                  'Mensagem: '+sMsg+#13+
+                                                  'Deseja tentar outra vez?'),'Erro',mb_yesno+
+                                                  mb_iconquestion) = idNo then
+                break
+              else begin
+                frmMsg_Operador.show;
+                frmMsg_Operador.Refresh;
+              end;
+
+            end else
+              spReducaoZ.ParamByName('CRO').asstring := sMsg;
+          until sMsg <> 'ERRO';
+          if sMsg = 'ERRO' then
+            exit;
+          // DATA DO MOVIMENTO
+          repeat
+            sMsg := cECF_ReducaoZ_Data_Movimento(iECF_Modelo);
+            if sMsg = 'ERRO' then begin
+              frmMsg_Operador.hide;
+              if application.messagebox(pwidechar('Erro ao extrair data do movimento!'+#13+
+                                                  'Mensagem: '+sMsg+#13+
+                                                  'Deseja tentar outra vez?'),'Erro',mb_yesno+
+                                                  mb_iconquestion) = idNo then
+                break
+              else begin
+                frmMsg_Operador.show;
+                frmMsg_Operador.Refresh;
+              end;
+
+            end else begin
+              spReducaoZ.ParamByName('Data_movimento').asdatetime := formata_data(sMsg);
+              dData_movto := formata_data(sMsg);
+            end;
+          until sMsg <> 'ERRO';
+          if sMsg = 'ERRO' then
+            exit;
+          // DATA e HORA DA EMISSAO
+          repeat
+            sMsg := cECF_ReducaoZ_DataHora(iECF_Modelo);
+            if sMsg = 'ERRO' then begin
+              frmMsg_Operador.hide;
+              if application.messagebox(pwidechar('Erro ao extrair data e hora da emissão!'+#13+
+                                                  'Mensagem: '+sMsg+#13+
+                                                  'Deseja tentar outra vez?'),'Erro',mb_yesno+
+                                                  mb_iconquestion) = idNo then
+                break
+              else begin
+                frmMsg_Operador.show;
+                frmMsg_Operador.Refresh;
+              end;
+            end else begin
+              spReducaoZ.ParamByName('Data_emissao').asdatetime := formata_data(copy(sMsg,1,6));
+              spReducaoZ.ParamByName('Hora_emissao').AsTime := strtotime(formata_hora(copy(sMsg,8,6)));
+            end;
+          until sMsg <> 'ERRO';
+          if sMsg = 'ERRO' then
+            exit;
+          // TOTALIZADOR GERAL
+          repeat
+            sMsg := cECF_ReducaoZ_Totalizador_Geral(iECF_Modelo);
+            if sMsg = 'ERRO' then begin
+              frmMsg_Operador.hide;
+              if application.messagebox(pwidechar('Erro ao extrair totalizador geral!'+#13+
+                                                  'Mensagem: '+sMsg+#13+
+                                                  'Deseja tentar outra vez?'),'Erro',mb_yesno+
+                                                  mb_iconquestion) = idNo then
+                break
+              else begin
+                frmMsg_Operador.show;
+                frmMsg_Operador.Refresh;
+              end;
+            end else
+              spReducaoZ.ParamByName('totalizador_geral').asfloat := strtofloat(sMSG);
+          until sMsg <> 'ERRO';
+          if sMsg = 'ERRO' then
+            exit;
+          // VENDA BRUTA
+          repeat
+            sMsg := cECF_ReducaoZ_Venda_Bruta(iECF_Modelo);
+            if sMsg = 'ERRO' then begin
+              frmMsg_Operador.hide;
+              if application.messagebox(pwidechar('Erro ao extrair venda bruta!'+#13+
+                                                  'Mensagem: '+sMsg+#13+
+                                                  'Deseja tentar outra vez?'),'Erro',mb_yesno+
+                                                  mb_iconquestion) = idNo then
+              break
+            else begin
+              frmMsg_Operador.show;
+              frmMsg_Operador.Refresh;
+            end;
+
+          end else
+            spReducaoZ.ParamByName('venda_bruta').asfloat := strtofloat(sMSG);
+          until sMsg <> 'ERRO';
+          if sMsg = 'ERRO' then
+            exit;
+          // TOTALIZADORES PARCIAIS
+          repeat
+            sMsg := cECF_ReducaoZ_Totalizador_Parcial(iECF_Modelo);
+            if sMsg = 'ERRO' then begin
+              frmMsg_Operador.hide;
+              if application.messagebox(pwidechar('Erro ao extrair totalizadores parciais!'+#13+
+                                                  'Mensagem: '+sMsg+#13+
+                                                  'Deseja tentar outra vez?'),'Erro',mb_yesno+
+                                                  mb_iconquestion) = idNo then
+                break
+              else begin
+                frmMsg_Operador.show;
+                frmMsg_Operador.Refresh;
+              end;
+            end;
+          until sMsg <> 'ERRO';
+          if sMsg = 'ERRO' then
+            exit;
+
+          // rodar a tabela de totalizadores
+          for i := 1 to 49 do begin
+            if (Trim(tbtotalizador[i].nome) = '') or
+               (Trim(tbtotalizador[i].nome) = '00000') or
+               (Trim(tbtotalizador[i].nome) = '0000') then
+               // nao registra
+            else begin
+              // Cancelamento ICMS
+              if tbtotalizador[i].Nome = 'Can-T' then
+                 spReducaoZ.ParamByName('cancelamento_icms').asfloat := tbtotalizador[i].Valor;
+              // Desconto ICMS
+              if tbtotalizador[i].Nome = 'DT' then
+                 spReducaoZ.ParamByName('desconto_icms').asfloat := tbtotalizador[i].Valor;
+              // Cancelamento ISS
+              if tbtotalizador[i].Nome = 'Can-S' then
+                 spReducaoZ.ParamByName('cancelamento_iss').asfloat := tbtotalizador[i].Valor;
+              // Desconto ISS
+              if tbtotalizador[i].Nome = 'DS' then
+                 spReducaoZ.ParamByName('desconto_iss').asfloat := tbtotalizador[i].Valor;
+              // Acrescimo ICMS
+              if tbtotalizador[i].Nome = 'AT' then
+                 spReducaoZ.ParamByName('acrescimo_icms').asfloat := tbtotalizador[i].Valor;
+              // Acrescimo ISS
+              if tbtotalizador[i].Nome = 'AS' then
+                 spReducaoZ.ParamByName('acrescimo_iss').asfloat := tbtotalizador[i].Valor;
+            end;
+          end;
+
+          // TOTAL ISS
+          repeat
+            sMsg := cECF_ReducaoZ_Total_ISS(iECF_Modelo);
+            if sMsg = 'ERRO' then begin
+              frmMsg_Operador.hide;
+              if application.messagebox(pwidechar('Erro ao extrair o Total do ISS!'+#13+
+                                                  'Mensagem: '+sMsg+#13+
+                                                  'Deseja tentar outra vez?'),'Erro',mb_yesno+
+                                                  mb_iconquestion) = idNo then
+                break
+              else begin
+                frmMsg_Operador.show;
+                frmMsg_Operador.Refresh;
+              end;
+            end else
+              spReducaoZ.ParamByName('total_iss').asfloat := strtofloat(sMsg);
+          until sMsg <> 'ERRO';
+          if sMsg = 'ERRO' then
+            exit;
+          spReducaoZ.ParamByName('venda_liquida').asfloat := spReducaoZ.ParamByName('venda_bruta').asfloat -
+                                                             spReducaoZ.ParamByName('cancelamento_icms').asfloat -
+                                                             spReducaoZ.ParamByName('desconto_icms').asfloat -
+                                                             spReducaoZ.ParamByName('total_iss').asfloat -
+                                                             spReducaoZ.ParamByName('cancelamento_iss').asfloat -
+                                                             spReducaoZ.ParamByName('desconto_iss').asfloat;
+
+          spReducaoZ.ParamByName('ecf_caixa').asstring := copy(sECF_Caixa,1,3);
+
+          try
+            spReducaoz.Prepare;
+            spReducaoZ.Execute;
+          except
+            on E:Exception do begin
+              frmMsg_Operador.hide;
+              Application.MessageBox(pwidechar('Erro ao gravar a redução Z no banco de dados'+#13+
+                                               'Mensagem: '+E.Message+#13+
+                                               'O procedimento será abortado'),'Erro',mb_ok+
+                                               mb_iconerror);
+              exit;
+            end;
+          end;
+
+          frmMsg_Operador.hide;
+          frmMsg_Operador.lb_msg.caption := 'Aguarde! Lendo os totalizadores Parciais...';
+          frmMsg_Operador.show;
+          frmMsg_Operador.Refresh;
+          (*TOTALIZADORES PARCIAIS*)
+          (*Guardar em cada registro um totalizador*)
+          try
+            for i := 1 to 49 do begin
+              if (Trim(tbtotalizador[i].nome) = '') or
+                 (Trim(tbtotalizador[i].nome) = '00000') or
+                 (Trim(tbtotalizador[i].nome) = '0000') then
+                 // nao registra
+              else begin
+                spReducaoZ_Total_Parcial.Close;
+                spReducaoZ_Total_Parcial.ParamByName('codigo').asstring := sCodRZ+Zerar(inttostr(i),2);
+                spReducaoZ_Total_Parcial.ParamByName('cod_reducaoZ').asstring := scodRZ;
+                spReducaoZ_Total_Parcial.ParamByName('Totalizador').asstring := tbtotalizador[i].Nome;
+                spReducaoZ_Total_Parcial.ParamByName('valor').asfloat :=  tbtotalizador[i].Valor;
+                spReducaoZ_Total_Parcial.Prepare;
+                spReducaoZ_Total_Parcial.Execute;
+              end;
+            end;
+          except
+            on E:Exception do begin
+              frmMsg_Operador.hide;
+              Application.MessageBox(pwidechar('Erro ao gravar totalizadores parciais'+
+                                               ' no banco de dados'+#13+
+                                               'Mensagem: '+E.Message+#13+
+                                               'O procedimento será abortado'),'Erro',mb_ok+
+                                               mb_iconerror);
+              // excluir a reducao z
+              query.close;
+              query.sql.clear;
+              query.sql.add('delete from reducaoz where codigo = '''+scodRZ+'''');
+              query.ExecSQL;
+              exit;
+            end;
+          end;
+        end else //Nao Fiscal
+          sMsg := 'OK';
+
+        // verificar se eh para excluir as prevendas (caso a reducao z seja feita no outro dia)
+
+        (******************* P R E   -   V E N D A S ******************************)
+        // verificar a existencia de prevendas abertas
+        if brefaz_pre_venda then begin
+          sleep(1000);
+          Application.ProcessMessages;
+          for i := 0 to grid_venda.RowCount - 1 do begin
+            frmMsg_Operador.lb_msg.caption := 'Aguarde! Cancelando pré-venda nº '+grid_venda.cell[0,i].asstring+'...';
+            frmMsg_Operador.Show;
+            frmMsg_Operador.Refresh;
+            bLanca_pre_venda := true;
+            with frmVenda do begin
+              repeat
+                brefaz_pre_venda := abre_venda;
+                if not brefaz_pre_venda then begin
+                  if application.MessageBox('Erro ao abrir o cupom fiscal para fazer o cancelamento da pré-venda!'+#13+
+                                            'Deseja tentar outra vez?','Erro',mb_yesno+mb_iconerror) = idno then
+                  break;
+                end;
+              until brefaz_pre_venda;
+              if brefaz_pre_venda then begin
+                iPre_venda_codigo := grid_venda.cell[0,i].AsInteger;
+                sPre_Venda_Numero := 'PV'+ZERAR(grid_venda.Cell[0,i].asSTRING,10);
+                frmmodulo.query_servidor.Close;
+                frmmodulo.query_servidor.SQL.Clear;
+                frmmodulo.query_servidor.SQL.Add('select orc.*, prod.produto, prod.codbarra, prod.cst, prod.comissao, prod.aliquota');
+                frmmodulo.query_servidor.sql.add('from c000075 orc,');
+                frmmodulo.query_servidor.sql.add('c000025 prod where orc.codproduto = prod.codigo and numeronota = '''+
+                                grid_venda.cell[0,i].asstring+'''');
+                frmmodulo.query_servidor.SQL.Add('and data = :vdat');
+                frmmodulo.query_servidor.params.ParamByName('vdat').AsDateTime := grid_venda.Cell[1,i].AsDateTime;
+                frmmodulo.query_servidor.Open;
+
+                // vender os itens
+                // rodar a query do modulo filtrada com os produtos da pre-venda
+                frmmodulo.query_servidor.first;
+                while not frmmodulo.query_servidor.eof do begin
+                  sProd_nome := frmmodulo.query_servidor.fieldbyname('produto').asstring;
+                  sProd_unidade := frmmodulo.query_servidor.fieldbyname('unidade').asstring;
+                  sProd_CST := frmmodulo.query_servidor.fieldbyname('cst').asstring;
+                  rProd_aliquota := frmmodulo.query_servidor.fieldbyname('aliquota').asfloat;
+                  iProd_codigo := frmmodulo.query_servidor.fieldbyname('codproduto').asinteger;
+                  sProd_barra := frmmodulo.query_servidor.fieldbyname('codbarra').asstring;
+                  rProd_qtde    := frmmodulo.query_servidor.fieldbyname('qtde').asfloat;
+                  rProd_preco   := frmmodulo.query_servidor.fieldbyname('unitario').asfloat;
+                  rProd_total := frmmodulo.query_servidor.fieldbyname('total').asfloat;
+                  rProd_desconto := frmmodulo.query_servidor.fieldbyname('desconto').asfloat;
+                  rProd_acrescimo := frmmodulo.query_servidor.fieldbyname('acrescimo').asfloat;
+                  // registrar o item
+                  Registra_Item;
+                  Application.ProcessMessages;
+                  frmmodulo.query_servidor.next;
+                end;
+                Cancela_cupom_aberto;
+              end;
+            end;
+            Application.processmessages;
+          end;
+          bLanca_pre_venda := false;
+          grid_venda.ClearRows;
+          frmMsg_Operador.Hide;
+          frmMsg_Operador.Refresh;
+        end;
+
+        if brefaz_abastecimento then begin
+          sleep(1000);
+          Application.ProcessMessages;
+          frmMsg_Operador.hide;
+          frmMsg_Operador.Refresh;
+          for i := 0 to frmcaixa_fechamento.grid_abastecimento.RowCount - 1 do begin
+            bLanca_Abastecimento := true;
+            frmMsg_Operador.lb_msg.caption := 'Aguarde! Registrando abastecimento pendente...';
+            frmMsg_Operador.Show;
+            frmMsg_Operador.Refresh;
+            with frmVenda do begin
+              if not Abre_Venda then begin
+                // Caso o comando de abertura de venda retornou false, abortar o processo;
+                // fazer o cancelamento apos emissao da reducao Z!
+                application.MessageBox('Não foi possível cancelar as pré-vendas!'+#13+
+                                       'O sistema repetirá o processo após a emissão da redução Z!',
+                                       'Atenção',mb_ok+MB_ICONWARNING);
+                brefaz_abastecimento := true;
+                break;
+              end else begin
                 qrabastecimento.close;
                 qrabastecimento.sql.clear;
                 qrabastecimento.sql.add('select posto_abastecimento.*, estoque.nome produto,');
@@ -1806,11 +2334,8 @@ begin
                 qrabastecimento.sql.add('and posto_abastecimento.codigo = '+
                                         frmcaixa_fechamento.grid_abastecimento.Cell[10,i].asstring);
                 qrabastecimento.Open;
-
-
                 qrabastecimento.first;
-                while not qrabastecimento.eof do
-                begin
+                while not qrabastecimento.eof do begin
                   sProd_nome := qrabastecimento.fieldbyname('produto').asstring;
                   sProd_unidade := qrabastecimento.fieldbyname('unidade').asstring;
                   sProd_CST := qrabastecimento.fieldbyname('cst').asstring;
@@ -1837,725 +2362,53 @@ begin
                                  zerar(frmCaixa_fechamento.grid_abastecimento.cell[9,i].asstring,6));
                 ilinha_abastecimento := grid.SelectedRow;
                 Cancela_cupom_aberto;
+              end;
             end;
           end;
         end;
-      end;
 
-        // verificar se existe diferenca de litragem nos encerrantes
-
-        bt_cupom_encerranteClick(frmcaixa_fechamento);
-
-        bLanca_abastecimento := false;
-        if not brefaz_abastecimento then frmcaixa_fechamento.grid_abastecimento.ClearRows;
-
-        (** final dos abastecimentos **)
-
-
-
-        (******************* P R E   -   V E N D A S ******************************)
-        // verificar a existencia de prevendas abertas
-        if grid_venda.RowCount > 0 then
-        begin
-          frmMsg_Operador.hide;
+        if brefaz_dav then begin
+          (* imprimir a relacao de dav *)
+          relatorio_dav;
+        end;
+        if brefaz_encerrante then begin
+          (* tentar imprimir o relatorio de encerrante*)
+          relatorio_posto;
+        end;
+        // atualizar os dados no servidor
+        // criar o arquivo fiscal automaticamente
+        if frmprincipal.TipoImpressora = fiscal then begin
+          frmMsg_Operador.lb_msg.caption := 'Aguarde! Criando arquivo fiscal...';
+          frmMsg_Operador.Show;
           frmMsg_Operador.Refresh;
-          if grid_venda.RowCount = 1 then
-            pTexto := pansichar('Existe uma pré-venda em aberto!'+#13+
-                      'Para efetivar a impressão da redução Z, a mesma terá que ser cancelada!'+#13+
-                      'Deseja prosseguir?')
-          else
-            pTexto := pansichar('Existem '+inttostr(grid_venda.RowCount)+' pré-vendas em aberto!'+#13+
-                      'Para efetivar a impressão da redução Z, todas terão que ser canceladas!'+#13+
-                      'Deseja prosseguir?');
-
-          if application.Messagebox(pwidechar(pTexto),'Atenção',mb_yesno+MB_ICONWARNING+MB_DEFBUTTON2) = idNO
-          then EXIT;
-
-          bLanca_pre_venda := true;
-          for i := 0 to grid_venda.RowCount - 1 do
-          begin
-            frmMsg_Operador.lb_msg.caption := 'Aguarde! Cancelando pré-venda nº '+grid_venda.cell[0,i].asstring+'...';
-            frmMsg_Operador.Show;
-            frmMsg_Operador.Refresh;
-
-            bLanca_pre_venda := true;
-            with frmVenda do
-            begin
-              if not Abre_Venda then
-              begin
-                // Caso o comando de abertura de venda retornou false, abortar o processo;
-                // fazer o cancelamento apos emissao da reducao Z!
-
-                application.MessageBox('Não foi possível cancelar as pré-vendas!'+#13+
-                                       'O sistema repetirá o processo após a emissão da redução Z!',
-                                       'Atenção',mb_ok+MB_ICONWARNING);
-                brefaz_pre_venda := true;
-                break;
-              end
-              else
-              begin
-                iPre_venda_codigo := grid_venda.cell[0,i].AsInteger;
-                sPre_Venda_Numero := 'PV'+ZERAR(grid_venda.Cell[0,i].asSTRING,10);
-                frmmodulo.query_servidor.Close;
-                frmmodulo.query_servidor.SQL.Clear;
-                frmmodulo.query_servidor.SQL.Add('select orc.*, prod.produto, prod.codbarra, prod.cst, prod.comissao, prod.aliquota');
-                frmmodulo.query_servidor.sql.add('from c000075 orc,');
-                frmmodulo.query_servidor.sql.add('c000025 prod where orc.codproduto = prod.codigo and numeronota = '''+
-                                grid_venda.cell[0,i].asstring+'''');
-                frmmodulo.query_servidor.SQL.Add('and data = :vdat');
-                frmmodulo.query_servidor.params.ParamByName('vdat').AsDateTime := grid_venda.Cell[1,i].AsDateTime;
-                frmmodulo.query_servidor.Open;
-
-
-                // vender os itens
-                // rodar a query do modulo filtrada com os produtos da pre-venda
-                frmmodulo.query_servidor.first;
-                while not frmmodulo.query_servidor.eof do
-                begin
-                  sProd_nome := frmmodulo.query_servidor.fieldbyname('produto').asstring;
-                  sProd_unidade := frmmodulo.query_servidor.fieldbyname('unidade').asstring;
-                  sProd_CST := frmmodulo.query_servidor.fieldbyname('cst').asstring;
-                  rProd_aliquota := frmmodulo.query_servidor.fieldbyname('aliquota').asfloat;
-                  iProd_codigo := frmmodulo.query_servidor.fieldbyname('codproduto').asinteger;
-                  sProd_barra := frmmodulo.query_servidor.fieldbyname('codbarra').asstring;
-                  rProd_qtde    := frmmodulo.query_servidor.fieldbyname('qtde').asfloat;
-                  rProd_preco   := frmmodulo.query_servidor.fieldbyname('unitario').asfloat;
-                  rProd_total := frmmodulo.query_servidor.fieldbyname('total').asfloat;
-                  rProd_desconto := frmmodulo.query_servidor.fieldbyname('desconto').asfloat;
-                  rProd_acrescimo := frmmodulo.query_servidor.fieldbyname('acrescimo').asfloat;
-                  // registrar o item
-                  Registra_Item;
-                  Application.ProcessMessages;
-                  frmmodulo.query_servidor.next;
-                end;
-                Cancela_cupom_aberto;
-              end;
-            end;
-            Application.processmessages;
-          end;
-
-          if not brefaz_pre_venda then grid_venda.ClearRows;
-
-          bLanca_pre_venda := false;
-          frmMsg_Operador.Hide;
-          frmMsg_Operador.Refresh;
-        end
+          sMsg := arquivo_fiscal(dData_movto);
+        end else
+          sMsg := 'OK';
+        frmMsg_Operador.hide;
+        if sMsg = 'ERRO' then
+          Application.MessageBox('Erro ao criar o arquivo fiscal!','Erro',mb_ok+MB_ICONERROR)
         else
         begin
-
-
+          // atualizando a tabela de config com a data do movimento e situacao fechado
+          query.Close;
+          query.sql.clear;
+          query.sql.add('update config set  caixa_situacao = ''FECHADO'',');
+          query.sql.add('caixa_data_movto = :data, ');
+          query.sql.Add('fechamento = :datafechamento');
+          query.ParamByName('datafechamento').AsString := formatdatetime('yyyy-mm-dd hh:mm:ss', now);
+          query.ParamByName('data').asdatetime := ed_data.Date;
+          query.ExecSQL;
+          Application.MessageBox('Procedimento concluído com sucesso!','Aviso',mb_ok+MB_ICONINFORMATION);
+          CLOSE;
+          FRMVENDA.CLOSE;
         end;
-
-        (** final da pre-venda **)
-
-
-        (* DAVS *)
-        (* VERIFICAR SE O CANCELAMENTO DAS PRE-VENDAS DERAM OK - reducao z tirada no mesmo dia *)
-        (* caso contrario emitir o relatorio dos davs apos a emissao da reducao z junto com as pre-vendas *)
-        brefaz_dav := false;
-        if not relatorio_dav() then brefaz_dav := true;
-
-        (* mesas abertas *)
-        if grid_mesa.RowCount > 0 then
-          relatorio_mesa();
-
-        (* ecnerrantes *)
-        brefaz_encerrante := false;
-        if sRamo_Tipo = '3' then
-          if not relatorio_posto() then brefaz_encerrante := true;
-
-
-         if frmPrincipal.TipoImpressora = Fiscal then
-         begin
-            frmMsg_Operador.hide;
-            frmMsg_Operador.lb_msg.caption := 'Aguarde! Emitindo a redução Z...';
-            frmMsg_Operador.show;
-            frmMsg_Operador.Refresh;
-            repeat
-              sMsg := cECF_ReducaoZ(iECF_Modelo);
-              if sMsg <> 'OK' then
-              begin
-                frmMsg_Operador.Hide;
-                if application.messagebox(pwidechar('ECF retornou erro!'+#13+
-                                                 'Mensagem: '+sMsg+#13+
-                                                 'Deseja tentar outra vez?'),'Erro',mb_yesno+mb_iconerror)
-                                                 = idNo then
-                begin
-                  break;
-                end
-                else
-                begin
-                  frmMsg_Operador.Show;
-                  frmMsg_Operador.Refresh;
-                end;
-
-              end;
-            until sMsg = 'OK';
-         end
-          else //Nao Fiscal
-            sMsg := 'OK';
-
-
-          if sMsg = 'OK' then
-          begin
-
-          end;
-            if frmPrincipal.TipoImpressora = Fiscal then
-              frmMsg_Operador.lb_msg.caption := 'Aguarde! Salvando informações da Redução Z...'
-            else
-              frmMsg_Operador.lb_msg.caption := 'Aguarde! Salvando informações do fechamento...';
-
-            frmMsg_Operador.show;
-            frmMsg_Operador.Refresh;
-
-            with frmModulo do
-            begin
-              // lancar reducao z no banco de dados - Tabela ReducaoZ
-              spReducaoZ.Close;
-              sCodRZ := codifica_reducaoZ;
-              spReducaoZ.ParamByName('codigo').AsString := sCodRZ;
-              spReducaoZ.parambyname('ecf').asstring := sECF_Serial;
-              spReducaoZ.ParamByName('usuario').asstring := sECF_usuario;
-
-            // CRZ
-           if frmPrincipal.TipoImpressora = Fiscal then
-           begin
-                repeat
-                  sMsg := cECF_ReducaoZ_Contador_CRZ(iECF_Modelo);
-                  if sMsg = 'ERRO' then
-                  begin
-                    frmMsg_Operador.show;
-                    frmMsg_Operador.Refresh;
-
-                    if application.messagebox(pwidechar('Erro ao extrair CRZ!'+#13+
-                                                        'Mensagem: '+sMsg+#13+
-                                                        'Deseja tentar outra vez?'),'Erro',mb_yesno+
-                                                        mb_iconquestion) = idNo then
-                      break
-                    else
-                      frmMsg_Operador.hide;
-
-                  end
-                  else
-                    spReducaoZ.ParamByName('CRZ').asstring := sMsg;
-
-                until sMsg <> 'ERRO';
-
-
-              if sMsg = 'ERRO' then exit;
-
-            // COO
-              repeat
-                sMsg := cECF_ReducaoZ_Contador_COO(iECF_Modelo);
-                if sMsg = 'ERRO' then
-                begin
-                  frmMsg_Operador.show;
-                  frmMsg_Operador.Refresh;
-                  if application.messagebox(pwidechar('Erro ao extrair COO!'+#13+
-                                                      'Mensagem: '+sMsg+#13+
-                                                      'Deseja tentar outra vez?'),'Erro',mb_yesno+
-                                                      mb_iconquestion) = idNo then
-                    break
-                  else
-                    frmMsg_Operador.hide;
-
-                end
-                else
-                  spReducaoZ.ParamByName('COO').asstring := sMsg;
-              until sMsg <> 'ERRO';
-
-
-                if sMsg = 'ERRO' then exit;
-
-              // CRO
-              repeat
-                sMsg := cECF_ReducaoZ_Contador_CRO(iECF_Modelo);
-                if sMsg = 'ERRO' then
-                begin
-                  frmMsg_Operador.hide;
-                  if application.messagebox(pwidechar('Erro ao extrair CRO!'+#13+
-                                                      'Mensagem: '+sMsg+#13+
-                                                      'Deseja tentar outra vez?'),'Erro',mb_yesno+
-                                                      mb_iconquestion) = idNo then
-                    break
-                  else
-                  begin
-                    frmMsg_Operador.show;
-                    frmMsg_Operador.Refresh;
-                  end;
-
-                end
-                else
-                  spReducaoZ.ParamByName('CRO').asstring := sMsg;
-              until sMsg <> 'ERRO';
-              if sMsg = 'ERRO' then exit;
-
-                // DATA DO MOVIMENTO
-                repeat
-                  sMsg := cECF_ReducaoZ_Data_Movimento(iECF_Modelo);
-                  if sMsg = 'ERRO' then
-                  begin
-                    frmMsg_Operador.hide;
-                    if application.messagebox(pwidechar('Erro ao extrair data do movimento!'+#13+
-                                                        'Mensagem: '+sMsg+#13+
-                                                        'Deseja tentar outra vez?'),'Erro',mb_yesno+
-                                                        mb_iconquestion) = idNo then
-                      break
-                    else
-                    begin
-                      frmMsg_Operador.show;
-                      frmMsg_Operador.Refresh;
-                    end;
-
-                  end
-                  else
-                  begin
-                    spReducaoZ.ParamByName('Data_movimento').asdatetime := formata_data(sMsg);
-                    dData_movto := formata_data(sMsg);
-                  end;
-                until sMsg <> 'ERRO';
-                if sMsg = 'ERRO' then exit;
-
-
-                // DATA e HORA DA EMISSAO
-                repeat
-                  sMsg := cECF_ReducaoZ_DataHora(iECF_Modelo);
-                  if sMsg = 'ERRO' then
-                  begin
-                    frmMsg_Operador.hide;
-                    if application.messagebox(pwidechar('Erro ao extrair data e hora da emissão!'+#13+
-                                                        'Mensagem: '+sMsg+#13+
-                                                        'Deseja tentar outra vez?'),'Erro',mb_yesno+
-                                                        mb_iconquestion) = idNo then
-                      break
-                    else
-                    begin
-                      frmMsg_Operador.show;
-                      frmMsg_Operador.Refresh;
-                    end;
-
-                  end
-                  else
-                  begin
-                    spReducaoZ.ParamByName('Data_emissao').asdatetime := formata_data(copy(sMsg,1,6));
-                    spReducaoZ.ParamByName('Hora_emissao').AsTime := strtotime(formata_hora(copy(sMsg,8,6)));
-                  end;
-                until sMsg <> 'ERRO';
-                if sMsg = 'ERRO' then exit;
-
-
-                // TOTALIZADOR GERAL
-                repeat
-                  sMsg := cECF_ReducaoZ_Totalizador_Geral(iECF_Modelo);
-                  if sMsg = 'ERRO' then
-                  begin
-                    frmMsg_Operador.hide;
-                    if application.messagebox(pwidechar('Erro ao extrair totalizador geral!'+#13+
-                                                        'Mensagem: '+sMsg+#13+
-                                                        'Deseja tentar outra vez?'),'Erro',mb_yesno+
-                                                        mb_iconquestion) = idNo then
-                      break
-                    else
-                    begin
-                      frmMsg_Operador.show;
-                      frmMsg_Operador.Refresh;
-                    end;
-
-                  end
-                  else
-                    spReducaoZ.ParamByName('totalizador_geral').asfloat := strtofloat(sMSG);
-                until sMsg <> 'ERRO';
-                if sMsg = 'ERRO' then exit;
-
-                // VENDA BRUTA
-                repeat
-                  sMsg := cECF_ReducaoZ_Venda_Bruta(iECF_Modelo);
-                  if sMsg = 'ERRO' then
-                  begin
-                    frmMsg_Operador.hide;
-                    if application.messagebox(pwidechar('Erro ao extrair venda bruta!'+#13+
-                                                        'Mensagem: '+sMsg+#13+
-                                                        'Deseja tentar outra vez?'),'Erro',mb_yesno+
-                                                        mb_iconquestion) = idNo then
-                      break
-                    else
-                    begin
-                      frmMsg_Operador.show;
-                      frmMsg_Operador.Refresh;
-                    end;
-
-                  end
-                  else
-                    spReducaoZ.ParamByName('venda_bruta').asfloat := strtofloat(sMSG);
-                until sMsg <> 'ERRO';
-                if sMsg = 'ERRO' then exit;
-
-                // TOTALIZADORES PARCIAIS
-                repeat
-                  sMsg := cECF_ReducaoZ_Totalizador_Parcial(iECF_Modelo);
-                  if sMsg = 'ERRO' then
-                  begin
-                    frmMsg_Operador.hide;
-                    if application.messagebox(pwidechar('Erro ao extrair totalizadores parciais!'+#13+
-                                                        'Mensagem: '+sMsg+#13+
-                                                        'Deseja tentar outra vez?'),'Erro',mb_yesno+
-                                                        mb_iconquestion) = idNo then
-                      break
-                    else
-                    begin
-                      frmMsg_Operador.show;
-                      frmMsg_Operador.Refresh;
-                    end;
-
-                  end;
-                until sMsg <> 'ERRO';
-                if sMsg = 'ERRO' then exit;
-
-
-
-            // rodar a tabela de totalizadores
-            for i := 1 to 49 do
-            begin
-              if (Trim(tbtotalizador[i].nome) = '') or
-                 (Trim(tbtotalizador[i].nome) = '00000') or
-                 (Trim(tbtotalizador[i].nome) = '0000')
-                  then
-                 // nao registra
-              else
-              begin
-                // Cancelamento ICMS
-                if tbtotalizador[i].Nome = 'Can-T' then
-                   spReducaoZ.ParamByName('cancelamento_icms').asfloat := tbtotalizador[i].Valor;
-                // Desconto ICMS
-                if tbtotalizador[i].Nome = 'DT' then
-                   spReducaoZ.ParamByName('desconto_icms').asfloat := tbtotalizador[i].Valor;
-                // Cancelamento ISS
-                if tbtotalizador[i].Nome = 'Can-S' then
-                   spReducaoZ.ParamByName('cancelamento_iss').asfloat := tbtotalizador[i].Valor;
-                // Desconto ISS
-                if tbtotalizador[i].Nome = 'DS' then
-                   spReducaoZ.ParamByName('desconto_iss').asfloat := tbtotalizador[i].Valor;
-                // Acrescimo ICMS
-                if tbtotalizador[i].Nome = 'AT' then
-                   spReducaoZ.ParamByName('acrescimo_icms').asfloat := tbtotalizador[i].Valor;
-                // Acrescimo ISS
-                if tbtotalizador[i].Nome = 'AS' then
-                   spReducaoZ.ParamByName('acrescimo_iss').asfloat := tbtotalizador[i].Valor;
-              end;
-            end;
-
-            // TOTAL ISS
-            repeat
-              sMsg := cECF_ReducaoZ_Total_ISS(iECF_Modelo);
-              if sMsg = 'ERRO' then
-              begin
-                frmMsg_Operador.hide;
-                if application.messagebox(pwidechar('Erro ao extrair o Total do ISS!'+#13+
-                                                    'Mensagem: '+sMsg+#13+
-                                                    'Deseja tentar outra vez?'),'Erro',mb_yesno+
-                                                    mb_iconquestion) = idNo then
-                  break
-                else
-                begin
-                  frmMsg_Operador.show;
-                  frmMsg_Operador.Refresh;
-                end;
-
-              end
-              else
-                spReducaoZ.ParamByName('total_iss').asfloat := strtofloat(sMsg);
-            until sMsg <> 'ERRO';
-
-            if sMsg = 'ERRO' then
-              exit;
-
-            spReducaoZ.ParamByName('venda_liquida').asfloat :=
-              spReducaoZ.ParamByName('venda_bruta').asfloat -
-              spReducaoZ.ParamByName('cancelamento_icms').asfloat -
-              spReducaoZ.ParamByName('desconto_icms').asfloat -
-              spReducaoZ.ParamByName('total_iss').asfloat -
-              spReducaoZ.ParamByName('cancelamento_iss').asfloat -
-              spReducaoZ.ParamByName('desconto_iss').asfloat;
-
-            spReducaoZ.ParamByName('ecf_caixa').asstring := copy(sECF_Caixa,1,3);
-
-            try
-              spReducaoz.Prepare;
-              spReducaoZ.Execute;
-            except
-              on E:Exception do
-              begin
-                frmMsg_Operador.hide;
-                Application.MessageBox(pwidechar('Erro ao gravar a redução Z no banco de dados'+#13+
-                                                 'Mensagem: '+E.Message+#13+
-                                                 'O procedimento será abortado'),'Erro',mb_ok+
-                                                 mb_iconerror);
-                exit;
-              end;
-            end;
-
-            frmMsg_Operador.hide;
-            frmMsg_Operador.lb_msg.caption := 'Aguarde! Lendo os totalizadores Parciais...';
-            frmMsg_Operador.show;
-            frmMsg_Operador.Refresh;
-
-
-            (*TOTALIZADORES PARCIAIS*)
-            (*Guardar em cada registro um totalizador*)
-
-
-            try
-              for i := 1 to 49 do
-              begin
-                if (Trim(tbtotalizador[i].nome) = '') or
-                   (Trim(tbtotalizador[i].nome) = '00000') or
-                   (Trim(tbtotalizador[i].nome) = '0000')
-                    then
-                   // nao registra
-                else
-                begin
-                  spReducaoZ_Total_Parcial.Close;
-                  spReducaoZ_Total_Parcial.ParamByName('codigo').asstring := sCodRZ+Zerar(inttostr(i),2);
-                  spReducaoZ_Total_Parcial.ParamByName('cod_reducaoZ').asstring := scodRZ;
-                  spReducaoZ_Total_Parcial.ParamByName('Totalizador').asstring := tbtotalizador[i].Nome;
-                  spReducaoZ_Total_Parcial.ParamByName('valor').asfloat :=  tbtotalizador[i].Valor;
-                  spReducaoZ_Total_Parcial.Prepare;
-                  spReducaoZ_Total_Parcial.Execute;
-                end;
-              end;
-            except
-              on E:Exception do
-              begin
-                frmMsg_Operador.hide;
-                Application.MessageBox(pwidechar('Erro ao gravar totalizadores parciais'+
-                                                 ' no banco de dados'+#13+
-                                                 'Mensagem: '+E.Message+#13+
-                                                 'O procedimento será abortado'),'Erro',mb_ok+
-                                                 mb_iconerror);
-                // excluir a reducao z
-                query.close;
-                query.sql.clear;
-                query.sql.add('delete from reducaoz where codigo = '''+scodRZ+'''');
-                query.ExecSQL;
-
-                exit;
-              end;
-            end;
-
-           end
-           else //Nao Fiscal
-            sMsg := 'OK';
-
-
-
-            // verificar se eh para excluir as prevendas (caso a reducao z seja feita no outro dia)
-
-            (******************* P R E   -   V E N D A S ******************************)
-            // verificar a existencia de prevendas abertas
-            if brefaz_pre_venda then
-            begin
-              sleep(1000);
-              Application.ProcessMessages;
-              for i := 0 to grid_venda.RowCount - 1 do
-              begin
-                frmMsg_Operador.lb_msg.caption := 'Aguarde! Cancelando pré-venda nº '+grid_venda.cell[0,i].asstring+'...';
-                frmMsg_Operador.Show;
-                frmMsg_Operador.Refresh;
-
-                bLanca_pre_venda := true;
-                with frmVenda do
-                begin
-                  repeat
-                    brefaz_pre_venda := abre_venda;
-                    if not brefaz_pre_venda then
-                    begin
-                      if application.MessageBox('Erro ao abrir o cupom fiscal para fazer o cancelamento da pré-venda!'+#13+
-                                                'Deseja tentar outra vez?','Erro',mb_yesno+mb_iconerror) = idno then
-                      break;
-
-                    end;
-                  until brefaz_pre_venda;
-
-                  if brefaz_pre_venda then
-                  begin
-                    iPre_venda_codigo := grid_venda.cell[0,i].AsInteger;
-                    sPre_Venda_Numero := 'PV'+ZERAR(grid_venda.Cell[0,i].asSTRING,10);
-                    frmmodulo.query_servidor.Close;
-                    frmmodulo.query_servidor.SQL.Clear;
-                    frmmodulo.query_servidor.SQL.Add('select orc.*, prod.produto, prod.codbarra, prod.cst, prod.comissao, prod.aliquota');
-                    frmmodulo.query_servidor.sql.add('from c000075 orc,');
-                    frmmodulo.query_servidor.sql.add('c000025 prod where orc.codproduto = prod.codigo and numeronota = '''+
-                                    grid_venda.cell[0,i].asstring+'''');
-                    frmmodulo.query_servidor.SQL.Add('and data = :vdat');
-                    frmmodulo.query_servidor.params.ParamByName('vdat').AsDateTime := grid_venda.Cell[1,i].AsDateTime;
-                    frmmodulo.query_servidor.Open;
-
-
-                    // vender os itens
-                    // rodar a query do modulo filtrada com os produtos da pre-venda
-                    frmmodulo.query_servidor.first;
-                    while not frmmodulo.query_servidor.eof do
-                    begin
-                      sProd_nome := frmmodulo.query_servidor.fieldbyname('produto').asstring;
-                      sProd_unidade := frmmodulo.query_servidor.fieldbyname('unidade').asstring;
-                      sProd_CST := frmmodulo.query_servidor.fieldbyname('cst').asstring;
-                      rProd_aliquota := frmmodulo.query_servidor.fieldbyname('aliquota').asfloat;
-                      iProd_codigo := frmmodulo.query_servidor.fieldbyname('codproduto').asinteger;
-                      sProd_barra := frmmodulo.query_servidor.fieldbyname('codbarra').asstring;
-                      rProd_qtde    := frmmodulo.query_servidor.fieldbyname('qtde').asfloat;
-                      rProd_preco   := frmmodulo.query_servidor.fieldbyname('unitario').asfloat;
-                      rProd_total := frmmodulo.query_servidor.fieldbyname('total').asfloat;
-                      rProd_desconto := frmmodulo.query_servidor.fieldbyname('desconto').asfloat;
-                      rProd_acrescimo := frmmodulo.query_servidor.fieldbyname('acrescimo').asfloat;
-                      // registrar o item
-                      Registra_Item;
-                      Application.ProcessMessages;
-                      frmmodulo.query_servidor.next;
-                    end;
-                    Cancela_cupom_aberto;
-                  end;
-                end;
-                Application.processmessages;
-              end;
-
-              bLanca_pre_venda := false;
-              grid_venda.ClearRows;
-              frmMsg_Operador.Hide;
-              frmMsg_Operador.Refresh;
-            end;
-
-            if brefaz_abastecimento then
-            begin
-              sleep(1000);
-              Application.ProcessMessages;
-              frmMsg_Operador.hide;
-              frmMsg_Operador.Refresh;
-
-              for i := 0 to frmcaixa_fechamento.grid_abastecimento.RowCount - 1 do
-              begin
-                bLanca_Abastecimento := true;
-                frmMsg_Operador.lb_msg.caption := 'Aguarde! Registrando abastecimento pendente...';
-                frmMsg_Operador.Show;
-                frmMsg_Operador.Refresh;
-
-
-                with frmVenda do
-                begin
-                  if not Abre_Venda then
-                  begin
-                    // Caso o comando de abertura de venda retornou false, abortar o processo;
-                    // fazer o cancelamento apos emissao da reducao Z!
-
-                    application.MessageBox('Não foi possível cancelar as pré-vendas!'+#13+
-                                           'O sistema repetirá o processo após a emissão da redução Z!',
-                                           'Atenção',mb_ok+MB_ICONWARNING);
-                    brefaz_abastecimento := true;
-                    break;
-                  end
-                  else
-                  begin
-                    qrabastecimento.close;
-                    qrabastecimento.sql.clear;
-                    qrabastecimento.sql.add('select posto_abastecimento.*, estoque.nome produto,');
-                    qrabastecimento.sql.add('estoque.unidade,estoque.cst,estoque.aliquota,estoque.cod_barra');
-                    qrabastecimento.sql.add('from posto_abastecimento, estoque');
-                    qrabastecimento.sql.add('where posto_abastecimento.cod_produto = estoque.codigo');
-                    qrabastecimento.sql.add('and posto_abastecimento.situacao = 0');
-                    qrabastecimento.sql.add('and posto_abastecimento.codigo = '+
-                                            frmcaixa_fechamento.grid_abastecimento.Cell[10,i].asstring);
-                    qrabastecimento.Open;
-
-
-                    qrabastecimento.first;
-                    while not qrabastecimento.eof do
-                    begin
-                      sProd_nome := qrabastecimento.fieldbyname('produto').asstring;
-                      sProd_unidade := qrabastecimento.fieldbyname('unidade').asstring;
-                      sProd_CST := qrabastecimento.fieldbyname('cst').asstring;
-                      rProd_aliquota := qrabastecimento.fieldbyname('aliquota').asfloat;
-                      iProd_codigo := qrabastecimento.fieldbyname('cod_produto').asinteger;
-                      sProd_barra := qrabastecimento.fieldbyname('cod_barra').asstring;
-                      rProd_qtde    := qrabastecimento.fieldbyname('qtde').asfloat;
-                      rProd_preco   := qrabastecimento.fieldbyname('unitario').asfloat;
-                      rProd_total := qrabastecimento.fieldbyname('total').asfloat;
-                      rProd_desconto := 0;
-                      rProd_acrescimo := 0;
-                      // registrar o item
-                      Registra_Item;
-                      Application.ProcessMessages;
-                      qrabastecimento.next;
-                    end;
-                    iCodigo_abastecimento :=  frmCaixa_fechamento.grid_abastecimento.Cell[10,i].asinteger;
-                    sPosto_rodape := //'Tanque'+frmcaixa_fechamento.grid_abastecimento.cell[11,i].asstring+
-                                     'Bomba'+frmCaixa_fechamento.grid_abastecimento.cell[2,i].asstring+
-                                     'Bico'+frmCaixa_fechamento.grid_abastecimento.cell[3,i].asstring+
-                                     'EI'+somenteNumero(zerar(
-                                     frmCaixa_fechamento.grid_abastecimento.cell[8,i].asstring,6))+
-                                     'EF'+somenteNumero(
-                                     zerar(frmCaixa_fechamento.grid_abastecimento.cell[9,i].asstring,6));
-                    ilinha_abastecimento := grid.SelectedRow;
-                    Cancela_cupom_aberto;
-                  end;
-                end;
-              end;
-            end;
-
-            if brefaz_dav then
-            begin
-              (* imprimir a relacao de dav *)
-              relatorio_dav;
-            end;
-            if brefaz_encerrante then
-            begin
-              (* tentar imprimir o relatorio de encerrante*)
-              relatorio_posto;
-            end;
-
-
-            // atualizar os dados no servidor
-
-
-            // criar o arquivo fiscal automaticamente
-            if frmprincipal.TipoImpressora = fiscal then
-            begin
-              frmMsg_Operador.lb_msg.caption := 'Aguarde! Criando arquivo fiscal...';
-              frmMsg_Operador.Show;
-              frmMsg_Operador.Refresh;
-              sMsg := arquivo_fiscal(dData_movto);
-            end
-            else
-              sMsg := 'OK';
-
-
-            frmMsg_Operador.hide;
-
-            if sMsg = 'ERRO' then
-              Application.MessageBox('Erro ao criar o arquivo fiscal!','Erro',mb_ok+MB_ICONERROR)
-
-            else
-            BEGIN
-              // atualizando a tabela de config com a data do movimento e situacao fechado
-              query.Close;
-              query.sql.clear;
-              query.sql.add('update config set caixa_situacao = ''FECHADO'',');
-              query.sql.add('caixa_data_movto = :data');
-              query.ParamByName('data').asdatetime := ed_data.Date;
-              query.ExecSQL;
-
-              Application.MessageBox(pwidechar('Procedimento concluído com sucesso!'+#13+
-                                               'Arquivo criado em:'+#13+
-                                               sMsg),'Aviso',mb_ok+MB_ICONINFORMATION);
-              CLOSE;
-              FRMVENDA.CLOSE;
-            END;
-
-          end;
+      end;
     end;
-
   end;
 end;
 
 //end;
+
 
 // -------------------------------------------------------------------------- //
 procedure TfrmCaixa_Fechamento.Cancelar1Click(Sender: TObject);
