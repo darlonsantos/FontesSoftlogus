@@ -35,7 +35,8 @@ uses
   ExeInfo, dxScreenTip, dxRibbonRadialMenu, dxBarExtItems, JvBaseDlg,
   JvSelectDirectory, dxSkinMetropolis, dxSkinMetropolisDark,
   dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxRibbonCustomizationForm, System.ImageList, System.Actions,shellapi ;
+  dxRibbonCustomizationForm, System.ImageList, System.Actions,shellapi,
+  dxGDIPlusClasses ;
 
 type
   TImpressora = (SemImpressora, NaoFiscal, Fiscal);
@@ -92,6 +93,8 @@ type
     C1: TMenuItem;
     dxBarLargeButton5: TdxBarLargeButton;
     S1: TMenuItem;
+    pnl1: TPanel;
+    img1: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -1590,7 +1593,8 @@ end;
 procedure TfrmPrincipal.FormShow(Sender: TObject);
 begin
  //DARLON SANTOS
- imgm_imagens.Picture.LoadFromFile('C:\Softlogus\server\img\logo.jpg');
+ imgm_imagens.Picture.LoadFromFile('C:\Softlogus\PDV\Img\caixa.jpg');
+ imgm_imagens.Center := True;
   Brush.Style := bsClear;
   lblVersao.HTMLText.Clear;
   lblVersao.HTMLText.Add('<P align=' + QuotedStr('right')
