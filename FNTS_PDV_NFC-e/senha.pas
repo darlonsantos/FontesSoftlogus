@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, RzEdit, AdvOfficeImage, ExtCtrls,
   AdvReflectionLabel, RzLabel, RzBckgnd, pngimage, AdvReflectionImage, jpeg,
-  acPNG, Vcl.Buttons;
+  acPNG, Vcl.Buttons, dxGDIPlusClasses;
 
 type
   Tfrmsenha = class(TForm)
@@ -19,6 +19,7 @@ type
     Image2: TImage;
     btn_entrar: TSpeedButton;
     btn_cancelar: TSpeedButton;
+    pnl1: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ed_senhaKeyPress(Sender: TObject; var Key: Char);
     procedure ed_codigoKeyPress(Sender: TObject; var Key: Char);
