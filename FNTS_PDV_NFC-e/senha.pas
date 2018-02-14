@@ -51,16 +51,14 @@ end;
 
 procedure Tfrmsenha.ed_senhaKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key = #13 then
+  if key = #13 then
   begin
-     if ed_codigo.Text = '' then
-      exit;
-    if ed_senha.Text = '' then
-      exit;
-   if not Executa_Login(ed_codigo.Text, ed_senha.Text, sfuncao_senha) then
+    if ed_codigo.Text = '' then exit;
+    if ed_senha.text = '' then exit;
+
+    if not Executa_Login(ed_codigo.text, ed_senha.text, sfuncao_senha) then
     begin
-      application.messagebox('Acesso não autorizado!', 'Erro',
-        mb_ok + mb_iconerror);
+      application.messagebox('Acesso não autorizado!', 'Erro', mb_ok + mb_iconerror);
       busuario_Autenticado := false;
       exit;
     end
@@ -72,8 +70,9 @@ begin
   end
   else
   begin
-    if Key = #27 then
+    if key = #27 then
     begin
+       busuario_Autenticado := False;
       close;
     end
     else
@@ -103,23 +102,29 @@ begin
   end;
 procedure Tfrmsenha.ed_codigoKeyPress(Sender: TObject; var Key: Char);
 begin
-  if Key = #13 then
+  if key = #13 then
   begin
-    if ed_codigo.Text = '' then
+    if ed_codigo.text = '' then
     begin
       exit;
     end
     else
       Perform(wm_nextdlgctl, 0, 0);
   end
-  else if Key = #27 then
-    close
-  ELSE if (Key in ['0' .. '9', 'a' .. 'z', 'A' .. 'Z']) then
-    //
-  else if (Key = #7) or (Key = #8) or (Key = #32) then
-    //
   else
-    abort;
+    if key = #27 then
+    begin
+      busuario_Autenticado := False;
+      close
+    end
+    else
+      if (key in ['0'..'9', 'a'..'z', 'A'..'Z']) then
+     //
+      else
+        if (key = #7) or (key = #8) or (key = #32) then
+       //
+        else
+          abort;
 end;
 
 procedure Tfrmsenha.FormShow(Sender: TObject);
@@ -192,16 +197,16 @@ function Tfrmsenha.LogarAutomaticamente: Boolean;
 var
   sUsuario, sSenha: string;
 begin
-  busuario_Autenticado := false;
+  busuario_autenticado := false;
 
   sUsuario := LerIni(sConfiguracoes, 'LOGIN', 'USUARIO', '');
   sSenha := Cript('D', LerIni(sConfiguracoes, 'LOGIN', 'SENHA', ''));
 
+
+
   if not Executa_Login(sUsuario, sSenha, sfuncao_senha) then
   begin
-    application.messagebox('Acesso não autorizado!' + #13#10 +
-      'Identificação do usuario ou senha incorreta.', 'Erro',
-      mb_ok + mb_iconerror);
+    application.messagebox('Acesso não autorizado!' + #13#10 + 'Identificação do usuario ou senha incorreta.', 'Erro', mb_ok + mb_iconerror);
     exit;
   end
   else

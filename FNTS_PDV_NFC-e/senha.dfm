@@ -4,7 +4,7 @@ object frmsenha: Tfrmsenha
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Softlogus Sistemas'
-  ClientHeight = 261
+  ClientHeight = 182
   ClientWidth = 314
   Color = clWhite
   Font.Charset = ANSI_CHARSET
@@ -22,7 +22,7 @@ object frmsenha: Tfrmsenha
     Left = 0
     Top = 0
     Width = 314
-    Height = 261
+    Height = 182
     Align = alClient
     Picture.Data = {
       0B54504E474772617068696346CD0E00424D46CD0E0000000000360000002800
@@ -30348,7 +30348,7 @@ object frmsenha: Tfrmsenha
     Left = 0
     Top = 0
     Width = 314
-    Height = 261
+    Height = 182
     Align = alClient
     AutoSize = True
     Center = True
@@ -30359,7 +30359,7 @@ object frmsenha: Tfrmsenha
     Left = 0
     Top = 0
     Width = 314
-    Height = 261
+    Height = 182
     Align = alClient
     ParentBackground = False
     TabOrder = 0
@@ -30371,7 +30371,7 @@ object frmsenha: Tfrmsenha
       Left = 1
       Top = 1
       Width = 312
-      Height = 72
+      Height = 64
       Margins.Bottom = 50
       Align = alTop
       Picture.Data = {
@@ -30843,7 +30843,6 @@ object frmsenha: Tfrmsenha
         8AB449107A3E1291DDFDEC92B950BF31102D33106167EC0C0330000330000330
         0003E519F87F8179042E8211F4000000000049454E44AE426082}
       Stretch = True
-      ExplicitLeft = 3
     end
     object Label2: TLabel
       Left = 9
@@ -30878,7 +30877,7 @@ object frmsenha: Tfrmsenha
       Transparent = True
     end
     object btn_cancelar: TSpeedButton
-      Left = 166
+      Left = 270
       Top = 192
       Width = 118
       Height = 49
@@ -31181,10 +31180,12 @@ object frmsenha: Tfrmsenha
         0000000000000000000000000000000000000000000000000000000000000000
         0000000000000000000000000000000000000000000000000000}
       ParentFont = False
+      Transparent = False
+      Visible = False
       OnClick = btn_cancelarClick
     end
     object btn_entrar: TSpeedButton
-      Left = 22
+      Left = 282
       Top = 192
       Width = 118
       Height = 49
@@ -31487,6 +31488,8 @@ object frmsenha: Tfrmsenha
         0000000000000000000000000000000000000000000000000000000000000000
         0000000000000000000000000000000000000000000000000000}
       ParentFont = False
+      Transparent = False
+      Visible = False
       OnClick = btn_entrarClick
     end
     object ed_codigo: TRzEdit
