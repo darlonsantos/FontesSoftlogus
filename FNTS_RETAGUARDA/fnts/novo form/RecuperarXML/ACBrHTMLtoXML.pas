@@ -3,7 +3,7 @@ unit ACBrHTMLtoXML;
 interface
 
 uses Forms, Windows, SysUtils, Math, pcnNFe, pcnNFeW, pcnAuxiliar, pcnConversao, ACBrUtil,
-  Classes, Dialogs;
+  Classes, Dialogs, ACBrConsts, pcnConversaoNFe;
 
 function GerarXML(Arquivo: AnsiString): String;
 function SeparaAte(Chave, Texto: AnsiString; var Resto: AnsiString): String;
