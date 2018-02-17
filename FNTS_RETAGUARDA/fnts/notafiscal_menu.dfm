@@ -187,6 +187,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       Top = 7
       Width = 329
       Height = 21
+      Text = ''
       CharCase = ecUpperCase
       TabOrder = 1
       OnEnter = eclienteEnter
@@ -1110,6 +1111,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         'VALOR_ICMS'#9'10'#9'Valor'#9'F'#9'ICMS'
         'NFE_SITUACAO'#9'2'#9'NFe'#9'F')
       IniAttributes.Delimiter = ';;'
+      IniAttributes.UnicodeIniFile = False
       TitleColor = clBtnFace
       OnRowChanged = gridRowChanged
       FixedCols = 0
@@ -1236,6 +1238,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         TabOrder = 2
         object TabSheet5: TTabSheet
           Caption = 'Respostas'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object MemoResp: TMemo
             Left = 0
             Top = 0
@@ -1274,6 +1280,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
               Top = 31
               Width = 709
               Height = 224
+              Hint = ''
               ActivePage = RzTabSheet4
               Align = alClient
               Font.Charset = ANSI_CHARSET
@@ -1295,6 +1302,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
               object TabSheet1: TRzTabSheet
                 Color = 10053171
                 Caption = 'Certificado'
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object Label24: TLabel
                   Left = 25
                   Top = 16
@@ -1426,6 +1437,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
               object RzTabSheet1: TRzTabSheet
                 Color = 10053171
                 Caption = 'Geral'
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object Label28: TLabel
                   Left = 272
                   Top = 16
@@ -1561,6 +1576,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
                   Top = 107
                   Width = 121
                   Height = 21
+                  Text = ''
                   TabOrder = 5
                   Visible = False
                   AltBtnWidth = 15
@@ -1570,6 +1586,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
               object RzTabSheet2: TRzTabSheet
                 Color = 10053171
                 Caption = 'WebService'
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object Label29: TLabel
                   Left = 8
                   Top = 16
@@ -1777,6 +1797,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
               object RzTabSheet3: TRzTabSheet
                 Color = 10053171
                 Caption = 'Email'
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object Label40: TLabel
                   Left = 8
                   Top = 16
@@ -2007,10 +2031,14 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
               object RzTabSheet4: TRzTabSheet
                 Color = 10053171
                 Caption = 'Informa'#231#245'es Complementares'
+                ExplicitLeft = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object Label47: TLabel
                   Left = 0
                   Top = 0
-                  Width = 705
+                  Width = 302
                   Height = 14
                   Align = alTop
                   Alignment = taCenter
@@ -2027,7 +2055,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
                   ParentFont = False
                   Transparent = False
                   Layout = tlCenter
-                  ExplicitWidth = 302
                 end
                 object DBMemo1: TDBMemo
                   Left = 1
@@ -2240,6 +2267,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
                 'VALOR_ICMS'#9'10'#9'Valor'#9'F'#9'ICMS'
                 'NFE_SITUACAO'#9'2'#9'NFe'#9'F')
               IniAttributes.Delimiter = ';;'
+              IniAttributes.UnicodeIniFile = False
               TitleColor = clBtnFace
               OnRowChanged = gridRowChanged
               FixedCols = 0
@@ -2355,6 +2383,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         object TabSheet6: TTabSheet
           Caption = 'XML Resposta'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object WBResposta: TWebBrowser
             Left = 0
             Top = 0
@@ -2374,6 +2406,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         object TabSheet8: TTabSheet
           Caption = 'Log'
           ImageIndex = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object memoLog: TMemo
             Left = 0
             Top = 0
@@ -2387,6 +2423,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         object TabSheet9: TTabSheet
           Caption = 'NFe'
           ImageIndex = 3
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object trvwNFe: TTreeView
             Left = 0
             Top = 0
@@ -2400,6 +2440,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         object TabSheet2: TTabSheet
           Caption = 'Configura'#231#245'es'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object PageControl1: TPageControl
             Left = 0
             Top = 0
@@ -2411,6 +2455,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
             TabOrder = 0
             object TabSheet3: TTabSheet
               Caption = 'Certificado'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox2: TGroupBox
                 Left = 0
                 Top = 4
@@ -2508,6 +2556,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
             object TabSheet4: TTabSheet
               Caption = 'Geral'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label11: TLabel
                 Left = 272
                 Top = 16
@@ -2618,6 +2670,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
             object TabSheet7: TTabSheet
               Caption = 'WebService'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label12: TLabel
                 Left = 8
                 Top = 16
@@ -2769,6 +2825,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
             object TabSheet11: TTabSheet
               Caption = 'Email'
               ImageIndex = 4
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label31: TLabel
                 Left = 8
                 Top = 16
@@ -2900,6 +2960,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
             Top = 176
             Width = 121
             Height = 21
+            Text = ''
             TabOrder = 2
             Visible = False
             AltBtnWidth = 15
@@ -4746,7 +4807,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 576
     Top = 152
     Bitmap = {
-      494C010171007300080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101710073000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000D0010000010020000000000000D0
       010000000000000000000000000000000000000000003E3E3E0017171700FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -8589,7 +8650,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   object menu_tabelas_fiscais: TAdvPopupMenu
     Images = ImageList1
     MenuStyler = AdvMenuOfficeStyler1
-    Version = '2.5.4.3'
+    Version = '2.6.1.0'
     Left = 640
     Top = 152
     object NFeExportarNotaFiscal1: TMenuItem
@@ -8637,7 +8698,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   object pop: TAdvPopupMenu
     Images = ImageList1
     MenuStyler = AdvMenuOfficeStyler1
-    Version = '2.5.4.3'
+    Version = '2.6.1.0'
     Left = 688
     Top = 152
     object Incluir2: TMenuItem
@@ -8676,7 +8737,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     end
   end
   object espelho: TfrxReport
-    Version = '4.12.2'
+    Version = '5.2.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -8712,6 +8773,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       TopMargin = 2.000000000000000000
       BottomMargin = 2.000000000000000000
       object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
         Height = 105.826840000000000000
         Top = 18.897650000000000000
         Width = 702.992580000000000000
@@ -8720,31 +8782,26 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 22.677180000000000000
           Width = 177.637910000000000000
           Height = 30.236240000000000000
-          ShowHint = False
         end
         object Shape4: TfrxShapeView
           Left = 430.866420000000000000
           Width = 177.637910000000000000
           Height = 22.677180000000000000
-          ShowHint = False
         end
         object Shape5: TfrxShapeView
           Left = 608.504330000000000000
           Width = 92.598425200000000000
           Height = 52.913420000000000000
-          ShowHint = False
         end
         object Shape3: TfrxShapeView
           Width = 430.866420000000000000
           Height = 52.913420000000000000
-          ShowHint = False
         end
         object Memo2: TfrxMemoView
           Left = 3.779530000000000000
           Top = 7.559059999999999000
           Width = 260.787570000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8760,7 +8817,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 25.677180000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8777,7 +8833,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 26.456710000000000000
           Width = 423.307360000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8793,7 +8848,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 7.559059999999999000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8809,14 +8863,12 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 29.456710000000000000
           Width = 15.118120000000000000
           Height = 18.897637800000000000
-          ShowHint = False
         end
         object Memo5: TfrxMemoView
           Left = 434.645950000000000000
           Top = 3.559059999999999000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8832,7 +8884,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 3.559059999999999000
           Width = 49.133890000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8848,14 +8899,12 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 29.456710000000000000
           Width = 15.118120000000000000
           Height = 18.897637800000000000
-          ShowHint = False
         end
         object Memo7: TfrxMemoView
           Left = 614.283860000000000000
           Top = 6.779530000000001000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8872,7 +8921,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 32.125984250000000000
           Width = 37.795300000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8888,7 +8936,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 29.236239999999990000
           Width = 15.118120000000000000
           Height = 18.897650000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8904,7 +8951,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
           Top = 32.125984250000000000
           Width = 49.133890000000000000
           Height = 15.118120000000000000
-          ShowHint = False
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -8922,7 +8968,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 616
     Top = 152
     Bitmap = {
-      494C010109000B00080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11043,40 +11089,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 528
     Top = 256
   end
-  object ACBrNFeDANFERave1: TACBrNFeDANFERave
-    Sistema = 'Softlogus Sistemas'
-    PathPDF = 'C:\Softlogus\server\PDF\'
-    MostrarPreview = True
-    MostrarStatus = True
-    TipoDANFE = tiRetrato
-    NumCopias = 1
-    Site = 'darlon49@hotmail.com'
-    ImprimirDescPorc = True
-    ImprimirTotalLiquido = False
-    ProtocoloNFe = 'C:\Softlogus\server\nfe'
-    MargemInferior = 0.800000000000000000
-    MargemSuperior = 0.800000000000000000
-    MargemEsquerda = 0.600000000000000000
-    MargemDireita = 0.600000000000000000
-    CasasDecimais._qCom = 2
-    CasasDecimais._vUnCom = 2
-    ExibirResumoCanhoto = False
-    FormularioContinuo = False
-    TamanhoFonte_DemaisCampos = 10
-    ProdutosPorPagina = 0
-    ImprimirDetalhamentoEspecifico = True
-    NFeCancelada = False
-    LocalImpCanhoto = 0
-    ImprimeItens = True
-    ViaConsumidor = True
-    RavFile = 'C:\Softlogus\server\nfe\danfe\NotaFiscalEletronica.rav'
-    EspessuraBorda = 1
-    TamanhoFonte_RazaoSocial = 10
-    TamanhoFonte_ANTT = 10
-    TributosPercentual = ptValorProdutos
-    Left = 549
-    Top = 313
-  end
   object qrNFE_Cliente: TZQuery
     Connection = frmmodulo.econexao2
     SQL.Strings = (
@@ -11196,6 +11208,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   object UCControls1: TUCControls
     GroupName = 'Relacao Nota Fiscal Eletronica'
     UserControl = frmPrincipal.iCloud
+    Components = ''
     NotAllowed = naDisabled
     Left = 696
     Top = 248
@@ -11213,25 +11226,21 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Top = 344
   end
   object ACBrNFe1: TACBrNFe
-    Configuracoes.Geral.Salvar = True
-    Configuracoes.Geral.PathSalvar = 'C:\Softlogus\server\Logs\'
-    Configuracoes.Geral.PathSchemas = 'C:\Softlogus\server\nfe\Schemas'
-    Configuracoes.Geral.ExibirErroSchema = True
+    OnStatusChange = ACBrNFe1StatusChange
+    Configuracoes.Geral.SSLLib = libNone
+    Configuracoes.Geral.SSLCryptLib = cryNone
+    Configuracoes.Geral.SSLHttpLib = httpNone
+    Configuracoes.Geral.SSLXmlSignLib = xsNone
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.RetirarAcentos = True
-    Configuracoes.Geral.VersaoDF = ve310
     Configuracoes.Geral.ValidarDigest = False
+    Configuracoes.Arquivos.AdicionarLiteral = True
+    Configuracoes.Arquivos.OrdenacaoPath = <>
+    Configuracoes.Arquivos.EmissaoPathNFe = True
     Configuracoes.WebServices.UF = 'AL'
     Configuracoes.WebServices.AguardarConsultaRet = 15000
-    Configuracoes.WebServices.IntervaloTentativas = 1000
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
-    Configuracoes.Arquivos.Salvar = True
-    Configuracoes.Arquivos.PastaMensal = True
-    Configuracoes.Arquivos.AdicionarLiteral = True
-    Configuracoes.Arquivos.EmissaoPathNFe = True
-    OnStatusChange = ACBrNFe1StatusChange
+    Configuracoes.WebServices.QuebradeLinha = '|'
     DANFE = ACBrNFeDANFEFR1
-    OnGerarLog = ACBrNFe1GerarLog
     Left = 395
     Top = 321
   end
@@ -11242,33 +11251,47 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     MostrarStatus = True
     TipoDANFE = tiSemGeracao
     NumCopias = 1
+    ImprimeNomeFantasia = False
     ImprimirDescPorc = False
     ImprimirTotalLiquido = False
     MargemInferior = 0.800000000000000000
     MargemSuperior = 0.800000000000000000
     MargemEsquerda = 0.600000000000000000
     MargemDireita = 0.510000000000000000
+    CasasDecimais.Formato = tdetInteger
     CasasDecimais._qCom = 2
     CasasDecimais._vUnCom = 2
+    CasasDecimais._Mask_qCom = ',0.00'
+    CasasDecimais._Mask_vUnCom = ',0.00'
     ExibirResumoCanhoto = False
     FormularioContinuo = False
     TamanhoFonte_DemaisCampos = 10
     ProdutosPorPagina = 0
     ImprimirDetalhamentoEspecifico = True
     NFeCancelada = False
-    LocalImpCanhoto = 0
-    ImprimeItens = True
+    ImprimirItens = True
     ViaConsumidor = True
+    TamanhoLogoHeight = 0
+    TamanhoLogoWidth = 0
+    RecuoEndereco = 0
+    RecuoEmpresa = 0
+    LogoemCima = False
+    TamanhoFonteEndereco = 0
+    RecuoLogo = 0
     EspessuraBorda = 1
     ExibirTotalTributosItem = False
     ExibeCampoFatura = True
     TributosFonte = 'IBPT'
     TributosPercentual = ptValorProdutos
-    ImprimirUnQtVlComercial = False
+    ImprimirUnQtVlComercial = iuComercial
     Detalhado = False
     DescricaoViaEstabelec = 'Via do Consumidor'
     ExpandirDadosAdicionaisAuto = False
     ImprimirDadosArma = True
+    QuebraLinhaEmDetalhamentoEspecifico = True
+    IncorporarBackgroundPdf = True
+    IncorporarFontesPdf = True
+    ImprimirDadosDocReferenciados = True
     Left = 472
     Top = 320
   end

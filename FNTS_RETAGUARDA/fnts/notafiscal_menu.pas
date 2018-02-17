@@ -10,11 +10,10 @@ uses
   ZAbstractRODataset, ZAbstractDataset, ZDataset, Menus, DBCtrls, Mask,
   RzEdit, RzDBEdit, RzDBBnEd, RzBtnEdt, frxClass, frxPreview,
   frxDesgn, ExtCtrls, MemDS, DBAccess, IBC, Wwdatsrc, Buttons, jpeg,
-  ACBrNFe, ACBrNFeDANFEClass, ACBrNFeDANFERave,
-  // units nfe acbr
+  ACBrNFe, ACBrNFeDANFEClass,   // units nfe acbr
   pcnConversao, ACBrUtil, SHDocVw, ComCtrls, OleCtrls, FileCtrl,
   inifiles, AdvReflectionImage, RxToolEdit, UCBase, RzTabs, ACBrNFeDANFEFRDM,
-  ACBrNFeDANFEFR;
+  ACBrNFeDANFEFR, ACBrBase, ACBrDFe, System.ImageList;
 
 type
   Tfrmnotafiscal_menu = class(TForm)
@@ -104,7 +103,6 @@ type
     Bevel5: TBevel;
     Bevel6: TBevel;
     bt_nfe_assinar: TBitBtn;
-    ACBrNFeDANFERave1: TACBrNFeDANFERave;
     pn_nfe_log: TPanel;
     Panel7: TPanel;
     Button1: TButton;
@@ -878,7 +876,7 @@ begin
     ACBrNFe1.Configuracoes.Geral.FormaEmissao :=
       StrToTpEmis(ok, IntToStr(rgFormaEmissao.ItemIndex + 1));
 
-    ACBrNFe1.Configuracoes.Geral.PathSalvar := edtPathLogs.Text;
+    ACBrNFe1.Configuracoes.Arquivos.PathSalvar := edtPathLogs.Text;
 
     cbUF.ItemIndex := cbUF.Items.IndexOf(Ini.ReadString('WebService',
       'UF', 'AL'));
@@ -892,11 +890,11 @@ begin
       ACBrNFe1.Configuracoes.Geral.Salvar := true;
 
     ACBrNFe1.Configuracoes.Arquivos.Salvar := true;
-    ACBrNFe1.Configuracoes.Geral.PathSalvar := IncludeTrailingPathDelimiter
+    ACBrNFe1.Configuracoes.Arquivos.PathSalvar := IncludeTrailingPathDelimiter
       ('C:\Softlogus\Server\nfe\XML');
 
     // Cria pasta mensais 'YYYYMM' dentro de ACBRNFe.Configuracoes.Geral.PathSalvar
-    ACBrNFe1.Configuracoes.Arquivos.PastaMensal := true;
+    ACBrNFe1.Configuracoes.Arquivos.SepararPorMes := true;
 
     // Indica se o ANO/MES para o nome da pasta vira da data de emissao da Nota
     ACBrNFe1.Configuracoes.Arquivos.EmissaoPathNFe := true;
