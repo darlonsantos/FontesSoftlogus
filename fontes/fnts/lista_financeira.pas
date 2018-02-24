@@ -223,7 +223,7 @@ begin
     qrfinanceira.open;
 
     frmmodulo.qrrelatorio.fieldbyname('LINHA1').asstring := 'MOVIMENTO DE FINANCEIRA';
-    fxFinanceira.LoadFromFile('\Store_Protheus\server\rel\f000182.fr3');
+    fxFinanceira.LoadFromFile('\Softlogus\server\rel\f000182.fr3');
     fxFinanceira.ShowReport;
   end;
 end;
@@ -238,7 +238,7 @@ begin
 
   if combo_relatorio.Text = 'RELAÇÃO' then
   begin
-    fxFinanceira.LoadFromFile('\Store_Protheus\server\rel\f000182.fr3');
+    fxFinanceira.LoadFromFile('\Softlogus\server\rel\f000182.fr3');
     fxFinanceira.designreport;
   end;
 end;

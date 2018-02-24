@@ -21922,7 +21922,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 1012
     Top = 455
     Bitmap = {
-      494C010109000B00880110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B008C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -26970,7 +26970,7 @@ object frmPrincipal: TfrmPrincipal
     Demostracao = True
     Informacoes_adicionais = False
     Mostrar_Tela_Primeira_Vez = True
-    Dias_Demostracao = 10000
+    Dias_Demostracao = 30
     Local_Registro = '\Software\Appro'
     Chave_Criptografia = 'LockApplication'
     Titulo_das_janelas = 'Softlogus Sistema'

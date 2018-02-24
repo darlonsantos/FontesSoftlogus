@@ -3851,6 +3851,7 @@ type
     qrvendaCOR: TWideStringField;
     qrvendaTAMANHO: TWideStringField;
     qrconfigAVISA_ESTOQUE_MINIMO: TIntegerField;
+    qrfunciF_ATENDENTE: TIntegerField;
 
     procedure DataModuleCreate(Sender: TObject);
     procedure qrLogBeforePost(DataSet: TDataSet);

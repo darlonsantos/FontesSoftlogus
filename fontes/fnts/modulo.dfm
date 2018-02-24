@@ -10,7 +10,6 @@ object frmmodulo: Tfrmmodulo
       'controls_cp=CP_UTF16')
     ReadOnly = True
     TransactIsolationLevel = tiReadCommitted
-    Connected = True
     SQLHourGlass = True
     HostName = ''
     Port = 0
@@ -1938,6 +1937,9 @@ object frmmodulo: Tfrmmodulo
     object qrfunciSENHA: TWideStringField
       FieldName = 'SENHA'
       Visible = False
+    end
+    object qrfunciF_ATENDENTE: TIntegerField
+      FieldName = 'F_ATENDENTE'
     end
   end
   object qrfornecedor: TZQuery
@@ -5605,7 +5607,7 @@ object frmmodulo: Tfrmmodulo
         Value = 0
       end>
     Left = 408
-    Top = 1036
+    Top = 960
     ParamData = <
       item
         DataType = ftWord
@@ -6169,7 +6171,7 @@ object frmmodulo: Tfrmmodulo
       'select * from c000052')
     Params = <>
     Left = 408
-    Top = 968
+    Top = 904
     object qrsetorCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Required = True
@@ -13673,6 +13675,7 @@ object frmmodulo: Tfrmmodulo
     Catalog = ''
     ReadOnly = True
     TransactIsolationLevel = tiReadCommitted
+    Connected = True
     SQLHourGlass = True
     HostName = ''
     Port = 0
@@ -15714,7 +15717,6 @@ object frmmodulo: Tfrmmodulo
       'RoleName=RoleName'
       'ServerCharSet='
       'Trim Char=False')
-    Connected = True
     Left = 296
     Top = 104
   end
