@@ -9,7 +9,7 @@ uses
   Mask, maskutils, PageView, AdvGlowButton,
   AdvReflectionImage, UCBase, RzPanel, AdvObj, BaseGrid, AdvGrid, DBAdvGrid,
   Vcl.Imaging.jpeg, AdvMetroButton, AdvSmoothPanel, AdvSmoothExpanderPanel,
-  dxGDIPlusClasses, JvExMask, JvToolEdit, JvDBControls;
+  dxGDIPlusClasses, JvExMask, JvToolEdit, JvDBControls, acPNG;
 
 type
   Tfrmfuncionario = class(TForm)
@@ -100,6 +100,7 @@ type
     lb_senha: TLabel;
     edt_senha: TDBEdit;
     Image1: TImage;
+    chAtendente: TDBCheckBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure enomeEnter(Sender: TObject);
