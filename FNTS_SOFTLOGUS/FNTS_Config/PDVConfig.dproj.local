@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2017/04/07 23:30:57.000.347,C:\# FONTES\FNTS_ATHENAS\FNTS_Config\Athenas_configurador.dproj=C:\# FONTES\FNTS_ATHENAS\FNTS_Config\Softlogus_Config.dproj</Transaction>
-    <Transaction>2017/07/02 11:56:44.000.765,=C:\Softlogus\PDV\Win7UAC.rc</Transaction>
-    <Transaction>2017/12/30 14:24:08.000.793,C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_Config\PDVConfig.dproj=C:\FontesSoftlogus\FNTS_SOFTLOGUS\FNTS_Config\Softlogus_Config.dproj</Transaction>
-    <Transaction>2017/12/30 14:46:21.000.099,=C:\Softlogus\PDV\Win7UAC.rc</Transaction>
-  </Transactions>
-</BorlandProject>
