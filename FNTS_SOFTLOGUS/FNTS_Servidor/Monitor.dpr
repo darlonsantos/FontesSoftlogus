@@ -10,7 +10,7 @@ uses
 
 begin
   Application.Initialize;
-  TStyleManager.TrySetStyle('Iceberg Classico');
+  TStyleManager.TrySetStyle('Smokey Quartz Kamri');
   Application.Title := '..:: Softlogus Sistemas  - Servidor de monitoramentos::..';
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.Run;
