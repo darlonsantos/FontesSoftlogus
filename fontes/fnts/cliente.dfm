@@ -13599,9 +13599,9 @@ object frmcliente: Tfrmcliente
             TabOrder = 4
           end
           object EditSituacao: TEdit
-            Left = 398
-            Top = 195
-            Width = 154
+            Left = 637
+            Top = 192
+            Width = 127
             Height = 24
             TabStop = False
             BorderStyle = bsNone
