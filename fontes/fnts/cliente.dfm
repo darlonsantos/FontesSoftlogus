@@ -11637,19 +11637,16 @@ object frmcliente: Tfrmcliente
       TabColor = clTeal
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitHeight = 451
       object pficha: TFlatPanel
         Left = 0
         Top = 0
         Width = 860
         Height = 272
-        Color = 10933723
+        Color = clSilver
         ColorHighLight = 10933723
         ColorShadow = 10933723
         Align = alTop
         TabOrder = 0
-        ExplicitLeft = -13
-        ExplicitTop = -2
         object Label5: TLabel
           Left = 456
           Top = 38
@@ -12254,7 +12251,7 @@ object frmcliente: Tfrmcliente
           Width = 168
           Height = 89
           Caption = 'Telefones'
-          Color = 10933723
+          Color = clSilver
           ParentBackground = False
           ParentColor = False
           TabOrder = 13
@@ -13464,7 +13461,7 @@ object frmcliente: Tfrmcliente
           Height = 241
           BevelInner = bvRaised
           BevelOuter = bvLowered
-          Color = 14678491
+          Color = cl3DDkShadow
           ParentBackground = False
           TabOrder = 25
           Visible = False
@@ -13777,7 +13774,6 @@ object frmcliente: Tfrmcliente
         TabStyle = tsOneNote
         TopIndent = 3
         OnChange = pg_rodapeChange
-        ExplicitHeight = 179
         object PageSheet7: TPageSheet
           Left = 0
           Top = 0
@@ -13791,7 +13787,6 @@ object frmcliente: Tfrmcliente
           TabColor = clTeal
           TabWidth = 0
           TransparentColor = clNone
-          ExplicitHeight = 179
           object pficha2: TPanel
             Left = 0
             Top = 0
@@ -13799,10 +13794,9 @@ object frmcliente: Tfrmcliente
             Height = 220
             Align = alClient
             BevelOuter = bvNone
-            Color = 10933723
+            Color = clSilver
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 179
             object LFILIACAO: TLabel
               Left = 3
               Top = 13
@@ -14042,7 +14036,6 @@ object frmcliente: Tfrmcliente
           TabColor = 4227327
           TabWidth = 0
           TransparentColor = clNone
-          ExplicitHeight = 179
           object pficha4: TPanel
             Left = 0
             Top = 0
@@ -14053,7 +14046,6 @@ object frmcliente: Tfrmcliente
             Color = clSilver
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 179
             object Label31: TLabel
               Left = 9
               Top = 12
@@ -14394,7 +14386,6 @@ object frmcliente: Tfrmcliente
           TabColor = clTeal
           TabWidth = 0
           TransparentColor = clNone
-          ExplicitHeight = 179
           object pficha3: TPanel
             Left = 0
             Top = 0
@@ -14405,7 +14396,6 @@ object frmcliente: Tfrmcliente
             Color = clSilver
             ParentBackground = False
             TabOrder = 0
-            ExplicitHeight = 179
             object DBEdit22: TDBEdit
               Left = 7
               Top = 8
@@ -14501,7 +14491,6 @@ object frmcliente: Tfrmcliente
           TabColor = 4227327
           TabWidth = 0
           TransparentColor = clNone
-          ExplicitHeight = 179
           object PG_RESP: TPageControl
             Left = 0
             Top = 0
@@ -14511,10 +14500,8 @@ object frmcliente: Tfrmcliente
             Align = alClient
             TabHeight = 15
             TabOrder = 0
-            ExplicitHeight = 179
             object TabSheet1: TTabSheet
               Caption = '1'
-              ExplicitHeight = 154
               object Label33: TLabel
                 Left = 263
                 Top = 33
@@ -14848,7 +14835,6 @@ object frmcliente: Tfrmcliente
             object TabSheet2: TTabSheet
               Caption = '2'
               ImageIndex = 1
-              ExplicitHeight = 154
               object Label43: TLabel
                 Left = 263
                 Top = 33
@@ -15199,7 +15185,6 @@ object frmcliente: Tfrmcliente
       TabColor = 4227327
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitHeight = 451
       object ViewSplit1: TViewSplit
         Left = 235
         Top = 0
@@ -15252,7 +15237,6 @@ object frmcliente: Tfrmcliente
         HideGlyphs = False
         ParentColor = False
         TransparentButtons = False
-        ExplicitHeight = 398
         object ViewSplit2: TViewSplit
           Left = 4
           Top = 299
@@ -15727,7 +15711,6 @@ object frmcliente: Tfrmcliente
         HeaderFont.Style = [fsBold]
         HeaderSize = 16
         ParentColor = False
-        ExplicitTop = 398
         object wwDBGrid3: TwwDBGrid
           Left = 0
           Top = 16
@@ -15854,7 +15837,6 @@ object frmcliente: Tfrmcliente
       TabColor = clTeal
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitHeight = 451
       object pInfAdic: TPanel
         Left = 0
         Top = 0
@@ -15865,7 +15847,6 @@ object frmcliente: Tfrmcliente
         Color = clSilver
         ParentBackground = False
         TabOrder = 0
-        ExplicitHeight = 451
         object GroupBox5: TGroupBox
           Left = 10
           Top = 13
@@ -16106,7 +16087,6 @@ object frmcliente: Tfrmcliente
       TabColor = 4227327
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitHeight = 451
       object GroupBox1: TGroupBox
         Left = 24
         Top = 24
@@ -16267,7 +16247,6 @@ object frmcliente: Tfrmcliente
       TabColor = clTeal
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitHeight = 451
       object GroupBox6: TGroupBox
         Left = 8
         Top = 8
@@ -16508,7 +16487,6 @@ object frmcliente: Tfrmcliente
       TabColor = 4227327
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitHeight = 451
       object DBMemo1: TDBMemo
         Left = 32
         Top = 70
@@ -16581,7 +16559,6 @@ object frmcliente: Tfrmcliente
       TabColor = clTeal
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitHeight = 451
       object Panel3: TPanel
         Left = 0
         Top = 0
@@ -16592,7 +16569,6 @@ object frmcliente: Tfrmcliente
         Color = clSilver
         ParentBackground = False
         TabOrder = 0
-        ExplicitHeight = 451
         object RzPanel9: TRzPanel
           Left = 41
           Top = 19
@@ -16833,8 +16809,6 @@ object frmcliente: Tfrmcliente
     Enabled = False
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 48
-    ExplicitWidth = 995
     object Label20: TLabel
       Left = 702
       Top = 4
@@ -17282,9 +17256,6 @@ object frmcliente: Tfrmcliente
     Color = 5461077
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 952
-    ExplicitTop = 16
-    ExplicitHeight = 505
     object bincluir: TAdvGlowButton
       Left = 29
       Top = 61
@@ -19123,7 +19094,7 @@ object frmcliente: Tfrmcliente
     Left = 1293
     Top = 360
     Bitmap = {
-      494C01010600080068000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101060008006C000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000001E0000000100200000000000201C
       0000000000000000000000000000000000007AC8EC002CA6DF002AA3DE0028A0
       DC00269DDB00249AD9002297D8001F92D5001A8BD2001584CE00107DCB000C76
@@ -19711,7 +19682,7 @@ object frmcliente: Tfrmcliente
     Left = 1197
     Top = 252
     Bitmap = {
-      494C010116001800500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010116001800540010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
