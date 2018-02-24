@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/11/14 10:49:38.000.818,=C:\Users\empresa\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2015/11/16 11:54:01.000.930,=C:\Users\empresa\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2015/11/16 15:57:10.000.112,=C:\Users\empresa\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2016/07/08 18:32:33.000.558,=C:\Users\empresa\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2016/10/13 12:14:12.000.297,=C:\Users\empresa\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2016/10/13 12:14:39.000.458,C:\Users\empresa\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\empresa\Desktop\Migrador\Unit_principal.pas</Transaction>
+    <Transaction>2016/10/13 12:14:39.000.458,C:\Users\empresa\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\empresa\Desktop\Migrador\Unit_principal.dfm</Transaction>
+    <Transaction>2016/10/13 12:14:50.000.401,C:\Users\empresa\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\empresa\Desktop\Migrador\Store_Protheus_Migrador.dproj</Transaction>
+    <Transaction>2018/02/24 19:55:15.000.503,C:\Fontes\FNTS_Migrador\Migrador.dproj=C:\Fontes\FNTS_Migrador\Store_Protheus_Migrador.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
