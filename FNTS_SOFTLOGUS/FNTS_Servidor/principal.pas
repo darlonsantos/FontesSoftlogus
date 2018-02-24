@@ -292,14 +292,6 @@ var
   sMD5: String;
 begin
   sLinhaMD5 := '';
-  { sLinhaMD5:=StrZero(qrproduto.fieldbyname('codigo').asstring,6);
-    sLinhaMD5:=sLinhaMD5+Espaco(qrproduto.fieldbyname('produto').asstring,50);
-    sLinhaMD5:=sLinhaMD5+FormatFloat('0.000',qrproduto.fieldbyname('estoque_atual').AsFloat);
-    sLinhaMD5:=sLinhaMD5+DateToStr(qrestoque.fieldbyname('ultima_saida').AsDateTime);
-    sLinhaMD5:=sLinhaMD5+Espaco(qrproduto.fieldbyname('CST').asstring,3);
-    sLinhaMD5:=sLinhaMD5+StrZero(qrproduto.fieldbyname('aliquota').asstring,2);
-    sLinhaMD5:=sLinhaMD5+FormatFloat('0.00',qrproduto.fieldbyname('precovenda').AsFloat);
-    sMD5:=MD5Print(MD5String(sLinhaMD5));//Autentica a linha com o código MD5 }
 end;
 
 // -------------------------------------------------------------------------- //
@@ -334,10 +326,8 @@ begin
       begin
         x := grid.AddRow(1);
         grid.cell[0, x].asinteger := i;
-        grid.cell[1, x].asstring := arquivo_ini.ReadString('PDV',
-          spdv + '_COMPUTADOR', '');
-        grid.cell[2, x].asstring := arquivo_ini.ReadString('PDV',
-          spdv + '_DATABASE', '');
+        grid.cell[1, x].asstring := arquivo_ini.ReadString('PDV',spdv + '_COMPUTADOR', '');
+        grid.cell[2, x].asstring := arquivo_ini.ReadString('PDV',spdv + '_DATABASE', '');
         if verifica_conexao('PDV', grid.cell[1, x].asstring,
           grid.cell[2, x].asstring) then
         begin
@@ -387,9 +377,19 @@ VAR
   scod_venda: string;
   bachou: Boolean;
 
-  (* Lista de Formas de Pagamento que exigem tratamento especial no fechamento da venda *)
-  lForma_Cheque, lForma_Crediario, lForma_Cartao_cred, lForma_Cartao_deb, lForma_dinheiro,
-    lForma_Convenio: TStringList;
+
+  //situacao caixa
+
+  sit_caixa: string;
+
+(* Lista de Formas de Pagamento que exigem tratamento especial no fechamento da venda*)
+  lForma_pgto_Cheque_Avista, lForma_pgto_Cheque_Aprazo, lForma_pgto_Crediario,
+    lForma_pgto_Cartao_Credito, lForma_pgto_Cartao_Debito, lForma_pgto_dinheiro,
+    lForma_pgto_Convenio: String;
+
+//  (* Lista de Formas de Pagamento que exigem tratamento especial no fechamento da venda *)
+//  lForma_Cheque, lForma_Crediario, lForma_Cartao_cred, lForma_Cartao_deb, lForma_dinheiro,
+//    lForma_Convenio: TStringList;
 
   rpercentual: Real;
 
@@ -426,45 +426,48 @@ begin
               // E S T A C A O   PARA   S E R V I D O R
 
               // ------------- V E N D A S -------------------//
-              { TODO
-                Correcao : 5 - SE FOR FEITA QUALQUER VENDA
-                MESMO QUE NO PDV ANTES DE ABRIR O CAIXA GERAL (99),
-                NÃO SE CONSEGUE MAIS ABRIR O CAIXA GERAL }
+                 //informar situacao caixa no retaguarda
 
-              qrcaixa_mov.close;
-              qrcaixa_mov.sql.Clear;
-              qrcaixa_mov.sql.add
-                ('select * from c000045 where codigo = ''000099''');
-              qrcaixa_mov.Open;
-              if (qrcaixa_mov.FieldByName('data').asdatetime = date) and
-                (qrcaixa_mov.FieldByName('situacao').asinteger = 1) then
+              qrServidor.Close;
+              qrServidor.SQL.Clear;
+              qrServidor.SQL.Add('update C000045 set situacao = :situacao, data = :data where codigo = :codigo'); //
+              qrServidor.ParamByName('codigo').AsString := zerar(grid.Cell[0, I].AsString, 6);
+
+
+              qrconfig.close;
+              qrconfig.sql.clear;
+              qrconfig.sql.add('select * from config');
+              qrconfig.open;
+
+              if qrconfig.FieldByName('CAIXA_SITUACAO').AsString = 'FECHADO' then
+                qrServidor.ParamByName('situacao').AsInteger := 2;
+
+              if qrconfig.FieldByName('CAIXA_SITUACAO').AsString = 'ABERTO' then
+                qrServidor.ParamByName('situacao').AsInteger := 1;
+
+              qrServidor.ParamByName('data').AsDate := qrconfig.FieldByName('CAIXA_DATA_MOVTO').AsDateTime;
+
+              qrServidor.ExecSQL;
+
+              qrconfig.close;
+              qrconfig.sql.clear;
+              qrconfig.sql.add('select * from config');
+              qrconfig.open;
+
+              if qrconfig.RecordCount > 0 then
               begin
 
-                qrconfig.close;
-                qrconfig.sql.Clear;
-                qrconfig.sql.add('select * from config');
-                qrconfig.Open;
+                lForma_pgto_Cheque_Avista := qrconfig.fieldbyname('forma_cheque').asstring;
+                lForma_pgto_Cheque_Aprazo := qrconfig.fieldbyname('forma_cheque_aprazo').asstring;
+                lForma_pgto_Cartao_Debito := qrconfig.fieldbyname('forma_cartao').asstring;
+                lForma_pgto_Cartao_Credito := qrconfig.fieldbyname('forma_cartao_credito').asstring;
+                lForma_pgto_Crediario := qrconfig.fieldbyname('forma_crediario').asstring;
+                lForma_pgto_Convenio := qrconfig.fieldbyname('forma_convenio').asstring;
+                lForma_pgto_Dinheiro := qrconfig.fieldbyname('forma_dinheiro').asstring;
 
-                if qrconfig.RecordCount > 0 then
-                begin
-                  lForma_Cheque := TStringList.Create;
-                  lForma_Cheque.CommaText :=qrconfig.FieldByName('forma_cheque').asstring;
+                sit_caixa := qrconfig.fieldbyname('CAIXA_SITUACAO').asstring;
 
-                  lForma_Cartao_cred := TStringList.Create;
-                  lForma_Cartao_cred.CommaText := qrconfig.FieldByName('forma_cartao_cred').asstring;
-
-                  lForma_Cartao_deb := TStringList.Create;
-                  lForma_Cartao_deb.CommaText := qrconfig.FieldByName('forma_cartao_deb').asstring;
-
-                  lForma_Crediario := TStringList.Create;
-                  lForma_Crediario.CommaText := qrconfig.FieldByName('forma_crediario').asstring;
-
-                  lForma_Convenio := TStringList.Create;
-                  lForma_Convenio.CommaText := qrconfig.FieldByName('forma_convenio').asstring;
-
-                  lForma_dinheiro := TStringList.Create;
-                  lForma_dinheiro.CommaText := qrconfig.FieldByName('forma_dinheiro').asstring;
-                end;
+              end;
 
                 qrPDV.close;
                 qrPDV.sql.Clear;
@@ -540,738 +543,555 @@ begin
                   qrForma.sql.add('where cod_cupom = ''' + scod_cupom + '''');
                   qrForma.Open;
 
-                  qrForma.first;
-                  while not qrForma.eof do
-                  begin
-                    Application.ProcessMessages;
-                           //DARLON DARLON
-                    bachou := false;
-                    if not bachou then
-                    begin
-                      for x := 0 to lForma_dinheiro.Count - 1 do
-                      begin
-                        if AnsiUpperCase(qrForma.FieldByName('forma').asstring)
-                          = AnsiUpperCase(lForma_dinheiro[x]) then
-                        begin
-                          qrServidor.Params.ParamByName('DINHEIRO').asfloat := qrServidor.Params.ParamByName('DINHEIRO').asfloat +                          qrForma.FieldByName('valor').asfloat;
-                            // lancamento do caixa
-                          qrcaixa_mov.close;
-                          qrcaixa_mov.sql.Clear;
-                          qrcaixa_mov.sql.add('insert into c000044');
-                          qrcaixa_mov.sql.add
-                            ('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
-                          qrcaixa_mov.sql.add('values');
-                          qrcaixa_mov.sql.add('(''' + codifica('000044', 7) +
-                            ''',''' + Zerar(qrPDV.FieldByName('cod_caixa')
-                            .asstring, 6) + ''',''' +
-                            Zerar(qrPDV.FieldByName('cod_vendedor').asstring, 6)
-                            + ''',:datax,');
-                          qrcaixa_mov.sql.add
-                            (':VALOR,:VALOR,''100001'',3,''Venda DINHEIRO - CUPOM No. '
-                            + qrPDV.FieldByName('numero').asstring + ''')');
-                          qrcaixa_mov.Params.ParamByName('datax').asdatetime :=
-                            qrPDV.FieldByName('data').asdatetime;
+                   qrforma.first;
+                while not qrforma.eof do
+                begin
+                  Application.ProcessMessages;
 
-                          // Se a FORMA DINHEIRO for > que o valor total
-                          if qrForma.FieldByName('valor').asfloat >
-                            qrPDV.FieldByName('valor_total').asfloat then
-                            qrcaixa_mov.Params.ParamByName('VALOR').asfloat :=
-                              qrPDV.FieldByName('valor_total').asfloat
-                          else // Se a FORMA dinheiro for o mesmo valor total
-                            if qrForma.FieldByName('valor')
-                              .asfloat = qrPDV.FieldByName('valor_total').asfloat
-                            then
-                              qrcaixa_mov.Params.ParamByName('VALOR').asfloat :=
-                                qrForma.FieldByName('valor').asfloat
-                            else
-                              qrcaixa_mov.Params.ParamByName('VALOR').asfloat :=
-                                qrForma.FieldByName('valor').asfloat -
-                                qrPDV.FieldByName('valor_troco').asfloat;
-
-                          qrcaixa_mov.ExecSQL;
-                          bachou := true;
-                        end;
-                      end;
-                    end;
-                    if not bachou then
-                    begin
-                      for x := 0 to lForma_Cheque.Count - 1 do
-                      begin
-                        if AnsiUpperCase(qrForma.FieldByName('forma').asstring)
-                          = AnsiUpperCase(lForma_Cheque[x]) then
-                        begin
-                          qrServidor.Params.ParamByName('chequeav').asfloat :=  qrServidor.Params.ParamByName('chequeav').asfloat +    qrForma.FieldByName('valor').asfloat;
-                          qrcaixa_mov.close;
-                          qrcaixa_mov.sql.Clear;
-                          qrcaixa_mov.sql.add('insert into c000044');
-                          qrcaixa_mov.sql.add
-                            ('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
-                          qrcaixa_mov.sql.add('values');
-                          qrcaixa_mov.sql.add('(''' + codifica('000044', 7) +  ''',''' + Zerar(qrPDV.FieldByName('cod_caixa')
-                            .asstring, 6) + ''',''' +   Zerar(qrPDV.FieldByName('cod_vendedor').asstring, 6)  + ''',:datax,');
-                          qrcaixa_mov.sql.add ('0,:VALOR,''000162'',5,''Venda CHEQUE A VISTA - CUPOM No. ' +    qrPDV.FieldByName('numero').asstring + ''')');
-                          qrcaixa_mov.Params.ParamByName('datax').asdatetime :=
-                            qrPDV.FieldByName('data').asdatetime;
-                          qrcaixa_mov.Params.ParamByName('VALOR').asfloat :=
-                            qrForma.FieldByName('valor').asfloat;
-                          qrcaixa_mov.ExecSQL;
-
-                          bachou := true;
-                        end;
-                      end;
-                    end;
-                    if not bachou then
-                    begin
-                      for x := 0 to lForma_Cartao_cred.Count - 1 do
-                      begin
-                        if AnsiUpperCase(qrForma.FieldByName('forma').asstring)
-                          = AnsiUpperCase(lForma_Cartao_cred[x]) then
-                        begin
-                          qrServidor.Params.ParamByName('cartaocred').asfloat :=
-                            qrServidor.Params.ParamByName('cartaocred').asfloat
-                            + qrForma.FieldByName('valor').asfloat;
-
-                          // lancamento do caixa
-                          qrcaixa_mov.close;
-                          qrcaixa_mov.sql.Clear;
-                          qrcaixa_mov.sql.add('insert into c000044');
-                          qrcaixa_mov.sql.add
-                            ('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
-                          qrcaixa_mov.sql.add('values');
-                          qrcaixa_mov.sql.add('(''' + codifica('000044', 7) +
-                            ''',''' + Zerar(qrPDV.FieldByName('cod_caixa')
-                            .asstring, 6) + ''',''' +
-                            Zerar(qrPDV.FieldByName('cod_vendedor').asstring, 6)
-                            + ''',:datax,');
-                          qrcaixa_mov.sql.add
-                            ('0,:VALOR,''100003'',7,''Venda CARTAO CREDITO -  CUPOM No. ' +
-                            qrPDV.FieldByName('numero').asstring + ''')');
-                          qrcaixa_mov.Params.ParamByName('datax').asdatetime :=
-                            qrPDV.FieldByName('data').asdatetime;
-                          qrcaixa_mov.Params.ParamByName('VALOR').asfloat :=
-                            qrForma.FieldByName('valor').asfloat;
-                          // QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrpdv.fieldbyname('valor_total').asfloat;
-                          qrcaixa_mov.ExecSQL;
-
-                          bachou := true;
-
-                        end;
-                      end;
-                    end;
-                    if not bachou then
-                     begin
-                      for x := 0 to lForma_Cartao_deb.Count - 1 do
-                      begin
-                        if AnsiUpperCase(qrForma.FieldByName('forma').asstring)
-                          = AnsiUpperCase(lForma_Cartao_deb[x]) then
-                        begin
-                          qrServidor.Params.ParamByName('cartaodeb').asfloat := qrServidor.Params.ParamByName('cartaodeb').asfloat  + qrForma.FieldByName('valor').asfloat;
-                          qrcaixa_mov.close;
-                          qrcaixa_mov.sql.Clear;
-                          qrcaixa_mov.sql.add('insert into c000044');
-                          qrcaixa_mov.sql.add
-                            ('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
-                          qrcaixa_mov.sql.add('values');
-                          qrcaixa_mov.sql.add('(''' + codifica('000044', 7) +
-                            ''',''' + Zerar(qrPDV.FieldByName('cod_caixa')
-                            .asstring, 6) + ''',''' +
-                            Zerar(qrPDV.FieldByName('cod_vendedor').asstring, 6)
-                            + ''',:datax,');
-                          qrcaixa_mov.sql.add
-                            ('0,:VALOR,''000362'',8,''Venda CARTAO DE DEBITO - CUPOM No. ' +
-                            qrPDV.FieldByName('numero').asstring + ''')');
-                          qrcaixa_mov.Params.ParamByName('datax').asdatetime :=
-                            qrPDV.FieldByName('data').asdatetime;
-                          qrcaixa_mov.Params.ParamByName('VALOR').asfloat :=
-                            qrForma.FieldByName('valor').asfloat;
-                          qrcaixa_mov.ExecSQL;
-
-                          bachou := true;
-
-                        end;
-                      end;
-                    end;
+                  bachou := false;
                   if not bachou then
-                    begin
-                      for x := 0 to lForma_Crediario.Count - 1 do
-                      begin
-                        if AnsiUpperCase(qrForma.FieldByName('forma').asstring)
-                          = AnsiUpperCase(lForma_Crediario[x]) then
-                        //DARLON SANTOS
-                        begin
-                          qrServidor.Params.ParamByName('crediario').asfloat :=
-                            qrServidor.Params.ParamByName('crediario').asfloat +
-                            qrForma.FieldByName('valor').asfloat;
-
-                          // lancamento do caixa
-                          qrcaixa_mov.close;
-                          qrcaixa_mov.sql.Clear;
-                          qrcaixa_mov.sql.add('insert into c000044');
-                          qrcaixa_mov.sql.add
-                            ('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
-                          qrcaixa_mov.sql.add('values');
-                          qrcaixa_mov.sql.add('(''' + codifica('000044', 7) +
-                            ''',''' + Zerar(qrPDV.FieldByName('cod_caixa')
-                            .asstring, 6) + ''',''' +
-                            Zerar(qrPDV.FieldByName('cod_vendedor').asstring, 6)
-                            + ''',:datax,');
-                          qrcaixa_mov.sql.add
-                            ('0,:VALOR,''100004'',4,''Venda CREDIARIO - CUPOM No. '    //DARLON SANTOS
-                            + qrPDV.FieldByName('numero').asstring + ''')');
-                          qrcaixa_mov.Params.ParamByName('datax').asdatetime :=
-                            qrPDV.FieldByName('data').asdatetime;
-                          qrcaixa_mov.Params.ParamByName('VALOR').asfloat :=
-                            qrForma.FieldByName('valor').asfloat;
-                          // QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrpdv.fieldbyname('valor_total').asfloat;
-                          qrcaixa_mov.ExecSQL;
-
-                          bachou := true;
-                        end;
-                      end;
-                    end;
-                    if not bachou then
-                    begin
-                      for x := 0 to lForma_Convenio.Count - 1 do
-                      begin
-                        if AnsiUpperCase(qrForma.FieldByName('forma').asstring)
-                          = AnsiUpperCase(lForma_Convenio[x]) then
-                        begin
-                          qrServidor.Params.ParamByName('convenio').asfloat :=
-                            qrServidor.Params.ParamByName('convenio').asfloat +
-                            qrForma.FieldByName('valor').asfloat;
-
-                          // lancamento do caixa
-                          qrcaixa_mov.close;
-                          qrcaixa_mov.sql.Clear;
-                          qrcaixa_mov.sql.add('insert into c000044');
-                          qrcaixa_mov.sql.add
-                            ('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
-                          qrcaixa_mov.sql.add('values');
-                          qrcaixa_mov.sql.add('(''' + codifica('000044', 7) +
-                            ''',''' + Zerar(qrPDV.FieldByName('cod_caixa')
-                            .asstring, 6) + ''',''' +
-                            Zerar(qrPDV.FieldByName('cod_vendedor').asstring, 6)
-                            + ''',:datax,');
-                          qrcaixa_mov.sql.add
-                            ('0,:VALOR,''100005'',40,''Venda CONVENIO - CUPOM No. '
-                            + qrPDV.FieldByName('numero').asstring + ''')');
-                          qrcaixa_mov.Params.ParamByName('datax').asdatetime :=
-                            qrPDV.FieldByName('data').asdatetime;
-                          qrcaixa_mov.Params.ParamByName('VALOR').asfloat :=
-                            qrForma.FieldByName('valor').asfloat;
-                          // QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrpdv.fieldbyname('valor_total').asfloat;
-                          qrcaixa_mov.ExecSQL;
-
-                          bachou := true;
-                        end;
-                      end;
-                    end;
-                    qrForma.next;
-                  end;
-                  qrServidor.ExecSQL;
-
-                  if qrPDV.FieldByName('cancelado').asinteger = 0 then
                   begin
-                    // contas a receber
-                    qrpdv2.close;
-                    qrpdv2.sql.Clear;
-                    qrpdv2.sql.add('select * from cupom_crediario');
-                    qrpdv2.sql.add('where cod_cupom = ''' + scod_cupom + '''');
-                    qrpdv2.Open;
-                    qrpdv2.first;
-                    iprest := 1;
-
-                    while not qrpdv2.eof do
+                    if AnsiUpperCase(qrforma.fieldbyname('forma').asstring) =
+                      AnsiUpperCase(lForma_pgto_dinheiro) then
                     begin
-                      Application.ProcessMessages;
+                      qrServidor.Params.ParamByName('DINHEIRO').asFLOAT :=
+                        qrServidor.Params.ParamByName('DINHEIRO').asFLOAT +
+                        qrforma.fieldbyname('valor').asfloat;
 
-                      qrServidor.close;
-                      qrServidor.sql.Clear;
-                      qrServidor.sql.add('insert into c000049');
-                      qrServidor.sql.add
-                        ('(codigo,codvenda,codcliente,codvendedor,codcaixa,data_emissao,data_vencimento,valor_original,');
-                      qrServidor.sql.add
-                        ('valor_atual,documento,tipo,situacao,filtro)');
-                      qrServidor.sql.add('values');
-                      qrServidor.sql.add
-                        ('(:codigo,:codvenda,:codcliente,:codvendedor,:codcaixa,:data_emissao,:data_vencimento,:valor_original,');
-                      qrServidor.sql.add
-                        (':valor_atual,:documento,:tipo,:situacao,:filtro)');
+                    // lancamento do caixa
+                      qrcaixa_mov.close;
+                      qrcaixa_mov.sql.clear;
+                      qrcaixa_mov.sql.add('insert into c000044');
+                      qrcaixa_mov.sql.add('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
+                      qrcaixa_mov.sql.add('values');
+                      qrcaixa_mov.sql.add('(''' + codifica('000044', 7) + ''',''' + zerar(qrpdv.fieldbyname('cod_caixa').asstring, 6) + ''',''' + zerar(qrpdv.fieldbyname('cod_vendedor').asstring, 6) + ''',:datax,');
+                      qrcaixa_mov.sql.add(':VALOR,:VALOR,''100001'',3,''Venda DINHEIRO - ECF No. ' + qrpdv.fieldbyname('numero').asstring + ''')');
+                      qrcaixa_mov.Params.ParamByName('datax').asdatetime := qrpdv.fieldbyname('data').asdatetime;
 
-                      qrServidor.Params.ParamByName('codigo').asstring :=
-                        scod_venda + '/' + Zerar(inttostr(iprest), 2);
-                      qrServidor.Params.ParamByName('codvenda').asstring :=
-                        scod_venda;
-                      qrServidor.Params.ParamByName('codcliente').asstring :=
-                        Zerar(qrpdv2.FieldByName('cod_cliente').asstring, 6);
-                      qrServidor.Params.ParamByName('codvendedor').asstring :=
-                        Zerar(qrPDV.FieldByName('cod_vendedor').asstring, 6);
-                      qrServidor.Params.ParamByName('codcaixa').asstring :=
-                        Zerar(qrPDV.FieldByName('cod_caixa').asstring, 6);
-                      qrServidor.Params.ParamByName('documento').asstring :=
-                        scod_venda + '/' + Zerar(inttostr(iprest), 2);
-                      qrServidor.Params.ParamByName('tipo').asstring :=
-                        copy(qrpdv2.FieldByName('descricao').asstring, 1, 20);
-                      qrServidor.Params.ParamByName('filtro').asinteger := 0;
-                      qrServidor.Params.ParamByName('situacao').asinteger := 1;
-                      qrServidor.Params.ParamByName('data_vencimento')
-                        .asdatetime := qrpdv2.FieldByName('vencimento')
-                        .asdatetime;
-                      qrServidor.Params.ParamByName('data_emissao').asdatetime
-                        := qrPDV.FieldByName('data').asfloat;
-                      qrServidor.Params.ParamByName('valor_atual').asfloat :=
-                        qrpdv2.FieldByName('valor').asfloat;
-                      qrServidor.Params.ParamByName('valor_original').asfloat :=
-                        qrpdv2.FieldByName('valor').asfloat;
-                      qrServidor.ExecSQL;
-                      inc(iprest);
-                      qrpdv2.next;
-                    END;
+                    // Se a FORMA DINHEIRO for > que o valor total
+                      if qrforma.fieldbyname('valor').asfloat > qrpdv.fieldbyname('valor_total').asfloat then
+                        QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrpdv.fieldbyname('valor_total').asfloat
+                      else // Se a FORMA dinheiro for o mesmo valor total
+                        if qrforma.fieldbyname('valor').asfloat = qrpdv.fieldbyname('valor_total').asfloat then
+                          QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrforma.fieldbyname('valor').asfloat
+                        else
+                          QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrforma.fieldbyname('valor').asfloat - qrpdv.fieldbyname('valor_troco').asfloat;
+
+                      qrcaixa_mov.ExecSQL;
+
+                      bachou := true;
+                    end;
                   end;
-                  // produtos
-                  qrpdv3.close;
-                  qrpdv3.sql.Clear;
-                  qrpdv3.sql.add('select * from CUPOM_ITEM');
-                  qrpdv3.sql.add('where cod_cupom = ''' + scod_cupom + '''');
-                  qrpdv3.sql.add('and cancelado = 0');
-                  qrpdv3.Open;
-                  qrpdv3.first;
+                  if not bachou then
+                  begin
+                    if (AnsiUpperCase(qrforma.fieldbyname('forma').asstring) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) or
+                       (AnsiUpperCase(qrforma.fieldbyname('forma').asstring) = AnsiUpperCase(lForma_pgto_Cheque_Aprazo)) then
+                    begin
+                      qrServidor.Params.ParamByName('chequeav').asFLOAT :=
+                        qrServidor.Params.ParamByName('chequeav').asFLOAT +
+                        qrforma.fieldbyname('valor').asfloat;
 
-                  while not qrpdv3.eof do
+                    // lancamento do caixa
+                      qrcaixa_mov.close;
+                      qrcaixa_mov.sql.clear;
+                      qrcaixa_mov.sql.add('insert into c000044');
+                      qrcaixa_mov.sql.add('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
+                      qrcaixa_mov.sql.add('values');
+                      qrcaixa_mov.sql.add('(''' + codifica('000044', 7) + ''',''' + zerar(qrpdv.fieldbyname('cod_caixa').asstring, 6) + ''',''' + zerar(qrpdv.fieldbyname('cod_vendedor').asstring, 6) + ''',:datax,');
+                      if (AnsiUpperCase(qrforma.fieldbyname('forma').asstring) = AnsiUpperCase(lForma_pgto_Cheque_Avista)) then
+                        qrcaixa_mov.sql.add('0,:VALOR,''100002'',5,''Venda CHEQUE AVISTA - ECF No. ' + qrpdv.fieldbyname('numero').asstring + ''')')
+                      else
+                        qrcaixa_mov.sql.add('0,:VALOR,''100002'',6,''Venda CHEQUE APRAZO - ECF No. ' + qrpdv.fieldbyname('numero').asstring + ''')');
+                      qrcaixa_mov.Params.ParamByName('datax').asdatetime := qrpdv.fieldbyname('data').asdatetime;
+                      // Se a FORMA cheque for > que o valor total
+                      if qrforma.fieldbyname('valor').asfloat > qrpdv.fieldbyname('valor_total').asfloat then
+                        QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrpdv.fieldbyname('valor_total').asfloat
+                      else // Se a FORMA dinheiro for o mesmo valor total
+                        if qrforma.fieldbyname('valor').asfloat = qrpdv.fieldbyname('valor_total').asfloat then
+                          QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrforma.fieldbyname('valor').asfloat
+                        else
+                          QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrforma.fieldbyname('valor').asfloat - qrpdv.fieldbyname('valor_troco').asfloat;
+                      qrcaixa_mov.ExecSQL;
+                        bachou := true;
+                    end;
+                  end;
+                  if not bachou then
+                  begin
+                    if (AnsiUpperCase(qrforma.fieldbyname('forma').asstring) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) or
+                       (AnsiUpperCase(qrforma.fieldbyname('forma').asstring) = AnsiUpperCase(lForma_pgto_Cartao_Debito)) then
+                    begin
+                      qrServidor.Params.ParamByName('cartaocred').asFLOAT :=
+                        qrServidor.Params.ParamByName('cartaocred').asFLOAT +
+                        qrforma.fieldbyname('valor').asfloat;
+
+
+                    // lancamento do caixa
+                      qrcaixa_mov.close;
+                      qrcaixa_mov.sql.clear;
+                      qrcaixa_mov.sql.add('insert into c000044');
+                      qrcaixa_mov.sql.add('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
+                      qrcaixa_mov.sql.add('values');
+                      qrcaixa_mov.sql.add('(''' + codifica('000044', 7) + ''',''' + zerar(qrpdv.fieldbyname('cod_caixa').asstring, 6) + ''',''' + zerar(qrpdv.fieldbyname('cod_vendedor').asstring, 6) + ''',:datax,');
+                      if (AnsiUpperCase(qrforma.fieldbyname('forma').asstring) = AnsiUpperCase(lForma_pgto_Cartao_Credito)) then
+                        qrcaixa_mov.sql.add('0,:VALOR,''100003'',7,''Venda CARTAO CREDITO - ECF No. ' + qrpdv.fieldbyname('numero').asstring + ''')')
+                      else
+                        qrcaixa_mov.sql.add('0,:VALOR,''100003'',8,''Venda CARTAO DEBITO - ECF No. ' + qrpdv.fieldbyname('numero').asstring + ''')');
+                      qrcaixa_mov.Params.ParamByName('datax').asdatetime := qrpdv.fieldbyname('data').asdatetime;
+                      QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrforma.fieldbyname('valor').asfloat;
+//                      QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrpdv.fieldbyname('valor_total').asfloat;
+                      qrcaixa_mov.ExecSQL;
+
+
+                      bachou := true;
+
+                    end;
+                  end;
+                  if not bachou then
+                  begin
+                    if AnsiUpperCase(qrforma.fieldbyname('forma').asstring) =
+                      AnsiUpperCase(lForma_pgto_Crediario) then
+                    begin
+                      qrServidor.Params.ParamByName('crediario').asFLOAT :=
+                        qrServidor.Params.ParamByName('crediario').asFLOAT +
+                        qrforma.fieldbyname('valor').asfloat;
+
+                    // lancamento do caixa
+                      qrcaixa_mov.close;
+                      qrcaixa_mov.sql.clear;
+                      qrcaixa_mov.sql.add('insert into c000044');
+                      qrcaixa_mov.sql.add('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
+                      qrcaixa_mov.sql.add('values');
+                      qrcaixa_mov.sql.add('(''' + codifica('000044', 7) + ''',''' + zerar(qrpdv.fieldbyname('cod_caixa').asstring, 6) + ''',''' + zerar(qrpdv.fieldbyname('cod_vendedor').asstring, 6) + ''',:datax,');
+                      qrcaixa_mov.sql.add('0,:VALOR,''100004'',4,''Venda CREDIARIO - ECF No. ' + qrpdv.fieldbyname('numero').asstring + ''')');
+                      qrcaixa_mov.Params.ParamByName('datax').asdatetime := qrpdv.fieldbyname('data').asdatetime;
+                      QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrforma.fieldbyname('valor').asfloat;
+//                      QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrpdv.fieldbyname('valor_total').asfloat;
+                      qrcaixa_mov.ExecSQL;
+
+
+                      bachou := true;
+                    end;
+                  end;
+                  if not bachou then
+                  begin
+                    if AnsiUpperCase(qrforma.fieldbyname('forma').asstring) =
+                      AnsiUpperCase(lForma_pgto_Convenio) then
+                    begin
+                      qrServidor.Params.ParamByName('convenio').asFLOAT :=
+                        qrServidor.Params.ParamByName('convenio').asFLOAT +
+                        qrforma.fieldbyname('valor').asfloat;
+
+                    // lancamento do caixa
+                      qrcaixa_mov.close;
+                      qrcaixa_mov.sql.clear;
+                      qrcaixa_mov.sql.add('insert into c000044');
+                      qrcaixa_mov.sql.add('(codigo,codcaixa,codoperador,data,entrada,valor,codconta,movimento,historico)');
+                      qrcaixa_mov.sql.add('values');
+                      qrcaixa_mov.sql.add('(''' + codifica('000044', 7) + ''',''' + zerar(qrpdv.fieldbyname('cod_caixa').asstring, 6) + ''',''' + zerar(qrpdv.fieldbyname('cod_vendedor').asstring, 6) + ''',:datax,');
+                      qrcaixa_mov.sql.add('0,:VALOR,''100005'',40,''Venda CONVENIO - ECF No. ' + qrpdv.fieldbyname('numero').asstring + ''')');
+                      qrcaixa_mov.Params.ParamByName('datax').asdatetime := qrpdv.fieldbyname('data').asdatetime;
+                      QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrforma.fieldbyname('valor').asfloat;
+//                      QRCAIXA_MOV.Params.ParamByName('VALOR').ASFLOAT := qrpdv.fieldbyname('valor_total').asfloat;
+                      qrcaixa_mov.ExecSQL;
+
+
+                      bachou := true;
+                    end;
+                  end;
+                  qrforma.next;
+                end;
+                qrServidor.ExecSQL;
+
+
+                if qrpdv.fieldbyname('cancelado').asinteger = 0 then
+                begin
+              // contas a receber
+                  qrPDV2.close;
+                  qrPDV2.sql.clear;
+                  qrPDV2.sql.add('select * from cupom_crediario');
+                  qrPDV2.sql.add('where cod_cupom = ''' + scod_cupom + '''');
+                  qrPDV2.open;
+                  qrPDV2.first;
+                  iprest := 1;
+
+                  while not qrPDV2.eof do
                   begin
                     Application.ProcessMessages;
 
-                    qrServidor.close;
-                    qrServidor.sql.Clear;
-                    qrServidor.sql.add('insert into c000032');
-                    qrServidor.sql.add('(codigo,codnota,serial,numeronota,');
-                    qrServidor.sql.add ('codproduto,qtde,movimento_estoque,unitario,desconto,acrescimo,');
-                    qrServidor.sql.add('total,unidade,aliquota,');
-                    qrServidor.sql.add('cupom_item,cupom_numero,cupom_modelo,');
-                    qrServidor.sql.add
-                      ('ecf_serie,ecf_caixa,codcliente,codvendedor,movimento,data,cst,');
-                    qrServidor.sql.add('base_calculo, valor_icms)');
-                    qrServidor.sql.add('values');
+                    qrServidor.Close;
+                    qrServidor.SQL.clear;
+                    qrServidor.SQL.add('insert into c000049');
+                    qrServidor.SQL.add('(codigo,codvenda,codcliente,codvendedor,codcaixa,data_emissao,data_vencimento,valor_original,');
+                    qrServidor.SQL.add('valor_atual,documento,tipo,situacao,filtro)');
+                    qrServidor.SQL.add('values');
+                    qrServidor.SQL.add('(:codigo,:codvenda,:codcliente,:codvendedor,:codcaixa,:data_emissao,:data_vencimento,:valor_original,');
+                    qrServidor.SQL.add(':valor_atual,:documento,:tipo,:situacao,:filtro)');
 
-                    qrServidor.sql.add
-                      ('(:codigo,:codnota,:serial,:numeronota,');
-                    qrServidor.sql.add
-                      (':codproduto,:qtde,:movimento_estoque,:unitario,:desconto,:acrescimo,');
-                    qrServidor.sql.add(':total,:unidade,:aliquota,');
-                    qrServidor.sql.add
-                      (':cupom_item,:cupom_numero,:cupom_modelo,');
-                    qrServidor.sql.add
-                      (':ecf_serie,:ecf_caixa,:codcliente,:codvendedor,:movimento,:data,:cst,');
-                    qrServidor.sql.add(':base_calculo, :valor_icms)');
+                    qrServidor.Params.ParamByName('codigo').asstring := Scod_venda + '/' + zerar(inttostr(iprest), 2);
+                    qrServidor.Params.ParamByName('codvenda').asstring := scod_venda;
+                    qrServidor.Params.ParamByName('codcliente').asstring := zerar(qrPDV2.fieldbyname('cod_cliente').asstring, 6);
+                    qrServidor.Params.ParamByName('codvendedor').asstring := zerar(qrpdv.FIELDBYNAME('cod_vendedor').ASstring, 6);
+                    qrServidor.Params.ParamByName('codcaixa').asstring := zerar(qrpdv.fieldbyname('cod_caixa').asstring, 6);
+                    qrServidor.Params.ParamByName('documento').asstring := scod_venda + '/' + zerar(inttostr(iprest), 2);
+                    qrServidor.Params.ParamByName('tipo').asstring := COPY(qrPDV2.fieldbyname('descricao').asstring, 1, 20);
+                    qrServidor.Params.ParamByName('filtro').asinteger := 0;
+                    qrServidor.Params.ParamByName('situacao').asinteger := 1;
+                    qrServidor.Params.ParamByName('data_vencimento').asdatetime := qrPDV2.FIELDBYNAME('vencimento').ASDATETIME;
+                    qrServidor.Params.ParamByName('data_emissao').asdatetime := qrpdv.fieldbyname('data').asfloat;
+                    qrServidor.PARAMS.ParamByName('valor_atual').ASFLOAT := qrPDV2.fieldbyname('valor').asfloat;
+                    qrServidor.PARAMS.ParamByName('valor_original').ASFLOAT := qrPDV2.fieldbyname('valor').asfloat;
+                    qrServidor.ExecSQL;
+                    inc(iprest);
+                    qrPDV2.next;
+                  end;
+                end;
+                  // produtos
+                  qrPDV3.close;
+                qrPDV3.sql.clear;
+                qrPDV3.sql.add('select * from CUPOM_ITEM');
+                qrPDV3.sql.add('where cod_cupom = ''' + scod_cupom + '''');
+                qrPDV3.sql.add('and cancelado = 0');
+                qrPDV3.open;
+                qrPDV3.first;
 
-                    qrServidor.Params.ParamByName('CODIGO').asstring :=
-                      frmPrincipal.codifica('000032', 10);
-                    qrServidor.Params.ParamByName('CODNOTA').asstring :=
-                      scod_venda;
-                    qrServidor.Params.ParamByName('SERIAL').asstring := '';
-                    qrServidor.Params.ParamByName('NUMERONOTA').asstring :=
-                      qrPDV.FieldByName('numero').asstring;
-                    qrServidor.Params.ParamByName('CODPRODUTO').asstring :=
-                      Zerar(qrpdv3.FieldByName('cod_produto').asstring, 6);
-                    qrServidor.Params.ParamByName('CODCLIENTE').asstring :=
-                      Zerar(qrPDV.FieldByName('COD_CLIENTE').asstring, 6);
-                    qrServidor.Params.ParamByName('CODVENDEDOR').asstring :=
-                      Zerar(qrPDV.FieldByName('COD_VENDEDOR').asstring, 6);
+  while not qrPDV3.eof do
+                begin
+                  Application.ProcessMessages;
 
-                    qrServidor.Params.ParamByName('QTDE').asfloat :=
-                      qrpdv3.FieldByName('QTDE').asfloat;
-                    qrServidor.Params.ParamByName('MOVIMENTO_ESTOQUE').asfloat
-                      := -qrpdv3.FieldByName('QTDE').asfloat;
-                    qrServidor.Params.ParamByName('ALIQUOTA').asfloat :=
-                      qrpdv3.FieldByName('ALIQUOTA').asfloat;
+                  qrServidor.CLOSE;
+                  qrServidor.SQL.CLEAR;
+                  qrServidor.SQL.Add('insert into c000032');
+                  qrServidor.SQL.add('(codigo,codnota,serial,numeronota,');
+                  qrServidor.SQL.add('codproduto,qtde,movimento_estoque,unitario,desconto,acrescimo,');
+                  qrServidor.SQL.add('total,unidade,aliquota,');
+                  qrServidor.SQL.add('cupom_item,cupom_numero,cupom_modelo,');
+                  qrServidor.SQL.add('ecf_serie,ecf_caixa,codcliente,codvendedor,movimento,data,cst,');
+                  qrServidor.sql.add('base_calculo, valor_icms)');
+                  qrServidor.SQL.add('values');
 
-                    qrServidor.Params.ParamByName('UNIDADE').asstring :=
-                      qrpdv3.FieldByName('UNIDADE').asstring;
-                    qrServidor.Params.ParamByName('CST').asstring :=
-                      qrpdv3.FieldByName('CST').asstring;
-                    qrServidor.Params.ParamByName('MOVIMENTO').asinteger := 2;
-                    qrServidor.Params.ParamByName('DATA').asdatetime :=
-                      qrPDV.FieldByName('DATA').asdatetime;
-                    qrServidor.Params.ParamByName('ECF_CAIXA').asstring :=
-                      qrPDV.FieldByName('ECF_CAIXA').asstring;
-                    qrServidor.Params.ParamByName('ECF_SERIE').asstring :=
-                      qrPDV.FieldByName('ECF').asstring;
-                    qrServidor.Params.ParamByName('CUPOM_NUMERO').asstring :=
-                      qrPDV.FieldByName('NUMERO').asstring;
-                    qrServidor.Params.ParamByName('CUPOM_ITEM').asstring :=
-                      Zerar(qrpdv3.FieldByName('ITEM').asstring, 3);
-                    qrServidor.Params.ParamByName('CUPOM_MODELO')
-                      .asstring := '2D';
+                  qrServidor.SQL.add('(:codigo,:codnota,:serial,:numeronota,');
+                  qrServidor.SQL.add(':codproduto,:qtde,:movimento_estoque,:unitario,:desconto,:acrescimo,');
+                  qrServidor.SQL.add(':total,:unidade,:aliquota,');
+                  qrServidor.SQL.add(':cupom_item,:cupom_numero,:cupom_modelo,');
+                  qrServidor.SQL.add(':ecf_serie,:ecf_caixa,:codcliente,:codvendedor,:movimento,:data,:cst,');
+                  qrServidor.sql.add(':base_calculo, :valor_icms)');
 
-                    if qrPDV.FieldByName('valor_desconto').asfloat > 0 then
+                  qrServidor.Params.ParamByName('CODIGO').ASSTRING := frmPrincipal.codifica('000032', 10);
+                  qrServidor.Params.ParamByName('CODNOTA').ASSTRING := scod_venda;
+                  qrServidor.Params.ParamByName('SERIAL').ASSTRING := '';
+                  qrServidor.Params.ParamByName('NUMERONOTA').ASSTRING := qrpdv.fieldbyname('numero').asstring;
+                  qrServidor.Params.ParamByName('CODPRODUTO').ASSTRING := zerar(qrPDV3.fieldbyname('cod_produto').asstring, 6);
+                  qrServidor.Params.ParamByName('CODCLIENTE').ASSTRING := zerar(qrpdv.FIELDBYNAME('COD_CLIENTE').ASSTRING, 6);
+                  qrServidor.Params.ParamByName('CODVENDEDOR').ASSTRING := zerar(qrpdv.FIELDBYNAME('COD_VENDEDOR').ASSTRING, 6);
+
+                  qrServidor.Params.ParamByName('QTDE').ASFLOAT := qrPDV3.FIELDBYNAME('QTDE').ASFLOAT;
+                  qrServidor.Params.ParamByName('MOVIMENTO_ESTOQUE').ASFLOAT := -qrPDV3.FIELDBYNAME('QTDE').ASFLOAT;
+                  qrServidor.Params.ParamByName('ALIQUOTA').ASFLOAT := qrPDV3.FIELDBYNAME('ALIQUOTA').ASFLOAT;
+
+                  qrServidor.Params.ParamByName('UNIDADE').ASSTRING := qrPDV3.FIELDBYNAME('UNIDADE').ASSTRING;
+                  qrServidor.Params.ParamByName('CST').ASSTRING := qrPDV3.FIELDBYNAME('CST').ASSTRING;
+                  qrServidor.Params.ParamByName('MOVIMENTO').ASINTEGER := 2;
+                  qrServidor.Params.ParamByName('DATA').ASDATETIME := qrpdv.FIELDBYNAME('DATA').ASDATETIME;
+                  qrServidor.Params.ParamByName('ECF_CAIXA').ASSTRING := qrPDV.fieldbyname('ECF_CAIXA').ASSTRING;
+                  qrServidor.Params.ParamByName('ECF_SERIE').ASSTRING := qrpdv.FIELDBYNAME('ECF').ASSTRING;
+                  qrServidor.Params.ParamByName('CUPOM_NUMERO').ASSTRING := qrpdv.FIELDBYNAME('NUMERO').ASSTRING;
+                  qrServidor.Params.ParamByName('CUPOM_ITEM').ASSTRING := zerar(qrPDV3.FIELDBYNAME('ITEM').ASSTRING, 3);
+                  qrServidor.Params.ParamByName('CUPOM_MODELO').ASSTRING := '2D';
+
+                  if qrpdv.fieldbyname('valor_desconto').asfloat > 0 then
+                  begin
+                    qrServidor.params.parambyname('acrescimo').asfloat := qrPDV3.fieldbyname('valor_acrescimo').asfloat;
+                    rPercentual := qrpdv.fieldbyname('valor_desconto').asfloat / qrpdv.fieldbyname('valor_produto').asfloat;
+
+                    qrServidor.params.parambyname('desconto').asfloat := qrPDV3.fieldbyname('valor_desconto').asfloat +
+                      (qrPDV3.FIELDBYNAME('VALOR_TOTAL').ASFLOAT * rPercentual);
+                    qrServidor.Params.ParamByName('UNITARIO').ASFLOAT := qrPDV3.FIELDBYNAME('VALOR_UNITARIO').ASFLOAT;
+
+                    qrServidor.Params.ParamByName('TOTAL').ASFLOAT := qrPDV3.FIELDBYNAME('VALOR_TOTAL').ASFLOAT -
+                      (qrPDV3.FIELDBYNAME('VALOR_TOTAL').ASFLOAT * rPercentual);
+
+                    if (qrPDV3.fieldbyname('aliquota').asfloat > 0) and
+                      (qrPDV3.fieldbyname('cst').asstring = '000') then
                     begin
-                      qrServidor.Params.ParamByName('acrescimo').asfloat :=
-                        qrpdv3.FieldByName('valor_acrescimo').asfloat;
-                      rpercentual := qrPDV.FieldByName('valor_desconto').asfloat
-                        / qrPDV.FieldByName('valor_produto').asfloat;
+                      qrServidor.Params.ParamByName('base_calculo').ASFLOAT := qrServidor.Params.ParamByName('TOTAL').ASFLOAT;
+                      qrServidor.Params.ParamByName('valor_icms').ASFLOAT := qrServidor.Params.ParamByName('TOTAL').ASFLOAT * qrPDV3.FIELDBYNAME('aliquota').ASFLOAT / 100;
+                    end
+                    else
+                    begin
+                      qrServidor.Params.ParamByName('base_calculo').ASFLOAT := 0;
+                      qrServidor.Params.ParamByName('valor_icms').ASFLOAT := 0;
+                    end;
+                  end
+                  else
+                  begin
+                    if qrpdv.fieldbyname('Valor_acrescimo').asfloat > 0 then
+                    begin
+                      qrServidor.params.parambyname('desconto').asfloat := qrPDV3.fieldbyname('valor_desconto').asfloat;
 
-                      qrServidor.Params.ParamByName('desconto').asfloat :=
-                        qrpdv3.FieldByName('valor_desconto').asfloat +
-                        (qrpdv3.FieldByName('VALOR_TOTAL').asfloat *
-                        rpercentual);
-                      qrServidor.Params.ParamByName('UNITARIO').asfloat :=
-                        qrpdv3.FieldByName('VALOR_UNITARIO').asfloat;
+                      rPercentual := qrpdv.fieldbyname('valor_acrescimo').asfloat / qrpdv.fieldbyname('valor_produto').asfloat;
 
-                      qrServidor.Params.ParamByName('TOTAL').asfloat :=
-                        qrpdv3.FieldByName('VALOR_TOTAL').asfloat -
-                        (qrpdv3.FieldByName('VALOR_TOTAL').asfloat *
-                        rpercentual);
+                      qrServidor.params.parambyname('acrescimo').asfloat := qrPDV3.fieldbyname('valor_acrescimo').asfloat +
+                        (qrPDV3.FIELDBYNAME('VALOR_TOTAL').ASFLOAT * rPercentual);
+                      qrServidor.Params.ParamByName('UNITARIO').ASFLOAT := qrPDV3.FIELDBYNAME('VALOR_UNITARIO').ASFLOAT;
 
-                      if (qrpdv3.FieldByName('aliquota').asfloat > 0) and
-                        (qrpdv3.FieldByName('cst').asstring = '000') then
+                      qrServidor.Params.ParamByName('TOTAL').ASFLOAT := qrPDV3.FIELDBYNAME('VALOR_TOTAL').ASFLOAT +
+                        (qrPDV3.FIELDBYNAME('VALOR_TOTAL').ASFLOAT * rPercentual);
+
+                      if (qrPDV3.fieldbyname('aliquota').asfloat > 0) and
+                        (qrPDV3.fieldbyname('cst').asstring = '000') then
                       begin
-                        qrServidor.Params.ParamByName('base_calculo').asfloat :=
-                          qrServidor.Params.ParamByName('TOTAL').asfloat;
-                        qrServidor.Params.ParamByName('valor_icms').asfloat :=
-                          qrServidor.Params.ParamByName('TOTAL').asfloat *
-                          qrpdv3.FieldByName('aliquota').asfloat / 100;
+                        qrServidor.Params.ParamByName('base_calculo').ASFLOAT := qrServidor.Params.ParamByName('TOTAL').ASFLOAT;
+                        qrServidor.Params.ParamByName('valor_icms').ASFLOAT := qrServidor.Params.ParamByName('TOTAL').ASFLOAT * qrPDV3.FIELDBYNAME('aliquota').ASFLOAT / 100;
                       end
                       else
                       begin
-                        qrServidor.Params.ParamByName('base_calculo')
-                          .asfloat := 0;
-                        qrServidor.Params.ParamByName('valor_icms')
-                          .asfloat := 0;
+                        qrServidor.Params.ParamByName('base_calculo').ASFLOAT := 0;
+                        qrServidor.Params.ParamByName('valor_icms').ASFLOAT := 0;
                       end;
                     end
                     else
                     begin
-                      if qrPDV.FieldByName('Valor_acrescimo').asfloat > 0 then
+                      qrServidor.params.parambyname('desconto').asfloat := qrPDV3.fieldbyname('valor_desconto').asfloat;
+                      qrServidor.params.parambyname('acrescimo').asfloat := qrPDV3.fieldbyname('valor_acrescimo').asfloat;
+                      qrServidor.Params.ParamByName('UNITARIO').ASFLOAT := qrPDV3.FIELDBYNAME('VALOR_UNITARIO').ASFLOAT;
+                      qrServidor.Params.ParamByName('TOTAL').ASFLOAT := qrPDV3.FIELDBYNAME('VALOR_TOTAL').ASFLOAT;
+                      if (qrPDV3.fieldbyname('aliquota').asfloat > 0) and
+                        (qrPDV3.fieldbyname('cst').asstring = '000') then
                       begin
-                        qrServidor.Params.ParamByName('desconto').asfloat :=
-                          qrpdv3.FieldByName('valor_desconto').asfloat;
-
-                        rpercentual := qrPDV.FieldByName('valor_acrescimo')
-                          .asfloat / qrPDV.FieldByName('valor_produto').asfloat;
-
-                        qrServidor.Params.ParamByName('acrescimo').asfloat :=
-                          qrpdv3.FieldByName('valor_acrescimo').asfloat +
-                          (qrpdv3.FieldByName('VALOR_TOTAL').asfloat *
-                          rpercentual);
-                        qrServidor.Params.ParamByName('UNITARIO').asfloat :=
-                          qrpdv3.FieldByName('VALOR_UNITARIO').asfloat;
-
-                        qrServidor.Params.ParamByName('TOTAL').asfloat :=
-                          qrpdv3.FieldByName('VALOR_TOTAL').asfloat +
-                          (qrpdv3.FieldByName('VALOR_TOTAL').asfloat *
-                          rpercentual);
-
-                        if (qrpdv3.FieldByName('aliquota').asfloat > 0) and
-                          (qrpdv3.FieldByName('cst').asstring = '000') then
-                        begin
-                          qrServidor.Params.ParamByName('base_calculo').asfloat
-                            := qrServidor.Params.ParamByName('TOTAL').asfloat;
-                          qrServidor.Params.ParamByName('valor_icms').asfloat :=
-                            qrServidor.Params.ParamByName('TOTAL').asfloat *
-                            qrpdv3.FieldByName('aliquota').asfloat / 100;
-                        end
-                        else
-                        begin
-                          qrServidor.Params.ParamByName('base_calculo')
-                            .asfloat := 0;
-                          qrServidor.Params.ParamByName('valor_icms')
-                            .asfloat := 0;
-                        end;
+                        qrServidor.Params.ParamByName('base_calculo').ASFLOAT := qrPDV3.FIELDBYNAME('VALOR_TOTAL').ASFLOAT;
+                        qrServidor.Params.ParamByName('valor_icms').ASFLOAT := qrPDV3.FIELDBYNAME('VALOR_TOTAL').ASFLOAT * qrPDV3.FIELDBYNAME('aliquota').ASFLOAT / 100;
                       end
                       else
                       begin
-                        qrServidor.Params.ParamByName('desconto').asfloat :=
-                          qrpdv3.FieldByName('valor_desconto').asfloat;
-                        qrServidor.Params.ParamByName('acrescimo').asfloat :=
-                          qrpdv3.FieldByName('valor_acrescimo').asfloat;
-                        qrServidor.Params.ParamByName('UNITARIO').asfloat :=
-                          qrpdv3.FieldByName('VALOR_UNITARIO').asfloat;
-                        qrServidor.Params.ParamByName('TOTAL').asfloat :=
-                          qrpdv3.FieldByName('VALOR_TOTAL').asfloat;
-                        if (qrpdv3.FieldByName('aliquota').asfloat > 0) and
-                          (qrpdv3.FieldByName('cst').asstring = '000') then
-                        begin
-                          qrServidor.Params.ParamByName('base_calculo').asfloat
-                            := qrpdv3.FieldByName('VALOR_TOTAL').asfloat;
-                          qrServidor.Params.ParamByName('valor_icms').asfloat :=
-                            qrpdv3.FieldByName('VALOR_TOTAL').asfloat *
-                            qrpdv3.FieldByName('aliquota').asfloat / 100;
-                        end
-                        else
-                        begin
-                          qrServidor.Params.ParamByName('base_calculo')
-                            .asfloat := 0;
-                          qrServidor.Params.ParamByName('valor_icms')
-                            .asfloat := 0;
-                        end;
+                        qrServidor.Params.ParamByName('base_calculo').ASFLOAT := 0;
+                        qrServidor.Params.ParamByName('valor_icms').ASFLOAT := 0;
                       end;
                     end;
-                    qrServidor.ExecSQL;
-                    qrpdv3.next;
-                  END;
-
-                  try
-                    qrPDV_Tabela.close;
-                    qrPDV_Tabela.sql.Clear;
-                    qrPDV_Tabela.sql.add
-                      ('update cupom set ex = 1 where codigo = ''' +
-                      qrPDV.FieldByName('codigo').asstring + '''');
-                    qrPDV_Tabela.ExecSQL;
-                  except
-                    on E: Exception do
-                    begin
-                      Memo1.Lines.add('Erro na gravacao do Cupom - Mensagem: ' +
-                        E.message);
-                    end;
                   end;
-                  qrPDV.next;
+                  qrServidor.ExecSQL;
+                  qrPDV3.next;
                 end;
 
                 try
-                  // Atualizacao das reducoes z
-
-                  qrPDV.close;
-                  qrPDV.sql.Clear;
-                  qrPDV.sql.add('select * from reducaoz where ex = 0');
-                  qrPDV.Open;
-
-                  qrPDV.first;
-                  while not qrPDV.eof do
-                  begin
-                    Application.ProcessMessages;
-
-                    qrpdv3.close;
-                    qrpdv3.sql.Clear;
-                    qrpdv3.sql.add('select * from reducaoz_total_parcial');
-                    qrpdv3.sql.add('where cod_reducaoz = ''' +
-                      qrPDV.FieldByName('codigo').asstring + '''');
-                    qrpdv3.Open;
-
-                    qrServidor.close;
-                    qrServidor.sql.Clear;
-                    qrServidor.sql.add('insert into SINTEGRA_REG60');
-                    qrServidor.sql.add('(id, MOVIMENTO,');
-                    qrServidor.sql.add('CODIGO_EMPRESA,');
-                    qrServidor.sql.add('CNPJ,');
-                    qrServidor.sql.add('IE,');
-                    qrServidor.sql.add('UF,');
-                    qrServidor.sql.add('DATA_EMISSAO,');
-                    qrServidor.sql.add('NRO_SERIE_EQP,');
-                    qrServidor.sql.add('NRO_ORDEM_EQP,');
-                    qrServidor.sql.add('MODELO_DOC,');
-                    qrServidor.sql.add('NRO_CONTADOR_INICIO,');
-                    qrServidor.sql.add('NRO_CONTADOR_FIM,');
-                    qrServidor.sql.add('NRO_CONTADOR_Z,');
-                    qrServidor.sql.add('CONTADOR_REINICIO,');
-                    qrServidor.sql.add('VALOR_VENDA_BRUTA,');
-                    qrServidor.sql.add('VALOR_TOTAL_GERAL,');
-                    qrServidor.sql.add('CANCELAMENTO,');
-                    qrServidor.sql.add('DESCONTO,');
-                    qrServidor.sql.add('ISSQN,');
-                    qrServidor.sql.add('SUBSTITUICAO_TRIBUTARIA,');
-                    qrServidor.sql.add('ISENTO,');
-                    qrServidor.sql.add('NAO_INCIDENCIA,');
-
-                    qrServidor.sql.add('ALIQUOTA01,');
-                    qrServidor.sql.add('ALIQUOTA02,');
-                    qrServidor.sql.add('ALIQUOTA03,');
-                    qrServidor.sql.add('ALIQUOTA04,');
-                    qrServidor.sql.add('ALIQUOTA05,');
-                    qrServidor.sql.add('BASE01,');
-                    qrServidor.sql.add('BASE02,');
-                    qrServidor.sql.add('BASE03,');
-                    qrServidor.sql.add('BASE04,');
-                    qrServidor.sql.add('BASE05,');
-                    qrServidor.sql.add('VALOR_VENDA_LIQUIDA,');
-                    qrServidor.sql.add('NRO_CONTADOR_CANCELAMENTO)');
-
-                    qrServidor.sql.add('values');
-
-                    qrServidor.sql.add('(:id, :MOVIMENTO,');
-                    qrServidor.sql.add(':CODIGO_EMPRESA,');
-                    qrServidor.sql.add(':CNPJ,');
-                    qrServidor.sql.add(':IE,');
-                    qrServidor.sql.add(':UF,');
-                    qrServidor.sql.add(':DATA_EMISSAO,');
-                    qrServidor.sql.add(':NRO_SERIE_EQP,');
-                    qrServidor.sql.add(':NRO_ORDEM_EQP,');
-                    qrServidor.sql.add(':MODELO_DOC,');
-                    qrServidor.sql.add(':NRO_CONTADOR_INICIO,');
-                    qrServidor.sql.add(':NRO_CONTADOR_FIM,');
-                    qrServidor.sql.add(':NRO_CONTADOR_Z,');
-                    qrServidor.sql.add(':CONTADOR_REINICIO,');
-                    qrServidor.sql.add(':VALOR_VENDA_BRUTA,');
-                    qrServidor.sql.add(':VALOR_TOTAL_GERAL,');
-                    qrServidor.sql.add(':CANCELAMENTO,');
-                    qrServidor.sql.add(':DESCONTO,');
-                    qrServidor.sql.add(':ISSQN,');
-                    qrServidor.sql.add(':SUBSTITUICAO_TRIBUTARIA,');
-                    qrServidor.sql.add(':ISENTO,');
-                    qrServidor.sql.add(':NAO_INCIDENCIA,');
-
-                    qrServidor.sql.add(':ALIQUOTA01,');
-                    qrServidor.sql.add(':ALIQUOTA02,');
-                    qrServidor.sql.add(':ALIQUOTA03,');
-                    qrServidor.sql.add(':ALIQUOTA04,');
-                    qrServidor.sql.add(':ALIQUOTA05,');
-                    qrServidor.sql.add(':BASE01,');
-                    qrServidor.sql.add(':BASE02,');
-                    qrServidor.sql.add(':BASE03,');
-                    qrServidor.sql.add(':BASE04,');
-                    qrServidor.sql.add(':BASE05,');
-                    qrServidor.sql.add(':VALOR_VENDA_LIQUIDA,');
-                    qrServidor.sql.add(':NRO_CONTADOR_CANCELAMENTO)');
-
-                    qrServidor.Params.ParamByName('id').asstring :=
-                      codifica('000032', 6);
-                    qrServidor.Params.ParamByName('MOVIMENTO').asinteger := 1;
-                    qrServidor.Params.ParamByName('CODIGO_EMPRESA')
-                      .asinteger := 1;
-                    qrServidor.Params.ParamByName('CNPJ').asstring := '';
-                    qrServidor.Params.ParamByName('IE').asstring := '';
-                    qrServidor.Params.ParamByName('UF').asstring := '';
-                    qrServidor.Params.ParamByName('DATA_EMISSAO').asdatetime :=
-                      qrPDV.FieldByName('data_movimento').asdatetime;
-                    qrServidor.Params.ParamByName('NRO_SERIE_EQP').asstring :=
-                      qrPDV.FieldByName('ecf').asstring;
-                    qrServidor.Params.ParamByName('NRO_ORDEM_EQP').asinteger :=
-                      qrPDV.FieldByName('ecf_caixa').asinteger;
-                    qrServidor.Params.ParamByName('MODELO_DOC')
-                      .asstring := '2D';
-
-                    qrServidor.Params.ParamByName('NRO_CONTADOR_INICIO')
-                      .asinteger :=
-                      StrToInt(qrconfig.FieldByName('CAIXA_COO_INICIAL')
-                      .asstring);
-                    qrServidor.Params.ParamByName('NRO_CONTADOR_FIM').asinteger
-                      := StrToInt(qrPDV.FieldByName('coo').asstring);
-                    qrServidor.Params.ParamByName('NRO_CONTADOR_Z').asinteger :=
-                      StrToInt(qrPDV.FieldByName('crz').asstring);
-                    qrServidor.Params.ParamByName('CONTADOR_REINICIO').asinteger
-                      := StrToInt(qrPDV.FieldByName('cro').asstring);
-
-                    qrServidor.Params.ParamByName('VALOR_VENDA_BRUTA').asfloat
-                      := qrPDV.FieldByName('venda_bruta').asfloat;
-                    qrServidor.Params.ParamByName('VALOR_TOTAL_GERAL').asfloat
-                      := qrPDV.FieldByName('totalizador_geral').asfloat;
-                    qrServidor.Params.ParamByName('CANCELAMENTO').asfloat :=
-                      qrPDV.FieldByName('cancelamento_icms').asfloat;
-                    qrServidor.Params.ParamByName('DESCONTO').asfloat :=
-                      qrPDV.FieldByName('desconto_icms').asfloat;
-                    qrServidor.Params.ParamByName('ISSQN').asfloat :=
-                      qrPDV.FieldByName('total_iss').asfloat;
-
-                    x := 1;
-                    qrpdv3.first;
-                    while not qrpdv3.eof do
-                    begin
-                      // substituicao tributaria
-                      if qrpdv3.FieldByName('totalizador').asstring = 'F1' then
-                        qrServidor.Params.ParamByName('SUBSTITUICAO_TRIBUTARIA')
-                          .asfloat := qrpdv3.FieldByName('valor').asfloat;
-
-                      // isento
-                      if qrpdv3.FieldByName('totalizador').asstring = 'I1' then
-                        qrServidor.Params.ParamByName('ISENTO').asfloat :=
-                          qrpdv3.FieldByName('valor').asfloat;
-
-                      // NAO TRIBUTADO
-                      if qrpdv3.FieldByName('totalizador').asstring = 'N1' then
-                        qrServidor.Params.ParamByName('NAO_INCIDENCIA').asfloat
-                          := qrpdv3.FieldByName('valor').asfloat;
-
-                      // TRIBUTADOS
-                      IF (copy(qrpdv3.FieldByName('TOTALIZADOR').asstring, 6, 2)
-                        = '00') and
-                        (qrpdv3.FieldByName('valor').asfloat > 0) THEN
-                      BEGIN
-                        CASE x OF
-                          1:
-                            BEGIN
-                              qrServidor.Params.ParamByName('ALIQUOTA01')
-                                .asfloat :=
-                                strtofloat
-                                (copy(qrpdv3.FieldByName('TOTALIZADOR')
-                                .asstring, 4, 4)) / 100;
-                              qrServidor.Params.ParamByName('BASE01').asfloat :=
-                                qrpdv3.FieldByName('valor').asfloat;
-                              inc(x);
-                            END;
-                          2:
-                            BEGIN
-                              qrServidor.Params.ParamByName('ALIQUOTA02')
-                                .asfloat :=
-                                strtofloat
-                                (copy(qrpdv3.FieldByName('TOTALIZADOR')
-                                .asstring, 4, 4)) / 100;
-                              qrServidor.Params.ParamByName('BASE02').asfloat :=
-                                qrpdv3.FieldByName('valor').asfloat;
-                              inc(x);
-                            END;
-                          3:
-                            BEGIN
-                              qrServidor.Params.ParamByName('ALIQUOTA03')
-                                .asfloat :=
-                                strtofloat
-                                (copy(qrpdv3.FieldByName('TOTALIZADOR')
-                                .asstring, 4, 4)) / 100;
-                              qrServidor.Params.ParamByName('BASE03').asfloat :=
-                                qrpdv3.FieldByName('valor').asfloat;
-                              inc(x);
-                            END;
-                          4:
-                            BEGIN
-                              qrServidor.Params.ParamByName('ALIQUOTA04')
-                                .asfloat :=
-                                strtofloat
-                                (copy(qrpdv3.FieldByName('TOTALIZADOR')
-                                .asstring, 4, 4)) / 100;
-                              qrServidor.Params.ParamByName('BASE04').asfloat :=
-                                qrpdv3.FieldByName('valor').asfloat;
-                              inc(x);
-                            END;
-                          5:
-                            BEGIN
-                              qrServidor.Params.ParamByName('ALIQUOTA05')
-                                .asfloat :=
-                                strtofloat
-                                (copy(qrpdv3.FieldByName('TOTALIZADOR')
-                                .asstring, 4, 4)) / 100;
-                              qrServidor.Params.ParamByName('BASE05').asfloat :=
-                                qrpdv3.FieldByName('valor').asfloat;
-                              inc(x);
-                            END;
-                        end;
-                      END;
-                      qrpdv3.next;
-                    end;
-                    qrServidor.Params.ParamByName('VALOR_VENDA_LIQUIDA').asfloat
-                      := qrPDV.FieldByName('venda_liquida').asfloat;
-                    qrServidor.Params.ParamByName('NRO_CONTADOR_CANCELAMENTO')
-                      .asfloat := 0;
-                    qrServidor.ExecSQL;
-
-                    qrPDV.next;
-                  end;
-                  try
-                    qrPDV.close;
-                    qrPDV.sql.Clear;
-                    qrPDV.sql.add('update reducaoz set ex = 1');
-                    qrPDV.ExecSQL;
-                  except
-                    on E: Exception do
-                    begin
-                      Memo1.Lines.add
-                        ('Erro na gravacao da reducao z - Mensagem: ' +
-                        E.message);
-                    end;
-                  end;
-
+                  qrPDV_Tabela.close;
+                  qrPDV_Tabela.SQL.clear;
+                  qrPDV_Tabela.sql.Add('update cupom set ex = 1 where codigo = ''' + qrpdv.fieldbyname('codigo').asstring + '''');
+                  qrPDV_Tabela.ExecSQL;
                 except
+                  on E: Exception do
+                  begin
+                    Memo1.Lines.Add('Erro na gravacao do Cupom - Mensagem: ' + E.Message);
+                  end;
+                end;
+                qrpdv.Next;
+              end;
 
+
+
+              try
+            // Atualizacao das reducoes z
+
+
+                qrPDV.close;
+                qrPDV.sql.clear;
+                qrPDV.sql.add('select * from reducaoz where ex = 0');
+                qrPDV.open;
+
+                qrPDV.first;
+                while not qrPDV.eof do
+                begin
+                  Application.ProcessMessages;
+
+                  qrPDV3.close;
+                  qrPDV3.sql.clear;
+                  qrPDV3.sql.add('select * from reducaoz_total_parcial');
+                  qrPDV3.sql.add('where cod_reducaoz = ''' + qrPDV.fieldbyname('codigo').asstring + '''');
+                  qrPDV3.open;
+
+                  qrServidor.CLOSE;
+                  qrServidor.SQL.CLEAR;
+                  qrServidor.sql.add('insert into SINTEGRA_REG60');
+                  qrServidor.SQL.Add('(id, MOVIMENTO,');
+                  qrServidor.SQL.Add('CODIGO_EMPRESA,');
+                  qrServidor.SQL.Add('CNPJ,');
+                  qrServidor.SQL.Add('IE,');
+                  qrServidor.SQL.Add('UF,');
+                  qrServidor.SQL.Add('DATA_EMISSAO,');
+                  qrServidor.SQL.Add('NRO_SERIE_EQP,');
+                  qrServidor.SQL.Add('NRO_ORDEM_EQP,');
+                  qrServidor.SQL.Add('MODELO_DOC,');
+                  qrServidor.SQL.Add('NRO_CONTADOR_INICIO,');
+                  qrServidor.SQL.Add('NRO_CONTADOR_FIM,');
+                  qrServidor.SQL.Add('NRO_CONTADOR_Z,');
+                  qrServidor.SQL.Add('CONTADOR_REINICIO,');
+                  qrServidor.SQL.Add('VALOR_VENDA_BRUTA,');
+                  qrServidor.SQL.Add('VALOR_TOTAL_GERAL,');
+                  qrServidor.SQL.Add('CANCELAMENTO,');
+                  qrServidor.SQL.Add('DESCONTO,');
+                  qrServidor.SQL.Add('ISSQN,');
+                  qrServidor.SQL.Add('SUBSTITUICAO_TRIBUTARIA,');
+                  qrServidor.SQL.Add('ISENTO,');
+                  qrServidor.SQL.Add('NAO_INCIDENCIA,');
+
+                  qrServidor.SQL.Add('ALIQUOTA01,');
+                  qrServidor.SQL.Add('ALIQUOTA02,');
+                  qrServidor.SQL.Add('ALIQUOTA03,');
+                  qrServidor.SQL.Add('ALIQUOTA04,');
+                  qrServidor.SQL.Add('ALIQUOTA05,');
+                  qrServidor.SQL.Add('BASE01,');
+                  qrServidor.SQL.Add('BASE02,');
+                  qrServidor.SQL.Add('BASE03,');
+                  qrServidor.SQL.Add('BASE04,');
+                  qrServidor.SQL.Add('BASE05,');
+                  qrServidor.SQL.Add('VALOR_VENDA_LIQUIDA,');
+                  qrServidor.SQL.Add('NRO_CONTADOR_CANCELAMENTO)');
+
+                  qrServidor.sql.add('values');
+
+                  qrServidor.SQL.Add('(:id, :MOVIMENTO,');
+                  qrServidor.SQL.Add(':CODIGO_EMPRESA,');
+                  qrServidor.SQL.Add(':CNPJ,');
+                  qrServidor.SQL.Add(':IE,');
+                  qrServidor.SQL.Add(':UF,');
+                  qrServidor.SQL.Add(':DATA_EMISSAO,');
+                  qrServidor.SQL.Add(':NRO_SERIE_EQP,');
+                  qrServidor.SQL.Add(':NRO_ORDEM_EQP,');
+                  qrServidor.SQL.Add(':MODELO_DOC,');
+                  qrServidor.SQL.Add(':NRO_CONTADOR_INICIO,');
+                  qrServidor.SQL.Add(':NRO_CONTADOR_FIM,');
+                  qrServidor.SQL.Add(':NRO_CONTADOR_Z,');
+                  qrServidor.SQL.Add(':CONTADOR_REINICIO,');
+                  qrServidor.SQL.Add(':VALOR_VENDA_BRUTA,');
+                  qrServidor.SQL.Add(':VALOR_TOTAL_GERAL,');
+                  qrServidor.SQL.Add(':CANCELAMENTO,');
+                  qrServidor.SQL.Add(':DESCONTO,');
+                  qrServidor.SQL.Add(':ISSQN,');
+                  qrServidor.SQL.Add(':SUBSTITUICAO_TRIBUTARIA,');
+                  qrServidor.SQL.Add(':ISENTO,');
+                  qrServidor.SQL.Add(':NAO_INCIDENCIA,');
+
+                  qrServidor.SQL.Add(':ALIQUOTA01,');
+                  qrServidor.SQL.Add(':ALIQUOTA02,');
+                  qrServidor.SQL.Add(':ALIQUOTA03,');
+                  qrServidor.SQL.Add(':ALIQUOTA04,');
+                  qrServidor.SQL.Add(':ALIQUOTA05,');
+                  qrServidor.SQL.Add(':BASE01,');
+                  qrServidor.SQL.Add(':BASE02,');
+                  qrServidor.SQL.Add(':BASE03,');
+                  qrServidor.SQL.Add(':BASE04,');
+                  qrServidor.SQL.Add(':BASE05,');
+                  qrServidor.SQL.Add(':VALOR_VENDA_LIQUIDA,');
+                  qrServidor.SQL.Add(':NRO_CONTADOR_CANCELAMENTO)');
+
+
+
+                  qrServidor.Params.ParamByName('id').ASSTRING := codifica('000032', 6);
+                  qrServidor.Params.ParamByName('MOVIMENTO').asinteger := 1;
+                  qrServidor.Params.ParamByName('CODIGO_EMPRESA').asinteger := 1;
+                  qrServidor.Params.ParamByName('CNPJ').asstring := '';
+                  qrServidor.Params.ParamByName('IE').asstring := '';
+                  qrServidor.Params.ParamByName('UF').asstring := '';
+                  qrServidor.Params.ParamByName('DATA_EMISSAO').asdatetime := qrPDV.fieldbyname('data_movimento').asdatetime;
+                  qrServidor.Params.ParamByName('NRO_SERIE_EQP').asstring := qrPDV.fieldbyname('ecf').asstring;
+                  qrServidor.Params.ParamByName('NRO_ORDEM_EQP').asinteger := qrPDV.fieldbyname('ecf_caixa').asinteger;
+                  qrServidor.Params.ParamByName('MODELO_DOC').asstring := '2D';
+
+                  qrServidor.Params.ParamByName('NRO_CONTADOR_INICIO').asinteger := strtoint(qrconfig.fieldbyname('CAIXA_COO_INICIAL').asstring);
+                  qrServidor.Params.ParamByName('NRO_CONTADOR_FIM').asInteger := strtoint(qrPDV.fieldbyname('coo').asstring);
+                  qrServidor.Params.ParamByName('NRO_CONTADOR_Z').asinteger := strtoint(qrPDV.fieldbyname('crz').asstring);
+                  qrServidor.Params.ParamByName('CONTADOR_REINICIO').asinteger := strtoint(qrPDV.fieldbyname('cro').asstring);
+
+                  qrServidor.Params.ParamByName('VALOR_VENDA_BRUTA').asfloat := qrPDV.fieldbyname('venda_bruta').asfloat;
+                  qrServidor.Params.ParamByName('VALOR_TOTAL_GERAL').asfloat := qrPDV.fieldbyname('totalizador_geral').asfloat;
+                  qrServidor.Params.ParamByName('CANCELAMENTO').asfloat := qrPDV.fieldbyname('cancelamento_icms').asfloat;
+                  qrServidor.Params.ParamByName('DESCONTO').asfloat := qrPDV.fieldbyname('desconto_icms').asfloat;
+                  qrServidor.Params.ParamByName('ISSQN').asfloat := qrPDV.fieldbyname('total_iss').asfloat;
+
+                  x := 1;
+                  qrPDV3.first;
+                  while not qrPDV3.eof do
+                  begin
+                  // substituicao tributaria
+                    if qrPDV3.FieldByName('totalizador').asstring = 'F1' then
+                      qrServidor.Params.ParamByName('SUBSTITUICAO_TRIBUTARIA').asfloat :=
+                        qrPDV3.fieldbyname('valor').asfloat;
+
+                  // isento
+                    if qrPDV3.FieldByName('totalizador').asstring = 'I1' then
+                      qrServidor.Params.ParamByName('ISENTO').asfloat :=
+                        qrPDV3.fieldbyname('valor').asfloat;
+
+                  // NAO TRIBUTADO
+                    if qrPDV3.FieldByName('totalizador').asstring = 'N1' then
+                      qrServidor.Params.ParamByName('NAO_INCIDENCIA').asfloat :=
+                        qrPDV3.fieldbyname('valor').asfloat;
+
+                  // TRIBUTADOS
+                    if (COPY(qrPDV3.FieldByName('TOTALIZADOR').ASSTRING, 6, 2) = '00') and
+                      (qrPDV3.fieldbyname('valor').asfloat > 0) then
+                    begin
+                      case x of
+                        1: begin
+                            qrServidor.Params.ParamByName('ALIQUOTA01').asfloat :=
+                              strtofloat(COPY(qrPDV3.FieldByName('TOTALIZADOR').ASSTRING, 4, 4)) / 100;
+                            qrServidor.Params.ParamByName('BASE01').asfloat :=
+                              qrPDV3.fieldbyname('valor').asfloat;
+                            inc(x);
+                          end;
+                        2: begin
+                            qrServidor.Params.ParamByName('ALIQUOTA02').asfloat :=
+                              strtofloat(COPY(qrPDV3.FieldByName('TOTALIZADOR').ASSTRING, 4, 4)) / 100;
+                            qrServidor.Params.ParamByName('BASE02').asfloat :=
+                              qrPDV3.fieldbyname('valor').asfloat;
+                            inc(x);
+                          end;
+                        3: begin
+                            qrServidor.Params.ParamByName('ALIQUOTA03').asfloat :=
+                              strtofloat(COPY(qrPDV3.FieldByName('TOTALIZADOR').ASSTRING, 4, 4)) / 100;
+                            qrServidor.Params.ParamByName('BASE03').asfloat :=
+                              qrPDV3.fieldbyname('valor').asfloat;
+                            inc(x);
+                          end;
+                        4: begin
+                            qrServidor.Params.ParamByName('ALIQUOTA04').asfloat :=
+                              strtofloat(COPY(qrPDV3.FieldByName('TOTALIZADOR').ASSTRING, 4, 4)) / 100;
+                            qrServidor.Params.ParamByName('BASE04').asfloat :=
+                              qrPDV3.fieldbyname('valor').asfloat;
+                            inc(x);
+                          end;
+                        5: begin
+                            qrServidor.Params.ParamByName('ALIQUOTA05').asfloat :=
+                              strtofloat(COPY(qrPDV3.FieldByName('TOTALIZADOR').ASSTRING, 4, 4)) / 100;
+                            qrServidor.Params.ParamByName('BASE05').asfloat :=
+                              qrPDV3.fieldbyname('valor').asfloat;
+                            inc(x);
+                          end;
+                      end;
+                    end;
+                    qrPDV3.next;
+                  end;
+                  qrServidor.Params.ParamByName('VALOR_VENDA_LIQUIDA').asfloat := qrPDV.fieldbyname('venda_liquida').asfloat;
+                  qrServidor.Params.ParamByName('NRO_CONTADOR_CANCELAMENTO').asfloat := 0;
+                  qrServidor.execsql;
+
+                  qrPDV.next;
+                end;
+                try
+                  qrPDV.close;
+                  qrPDV.sql.clear;
+                  qrPDV.sql.add('update reducaoz set ex = 1');
+                  qrPDV.ExecSQL;
+                except
+                  on e: exception do
+                  begin
+                    Memo1.Lines.Add('Erro na gravacao da reducao z - Mensagem: ' + e.Message);
+                  end;
                 end;
 
+              except
+
               end;
+
 
               // S E R V I D O R   PARA  E S T A C A O
 
@@ -2194,13 +2014,17 @@ VAR
   i: integer;
   scst: string;
   bflag: Boolean;
+  LimpaDados: Boolean;
 
 begin
   if pnlAviso.Visible then
     Exit;
 
   try
-
+    if Application.MessageBox('Deseja Limpar os dados existentes nas tabelas antes da Carga Geral?','Atenção!',MB_ICONQUESTION+MB_YESNO)=mrYes then
+      LimpaDados := True
+    else
+    LimpaDados := False;
     Screen.Cursor := crAppStart;
     pnlAviso.Left := 2;
     pnlAviso.Width := 450;
@@ -2224,14 +2048,31 @@ begin
 
             qrServidor_Tabela.close;
             qrServidor_Tabela.sql.Clear;
-            qrServidor_Tabela.sql.add
-              ('select c000025.*, c000100.Estoque_atual');
-            qrServidor_Tabela.sql.add('from c000025, c000100');
-            qrServidor_Tabela.sql.add
-              ('where c000025.codigo = c000100.codproduto');
-            qrServidor_Tabela.sql.add('order by c000025.codigo');
+            qrServidor_Tabela.sql.add('select A.*, B.Estoque_atual');
+            qrServidor_Tabela.sql.add('from c000025 A, c000100 B');
+            qrServidor_Tabela.sql.add('where A.codigo = B.codproduto');
+            qrServidor_Tabela.sql.add('order by B.codigo');
             qrServidor_Tabela.Open;
             qrServidor_Tabela.first;
+
+
+             if LimpaDados then begin
+              memo1.lines.add('PDV' + grid.CELL[0, I].ASSTRING + ' - DEL - PRODUTOS');
+              try
+                qrpdv.close;
+                qrpdv.sql.clear;
+                qrpdv.sql.add('delete from ESTOQUE');
+                qrpdv.ExecSQL;
+              except
+                on E: Exception do
+                begin
+                  memo1.lines.add('PDV' + grid.CELL[0, I].ASSTRING + ' ERRO - DEL - PRODUTOS');
+                  Memo1.LINES.Add('Mensagem: ' + E.message);
+                end;
+              end;
+            end;
+
+
 
             while not qrServidor_Tabela.eof do
             begin
@@ -2272,7 +2113,9 @@ begin
                   qrPDV.sql.add('SITUACAO,');
                   qrPDV.sql.add('NCM,');
                   qrPDV.sql.add('ALIQNACIONAL,');
-                  qrPDV.SQL.Add('CSOSN');
+                  qrPDV.SQL.Add('CSOSN,');
+                  qrPDV.SQL.Add('CEST,');
+                  qrPDV.SQL.Add('CFOP');
 
                   qrPDV.sql.add(') values (');
 
@@ -2294,7 +2137,10 @@ begin
                   qrPDV.sql.add(':SITUACAO,');
                   qrPDV.sql.add(':NCM,');
                   qrPDV.sql.add(':ALIQNACIONAL,');
-                  qrPDV.SQL.Add(':CSOSN');
+                  qrPDV.SQL.Add(':CSOSN,');
+                  qrPDV.SQL.Add(':CEST,');
+                  qrPDV.SQL.Add(':CFOP');
+
 
                   qrPDV.sql.add(')');
                                //DARLON SANTOS
@@ -2353,6 +2199,8 @@ begin
                    //DARLON SANTOS
                     qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
                     qrPDV.ParamByName('CSOSN').Value := qrServidor_Tabela.FieldByName('CSOSN').Value;
+                    qrPDV.ParamByName('CEST').Value := qrServidor_Tabela.FieldByName('CEST').Value;
+                    qrPDV.ParamByName('CFOP').Value := qrServidor_Tabela.FieldByName('IND_CFOP_NFCE').Value;
 
                   qrPDV.ExecSQL;
 
@@ -2393,7 +2241,9 @@ begin
                   qrPDV.sql.add('SITUACAO = :SITUACAO,');
                   qrPDV.sql.add('NCM = :NCM,');
                   qrPDV.sql.add('ALIQNACIONAL = :ALIQNACIONAL,');
-                  qrPDV.SQL.Add('CSOSN = :CSOSN'); // DARLON SANTOS 28/10/2017
+                  qrPDV.SQL.Add('CSOSN = :CSOSN,');
+                  qrPDV.SQL.Add('CEST = :CEST,');
+                  qrPDV.SQL.Add('CFOP = :CFOP'); // DARLON SANTOS 28/10/2017
                   qrPDV.sql.add('where codigo = :codigo');
 
                   qrPDV.ParamByName('CODIGO').asinteger := StrToInt(qrServidor_Tabela.FieldByName('codigo').asstring);
@@ -2446,6 +2296,8 @@ begin
                   else
                     qrPDV.ParamByName('ALIQNACIONAL').Value := 4.2;
                     qrPDV.ParamByName('CSOSN').Value := qrServidor_Tabela.FieldByName('CSOSN').Value;
+                     qrPDV.ParamByName('CEST').Value := qrServidor_Tabela.FieldByName('CEST').Value;
+                    qrPDV.ParamByName('CFOP').Value := qrServidor_Tabela.FieldByName('IND_CFOP_NFCE').Value;
 
                   qrPDV.ExecSQL;
                 except

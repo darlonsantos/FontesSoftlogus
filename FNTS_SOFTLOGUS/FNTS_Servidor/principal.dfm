@@ -53,7 +53,6 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
       TabOrder = 0
       Visible = False
-      ExplicitTop = -19
     end
   end
   object PageControl1: TPageControl
@@ -398,7 +397,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 248
     Top = 2
     Bitmap = {
-      494C010102004000500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102004000580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -541,7 +540,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 392
     Top = 2
     Bitmap = {
-      494C010102002800380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102002800400010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -686,15 +685,16 @@ object frmPrincipal: TfrmPrincipal
     ClientLibrary = 'gds32.dll'
     Port = '3050'
     Username = 'SYSDBA'
+    Connected = True
     LoginPrompt = False
-    Left = 312
-    Top = 18
+    Left = 320
+    Top = 66
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object qrServidor: TIBCQuery
     Connection = conexao_servidor
-    Left = 296
-    Top = 10
+    Left = 216
+    Top = 98
   end
   object conexao_pdv: TIBCConnection
     Database = 'C:\Softlogus\PDV\BD\DATPDV.FDB'
@@ -707,8 +707,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object qrPDV: TIBCQuery
     Connection = conexao_pdv
-    Left = 312
-    Top = 26
+    Left = 296
+    Top = 186
   end
   object Timer1: TTimer
     Enabled = False
@@ -718,8 +718,9 @@ object frmPrincipal: TfrmPrincipal
   end
   object qrServidor_Tabela: TIBCQuery
     Connection = conexao_servidor
-    Left = 552
-    Top = 10
+    AutoCommit = False
+    Left = 280
+    Top = 210
   end
   object qrPDV_Tabela: TIBCQuery
     Connection = conexao_pdv
@@ -768,8 +769,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object qrpdv2: TIBCQuery
     Connection = conexao_pdv
-    Left = 464
-    Top = 10
+    Left = 472
+    Top = 82
   end
   object qrpdv3: TIBCQuery
     Connection = conexao_pdv
@@ -778,8 +779,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object qrForma: TIBCQuery
     Connection = conexao_pdv
-    Left = 368
-    Top = 34
+    Left = 352
+    Top = 146
   end
   object qrconfig: TIBCQuery
     Connection = conexao_pdv
@@ -829,7 +830,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 616
     Top = 16
     Bitmap = {
-      494C010106002800380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106002800400010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
