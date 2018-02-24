@@ -1793,9 +1793,9 @@ object Form_sobre: TForm_sobre
     object lbl8: TLabel
       Left = 109
       Top = 62
-      Width = 147
+      Width = 137
       Height = 14
-      Caption = '(82) 99619-0973 | 98840-0299'
+      Caption = '(61) 3028-3649 | 981035324'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1804,11 +1804,12 @@ object Form_sobre: TForm_sobre
       ParentFont = False
     end
     object img2: TImage
-      Left = 319
-      Top = 6
-      Width = 217
-      Height = 78
+      Left = 436
+      Top = 13
+      Width = 89
+      Height = 63
       Center = True
+      ParentShowHint = False
       Picture.Data = {
         0D546478536D617274496D616765FFD8FFE000104A4649460001010100000000
         0000FFDB00430003020202020203020202030303030406040404040408060605
@@ -2586,7 +2587,8 @@ object Form_sobre: TForm_sobre
         28A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A00
         28A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A00
         28A28A00FFD9}
-      Proportional = True
+      ShowHint = False
+      Stretch = True
     end
   end
 end
