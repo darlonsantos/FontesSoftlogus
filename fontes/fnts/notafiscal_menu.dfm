@@ -2375,7 +2375,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Width = 940
     Height = 36
     Cursor = crDefault
-    Caption.Text = 'Nota Fiscal Eletr'#244'nica - NFe 3.10'
+    Caption.Text = 'Nota Fiscal Eletr'#244'nica - NFe'
     Caption.Location = plCenterLeft
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
     Caption.HTMLFont.Color = clWindowText
@@ -10746,7 +10746,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
     Configuracoes.Arquivos.PathSalvar = 'C:\Softlogus\Server\nfe\XML\NFe\'
-    Configuracoes.Arquivos.PathSchemas = 'C:\Store_Protheus\Server\nfe\Schemas\ve310\'
+    Configuracoes.Arquivos.PathSchemas = 'C:\Softlogus\Server\nfe\Schemas\ve310\'
     Configuracoes.Arquivos.AdicionarLiteral = True
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.EmissaoPathNFe = True
@@ -11219,8 +11219,8 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   end
   object ACBrNFeDANFEFR1: TACBrNFeDANFEFR
     ACBrNFe = ACBrNFe1
-    Sistema = 'D S A - System'
-    PathPDF = 'C:\store_protheus\SERVER\PDF\'
+    Sistema = 'Softlogus'
+    PathPDF = 'C:\Softlogus\SERVER\PDF\'
     MostrarPreview = True
     MostrarStatus = True
     TipoDANFE = tiSemGeracao
@@ -11252,8 +11252,8 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     LogoemCima = False
     TamanhoFonteEndereco = 0
     RecuoLogo = 0
-    FastFile = 'C:\store_protheus\Server\nfe\danfe\DANFE.fr3'
-    FastFileEvento = 'C:\Store_Protheus\Server\rel\EVENTOS.fr3'
+    FastFile = 'C:\Softlogus\Server\nfe\danfe\DANFE.fr3'
+    FastFileEvento = 'C:\Softlogus\Server\rel\EVENTOS.fr3'
     EspessuraBorda = 1
     ExibirTotalTributosItem = True
     ExibeCampoFatura = True
