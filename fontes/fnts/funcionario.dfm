@@ -2719,6 +2719,8 @@ object frmfuncionario: Tfrmfuncionario
         DataField = 'F_ATENDENTE'
         DataSource = dsfunci2
         TabOrder = 3
+        ValueChecked = '1'
+        ValueUnchecked = '0'
       end
     end
     object DBEdit38: TDBEdit
