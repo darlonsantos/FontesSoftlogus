@@ -54,6 +54,9 @@ type
     qrNFCEXMLENVIO: TBlobField;
     Button4: TButton;
     qrNFCEXMLCACNELAMENTO: TBlobField;
+    qrNFCEHORA: TStringField;
+    qrNFCECONTINGENCIA: TStringField;
+    qrNFCEXML_CANCELAMENTO: TStringField;
     procedure Button4Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
@@ -224,6 +227,7 @@ begin
    if dataini.Date > datafin.Date then
     begin
       ShowMessage('A data de inicio não pode ser maior do que a data de finalização.');
+      Exit;
     end
      else
     qrNFCE.Close;

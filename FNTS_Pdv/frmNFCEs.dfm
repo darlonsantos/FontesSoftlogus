@@ -1582,7 +1582,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       Top = 6
       Width = 100
       Height = 50
-      Caption = 'Filtrar'
+      Caption = 'Pesquisar'
       TabOrder = 4
       OnClick = Button4Click
     end
@@ -1665,6 +1665,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
         Expanded = False
         FieldName = 'CONTINGENCIA'
         Title.Caption = 'Conting'#234'ncia'
+        Width = 64
         Visible = True
       end
       item
@@ -1735,7 +1736,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 588
     Top = 273
     Bitmap = {
-      494C0101020005003C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500400010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1878,6 +1879,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Connection = frmModulo.conexao
     SQL.Strings = (
       'select * from nfce order by data, numero')
+    CachedUpdates = True
     AfterScroll = qrNFCEAfterScroll
     Left = 504
     Top = 272
@@ -1928,6 +1930,18 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     end
     object qrNFCEXMLCACNELAMENTO: TBlobField
       FieldName = 'XMLCACNELAMENTO'
+    end
+    object qrNFCEHORA: TStringField
+      FieldName = 'HORA'
+      Size = 8
+    end
+    object qrNFCECONTINGENCIA: TStringField
+      FieldName = 'CONTINGENCIA'
+      Size = 1
+    end
+    object qrNFCEXML_CANCELAMENTO: TStringField
+      FieldName = 'XML_CANCELAMENTO'
+      Size = 255
     end
   end
 end
