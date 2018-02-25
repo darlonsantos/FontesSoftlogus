@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2017/05/19 00:39:06.000.256,=G:\Prog\Store Protheus 8.1\Projetos\Fontes\FNTS_Pdv_Nfce\Unit1.pas</Transaction>
+    <Transaction>2017/05/19 00:39:12.000.319,G:\Prog\Store Protheus 8.1\Projetos\Fontes\FNTS_Pdv_Nfce\teste.pas=G:\Prog\Store Protheus 8.1\Projetos\Fontes\FNTS_Pdv_Nfce\Unit1.pas</Transaction>
+    <Transaction>2017/05/19 00:39:12.000.319,G:\Prog\Store Protheus 8.1\Projetos\Fontes\FNTS_Pdv_Nfce\teste.dfm=G:\Prog\Store Protheus 8.1\Projetos\Fontes\FNTS_Pdv_Nfce\Unit1.dfm</Transaction>
+    <Transaction>2017/06/27 18:24:45.000.613,C:\Fontes\FNTS_Pdv_Nfce\Caixa_NFCE.dproj=C:\Fontes\FNTS_Pdv_Nfce\Pdv_Nfce.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
