@@ -4529,9 +4529,7 @@ begin
             spNFCE_Insert.ParamByName('xmlenvio').LoadFromFile(NomeArquivo,ftBlob);
             spNFCE_Insert.ParamByName('xmlcacnelamento').asstring := '';
             spNFCE_Insert.Prepared;
-            spNFCE_Insert.Executing;
-            Conexao_Servidor.AutoCommit := false;
-            Conexao_Servidor.Commit;
+            spNFCE_Insert.ExecSQL;
           end;
 
         end ELSE BEGIN
@@ -4542,7 +4540,7 @@ begin
         END;
 
       Except
-        on e: exception do
+         on e: exception do
         begin
           Imprime_display('ERRO NFCE: ' + e.Message, CLWHITE, tiLivre);
           bt_confirmar_fechamento.Enabled := true;
@@ -6219,7 +6217,7 @@ begin
   else
     frmtOffLine := teOffLine;
 
-  vAux := frmmodulo.codifica('888888');
+  vAux := frmmodulo.codifica('915');
   vNumNFCe := StrToInt(vAux);
   vSincrono := '1';
   vNumLote := vAux;

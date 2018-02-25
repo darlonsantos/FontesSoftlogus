@@ -5239,7 +5239,6 @@ object frmConfig: TfrmConfig
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitTop = 1
       object grp1: TGroupBox
         Left = 8
         Top = 8
@@ -5252,7 +5251,7 @@ object frmConfig: TfrmConfig
           Top = 15
           Width = 277
           Height = 392
-          ActivePage = ts2
+          ActivePage = ts4
           Align = alClient
           MultiLine = True
           TabOrder = 0

@@ -208,7 +208,7 @@ object frmModulo: TfrmModulo
   object conexao: TUniConnection
     ProviderName = 'InterBase'
     Port = 3050
-    Database = 'C:\Softlogus\PDV\BD\PDV.FDB'
+    Database = 'C:\Softlogus\PDV\BD\DATPDV.FDB'
     Username = 'sysdba'
     Server = 'localhost'
     LoginPrompt = False
@@ -5279,7 +5279,7 @@ object frmModulo: TfrmModulo
         ' :PCLIENTE, :PCHAVE, :PXML, :PSITUACAO, :PTROCO, :CONTINGENCIA, ' +
         ':ENVIADOCONTINGENCIA, :MOTIVOCONTIGENCIA, :XMLENVIO, :XMLCACNELA' +
         'MENTO)')
-    Connection = Conexao_Servidor
+    Connection = conexao
     Left = 52
     Top = 369
     ParamData = <
@@ -5377,9 +5377,9 @@ object frmModulo: TfrmModulo
     CommandStoredProcName = 'NFCE_INSERT'
   end
   object qradic_mestre: TUniQuery
-    Connection = Conexao_Servidor
+    Connection = conexao
     SQL.Strings = (
-      'select * from C000000')
+      'SELECT * FROM SEQUENCIA')
     Left = 241
     Top = 423
   end

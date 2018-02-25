@@ -1237,16 +1237,16 @@ begin
  // qradic_mestre.CommitUpdates;
   qradic_mestre.Refresh;
   if qradic_mestre.Locate('codigo', TABELA, [loCaseInsensitive]) then begin
-    if qradic_mestre.FIELDBYNAME('sequencia').AsInteger < 1 then begin
+    if qradic_mestre.FIELDBYNAME('sequencias').AsInteger < 1 then begin
       result := '000001';
       qradic_mestre.Edit;
-      qradic_mestre.FIELDBYNAME('sequencia').AsInteger := 1;
+      qradic_mestre.FIELDBYNAME('sequencias').AsInteger := 1;
       qradic_mestre.Post;
     end else begin
       qradic_mestre.Edit;
-      qradic_mestre.FIELDBYNAME('sequencia').AsInteger := qradic_mestre.FIELDBYNAME('sequencia').AsInteger + 1;
+      qradic_mestre.FIELDBYNAME('sequencias').AsInteger := qradic_mestre.FIELDBYNAME('sequencias').AsInteger + 1;
       qradic_mestre.Post;
-      result := Zerar(IntToStr(frmModulo.qradic_mestre.FIELDBYNAME('sequencia').AsInteger), 6);
+      result := Zerar(IntToStr(frmModulo.qradic_mestre.FIELDBYNAME('sequencias').AsInteger), 6);
     end;
     Conexao_Servidor.Commit;
   end else begin

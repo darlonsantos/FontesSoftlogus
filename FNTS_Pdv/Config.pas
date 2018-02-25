@@ -278,8 +278,8 @@ begin
   with frmModulo do begin
     qradic_mestre.open;
     qradic_mestre.Refresh;
-    if qradic_mestre.Locate('codigo', '888888', [loCaseInsensitive]) then
-      edSequencia.Text := qradic_mestre.FieldByName('sequencia').Text
+    if qradic_mestre.Locate('codigo', '915', [loCaseInsensitive]) then
+      edSequencia.Text := qradic_mestre.FieldByName('SEQUENCIAS').Text
     else
       edSequencia.Clear;
   end;
@@ -760,18 +760,18 @@ begin
   with frmModulo do begin
     qradic_mestre.open;
     qradic_mestre.Refresh;
-    if qradic_mestre.Locate('codigo', '888888', [loCaseInsensitive]) then begin
-      if qradic_mestre.FIELDBYNAME('sequencia').AsInteger <> StrToInt(edSequencia.Text) then begin
+    if qradic_mestre.Locate('codigo', '915', [loCaseInsensitive]) then begin
+      if qradic_mestre.FIELDBYNAME('SEQUENCIAS').AsInteger <> StrToInt(edSequencia.Text) then begin
         qradic_mestre.Edit;
-        qradic_mestre.FIELDBYNAME('sequencia').AsInteger := StrToInt(edSequencia.Text);
+        qradic_mestre.FIELDBYNAME('SEQUENCIAS').AsInteger := StrToInt(edSequencia.Text);
         qradic_mestre.Post;
       end;
       Conexao_Servidor.Commit;
     end else begin
       qradic_mestre.Insert;
-      qradic_mestre.FIELDBYNAME('CODIGO').AsString := '888888';
-      qradic_mestre.FIELDBYNAME('TABELA').AsString := 'Sequencia da NFC-e';
-      qradic_mestre.FIELDBYNAME('sequencia').AsInteger := StrToInt(edSequencia.Text);
+      qradic_mestre.FIELDBYNAME('CODIGO').AsString := '915';
+      qradic_mestre.FIELDBYNAME('TABELA').AsString := 'NFCE';
+      qradic_mestre.FIELDBYNAME('SEQUENCIAS').AsInteger := StrToInt(edSequencia.Text);
       qradic_mestre.Post;
     end;
   end;

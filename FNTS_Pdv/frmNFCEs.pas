@@ -220,10 +220,16 @@ procedure TfrmNotasconsumidor.Button4Click(Sender: TObject);
 var
   filtro:String;
 begin
-  qrNFCE.Close;
-  qrNFCE.SQL.Clear;
-  qrNFCE.SQL.Add('select nf.*, case when situacao = 0 then ' + QuotedStr('Emitido') + ' else ' + QuotedStr('Cancelado') + ' end des_sit ');
-  qrNFCE.SQL.Add('from NFCE nf where 1=1 ');
+
+   if dataini.Date > datafin.Date then
+    begin
+      ShowMessage('A data de inicio não pode ser maior do que a data de finalização.');
+    end
+     else
+    qrNFCE.Close;
+   qrNFCE.SQL.Clear;
+   qrNFCE.SQL.Add('select nf.*, case when situacao = 0 then ' + QuotedStr('Emitido') + ' else ' + QuotedStr('Cancelado') + ' end des_sit ');
+   qrNFCE.SQL.Add('from NFCE nf where 1=1 ');
   if Length(edt_Numero.Text) > 0 then begin
     qrNFCE.SQL.Add('and numero = :pnumero ');
     qrNFCE.ParamByName('pnumero').AsInteger := strtoint(edt_Numero.Text);

@@ -99,11 +99,11 @@ var
 {$R *.res}
 
 begin
-  Hand := FindWindow('TApplication', 'Sistema Power PDV');
+  Hand := FindWindow('TApplication', 'Softlogus');
   if Hand = 0 then
   begin
     Application.Initialize;
-    Application.Title := 'Frente de Caixa NFC-e';
+    Application.Title := 'Frente de Caixa';
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmMsg_Operador, frmMsg_Operador);
   Application.CreateForm(TfrmStatus, frmStatus);

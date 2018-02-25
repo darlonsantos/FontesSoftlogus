@@ -870,7 +870,7 @@ begin
    Form_ativar.dados.Lines.Add(  frmPrincipal.store_protect.Cliente_Estado );
    Form_ativar.dados.Lines.Add(  frmPrincipal.store_protect.Cliente_Telefone );
  //fim
- //imgFundo.Picture.LoadFromFile('C:\store_protheus\PDV\img\fundopdv.jpg');
+ imgFundo.Picture.LoadFromFile('C:\Softlogus\PDV\Img\caixa.jpg');
 end;
 
 // -------------------------------------------------------------------------- //

@@ -1735,7 +1735,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 588
     Top = 273
     Bitmap = {
-      494C010102000500340010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020005003C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1875,20 +1875,12 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       000000000000}
   end
   object qrNFCE: TUniQuery
-    Connection = frmModulo.Conexao_Servidor
+    Connection = frmModulo.conexao
     SQL.Strings = (
-      
-        'select nf.*, case when situacao = 0 then '#39'Emitido'#39' else '#39'Cancela' +
-        'do'#39' end des_sit'
-      'from NFCE nf where 1=1 &filtro order by data,numero')
-    CachedUpdates = True
+      'select * from nfce order by data, numero')
     AfterScroll = qrNFCEAfterScroll
     Left = 504
     Top = 272
-    MacroData = <
-      item
-        Name = 'filtro'
-      end>
     object qrNFCENUMERO: TIntegerField
       FieldName = 'NUMERO'
       Required = True
