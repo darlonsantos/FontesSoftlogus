@@ -1437,8 +1437,6 @@ object frmPrincipal: TfrmPrincipal
     Color = 5461077
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 508
-    ExplicitWidth = 771
     object Button1: TButton
       Left = 768
       Top = 6
@@ -1505,10 +1503,6 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
       TabOrder = 0
       Visible = False
-      ExplicitLeft = 15
-      ExplicitTop = 7
-      ExplicitWidth = 609
-      ExplicitHeight = 50
     end
   end
   object pnTitulo: TPanel
@@ -1566,9 +1560,6 @@ object frmPrincipal: TfrmPrincipal
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitLeft = 40
-    ExplicitTop = 8
-    ExplicitWidth = 777
     TMSStyle = 0
     OldHeight = 59.000000000000000000
     object Label17: TLabel
@@ -1587,8 +1578,7 @@ object frmPrincipal: TfrmPrincipal
       Font.Style = []
       ParentFont = False
       Transparent = True
-      ExplicitTop = 27
-      ExplicitWidth = 771
+      ExplicitWidth = 251
     end
   end
   object Panel1: TPanel
@@ -1601,7 +1591,6 @@ object frmPrincipal: TfrmPrincipal
     Color = clGray
     ParentBackground = False
     TabOrder = 4
-    ExplicitLeft = 644
     object AdvGlowButton1: TAdvGlowButton
       Left = 20
       Top = 129
@@ -2062,8 +2051,6 @@ object frmPrincipal: TfrmPrincipal
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitLeft = -3
-      ExplicitTop = 6
       object Label1: TLabel
         Left = 31
         Top = 431
@@ -2314,7 +2301,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 560
     Top = 216
     Bitmap = {
-      494C010102003400500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102003400580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000066CCCC0000000000000000000000000000000000000000000000
@@ -2457,7 +2444,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 744
     Top = 146
     Bitmap = {
-      494C01010A000D00300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010A000D00380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
