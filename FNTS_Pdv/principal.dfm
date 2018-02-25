@@ -2373,8 +2373,7 @@ object frmPrincipal: TfrmPrincipal
     Align = alBottom
     TabOrder = 1
     ShowExpander = False
-    ExpanderBorderColor = 14120964
-    ExpanderColor = 14120964
+    ExpanderColor = clBlack
     ExpanderDownColor = clNone
     ExpanderHoverColor = clNone
     TMSStyle = 0
@@ -2846,7 +2845,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 159
     ApplicationButton.Menu = dxBarApplicationMenu1
     BarManager = dxBarManager1
-    ColorSchemeName = 'Blue'
+    ColorSchemeName = 'Black'
     QuickAccessToolbar.Toolbar = dxBarManager1Bar1
     Contexts = <>
     TabOrder = 9
@@ -2880,7 +2879,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 752
     Top = 472
     Bitmap = {
-      494C010108000D00540010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010108000D00580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

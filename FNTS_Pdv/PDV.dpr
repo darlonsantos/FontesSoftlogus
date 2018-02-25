@@ -104,6 +104,7 @@ begin
   begin
     Application.Initialize;
     Application.Title := 'Frente de Caixa';
+   // Application.Icon := 'C:\Softlogus\Server\icones\Softlogus.ico';
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TfrmMsg_Operador, frmMsg_Operador);
   Application.CreateForm(TfrmStatus, frmStatus);
