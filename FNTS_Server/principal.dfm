@@ -2893,7 +2893,7 @@ object frmPrincipal: TfrmPrincipal
   object conexao_servidor: TUniConnection
     ProviderName = 'InterBase'
     Port = 3050
-    Database = 'C:\Store_Protheus\Server\BD\base.fdb'
+    Database = 'C:\Softlogus\Server\BD\base.fdb'
     Username = 'sysdba'
     Server = 'localhost'
     LoginPrompt = False
@@ -2904,7 +2904,7 @@ object frmPrincipal: TfrmPrincipal
   object conexao_pdv: TUniConnection
     ProviderName = 'InterBase'
     Port = 3050
-    Database = 'C:\Store_Protheus\PDV\BD\DATPDV.FDB'
+    Database = 'C:\Softlogus\PDV\BD\DATPDV.FDB'
     Username = 'sysdba'
     Server = 'localhost'
     LoginPrompt = False
