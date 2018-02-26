@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2017/06/26 11:12:44.000.445,C:\Fontes\FNTS_Server_Nfce\Server_Nfce.dproj=C:\Fontes\FNTS_Server_Nfce\Sincronizador_NFCE.dproj</Transaction>
-    <Transaction>2018/02/24 19:03:40.178,C:\FontesSoftlogus\FNTS_Server\PDVMonitor.dproj=C:\FontesSoftlogus\FNTS_Server\Sincronizador_NFCE.dproj</Transaction>
+    <Transaction>2017/06/26 11:12:44.000.445,C:\Fontes\FNTS_Server_Nfce\Sincronizador_NFCE.dproj=C:\Fontes\FNTS_Server_Nfce\Server_Nfce.dproj</Transaction>
+    <Transaction>2018/02/24 19:03:40.000.178,C:\FontesSoftlogus\FNTS_Server\Sincronizador_NFCE.dproj=C:\FontesSoftlogus\FNTS_Server\PDVMonitor.dproj</Transaction>
   </Transactions>
 </BorlandProject>

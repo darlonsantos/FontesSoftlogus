@@ -485,8 +485,10 @@ begin
               qrpdv.open;
               qrpdv.first;
               while not qrpdv.eof do begin
-                qrServidor.SQL.Add('insert into NFCE (NUMERO, DATA, TOTAL, CLIENTE, CHAVE, XML, SITUACAO, TROCO, CONTINGENCIA, ENVIADOCONTINGENCIA, MOTIVOCONTIGENCIA, XMLENVIO, XMLCACNELAMENTO, HORA, XML_CANCELAMENTO) VALUES');
-                qrServidor.SQL.Add( '(:NUMERO, :DATA, :TOTAL, :CLIENTE, :CHAVE, :XML, :SITUACAO, :TROCO, :CONTINGENCIA, :ENVIADOCONTINGENCIA, :MOTIVOCONTIGENCIA, :XMLENVIO, :XMLCACNELAMENTO, :HORA, :XML_CANCELAMENTO)');
+                qrServidor.close;
+                qrServidor.sql.clear;
+                qrServidor.SQL.Add('insert into NFCE (NUMERO, DATA, TOTAL, CLIENTE, CHAVE, XML, SITUACAO, TROCO,  CONTINGENCIA, ENVIADOCONTINGENCIA, MOTIVOCONTIGENCIA, XMLENVIO, XMLCACNELAMENTO, HORA, XML_CANCELAMENTO) VALUES');
+                qrServidor.SQL.Add( '(:NUMERO, :DATA, :TOTAL, :CLIENTE, :CHAVE, :XML, :SITUACAO, :TROCO,  :CONTINGENCIA, :ENVIADOCONTINGENCIA, :MOTIVOCONTIGENCIA, :XMLENVIO, :XMLCACNELAMENTO, :HORA, :XML_CANCELAMENTO)');
                 qrServidor.Params.ParamByName('NUMERO').AsInteger := qrpdv.FieldByName('NUMERO').AsInteger;
                 qrServidor.Params.ParamByName('DATA').AsDateTime := qrpdv.FieldByName('DATA').AsDateTime;
                 qrServidor.Params.ParamByName('TOTAL').AsFloat := qrpdv.FieldByName('TOTAL').AsFloat;
@@ -1177,7 +1179,8 @@ begin
                             qrpdv.sql.add('SITUACAO,');
                             qrpdv.sql.add('CFOP,');
                             qrpdv.sql.add('NCM,');
-                            qrpdv.sql.add('CSOSN');
+                            qrpdv.sql.add('CSOSN,');
+                            qrpdv.sql.add('CEST'); //CEST
 
 
                             qrpdv.sql.add(') values (');
@@ -1200,7 +1203,8 @@ begin
                             qrpdv.sql.add(':SITUACAO,');
                             qrpdv.sql.add(':CFOP,');
                             qrpdv.sql.add(':NCM,');
-                            qrpdv.sql.add(':CSOSN');
+                            qrpdv.sql.add(':CSOSN,');
+                             qrpdv.sql.add(':CEST');
 
                             qrpdv.sql.add(')');
 
@@ -1239,6 +1243,7 @@ begin
                             qrpdv.parambyname('IPPT').asstring := qrservidor_tabela.fieldbyname('IPPT').AsString;
                             qrpdv.parambyname('NCM').asstring := qrservidor_tabela.fieldbyname('CLASSIFICACAO_FISCAL').AsString;
                             qrpdv.parambyname('CSOSN').asstring := qrservidor_tabela.fieldbyname('CSOSN').AsString;
+                             qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
                             qrpdv.ExecSQL;
                           except
                             on E: Exception do
@@ -1300,7 +1305,8 @@ begin
                               qrpdv.sql.add('SITUACAO = :SITUACAO,');
                               qrpdv.sql.add('CFOP = :CFOP,');
                               qrpdv.sql.add('NCM = :NCM,');
-                              qrpdv.sql.add('CSOSN = :CSOSN');
+                              qrpdv.sql.add('CSOSN = :CSOSN,');
+                              qrpdv.sql.add('CEST = :CEST');
                               qrpdv.sql.add('where codigo = :codigo');
 
                               qrpdv.parambyname('CODIGO').asinteger := strtoint(qrservidor_tabela.fieldbyname('codigo').asstring);
@@ -1338,6 +1344,7 @@ begin
                               qrpdv.parambyname('IPPT').asstring := qrservidor_tabela.fieldbyname('IPPT').AsString;
                               qrpdv.parambyname('NCM').asstring := qrservidor_tabela.fieldbyname('CLASSIFICACAO_FISCAL').AsString;
                               qrpdv.parambyname('CSOSN').asstring := qrservidor_tabela.fieldbyname('CSOSN').AsString;
+                               qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
                               qrpdv.ExecSQL;
                             except
                               memo1.lines.add('PDV' + grid.CELL[0, I].ASSTRING + ' ERRO - ALT - PRODUTO - ' + qrservidor.fieldbyname('codregistro').asstring);
@@ -1370,7 +1377,8 @@ begin
                               qrpdv.sql.add('IPPT,');
                               qrpdv.sql.add('CFOP,');
                               qrpdv.sql.add('NCM,');
-                              qrpdv.sql.add('CSOSN');
+                              qrpdv.sql.add('CSOSN,');
+                              qrpdv.sql.add('CEST');
                               qrpdv.sql.add('SITUACAO');
 
 
@@ -1395,6 +1403,7 @@ begin
                               qrpdv.sql.add(':CFOP,');
                               qrpdv.sql.add(':NCM,');
                               qrpdv.sql.add(':CSOSN');
+                              qrpdv.sql.add(':CEST');
                               qrpdv.sql.add(':SITUACAO');
 
                               qrpdv.sql.add(')');
@@ -1414,6 +1423,7 @@ begin
                               qrpdv.parambyname('CFOP').AsString := qrservidor_tabela.fieldbyname('IND_CFOP_NFCE').asstring;
                               qrpdv.parambyname('NCM').asstring := qrservidor_tabela.fieldbyname('CLASSIFICACAO_FISCAL').AsString;
                               qrpdv.parambyname('CSOSN').asstring := qrservidor_tabela.fieldbyname('CSOSN').AsString;
+                              qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
 
                               scst := qrservidor_tabela.fieldbyname('cst').asstring;
 
@@ -1966,7 +1976,8 @@ begin
                   qrpdv.sql.add('SITUACAO,');
                   qrpdv.sql.add('CFOP,');
                   qrpdv.sql.add('NCM,');
-                  qrpdv.sql.add('CSOSN');
+                  qrpdv.sql.add('CSOSN,');
+                  qrpdv.sql.add('CEST');
 
                   qrpdv.sql.add(') values (');
 
@@ -1988,7 +1999,8 @@ begin
                   qrpdv.sql.add(':SITUACAO,');
                   qrpdv.sql.add(':CFOP,');
                   qrpdv.sql.add(':NCM,');
-                  qrpdv.sql.add(':CSOSN');
+                  qrpdv.sql.add(':CSOSN,');
+                  qrpdv.sql.add(':CEST');
 
                   qrpdv.sql.add(')');
 
@@ -2028,6 +2040,7 @@ begin
                   qrpdv.parambyname('IPPT').asstring := qrservidor_tabela.fieldbyname('IPPT').AsString;
                   qrpdv.parambyname('NCM').asstring := qrservidor_tabela.fieldbyname('CLASSIFICACAO_FISCAL').AsString;
                   qrpdv.parambyname('CSOSN').asstring := qrservidor_tabela.fieldbyname('CSOSN').AsString;
+                  qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
 
                   qrpdv.ExecSQL;
                 except
@@ -2062,7 +2075,8 @@ begin
                   qrpdv.sql.add('SITUACAO = :SITUACAO,');
                   qrpdv.sql.add('CFOP = :CFOP,');
                   qrpdv.sql.add('NCM = :NCM,');
-                  qrpdv.sql.add('CSOSN = :CSOSN');
+                  qrpdv.sql.add('CSOSN = :CSOSN,');
+                  qrpdv.sql.add('CEST = :CEST');
                   qrpdv.sql.add('where codigo = :codigo');
 
                   qrpdv.parambyname('CODIGO').asinteger := strtoint(qrservidor_tabela.fieldbyname('codigo').asstring);
@@ -2101,6 +2115,7 @@ begin
                   qrpdv.parambyname('IPPT').asstring := qrservidor_tabela.fieldbyname('IPPT').AsString;
                   qrpdv.parambyname('NCM').asstring := qrservidor_tabela.fieldbyname('CLASSIFICACAO_FISCAL').AsString;
                   qrpdv.parambyname('CSOSN').asstring := qrservidor_tabela.fieldbyname('CSOSN').AsString;
+                  qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
                   qrpdv.ExecSQL;
                 except
                   on e: Exception do
