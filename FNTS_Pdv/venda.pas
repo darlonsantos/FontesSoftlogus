@@ -6721,9 +6721,13 @@ procedure TfrmVenda.CorEditTotaL;
  // Alteracao de cores PDV Fiscal ou Nao Fiscal
 begin
   if frmPrincipal.TipoImpressora = SemImpressora then
-    frmVenda.Color := clWhite
-  else
-    frmVenda.Color := $00646464;
+    frmVenda.Color := clGreen
+  else if frmPrincipal.TipoImpressora = NaoFiscal then
+    begin
+     frmVenda.Color := clRed;
+    end
+     else
+     frmVenda.Color := $00646464;
 end;
 
 // -------------------------------------------------------------------------- //
