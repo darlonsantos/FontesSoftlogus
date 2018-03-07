@@ -28,7 +28,6 @@ type
     Label17: TLabel;
     AdvMetroButton1: TAdvMetroButton;
     AdvMetroButton2: TAdvMetroButton;
-    AdvMetroButton3: TAdvMetroButton;
     Image3: TImage;
     Panel1: TPanel;
     Panel2: TPanel;
@@ -47,24 +46,16 @@ type
     Panel10: TPanel;
     Panel11: TPanel;
     Panel12: TPanel;
-    Panel13: TPanel;
-    Panel14: TPanel;
     Panel15: TPanel;
-    Panel16: TPanel;
     Panel17: TPanel;
     Panel18: TPanel;
     Panel19: TPanel;
-    Panel20: TPanel;
-    Panel21: TPanel;
     Panel22: TPanel;
-    Panel23: TPanel;
-    Site: TLabel;
-    Email: TLabel;
-    Label8: TLabel;
     Telefones: TLabel;
     Panel24: TPanel;
-    RzURLLabel1: TRzURLLabel;
-    RzURLLabel2: TRzURLLabel;
+    AdvMetroButton3: TAdvMetroButton;
+    Label8: TLabel;
+    Label9: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -101,9 +92,6 @@ procedure TBloqueio.FormShow(Sender: TObject);
 begin
    Pode_Sair := false;
    Bloqueio.Caption := variaveis.Titulo_Janelas;
-   Site.Caption := Variaveis.Empresa_Site;
-   Email.Caption := Variaveis.Empresa_Email;
-   Telefones.Caption := Variaveis.Empresa_Telefones;
    EID_instalacao.Text := IntToStr( Variaveis.ID_Instalacao );
    if TELA_Email <> '' then
       Eemail.Text := TELA_Email
