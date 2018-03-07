@@ -282,7 +282,8 @@ begin
       if frmPrincipal.TipoImpressora = fiscal then
         sMsg := cECF_Fecha_Gerencial(iECF_Modelo)
       else
-        sMsg := 'OK'; //Imp_Fecha_Gerencial(sPortaNaoFiscal);
+       Imp_Fecha_Gerencial(sPortaNaoFiscal);
+     //    sMsg := 'OK';
 
       if sMsg <> 'OK' then
       begin
@@ -1980,7 +1981,8 @@ begin
       if frmPrincipal.TipoImpressora = Fiscal then
         frmMsg_Operador.lb_msg.caption := 'Aguarde! Salvando informações da Redução Z...'
       else
-        frmMsg_Operador.lb_msg.caption := 'Aguarde! Salvando informações do fechamento...';
+        frmMsg_Operador.lb_msg.caption := 'Aguarde! Imprimindo informações do fechamento...';
+         Imp_Fecha_Gerencial(sPortaNaoFiscal);
 
       frmMsg_Operador.show;
       frmMsg_Operador.Refresh;

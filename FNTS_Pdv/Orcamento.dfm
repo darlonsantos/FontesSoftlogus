@@ -2,8 +2,8 @@ object frmOrcamento: TfrmOrcamento
   Left = 766
   Top = 228
   Caption = 'Or'#231'amento'
-  ClientHeight = 471
-  ClientWidth = 601
+  ClientHeight = 520
+  ClientWidth = 907
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -17,41 +17,49 @@ object frmOrcamento: TfrmOrcamento
   TextHeight = 13
   object Bevel1: TBevel
     Left = 0
-    Top = 418
-    Width = 601
+    Top = 467
+    Width = 907
     Height = 2
     Align = alBottom
+    ExplicitTop = 418
+    ExplicitWidth = 601
   end
   object Bevel2: TBevel
     Left = 0
-    Top = 320
-    Width = 601
+    Top = 369
+    Width = 907
     Height = 2
     Align = alBottom
+    ExplicitTop = 320
+    ExplicitWidth = 601
   end
   object Bevel4: TBevel
     Left = 0
     Top = 59
-    Width = 601
+    Width = 907
     Height = 2
     Align = alTop
+    ExplicitWidth = 601
   end
   object Bevel6: TBevel
     Left = 0
     Top = 93
-    Width = 601
+    Width = 907
     Height = 2
     Align = alTop
+    ExplicitWidth = 601
   end
   object Panel1: TPanel
     Left = 0
-    Top = 420
-    Width = 601
+    Top = 469
+    Width = 907
     Height = 32
     Align = alBottom
     BevelOuter = bvNone
     Color = 15830313
     TabOrder = 0
+    ExplicitTop = 420
+    ExplicitWidth = 601
     object bt_gravar: TBitBtn
       Left = 219
       Top = 3
@@ -73,12 +81,14 @@ object frmOrcamento: TfrmOrcamento
   end
   object Panel2: TPanel
     Left = 0
-    Top = 322
-    Width = 601
+    Top = 371
+    Width = 907
     Height = 96
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitTop = 322
+    ExplicitWidth = 601
     object Bevel5: TBevel
       Left = 396
       Top = 3
@@ -327,12 +337,13 @@ object frmOrcamento: TfrmOrcamento
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 601
+    Width = 907
     Height = 59
     Align = alTop
     BevelOuter = bvNone
     Color = 15264234
     TabOrder = 2
+    ExplicitWidth = 601
     object Label9: TLabel
       Left = 144
       Top = 9
@@ -479,8 +490,8 @@ object frmOrcamento: TfrmOrcamento
   object grid_item: TNextGrid
     Left = 0
     Top = 95
-    Width = 601
-    Height = 225
+    Width = 907
+    Height = 274
     Touch.InteractiveGestures = [igPan, igPressAndTap]
     Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]
     Align = alClient
@@ -491,6 +502,8 @@ object frmOrcamento: TfrmOrcamento
     Options = [goGrid, goHeader, goSelectFullRow]
     TabOrder = 3
     TabStop = True
+    ExplicitWidth = 601
+    ExplicitHeight = 225
     object NxNumberColumn1: TNxNumberColumn
       DefaultValue = '0'
       DefaultWidth = 26
@@ -652,12 +665,13 @@ object frmOrcamento: TfrmOrcamento
   object Panel5: TPanel
     Left = 0
     Top = 61
-    Width = 601
+    Width = 907
     Height = 32
     Align = alTop
     BevelOuter = bvNone
     Color = 15830313
     TabOrder = 4
+    ExplicitWidth = 601
     object Label12: TLabel
       Left = 9
       Top = 11
@@ -693,9 +707,11 @@ object frmOrcamento: TfrmOrcamento
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 452
-    Width = 601
+    Top = 501
+    Width = 907
     Height = 19
     Panels = <>
+    ExplicitTop = 452
+    ExplicitWidth = 601
   end
 end

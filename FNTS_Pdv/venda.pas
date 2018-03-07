@@ -426,7 +426,7 @@ type
 const
   SEPARADOR = '------------------------------------------------' + #10;
 
-var
+ var
   frmtOffLine:TpcnTipoEmissao;
   frmVenda: TfrmVenda;
   r : TIdIPWatch;
@@ -2895,24 +2895,23 @@ begin
 
       end;
     end;
-        // integracao catraca
-    str := frmPrincipal.ApenasNumerosStr(FormatDateTime('ddddd', date));
-        // salvar xml no emulador
-    if DirectoryExists('C:\Arquivos de programas\Emulador EC\XML\') then
-      frmmodulo.cdsComandas.SaveToFile
-        ('C:\Arquivos de programas\Emulador EC\XML\W0' + frmModulo.mesa_comanda + str
-        + '.xml');
-            //servidorF
-    if (frmmodulo.Conexao_Servidor.Server <> 'localhost') and (frmmodulo.Conexao_Servidor.Server <> '') and (frmmodulo.Conexao_Servidor.Server <> '127.0.0.1') then
-    begin
-          //showmessage('É estacao');
-      frmmodulo.cdsComandas.SaveToFile('\\' + frmmodulo.Conexao_Servidor.Server +
-        '\Softlogus\PDV\XML\W0' + frmModulo.mesa_comanda + str + '.xml');
-    end;
-
-        // backup
-    frmmodulo.cdsComandas.SaveToFile('C:\Softlogus\PDV\XML\W0' +
-      frmModulo.mesa_comanda + str + '.xml');
+//        // integracao catraca
+//    str := frmPrincipal.ApenasNumerosStr(FormatDateTime('ddddd', date));
+//        // salvar xml no emulador
+//    if DirectoryExists('C:\Arquivos de programas\Emulador EC\XML\') then
+//      frmmodulo.cdsComandas.SaveToFile
+//        ('C:\Arquivos de programas\Emulador EC\XML\W0' + frmModulo.mesa_comanda + str
+//        + '.xml');
+//            //servidorF
+//    if (frmmodulo.Conexao_Servidor.Server <> 'localhost') and (frmmodulo.Conexao_Servidor.Server <> '') and (frmmodulo.Conexao_Servidor.Server <> '127.0.0.1') then
+//    begin
+//          //showmessage('É estacao');
+//       frmmodulo.cdsComandas.SaveToFile('\\' + frmmodulo.Conexao_Servidor.Server +
+//        '\Softlogus\PDV\XML\W0' + frmModulo.mesa_comanda + str + '.xml');
+//    end;
+//     // backup
+//      frmmodulo.cdsComandas.SaveToFile('C:\Softlogus\PDV\XML\W0' +
+//      frmModulo.mesa_comanda + str + '.xml');
 
   end;
 

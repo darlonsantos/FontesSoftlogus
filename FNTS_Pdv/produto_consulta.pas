@@ -125,11 +125,10 @@ procedure TfrmProduto_consulta.FormShow(Sender: TObject);
 var
 sImgFundo:string;
 begin
+  ed_barra.SetFocus;
   sImgFundo := ExtractFilePath(Application.ExeName) + 'img\fundo_pdv.jpg';
-
-  if FileExists(sImgFundo) then
+ if FileExists(sImgFundo) then
     //imgFundo.Picture.LoadFromFile(sImgFundo);
-
 
   if ed_barra.Text <> '' then
   begin
@@ -137,7 +136,8 @@ begin
   end
   else
     ed_barra.SetFocus;
-end;
+
+    end;
 
 // -------------------------------------------------------------------------- //
 procedure TfrmProduto_consulta.gridKeyPress(Sender: TObject;

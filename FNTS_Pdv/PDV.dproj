@@ -91,7 +91,7 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <DCC_DcuOutput>C:\Softlogus\Dcu\</DCC_DcuOutput>
         <VerInfo_Release>4</VerInfo_Release>
-        <VerInfo_Build>65</VerInfo_Build>
+        <VerInfo_Build>68</VerInfo_Build>
         <DCC_ExeOutput>C:\Softlogus\PDV\</DCC_ExeOutput>
         <Icon_MainIcon>C:\Softlogus\Server\icones\Softlogus.ico</Icon_MainIcon>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
@@ -101,7 +101,7 @@
         <VerInfo_PreRelease>true</VerInfo_PreRelease>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
-        <VerInfo_Keys>CompanyName=Softlogus Informática;FileDescription=;FileVersion=2.2.4.65;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=2.2.4.61;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Softlogus Informática;FileDescription=;FileVersion=2.2.4.68;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=2.2.4.61;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

@@ -1431,7 +1431,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.1.1.0'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 3
     ShowExpander = False
@@ -1529,7 +1529,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.2.0'
+      Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
   end
@@ -2379,7 +2379,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   end
   object pop_fechamento: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
-    Version = '2.6.1.1'
+    Version = '2.6.1.0'
     Left = 769
     Top = 385
     object Cancelar1: TMenuItem

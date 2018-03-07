@@ -3,7 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Top = 97
   BorderStyle = bsSingle
   Caption = 'Softlogus | Frente de Caixa'
-  ClientHeight = 850
+  ClientHeight = 812
   ClientWidth = 1385
   Color = clWhite
   Font.Charset = ANSI_CHARSET
@@ -1431,7 +1431,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 159
     Width = 1385
-    Height = 651
+    Height = 634
     Margins.Left = 0
     Margins.Top = 100
     Margins.Right = 0
@@ -2218,6 +2218,7 @@ object frmPrincipal: TfrmPrincipal
     ExplicitLeft = 51
     ExplicitTop = 180
     ExplicitWidth = 1086
+    ExplicitHeight = 651
   end
   object pstatus: TAdvOfficeStatusBar
     Left = 1419
@@ -2337,9 +2338,9 @@ object frmPrincipal: TfrmPrincipal
   end
   object AdvSmoothExpanderPanel3: TAdvSmoothExpanderPanel
     Left = 0
-    Top = 810
+    Top = 793
     Width = 1385
-    Height = 40
+    Height = 19
     Cursor = crDefault
     Transparent = False
     Caption.Location = plCenterCenter
@@ -2376,14 +2377,15 @@ object frmPrincipal: TfrmPrincipal
     ExpanderColor = clBlack
     ExpanderDownColor = clNone
     ExpanderHoverColor = clNone
+    ExplicitTop = 810
     TMSStyle = 0
-    OldHeight = 40.000000000000000000
+    OldHeight = 19.000000000000000000
     object Label1: TLabel
       AlignWithMargins = True
       Left = 3
       Top = 3
       Width = 1379
-      Height = 18
+      Height = 19
       Align = alTop
       Alignment = taCenter
       Caption = 'W W W . SOFTLOGUS . C O M . B R '
@@ -2396,13 +2398,13 @@ object frmPrincipal: TfrmPrincipal
       ParentColor = False
       ParentFont = False
       Transparent = True
-      ExplicitWidth = 261
+      ExplicitTop = 0
     end
     object cySpeedButton1: TcySpeedButton
       Left = 1331
-      Top = 24
+      Top = 25
       Width = 54
-      Height = 16
+      Height = 3
       Hint = 'Renovar Licen'#231'a do RP System 1.0 - PDV'
       Align = alRight
       Flat = True
@@ -2497,6 +2499,7 @@ object frmPrincipal: TfrmPrincipal
         82}
       ExplicitLeft = 1351
       ExplicitTop = 27
+      ExplicitHeight = 16
     end
   end
   object AdvSmoothExpanderPanel4: TAdvSmoothExpanderPanel
@@ -2563,7 +2566,7 @@ object frmPrincipal: TfrmPrincipal
     Status.Appearance.Fill.GradientType = gtSolid
     Status.Appearance.Fill.GradientMirrorType = gtSolid
     Status.Appearance.Fill.BorderColor = clGray
-    Status.Appearance.Fill.Rounding = 0
+    Status.Appearance.Fill.Rounding = 8
     Status.Appearance.Fill.ShadowOffset = 0
     Status.Appearance.Fill.Glow = gmNone
     Status.Appearance.Font.Charset = DEFAULT_CHARSET
@@ -2879,7 +2882,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 752
     Top = 472
     Bitmap = {
-      494C010108000D005C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010108000D00640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3340,7 +3343,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 744
     Top = 544
     DesignFrmW = 1385
-    DesignFrmH = 850
+    DesignFrmH = 812
     DesignDpiW = 96
     DesignDpiH = 96
   end
@@ -3447,6 +3450,7 @@ object frmPrincipal: TfrmPrincipal
     Configuracoes.Geral.SSLHttpLib = httpIndy
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
+    Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.WebServices.UF = 'SP'
@@ -4172,6 +4176,12 @@ object frmPrincipal: TfrmPrincipal
         89029454892A9454896D945489AE945489DA945489F3945489FD945489FD9454
         89F3945489DA945489AE9454896D9454892A9454890294548900945489009454
         8900925287000000000000000000000000000000000000000000}
+    end
+    object dxBarButton4: TdxBarButton
+      Caption = 'Or'#231'amentos'
+      Category = 0
+      Hint = 'Or'#231'amentos'
+      Visible = ivAlways
     end
   end
   object dxBarPopupMenu1: TdxBarPopupMenu
