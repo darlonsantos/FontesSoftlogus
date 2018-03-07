@@ -352,7 +352,7 @@ begin
   Application.Initialize;
  // Evita carga dupla da aplicacao
   begin
-    HprevHist := FindWindow(nil, PChar('Gerencial - Controle de Loja | www.dsainfosys.com.br |'));
+    HprevHist := FindWindow(nil, PChar('Softlogus - Controle de Loja | www.softlogus.com.br |'));
     if HprevHist <> 0 then
     begin
       ShowMessage('O Sistema já está sendo executado em outra janela!');

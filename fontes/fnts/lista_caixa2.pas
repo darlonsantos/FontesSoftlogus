@@ -96,10 +96,16 @@ begin
 
     frmloc_caixa := tfrmloc_caixa.create(self);
     frmloc_caixa.showmodal;
+//  correção no resultado da pesquisa relatorio de caixa DARLON SANTOS
+     if RESULTADO_PESQUISA1 <> '' then
+   begin
+     combo_caixa.Items.Add(resultado_pesquisa1 + ' ' + resultado_pesquisa2);
+     combo_caixa.ItemIndex := combo_caixa.Items.Count - 1;
+       end
+    else
+     combo_caixa.ItemIndex := 0;
 
 
-    combo_caixa.Items.Add(frmmodulo.qrcaixa_operador.fieldbyname('CODIGO').asstring + ' ' + frmmodulo.qrcaixa_operador.fieldbyname('nome').asstring);
-    combo_caixa.ItemIndex := combo_caixa.Items.Count - 1;
   end;
 end;
 

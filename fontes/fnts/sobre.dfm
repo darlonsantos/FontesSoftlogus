@@ -24,8 +24,8 @@ object Form_sobre: TForm_sobre
     Height = 13
     Align = alBottom
     Alignment = taCenter
-    Caption = 'Todos os direitos reservados - SoftlogusSistemas @2018'
-    ExplicitWidth = 268
+    Caption = 'Todos os direitos reservados - Softlogus Inform'#225'tica @ 2018'
+    ExplicitWidth = 284
   end
   object lbl3: TLabel
     Left = 225
@@ -1767,9 +1767,9 @@ object Form_sobre: TForm_sobre
     object lbl4: TLabel
       Left = 109
       Top = 22
-      Width = 93
+      Width = 102
       Height = 14
-      Caption = 'Softlogus Sistemas'
+      Caption = 'Softlogus Inform'#225'tica'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1793,9 +1793,9 @@ object Form_sobre: TForm_sobre
     object lbl8: TLabel
       Left = 109
       Top = 62
-      Width = 137
+      Width = 75
       Height = 14
-      Caption = '(61) 3028-3649 | 981035324'
+      Caption = '(61) 3335-7783'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
