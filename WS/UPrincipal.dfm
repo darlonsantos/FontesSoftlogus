@@ -1587,4 +1587,21 @@ object frmprincipal: Tfrmprincipal
       end
     end
   end
+  object KeepAlivePopup: TPopupMenu
+    Left = 336
+    Top = 112
+    object EnableKAItem: TMenuItem
+      Caption = 'Enable keep-alive'
+      OnClick = EnableKAItemClick
+    end
+    object DisableKAItem: TMenuItem
+      Caption = 'Disable keep-alive'
+    end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object closeConnItem: TMenuItem
+      Caption = 'Close Connection'
+    end
+  end
 end

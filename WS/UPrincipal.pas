@@ -49,7 +49,13 @@ type
     useKeepAliveCheck: TCheckBox;
     KAIdleLabel: TLabel;
     KAIdleMS: TEdit;
+    KeepAlivePopup: TPopupMenu;
+    EnableKAItem: TMenuItem;
+    DisableKAItem: TMenuItem;
+    N1: TMenuItem;
+    closeConnItem: TMenuItem;
     procedure FormActivate(Sender: TObject);
+    procedure EnableKAItemClick(Sender: TObject);
   private
     
   public
@@ -87,6 +93,15 @@ begin
   WSACleanup;
 end;
 
+procedure Tfrmprincipal.EnableKAItemClick(Sender: TObject);
+var
+  Channel: TDSTCPChannel;
+begin
+ Channel := GetSelectedChannel;
+
+  if (Channel <> nil) and (KAIdleMS.Text <> EmptyStr) then
+    Channel.EnableKeepAlive(StrToInt(KAIdleMS.Text));
+end;
 procedure Tfrmprincipal.FormActivate(Sender: TObject);
 begin
   useKeepAliveCheck.Hint := 'Isso só será aplicado a novas conexões: '# 13 # 10' já existe conexões estabelecidas.';
@@ -94,8 +109,8 @@ begin
   thrashUpdateClick(nil);
 
   FConnections := TObjectDictionary<TIdTCPConnection,TDSTCPChannel>.Create;
-  ServerContainer.CMServerTransport.OnConnect := CMServerTransportConnectEvent;
-  CMServerContainer.CMServerTransport.OnDisconnect := CMServerTransportDisconnectEvent;
+  ServerContainer1.DSTCPServerTransport1.OnConnect := CMServerTransportConnectEvent;
+  ServerContainer1.DSTCPServerTransport1.OnDisconnect := CMServerTransportDisconnectEvent;
   AddSessionListener;
 
 end;
