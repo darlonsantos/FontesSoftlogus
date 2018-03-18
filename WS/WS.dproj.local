@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/03/16 23:18:23.000.277,=C:\FontesSoftlogus\WS\Unit1.pas</Transaction>
+    <Transaction>2018/03/16 23:18:23.000.533,=C:\FontesSoftlogus\WS\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2018/03/16 23:18:45.000.055,=C:\FontesSoftlogus\WS\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2018/03/16 23:21:52.000.043,C:\FontesSoftlogus\WS\UPrincipal.dfm=C:\FontesSoftlogus\WS\Unit1.dfm</Transaction>
+    <Transaction>2018/03/16 23:21:52.000.043,C:\FontesSoftlogus\WS\UPrincipal.pas=C:\FontesSoftlogus\WS\Unit1.pas</Transaction>
+    <Transaction>2018/03/17 21:36:49.898,=C:\FontesSoftlogus\WS\Unit1.pas</Transaction>
+    <Transaction>2018/03/17 21:38:00.010,C:\FontesSoftlogus\WS\conexoes.dfm=C:\FontesSoftlogus\WS\Unit1.dfm</Transaction>
+    <Transaction>2018/03/17 21:38:00.010,C:\FontesSoftlogus\WS\conexoes.pas=C:\FontesSoftlogus\WS\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
