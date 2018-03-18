@@ -23,7 +23,10 @@ uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
   dxStatusBar, dxRibbonStatusBar, cxClasses, dxRibbon, Vcl.ToolWin, Vcl.ActnMan,
   Vcl.ActnCtrls, Vcl.Ribbon, System.Actions, Vcl.ActnList,
   Vcl.PlatformDefaultStyleActnCtrls, Vcl.RibbonLunaStyleActnCtrls, Vcl.Menus,
-  JvMenus, AdvMenus, Vcl.StdCtrls, Vcl.ExtCtrls;
+  JvMenus, AdvMenus, Vcl.StdCtrls, Vcl.ExtCtrls, IdTCPConnection, Datasnap.DSTCPServerTransport,  Generics.Collections;
+
+
+ // , Menus, ExtCtrls;
 
 type
   Tfrmprincipal = class(TForm)
@@ -57,7 +60,8 @@ type
     procedure FormActivate(Sender: TObject);
     procedure EnableKAItemClick(Sender: TObject);
   private
-    
+    FConnections: TObjectDictionary<TIdTCPConnection,TDSTCPChannel>;
+    function GetSelectedChannel(Conn: TIdTCPConnection = nil): TDSTCPChannel;
   public
   /// <summary>Closes the TCP connection corresponding to the session with the given Id.</summary>
 
@@ -70,7 +74,7 @@ implementation
 
 {$R *.dfm}
 
-uses DSSession, Winapi.Winsock;
+uses DSSession, Winapi.Winsock, ServerContainerUnit1;
 
 Function GetIPAddress:String;
 type
@@ -114,6 +118,17 @@ begin
   AddSessionListener;
 
 end;
+
+function Tfrmprincipal.GetSelectedChannel(
+  Conn: TIdTCPConnection): TDSTCPChannel;
+begin
+  Result := nil;
+  if Conn = nil then
+    Conn := GetSelectedConnection;
+  if Conn <> nil then
+    FConnections.TryGetValue(Conn, Result)
+end;
+
 
 end.
 
