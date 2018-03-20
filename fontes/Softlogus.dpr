@@ -335,7 +335,8 @@ uses
   msg_Operador in 'fnts\msg_Operador.pas' {frmMsg_Operador},
   tabela_preco in 'fnts\tabela_preco.pas' {frm_tb_preco},
   Unit_ativar in 'fnts\Unit_ativar.pas' {Form_ativar},
-  Ncm in 'fnts\Ncm.pas' {frmNcm};
+  Ncm in 'fnts\Ncm.pas' {frmNcm},
+  versionamento in 'fnts\versionamento.pas' {frmversionamento};
 
 // Unit5 in 'fnts\metro\Unit5.pas' {metro_sair},
   //ACBrConsultaCPF in 'fnts\metro\CPF\ACBrConsultaCPF.pas',
@@ -367,6 +368,7 @@ begin
   Application.CreateForm(TForm_ativar, Form_ativar);
   Application.CreateForm(TForm_ativar, Form_ativar);
   Application.CreateForm(TfrmNcm, frmNcm);
+  Application.CreateForm(Tfrmversionamento, frmversionamento);
   // Application.CreateForm(TfrmLMC, frmLMC);
  // Application.CreateForm(TfrmBicos, frmBicos);
 //  Application.CreateForm(TfrmBombas, frmBombas);

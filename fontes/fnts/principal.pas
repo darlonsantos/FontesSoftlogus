@@ -464,6 +464,7 @@ type
     R2: TMenuItem;
     AdvSmoothButton42: TAdvSmoothButton;
     C21: TMenuItem;
+    H1: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -782,6 +783,7 @@ type
     procedure R2Click(Sender: TObject);
     procedure S8Click(Sender: TObject);
     procedure C21Click(Sender: TObject);
+    procedure H1Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -931,7 +933,7 @@ uses modulo, senha, cliente,
   Tef, unFuncoesTEF, cartao, cnae, cor, tamanho, Lista_ABC_Marca_Grupo,
   lista_frete, fluxo_caixa, DRE, mensagem_inventario, Ncm,
   xloc_csosn, importa_nfe,  sobre, // FMapa,
-  form_ativacaoicloud, pUCGeral, OpNatureza, Unit_ativar, regiao;
+  form_ativacaoicloud, pUCGeral, OpNatureza, Unit_ativar, regiao, versionamento;
 
 {$R *.dfm}
 
@@ -6761,6 +6763,11 @@ begin
 
   frmgrupo := tfrmgrupo.create(self);
   frmgrupo.showmodal;
+end;
+
+procedure TfrmPrincipal.H1Click(Sender: TObject);
+begin
+  frmversionamento.Show;
 end;
 
 procedure TfrmPrincipal.icloudAfterLogin(Sender: TObject);
