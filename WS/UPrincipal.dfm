@@ -1501,7 +1501,7 @@ object frmprincipal: Tfrmprincipal
     Left = 482
     Top = 3
     Width = 48
-    Height = 22
+    Height = 21
     NumbersOnly = True
     TabOrder = 1
     Text = '50'
@@ -1514,6 +1514,7 @@ object frmprincipal: Tfrmprincipal
     Caption = 'Atualizar'
     Enabled = False
     TabOrder = 2
+    OnClick = thrashUpdateClick
   end
   object ConnectionsList: TListBox
     Left = 8
@@ -1546,12 +1547,13 @@ object frmprincipal: Tfrmprincipal
     ParentShowHint = False
     ShowHint = True
     TabOrder = 5
+    OnClick = useKeepAliveCheckClick
   end
   object KAIdleMS: TEdit
     Left = 637
     Top = 448
     Width = 56
-    Height = 22
+    Height = 21
     Anchors = [akRight, akBottom]
     Enabled = False
     NumbersOnly = True
@@ -1578,6 +1580,10 @@ object frmprincipal: Tfrmprincipal
       Caption = 'Menu'
       object w1: TMenuItem
         Caption = 'Configura'#231#245'es'
+        object bancoDados: TMenuItem
+          Caption = 'Banco de dados'
+          OnClick = bancoDadosClick
+        end
       end
       object w2: TMenuItem
         Caption = 'Usuario'

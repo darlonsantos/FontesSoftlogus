@@ -1,7 +1,7 @@
 object dm: Tdm
   OldCreateOrder = False
-  Height = 224
-  Width = 573
+  Height = 358
+  Width = 482
   object conn: TUniConnection
     ProviderName = 'Oracle'
     SpecificOptions.Strings = (
@@ -144,5 +144,29 @@ object dm: Tdm
   object provider: TOracleUniProvider
     Left = 304
     Top = 8
+  end
+  object conLocal: TUniConnection
+    ProviderName = 'InterBase'
+    Database = 'C:\Softlogus\Mobile\BD\mobile.fdb'
+    Username = 'SYSDBA'
+    Server = 'localhost'
+    LoginPrompt = False
+    Left = 64
+    Top = 244
+    EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
+  end
+  object qryConfBanco: TUniQuery
+    Connection = conLocal
+    Left = 140
+    Top = 245
+  end
+  object transLocal: TUniTransaction
+    DefaultConnection = conLocal
+    Left = 240
+    Top = 248
+  end
+  object providerInterbase: TInterBaseUniProvider
+    Left = 188
+    Top = 300
   end
 end

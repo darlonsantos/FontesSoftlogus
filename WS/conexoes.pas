@@ -4,7 +4,7 @@ interface
 
 uses
   System.SysUtils, System.Classes, UniProvider, OracleUniProvider, DBAccess,
-  Uni, Data.DB, MemDS;
+  Uni, Data.DB, MemDS, InterBaseUniProvider;
 
 type
   Tdm = class(TDataModule)
@@ -16,6 +16,10 @@ type
     qryVendaGeral: TUniQuery;
     trans: TUniTransaction;
     provider: TOracleUniProvider;
+    conLocal: TUniConnection;
+    qryConfBanco: TUniQuery;
+    transLocal: TUniTransaction;
+    providerInterbase: TInterBaseUniProvider;
   private
     { Private declarations }
   public

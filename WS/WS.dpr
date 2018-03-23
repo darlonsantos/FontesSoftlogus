@@ -9,7 +9,8 @@ uses
   ServerContainerUnit1 in 'ServerContainerUnit1.pas' {ServerContainer1: TDataModule},
   conexoes in 'conexoes.pas' {dm: TDataModule},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  UconfConexoes in 'UconfConexoes.pas' {frmConexoes};
 
 {$R *.res}
 
@@ -20,6 +21,7 @@ begin
   Application.CreateForm(Tfrmprincipal, frmprincipal);
   Application.CreateForm(TServerContainer1, ServerContainer1);
   Application.CreateForm(Tdm, dm);
+  Application.CreateForm(TfrmConexoes, frmConexoes);
   Application.Run;
 end.
 

@@ -57,8 +57,12 @@ type
     DisableKAItem: TMenuItem;
     N1: TMenuItem;
     closeConnItem: TMenuItem;
+    bancoDados: TMenuItem;
     procedure FormActivate(Sender: TObject);
     procedure EnableKAItemClick(Sender: TObject);
+    procedure useKeepAliveCheckClick(Sender: TObject);
+    procedure thrashUpdateClick(Sender: TObject);
+    procedure bancoDadosClick(Sender: TObject);
   private
     FConnections: TObjectDictionary<TIdTCPConnection,TDSTCPChannel>;
     function GetSelectedChannel(Conn: TIdTCPConnection = nil): TDSTCPChannel;
@@ -74,7 +78,7 @@ implementation
 
 {$R *.dfm}
 
-uses DSSession, Winapi.Winsock, ServerContainerUnit1;
+uses DSSession, Winapi.Winsock, ServerContainerUnit1, UconfConexoes;
 
 Function GetIPAddress:String;
 type
@@ -97,6 +101,12 @@ begin
   WSACleanup;
 end;
 
+procedure Tfrmprincipal.bancoDadosClick(Sender: TObject);
+begin
+  frmConexoes := TfrmConexoes.Create(Self);
+  frmConexoes.ShowModal;
+end;
+
 procedure Tfrmprincipal.EnableKAItemClick(Sender: TObject);
 var
   Channel: TDSTCPChannel;
@@ -108,14 +118,14 @@ begin
 end;
 procedure Tfrmprincipal.FormActivate(Sender: TObject);
 begin
-  useKeepAliveCheck.Hint := 'Isso só será aplicado a novas conexões: '# 13 # 10' já existe conexões estabelecidas.';
+  useKeepAliveCheck.Hint := 'Isso só será aplicado a novas conexões: já existe conexões estabelecidas.';
 
   thrashUpdateClick(nil);
 
-  FConnections := TObjectDictionary<TIdTCPConnection,TDSTCPChannel>.Create;
-  ServerContainer1.DSTCPServerTransport1.OnConnect := CMServerTransportConnectEvent;
-  ServerContainer1.DSTCPServerTransport1.OnDisconnect := CMServerTransportDisconnectEvent;
-  AddSessionListener;
+ // FConnections := TObjectDictionary<TIdTCPConnection,TDSTCPChannel>.Create;
+ // ServerContainer1.DSTCPServerTransport1.OnConnect := CMServerTransportConnectEvent;
+ // ServerContainer1.DSTCPServerTransport1.OnDisconnect := CMServerTransportDisconnectEvent;
+ // AddSessionListener;
 
 end;
 
@@ -124,11 +134,25 @@ function Tfrmprincipal.GetSelectedChannel(
 begin
   Result := nil;
   if Conn = nil then
-    Conn := GetSelectedConnection;
+ //   Conn := GetSelectedConnection;
   if Conn <> nil then
     FConnections.TryGetValue(Conn, Result)
 end;
 
+
+procedure Tfrmprincipal.thrashUpdateClick(Sender: TObject);
+begin
+  if (thrashCountEdit.Text <> EmptyStr) and (maxRequestsEdit.Text <> EmptyStr) then
+  begin
+  //  ServerContainer1.ThrashingWindow := StrToInt(thrashCountEdit.Text);
+   // ServerContainer1.MaxRequestsInWindow := StrToInt(maxRequestsEdit.Text);
+  end;
+end;
+procedure Tfrmprincipal.useKeepAliveCheckClick(Sender: TObject);
+begin
+  KAIdleLabel.Enabled := useKeepAliveCheck.Checked;
+  KAIdleMS.Enabled := useKeepAliveCheck.Checked;
+end;
 
 end.
 
