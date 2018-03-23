@@ -150,6 +150,7 @@ object dm: Tdm
     Database = 'C:\Softlogus\Mobile\BD\mobile.fdb'
     Username = 'SYSDBA'
     Server = 'localhost'
+    Connected = True
     LoginPrompt = False
     Left = 64
     Top = 244
