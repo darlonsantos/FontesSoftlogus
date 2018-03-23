@@ -345,8 +345,7 @@ uses
   //Unit11 in 'fnts\metro\Unit11.pas' {metro_empresa},
 //  Unit12 in 'fnts\metro\Unit12.pas' {Form_ativar};
 
-{$R *.res}
-
+ {$R *.res}
 var
   HprevHist: HWND;
 begin
