@@ -1,5 +1,0 @@
-object dm: Tdm
-  OldCreateOrder = False
-  Height = 224
-  Width = 281
-end
