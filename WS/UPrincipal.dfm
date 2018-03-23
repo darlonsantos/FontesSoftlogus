@@ -1419,8 +1419,11 @@ object frmprincipal: Tfrmprincipal
     FFFFFFFFFFFFFF800000}
   Menu = AdvMainMenu1
   OldCreateOrder = False
+  PopupMenu = KeepAlivePopup
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
   DesignSize = (
     760
     476)
@@ -1602,6 +1605,7 @@ object frmprincipal: Tfrmprincipal
     end
     object DisableKAItem: TMenuItem
       Caption = 'Disable keep-alive'
+      OnClick = DisableKAItemClick
     end
     object N1: TMenuItem
       Caption = '-'

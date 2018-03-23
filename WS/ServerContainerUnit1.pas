@@ -10,7 +10,8 @@ uses System.SysUtils, System.Classes,
   Datasnap.DSProxyJavaAndroid, Datasnap.DSProxyJavaBlackBerry,
   Datasnap.DSProxyObjectiveCiOS, Datasnap.DSProxyCsharpSilverlight,
   Datasnap.DSProxyFreePascal_iOS,
-  Datasnap.DSAuth, IPPeerServer, Datasnap.DSMetadata, Datasnap.DSServerMetadata;
+  Datasnap.DSAuth, IPPeerServer, Datasnap.DSMetadata, Datasnap.DSServerMetadata,
+  Generics.Collections,  IndyPeerImpl;
 
 type
   TServerContainer1 = class(TDataModule)
@@ -24,9 +25,18 @@ type
     CMAuthManager: TDSAuthenticationManager;
     procedure DSServerClass1GetClass(DSServerClass: TDSServerClass;
       var PersistentClass: TPersistentClass);
+    procedure DataModuleCreate(Sender: TObject);
+    procedure DataModuleDestroy(Sender: TObject);
   private
-    { Private declarations }
+    FThrashingWindow: Integer;
+    FMaxRequestsInWindow: Integer;
+    FHitTimes: TObjectDictionary<String,TDateTime>;
+    FHitCounts: TObjectDictionary<String,Integer>;
   public
+   procedure SessionClosed(SessionId: String);
+
+    property ThrashingWindow: Integer read FThrashingWindow write FThrashingWindow;
+    property MaxRequestsInWindow: Integer read FMaxRequestsInWindow write FMaxRequestsInWindow;
   end;
 
 var
@@ -37,7 +47,21 @@ implementation
 
 {$R *.dfm}
 
-uses Winapi.Windows, ServerMethodsUnit1;
+uses Winapi.Windows, ServerMethodsUnit1, UPrincipal;
+
+procedure TServerContainer1.DataModuleCreate(Sender: TObject);
+begin
+  FThrashingWindow := 1;
+  FMaxRequestsInWindow := 65;
+
+  FHitTimes := TObjectDictionary<String,TDateTime>.Create;
+  FHitCounts := TObjectDictionary<String,Integer>.Create;
+end;
+
+procedure TServerContainer1.DataModuleDestroy(Sender: TObject);
+begin
+ frmprincipal.PrepareForGracefulClose;
+end;
 
 procedure TServerContainer1.DSServerClass1GetClass(
   DSServerClass: TDSServerClass; var PersistentClass: TPersistentClass);
@@ -45,6 +69,12 @@ begin
   PersistentClass := ServerMethodsUnit1.TServerMethods1;
 end;
 
+
+procedure TServerContainer1.SessionClosed(SessionId: String);
+begin
+ FHitTimes.Remove(SessionId);
+  FHitCounts.Remove(SessionId);
+end;
 
 end.
 
