@@ -4421,9 +4421,9 @@ begin
   senha_banco := s;
 
   // Atualiza o banco de dados
-  // DB.DatabaseName := Conexao.hostname + ':' + Conexao.database;
-  // VersaoBD := frmprincipal.ExeInfo1.ProductVersion;
-  // Busca_Integridade_Base_Dados; // Efetua a atualização do banco de dados
+ //  DB.DatabaseName := Conexao.hostname + ':' + Conexao.database;
+  VersaoBD := frmprincipal.ExeInfo1.FileVersion;
+   Busca_Integridade_Base_Dados; // Efetua a atualização do banco de dados
 
   // prepara para mysql
 
@@ -4490,7 +4490,7 @@ begin
   DB.hostname := Conexao.hostname;
   DB.database := Conexao.database;
   DB.connected := true;
-  VersaoBD := frmprincipal.ExeInfo1.ProductVersion;
+  VersaoBD := frmprincipal.ExeInfo1.FileVersion;
   Busca_Integridade_Base_Dados; // Efetua a atualização do banco de dados
 
   { IBConexao.Connected := false;
@@ -4996,9 +4996,7 @@ procedure Tfrmmodulo.Busca_Integridade_Base_Dados();
 
     if pGen then
     begin
-      QueryTmp.sql.add
-        ('SELECT * FROM rdb$generators where rdb$generator_name = ''' +
-        UpperCase(pTabela) + '''');
+      QueryTmp.sql.add('SELECT * FROM rdb$generators where rdb$generator_name = ''' + UpperCase(pTabela) + '''');
       QueryTmp.Active := true;
 
       bAchou := false;
@@ -5018,7 +5016,7 @@ procedure Tfrmmodulo.Busca_Integridade_Base_Dados();
       end;
     end;
 
-    if (not pCriaTabela) and (not bAchou) and (not pGen) then
+    if not(pCriaTabela) and not(pGen) and not (bAchou) then
     begin
       try
         QueryTmp.sql.add
@@ -5319,7 +5317,9 @@ begin
       false, false);
     Atualiza_Integridade_Tabela('C999999', 'EMAIL_FINANCEIRO', 'VARCHAR(200)',
       false, false, false);
-    Atualiza_Integridade_Tabela('AGENDA_PERSONALIZADA', 'GROUPID', 'INTEGER',
+     Atualiza_Integridade_Tabela('AGENDA_PERSONALIZADA', 'GROUPID', 'INTEGER',
+      false, false, false);
+      Atualiza_Integridade_Tabela('CL00001', 'COR', 'VARCHAR(100)',
       false, false, false);
 
   end;
