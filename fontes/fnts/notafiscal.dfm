@@ -2472,6 +2472,7 @@ object frmnotafiscal: Tfrmnotafiscal
         Height = 21
         DataSource = dsnota
         DataField = 'FAT_QTDE_PRESTACAO'
+        Alignment = taRightJustify
         Color = 15916445
         MaxLength = 3
         TabOrder = 2

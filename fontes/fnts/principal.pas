@@ -2817,8 +2817,8 @@ begin
       frmcopia_arquivo.show;
     end;
 
-    ExeAtualiza := ExtractFilePath(ParamStr(0)) + 'atualizacao\Gerencial.exe';
-    ExeAtual := ExtractFilePath(ParamStr(0)) + 'Gerencial.exe';
+    ExeAtualiza := ExtractFilePath(ParamStr(0)) + 'atualizacao\Softlogus.exe';
+    ExeAtual := ExtractFilePath(ParamStr(0)) + 'Softlogus.exe';
 
     if (conexao_sistema <> '') and
       (ansiuppercase(conexao_sistema) <> 'LOCALHOST') and
@@ -2839,11 +2839,11 @@ begin
           DeleteFile(ExeAtual + '.OLD');
           RenameFile(ExeAtual, ExeAtual + '.OLD');
           CopyFile(Pchar(ExeAtualiza),
-            Pchar(extractfilepath(paramstr(0)) +'Gerencial.exe'), false);
+            Pchar(extractfilepath(paramstr(0)) +'Softlogus.exe'), false);
           showmessage('Aplicação atualizada com sucesso!');
           Hand := FindWindow('TApplication', 'Softlogus | www.softlogus.com.br |');
           if Hand = 0 then
-            frmPrincipal.ExecutePrograma(extractfilepath(paramstr(0)) +'Gerencial.exe', '');
+            frmPrincipal.ExecutePrograma(extractfilepath(paramstr(0)) +'Softlogus.exe', '');
           application.Terminate;
         end
         else
@@ -2873,7 +2873,7 @@ begin
         application.Terminate;
         Action := cafree;
       Except
-        killtask('Gerencial.exe')
+        killtask('Softlogus.exe')
       End;
       SetErrorMode(wOldErrorMode);
     End;

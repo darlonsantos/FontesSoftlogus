@@ -316,31 +316,7 @@ begin
       exit;
     end;
 
-    {
-      // verifica se o ramo é FARMACIA
-      IF trim(FRMMODULO.QRCONFIG.FIELDBYNAME('CADASTRO_PRODUTO').AsString) = 'FARMA' then
-      begin
-
-      showmessage('a');
-
-      Sleep(100);
-      query.close;
-      query.sql.clear;
-      query.sql.add('delete from cl00001');
-      query.ExecSQL;
-
-      Application.ProcessMessages;
-
-      Sleep(100);
-      query.close;
-      query.sql.clear;
-      query.SQL.Add('delete from cl00002');
-      query.ExecSQL;
-
-      Application.ProcessMessages;
-      end;
-    }
-
+    
     qrcontasreceber.close;
     qrcontasreceber.sql.clear;
     qrcontasreceber.sql.add

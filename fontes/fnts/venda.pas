@@ -85,7 +85,6 @@ type
     Bevel16: TBevel;
     lvenda_cupom: TLabel;
     qrvenda_produto: TZQuery;
-    qrvenda_produtomix: TFloatField;
     QRORC: TZQuery;
     Bevel10: TBevel;
     QRORCCODIGO: TWideStringField;
@@ -175,6 +174,7 @@ type
     qrvenda_produto1GRADE_CODINT: TWideStringField;
     qrvenda_produto1COR: TWideStringField;
     qrvenda_produto1TAMANHO: TWideStringField;
+    qrvenda_produtoMIX: TWideStringField;
     qrvenda_produtoCOR: TWideStringField;
     qrvenda_produtoTAMANHO: TWideStringField;
     procedure bincluirClick(Sender: TObject);
@@ -894,10 +894,10 @@ begin
             if frmmodulo.qrproduto.FieldByName('USA_SERIAL').asinteger = 1 then
               serial_grade := 1;
 
-            frmvenda.qrvenda_produto.FieldByName('cor').asstring :=
-               qrapoio2.FieldByName('cor').AsString;
-            frmvenda.qrvenda_produto.FieldByName('tamanho').asstring :=
-            qrapoio2.FieldByName('tamamho').AsString;
+            frmvenda.qrvenda_produto.FieldByName('COR').asstring :=
+               qrapoio2.FieldByName('COR').AsString;
+            frmvenda.qrvenda_produto.FieldByName('TAMANHO').asstring :=
+            qrapoio2.FieldByName('TAMANHO').AsString;
 
 
           end;
@@ -1256,7 +1256,7 @@ begin
   if rqtde.Value <> 0 then
   begin
     if qrvenda_produtoQTDE.Value <> 0 then
-      qrvenda_produtomix.Value := qrvenda_produtoQTDE.Value * 100 / rqtde.Value;
+     // qrvenda_produtoMIX.Value := qrvenda_produtoQTDE.Value * 100 / rqtde.Value;
   end;
 end;
 

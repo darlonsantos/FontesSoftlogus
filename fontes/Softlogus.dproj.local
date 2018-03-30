@@ -4,5 +4,7 @@
     <Transaction>2018/03/19 20:44:24.000.674,=C:\FontesSoftlogus\fontes\Unit1.pas</Transaction>
     <Transaction>2018/03/19 20:48:55.000.984,C:\FontesSoftlogus\fontes\Unit1.dfm=C:\FontesSoftlogus\fontes\fnts\versionamento.dfm</Transaction>
     <Transaction>2018/03/19 20:48:55.000.984,C:\FontesSoftlogus\fontes\Unit1.pas=C:\FontesSoftlogus\fontes\fnts\versionamento.pas</Transaction>
+    <Transaction>2018/03/29 23:58:44.395,=C:\FontesSoftlogus\fontes\Unit1.pas</Transaction>
+    <Transaction>2018/03/29 23:59:30.630,C:\FontesSoftlogus\fontes\fnts\criarTabelasCampos.pas=C:\FontesSoftlogus\fontes\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

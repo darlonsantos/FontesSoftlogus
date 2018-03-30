@@ -1077,8 +1077,6 @@ object frmvenda: Tfrmvenda
       OnDblClick = wwDBGrid1DblClick
       PaintOptions.AlternatingRowColor = 16316664
       PaintOptions.ActiveRecordColor = clBlack
-      ExplicitLeft = -25
-      ExplicitTop = 89
     end
     object Panel5: TPanel
       Left = 0
@@ -2047,7 +2045,6 @@ object frmvenda: Tfrmvenda
   end
   object qrvenda_produto: TZQuery
     Connection = frmmodulo.Conexao
-    Active = True
     SQL.Strings = (
       'select * from CL00001')
     Params = <>
@@ -2108,14 +2105,6 @@ object frmvenda: Tfrmvenda
       DisplayWidth = 12
       FieldName = 'ALIQUOTA'
     end
-    object qrvenda_produtomix: TFloatField
-      DisplayLabel = 'MIX'
-      DisplayWidth = 8
-      FieldKind = fkCalculated
-      FieldName = 'mix'
-      DisplayFormat = '###,###,##0.00'
-      Calculated = True
-    end
     object qrvenda_produtoCODBARRAS: TWideStringField
       FieldName = 'CODBARRAS'
       Visible = False
@@ -2163,15 +2152,18 @@ object frmvenda: Tfrmvenda
       Visible = False
       Size = 6
     end
+    object qrvenda_produtoMIX: TWideStringField
+      FieldName = 'MIX'
+      ReadOnly = True
+      Size = 100
+    end
     object qrvenda_produtoCOR: TWideStringField
       FieldName = 'COR'
-      Visible = False
-      Size = 15
+      Size = 100
     end
     object qrvenda_produtoTAMANHO: TWideStringField
       FieldName = 'TAMANHO'
-      Visible = False
-      Size = 15
+      Size = 100
     end
   end
   object QRORC: TZQuery

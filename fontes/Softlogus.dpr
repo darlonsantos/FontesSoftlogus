@@ -336,7 +336,8 @@ uses
   tabela_preco in 'fnts\tabela_preco.pas' {frm_tb_preco},
   Unit_ativar in 'fnts\Unit_ativar.pas' {Form_ativar},
   Ncm in 'fnts\Ncm.pas' {frmNcm},
-  versionamento in 'fnts\versionamento.pas' {frmversionamento};
+  versionamento in 'fnts\versionamento.pas' {frmversionamento},
+  criarTabelasCampos in 'fnts\criarTabelasCampos.pas';
 
 // Unit5 in 'fnts\metro\Unit5.pas' {metro_sair},
   //ACBrConsultaCPF in 'fnts\metro\CPF\ACBrConsultaCPF.pas',
@@ -368,17 +369,9 @@ begin
   Application.CreateForm(TForm_ativar, Form_ativar);
   Application.CreateForm(TfrmNcm, frmNcm);
   Application.CreateForm(Tfrmversionamento, frmversionamento);
-  // Application.CreateForm(TfrmLMC, frmLMC);
- // Application.CreateForm(TfrmBicos, frmBicos);
-//  Application.CreateForm(TfrmBombas, frmBombas);
- // Application.CreateForm(TfrmLMCImpressao, frmLMCImpressao);
-  //  Application.CreateForm(Tmetro_sair, metro_sair);
-//  Application.CreateForm(TFrmConsCPF, FrmConsCPF);
-//  Application.CreateForm(TF_Principal, F_Principal);
-  //Application.CreateForm(Tmetro_empresa, metro_empresa);
- // Application.CreateForm(TForm_ativar, Form_ativar);
   frmsplash.showmodal;
   application.ProcessMessages;
+  Application.Icon.LoadFromFile('C:\Softlogus\Server\icones\Softlogus.ico');
   Application.CreateForm(Tfrmmodulo, frmmodulo);
   Application.Run;
 end.

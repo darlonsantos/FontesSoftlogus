@@ -4,8 +4,8 @@ object frmvenda_inicio: Tfrmvenda_inicio
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Pedido de Venda'
-  ClientHeight = 276
-  ClientWidth = 760
+  ClientHeight = 272
+  ClientWidth = 766
   Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -249,15 +249,17 @@ object frmvenda_inicio: Tfrmvenda_inicio
     TabOrder = 4
   end
   object Panel1: TPanel
-    Left = 652
+    Left = 658
     Top = 59
     Width = 95
-    Height = 206
+    Height = 202
     Align = alRight
     BevelOuter = bvNone
     Color = 5460819
     ParentBackground = False
     TabOrder = 2
+    ExplicitLeft = 652
+    ExplicitHeight = 206
     object bgravar: TAdvGlowButton
       Left = 8
       Top = 8
@@ -715,56 +717,63 @@ object frmvenda_inicio: Tfrmvenda_inicio
     OnKeyPress = eretiradoKeyPress
   end
   object Panel2: TPanel
-    Left = 747
+    Left = 753
     Top = 59
     Width = 13
-    Height = 206
+    Height = 202
     Align = alRight
     BevelOuter = bvNone
     Caption = 'Panel2'
     Color = clBlack
     ParentBackground = False
     TabOrder = 9
+    ExplicitLeft = 747
+    ExplicitHeight = 206
   end
   object Panel3: TPanel
     Left = 0
     Top = 59
     Width = 12
-    Height = 206
+    Height = 202
     Align = alLeft
     BevelOuter = bvNone
     Color = clBlack
     ParentBackground = False
     TabOrder = 10
+    ExplicitHeight = 206
   end
   object Panel4: TPanel
     Left = 0
-    Top = 265
-    Width = 760
+    Top = 261
+    Width = 766
     Height = 11
     Align = alBottom
     BevelOuter = bvNone
     Color = clBlack
     ParentBackground = False
     TabOrder = 11
+    ExplicitTop = 265
+    ExplicitWidth = 760
   end
   object Panel5: TPanel
     Left = 0
     Top = 0
-    Width = 760
+    Width = 766
     Height = 11
     Align = alTop
     BevelOuter = bvNone
     Color = clBlack
     ParentBackground = False
     TabOrder = 12
+    ExplicitWidth = 760
   end
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 11
-    Width = 760
+    Width = 766
     Height = 48
     Cursor = crDefault
+    ResizeHandleColor = clWhite
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
     Caption.HTMLFont.Color = clWindowText
     Caption.HTMLFont.Height = -11
@@ -792,9 +801,12 @@ object frmvenda_inicio: Tfrmvenda_inicio
     Align = alTop
     TabOrder = 13
     ShowExpander = False
+    ExpanderBorderColor = clWhite
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitLeft = 36
+    ExplicitTop = 91
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label26: TLabel
