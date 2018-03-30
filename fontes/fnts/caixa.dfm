@@ -592,7 +592,6 @@ object frmcaixa: Tfrmcaixa
           TitleButtons = False
           OnDrawDataCell = wwDBGrid1DrawDataCell
           PaintOptions.ActiveRecordColor = clBlack
-          ExplicitWidth = 413
         end
         object bcaixaaberto: TButton
           Left = 487
@@ -3532,8 +3531,6 @@ object frmcaixa: Tfrmcaixa
           ParentFont = False
           ScrollBars = ssVertical
           TabOrder = 0
-          ExplicitLeft = -220
-          ExplicitTop = 39
         end
       end
     end
@@ -4216,7 +4213,6 @@ object frmcaixa: Tfrmcaixa
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 1016
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
@@ -4323,8 +4319,6 @@ object frmcaixa: Tfrmcaixa
     Color = 12223546
     ParentBackground = False
     TabOrder = 5
-    ExplicitTop = 613
-    ExplicitWidth = 1016
   end
   object qrcaixa_mov: TZQuery
     Connection = frmmodulo.Conexao
@@ -4489,7 +4483,7 @@ object frmcaixa: Tfrmcaixa
     Left = 1160
     Top = 584
     Bitmap = {
-      494C01014F005400280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014F0054002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004001000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
