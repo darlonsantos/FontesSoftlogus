@@ -19,6 +19,7 @@ type
     p: TRzProgressBar;
     Label3: TLabel;
     lbl1: TLabel;
+    lblVersao: TLabel;
     procedure Timer1Timer(Sender: TObject);
     procedure FormShow(Sender: TObject);
 
@@ -60,7 +61,7 @@ end;
 
 procedure Tfrmsplash.FormShow(Sender: TObject);
 begin
-  label2.caption := ExeInfo1.fileVersion;
+  lblVersao.caption := 'Versão: ' + ExeInfo1.fileVersion;
 end;
 
 end.

@@ -3,8 +3,8 @@ object frmsplash: Tfrmsplash
   Top = 200
   BorderStyle = bsNone
   Caption = 'frmsplash'
-  ClientHeight = 399
-  ClientWidth = 579
+  ClientHeight = 374
+  ClientWidth = 510
   Color = clWindow
   TransparentColor = True
   TransparentColorValue = clRed
@@ -21,8 +21,8 @@ object frmsplash: Tfrmsplash
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 579
-    Height = 323
+    Width = 510
+    Height = 282
     Align = alClient
     AutoSize = True
     Center = True
@@ -804,10 +804,10 @@ object frmsplash: Tfrmsplash
       28A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A00
       28A28A00FFD9}
     Stretch = True
-    ExplicitLeft = 8
-    ExplicitTop = -3
+    ExplicitLeft = 184
+    ExplicitTop = -88
     ExplicitWidth = 364
-    ExplicitHeight = 320
+    ExplicitHeight = 440
   end
   object Label2: TLabel
     Left = 573
@@ -828,8 +828,8 @@ object frmsplash: Tfrmsplash
   end
   object Label1: TLabel
     Left = 0
-    Top = 375
-    Width = 579
+    Top = 350
+    Width = 510
     Height = 16
     Align = alBottom
     Alignment = taCenter
@@ -841,12 +841,14 @@ object frmsplash: Tfrmsplash
     Font.Style = [fsBold]
     ParentFont = False
     Transparent = True
-    ExplicitWidth = 300
+    ExplicitLeft = -8
+    ExplicitTop = 480
+    ExplicitWidth = 975
   end
   object p: TRzProgressBar
     Left = 0
-    Top = 391
-    Width = 579
+    Top = 366
+    Width = 510
     Height = 8
     Align = alBottom
     BackColorStop = clWindow
@@ -869,6 +871,7 @@ object frmsplash: Tfrmsplash
     ThemeAware = False
     TotalParts = 0
     ExplicitTop = 387
+    ExplicitWidth = 579
   end
   object Label3: TLabel
     Left = 17
@@ -887,9 +890,9 @@ object frmsplash: Tfrmsplash
   end
   object lbl1: TLabel
     Left = 0
-    Top = 323
-    Width = 579
-    Height = 52
+    Top = 282
+    Width = 510
+    Height = 55
     Align = alBottom
     Alignment = taCenter
     Caption = 
@@ -897,7 +900,19 @@ object frmsplash: Tfrmsplash
       'os'#13'Este produto est'#225' protegido por direitos autorais e distribu'#237 +
       'do sob Licen'#231'as que restringem a c'#243'pia,'#13'distribui'#231#227'o e descompil' +
       'a'#231#227'o.'
-    ExplicitWidth = 464
+    ExplicitTop = 422
+    ExplicitWidth = 893
+  end
+  object lblVersao: TLabel
+    Left = 0
+    Top = 337
+    Width = 510
+    Height = 13
+    Align = alBottom
+    Alignment = taCenter
+    Caption = 'Vers'#227'o'
+    ExplicitTop = 509
+    ExplicitWidth = 33
   end
   object Timer1: TTimer
     Interval = 150
