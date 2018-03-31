@@ -3,10 +3,14 @@ unit ServerMethodsUnit1;
 interface
 
 uses System.SysUtils, System.Classes, System.Json,
-    Datasnap.DSServer, Datasnap.DSAuth, DataSnap.DSProviderDataModuleAdapter;
+    Datasnap.DSServer, Datasnap.DSAuth, DataSnap.DSProviderDataModuleAdapter,
+  Datasnap.Provider;
 
 type
   TServerMethods1 = class(TDSServerModule)
+    dsPFilial: TDataSetProvider;
+    dsPVendaGeral: TDataSetProvider;
+    dsPVendas: TDataSetProvider;
   private
     { Private declarations }
   public
@@ -21,7 +25,7 @@ implementation
 {$R *.dfm}
 
 
-uses System.StrUtils;
+uses System.StrUtils, conexoes;
 
 function TServerMethods1.EchoString(Value: string): string;
 begin

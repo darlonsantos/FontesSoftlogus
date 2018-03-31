@@ -48,7 +48,7 @@ type
     Label2: TLabel;
     ConnectionsList: TListBox;
     SessionIdList: TListBox;
-    Label5: TLabel;
+    lblstatus: TLabel;
     useKeepAliveCheck: TCheckBox;
     KAIdleLabel: TLabel;
     KAIdleMS: TEdit;
@@ -58,6 +58,9 @@ type
     N1: TMenuItem;
     closeConnItem: TMenuItem;
     bancoDados: TMenuItem;
+    C1: TMenuItem;
+    C2: TMenuItem;
+    D1: TMenuItem;
     procedure FormActivate(Sender: TObject);
     procedure EnableKAItemClick(Sender: TObject);
     procedure useKeepAliveCheckClick(Sender: TObject);
@@ -66,6 +69,8 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure DisableKAItemClick(Sender: TObject);
+    procedure C2Click(Sender: TObject);
+    procedure D1Click(Sender: TObject);
   private
     FConnections: TObjectDictionary<TIdTCPConnection,TDSTCPChannel>;
     procedure CMServerTransportConnectEvent(Event: TDSTCPConnectEventObject);
@@ -91,7 +96,7 @@ implementation
 
 {$R *.dfm}
 
-uses DSSession, Winapi.Winsock, ServerContainerUnit1, UconfConexoes;
+uses DSSession, Winapi.Winsock, ServerContainerUnit1, UconfConexoes, conexoes;
 
 Function GetIPAddress:String;
 type
@@ -174,6 +179,15 @@ begin
   frmConexoes.ShowModal;
 end;
 
+procedure Tfrmprincipal.C2Click(Sender: TObject);
+begin
+dm.conn.Connected := true;
+dm.qryVendas.Open;
+dm.qryFilial.Open;
+dm.qryVendaGeral.Open;
+lblstatus.Caption := 'Conectado';
+end;
+
 procedure Tfrmprincipal.CMServerTransportConnectEvent(
   Event: TDSTCPConnectEventObject);
 begin
@@ -214,6 +228,15 @@ begin
   finally
     System.TMonitor.Exit(FConnections);
   end;
+end;
+
+procedure Tfrmprincipal.D1Click(Sender: TObject);
+begin
+dm.conn.Connected := false;
+dm.qryVendas.Close;
+dm.qryFilial.Close;
+dm.qryVendaGeral.Close;
+lblstatus.Caption := 'Desconectado';
 end;
 
 procedure Tfrmprincipal.DisableKAItemClick(Sender: TObject);

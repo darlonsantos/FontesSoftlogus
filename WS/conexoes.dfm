@@ -9,7 +9,6 @@ object dm: Tdm
     DefaultTransaction = trans
     Username = 'ITATICO'
     Server = '192.168.0.1/WINT'
-    Connected = True
     LoginPrompt = False
     Left = 12
     Top = 4
@@ -93,8 +92,8 @@ object dm: Tdm
         'GROUP BY PCPEDC.CODSUPERVISOR, NVL(PCSUPERV.NOME, '#39'* NAO VINCULA' +
         'DO *'#39') --, MIX_SUPERV.QTDE'
       'ORDER BY VLVENDA DESC')
-    Left = 192
-    Top = 12
+    Left = 188
+    Top = 8
     ParamData = <
       item
         DataType = ftDate
@@ -128,17 +127,10 @@ object dm: Tdm
       
         ' FROM PCFILIAL FILIAL  WHERE  FILIAL.CODIGO IN('#39'1'#39','#39'11'#39','#39'2'#39','#39'3'#39',' +
         #39'4'#39','#39'5'#39','#39'6'#39','#39'7'#39','#39'8'#39','#39'97'#39','#39'98'#39')'
-      ' AND FILIAL.CODIGO =:CODFILIAL'
       ' ORDER BY  FILIAL.CODIGO;'
       '')
-    Left = 120
-    Top = 24
-    ParamData = <
-      item
-        DataType = ftString
-        Name = 'CODFILIAL'
-        Value = nil
-      end>
+    Left = 116
+    Top = 4
     object qryFilialCODIGO: TStringField
       FieldName = 'CODIGO'
       Required = True
@@ -223,8 +215,8 @@ object dm: Tdm
       
         ' AND PCPEDC.CODFILIAL IN('#39'1'#39','#39'11'#39','#39'2'#39','#39'3'#39','#39'4'#39','#39'5'#39','#39'6'#39','#39'7'#39','#39'8'#39','#39'9' +
         '7'#39','#39'98'#39')')
-    Left = 252
-    Top = 28
+    Left = 272
+    Top = 8
     ParamData = <
       item
         DataType = ftDate
@@ -240,11 +232,11 @@ object dm: Tdm
   object trans: TUniTransaction
     DefaultConnection = conn
     Left = 60
-    Top = 8
+    Top = 4
   end
   object provider: TOracleUniProvider
-    Left = 320
-    Top = 28
+    Left = 348
+    Top = 8
   end
   object conLocal: TUniConnection
     ProviderName = 'InterBase'
@@ -253,22 +245,22 @@ object dm: Tdm
     Server = 'localhost'
     Connected = True
     LoginPrompt = False
-    Left = 64
-    Top = 244
+    Left = 48
+    Top = 288
     EncryptedPassword = '92FF9EFF8CFF8BFF9AFF8DFF94FF9AFF86FF'
   end
   object qryConfBanco: TUniQuery
     Connection = conLocal
-    Left = 140
-    Top = 245
+    Left = 120
+    Top = 301
   end
   object transLocal: TUniTransaction
     DefaultConnection = conLocal
-    Left = 240
-    Top = 248
+    Left = 252
+    Top = 288
   end
   object providerInterbase: TInterBaseUniProvider
     Left = 188
-    Top = 300
+    Top = 304
   end
 end

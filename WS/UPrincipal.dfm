@@ -1467,7 +1467,7 @@ object frmprincipal: Tfrmprincipal
     Anchors = [akTop, akRight]
     Caption = 'Sess'#245'es ativas:'
   end
-  object Label5: TLabel
+  object lblstatus: TLabel
     Left = 8
     Top = 449
     Width = 99
@@ -1612,6 +1612,17 @@ object frmprincipal: Tfrmprincipal
     end
     object closeConnItem: TMenuItem
       Caption = 'Close Connection'
+    end
+    object C1: TMenuItem
+      Caption = 'Cone'#231#245'es'
+      object C2: TMenuItem
+        Caption = 'Conectar'
+        OnClick = C2Click
+      end
+      object D1: TMenuItem
+        Caption = 'Desconectar'
+        OnClick = D1Click
+      end
     end
   end
 end
