@@ -1973,7 +1973,8 @@ begin
 
           end;
         until sMsg = 'OK';
-      end else //Nao Fiscal
+      end
+       else //Nao Fiscal
         sMsg := 'OK';
       if sMsg = 'OK' then begin
 
@@ -2008,7 +2009,8 @@ begin
               else
                 frmMsg_Operador.hide;
 
-            end else
+            end
+             else
               spReducaoZ.ParamByName('CRZ').asstring := sMsg;
 
           until sMsg <> 'ERRO';
