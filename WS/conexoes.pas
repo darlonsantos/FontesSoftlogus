@@ -10,9 +10,6 @@ type
   Tdm = class(TDataModule)
     conn: TUniConnection;
     qryVendas: TUniQuery;
-    qryFilial: TUniQuery;
-    qryFilialCODIGO: TStringField;
-    qryFilialFILIAS: TStringField;
     qryVendaGeral: TUniQuery;
     trans: TUniTransaction;
     provider: TOracleUniProvider;

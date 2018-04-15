@@ -1614,7 +1614,7 @@ object frmprincipal: Tfrmprincipal
       Caption = 'Close Connection'
     end
     object C1: TMenuItem
-      Caption = 'Cone'#231#245'es'
+      Caption = 'Conex'#245'es '
       object C2: TMenuItem
         Caption = 'Conectar'
         OnClick = C2Click

@@ -183,7 +183,6 @@ procedure Tfrmprincipal.C2Click(Sender: TObject);
 begin
 dm.conn.Connected := true;
 dm.qryVendas.Open;
-dm.qryFilial.Open;
 dm.qryVendaGeral.Open;
 lblstatus.Caption := 'Conectado';
 end;
@@ -234,7 +233,6 @@ procedure Tfrmprincipal.D1Click(Sender: TObject);
 begin
 dm.conn.Connected := false;
 dm.qryVendas.Close;
-dm.qryFilial.Close;
 dm.qryVendaGeral.Close;
 lblstatus.Caption := 'Desconectado';
 end;

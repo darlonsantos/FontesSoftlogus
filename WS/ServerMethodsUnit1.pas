@@ -8,7 +8,6 @@ uses System.SysUtils, System.Classes, System.Json,
 
 type
   TServerMethods1 = class(TDSServerModule)
-    dsPFilial: TDataSetProvider;
     dsPVendaGeral: TDataSetProvider;
     dsPVendas: TDataSetProvider;
   private

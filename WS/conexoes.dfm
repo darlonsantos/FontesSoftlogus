@@ -16,6 +16,7 @@ object dm: Tdm
   end
   object qryVendas: TUniQuery
     Connection = conn
+    Transaction = trans
     SQL.Strings = (
       'SELECT'
       '  PCPEDC.CODSUPERVISOR,'
@@ -92,58 +93,23 @@ object dm: Tdm
         'GROUP BY PCPEDC.CODSUPERVISOR, NVL(PCSUPERV.NOME, '#39'* NAO VINCULA' +
         'DO *'#39') --, MIX_SUPERV.QTDE'
       'ORDER BY VLVENDA DESC')
-    Left = 188
-    Top = 8
+    Left = 192
+    Top = 16
     ParamData = <
       item
-        DataType = ftDate
+        DataType = ftDateTime
         Name = 'DTINCIO'
-        Value = 43176d
+        Value = nil
       end
       item
-        DataType = ftDate
+        DataType = ftDateTime
         Name = 'DTFIM'
-        Value = 43176d
+        Value = nil
       end>
-  end
-  object qryFilial: TUniQuery
-    Connection = conn
-    SQL.Strings = (
-      'SELECT'
-      '   CODIGO,'
-      '  CASE CODIGO WHEN '#39'2'#39' THEN '#39'AGUAS LINDAS'#39
-      '   WHEN '#39'3'#39' THEN '#39'SAMAMBAIA SUL'#39
-      '   WHEN '#39'4'#39' THEN '#39'SANTA MARIA'#39
-      '   WHEN '#39'5'#39' THEN '#39'RECANTO DAS EMAS'#39
-      '   WHEN '#39'6'#39' THEN '#39'SAMAMBAIA NORTE'#39
-      '   WHEN '#39'99'#39' THEN '#39'TODAS FILIAS'#39
-      '   WHEN '#39'98'#39' THEN '#39'TATICO ADMINISTRA'#199#195'O'#39
-      '   WHEN '#39'11'#39' THEN '#39'MUNDIAL PARTICIPA'#199#213'ES'#39
-      '   WHEN '#39'8'#39' THEN '#39'MONTE MAR DISTRIBUIDORA'#39
-      '   WHEN '#39'1'#39' THEN '#39'TATICO CEILANDIA CENTRO'#39
-      '   WHEN '#39'7'#39' THEN '#39'TATICO SETOR HABITACIONAL CH 579 '#39
-      '   WHEN '#39'97'#39' THEN '#39'FILIAL RATEIO'#39
-      '  END FILIAS'
-      
-        ' FROM PCFILIAL FILIAL  WHERE  FILIAL.CODIGO IN('#39'1'#39','#39'11'#39','#39'2'#39','#39'3'#39',' +
-        #39'4'#39','#39'5'#39','#39'6'#39','#39'7'#39','#39'8'#39','#39'97'#39','#39'98'#39')'
-      ' ORDER BY  FILIAL.CODIGO;'
-      '')
-    Left = 116
-    Top = 4
-    object qryFilialCODIGO: TStringField
-      FieldName = 'CODIGO'
-      Required = True
-      Size = 2
-    end
-    object qryFilialFILIAS: TStringField
-      FieldName = 'FILIAS'
-      ReadOnly = True
-      Size = 16
-    end
   end
   object qryVendaGeral: TUniQuery
     Connection = conn
+    Transaction = trans
     SQL.Strings = (
       'SELECT COUNT(PCPEDC.NUMPED) AS QTPED,'
       
@@ -219,12 +185,12 @@ object dm: Tdm
     Top = 8
     ParamData = <
       item
-        DataType = ftDate
+        DataType = ftDateTime
         Name = 'DTINCIO'
         Value = nil
       end
       item
-        DataType = ftDate
+        DataType = ftDateTime
         Name = 'DTFIM'
         Value = nil
       end>
@@ -252,15 +218,15 @@ object dm: Tdm
   object qryConfBanco: TUniQuery
     Connection = conLocal
     Left = 120
-    Top = 301
+    Top = 293
   end
   object transLocal: TUniTransaction
     DefaultConnection = conLocal
-    Left = 252
-    Top = 288
+    Left = 312
+    Top = 280
   end
   object providerInterbase: TInterBaseUniProvider
-    Left = 188
-    Top = 304
+    Left = 236
+    Top = 284
   end
 end
