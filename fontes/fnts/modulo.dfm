@@ -10,6 +10,7 @@ object frmmodulo: Tfrmmodulo
       'controls_cp=CP_UTF16')
     ReadOnly = True
     TransactIsolationLevel = tiReadCommitted
+    Connected = True
     SQLHourGlass = True
     HostName = ''
     Port = 0
@@ -5367,8 +5368,8 @@ object frmmodulo: Tfrmmodulo
     SQL.Strings = (
       'select * from c000048')
     Params = <>
-    Left = 702
-    Top = 1036
+    Left = 686
+    Top = 1032
     object qrvendaSITUACAO: TIntegerField
       DisplayLabel = '?'
       DisplayWidth = 3
@@ -5768,8 +5769,8 @@ object frmmodulo: Tfrmmodulo
     SQL.Strings = (
       'select * from c000051')
     Params = <>
-    Left = 604
-    Top = 1036
+    Left = 600
+    Top = 1032
     object qrosCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Required = True
