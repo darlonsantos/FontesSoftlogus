@@ -45,7 +45,7 @@ uses
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
   System.Actions, AdvTimePickerDropDown, ResizeKit, AdvOfficeImage,
   AdvMetroButton, AeroButtons, cyCustomImage, TFlatHintUnit, LockApplication,
-  System.ImageList, SysUtils, AdvSmoothButton;
+  System.ImageList, SysUtils, AdvSmoothButton, midaslib;
 
 type
 
