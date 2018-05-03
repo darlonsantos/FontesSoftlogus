@@ -1982,7 +1982,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Width = 832
     Height = 33
     BevelOuter = bvNone
-    Color = 3684661
+    Color = clSilver
     ParentBackground = False
     TabOrder = 4
     object Label18: TLabel
@@ -2390,7 +2390,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Caption.ColorStart = clWhite
     Caption.ColorEnd = clWhite
     Caption.Line = False
-    Fill.Color = 3684661
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -3553,7 +3552,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Width = 12
     Height = 552
     BevelOuter = bvNone
-    Color = 3684661
+    Color = clSilver
     ParentBackground = False
     TabOrder = 8
   end
@@ -3563,7 +3562,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Width = 1097
     Height = 12
     BevelOuter = bvNone
-    Color = 3684661
+    Color = clSilver
     ParentBackground = False
     TabOrder = 10
   end
@@ -3658,7 +3657,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 904
     Top = 488
     Bitmap = {
-      494C0101710073006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010171007300700010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000D0010000010020000000000000D0
       010000000000000000000000000000000000000000003E3E3E0017171700FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -8603,7 +8602,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 944
     Top = 488
     Bitmap = {
-      494C010109000B006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B00700010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -9019,8 +9018,8 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     SQL.Strings = (
       'select * from c000061')
     Params = <>
-    Left = 256
-    Top = 232
+    Left = 240
+    Top = 476
     object qrnotacliente: TStringField
       DisplayLabel = 'CLIENTE'
       DisplayWidth = 33
@@ -9708,6 +9707,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     end
     object qrnotaDIFAL: TFloatField
       FieldName = 'DIFAL'
+    end
+    object qrnotaPICMSINTERPART: TWideStringField
+      FieldName = 'PICMSINTERPART'
+      Size = 100
     end
   end
   object qrproduto2: TZQuery
@@ -11208,8 +11211,8 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   object qryApoioCCE: TZQuery
     Connection = frmmodulo.Conexao
     Params = <>
-    Left = 232
-    Top = 368
+    Left = 80
+    Top = 500
   end
   object qrTrib: TZQuery
     Connection = frmmodulo.Conexao
@@ -11293,8 +11296,8 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     SQL.Strings = (
       'select * from NFE_COMPLEMENTAR')
     Params = <>
-    Left = 283
-    Top = 429
+    Left = 123
+    Top = 505
     object zqryComplementarCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Size = 6

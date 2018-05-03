@@ -723,6 +723,7 @@ type
     zqryComplementarNUMNOTAREF: TWideStringField;
     zqryComplementarDATA: TDateField;
     zqryComplementarCHAVE: TWideStringField;
+    qrnotaPICMSINTERPART: TWideStringField;
     procedure bincluirClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure bfecharClick(Sender: TObject);
