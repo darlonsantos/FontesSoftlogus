@@ -2472,7 +2472,6 @@ object frmnotafiscal: Tfrmnotafiscal
         Height = 21
         DataSource = dsnota
         DataField = 'FAT_QTDE_PRESTACAO'
-        Alignment = taRightJustify
         Color = 15916445
         MaxLength = 3
         TabOrder = 2
@@ -4175,7 +4174,6 @@ object frmnotafiscal: Tfrmnotafiscal
     Caption.ColorStart = clWhite
     Caption.ColorEnd = clWhite
     Caption.Line = False
-    Fill.Color = 8210719
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -4290,7 +4288,7 @@ object frmnotafiscal: Tfrmnotafiscal
     Width = 12
     Height = 627
     BevelOuter = bvNone
-    Color = 3684661
+    Color = clSilver
     ParentBackground = False
     TabOrder = 8
   end
@@ -4300,7 +4298,7 @@ object frmnotafiscal: Tfrmnotafiscal
     Width = 1209
     Height = 12
     BevelOuter = bvNone
-    Color = 3684661
+    Color = clSilver
     ParentBackground = False
     TabOrder = 9
   end
