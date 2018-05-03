@@ -240,7 +240,7 @@ object frmlista_notasaida: Tfrmlista_notasaida
     Height = 242
     Align = alRight
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 7
     object bimprimir: TAdvGlowButton
@@ -532,7 +532,6 @@ object frmlista_notasaida: Tfrmlista_notasaida
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
