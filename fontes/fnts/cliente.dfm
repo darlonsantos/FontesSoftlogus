@@ -1802,8 +1802,8 @@ object frmcliente: Tfrmcliente
           OnKeyPress = DBEdit1KeyPress
         end
         object DBEdit8: TDBEdit
-          Left = 504
-          Top = 130
+          Left = 501
+          Top = 127
           Width = 73
           Height = 21
           Color = 15916445
@@ -2956,14 +2956,14 @@ object frmcliente: Tfrmcliente
           OnKeyPress = DBEdit2KeyPress
         end
         object pnlPnlCNPJ: TPanel
-          Left = 151
-          Top = 33
+          Left = 142
+          Top = 27
           Width = 626
           Height = 220
           Align = alCustom
           BevelInner = bvRaised
           BevelOuter = bvLowered
-          Color = 14678491
+          Color = clSilver
           ParentBackground = False
           TabOrder = 24
           Visible = False
@@ -3159,7 +3159,6 @@ object frmcliente: Tfrmcliente
             Caption.Font.Name = 'Tahoma'
             Caption.Font.Style = []
             Caption.Line = False
-            Fill.Color = 5461077
             Fill.ColorTo = clNone
             Fill.ColorMirror = clNone
             Fill.ColorMirrorTo = clNone
@@ -3175,9 +3174,12 @@ object frmcliente: Tfrmcliente
             Align = alTop
             TabOrder = 5
             ShowExpander = False
+            ExpanderBorderColor = clSilver
             ExpanderColor = 16445929
             ExpanderDownColor = 15587527
             ExpanderHoverColor = 11196927
+            ExplicitLeft = 0
+            ExplicitTop = 4
             TMSStyle = 0
             OldHeight = 48.000000000000000000
             object lbl3: TLabel
@@ -3297,12 +3299,12 @@ object frmcliente: Tfrmcliente
         end
         object PNLcpf: TPanel
           Left = 141
-          Top = 13
+          Top = 9
           Width = 636
           Height = 241
           BevelInner = bvRaised
           BevelOuter = bvLowered
-          Color = cl3DDkShadow
+          Color = clSilver
           ParentBackground = False
           TabOrder = 25
           Visible = False
@@ -3474,7 +3476,6 @@ object frmcliente: Tfrmcliente
             Caption.Font.Name = 'Tahoma'
             Caption.Font.Style = []
             Caption.Line = False
-            Fill.Color = 5461077
             Fill.ColorTo = clNone
             Fill.ColorMirror = clNone
             Fill.ColorMirrorTo = clNone
@@ -3493,6 +3494,8 @@ object frmcliente: Tfrmcliente
             ExpanderColor = 16445929
             ExpanderDownColor = 15587527
             ExpanderHoverColor = 11196927
+            ExplicitLeft = -10
+            ExplicitTop = 13
             TMSStyle = 0
             OldHeight = 48.000000000000000000
             object lbl4: TLabel
@@ -3504,11 +3507,13 @@ object frmcliente: Tfrmcliente
               Align = alTop
               Alignment = taCenter
               Caption = 'CONSULTA DE CPF'
+              Color = clSilver
               Font.Charset = ANSI_CHARSET
               Font.Color = clWhite
               Font.Height = -19
               Font.Name = 'Arial'
               Font.Style = []
+              ParentColor = False
               ParentFont = False
               Transparent = True
               ExplicitWidth = 177
@@ -3638,6 +3643,7 @@ object frmcliente: Tfrmcliente
             Color = clSilver
             ParentBackground = False
             TabOrder = 0
+            ExplicitLeft = -264
             object LFILIACAO: TLabel
               Left = 3
               Top = 13
@@ -6646,7 +6652,7 @@ object frmcliente: Tfrmcliente
     Height = 27
     Align = alTop
     BevelOuter = bvNone
-    Color = clWhite
+    Color = clSilver
     Enabled = False
     ParentBackground = False
     TabOrder = 1
@@ -6721,7 +6727,6 @@ object frmcliente: Tfrmcliente
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clWhite
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -6764,7 +6769,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'Informa'#231#245'es'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 0
       Version = '2.1.0.1'
@@ -6799,7 +6804,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'Hist'#243'rico'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 1
       Version = '2.1.0.1'
@@ -6834,7 +6839,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'Financeiro'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 2
       Version = '2.1.0.1'
@@ -6869,7 +6874,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'Foto'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 3
       Version = '2.1.0.1'
@@ -6904,7 +6909,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'Compra'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 4
       Version = '2.1.0.1'
@@ -6939,7 +6944,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'Refer'#234'ncias'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 5
       Version = '2.1.0.1'
@@ -6974,7 +6979,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'Servi'#231'os'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 6
       Version = '2.1.0.1'
@@ -7009,7 +7014,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'Adicionais'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 7
       Version = '2.1.0.1'
@@ -7044,7 +7049,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'Respons'#225'veis'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 8
       Version = '2.1.0.1'
@@ -7079,7 +7084,7 @@ object frmcliente: Tfrmcliente
       Status.Appearance.Font.Name = 'Tahoma'
       Status.Appearance.Font.Style = []
       Caption = 'I. Municipais'
-      Color = 3552822
+      Color = clHighlight
       ParentFont = False
       TabOrder = 9
       Version = '2.1.0.1'
@@ -7094,7 +7099,7 @@ object frmcliente: Tfrmcliente
     Height = 481
     Align = alRight
     BevelOuter = bvNone
-    Color = 5461077
+    Color = clSilver
     ParentBackground = False
     TabOrder = 2
     object bincluir: TAdvGlowButton
@@ -8935,7 +8940,7 @@ object frmcliente: Tfrmcliente
     Left = 1293
     Top = 360
     Bitmap = {
-      494C01010600080070000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010600080074000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000001E0000000100200000000000201C
       0000000000000000000000000000000000007AC8EC002CA6DF002AA3DE0028A0
       DC00269DDB00249AD9002297D8001F92D5001A8BD2001584CE00107DCB000C76
@@ -9523,7 +9528,7 @@ object frmcliente: Tfrmcliente
     Left = 1197
     Top = 252
     Bitmap = {
-      494C010116001800580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101160018005C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

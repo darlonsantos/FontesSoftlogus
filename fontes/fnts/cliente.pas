@@ -1039,7 +1039,17 @@ begin
   begin
     application.messagebox('Favor informar um Estado válido para este cliente!',
       'Atenção', mb_ok + mb_iconerror);
-    euf.SetFocus;
+  euf.SetFocus;
+ euf.Color := clRED;
+    exit;
+  end;
+
+    if DBEdit8.Text = '' then
+  begin
+    application.messagebox('CEP é um campo obrigatório!',
+      'Atenção', mb_ok + mb_iconerror);
+    DBEdit8.SetFocus;
+     DBEdit8.Color := clRED;
     exit;
   end;
 
@@ -1048,6 +1058,7 @@ begin
     application.messagebox('Favor informar um nome válido para este cliente!',
       'Atenção', mb_ok + mb_iconerror);
     DBEdit2.SetFocus;
+     DBEdit2.Color := clRED;
     exit;
   end;
 
