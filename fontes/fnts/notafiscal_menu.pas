@@ -1818,8 +1818,7 @@ begin
       Total.ICMSTot.vDesc := qrnota.fieldbyname('DESCONTO').asfloat;
 
       PorcIBPT := ((TotalIBPT / Total.ICMSTot.vProd) * 100);
-
-      //
+  //
       if xTotalImposto > 0 then
         Total.ICMSTot.vTotTrib := xTotalImposto;
 
@@ -1836,8 +1835,7 @@ begin
                        Total.ICMSTot.vICMSUFDest  := 0.00;
                         Total.ICMSTot.vICMSUFRemet := 0.00;
                  end;
-     // contas a pagar
-
+      // contas a pagar
       cobr.Fat.nFat := qrnota.fieldbyname('numero').asstring;
       cobr.Fat.vOrig := RoundTo(qrnota.fieldbyname('TOTAL_NOTA').asfloat, -2);
       cobr.Fat.vDesc := RoundTo(0.0, -2);
@@ -3529,7 +3527,7 @@ begin
     begin
       ACBrNFe1.NotasFiscais.clear;
       ACBrNFe1.NotasFiscais.LoadFromFile(sXML);
-//      ACBrNFe1.NotasFiscais.Valida;
+     //  ACBrNFe1.NotasFiscais.Valida;
       // Application.MessageBox('Nota
      //  Fiscal validada com sucesso!','Aviso',mb_ok+mb_iconinformation);
 

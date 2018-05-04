@@ -9693,6 +9693,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     object qrnotaPICMSITERPART: TFloatField
       FieldName = 'PICMSITERPART'
     end
+    object qrnotaPICMSINTERPART: TWideStringField
+      FieldName = 'PICMSINTERPART'
+      Size = 100
+    end
     object qrnotaVFCPUFDESTTOTAL: TFloatField
       FieldName = 'VFCPUFDESTTOTAL'
     end
@@ -9707,10 +9711,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     end
     object qrnotaDIFAL: TFloatField
       FieldName = 'DIFAL'
-    end
-    object qrnotaPICMSINTERPART: TWideStringField
-      FieldName = 'PICMSINTERPART'
-      Size = 100
     end
   end
   object qrproduto2: TZQuery
