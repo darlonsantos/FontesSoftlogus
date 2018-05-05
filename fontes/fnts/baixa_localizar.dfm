@@ -319,7 +319,6 @@ object frmbaixa_localizar: Tfrmbaixa_localizar
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 6723891
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone

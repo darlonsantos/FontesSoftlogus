@@ -72,7 +72,7 @@ object frmvenda: Tfrmvenda
         Height = 67
         Align = alClient
         BevelOuter = bvNone
-        Color = 5460819
+        Color = clSilver
         ParentBackground = False
         TabOrder = 0
         object bfinalizar: TAdvGlowButton
@@ -498,7 +498,7 @@ object frmvenda: Tfrmvenda
         Height = 64
         Align = alTop
         BevelOuter = bvNone
-        Color = 5460819
+        Color = clSilver
         ParentBackground = False
         TabOrder = 1
         object bincluir: TAdvGlowButton
@@ -898,7 +898,7 @@ object frmvenda: Tfrmvenda
           Height = 64
           Align = alRight
           BevelOuter = bvNone
-          Color = 33023
+          Color = clSilver
           Enabled = False
           ParentBackground = False
           TabOrder = 3
@@ -1085,7 +1085,7 @@ object frmvenda: Tfrmvenda
       Height = 80
       Align = alTop
       BevelOuter = bvNone
-      Color = 5460819
+      Color = clSilver
       ParentBackground = False
       TabOrder = 2
       object Bevel6: TBevel
@@ -1702,10 +1702,10 @@ object frmvenda: Tfrmvenda
       Top = 86
       Width = 417
       Height = 225
-      Color = 33023
+      Color = clSilver
       Visible = False
-      ColorHighLight = 33023
-      ColorShadow = 33023
+      ColorHighLight = clSilver
+      ColorShadow = clSilver
       TabOrder = 3
       object Label9: TLabel
         Left = 11

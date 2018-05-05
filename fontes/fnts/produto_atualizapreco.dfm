@@ -6,7 +6,7 @@ object frmproduto_atualizapreco: Tfrmproduto_atualizapreco
   Caption = 'PRODUTOS | Atualiza'#231#227'o de Pre'#231'os'
   ClientHeight = 207
   ClientWidth = 575
-  Color = 7456876
+  Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -462,7 +462,7 @@ object frmproduto_atualizapreco: Tfrmproduto_atualizapreco
     Width = 122
     Height = 168
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 7
     object bok: TAdvGlowButton
@@ -609,7 +609,6 @@ object frmproduto_atualizapreco: Tfrmproduto_atualizapreco
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -631,8 +630,8 @@ object frmproduto_atualizapreco: Tfrmproduto_atualizapreco
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label105: TLabel
-      Left = 59
-      Top = 14
+      Left = 102
+      Top = 10
       Width = 339
       Height = 23
       Caption = 'PRODUTOS | Atualiza'#231#227'o de Pre'#231'os'

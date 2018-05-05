@@ -53,7 +53,7 @@ object frmlista_produto2: Tfrmlista_produto2
     Width = 119
     Height = 378
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 0
     object bimprimir: TAdvGlowButton
@@ -957,7 +957,6 @@ object frmlista_produto2: Tfrmlista_produto2
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone

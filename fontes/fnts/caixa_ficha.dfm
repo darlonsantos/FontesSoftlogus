@@ -6,7 +6,7 @@ object frmcaixa_ficha: Tfrmcaixa_ficha
   Caption = 'CAIXA | Ficha de Lan'#231'amento'
   ClientHeight = 226
   ClientWidth = 611
-  Color = clGreen
+  Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -182,7 +182,7 @@ object frmcaixa_ficha: Tfrmcaixa_ficha
     Width = 113
     Height = 281
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 6
     object bgravar: TAdvGlowButton
@@ -319,7 +319,7 @@ object frmcaixa_ficha: Tfrmcaixa_ficha
     Width = 499
     Height = 34
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 7
     object Label1: TLabel
@@ -444,12 +444,9 @@ object frmcaixa_ficha: Tfrmcaixa_ficha
     Height = 167
     Align = alRight
     BevelOuter = bvNone
-    Color = 6723891
+    Color = clSilver
     ParentBackground = False
     TabOrder = 8
-    ExplicitLeft = 627
-    ExplicitTop = 11
-    ExplicitHeight = 170
   end
   object Panel3: TPanel
     Left = 0
@@ -458,11 +455,9 @@ object frmcaixa_ficha: Tfrmcaixa_ficha
     Height = 11
     Align = alBottom
     BevelOuter = bvNone
-    Color = 6723891
+    Color = clSilver
     ParentBackground = False
     TabOrder = 9
-    ExplicitTop = 181
-    ExplicitWidth = 639
   end
   object Panel5: TPanel
     Left = 0
@@ -471,11 +466,9 @@ object frmcaixa_ficha: Tfrmcaixa_ficha
     Height = 167
     Align = alLeft
     BevelOuter = bvNone
-    Color = 6723891
+    Color = clSilver
     ParentBackground = False
     TabOrder = 10
-    ExplicitTop = 11
-    ExplicitHeight = 170
   end
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
@@ -494,7 +487,6 @@ object frmcaixa_ficha: Tfrmcaixa_ficha
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 6723891
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -506,16 +498,14 @@ object frmcaixa_ficha: Tfrmcaixa_ficha
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.0.4.2'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 11
     ShowExpander = False
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 626
+    TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
       Left = 59
@@ -606,7 +596,7 @@ object frmcaixa_ficha: Tfrmcaixa_ficha
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.0.1'
+      Version = '1.1.1.0'
       OnClick = bfecharClick
     end
   end

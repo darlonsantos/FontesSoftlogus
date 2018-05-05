@@ -944,6 +944,7 @@ object frmmodulo: Tfrmmodulo
   end
   object qrFilial: TZQuery
     Connection = Conexao
+    Active = True
     SQL.Strings = (
       'select * from c000004')
     Params = <>
@@ -4264,6 +4265,7 @@ object frmmodulo: Tfrmmodulo
   end
   object qrCFOP: TZQuery
     Connection = Conexao
+    Active = True
     SQL.Strings = (
       'select * from c000030')
     Params = <>
@@ -9428,6 +9430,7 @@ object frmmodulo: Tfrmmodulo
     BeforePost = qrfiscal_cstBeforePost
     AfterPost = qrfiscal_cstAfterPost
     AfterDelete = qrfiscal_cstAfterDelete
+    Active = True
     SQL.Strings = (
       'select * from c000083')
     Params = <>
@@ -13676,7 +13679,6 @@ object frmmodulo: Tfrmmodulo
     Catalog = ''
     ReadOnly = True
     TransactIsolationLevel = tiReadCommitted
-    Connected = True
     SQLHourGlass = True
     HostName = ''
     Port = 0

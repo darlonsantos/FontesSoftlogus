@@ -6,7 +6,7 @@ object frmmodelo_fiscal: Tfrmmodelo_fiscal
   Caption = 'MODELO DE DOCUMENTO FISCAL'
   ClientHeight = 327
   ClientWidth = 782
-  Color = 11429670
+  Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -25,13 +25,14 @@ object frmmodelo_fiscal: Tfrmmodelo_fiscal
     Width = 643
     Height = 322
     Selected.Strings = (
-      'CODIGO'#9'6'#9'CODIGO'#9'F'#9
-      'MODELO'#9'100'#9'MODELO'#9#9
-      'SIGLA'#9'5'#9'SIGLA'#9#9
-      'SINTEGRA'#9'2'#9'SINTEGRA'#9#9
-      'TIPO_REGISTRO'#9'10'#9'TIPO_REGISTRO'#9#9
-      'SEQUENCIANF'#9'10'#9'SEQUENCIANF'#9'F'#9)
+      'CODIGO'#9'6'#9'CODIGO'
+      'MODELO'#9'100'#9'MODELO'
+      'SIGLA'#9'5'#9'SIGLA'
+      'SINTEGRA'#9'2'#9'SINTEGRA'
+      'TIPO_REGISTRO'#9'10'#9'TIPO_REGISTRO'
+      'SEQUENCIANF'#9'10'#9'SEQUENCIANF')
     IniAttributes.Delimiter = ';;'
+    IniAttributes.UnicodeIniFile = False
     TitleColor = clBtnFace
     FixedCols = 0
     ShowHorzScrollBar = True
@@ -56,8 +57,8 @@ object frmmodelo_fiscal: Tfrmmodelo_fiscal
     PaintOptions.ActiveRecordColor = clBlack
   end
   object Panel2: TPanel
-    Left = 649
-    Top = -2
+    Left = 645
+    Top = -6
     Width = 145
     Height = 350
     BevelOuter = bvNone
@@ -270,7 +271,8 @@ object frmmodelo_fiscal: Tfrmmodelo_fiscal
   end
   object UCControls1: TUCControls
     GroupName = 'Form.Modelo de Documento Fiscal'
-    UserControl = frmPrincipal.iCloud
+    UserControl = frmPrincipal.icloud
+    Components = ''
     NotAllowed = naDisabled
     Left = 448
     Top = 8

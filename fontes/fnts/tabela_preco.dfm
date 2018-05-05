@@ -6,7 +6,7 @@ object frm_tb_preco: Tfrm_tb_preco
   Caption = 'Tabela de Pre'#231'os '
   ClientHeight = 354
   ClientWidth = 331
-  Color = 12223546
+  Color = clSilver
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11

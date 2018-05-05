@@ -708,7 +708,6 @@ type
     qrnotaPFCPUFDEST: TFloatField;
     qrnotaPICMSUFDEST: TFloatField;
     qrnotaPICMSINTER: TFloatField;
-    qrnotaPICMSITERPART: TFloatField;
     qrnotaVFCPUFDESTTOTAL: TFloatField;
     qrnotaVFCPUFDEST: TFloatField;
     qrnotaVICMSUFDESTTOTAL: TFloatField;
@@ -723,7 +722,8 @@ type
     zqryComplementarNUMNOTAREF: TWideStringField;
     zqryComplementarDATA: TDateField;
     zqryComplementarCHAVE: TWideStringField;
-    qrnotaPICMSINTERPART: TWideStringField;
+    qrnotaPICMSITERPART: TFloatField;
+    qrnotaPICMSINTERPART: TFloatField;
     procedure bincluirClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure bfecharClick(Sender: TObject);

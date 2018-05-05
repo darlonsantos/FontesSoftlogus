@@ -6,7 +6,7 @@ object Form_sobre: TForm_sobre
   Caption = 'Informa'#231#245'es do Sistema'
   ClientHeight = 245
   ClientWidth = 542
-  Color = clWhite
+  Color = clSilver
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -1805,9 +1805,9 @@ object Form_sobre: TForm_sobre
     end
     object img2: TImage
       Left = 436
-      Top = 13
-      Width = 89
-      Height = 63
+      Top = 22
+      Width = 73
+      Height = 47
       Center = True
       ParentShowHint = False
       Picture.Data = {

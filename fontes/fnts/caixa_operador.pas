@@ -54,6 +54,10 @@ type
     cySpeedButton3: TcySpeedButton;
     cySpeedButton4: TcySpeedButton;
     cySpeedButton5: TcySpeedButton;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label3: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
+    Image1: TImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure enomeEnter(Sender: TObject);

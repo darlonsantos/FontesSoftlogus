@@ -377,7 +377,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       Width = 784
       Height = 122
       BevelOuter = bvNone
-      Color = 33023
+      Color = clSilver
       ParentBackground = False
       TabOrder = 1
       object Bevel3: TBevel
@@ -406,7 +406,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
         Width = 210
         Height = 80
         BevelOuter = bvNone
-        Color = 33023
+        Color = clSilver
         Enabled = False
         ParentBackground = False
         TabOrder = 0
@@ -654,7 +654,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
         Height = 54
         Align = alBottom
         BevelOuter = bvNone
-        Color = 5460819
+        Color = clSilver
         ParentBackground = False
         TabOrder = 6
         object bitbtn2: TAdvGlowButton
@@ -933,7 +933,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
     Height = 493
     Align = alRight
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 3
     object bincluir: TAdvGlowButton
@@ -2279,7 +2279,6 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone

@@ -6,7 +6,7 @@ object frmAliquota: TfrmAliquota
   Caption = 'Al'#237'quotas'
   ClientHeight = 281
   ClientWidth = 773
-  Color = 14657888
+  Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -38,7 +38,6 @@ object frmAliquota: TfrmAliquota
         Expanded = False
         FieldName = 'CODIGO'
         Title.Caption = 'C'#243'digo'
-        Width = 64
         Visible = True
       end
       item

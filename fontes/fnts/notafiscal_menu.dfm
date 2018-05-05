@@ -3,7 +3,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   Top = 196
   BorderIcons = []
   BorderStyle = bsNone
-  Caption = 'Emissor de: NF-e'
+  Caption = 'hh'
   ClientHeight = 658
   ClientWidth = 940
   Color = 11429670
@@ -509,7 +509,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         Height = 22
         Align = alTop
         Caption = 'Informa'#231#245'es Nota Fiscal Eletr'#244'nica'
-        Color = 11429670
+        Color = clSilver
         Font.Charset = ANSI_CHARSET
         Font.Color = clWhite
         Font.Height = -12
@@ -2409,6 +2409,8 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitLeft = -64
+    ExplicitTop = 13
     TMSStyle = 0
     OldHeight = 36.000000000000000000
     object AdvMetroButton1: TAdvMetroButton
@@ -9690,13 +9692,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     object qrnotaPICMSINTER: TFloatField
       FieldName = 'PICMSINTER'
     end
-    object qrnotaPICMSITERPART: TFloatField
-      FieldName = 'PICMSITERPART'
-    end
-    object qrnotaPICMSINTERPART: TWideStringField
-      FieldName = 'PICMSINTERPART'
-      Size = 100
-    end
     object qrnotaVFCPUFDESTTOTAL: TFloatField
       FieldName = 'VFCPUFDESTTOTAL'
     end
@@ -9711,6 +9706,12 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     end
     object qrnotaDIFAL: TFloatField
       FieldName = 'DIFAL'
+    end
+    object qrnotaPICMSITERPART: TFloatField
+      FieldName = 'PICMSITERPART'
+    end
+    object qrnotaPICMSINTERPART: TFloatField
+      FieldName = 'PICMSINTERPART'
     end
   end
   object qrproduto2: TZQuery
@@ -11292,7 +11293,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   end
   object zqryComplementar: TZQuery
     Connection = frmmodulo.econexao2
-    Active = True
     SQL.Strings = (
       'select * from NFE_COMPLEMENTAR')
     Params = <>

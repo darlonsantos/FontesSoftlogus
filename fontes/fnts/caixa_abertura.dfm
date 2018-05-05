@@ -131,7 +131,7 @@ object frmcaixa_abertura: Tfrmcaixa_abertura
     Width = 129
     Height = 553
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 0
     object bgravar: TAdvGlowButton
@@ -399,7 +399,6 @@ object frmcaixa_abertura: Tfrmcaixa_abertura
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 12223546
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -418,7 +417,6 @@ object frmcaixa_abertura: Tfrmcaixa_abertura
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 626
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel

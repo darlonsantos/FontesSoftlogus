@@ -983,6 +983,9 @@ type
     AdvSmoothButton10: TAdvSmoothButton;
     AdvSmoothButton11: TAdvSmoothButton;
     AdvSmoothButton12: TAdvSmoothButton;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label105: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure enomeEnter(Sender: TObject);
