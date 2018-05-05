@@ -1434,7 +1434,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 62
     Align = alBottom
     BevelOuter = bvNone
-    Color = 5461077
+    Color = clSilver
     ParentBackground = False
     TabOrder = 1
     object Button1: TButton
@@ -1493,7 +1493,7 @@ object frmPrincipal: TfrmPrincipal
       Align = alClient
       BevelOuter = bvNone
       Caption = 'Aguarde! Carga em andamento...'
-      Color = clGray
+      Color = clSilver
       Font.Charset = ANSI_CHARSET
       Font.Color = clYellow
       Font.Height = -15
@@ -1503,6 +1503,8 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
       TabOrder = 0
       Visible = False
+      ExplicitLeft = 348
+      ExplicitTop = 7
     end
   end
   object pnTitulo: TPanel
@@ -1540,7 +1542,6 @@ object frmPrincipal: TfrmPrincipal
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 3355443
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -1588,7 +1589,7 @@ object frmPrincipal: TfrmPrincipal
     Height = 442
     Align = alRight
     BevelOuter = bvNone
-    Color = clGray
+    Color = clSilver
     ParentBackground = False
     TabOrder = 4
     object AdvGlowButton1: TAdvGlowButton
@@ -2301,7 +2302,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 560
     Top = 216
     Bitmap = {
-      494C010102003400580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020034005C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000066CCCC0000000000000000000000000000000000000000000000
@@ -2444,7 +2445,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 744
     Top = 146
     Bitmap = {
-      494C01010A000D00380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010A000D003C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
