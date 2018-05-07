@@ -2357,7 +2357,7 @@ object frmPrincipal: TfrmPrincipal
     Caption.ColorStart = clBlack
     Caption.ColorEnd = clBlack
     Caption.Line = False
-    Fill.Color = 14120964
+    Fill.Color = clBlack
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -2377,7 +2377,6 @@ object frmPrincipal: TfrmPrincipal
     ExpanderColor = clBlack
     ExpanderDownColor = clNone
     ExpanderHoverColor = clNone
-    ExplicitTop = 810
     TMSStyle = 0
     OldHeight = 19.000000000000000000
     object Label1: TLabel
@@ -2385,7 +2384,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 3
       Top = 3
       Width = 1379
-      Height = 19
+      Height = 18
       Align = alTop
       Alignment = taCenter
       Caption = 'W W W . SOFTLOGUS . C O M . B R '
@@ -2398,11 +2397,11 @@ object frmPrincipal: TfrmPrincipal
       ParentColor = False
       ParentFont = False
       Transparent = True
-      ExplicitTop = 0
+      ExplicitWidth = 261
     end
     object cySpeedButton1: TcySpeedButton
       Left = 1331
-      Top = 25
+      Top = 24
       Width = 54
       Height = 3
       Hint = 'Renovar Licen'#231'a do RP System 1.0 - PDV'
@@ -2882,7 +2881,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 752
     Top = 472
     Bitmap = {
-      494C010108000D00640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010108000D00680010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3355,7 +3354,7 @@ object frmPrincipal: TfrmPrincipal
     Dias_Demostracao = 30
     Local_Registro = '\Software\notepadx'
     Chave_Criptografia = 'LockApplication'
-    Titulo_das_janelas = 'RP System 1.0'
+    Titulo_das_janelas = 'Softlogus Informaticas'
     Telefones_de_Contato = '(19)9999-9999'
     Versao_Trial = 1
     SMTP_SSL = False
