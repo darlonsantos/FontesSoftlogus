@@ -24,7 +24,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Width = 121
     Height = 445
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 0
     object bt_ok: TButton
@@ -1419,7 +1419,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -1539,7 +1538,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Width = 912
     Height = 45
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 4
     object bt_fechamento01: TAdvGlowButton
@@ -2373,7 +2372,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Width = 745
     Height = 38
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 5
   end
