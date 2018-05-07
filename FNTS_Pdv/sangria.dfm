@@ -5,7 +5,7 @@ object frmSangria: TfrmSangria
   Caption = 'Retirada'
   ClientHeight = 193
   ClientWidth = 346
-  Color = 7456876
+  Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -37,7 +37,7 @@ object frmSangria: TfrmSangria
     Width = 129
     Height = 367
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 1
     object bt_ok1: TButton
@@ -363,7 +363,6 @@ object frmSangria: TfrmSangria
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -375,7 +374,7 @@ object frmSangria: TfrmSangria
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.1.1.0'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 3
     ShowExpander = False
@@ -473,13 +472,13 @@ object frmSangria: TfrmSangria
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.2.0'
+      Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
   end
   object pop_fechamento: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
-    Version = '2.6.1.1'
+    Version = '2.6.1.0'
     Left = 480
     Top = 384
     object Cancelar1: TMenuItem
