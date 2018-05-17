@@ -6568,7 +6568,7 @@ procedure TfrmVenda.timer_balancaTimer(Sender: TObject);
 begin
   frmModulo.balanca.LePeso(ibal_time);
   Imprime_display('Peso: ' + formatfloat('###,###,##0.000', rbal_peso), clyellow, tipeso);
-  application.ProcessMessages;
+   application.ProcessMessages;
 end;
 
 // -------------------------------------------------------------------------- //
