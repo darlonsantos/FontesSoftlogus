@@ -1,12 +1,15 @@
 object frmModulo: TfrmModulo
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Height = 579
-  Width = 959
+  Height = 709
+  Width = 1346
   object Balanca: TACBrBAL
+    Modelo = balToledo
     Porta = 'COM1'
-    Left = 643
-    Top = 430
+    Device.Baud = 2400
+    OnLePeso = BalancaLePeso
+    Left = 427
+    Top = 370
   end
   object estilo_menu: TAdvMenuOfficeStyler
     AntiAlias = aaNone

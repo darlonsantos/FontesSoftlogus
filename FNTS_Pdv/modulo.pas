@@ -1035,7 +1035,7 @@ type
     cdsComandas: TClientDataSet;
     cdsComandasID_COMANDA: TStringField;
     cdsComandasEVENTO: TStringField;
-    procedure BalancaLePeso(Peso: Double; Resposta: string);
+    procedure BalancaLePeso(Peso: Double; Resposta: AnsiString);
     procedure DataModuleCreate(Sender: TObject);
     procedure ACBRNFCeStatusChange(Sender: TObject);
   private
@@ -1108,6 +1108,7 @@ var
   edPreview, ckSalvar, ckVisualizar:Boolean;
   edMargem, rgFormaEmissao, EdFormatoOff:Integer;
   edMargEsq,edMargDir,edMargSup,edMarginf:Double;
+  pesoBalanca:Double;
 
   implementation
 
@@ -1117,117 +1118,6 @@ uses funcoes, principal,ufrmStatus;
 
 procedure TfrmModulo.ACBRNFCeStatusChange(Sender: TObject);
 begin
-//    case ACBRNFCe.Status of
-//    stIdle:
-//      begin
-//        if (frmStatus <> nil) then
-//          frmStatus.Hide;
-//      end;
-//    stNFeStatusServico:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Verificando Status do servico...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNFeRecepcao:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Enviando dados da NFCe...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNfeRetRecepcao:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Recebendo dados da NFCe...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNfeConsulta:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Consultando NFCe...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNfeCancelamento:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Enviando cancelamento de NFCe...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNfeInutilizacao:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Enviando pedido de Inutilização...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNFeRecibo:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Consultando Recibo de Lote...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNFeCadastro:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Consultando Cadastro...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNFeEnvDPEC:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Enviando DPEC...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNFeConsultaDPEC:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Consultando DPEC...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNFeEmail:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Enviando Email...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNFeCCe:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Enviando Carta de Correção...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//    stNFeEvento:
-//      begin
-//        if (frmStatus = nil) then
-//          frmStatus := TfrmStatus.Create(Application);
-//        frmStatus.lblStatus.Caption := 'Enviando Evento...';
-//        frmStatus.Show;
-//        frmStatus.BringToFront;
-//      end;
-//  end;
   Application.ProcessMessages;
 end;
 
@@ -1257,18 +1147,18 @@ begin
 
 end;
 
-procedure TfrmModulo.BalancaLePeso(Peso: Double; Resposta: string);
+procedure TfrmModulo.BalancaLePeso(Peso: Double; Resposta: AnsiString);
 begin
    // Buscar o Peso nas balancas PDV's
   if Peso > 0 then
   begin
-     // Leitura OK
+   // Leitura OK
     sBal_Resposta := 'Peso Estável';
     rBal_peso := Peso;
   end
   else
   begin
-     // Leitura retornou ERRo
+     // Leitura retornou ERRO
     case Trunc(balanca.UltimoPesoLido) of
       0: sBal_Resposta := 'Coloque o produto sobre a Balança!';
       -1: sBal_Resposta := 'Peso Instavel!';

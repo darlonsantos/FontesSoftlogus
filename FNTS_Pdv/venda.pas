@@ -2415,6 +2415,11 @@ begin
     end;
     // fim da introdução
 
+     if (key = #13) and (rBal_peso > 0) then
+      begin
+         AcionaBalana1Click(Sender);
+      end;
+
   if key = #13 then
   begin
     sx_barra := Trim(ed_barra.text);
@@ -2424,6 +2429,8 @@ begin
       ed_barra.setfocus;
       exit;
     end;
+   //  BalancaLePeso
+
 
     if timer_balanca.Enabled then
     begin

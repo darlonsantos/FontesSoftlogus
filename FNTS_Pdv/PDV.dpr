@@ -2,6 +2,10 @@ program PDV;
 
 
 
+
+
+{$R *.dres}
+
 uses
   Winapi.Windows,
   Vcl.Forms,
@@ -96,7 +100,7 @@ uses
 var
   Hand : THandle;
 
-{$R *.res}
+   {$R *.res}
 
 begin
   Hand := FindWindow('TApplication', 'Softlogus');
@@ -109,10 +113,10 @@ begin
   Application.CreateForm(TfrmStatus, frmStatus);
   Application.CreateForm(Tfrmnatureza, frmnatureza);
   Application.CreateForm(TForm_ativar, Form_ativar);
+  ShowWindow(Application.Handle, SW_HIDE);
   Application.Run;
   end
-
-  else
+ else
   begin
     application.MessageBox('Já existe uma sessão aberta deste aplicativo!','Atenção',mb_ok+MB_ICONERROR );
     ShowWindow(Hand,SW_NORMAL);
