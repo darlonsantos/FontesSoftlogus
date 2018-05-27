@@ -6157,7 +6157,7 @@ begin
               tPag := fpDinheiro;
             if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Convenio)) then
               tPag := fpCreditoLoja;
-            vPag := ed_forma1.value - PTroco;
+            vPag :=   ed_totalizador.Value - PTroco; //ed_forma1.value - PTroco //darlon santos;
           end;
         end;
 
@@ -6177,7 +6177,7 @@ begin
               tPag := fpDinheiro;
             if (AnsiUpperCase(cb_forma2.text) = AnsiUpperCase(lForma_pgto_Convenio)) then
               tPag := fpCreditoLoja;
-            vPag := ed_forma2.value - PTroco;
+            vPag := ed_totalizador.Value - PTroco;// darlon santos
           end;
         end;
 
@@ -6199,7 +6199,7 @@ begin
               tPag := fpDinheiro;
             if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Convenio)) then
               tPag := fpCreditoLoja;
-            vPag := ed_forma3.value - PTroco;
+            vPag := ed_totalizador.Value - PTroco; // darlon santos
           end;
         end;
         InfAdic.infCpl := '';
