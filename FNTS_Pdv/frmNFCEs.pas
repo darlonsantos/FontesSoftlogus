@@ -183,7 +183,7 @@ begin
       begin
         ACBRNFCe.NotasFiscais.Clear;
         ACBRNFCe.NotasFiscais.LoadFromFile(qrNFCE.FieldByName('xml').AsString);
-        ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\Schemas\DANFeNFCe.fr3';
+        ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\DANFeNFCe.fr3';
         if FileExists(frmPrincipal.LerIni(sConfiguracoes, 'PDV',
           'CAMINHO_LOGO', '')) then
           ACBRDANFENFCe.Logo := frmPrincipal.LerIni(sConfiguracoes, 'PDV',
