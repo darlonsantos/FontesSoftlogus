@@ -130,15 +130,18 @@ type
     qrRelatorioResumoacrescimoISSQN: TFloatField;
     relFechamento: TfrxDBDataset;
     qrRelFechamento: TUniQuery;
-    qrRelFechamentoCodOperador: TStringField;
-    qrRelFechamentooperador: TStringField;
-    qrRelFechamentoForma: TStringField;
-    qrRelFechamentoValor: TFloatField;
-    qrRelFechamentoSubtotal: TStringField;
     qrRelatorioResumoVENDA_BRUTA: TFloatField;
     qrRelatorioResumoCANCELAMENTO_ICMS: TFloatField;
     qrRelatorioResumoDESCONTO_ICMS: TFloatField;
     qrRelatorioResumoACRESCIMO_ICMS: TFloatField;
+    qrRelFechamentoCODOPERADOR: TIntegerField;
+    qrRelFechamentoOPERADOR: TStringField;
+    qrRelFechamentoFORMA: TStringField;
+    qrRelFechamentoTOTAL: TFloatField;
+    Relatorio: TMenuItem;
+    qrRelFechamentoSUBTOTAL: TFloatField;
+    qrNumeroCaixa: TUniQuery;
+    qrRelatorioResumoCAIXA: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure bt_cancelarClick(Sender: TObject);
     procedure grid_resumoCellFormating(Sender: TObject; ACol,
@@ -159,6 +162,7 @@ type
     procedure bt_fechamento06Click(Sender: TObject);
     procedure bt_fechamento07Click(Sender: TObject);
     procedure bt_fechamento08Click(Sender: TObject);
+    procedure RelatorioClick(Sender: TObject);
   private
     { Private declarations }
     TipoImp: TImpressora;
@@ -1329,6 +1333,14 @@ begin
       vAcrescimoIcms :=  query.fieldbyname('acrescimo_icms').asfloat;
       vAcrescimoIssqn :=  0;
 
+               //RECUPERO O NUMERO DO CAIXA
+        qrNumeroCaixa.Close;
+        qrNumeroCaixa.SQL.Clear;
+        qrNumeroCaixa.SQL.Add('SELECT max(ecf_caixa) as caixa FROM cupom');
+         qrNumeroCaixa.Open;
+
+
+
 
       qrRelatorioResumo.Close;
       qrRelatorioResumo.parambyname('data').AsString := fechamento;
@@ -1340,7 +1352,8 @@ begin
       qrRelatorioResumo.FieldByName('totalISSQN').Value :=   vTotalIssqn;
       qrRelatorioResumo.FieldByName('cancelamentoISSQN').Value :=  vCancelamentoIssqn;
       qrRelatorioResumo.FieldByName('descontoISSQN').Value :=  vDescontoIssqn;
-
+       qrRelatorioResumo.FieldByName('CAIXA').Value :=  qrNumeroCaixa.FieldByName('caixa').AsString;
+            //CAIXA
 
 
   // limpar o grid
@@ -1562,6 +1575,12 @@ begin
   begin
     FontStyle := [fsBold];
   end;
+end;
+
+procedure TfrmCaixa_Fechamento.RelatorioClick(Sender: TObject);
+begin
+ frxReport1.LoadFromFile('\Softlogus\PDV\rel\fechamento.fr3');
+  frxReport1.ShowReport;
 end;
 
 // -------------------------------------------------------------------------- //
@@ -3230,17 +3249,18 @@ begin
    GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
    GridFechamento.Cell[3,GridFechamento.LastAddedRow].FontStyle := [fsBold];
 
-     qrRelFechamentoCodOperador.Value :=  codOperador;
-     qrRelFechamentoOperador.Value :=    qrFechamento.fieldbyname('operador').AsString;
-     qrRelFechamentoForma.Value :=   qrFechamento.fieldbyname('forma').AsString;
-     qrRelFechamentoValor.Value := dValor;
-     qrRelFechamentosubtotal.Value :=  FormatarValor(dValor + dSuprimento - dSangria-dTroco,2,false);
+     qrRelFechamento.Close;
+     qrRelFechamento.Params.ParamByName('data').asstring := fechamento;
+     qrRelFechamento.Open;
+      qrRelFechamento.Edit;
+     qrRelFechamento.FieldByName('SUBTOTAL').Value :=   FormatarValor(dTotal - dSangria - dSangria - dTroco,2,false);
 
 
-
+          //SUBTOTAL
 
 
 end;
+
 
 end.
 
