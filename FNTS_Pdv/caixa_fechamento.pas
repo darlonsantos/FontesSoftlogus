@@ -7,7 +7,7 @@ uses
   Dialogs, ExtCtrls, StdCtrls, Mask, RzEdit, NxColumnClasses, NxColumns,
   NxScrollControl, NxCustomGridControl, NxCustomGrid, NxGrid, ComCtrls, DB,
   DBAccess, Menus, AdvMenus, pngimage, XPMan, AdvGlowButton, AdvMetroButton, AdvSmoothPanel, AdvSmoothExpanderPanel, Uni,
-  MemDS, JvExMask, JvToolEdit, principal;
+  MemDS, JvExMask, JvToolEdit, principal, frxClass, frxDBSet, frxDesgn;
 
 type
   TfrmCaixa_Fechamento = class(TForm)
@@ -119,6 +119,26 @@ type
     qrPre_Venda: TUniQuery;
     qrArquivo: TUniQuery;
     qrFechamento: TUniQuery;
+    frxReport1: TfrxReport;
+    frxDesigner1: TfrxDesigner;
+    fscaixa: TfrxDBDataset;
+    qrRelatorioResumo: TUniQuery;
+    qrRelatorioResumototalISSQN: TFloatField;
+    qrRelatorioResumocancelamentoISSQN: TFloatField;
+    qrRelatorioResumodescontoISSQN: TFloatField;
+    qrRelatorioResumovendaLiquida: TFloatField;
+    qrRelatorioResumoacrescimoISSQN: TFloatField;
+    relFechamento: TfrxDBDataset;
+    qrRelFechamento: TUniQuery;
+    qrRelFechamentoCodOperador: TStringField;
+    qrRelFechamentooperador: TStringField;
+    qrRelFechamentoForma: TStringField;
+    qrRelFechamentoValor: TFloatField;
+    qrRelFechamentoSubtotal: TStringField;
+    qrRelatorioResumoVENDA_BRUTA: TFloatField;
+    qrRelatorioResumoCANCELAMENTO_ICMS: TFloatField;
+    qrRelatorioResumoDESCONTO_ICMS: TFloatField;
+    qrRelatorioResumoACRESCIMO_ICMS: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure bt_cancelarClick(Sender: TObject);
     procedure grid_resumoCellFormating(Sender: TObject; ACol,
@@ -159,7 +179,8 @@ type
 
 var
   frmCaixa_Fechamento: TfrmCaixa_Fechamento;
-  fechamento: string;
+   fechamento: string;
+
 
 implementation
 
@@ -1275,6 +1296,7 @@ begin
 end;
 
 // -------------------------------------------------------------------------- //
+//DARLON SANTOS
 procedure tfrmCaixa_Fechamento.Z_REsumo();
 begin
   query.close;
@@ -1293,6 +1315,32 @@ begin
   query.parambyname('data').AsString := fechamento;
   query.parambyname('codvendedor').Value := icodigo_Usuario;
   query.open;
+
+   // Alimenta as variveis para impressçao do relatorio do fechamento de caixa
+
+
+      vVendaBruta :=  query.fieldbyname('venda_bruta').asfloat;
+      vCancelamentoIcms := query.fieldbyname('cancelamento_icms').asfloat;
+      vDescontoIcms :=   query.fieldbyname('desconto_icms').asfloat;
+      vTotalIssqn :=  0;
+      vCancelamentoIssqn :=  0;
+      vDescontoIssqn :=  0;
+      vVendaLiquida :=  query.fieldbyname('venda_bruta').asfloat - query.fieldbyname('cancelamento_icms').asfloat - query.fieldbyname('desconto_icms').asfloat;
+      vAcrescimoIcms :=  query.fieldbyname('acrescimo_icms').asfloat;
+      vAcrescimoIssqn :=  0;
+
+
+      qrRelatorioResumo.Close;
+      qrRelatorioResumo.parambyname('data').AsString := fechamento;
+      qrRelatorioResumo.parambyname('codvendedor').Value := icodigo_Usuario;
+      qrRelatorioResumo.open;
+      qrRelatorioResumo.Edit;
+      qrRelatorioResumo.FieldByName('vendaLiquida').Value :=  qrRelatorioResumo.fieldbyname('venda_bruta').asfloat - qrRelatorioResumo.fieldbyname('cancelamento_icms').asfloat - qrRelatorioResumo.fieldbyname('desconto_icms').asfloat;;
+      qrRelatorioResumo.FieldByName('acrescimoISSQN').Value := vAcrescimoIssqn;
+      qrRelatorioResumo.FieldByName('totalISSQN').Value :=   vTotalIssqn;
+      qrRelatorioResumo.FieldByName('cancelamentoISSQN').Value :=  vCancelamentoIssqn;
+      qrRelatorioResumo.FieldByName('descontoISSQN').Value :=  vDescontoIssqn;
+
 
 
   // limpar o grid
@@ -1982,8 +2030,33 @@ begin
       if frmPrincipal.TipoImpressora = Fiscal then
         frmMsg_Operador.lb_msg.caption := 'Aguarde! Salvando informações da Redução Z...'
       else
+        //ENTRA O RELATORIO DE FECHAMENTO
         frmMsg_Operador.lb_msg.caption := 'Aguarde! Imprimindo informações do fechamento...';
-         Imp_Fecha_Gerencial(sPortaNaoFiscal);
+
+       sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, texto_justifica('FECHAMENTO DE CAIXA', 48, ' ', taCentralizado));
+            SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
+              texto_justifica('No: ' + sNumero_Cupom +
+              ' Data:' + DateToStr(dData_Sistema) +
+              ' Hora:' + TimeToStr(time), 48,
+              ' ', taCentralizado));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                   Venda Bruta Diária:' + texto_justifica(formatfloat('###,###,##0.00', vVendaBruta), 11, ' ', taDireita));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                    Cancelamento ICMS:' + texto_justifica(formatfloat('###,###,##0.00', vCancelamentoIcms), 11, ' ', taDireita));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                        Desconto ICMS:' + texto_justifica(formatfloat('###,###,##0.00', vDescontoIcms), 11, ' ', taDireita));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                       Total de ISSQN:' + texto_justifica(formatfloat('###,###,##0.00',  vTotalIssqn), 11, ' ', taDireita));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                Cancelamento de ISSQN:' + texto_justifica(formatfloat('###,###,##0.00', vCancelamentoIssqn), 11, ' ', taDireita));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                    Desconto de ISSQN:' + texto_justifica(formatfloat('###,###,##0.00', vDescontoIssqn), 11, ' ', taDireita));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                        Venda Liquida:' + texto_justifica(formatfloat('###,###,##0.00', vVendaLiquida), 11, ' ', taDireita));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                       Acréscimo ICMS:' + texto_justifica(formatfloat('###,###,##0.00', vAcrescimoIcms), 11, ' ', taDireita));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                      Acréscimo ISSQN:' + texto_justifica(formatfloat('###,###,##0.00', vAcrescimoIssqn), 11, ' ', taDireita));
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                                                ');
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '                                                ');
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '------------------------------------------------');
+        SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '---------------------Assinatura-----------------');
+         //Imp_Fecha_Gerencial(sPortaNaoFiscal);
+           frxReport1.LoadFromFile('\Softlogus\PDV\rel\fechamento.fr3');
+           frxReport1.ShowReport;
+
+
 
       frmMsg_Operador.show;
       frmMsg_Operador.Refresh;
@@ -2950,7 +3023,7 @@ begin
   begin
    codOperador := qrFechamento.fieldbyname('codoperador').AsString;
 
-   GridFechamento.AddRow(1);
+    GridFechamento.AddRow(1);
     GridFechamento.Cell[0,GridFechamento.LastAddedRow].AsInteger := qrFechamento.fieldbyname('codoperador').Value;
     GridFechamento.Cell[1,GridFechamento.LastAddedRow].AsString := qrFechamento.fieldbyname('operador').AsString;
 
@@ -3001,6 +3074,8 @@ begin
    GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
    GridFechamento.Cell[3,GridFechamento.LastAddedRow].FontStyle := [fsBold];
   end;
+
+
 
   qrFechamento.close;
   qrFechamento.sql.clear;
@@ -3154,6 +3229,16 @@ begin
    GridFechamento.Cell[3,GridFechamento.LastAddedRow].AsString := FormatarValor(dTotal - dSangria - dSangria - dTroco,2,false);
    GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
    GridFechamento.Cell[3,GridFechamento.LastAddedRow].FontStyle := [fsBold];
+
+     qrRelFechamentoCodOperador.Value :=  codOperador;
+     qrRelFechamentoOperador.Value :=    qrFechamento.fieldbyname('operador').AsString;
+     qrRelFechamentoForma.Value :=   qrFechamento.fieldbyname('forma').AsString;
+     qrRelFechamentoValor.Value := dValor;
+     qrRelFechamentosubtotal.Value :=  FormatarValor(dValor + dSuprimento - dSangria-dTroco,2,false);
+
+
+
+
 
 end;
 

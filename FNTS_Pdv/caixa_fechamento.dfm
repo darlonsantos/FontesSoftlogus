@@ -282,7 +282,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Top = 122
     Width = 671
     Height = 403
-    ActivePage = TabFechamento
+    ActivePage = TabSheet1
     TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = 'Resumo'
@@ -1321,6 +1321,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         ParentFont = False
         TabOrder = 0
         TabStop = True
+        ExplicitLeft = -2
+        ExplicitTop = -2
         object NxNumberColumn11: TNxTextColumn
           Alignment = taRightJustify
           DefaultValue = '0'
@@ -2423,8 +2425,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   end
   object query: TUniQuery
     Connection = frmModulo.conexao
-    Left = 37
-    Top = 330
+    Left = 549
+    Top = 382
   end
   object qrPre_Venda: TUniQuery
     Connection = frmModulo.Conexao_Servidor
@@ -2448,7 +2450,837 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   end
   object qrFechamento: TUniQuery
     Connection = frmModulo.conexao
-    Left = 445
-    Top = 330
+    Left = 397
+    Top = 306
+  end
+  object frxReport1: TfrxReport
+    Version = '5.2.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Padr'#227'o'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43251.710200011600000000
+    ReportOptions.LastChange = 43251.905696180600000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 600
+    Top = 25
+    Datasets = <
+      item
+        DataSet = fscaixa
+        DataSetName = 'fscaixa'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 72.000000000000000000
+      PaperHeight = 150.000000000000000000
+      PaperSize = 256
+      object fechamento: TfrxReportTitle
+        FillType = ftBrush
+        Height = 279.685220000000000000
+        Top = 18.897650000000000000
+        Width = 272.126160000000000000
+        object Memo2: TfrxMemoView
+          Left = 33.015770000000000000
+          Top = 0.779530000000000000
+          Width = 204.094620000000000000
+          Height = 22.677180000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -16
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'FECHAMENTO DE CAIXA')
+          ParentFont = False
+        end
+        object fscaixaVENDA_BRUTA: TfrxMemoView
+          Left = 207.874150000000000000
+          Top = 94.031540000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DataField = 'VENDA_BRUTA'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          DisplayFormat.FormatStr = 'R$ #,##0.00'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."VENDA_BRUTA"]')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          Left = 0.370130000000000000
+          Top = 94.031540000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Venda Bruta Di'#225'ria:')
+          ParentFont = False
+        end
+        object fscaixaCANCELAMENTO_ICMS: TfrxMemoView
+          Left = 207.874150000000000000
+          Top = 112.708720000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DataField = 'CANCELAMENTO_ICMS'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          DisplayFormat.FormatStr = 'R$ #,##0.00'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."CANCELAMENTO_ICMS"]')
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          Top = 112.708720000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Cancelamento ICMS:')
+          ParentFont = False
+        end
+        object fscaixaDESCONTO_ICMS: TfrxMemoView
+          Left = 207.874150000000000000
+          Top = 131.385900000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DataField = 'DESCONTO_ICMS'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          DisplayFormat.FormatStr = 'R$ #,##0.00'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."DESCONTO_ICMS"]')
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          Left = 0.440940000000000000
+          Top = 131.385900000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Desconto ICMS:')
+          ParentFont = False
+        end
+        object Memo16: TfrxMemoView
+          Left = 0.440940000000000000
+          Top = 150.504020000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Total de ISSQN:')
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          Top = 169.401670000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Cancelamento ISSQN:')
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          Top = 188.519790000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Desconto ISSQN:')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          Top = 208.196970000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Venda Liquida:')
+          ParentFont = False
+        end
+        object Memo20: TfrxMemoView
+          Top = 227.094620000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Acr'#233'scimo ICMS:')
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          Top = 244.992270000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Acr'#233'scimo ISSQN:')
+          ParentFont = False
+        end
+        object fscaixatotalISSQN: TfrxMemoView
+          Left = 207.653680000000000000
+          Top = 150.063080000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DataField = 'totalISSQN'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          DisplayFormat.FormatStr = 'R$ #,##0.00'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."totalISSQN"]')
+          ParentFont = False
+        end
+        object fscaixacancelamentoISSQN: TfrxMemoView
+          Left = 207.874150000000000000
+          Top = 169.740260000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DataField = 'cancelamentoISSQN'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          DisplayFormat.FormatStr = 'R$ #,##0.00'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."cancelamentoISSQN"]')
+          ParentFont = False
+        end
+        object fscaixadescontoISSQN: TfrxMemoView
+          Left = 207.653680000000000000
+          Top = 188.637910000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DataField = 'descontoISSQN'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          DisplayFormat.FormatStr = 'R$ #,##0.00'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."descontoISSQN"]')
+          ParentFont = False
+        end
+        object fscaixavendaLiquida: TfrxMemoView
+          Left = 207.653680000000000000
+          Top = 207.535560000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DataField = 'vendaLiquida'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          DisplayFormat.FormatStr = 'R$ #,##0.00'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."vendaLiquida"]')
+          ParentFont = False
+        end
+        object fscaixaacrescimoISSQN: TfrxMemoView
+          Left = 207.653680000000000000
+          Top = 245.330860000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DataField = 'acrescimoISSQN'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          DisplayFormat.FormatStr = 'R$ #,##0.00'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."acrescimoISSQN"]')
+          ParentFont = False
+        end
+        object fscaixaACRESCIMO_ICMS: TfrxMemoView
+          Left = 207.874150000000000000
+          Top = 226.433210000000000000
+          Width = 64.252010000000000000
+          Height = 18.897650000000000000
+          DataField = 'ACRESCIMO_ICMS'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          DisplayFormat.FormatStr = 'R$ #,##0.00'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."ACRESCIMO_ICMS"]')
+          ParentFont = False
+        end
+        object Date: TfrxMemoView
+          Left = 132.504020000000000000
+          Top = 22.677180000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            '[Date]')
+          ParentFont = False
+        end
+        object Memo3: TfrxMemoView
+          Top = 22.677180000000000000
+          Width = 132.283550000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Data Movimento:')
+          ParentFont = False
+        end
+        object Time: TfrxMemoView
+          Left = 211.653680000000000000
+          Top = 22.677180000000000000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            '[Time]')
+          ParentFont = False
+        end
+        object Memo6: TfrxMemoView
+          Top = 41.574830000000000000
+          Width = 132.283550000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Operador:')
+          ParentFont = False
+        end
+        object Memo22: TfrxMemoView
+          Top = 60.472480000000000000
+          Width = 132.283550000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Memo.UTF8W = (
+            'Caixa:')
+          ParentFont = False
+        end
+        object Line3: TfrxLineView
+          Left = -3.779530000000000000
+          Top = 80.929190000000000000
+          Width = 740.787880000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo23: TfrxMemoView
+          Top = 79.370130000000000000
+          Width = 272.126160000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Resumo do Caixa')
+          ParentFont = False
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 18.897650000000000000
+        Top = 411.968770000000000000
+        Width = 272.126160000000000000
+        RowCount = 0
+        object Memo8: TfrxMemoView
+          Top = 18.897650000000000000
+          Width = 272.126160000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Sub - Total')
+          ParentFont = False
+        end
+        object Memo1: TfrxMemoView
+          Left = 718.110700000000000000
+          Top = 15.897650000000000000
+          Width = 113.385900000000000000
+          Height = 15.118120000000000000
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '000#'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'P'#225'gina: [Page]')
+          ParentFont = False
+        end
+        object Memo26: TfrxMemoView
+          Left = 347.716760000000000000
+          Top = 18.118120000000000000
+          Width = 275.905690000000000000
+          Height = 11.338590000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'HIST'#211'RICO')
+          ParentFont = False
+        end
+        object Memo10: TfrxMemoView
+          Left = 627.401980000000000000
+          Top = 18.118120000000000000
+          Width = 60.472480000000000000
+          Height = 11.338590000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'VALOR-R$')
+          ParentFont = False
+        end
+        object Memo11: TfrxMemoView
+          Left = 695.433520000000000000
+          Top = 18.118120000000000000
+          Width = 64.252010000000000000
+          Height = 11.338590000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'ENTRADA')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          Left = 763.465060000000000000
+          Top = 17.897650000000000000
+          Width = 71.811070000000000000
+          Height = 11.338590000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'SA'#205'DA')
+          ParentFont = False
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Height = 28.677180000000000000
+        Top = 321.260050000000000000
+        Width = 272.126160000000000000
+        object Memo4: TfrxMemoView
+          Left = 0.779530000000000000
+          Top = 4.000000000000010000
+          Width = 143.622140000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            'Forma')
+          ParentFont = False
+        end
+        object Line1: TfrxLineView
+          Top = 3.000000000000010000
+          Width = 740.787880000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Line2: TfrxLineView
+          Top = 23.677180000000000000
+          Width = 740.787880000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo5: TfrxMemoView
+          Left = 623.622450000000000000
+          Width = 113.385900000000000000
+          Height = 15.118120000000000000
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '000#'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'P'#225'gina: [Page]')
+          ParentFont = False
+        end
+        object Memo27: TfrxMemoView
+          Left = 532.913730000000000000
+          Top = 17.338590000000000000
+          Width = 60.472480000000000000
+          Height = 11.338590000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'VALOR-R$')
+          ParentFont = False
+        end
+        object Memo9: TfrxMemoView
+          Left = 600.945270000000000000
+          Top = 17.338590000000000000
+          Width = 64.252010000000000000
+          Height = 11.338590000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'ENTRADA')
+          ParentFont = False
+        end
+        object Memo33: TfrxMemoView
+          Left = 668.976810000000000000
+          Top = 17.118120000000000000
+          Width = 71.811070000000000000
+          Height = 11.338590000000000000
+          DisplayFormat.DecimalSeparator = ','
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'SA'#205'DA')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          Left = 147.401670000000000000
+          Top = 4.000000000000010000
+          Width = 124.724490000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'Valor')
+          ParentFont = False
+        end
+      end
+    end
+  end
+  object frxDesigner1: TfrxDesigner
+    DefaultScriptLanguage = 'PascalScript'
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -13
+    DefaultFont.Name = 'Arial'
+    DefaultFont.Style = []
+    DefaultLeftMargin = 10.000000000000000000
+    DefaultRightMargin = 10.000000000000000000
+    DefaultTopMargin = 10.000000000000000000
+    DefaultBottomMargin = 10.000000000000000000
+    DefaultPaperSize = 9
+    DefaultOrientation = poPortrait
+    GradientEnd = 11982554
+    GradientStart = clWindow
+    TemplatesExt = 'fr3'
+    Restrictions = []
+    RTLLanguage = False
+    MemoParentFont = False
+    Left = 520
+    Top = 24
+  end
+  object fscaixa: TfrxDBDataset
+    UserName = 'fscaixa'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'totalISSQN=totalISSQN'
+      'cancelamentoISSQN=cancelamentoISSQN'
+      'descontoISSQN=descontoISSQN'
+      'vendaLiquida=vendaLiquida'
+      'acrescimoISSQN=acrescimoISSQN'
+      'VENDA_BRUTA=VENDA_BRUTA'
+      'CANCELAMENTO_ICMS=CANCELAMENTO_ICMS'
+      'DESCONTO_ICMS=DESCONTO_ICMS'
+      'ACRESCIMO_ICMS=ACRESCIMO_ICMS')
+    DataSet = qrRelatorioResumo
+    BCDToCurrency = False
+    Left = 696
+    Top = 96
+  end
+  object qrRelatorioResumo: TUniQuery
+    Connection = frmModulo.conexao
+    SQL.Strings = (
+      'select sum(cupom_item.valor_total) as venda_bruta,'
+      
+        '      (select sum(cupom_item.valor_total) from cupom_item, cupom' +
+        ' where cupom_item.cod_cupom = cupom.codigo and cupom.data + cupo' +
+        'm.hora >= :data and cupom_item.cancelado = 1) as cancelamento_ic' +
+        'ms,'
+      
+        '      ((select sum(cupom_item.valor_desconto) from cupom_item, c' +
+        'upom where cupom_item.cod_cupom = cupom.codigo and cupom.data + ' +
+        'cupom.hora >= :data and cupom_item.cancelado = 0)'
+      
+        '      +(select sum(cupom.valor_desconto) from cupom where cupom.' +
+        'data + cupom.hora >= :data and cupom.cancelado = 0)) as desconto' +
+        '_icms,'
+      
+        '      ((select sum(cupom_item.valor_acrescimo) from cupom_item, ' +
+        'cupom where cupom_item.cod_cupom = cupom.codigo and cupom.data +' +
+        ' cupom.hora >= :data and cupom_item.cancelado = 0)'
+      
+        '       +(select sum(cupom.valor_acrescimo) from cupom where cupo' +
+        'm.data + cupom.hora >= :data and cupom.cancelado = 0)) as acresc' +
+        'imo_icms'
+      
+        '       from cupom_item, cupom where cupom_item.cod_cupom = cupom' +
+        '.codigo and cupom.data + cupom.hora >= :data and cupom.cod_vende' +
+        'dor = :codvendedor')
+    Active = True
+    Left = 537
+    Top = 218
+    ParamData = <
+      item
+        DataType = ftDate
+        Name = 'data'
+        Value = nil
+      end
+      item
+        DataType = ftInteger
+        Name = 'codvendedor'
+        Value = nil
+      end>
+    object qrRelatorioResumototalISSQN: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'totalISSQN'
+      DisplayFormat = 'R$ #,##0.00'
+      Calculated = True
+    end
+    object qrRelatorioResumocancelamentoISSQN: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'cancelamentoISSQN'
+      DisplayFormat = 'R$ #,##0.00'
+      Calculated = True
+    end
+    object qrRelatorioResumodescontoISSQN: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'descontoISSQN'
+      DisplayFormat = 'R$ #,##0.00'
+      Calculated = True
+    end
+    object qrRelatorioResumovendaLiquida: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'vendaLiquida'
+      DisplayFormat = 'R$ #,##0.00'
+      Calculated = True
+    end
+    object qrRelatorioResumoacrescimoISSQN: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'acrescimoISSQN'
+      DisplayFormat = 'R$ #,##0.00'
+      Calculated = True
+    end
+    object qrRelatorioResumoVENDA_BRUTA: TFloatField
+      FieldName = 'VENDA_BRUTA'
+      ReadOnly = True
+      DisplayFormat = 'R$ #,##0.00'
+    end
+    object qrRelatorioResumoCANCELAMENTO_ICMS: TFloatField
+      FieldName = 'CANCELAMENTO_ICMS'
+      ReadOnly = True
+      DisplayFormat = 'R$ #,##0.00'
+    end
+    object qrRelatorioResumoDESCONTO_ICMS: TFloatField
+      FieldName = 'DESCONTO_ICMS'
+      ReadOnly = True
+      DisplayFormat = 'R$ #,##0.00'
+    end
+    object qrRelatorioResumoACRESCIMO_ICMS: TFloatField
+      FieldName = 'ACRESCIMO_ICMS'
+      ReadOnly = True
+      DisplayFormat = 'R$ #,##0.00'
+    end
+  end
+  object relFechamento: TfrxDBDataset
+    UserName = 'frxDBDataset1'
+    CloseDataSource = False
+    DataSet = qrRelFechamento
+    BCDToCurrency = False
+    Left = 737
+    Top = 149
+  end
+  object qrRelFechamento: TUniQuery
+    Connection = frmModulo.conexao
+    Left = 472
+    Top = 121
+    object qrRelFechamentoCodOperador: TStringField
+      FieldName = 'CodOperador'
+      Size = 100
+    end
+    object qrRelFechamentooperador: TStringField
+      FieldName = 'operador'
+      Size = 100
+    end
+    object qrRelFechamentoForma: TStringField
+      FieldName = 'Forma'
+      Size = 100
+    end
+    object qrRelFechamentoValor: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'Valor'
+      Calculated = True
+    end
+    object qrRelFechamentoSubtotal: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'Subtotal'
+      Size = 100
+      Calculated = True
+    end
   end
 end
