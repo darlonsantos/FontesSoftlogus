@@ -475,6 +475,16 @@ const
 
     // variaveis nfce
   vAux, vNumLote, vSincrono, vcontingencia, vgerado_nfce: String;
+    vVendaBruta,
+    vCancelamentoIcms,
+    vDescontoIcms,
+    vTotalIssqn,
+    vCancelamentoIssqn,
+    vDescontoIssqn,
+    vVendaLiquida,
+    vAcrescimoIcms,
+    vAcrescimoIssqn: Real;
+
   vNumNFCe:Integer;
   Sincrono: boolean;
   bc: TBitmap;

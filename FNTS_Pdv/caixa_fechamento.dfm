@@ -3,8 +3,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   Top = 56
   BorderStyle = bsNone
   Caption = 'Caixa - Fechamento'
-  ClientHeight = 536
-  ClientWidth = 791
+  ClientHeight = 613
+  ClientWidth = 676
   Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -19,10 +19,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
-    Left = 672
-    Top = 145
-    Width = 121
-    Height = 445
+    Left = 1
+    Top = 527
+    Width = 674
+    Height = 82
     BevelOuter = bvNone
     Color = clSilver
     ParentBackground = False
@@ -43,8 +43,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       OnClick = bt_okClick
     end
     object AdvGlowButton1: TAdvGlowButton
-      Left = 12
-      Top = 76
+      Left = 30
+      Top = 4
       Width = 93
       Height = 88
       Caption = 'Fechar Caixa'
@@ -187,6 +187,46 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Appearance.GradientMirrorDown = ggVertical
       Appearance.GradientChecked = ggVertical
       Layout = blGlyphTop
+    end
+    object GroupBox1: TGroupBox
+      Left = 448
+      Top = 12
+      Width = 201
+      Height = 61
+      Caption = 'Ajuda'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      object Label4: TLabel
+        Left = 12
+        Top = 16
+        Width = 152
+        Height = 13
+        Caption = 'Fechamento de Caixa  Ctrl + O '
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 12
+        Top = 35
+        Width = 141
+        Height = 14
+        Caption = 'Visualizar relat'#243'rio Ctrl + V'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWhite
+        Font.Height = -12
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
     end
   end
   object Panel2: TPanel
@@ -1407,7 +1447,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 791
+    Width = 676
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -1439,6 +1479,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 791
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
@@ -2368,16 +2409,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Appearance.GradientChecked = ggVertical
     end
   end
-  object Panel5: TPanel
-    Left = -24
-    Top = 525
-    Width = 745
-    Height = 38
-    BevelOuter = bvNone
-    Color = clSilver
-    ParentBackground = False
-    TabOrder = 5
-  end
   object pop_fechamento: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
     Version = '2.6.1.0'
@@ -2393,10 +2424,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       ShortCut = 16470
       OnClick = RelatorioClick
     end
-  end
-  object XPManifest1: TXPManifest
-    Left = 772
-    Top = 449
+    object F1: TMenuItem
+      Caption = 'Fecha Movimento'
+      ShortCut = 16463
+      OnClick = bt_okClick
+    end
   end
   object qrAbastecimento: TUniQuery
     Connection = frmModulo.conexao
@@ -2467,15 +2499,15 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 43251.710200011600000000
-    ReportOptions.LastChange = 43252.007350462960000000
+    ReportOptions.LastChange = 43253.070507719900000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       ''
       'begin'
       ''
       'end.')
-    Left = 600
-    Top = 25
+    Left = 360
+    Top = 9
     Datasets = <
       item
         DataSet = relFechamento
@@ -2493,8 +2525,12 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     end
     object Page1: TfrxReportPage
       PaperWidth = 72.000000000000000000
-      PaperHeight = 150.000000000000000000
+      PaperHeight = 250.000000000000000000
       PaperSize = 256
+      TopMargin = 0.500000000000000000
+      EndlessHeight = True
+      LargeDesignHeight = True
+      PrintIfEmpty = False
       object fechamento: TfrxReportTitle
         FillType = ftBrush
         Height = 264.567100000000000000
@@ -2508,7 +2544,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           HAlign = haCenter
@@ -2528,7 +2564,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           HAlign = haRight
@@ -2543,40 +2579,20 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
             'Venda Bruta Di'#225'ria:')
           ParentFont = False
         end
-        object fscaixaCANCELAMENTO_ICMS: TfrxMemoView
-          Left = 132.283550000000000000
-          Top = 112.708720000000000000
-          Width = 139.842610000000000000
-          Height = 18.897650000000000000
-          DataField = 'CANCELAMENTO_ICMS'
-          DataSet = fscaixa
-          DataSetName = 'fscaixa'
-          DisplayFormat.FormatStr = 'R$ #,##0.00'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[fscaixa."CANCELAMENTO_ICMS"]')
-          ParentFont = False
-        end
         object Memo14: TfrxMemoView
           Top = 112.708720000000000000
-          Width = 132.283550000000000000
+          Width = 128.504020000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
@@ -2584,9 +2600,9 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object fscaixaDESCONTO_ICMS: TfrxMemoView
-          Left = 105.826840000000000000
+          Left = 64.252010000000000000
           Top = 131.385900000000000000
-          Width = 166.299320000000000000
+          Width = 207.874150000000000000
           Height = 18.897650000000000000
           DataField = 'DESCONTO_ICMS'
           DataSet = fscaixa
@@ -2595,7 +2611,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           HAlign = haRight
@@ -2604,13 +2620,12 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object Memo15: TfrxMemoView
-          Left = 0.440940000000000000
           Top = 131.385900000000000000
           Width = 105.826840000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
@@ -2624,7 +2639,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
@@ -2633,11 +2648,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         end
         object Memo17: TfrxMemoView
           Top = 169.401670000000000000
-          Width = 139.842610000000000000
+          Width = 132.283550000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
@@ -2650,7 +2665,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
@@ -2663,7 +2678,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
@@ -2676,7 +2691,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
@@ -2685,11 +2700,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         end
         object Memo21: TfrxMemoView
           Top = 244.992270000000000000
-          Width = 207.874150000000000000
+          Width = 109.606370000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           Memo.UTF8W = (
@@ -2697,9 +2712,9 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object fscaixatotalISSQN: TfrxMemoView
-          Left = 105.606370000000000000
+          Left = 109.606370000000000000
           Top = 150.063080000000000000
-          Width = 166.299320000000000000
+          Width = 162.519790000000000000
           Height = 18.897650000000000000
           DataField = 'totalISSQN'
           DataSet = fscaixa
@@ -2708,7 +2723,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           HAlign = haRight
@@ -2717,9 +2732,9 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object fscaixacancelamentoISSQN: TfrxMemoView
-          Left = 139.842610000000000000
+          Left = 90.708720000000000000
           Top = 169.740260000000000000
-          Width = 132.283550000000000000
+          Width = 181.417440000000000000
           Height = 18.897650000000000000
           DataField = 'cancelamentoISSQN'
           DataSet = fscaixa
@@ -2728,7 +2743,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           HAlign = haRight
@@ -2737,7 +2752,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object fscaixadescontoISSQN: TfrxMemoView
-          Left = 109.385900000000000000
+          Align = baWidth
+          Left = 109.606370000000000000
           Top = 188.637910000000000000
           Width = 162.519790000000000000
           Height = 18.897650000000000000
@@ -2748,7 +2764,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           HAlign = haRight
@@ -2757,18 +2773,18 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object fscaixavendaLiquida: TfrxMemoView
-          Left = 109.385900000000000000
+          Align = baWidth
+          Left = 109.606370000000000000
           Top = 207.535560000000000000
           Width = 162.519790000000000000
           Height = 18.897650000000000000
-          DataField = 'vendaLiquida'
           DataSet = fscaixa
           DataSetName = 'fscaixa'
           DisplayFormat.FormatStr = 'R$ #,##0.00'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           HAlign = haRight
@@ -2777,9 +2793,10 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object fscaixaacrescimoISSQN: TfrxMemoView
-          Left = 207.653680000000000000
+          Align = baWidth
+          Left = 109.606370000000000000
           Top = 245.330860000000000000
-          Width = 64.252010000000000000
+          Width = 162.519790000000000000
           Height = 18.897650000000000000
           DataField = 'acrescimoISSQN'
           DataSet = fscaixa
@@ -2788,7 +2805,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           HAlign = haRight
@@ -2797,6 +2814,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object fscaixaACRESCIMO_ICMS: TfrxMemoView
+          Align = baWidth
           Left = 109.606370000000000000
           Top = 226.433210000000000000
           Width = 162.519790000000000000
@@ -2808,7 +2826,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
           HAlign = haRight
@@ -2823,7 +2841,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -12
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           HAlign = haCenter
@@ -2851,7 +2869,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -12
+          Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Memo.UTF8W = (
@@ -2885,9 +2903,9 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object Line3: TfrxLineView
-          Left = -3.779530000000000000
+          Align = baRight
           Top = 80.929190000000000000
-          Width = 740.787880000000000000
+          Width = 272.126160000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
@@ -2906,9 +2924,9 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object frxDBDataset1OPERADOR: TfrxMemoView
-          Left = 132.283550000000000000
+          Left = 105.826840000000000000
           Top = 41.574830000000000000
-          Width = 139.842610000000000000
+          Width = 166.299320000000000000
           Height = 18.897650000000000000
           DataField = 'OPERADOR'
           DataSet = relFechamento
@@ -2965,7 +2983,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           DataSetName = 'fscaixa'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -13
+          Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           HAlign = haRight
@@ -2973,96 +2991,33 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
             '[fscaixa."CAIXA"]')
           ParentFont = False
         end
+        object fscaixaCANCELAMENTO_ICMS: TfrxMemoView
+          Left = 79.370130000000000000
+          Top = 113.385900000000000000
+          Width = 192.756030000000000000
+          Height = 18.897650000000000000
+          DataField = 'CANCELAMENTO_ICMS'
+          DataSet = fscaixa
+          DataSetName = 'fscaixa'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[fscaixa."CANCELAMENTO_ICMS"]')
+          ParentFont = False
+        end
       end
       object DadosMestre: TfrxMasterData
         FillType = ftBrush
-        Height = 15.897650000000000000
+        Height = 19.677180000000000000
         Top = 396.850650000000000000
         Width = 272.126160000000000000
         DataSet = relFechamento
         DataSetName = 'frxDBDataset1'
         RowCount = 0
-        object Memo1: TfrxMemoView
-          Left = 718.110700000000000000
-          Top = 0.779530000000000000
-          Width = 113.385900000000000000
-          Height = 15.118120000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '000#'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'P'#225'gina: [Page]')
-          ParentFont = False
-        end
-        object Memo26: TfrxMemoView
-          Left = 347.716760000000000000
-          Top = 3.000000000000000000
-          Width = 275.905690000000000000
-          Height = 11.338590000000000000
-          DisplayFormat.DecimalSeparator = ','
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            'HIST'#211'RICO')
-          ParentFont = False
-        end
-        object Memo10: TfrxMemoView
-          Left = 627.401980000000000000
-          Top = 3.000000000000000000
-          Width = 60.472480000000000000
-          Height = 11.338590000000000000
-          DisplayFormat.DecimalSeparator = ','
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'VALOR-R$')
-          ParentFont = False
-        end
-        object Memo11: TfrxMemoView
-          Left = 695.433520000000000000
-          Top = 3.000000000000000000
-          Width = 64.252010000000000000
-          Height = 11.338590000000000000
-          DisplayFormat.DecimalSeparator = ','
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'ENTRADA')
-          ParentFont = False
-        end
-        object Memo12: TfrxMemoView
-          Left = 763.465060000000000000
-          Top = 2.779530000000000000
-          Width = 71.811070000000000000
-          Height = 11.338590000000000000
-          DisplayFormat.DecimalSeparator = ','
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'SA'#205'DA')
-          ParentFont = False
-        end
         object frxDBDataset1FORMA: TfrxMemoView
           Width = 154.960730000000000000
           Height = 15.118120000000000000
@@ -3079,6 +3034,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object frxDBDataset1TOTAL: TfrxMemoView
+          Align = baWidth
           Left = 154.960730000000000000
           Width = 117.165430000000000000
           Height = 15.118120000000000000
@@ -3102,9 +3058,9 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         Top = 306.141930000000000000
         Width = 272.126160000000000000
         object Memo4: TfrxMemoView
-          Left = 0.779530000000000000
+          Align = baLeft
           Top = 4.000000000000000000
-          Width = 173.858380000000000000
+          Width = 147.401670000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -3116,86 +3072,23 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           ParentFont = False
         end
         object Line1: TfrxLineView
-          Top = 3.000000000000010000
-          Width = 740.787880000000000000
+          Top = 3.000000000000000000
+          Width = 272.126160000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line2: TfrxLineView
-          Top = 23.677180000000000000
-          Width = 740.787880000000000000
+          Align = baLeft
+          Top = 27.456710000000000000
+          Width = 272.126160000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
-        object Memo5: TfrxMemoView
-          Left = 623.622450000000000000
-          Width = 113.385900000000000000
-          Height = 15.118120000000000000
-          DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '000#'
-          DisplayFormat.Kind = fkNumeric
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'P'#225'gina: [Page]')
-          ParentFont = False
-        end
-        object Memo27: TfrxMemoView
-          Left = 532.913730000000000000
-          Top = 17.338590000000000000
-          Width = 60.472480000000000000
-          Height = 11.338590000000000000
-          DisplayFormat.DecimalSeparator = ','
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'VALOR-R$')
-          ParentFont = False
-        end
-        object Memo9: TfrxMemoView
-          Left = 600.945270000000000000
-          Top = 17.338590000000000000
-          Width = 64.252010000000000000
-          Height = 11.338590000000000000
-          DisplayFormat.DecimalSeparator = ','
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'ENTRADA')
-          ParentFont = False
-        end
-        object Memo33: TfrxMemoView
-          Left = 668.976810000000000000
-          Top = 17.118120000000000000
-          Width = 71.811070000000000000
-          Height = 11.338590000000000000
-          DisplayFormat.DecimalSeparator = ','
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -9
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haRight
-          Memo.UTF8W = (
-            'SA'#205'DA')
-          ParentFont = False
-        end
         object Memo7: TfrxMemoView
-          Left = 173.858380000000000000
+          Align = baWidth
+          Left = 147.401670000000000000
           Top = 4.000000000000000000
-          Width = 98.267780000000000000
+          Width = 124.724490000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -3204,47 +3097,38 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
           Font.Style = [fsBold]
           HAlign = haRight
           Memo.UTF8W = (
-            'Valor ')
+            'Valor  Total')
           ParentFont = False
         end
       end
-      object Line4: TfrxLineView
-        Left = -3.779530000000000000
-        Top = 417.527830000000000000
-        Width = 740.787880000000000000
-        Color = clBlack
-        Frame.Typ = [ftTop]
-      end
-      object Memo24: TfrxMemoView
-        Top = 419.527830000000000000
-        Width = 105.826840000000000000
-        Height = 18.897650000000000000
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        Memo.UTF8W = (
-          'Sub - Total')
-        ParentFont = False
-      end
-      object frxDBDataset1SUBTOTAL: TfrxMemoView
-        Left = 105.826840000000000000
-        Top = 419.527830000000000000
-        Width = 166.299320000000000000
-        Height = 18.897650000000000000
-        DataField = 'SUBTOTAL'
-        DataSet = relFechamento
-        DataSetName = 'frxDBDataset1'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = [fsBold]
-        HAlign = haRight
-        Memo.UTF8W = (
-          '[frxDBDataset1."SUBTOTAL"]')
-        ParentFont = False
+      object Rodape: TfrxMasterData
+        FillType = ftBrush
+        Height = 88.259884020000000000
+        Top = 438.425480000000000000
+        Width = 272.126160000000000000
+        RowCount = 1
+        object Line5: TfrxLineView
+          Align = baCenter
+          Left = 43.464595000000000000
+          Top = 64.118120000000000000
+          Width = 185.196970000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Memo25: TfrxMemoView
+          Top = 68.031540000000000000
+          Width = 272.126160000000000000
+          Height = 12.669284020000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold, fsItalic]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Assinatura')
+          ParentFont = False
+        end
       end
     end
   end
@@ -3267,8 +3151,9 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Restrictions = []
     RTLLanguage = False
     MemoParentFont = False
-    Left = 520
-    Top = 24
+    OnGetTemplateList = frxDesigner1GetTemplateList
+    Left = 412
+    Top = 12
   end
   object fscaixa: TfrxDBDataset
     UserName = 'fscaixa'
@@ -3280,14 +3165,14 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       'vendaLiquida=vendaLiquida'
       'acrescimoISSQN=acrescimoISSQN'
       'VENDA_BRUTA=VENDA_BRUTA'
-      'CANCELAMENTO_ICMS=CANCELAMENTO_ICMS'
       'DESCONTO_ICMS=DESCONTO_ICMS'
       'ACRESCIMO_ICMS=ACRESCIMO_ICMS'
-      'CAIXA=CAIXA')
+      'CAIXA=CAIXA'
+      'CANCELAMENTO_ICMS=CANCELAMENTO_ICMS')
     DataSet = qrRelatorioResumo
     BCDToCurrency = False
-    Left = 720
-    Top = 12
+    Left = 604
+    Top = 24
   end
   object qrRelatorioResumo: TUniQuery
     Connection = frmModulo.conexao
@@ -3319,7 +3204,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         '.codigo and cupom.data + cupom.hora >= :data and cupom.cod_vende' +
         'dor = :codvendedor')
     Active = True
-    Left = 681
+    Left = 549
     Top = 14
     ParamData = <
       item
@@ -3367,11 +3252,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       ReadOnly = True
       DisplayFormat = 'R$ #,##0.00'
     end
-    object qrRelatorioResumoCANCELAMENTO_ICMS: TFloatField
-      FieldName = 'CANCELAMENTO_ICMS'
-      ReadOnly = True
-      DisplayFormat = 'R$ #,##0.00'
-    end
     object qrRelatorioResumoDESCONTO_ICMS: TFloatField
       FieldName = 'DESCONTO_ICMS'
       ReadOnly = True
@@ -3388,6 +3268,11 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Size = 100
       Calculated = True
     end
+    object qrRelatorioResumoCANCELAMENTO_ICMS: TFloatField
+      FieldName = 'CANCELAMENTO_ICMS'
+      ReadOnly = True
+      DisplayFormat = 'R$ #,##0.00'
+    end
   end
   object relFechamento: TfrxDBDataset
     UserName = 'frxDBDataset1'
@@ -3400,8 +3285,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       'SUBTOTAL=SUBTOTAL')
     DataSet = qrRelFechamento
     BCDToCurrency = False
-    Left = 725
-    Top = 85
+    Left = 605
+    Top = 69
   end
   object qrRelFechamento: TUniQuery
     Connection = frmModulo.conexao
@@ -3440,8 +3325,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       '    group by  CodOperador,  Operador,  Forma'
       '    order by codoperador')
     Active = True
-    Left = 672
-    Top = 85
+    Left = 536
+    Top = 65
     ParamData = <
       item
         DataType = ftDate
@@ -3467,16 +3352,15 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       ReadOnly = True
       DisplayFormat = 'R$ #,##0.00'
     end
-    object qrRelFechamentoSUBTOTAL: TFloatField
+    object qrRelFechamentoSUBTOTAL: TCurrencyField
       FieldKind = fkCalculated
       FieldName = 'SUBTOTAL'
-      DisplayFormat = 'R$ #,##0.00'
       Calculated = True
     end
   end
   object qrNumeroCaixa: TUniQuery
     Connection = frmModulo.conexao
-    Left = 556
-    Top = 69
+    Left = 452
+    Top = 53
   end
 end

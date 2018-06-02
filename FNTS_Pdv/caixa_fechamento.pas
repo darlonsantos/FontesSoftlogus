@@ -96,7 +96,6 @@ type
     NxTextColumn19: TNxTextColumn;
     NxNumberColumn11: TNxTextColumn;
     NxNumberColumn12: TNxTextColumn;
-    XPManifest1: TXPManifest;
     AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
     Label53: TLabel;
     AdvMetroButton1: TAdvMetroButton;
@@ -110,7 +109,6 @@ type
     bt_fechamento07: TAdvGlowButton;
     bt_fechamento08: TAdvGlowButton;
     AdvGlowButton1: TAdvGlowButton;
-    Panel5: TPanel;
     qrAbastecimento: TUniQuery;
     qrMesa: TUniQuery;
     qrEncerrante: TUniQuery;
@@ -131,7 +129,6 @@ type
     relFechamento: TfrxDBDataset;
     qrRelFechamento: TUniQuery;
     qrRelatorioResumoVENDA_BRUTA: TFloatField;
-    qrRelatorioResumoCANCELAMENTO_ICMS: TFloatField;
     qrRelatorioResumoDESCONTO_ICMS: TFloatField;
     qrRelatorioResumoACRESCIMO_ICMS: TFloatField;
     qrRelFechamentoCODOPERADOR: TIntegerField;
@@ -139,9 +136,14 @@ type
     qrRelFechamentoFORMA: TStringField;
     qrRelFechamentoTOTAL: TFloatField;
     Relatorio: TMenuItem;
-    qrRelFechamentoSUBTOTAL: TFloatField;
     qrNumeroCaixa: TUniQuery;
     qrRelatorioResumoCAIXA: TStringField;
+    F1: TMenuItem;
+    GroupBox1: TGroupBox;
+    Label4: TLabel;
+    Label5: TLabel;
+    qrRelatorioResumoCANCELAMENTO_ICMS: TFloatField;
+    qrRelFechamentoSUBTOTAL: TCurrencyField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure bt_cancelarClick(Sender: TObject);
     procedure grid_resumoCellFormating(Sender: TObject; ACol,
@@ -163,6 +165,7 @@ type
     procedure bt_fechamento07Click(Sender: TObject);
     procedure bt_fechamento08Click(Sender: TObject);
     procedure RelatorioClick(Sender: TObject);
+    procedure frxDesigner1GetTemplateList(List: TStrings);
   private
     { Private declarations }
     TipoImp: TImpressora;
@@ -1754,6 +1757,11 @@ begin
 
 end;
 
+procedure TfrmCaixa_Fechamento.frxDesigner1GetTemplateList(List: TStrings);
+begin
+
+end;
+
 // -------------------------------------------------------------------------- //
 procedure TfrmCaixa_Fechamento.bt_okClick(Sender: TObject);
 var
@@ -2050,7 +2058,7 @@ begin
         frmMsg_Operador.lb_msg.caption := 'Aguarde! Salvando informações da Redução Z...'
       else
         //ENTRA O RELATORIO DE FECHAMENTO
-        frmMsg_Operador.lb_msg.caption := 'Aguarde! Imprimindo informações do fechamento...';
+
 
        sMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, texto_justifica('FECHAMENTO DE CAIXA', 48, ' ', taCentralizado));
             SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal,
@@ -2073,7 +2081,8 @@ begin
         SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '---------------------Assinatura-----------------');
          //Imp_Fecha_Gerencial(sPortaNaoFiscal);
            frxReport1.LoadFromFile('\Softlogus\PDV\rel\fechamento.fr3');
-           frxReport1.ShowReport;
+           frxReport1.Print;
+             frmMsg_Operador.lb_msg.caption := 'Aguarde! Imprimindo informações do fechamento...';
 
 
 
@@ -3249,12 +3258,14 @@ begin
    GridFechamento.Cell[2,GridFechamento.LastAddedRow].FontStyle := [fsBold];
    GridFechamento.Cell[3,GridFechamento.LastAddedRow].FontStyle := [fsBold];
 
+
+
      qrRelFechamento.Close;
      qrRelFechamento.Params.ParamByName('data').asstring := fechamento;
      qrRelFechamento.Open;
       qrRelFechamento.Edit;
-     qrRelFechamento.FieldByName('SUBTOTAL').Value :=   FormatarValor(dTotal - dSangria - dSangria - dTroco,2,false);
-
+      qrRelFechamentoSUBTOTAL.Value  :=  dTotal - dSangria - dSangria - dTroco;     // FormatarValor(dTotal - dSangria - dSangria - dTroco,2,false); ;
+ 
 
           //SUBTOTAL
 

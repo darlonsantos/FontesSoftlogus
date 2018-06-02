@@ -3,8 +3,8 @@ object frmSangria: TfrmSangria
   Top = 319
   BorderStyle = bsNone
   Caption = 'Retirada'
-  ClientHeight = 193
-  ClientWidth = 346
+  ClientHeight = 223
+  ClientWidth = 274
   Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -19,23 +19,23 @@ object frmSangria: TfrmSangria
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 12
-    Top = 102
-    Width = 43
-    Height = 19
+    Left = 8
+    Top = 59
+    Width = 57
+    Height = 23
     Caption = 'Valor:'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -19
     Font.Name = 'Tahoma'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object Panel1: TPanel
-    Left = 242
-    Top = 42
-    Width = 129
-    Height = 367
+    Left = 20
+    Top = 108
+    Width = 232
+    Height = 97
     BevelOuter = bvNone
     Color = clSilver
     ParentBackground = False
@@ -59,8 +59,8 @@ object frmSangria: TfrmSangria
       OnClick = bt_cancelar1Click
     end
     object bt_ok: TAdvGlowButton
-      Left = 9
-      Top = 11
+      Left = 36
+      Top = 15
       Width = 87
       Height = 62
       Caption = 'OK'
@@ -182,8 +182,8 @@ object frmSangria: TfrmSangria
       Layout = blGlyphTop
     end
     object bt_cancelar: TAdvGlowButton
-      Left = 9
-      Top = 79
+      Left = 121
+      Top = 15
       Width = 87
       Height = 62
       Caption = 'Cancelar'
@@ -328,15 +328,15 @@ object frmSangria: TfrmSangria
     TabOrder = 2
   end
   object ed_valor: TRzNumericEdit
-    Left = 65
-    Top = 99
+    Left = 71
+    Top = 54
     Width = 156
-    Height = 25
+    Height = 41
     Color = 15916445
     Ctl3D = False
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
-    Font.Height = -16
+    Font.Height = -29
     Font.Name = 'Tahoma'
     Font.Style = [fsBold]
     ParentCtl3D = False
@@ -349,7 +349,7 @@ object frmSangria: TfrmSangria
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 346
+    Width = 274
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -381,6 +381,7 @@ object frmSangria: TfrmSangria
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 346
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
