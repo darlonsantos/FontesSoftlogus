@@ -5,8 +5,8 @@ object frmnotas_venda: Tfrmnotas_venda
   BorderStyle = bsSingle
   Caption = 'Notas de Venda / Devolu'#231#227'o / Garantia'
   ClientHeight = 520
-  ClientWidth = 916
-  Color = 5460819
+  ClientWidth = 917
+  Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -20,15 +20,17 @@ object frmnotas_venda: Tfrmnotas_venda
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
-    Left = 800
+    Left = 801
     Top = 54
     Width = 116
     Height = 466
     Align = alRight
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 729
+    ExplicitTop = 57
     object DBText1: TDBText
       Left = 520
       Top = 8
@@ -1757,13 +1759,14 @@ object frmnotas_venda: Tfrmnotas_venda
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 916
+    Width = 917
     Height = 54
     Align = alTop
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clSilver
     ParentBackground = False
     TabOrder = 2
+    ExplicitWidth = 916
     object Label1: TLabel
       Left = 31
       Top = 19
@@ -2933,7 +2936,7 @@ object frmnotas_venda: Tfrmnotas_venda
     Left = 904
     Top = 636
     Bitmap = {
-      494C010103000500240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

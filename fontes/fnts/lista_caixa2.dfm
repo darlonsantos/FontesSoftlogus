@@ -4,8 +4,8 @@ object frmlista_caixa2: Tfrmlista_caixa2
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'CAIXA | Relat'#243'rios'
-  ClientHeight = 293
-  ClientWidth = 579
+  ClientHeight = 535
+  ClientWidth = 756
   Color = 11429670
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -551,7 +551,7 @@ object frmlista_caixa2: Tfrmlista_caixa2
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 579
+    Width = 756
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -584,6 +584,7 @@ object frmlista_caixa2: Tfrmlista_caixa2
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 579
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
@@ -695,8 +696,8 @@ object frmlista_caixa2: Tfrmlista_caixa2
       'begin'
       ''
       'end.')
-    Left = 600
-    Top = 336
+    Left = 276
+    Top = 400
     Datasets = <
       item
         DataSet = fscaixa
@@ -2724,8 +2725,8 @@ object frmlista_caixa2: Tfrmlista_caixa2
       'descricao_movimento=descricao_movimento')
     DataSet = qrcaixa
     BCDToCurrency = False
-    Left = 592
-    Top = 392
+    Left = 80
+    Top = 432
   end
   object frxDesigner1: TfrxDesigner
     DefaultScriptLanguage = 'PascalScript'
@@ -2746,8 +2747,8 @@ object frmlista_caixa2: Tfrmlista_caixa2
     Restrictions = []
     RTLLanguage = False
     MemoParentFont = False
-    Left = 608
-    Top = 348
+    Left = 144
+    Top = 384
   end
   object PopupMenu1: TPopupMenu
     Left = 648
@@ -2833,7 +2834,7 @@ object frmlista_caixa2: Tfrmlista_caixa2
         'vimento = 1 and plano.tipo = 1'
       'group by plano.conta')
     Params = <>
-    Left = 608
-    Top = 360
+    Left = 616
+    Top = 404
   end
 end

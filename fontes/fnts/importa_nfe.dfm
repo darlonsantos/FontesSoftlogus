@@ -5,7 +5,7 @@ object frmimporta_nfe: Tfrmimporta_nfe
   BorderStyle = bsSingle
   Caption = 'Entrada de Notas Fiscais - XML'#180's'
   ClientHeight = 583
-  ClientWidth = 947
+  ClientWidth = 955
   Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -369,7 +369,7 @@ object frmimporta_nfe: Tfrmimporta_nfe
   object bar: TRzProgressBar
     Left = 0
     Top = 579
-    Width = 947
+    Width = 955
     Height = 4
     Align = alBottom
     BackColor = clBtnFace
@@ -745,20 +745,21 @@ object frmimporta_nfe: Tfrmimporta_nfe
     OnExit = eidExit
   end
   object RzPanel1: TRzPanel
-    Left = 843
+    Left = 851
     Top = 48
     Width = 104
     Height = 531
     Align = alRight
     BorderOuter = fsNone
-    BorderColor = 5460819
-    BorderHighlight = 5460819
+    BorderColor = clSilver
+    BorderHighlight = clSilver
+    BorderShadow = clSilver
     BorderWidth = 2
-    Color = 5460819
+    Color = clSilver
     TabOrder = 40
     VisualStyle = vsClassic
-    ExplicitLeft = 849
-    ExplicitHeight = 542
+    ExplicitLeft = 867
+    ExplicitTop = 44
     object AdvReflectionImage1: TAdvReflectionImage
       Left = 32
       Top = 480
@@ -1981,12 +1982,12 @@ object frmimporta_nfe: Tfrmimporta_nfe
       Layout = blGlyphTop
     end
     object pnl1: TPanel
-      Left = -3
-      Top = 8
+      Left = 12
+      Top = 6
       Width = 111
       Height = 77
       BevelOuter = bvNone
-      Color = 5460819
+      Color = clSilver
       ParentBackground = False
       TabOrder = 11
       object AdvGlowButton5: TAdvGlowButton
@@ -2454,10 +2455,6 @@ object frmimporta_nfe: Tfrmimporta_nfe
     object TabSheet1: TRzTabSheet
       Color = 15461355
       Caption = 'Itens da Nota'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object wwDBGrid2: TwwDBGrid
         Left = 0
         Top = 0
@@ -2514,10 +2511,6 @@ object frmimporta_nfe: Tfrmimporta_nfe
     object TabSheet2: TRzTabSheet
       Color = 5460819
       Caption = 'Transportador'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label38: TLabel
         Left = 4
         Top = 15
@@ -3040,10 +3033,6 @@ object frmimporta_nfe: Tfrmimporta_nfe
     object TabSheet3: TRzTabSheet
       Color = 15461355
       Caption = 'Faturamento'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pfatura: TPanel
         Left = 0
         Top = 0
@@ -3470,18 +3459,10 @@ object frmimporta_nfe: Tfrmimporta_nfe
     object TabSheet4: TRzTabSheet
       Color = 15461355
       Caption = 'Observa'#231#245'es'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
     object tbshetlog: TRzTabSheet
       Color = 15461355
       Caption = 'Log de Produtos'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object memo1: TMemo
         Left = 1
         Top = 4
@@ -3521,7 +3502,7 @@ object frmimporta_nfe: Tfrmimporta_nfe
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 947
+    Width = 955
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -3535,7 +3516,6 @@ object frmimporta_nfe: Tfrmimporta_nfe
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -3551,10 +3531,11 @@ object frmimporta_nfe: Tfrmimporta_nfe
     Align = alTop
     TabOrder = 43
     ShowExpander = False
+    ExpanderBorderColor = clSilver
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 953
+    ExplicitWidth = 947
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
@@ -4429,7 +4410,7 @@ object frmimporta_nfe: Tfrmimporta_nfe
     Left = 632
     Top = 568
     Bitmap = {
-      494C01010200040038000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020004003C000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       0000000000000000000000000000000000000000000000000000000000000000
       0000B9BCF000676DDF004048D600434BD7004048D700353ED5005960DC00AFB2
