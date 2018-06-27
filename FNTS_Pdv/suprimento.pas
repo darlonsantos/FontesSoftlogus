@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Mask, RzEdit, Menus, AdvMenus, ComCtrls,
   XPMan, AdvGlowButton, AdvMetroButton, AdvSmoothPanel, AdvSmoothExpanderPanel,
-  principal;
+  principal, frxClass, frxDBSet, frxDesgn;
 
 type
   TfrmSuprimento = class(TForm)
@@ -24,6 +24,9 @@ type
     Label53: TLabel;
     AdvMetroButton1: TAdvMetroButton;
     bt_ok: TAdvGlowButton;
+    frxReport1: TfrxReport;
+    frxDesigner1: TfrxDesigner;
+    fscaixa: TfrxDBDataset;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure bt_cancelarClick(Sender: TObject);
     procedure bt_ok1Click(Sender: TObject);
@@ -31,6 +34,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure list_FormaKeyPress(Sender: TObject; var Key: Char);
     procedure AdvMetroButton1Click(Sender: TObject);
+    procedure ed_valorKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     TipoImp: TImpressora;
@@ -157,6 +161,15 @@ begin
    close;
 end;
 
+procedure TfrmSuprimento.ed_valorKeyPress(Sender: TObject; var Key: Char);
+begin
+ if key =  #13 then
+  begin
+     bt_ok1Click(Sender);
+  end;
+
+end;
+
 procedure TfrmSuprimento.FormShow(Sender: TObject);
 begin
   TipoImp := frmPrincipal.TipoImpressora;
@@ -181,7 +194,6 @@ begin
     frmModulo.tbForma_Pgto.Next;
   end;
 end;
-
 procedure TfrmSuprimento.list_FormaKeyPress(Sender: TObject;
   var Key: Char);
 begin

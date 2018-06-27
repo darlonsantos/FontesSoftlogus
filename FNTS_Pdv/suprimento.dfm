@@ -3,8 +3,8 @@ object frmSuprimento: TfrmSuprimento
   Top = 248
   BorderStyle = bsNone
   Caption = 'Suprimento'
-  ClientHeight = 262
-  ClientWidth = 365
+  ClientHeight = 172
+  ClientWidth = 324
   Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -19,8 +19,8 @@ object frmSuprimento: TfrmSuprimento
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 22
-    Top = 206
+    Left = 15
+    Top = 98
     Width = 43
     Height = 19
     Caption = 'Valor:'
@@ -33,7 +33,7 @@ object frmSuprimento: TfrmSuprimento
   end
   object Label2: TLabel
     Left = 14
-    Top = 118
+    Top = 62
     Width = 51
     Height = 19
     Caption = 'Forma:'
@@ -45,14 +45,17 @@ object frmSuprimento: TfrmSuprimento
     ParentFont = False
   end
   object Panel1: TPanel
-    Left = 247
-    Top = 48
-    Width = 123
-    Height = 337
+    Left = 0
+    Top = 129
+    Width = 324
+    Height = 43
+    Align = alBottom
     BevelOuter = bvNone
-    Color = 5460819
+    Color = 11563548
     ParentBackground = False
     TabOrder = 2
+    ExplicitTop = 140
+    ExplicitWidth = 275
     object bt_ok1: TButton
       Left = 129
       Top = 268
@@ -72,10 +75,10 @@ object frmSuprimento: TfrmSuprimento
       OnClick = bt_cancelarClick
     end
     object bt_ok: TAdvGlowButton
-      Left = 21
-      Top = 51
-      Width = 79
-      Height = 78
+      Left = 81
+      Top = 3
+      Width = 100
+      Height = 33
       Caption = '&Confirmar'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -164,11 +167,12 @@ object frmSuprimento: TfrmSuprimento
       Transparent = True
       TabOrder = 2
       OnClick = bt_ok1Click
-      Appearance.BorderColor = 12631218
+      Appearance.BorderColor = 11563548
       Appearance.BorderColorHot = 10079963
       Appearance.BorderColorDown = 4548219
+      Appearance.BorderColorDisabled = 11563548
       Appearance.Color = 14671574
-      Appearance.ColorTo = 15000283
+      Appearance.ColorTo = 11563548
       Appearance.ColorChecked = 7915518
       Appearance.ColorCheckedTo = 11918331
       Appearance.ColorDisabled = 15921906
@@ -177,22 +181,22 @@ object frmSuprimento: TfrmSuprimento
       Appearance.ColorDownTo = 4296947
       Appearance.ColorHot = 15465983
       Appearance.ColorHotTo = 11332863
-      Appearance.ColorMirror = 14144974
-      Appearance.ColorMirrorTo = 15197664
+      Appearance.ColorMirror = 11563548
+      Appearance.ColorMirrorTo = 11563548
       Appearance.ColorMirrorHot = 5888767
       Appearance.ColorMirrorHotTo = 10807807
       Appearance.ColorMirrorDown = 946929
       Appearance.ColorMirrorDownTo = 5021693
       Appearance.ColorMirrorChecked = 10480637
       Appearance.ColorMirrorCheckedTo = 5682430
-      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabled = 11563548
       Appearance.ColorMirrorDisabledTo = 15921906
       Appearance.GradientHot = ggVertical
       Appearance.GradientMirrorHot = ggVertical
       Appearance.GradientDown = ggVertical
       Appearance.GradientMirrorDown = ggVertical
       Appearance.GradientChecked = ggVertical
-      Layout = blGlyphTop
+      DropDownDirection = ddRight
     end
   end
   object Panel2: TPanel
@@ -211,8 +215,8 @@ object frmSuprimento: TfrmSuprimento
     TabOrder = 3
   end
   object ed_valor: TRzNumericEdit
-    Left = 75
-    Top = 203
+    Left = 71
+    Top = 95
     Width = 156
     Height = 25
     Color = 15916445
@@ -226,14 +230,15 @@ object frmSuprimento: TfrmSuprimento
     ParentFont = False
     TabOnEnter = True
     TabOrder = 1
+    OnKeyPress = ed_valorKeyPress
     IntegersOnly = False
     DisplayFormat = 'R$ ###,###,##0.00'
   end
   object list_Forma: TListBox
-    Left = 77
-    Top = 66
-    Width = 153
-    Height = 129
+    Left = 71
+    Top = 62
+    Width = 156
+    Height = 27
     Color = 15916445
     Ctl3D = False
     Font.Charset = ANSI_CHARSET
@@ -249,7 +254,7 @@ object frmSuprimento: TfrmSuprimento
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 365
+    Width = 324
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -262,8 +267,10 @@ object frmSuprimento: TfrmSuprimento
     Caption.Font.Height = -16
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
+    Caption.BackgroundColor = clSilver
+    Caption.BackgroundColorTo = clSilver
     Caption.Line = False
-    Fill.Color = clBlack
+    Fill.Color = 11563548
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -275,13 +282,15 @@ object frmSuprimento: TfrmSuprimento
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.1.1.0'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 4
     ShowExpander = False
+    ExpanderBorderColor = clSilver
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 365
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
@@ -290,11 +299,13 @@ object frmSuprimento: TfrmSuprimento
       Width = 200
       Height = 23
       Caption = 'Suprimento de Caixa'
+      Color = clHighlight
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -19
       Font.Name = 'Verdana'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       Transparent = True
     end
@@ -373,13 +384,13 @@ object frmSuprimento: TfrmSuprimento
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.2.0'
+      Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
   end
   object pop_fechamento: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
-    Version = '2.6.1.1'
+    Version = '2.6.1.0'
     Left = 480
     Top = 192
     object Cancelar1: TMenuItem
@@ -387,5 +398,118 @@ object frmSuprimento: TfrmSuprimento
       ShortCut = 27
       OnClick = Cancelar1Click
     end
+  end
+  object frxReport1: TfrxReport
+    Version = '5.2.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Padr'#227'o'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 43258.953292326400000000
+    ReportOptions.LastChange = 43258.955611250000000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      ''
+      'begin'
+      ''
+      'end.')
+    Left = 196
+    Top = 1
+    Datasets = <>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 72.000000000000000000
+      PaperHeight = 250.000000000000000000
+      PaperSize = 256
+      object suprimento: TfrxReportTitle
+        FillType = ftBrush
+        Height = 26.456710000000000000
+        Top = 18.897650000000000000
+        Width = 272.126160000000000000
+        object Memo2: TfrxMemoView
+          Align = baCenter
+          Left = 52.913420000000000000
+          Width = 166.299320000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'SUPRIMENTO')
+          ParentFont = False
+        end
+      end
+      object MasterSuprimento: TfrxMasterData
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 105.826840000000000000
+        Width = 272.126160000000000000
+        RowCount = 0
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 188.976500000000000000
+        Width = 272.126160000000000000
+        object Memo1: TfrxMemoView
+          Left = 642.520100000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Page#]')
+        end
+      end
+    end
+  end
+  object frxDesigner1: TfrxDesigner
+    DefaultScriptLanguage = 'PascalScript'
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = -13
+    DefaultFont.Name = 'Arial'
+    DefaultFont.Style = []
+    DefaultLeftMargin = 10.000000000000000000
+    DefaultRightMargin = 10.000000000000000000
+    DefaultTopMargin = 10.000000000000000000
+    DefaultBottomMargin = 10.000000000000000000
+    DefaultPaperSize = 9
+    DefaultOrientation = poPortrait
+    GradientEnd = 11982554
+    GradientStart = clWindow
+    TemplatesExt = 'fr3'
+    Restrictions = []
+    RTLLanguage = False
+    MemoParentFont = False
+    Left = 248
+    Top = 84
+  end
+  object fscaixa: TfrxDBDataset
+    UserName = 'fscaixa'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'totalISSQN=totalISSQN'
+      'cancelamentoISSQN=cancelamentoISSQN'
+      'descontoISSQN=descontoISSQN'
+      'vendaLiquida=vendaLiquida'
+      'acrescimoISSQN=acrescimoISSQN'
+      'VENDA_BRUTA=VENDA_BRUTA'
+      'DESCONTO_ICMS=DESCONTO_ICMS'
+      'ACRESCIMO_ICMS=ACRESCIMO_ICMS'
+      'CAIXA=CAIXA'
+      'CANCELAMENTO_ICMS=CANCELAMENTO_ICMS')
+    BCDToCurrency = False
+    Left = 284
+    Top = 52
   end
 end

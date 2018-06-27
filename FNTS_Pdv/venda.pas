@@ -2273,6 +2273,7 @@ begin
     action := cafree;
   end;
   voltaResolucao(a, b);
+
 end;
 
 // -------------------------------------------------------------------------- //
@@ -2304,19 +2305,19 @@ begin
   bDebug := False;
 {$ENDIF}
 
-  iImpressora := IsInteger(frmPrincipal.LerINi(sConfiguracoes, 'IMPRESSORA', 'TIPO', '0'));
+  iImpressora := IsInteger(frmPrincipal.LerINi(sConfiguracoes, 'IMPRESSORA', 'TIPO', '1'));
 
   ImgTipoImpressora(iImpressora);
 
 
   if bDebug = False then
   begin
-    if (Screen.Width <> 1024) and (Screen.Height <> 768) then
-      //if Application.MessageBox('O PDV opera em resolução de 800x600 deseja ajustar?', 'Pergunta', MB_YESNO + MB_ICONQUESTION) = ID_YES then
-      TrocaResolucao(1024, 768, a, b);
+    if (Screen.Width <> 800) and (Screen.Height <> 600) then
+      if Application.MessageBox('O PDV opera em resolução de 800x600 deseja ajustar?', 'Pergunta', MB_YESNO + MB_ICONQUESTION) = ID_YES then
+      TrocaResolucao(800, 600, a, b);
 
-    left := 0;
-    top := 0;
+     left := 0;
+     top := 0;
 
   end
   else
@@ -2385,10 +2386,12 @@ begin
   begin
     // abrir a comunicacao
     OpenTec44;
-    Imprime_display_teclado('Softlogus Sistemas', 'Terminal iniciado com sucesso!');
+    Imprime_display_teclado('Softlogus Informatica ', 'Terminal iniciado com sucesso!');
   end;
 
   Carregando := False;
+  //frmModulo.Balanca.Ativar;
+
 
 end;
 
@@ -5374,6 +5377,8 @@ begin
         frmModulo.spCupom_Temp_delete.execute;
 
 
+
+
         if bLanca_pre_venda then
         begin
           // atualizar situacao da pre-venda para 2 = concluida
@@ -5701,6 +5706,8 @@ begin
   vcontingencia := 'N';
   vgerado_nfce := 'N';
   vNumNFCe := 0;
+  { TODO : DARLON COIDFICAR O CUPOM NÃO FISCAL AQUI }
+
 end;
 
 
@@ -5743,7 +5750,7 @@ begin
         Ide.indFinal := cfConsumidorFinal;
         Ide.indPres := pcPresencial;
         ACBRNFCe.Configuracoes.Geral.ModeloDF := moNFCe;
-        ACBRNFCe.Configuracoes.Geral.VersaoDF := ve310;
+        ACBRNFCe.Configuracoes.Geral.VersaoDF := ve310;   { TODO : DARLON SANTOS ATUALIZAR PRA VERSÃO 4.0 DA NFCE }
 
         Ide.verProc := '1.0';
         Emit.CNPJCPF := edtEmitCNPJ;
@@ -6591,6 +6598,8 @@ end;
 // -------------------------------------------------------------------------- //
 
 procedure TfrmVenda.AcionaBalana1Click(Sender: TObject);
+Var
+ TimeOut : Integer;
 begin
   if frmmodulo.balanca.Modelo <> balNenhum then
   begin
@@ -6598,8 +6607,11 @@ begin
       frmmodulo.balanca.ativar;
       frmmodulo.balanca.Ativo := true;
     except
+  //  TimeOut :=2000;
     end;
+   //rmmodulo.balanca.LePeso(  timer_balanca. );
     timer_balanca.Enabled := true;
+
   end;
 end;
 
@@ -6867,6 +6879,7 @@ var
   sImgFundo: string;
   sCupomAbertoECF: string;
 begin
+
   frmPrincipal.TipoImpressora := SemImpressora;
   CorEditTotaL;
   CentralizarPanel(pnFundo);
@@ -8721,7 +8734,7 @@ begin
   frmPrincipal.GravaIni(sConfiguracoes, 'Impressora', 'TIPO', IntToStr(iImpressora));
 
 
-  if iImpressora >= 2 then
+  if iImpressora >= 1 then
     iImpressora := -1;
 
 

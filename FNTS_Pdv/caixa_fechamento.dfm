@@ -1361,8 +1361,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         ParentFont = False
         TabOrder = 0
         TabStop = True
-        ExplicitLeft = -2
-        ExplicitTop = -2
         object NxNumberColumn11: TNxTextColumn
           Alignment = taRightJustify
           DefaultValue = '0'
@@ -1455,12 +1453,14 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Caption.HTMLFont.Height = -11
     Caption.HTMLFont.Name = 'Tahoma'
     Caption.HTMLFont.Style = []
+    Caption.HTMLShadowColor = 11563548
     Caption.Font.Charset = DEFAULT_CHARSET
     Caption.Font.Color = clWindowText
     Caption.Font.Height = -16
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
+    Fill.Color = 11563548
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -1479,7 +1479,6 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 791
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
@@ -2506,8 +2505,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       'begin'
       ''
       'end.')
-    Left = 360
-    Top = 9
+    Left = 364
+    Top = 5
     Datasets = <
       item
         DataSet = relFechamento

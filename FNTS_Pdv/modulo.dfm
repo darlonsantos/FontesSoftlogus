@@ -4,12 +4,10 @@ object frmModulo: TfrmModulo
   Height = 709
   Width = 1346
   object Balanca: TACBrBAL
-    Modelo = balToledo
     Porta = 'COM1'
-    Device.Baud = 2400
     OnLePeso = BalancaLePeso
-    Left = 427
-    Top = 370
+    Left = 371
+    Top = 366
   end
   object estilo_menu: TAdvMenuOfficeStyler
     AntiAlias = aaNone

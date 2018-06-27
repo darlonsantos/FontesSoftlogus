@@ -217,11 +217,11 @@ object frmconfig_balanca: Tfrmconfig_balanca
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
-      ItemIndex = 6
+      ItemIndex = 4
       ParentCtl3D = False
       ParentFont = False
       TabOrder = 2
-      Text = '9600'
+      Text = '2400'
       Items.Strings = (
         '110'
         '300'

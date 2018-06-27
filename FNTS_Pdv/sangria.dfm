@@ -3,7 +3,7 @@ object frmSangria: TfrmSangria
   Top = 319
   BorderStyle = bsNone
   Caption = 'Retirada'
-  ClientHeight = 223
+  ClientHeight = 202
   ClientWidth = 274
   Color = clSilver
   Font.Charset = ANSI_CHARSET
@@ -330,7 +330,7 @@ object frmSangria: TfrmSangria
   object ed_valor: TRzNumericEdit
     Left = 71
     Top = 54
-    Width = 156
+    Width = 181
     Height = 41
     Color = 15916445
     Ctl3D = False
