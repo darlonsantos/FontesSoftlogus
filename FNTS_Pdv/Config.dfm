@@ -5242,21 +5242,26 @@ object frmConfig: TfrmConfig
       object grp1: TGroupBox
         Left = 8
         Top = 8
-        Width = 281
-        Height = 409
+        Width = 596
+        Height = 425
         Caption = 'Configura'#231#245'es'
         TabOrder = 0
         object pgc1: TPageControl
           Left = 2
           Top = 15
-          Width = 277
-          Height = 392
-          ActivePage = ts4
+          Width = 592
+          Height = 408
+          ActivePage = ts1
           Align = alClient
           MultiLine = True
           TabOrder = 0
+          ExplicitWidth = 277
+          ExplicitHeight = 392
           object ts1: TTabSheet
             Caption = 'Certificado'
+            ExplicitTop = 42
+            ExplicitWidth = 269
+            ExplicitHeight = 346
             object grp2: TGroupBox
               Left = 0
               Top = 4
@@ -5329,14 +5334,14 @@ object frmConfig: TfrmConfig
               end
               object lbl4: TLabel
                 Left = 8
-                Top = 161
+                Top = 140
                 Width = 34
                 Height = 13
                 Caption = 'ID CSC'
               end
               object lbl5: TLabel
                 Left = 8
-                Top = 217
+                Top = 188
                 Width = 60
                 Height = 13
                 Caption = 'N'#250'mero CSC'
@@ -5365,14 +5370,14 @@ object frmConfig: TfrmConfig
               end
               object edtIdToken: TEdit
                 Left = 8
-                Top = 180
+                Top = 159
                 Width = 249
                 Height = 21
                 TabOrder = 3
               end
               object edtNumeroToken: TEdit
                 Left = 8
-                Top = 236
+                Top = 207
                 Width = 249
                 Height = 21
                 TabOrder = 4
@@ -5382,6 +5387,9 @@ object frmConfig: TfrmConfig
           object ts2: TTabSheet
             Caption = 'Geral'
             ImageIndex = 1
+            ExplicitTop = 42
+            ExplicitWidth = 269
+            ExplicitHeight = 346
             object grp3: TGroupBox
               Left = 0
               Top = 4
@@ -5514,6 +5522,9 @@ object frmConfig: TfrmConfig
           object ts3: TTabSheet
             Caption = 'WebService'
             ImageIndex = 2
+            ExplicitTop = 42
+            ExplicitWidth = 269
+            ExplicitHeight = 346
             object grp4: TGroupBox
               Left = 0
               Top = 4
@@ -5688,6 +5699,9 @@ object frmConfig: TfrmConfig
           object ts4: TTabSheet
             Caption = 'Emitente'
             ImageIndex = 3
+            ExplicitTop = 42
+            ExplicitWidth = 269
+            ExplicitHeight = 346
             object lbl12: TLabel
               Left = 8
               Top = 4
@@ -5907,6 +5921,9 @@ object frmConfig: TfrmConfig
             Caption = 'Email'
             ImageIndex = 4
             TabVisible = False
+            ExplicitTop = 42
+            ExplicitWidth = 269
+            ExplicitHeight = 346
             object grp5: TGroupBox
               Left = 1
               Top = 4
@@ -6011,6 +6028,9 @@ object frmConfig: TfrmConfig
           object TabSheet1: TTabSheet
             Caption = 'Impress'#227'o'
             ImageIndex = 5
+            ExplicitTop = 42
+            ExplicitWidth = 269
+            ExplicitHeight = 346
             object Label13: TLabel
               Left = 3
               Top = 10
@@ -6135,12 +6155,13 @@ object frmConfig: TfrmConfig
         end
       end
       object btn3: TButton
-        Left = 295
-        Top = 15
+        Left = 515
+        Top = 327
         Width = 109
         Height = 25
         Caption = 'Inutitlizar NFC-e'
         TabOrder = 1
+        Visible = False
         OnClick = btn3Click
       end
     end
@@ -6810,7 +6831,7 @@ object frmConfig: TfrmConfig
     Configuracoes.Geral.SSLHttpLib = httpIndy
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
+    Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.PathSchemas = 'C:\Store_Protheus\Server\Schemas\'
     Configuracoes.Arquivos.Salvar = False
     Configuracoes.Arquivos.OrdenacaoPath = <>
