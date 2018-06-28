@@ -508,7 +508,7 @@ uses modulo, Math, funcoes, cliente_consulta, preco_consulta,
   TEF_Cancelamento, menu_cupom, Lista_DAV, pre_venda, msg_Operador,
   Meios_pagamento, Orcamento_Abrir, menu_fiscal, IniFiles, contasreceber,
   os, caixa_abertura, mesas, fabricacao, senha_supervisor, ComObj,
-  Constantes, Vendedor, UFuncoes, Comanda, senha;
+  Constantes, Vendedor, UFuncoes, Comanda, senha, Config;
 
 {$R *.dfm}
 
@@ -5750,7 +5750,7 @@ begin
         Ide.indFinal := cfConsumidorFinal;
         Ide.indPres := pcPresencial;
         ACBRNFCe.Configuracoes.Geral.ModeloDF := moNFCe;
-        ACBRNFCe.Configuracoes.Geral.VersaoDF := ve310;   { TODO : DARLON SANTOS ATUALIZAR PRA VERSÃO 4.0 DA NFCE }
+        ACBRNFCe.Configuracoes.Geral.VersaoDF := TpcnVersaoDF(frmConfig.cbVersaoDF.ItemIndex);   { TODO : DARLON SANTOS ATUALIZAR PRA VERSÃO 4.0 DA NFCE }
 
         Ide.verProc := '1.0';
         Emit.CNPJCPF := edtEmitCNPJ;
