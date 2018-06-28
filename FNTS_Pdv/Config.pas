@@ -208,6 +208,17 @@ type
     Label25: TLabel;
     EdFormatoOff: TRadioGroup;
     btn3: TButton;
+    GroupBox10: TGroupBox;
+    lSSLLib: TLabel;
+    cbSSLLib: TComboBox;
+    lCryptLib: TLabel;
+    cbCryptLib: TComboBox;
+    lHttpLib: TLabel;
+    cbHttpLib: TComboBox;
+    lXmlSign: TLabel;
+    cbXmlSignLib: TComboBox;
+    Label26: TLabel;
+    cbVersaoDF: TComboBox;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -228,6 +239,7 @@ type
     procedure btnPathSalvarClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     procedure GravaConfiguracoesLocais;
@@ -245,7 +257,11 @@ var
 
 implementation
 
-uses modulo, Funcoes, UFuncoes, principal;
+uses modulo, Funcoes, UFuncoes, principal,
+ strutils, math, TypInfo, DateUtils, ufrmStatus, synacode, blcksock, pcnNFe,
+  pcnConversaoNFe, ACBrDFeConfiguracoes, pcnAuxiliar, ACBrDFeSSL, pcnNFeRTXT,
+  FileCtrl,ACBrNFeNotasFiscais, ACBrDFeOpenSSL, Grids,
+  ACBrNFeConfiguracoes;
 
 {$R *.dfm}
 
@@ -257,6 +273,46 @@ end;
 procedure TfrmConfig.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   action := cafree;
+end;
+
+procedure TfrmConfig.FormCreate(Sender: TObject);
+var
+ T : TSSLLib;
+ I : TpcnTipoEmissao;
+ J : TpcnModeloDF;
+ K : TpcnVersaoDF;
+ U: TSSLCryptLib;
+ V: TSSLHttpLib;
+ X: TSSLXmlSignLib;
+ Y: TSSLType;
+begin
+    cbSSLLib.Items.Clear;
+  For T := Low(TSSLLib) to High(TSSLLib) do
+    cbSSLLib.Items.Add( GetEnumName(TypeInfo(TSSLLib), integer(T) ) );
+  cbSSLLib.ItemIndex := 0;
+
+   cbCryptLib.Items.Clear;
+  For U := Low(TSSLCryptLib) to High(TSSLCryptLib) do
+    cbCryptLib.Items.Add( GetEnumName(TypeInfo(TSSLCryptLib), integer(U) ) );
+  cbCryptLib.ItemIndex := 0;
+
+  cbHttpLib.Items.Clear;
+  For V := Low(TSSLHttpLib) to High(TSSLHttpLib) do
+    cbHttpLib.Items.Add( GetEnumName(TypeInfo(TSSLHttpLib), integer(V) ) );
+  cbHttpLib.ItemIndex := 0;
+
+  cbXmlSignLib.Items.Clear;
+  For X := Low(TSSLXmlSignLib) to High(TSSLXmlSignLib) do
+    cbXmlSignLib.Items.Add( GetEnumName(TypeInfo(TSSLXmlSignLib), integer(X) ) );
+  cbXmlSignLib.ItemIndex := 0;
+
+  cbVersaoDF.Items.Clear;
+  For K := Low(TpcnVersaoDF) to High(TpcnVersaoDF) do
+     cbVersaoDF.Items.Add( GetEnumName(TypeInfo(TpcnVersaoDF), integer(K) ) );
+  cbVersaoDF.Items[0] := 've200';
+  cbVersaoDF.ItemIndex := 0;
+  ACBrNFe1.Configuracoes.WebServices.Salvar := true;
+
 end;
 
 procedure TfrmConfig.BitBtn2Click(Sender: TObject);

@@ -1423,6 +1423,7 @@ object frmConfig: TfrmConfig
   Position = poDesktopCenter
   OnActivate = FormActivate
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -5251,7 +5252,7 @@ object frmConfig: TfrmConfig
           Top = 15
           Width = 592
           Height = 408
-          ActivePage = ts1
+          ActivePage = ts2
           Align = alClient
           MultiLine = True
           TabOrder = 0
@@ -5383,6 +5384,86 @@ object frmConfig: TfrmConfig
                 TabOrder = 4
               end
             end
+            object GroupBox10: TGroupBox
+              Left = 271
+              Top = 7
+              Width = 182
+              Height = 191
+              Caption = 'Lib'#39's'
+              TabOrder = 1
+              object lSSLLib: TLabel
+                Left = 11
+                Top = 19
+                Width = 30
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'SSLLib'
+                Color = clBtnFace
+                ParentColor = False
+              end
+              object lCryptLib: TLabel
+                Left = 10
+                Top = 61
+                Width = 40
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'CryptLib'
+                Color = clBtnFace
+                ParentColor = False
+              end
+              object lHttpLib: TLabel
+                Left = 12
+                Top = 103
+                Width = 34
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'HttpLib'
+                Color = clBtnFace
+                ParentColor = False
+              end
+              object lXmlSign: TLabel
+                Left = 14
+                Top = 143
+                Width = 52
+                Height = 13
+                Alignment = taRightJustify
+                Caption = 'XMLSignLib'
+                Color = clBtnFace
+                ParentColor = False
+              end
+              object cbSSLLib: TComboBox
+                Left = 11
+                Top = 36
+                Width = 160
+                Height = 21
+                Style = csDropDownList
+                TabOrder = 0
+              end
+              object cbCryptLib: TComboBox
+                Left = 11
+                Top = 80
+                Width = 160
+                Height = 21
+                Style = csDropDownList
+                TabOrder = 1
+              end
+              object cbHttpLib: TComboBox
+                Left = 11
+                Top = 120
+                Width = 160
+                Height = 21
+                Style = csDropDownList
+                TabOrder = 2
+              end
+              object cbXmlSignLib: TComboBox
+                Left = 11
+                Top = 160
+                Width = 160
+                Height = 21
+                Style = csDropDownList
+                TabOrder = 3
+              end
+            end
           end
           object ts2: TTabSheet
             Caption = 'Geral'
@@ -5394,7 +5475,7 @@ object frmConfig: TfrmConfig
               Left = 0
               Top = 4
               Width = 265
-              Height = 309
+              Height = 353
               Caption = 'Geral'
               TabOrder = 0
               object btnPathSalvar: TSpeedButton
@@ -5448,10 +5529,17 @@ object frmConfig: TfrmConfig
               end
               object Label23: TLabel
                 Left = 15
-                Top = 263
+                Top = 305
                 Width = 64
                 Height = 13
                 Caption = 'CFOP Padr'#227'o'
+              end
+              object Label26: TLabel
+                Left = 14
+                Top = 264
+                Width = 119
+                Height = 13
+                Caption = 'Vers'#227'o Documento Fiscal'
               end
               object edtPathLogs: TEdit
                 Left = 13
@@ -5512,10 +5600,17 @@ object frmConfig: TfrmConfig
               end
               object edCFOP: TEdit
                 Left = 13
-                Top = 279
+                Top = 321
                 Width = 123
                 Height = 21
                 TabOrder = 5
+              end
+              object cbVersaoDF: TComboBox
+                Left = 13
+                Top = 283
+                Width = 248
+                Height = 21
+                TabOrder = 6
               end
             end
           end
