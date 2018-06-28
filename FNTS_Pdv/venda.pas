@@ -5750,7 +5750,7 @@ begin
         Ide.indFinal := cfConsumidorFinal;
         Ide.indPres := pcPresencial;
         ACBRNFCe.Configuracoes.Geral.ModeloDF := moNFCe;
-        ACBRNFCe.Configuracoes.Geral.VersaoDF := TpcnVersaoDF(frmConfig.cbVersaoDF.ItemIndex);   { TODO : DARLON SANTOS ATUALIZAR PRA VERSÃO 4.0 DA NFCE }
+        ACBRNFCe.Configuracoes.Geral.VersaoDF :=  TpcnVersaoDF(cbVersaoDF);
 
         Ide.verProc := '1.0';
         Emit.CNPJCPF := edtEmitCNPJ;
