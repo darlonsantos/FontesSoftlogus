@@ -5780,7 +5780,7 @@ begin
         else
           Emit.CRT := crtRegimeNormal;
 
-        // dados destinatarios sadraque@inovarem.com.br
+
         Dest.CNPJCPF := OnlyNumber(sConsumidor_CPF);
         Dest.ISUF := '';
         Dest.xNome := sConsumidor_Nome;
@@ -5911,7 +5911,7 @@ begin
                     case ICMS.CSOSN of
                       csosn101:begin
                         ICMS.orig    := oeNacional;
-                        ICMS.pCredSN := 0.0; // Colocar o percentual do Crédito
+                        ICMS.pCredSN := 0.0;     // Colocar o percentual do Crédito
                         ICMS.vCredICMSSN := 0.0; // Colocar o valor do Crédito
                       end;
                      csosn102:
@@ -6174,7 +6174,7 @@ begin
               tPag := fpDinheiro;
             if (AnsiUpperCase(cb_forma1.text) = AnsiUpperCase(lForma_pgto_Convenio)) then
               tPag := fpCreditoLoja;
-            vPag :=   ed_totalizador.Value - PTroco; //ed_forma1.value - PTroco //darlon santos;
+            vPag :=   ed_totalizador.Value - PTroco //ed_forma1.value - PTroco //darlon santos;
           end;
         end;
 
@@ -6217,8 +6217,9 @@ begin
             if (AnsiUpperCase(cb_forma3.text) = AnsiUpperCase(lForma_pgto_Convenio)) then
               tPag := fpCreditoLoja;
             vPag := ed_totalizador.Value - PTroco; // darlon santos
-          end;
+         end;
         end;
+       frmmodulo.ACBRDANFENFCe.vTroco  := PTroco;
         InfAdic.infCpl := '';
         InfAdic.infAdFisco := '';
       end;
@@ -6283,15 +6284,15 @@ begin
         ChaveNFCE := ACBRNFCe.NotasFiscais.Items[0].NFe.infNFe.Id;
         NumeroNFCe := strtoint(vAux);
       end;
-      ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\Schemas\DANFeNFCe.fr3';
+      ACBRDANFENFCe.FastFile := 'C:\Softlogus\PDV\DANFeNFCe.fr3';
       if FileExists(frmPrincipal.LerINi(sConfiguracoes, 'PDV',
         'CAMINHO_LOGO', '')) then
         ACBRDANFENFCe.Logo := frmPrincipal.LerINi(sConfiguracoes, 'PDV',
           'CAMINHO_LOGO', '');
       ACBRDANFENFCe.Detalhado := true;
-      ACBRDANFENFCe.vTroco := ed_troco.value;
+      //ACBRDANFENFCe.vTroco := ed_troco.value;
 
-      ACBRDANFENFCe.vTroco := ed_troco.Value;
+     // ACBRDANFENFCe.vTroco := ed_troco.Value;
       ACBRDANFENFCe.Impressora := edImpressora;
       ACBRDANFENFCe.DescricaoViaEstabelec := edDescEsta;
       ACBRDANFENFCe.EspessuraBorda := edMargem;
