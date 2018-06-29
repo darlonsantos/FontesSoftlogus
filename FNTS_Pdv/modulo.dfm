@@ -5261,6 +5261,7 @@ object frmModulo: TfrmModulo
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
+    Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.SepararPorModelo = True
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True

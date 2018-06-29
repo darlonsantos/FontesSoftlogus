@@ -516,8 +516,8 @@ end;
 
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
-  //store_protect.IDSistema := 291304;
-  //store_protect.executar;
+//  store_protect.IDSistema := 291304;
+//  store_protect.executar;
   // Configurações para gaveta e tipo de impressora - nao remover o extractfilepath
   iImpressora := 1;
   iGaveta := StrToInt(frmPrincipal.LerINi(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'GAVETA', 'LOCAL', '0'));

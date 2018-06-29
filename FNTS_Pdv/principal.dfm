@@ -2881,7 +2881,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 752
     Top = 472
     Bitmap = {
-      494C010108000D007C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010108000D008C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3450,7 +3450,7 @@ object frmPrincipal: TfrmPrincipal
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
-    Configuracoes.Geral.IncluirQRCodeXMLNFCe = False
+    Configuracoes.Geral.VersaoQRCode = veqr000
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.WebServices.UF = 'SP'
     Configuracoes.WebServices.AguardarConsultaRet = 0

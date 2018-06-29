@@ -219,6 +219,8 @@ type
     cbXmlSignLib: TComboBox;
     Label26: TLabel;
     cbVersaoDF: TComboBox;
+    MemoResp: TMemo;
+    btnstatus: TAdvGlowButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -240,6 +242,7 @@ type
     procedure SpeedButton1Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnstatusClick(Sender: TObject);
   private
     { Private declarations }
     procedure GravaConfiguracoesLocais;
@@ -304,14 +307,14 @@ begin
   cbXmlSignLib.Items.Clear;
   For X := Low(TSSLXmlSignLib) to High(TSSLXmlSignLib) do
     cbXmlSignLib.Items.Add( GetEnumName(TypeInfo(TSSLXmlSignLib), integer(X) ) );
-  cbXmlSignLib.ItemIndex := 0;
+   cbXmlSignLib.ItemIndex := 0;
 
   cbVersaoDF.Items.Clear;
   For K := Low(TpcnVersaoDF) to High(TpcnVersaoDF) do
-     cbVersaoDF.Items.Add( GetEnumName(TypeInfo(TpcnVersaoDF), integer(K) ) );
-  cbVersaoDF.Items[0] := 've200';
-  cbVersaoDF.ItemIndex := 0;
-  ACBrNFe1.Configuracoes.WebServices.Salvar := true;
+   cbVersaoDF.Items.Add( GetEnumName(TypeInfo(TpcnVersaoDF), integer(K) ) );
+   cbVersaoDF.Items[0] := 've200';
+   cbVersaoDF.ItemIndex := 0;
+   ACBrNFe1.Configuracoes.WebServices.Salvar := true;
 
 end;
 
@@ -409,9 +412,16 @@ begin
     Ini.WriteString('Certificado', 'NumSerie', edtNumSerie.Text);
     Ini.WriteString('Certificado', 'IDToken', edtIdToken.Text);
     Ini.WriteString('Certificado', 'TokenNumero', edtNumeroToken.Text);
+    { TODO : DARLON SANTOS }
+    Ini.WriteInteger( 'Certificado','SSLLib' , cbSSLLib.ItemIndex);
+    Ini.WriteInteger( 'Certificado','CryptLib' , cbCryptLib.ItemIndex);
+    Ini.WriteInteger( 'Certificado','HttpLib' , cbHttpLib.ItemIndex);
+    Ini.WriteInteger( 'Certificado','XmlSignLib' , cbXmlSignLib.ItemIndex);
 
     Ini.WriteInteger('Geral', 'DANFE', rgTipoDanfe.ItemIndex);
     Ini.WriteInteger('Geral', 'FormaEmissao', rgFormaEmissao.ItemIndex);
+    { TODO : DARLON SANTOS }
+    Ini.WriteInteger( 'Geral','VersaoDF',cbVersaoDF.ItemIndex);
     Ini.WriteBool('Geral', 'Salvar', ckSalvar.Checked);
     Ini.WriteString('Geral', 'PathSalvar', edtPathLogs.Text);
     Ini.WriteString('Geral', 'PathSchemas', edSchemas.Text);
@@ -459,6 +469,10 @@ begin
     Ini.WriteFloat('Impressao', 'Margem Superior', edMargSup.Value);
     Ini.WriteFloat('Impressao', 'Margem Inferior', edMarginf.Value);
 
+
+
+
+
     StreamMemo := TMemoryStream.Create;
     mmEmailMsg.Lines.SaveToStream(StreamMemo);
     StreamMemo.Seek(0, soFromBeginning);
@@ -493,6 +507,13 @@ begin
     edtNumSerie.Text := Ini.ReadString('Certificado', 'NumSerie', '');
     edtCaminho.Text := Ini.ReadString('Certificado', 'Caminho', '');
     edtSenha.Text := Ini.ReadString('Certificado', 'Senha', '');
+
+    { TODO : DARLON SANTOS }
+    cbSSLLib.ItemIndex:= Ini.ReadInteger( 'Certificado','SSLLib' ,0);
+    cbCryptLib.ItemIndex := Ini.ReadInteger( 'Certificado','CryptLib' , 0);
+    cbHttpLib.ItemIndex := Ini.ReadInteger( 'Certificado','HttpLib' , 0);
+    cbXmlSignLib.ItemIndex := Ini.ReadInteger( 'Certificado','XmlSignLib' , 0);
+
     ACBrNFe1.Configuracoes.Certificados.NumeroSerie := edtNumSerie.Text;
     edtNumSerie.Text := ACBrNFe1.Configuracoes.Certificados.NumeroSerie;
     { Label5.Caption := 'Informe o número de série do certificado'#13+
@@ -505,6 +526,9 @@ begin
       edtSenha.Visible   := False;
       sbtnCaminhoCert.Visible := False; }
 {$ENDIF}
+     { TODO -c201254693 : DARLON SANTOS }
+    cbVersaoDF.ItemIndex := Ini.ReadInteger( 'Geral','VersaoDF',0);
+       { TODO -o27062018 -c201254693 : DARLON SANTOS }
     edtIdToken.Text := Ini.ReadString('Certificado', 'IDToken', '');
     edtNumeroToken.Text := Ini.ReadString('Certificado', 'TokenNumero', '');
     rgFormaEmissao.ItemIndex := Ini.ReadInteger('Geral', 'FormaEmissao', 0);
@@ -897,6 +921,14 @@ begin
    //PathClick(edtPathLogs);
   if frmPrincipal.DIretorio.Execute then
     edtPathLogs.Text := frmPrincipal.DIretorio.Directory;
+end;
+
+procedure TfrmConfig.btnstatusClick(Sender: TObject);
+begin
+ frmModulo.ACBRNFCe.WebServices.StatusServico.Executar;
+ MemoResp.Lines.Text := frmModulo.ACBRNFCe.WebServices.StatusServico.RetWS;
+ //memoRespWS.Lines.Text := ACBrNFe1.WebServices.StatusServico.RetornoWS;
+// LoadXML(ACBrNFe1.WebServices.StatusServico.RetornoWS, WBResposta);
 end;
 
 procedure TfrmConfig.bttconf001Click(Sender: TObject);

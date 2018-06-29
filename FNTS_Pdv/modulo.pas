@@ -1109,10 +1109,15 @@ var
   edMargem, rgFormaEmissao, EdFormatoOff:Integer;
   edMargEsq,edMargDir,edMargSup,edMarginf:Double;
   pesoBalanca:Double;
+  cbSSLLib, cbCryptLib,cbHttpLib,cbXmlSignLib, cbVersaoDF: Integer;
 
   implementation
 
-uses funcoes, principal,ufrmStatus;
+uses funcoes, principal,ufrmStatus,
+ strutils, math, TypInfo, DateUtils,  synacode, blcksock, pcnNFe,
+  pcnConversaoNFe, ACBrDFeConfiguracoes, pcnAuxiliar, ACBrDFeSSL, pcnNFeRTXT,
+  FileCtrl,ACBrNFeNotasFiscais, ACBrDFeOpenSSL,  Grids,
+  ACBrNFeConfiguracoes, Config;
 
 {$R *.dfm}
 
@@ -1264,7 +1269,14 @@ begin
 
   Ini := TIniFile.Create(IniFile);
   try
+    { TODO -o27062018 -c201254693 : DARLON SANTOS }
+      cbSSLLib:= Ini.ReadInteger( 'Certificado','SSLLib' ,0);
+      cbCryptLib := Ini.ReadInteger( 'Certificado','CryptLib' , 0);
+      cbHttpLib := Ini.ReadInteger( 'Certificado','HttpLib' , 0);
+      cbXmlSignLib := Ini.ReadInteger( 'Certificado','XmlSignLib' , 0);
+
     edtNumSerie := Ini.ReadString('Certificado', 'NumSerie', '');
+    cbVersaoDF := Ini.ReadInteger( 'Geral','VersaoDF',0);
     edtIdToken := Ini.ReadString('Certificado', 'IDToken', '');
     edtTokenNumero := Ini.ReadString('Certificado', 'TokenNumero', '');
 
