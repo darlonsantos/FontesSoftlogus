@@ -4,9 +4,9 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'PRODUTOS | Baixa no Estoque'
-  ClientHeight = 541
-  ClientWidth = 914
-  Color = 5460819
+  ClientHeight = 627
+  ClientWidth = 783
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -85,11 +85,11 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       ExplicitWidth = 774
     end
     object FlatPanel1: TFlatPanel
-      Left = 0
-      Top = 0
+      Left = 1
+      Top = 3
       Width = 784
       Height = 63
-      Color = clSilver
+      Color = clHighlight
       ColorHighLight = clBtnFace
       ColorShadow = clBtnFace
       TabOrder = 0
@@ -377,7 +377,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       Width = 784
       Height = 122
       BevelOuter = bvNone
-      Color = clSilver
+      Color = clHighlight
       ParentBackground = False
       TabOrder = 1
       object Bevel3: TBevel
@@ -447,7 +447,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
         Height = 122
         Align = alLeft
         BevelOuter = bvNone
-        Color = clSilver
+        Color = clHighlight
         ParentBackground = False
         TabOrder = 1
         object Label10: TLabel
@@ -654,7 +654,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
         Height = 54
         Align = alBottom
         BevelOuter = bvNone
-        Color = clSilver
+        Color = clHighlight
         ParentBackground = False
         TabOrder = 6
         object bitbtn2: TAdvGlowButton
@@ -927,18 +927,20 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
     end
   end
   object Panel6: TPanel
-    Left = 783
-    Top = 48
-    Width = 131
-    Height = 493
-    Align = alRight
+    Left = 0
+    Top = 540
+    Width = 783
+    Height = 87
+    Align = alBottom
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 3
+    ExplicitTop = 644
+    ExplicitWidth = 1209
     object bincluir: TAdvGlowButton
-      Left = 30
-      Top = 57
+      Left = 170
+      Top = 14
       Width = 76
       Height = 55
       Caption = 'Incluir'
@@ -1060,8 +1062,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       Layout = blGlyphTop
     end
     object bexcluir: TAdvGlowButton
-      Left = 30
-      Top = 173
+      Left = 322
+      Top = 14
       Width = 76
       Height = 55
       Caption = 'Excluir'
@@ -1196,8 +1198,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       Layout = blGlyphTop
     end
     object DBAdvGlowButton1: TDBAdvGlowButton
-      Left = 10
-      Top = 6
+      Left = 554
+      Top = 22
       Width = 54
       Height = 47
       Hint = 'First record'
@@ -1321,8 +1323,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       DisableControl = [drBOF, drEditing, drEmpty]
     end
     object DBAdvGlowButton2: TDBAdvGlowButton
-      Left = 70
-      Top = 6
+      Left = 625
+      Top = 22
       Width = 54
       Height = 47
       Hint = 'Prior record'
@@ -1446,8 +1448,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       DisableControl = [drBOF, drEditing, drEmpty]
     end
     object DBAdvGlowButton3: TDBAdvGlowButton
-      Left = 571
-      Top = 0
+      Left = 1194
+      Top = 61
       Width = 43
       Height = 32
       Hint = 'Next record'
@@ -1526,8 +1528,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       DisableControl = [drEOF, drEditing, drEmpty]
     end
     object DBAdvGlowButton4: TDBAdvGlowButton
-      Left = 616
-      Top = 0
+      Left = 1239
+      Top = 61
       Width = 43
       Height = 32
       Hint = 'Last record'
@@ -1606,8 +1608,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       DisableControl = [drEOF, drEditing, drEmpty]
     end
     object bitbtn7: TAdvGlowButton
-      Left = 30
-      Top = 289
+      Left = 468
+      Top = 14
       Width = 76
       Height = 55
       Caption = 'Imprimir'
@@ -1729,8 +1731,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       Layout = blGlyphTop
     end
     object blocalizar: TAdvGlowButton
-      Left = 30
-      Top = 231
+      Left = 392
+      Top = 14
       Width = 76
       Height = 55
       Caption = 'Localizar'
@@ -1869,8 +1871,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       Layout = blGlyphTop
     end
     object balterar: TAdvGlowButton
-      Left = 30
-      Top = 115
+      Left = 251
+      Top = 14
       Width = 76
       Height = 55
       Caption = 'Alterar'
@@ -1992,18 +1994,22 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       Layout = blGlyphTop
     end
     object pgravar: TFlatPanel
-      Left = 70
-      Top = -8
-      Width = 130
-      Height = 508
-      ParentColor = True
+      Left = 0
+      Top = 0
+      Width = 783
+      Height = 87
+      Color = clHighlight
       Visible = False
       ColorHighLight = 5460819
       ColorShadow = 5460819
+      Align = alClient
       TabOrder = 8
+      ExplicitLeft = 544
+      ExplicitTop = 22
+      ExplicitHeight = 101
       object bgravar: TAdvGlowButton
-        Left = 28
-        Top = 26
+        Left = 295
+        Top = 13
         Width = 78
         Height = 63
         Caption = 'Gravar'
@@ -2128,8 +2134,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
         Layout = blGlyphTop
       end
       object bcancelar: TAdvGlowButton
-        Left = 28
-        Top = 95
+        Left = 403
+        Top = 13
         Width = 80
         Height = 63
         Caption = 'Cancelar'
@@ -2265,7 +2271,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 914
+    Width = 783
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -2279,6 +2285,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -2297,6 +2304,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 914
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label20: TLabel
@@ -2395,8 +2403,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
   object dsorcamento: TDataSource
     DataSet = frmmodulo.qrbaixa_produtos
     OnDataChange = dsorcamentoDataChange
-    Left = 704
-    Top = 632
+    Left = 712
+    Top = 700
   end
   object dsorcamento_produto: TDataSource
     DataSet = qritem_baixa_produtos
@@ -3814,8 +3822,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
     Restrictions = []
     RTLLanguage = False
     MemoParentFont = False
-    Left = 800
-    Top = 672
+    Left = 1060
+    Top = 648
   end
   object fsitembaixa_produtos: TfrxDBDataset
     UserName = 'fsitembaixa_produtos'
@@ -3900,7 +3908,7 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
     CloseDataSource = False
     DataSet = qrproduto
     BCDToCurrency = False
-    Left = 936
+    Left = 1096
     Top = 672
   end
   object qrempresa: TZQuery
@@ -3908,8 +3916,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
     SQL.Strings = (
       'select * from C000004')
     Params = <>
-    Left = 1024
-    Top = 680
+    Left = 1084
+    Top = 644
   end
   object FSEMPRESA: TfrxDBDataset
     UserName = 'FSEMPRESA'
@@ -3986,8 +3994,8 @@ object frmbaixa_estoque: Tfrmbaixa_estoque
       'TIPOCALCULO=TIPOCALCULO')
     DataSet = frmmodulo.qrempresa
     BCDToCurrency = False
-    Left = 664
-    Top = 672
+    Left = 1084
+    Top = 656
   end
   object UCControls1: TUCControls
     GroupName = 'Form.Baixa Estoque'

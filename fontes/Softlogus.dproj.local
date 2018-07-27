@@ -39,6 +39,8 @@
     <File Path="fnts\cartao_alterar.dfm"/>
     <File Path="fnts\cartao_ficha.pas"/>
     <File Path="fnts\cartao_ficha.dfm"/>
+    <File Path="fnts\cartao_pgto.pas"/>
+    <File Path="fnts\cartao_pgto.dfm"/>
     <File Path="fnts\CEST.pas"/>
     <File Path="fnts\CEST.dfm"/>
     <File Path="fnts\cfop.pas"/>
@@ -61,8 +63,6 @@
     <File Path="fnts\cliente_financeiro.dfm"/>
     <File Path="fnts\cliente_inicio.pas"/>
     <File Path="fnts\cliente_inicio.dfm"/>
-    <File Path="fnts\cartao_pgto.pas"/>
-    <File Path="fnts\cartao_pgto.dfm"/>
     <File Path="fnts\cliente_veiculo.pas"/>
     <File Path="fnts\cliente_veiculo.dfm"/>
     <File Path="fnts\cnae.pas"/>
@@ -595,6 +595,8 @@
     <File Path="fnts\venda_serial.dfm"/>
     <File Path="fnts\venda_troca.pas"/>
     <File Path="fnts\venda_troca.dfm"/>
+    <File Path="fnts\versao.pas"/>
+    <File Path="fnts\versao.dfm"/>
     <File Path="fnts\versionamento.pas"/>
     <File Path="fnts\versionamento.dfm"/>
     <File Path="fnts\webcam.pas"/>
@@ -658,4 +660,13 @@
     <File Path="fnts\xloc_veiculo.pas"/>
     <File Path="fnts\xloc_veiculo.dfm"/>
   </ProjectSortOrder>
+	<Transactions>
+    <Transaction>2018/07/21 18:08:40.000.979,=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
+    <Transaction>2018/07/21 18:09:15.000.781,C:\Desenv_Softlogus\fontes\Unit1.pas=C:\Desenv_Softlogus\fontes\fnts\versao.pas</Transaction>
+    <Transaction>2018/07/21 18:09:15.000.782,C:\Desenv_Softlogus\fontes\Unit1.dfm=C:\Desenv_Softlogus\fontes\fnts\versao.dfm</Transaction>
+    <Transaction>2018/07/24 20:53:10.250,=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
+    <Transaction>2018/07/24 20:53:58.369,C:\Desenv_Softlogus\fontes\atualizacaoTabelas.dfm=C:\Desenv_Softlogus\fontes\Unit1.dfm</Transaction>
+    <Transaction>2018/07/24 20:53:58.369,C:\Desenv_Softlogus\fontes\atualizacaoTabelas.pas=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
+    <Transaction>2018/07/24 20:58:39.840,C:\Desenv_Softlogus\fontes\atualizacaoTabelas.pas=</Transaction>
+  </Transactions>
 </BorlandProject>

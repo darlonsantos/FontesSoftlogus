@@ -263,7 +263,6 @@ type
     DBCheckBox18: TDBCheckBox;
     RzGroupBox2: TRzGroupBox;
     DBCheckBox12: TDBCheckBox;
-    Conecta_FTP: TIdFTP;
     euf: TwwDBComboBox;
     DBCheckBox26: TDBCheckBox;
     GroupBox32: TGroupBox;

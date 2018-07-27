@@ -5440,7 +5440,7 @@ begin
     qrpreco.FieldByName('LUCRO').asfloat :=
       qrpreco.FieldByName('VALOR_ULTIMA_COMPRA').asfloat *
       qrpreco.FieldByName('LUCRO_P').asfloat / 100;
-    bpreco_vendaClick(frmproduto);
+ //   bpreco_vendaClick(frmproduto);
   end;
 end;
 
@@ -5464,7 +5464,7 @@ begin
     qrpreco.FieldByName('ICMS_SAIDA').asfloat :=
       qrpreco.FieldByName('VALOR_ULTIMA_COMPRA').asfloat *
       qrpreco.FieldByName('ICMS_SAIDA_P').asfloat / 100;
-    // bpreco_vendaClick(frmproduto);
+   //  bpreco_vendaClick(frmproduto);
   end;
 end;
 
@@ -5476,7 +5476,7 @@ begin
     qrpreco.FieldByName('COFINS').asfloat :=
       qrpreco.FieldByName('VALOR_ULTIMA_COMPRA').asfloat *
       qrpreco.FieldByName('COFINS_P').asfloat / 100;
-    // bpreco_vendaClick(frmproduto);
+    // bpreco_vendaCick(frmproduto);
   end;
 end;
 

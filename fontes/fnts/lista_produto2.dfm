@@ -4,9 +4,9 @@ object frmlista_produto2: Tfrmlista_produto2
   BorderIcons = []
   BorderStyle = bsNone
   Caption = ' Relat'#243'rio de Produtos'
-  ClientHeight = 426
-  ClientWidth = 520
-  Color = clSilver
+  ClientHeight = 504
+  ClientWidth = 404
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -21,9 +21,9 @@ object frmlista_produto2: Tfrmlista_produto2
   TextHeight = 13
   object bar: TRzProgressBar
     Left = 0
-    Top = 420
-    Width = 520
-    Height = 6
+    Top = 428
+    Width = 404
+    Height = 12
     Align = alBottom
     BackColor = clBtnFace
     BarColor = 12582847
@@ -44,21 +44,21 @@ object frmlista_produto2: Tfrmlista_produto2
     ShowPercent = False
     ThemeAware = False
     TotalParts = 500
-    ExplicitTop = 376
-    ExplicitWidth = 510
+    ExplicitTop = 432
   end
   object Panel1: TPanel
-    Left = 401
-    Top = 48
-    Width = 119
-    Height = 378
+    Left = 0
+    Top = 440
+    Width = 404
+    Height = 64
+    Align = alBottom
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 0
     object bimprimir: TAdvGlowButton
-      Left = 22
-      Top = 23
+      Left = 165
+      Top = 6
       Width = 75
       Height = 63
       Caption = 'Visualizar'
@@ -334,7 +334,7 @@ object frmlista_produto2: Tfrmlista_produto2
     Width = 401
     Height = 378
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clWhite
     ParentBackground = False
     TabOrder = 1
     object Label1: TLabel
@@ -761,7 +761,7 @@ object frmlista_produto2: Tfrmlista_produto2
       ParentColor = False
       Visible = False
       object HeaderView5: THeaderView
-        Left = 3
+        Left = -27
         Top = 1
         Width = 178
         Height = 68
@@ -943,7 +943,7 @@ object frmlista_produto2: Tfrmlista_produto2
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 520
+    Width = 404
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -957,6 +957,7 @@ object frmlista_produto2: Tfrmlista_produto2
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -975,6 +976,7 @@ object frmlista_produto2: Tfrmlista_produto2
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 520
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel

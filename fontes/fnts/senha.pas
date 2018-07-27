@@ -7,7 +7,8 @@ uses
   Dialogs, StdCtrls, DB, DBTables, DBCtrls, ExtDlgs,
   CellEditors, jpeg,
   ExtCtrls, VrControls, VrButtons, AdvGlowButton, dxGDIPlusClasses, acPNG,
-  AdvPanel, AdvTouchKeyboard, ACBrBase, ACBrEnterTab, AdvReflectionImage;
+  AdvPanel, AdvTouchKeyboard, ACBrBase, ACBrEnterTab, AdvReflectionImage,
+  AdvMetroButton, AdvSmoothPanel, AdvSmoothExpanderPanel;
 
 type
   Tfrmsenha = class(TForm)
@@ -18,7 +19,6 @@ type
     Label2: TLabel;
     button1: TAdvGlowButton;
     button2: TAdvGlowButton;
-    lblFunc: TLabel;
     Timer1: TTimer;
     AdvPanelStyler1: TAdvPanelStyler;
     EditUsuario: TEdit;
@@ -26,7 +26,11 @@ type
     ACBrEnterTab1: TACBrEnterTab;
     LbUsuario: TLabel;
     LbSenha: TLabel;
-    Label3: TLabel;
+    Panel1: TPanel;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label4: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
+    lblFunc: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure BUTTON2KeyPress(Sender: TObject; var Key: Char);
@@ -40,6 +44,7 @@ type
     procedure EditSenhaExit(Sender: TObject);
     procedure EditUsuarioKeyPress(Sender: TObject; var Key: Char);
     procedure EditSenhaKeyPress(Sender: TObject; var Key: Char);
+    procedure AdvMetroButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -86,6 +91,11 @@ begin
   lblFunc.Caption := '';
   lblFunc.Visible := False;
   close;
+end;
+
+procedure Tfrmsenha.AdvMetroButton1Click(Sender: TObject);
+begin
+Close;
 end;
 
 procedure Tfrmsenha.BUTTON1Click(Sender: TObject);

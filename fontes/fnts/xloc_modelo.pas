@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, wwdbedit, Wwdotdot, Wwdbcomb, ExtCtrls,
   Collection, TFlatPanelUnit, Menus, Grids, Wwdbigrd, Wwdbgrid, DB,
-  ZAbstractRODataset, ZAbstractDataset, ZDataset;
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, AdvMetroButton,
+  AdvSmoothPanel, AdvSmoothExpanderPanel;
 
 type
   Tfrmxloc_modelo = class(TForm)
@@ -34,6 +35,9 @@ type
     N1: TMenuItem;
     Fechar1: TMenuItem;
     Bevel3: TBevel;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label8: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure Localizarpor1Click(Sender: TObject);
     procedure Referncia1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -50,6 +54,7 @@ type
     procedure locChange(Sender: TObject);
     procedure GRIDDblClick(Sender: TObject);
     procedure ParmetrosdaPesquisa1Click(Sender: TObject);
+    procedure AdvMetroButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -92,6 +97,11 @@ procedure Tfrmxloc_modelo.FormClose(Sender: TObject;
 begin
   PARAMETRO_PESQUISA := '';
   ACTION := CAFREE;
+end;
+
+procedure Tfrmxloc_modelo.AdvMetroButton1Click(Sender: TObject);
+begin
+close;
 end;
 
 procedure Tfrmxloc_modelo.Fechar1Click(Sender: TObject);

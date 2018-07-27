@@ -204,7 +204,6 @@ type
     Panel11: TPanel;
     Panel12: TPanel;
     RSALDO: TJvCalcEdit;
-    Panel13: TPanel;
     AdvReflectionImage1: TAdvReflectionImage;
     N1: TMenuItem;
     N2: TMenuItem;

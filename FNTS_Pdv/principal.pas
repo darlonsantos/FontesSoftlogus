@@ -86,7 +86,6 @@ type
     dxRibbon1: TdxRibbon;
     dxRibbon1Tab2: TdxRibbonTab;
     dxBarButton2: TdxBarButton;
-    dxBarManager1Bar1: TdxBar;
     dxBarLargeButton2: TdxBarLargeButton;
     dxBarLargeButton4: TdxBarLargeButton;
     cxBarEditItem2: TcxBarEditItem;
@@ -103,6 +102,7 @@ type
     dxBarLargeButton8: TdxBarLargeButton;
     dxBarLargeButton9: TdxBarLargeButton;
     dxBarButton4: TdxBarButton;
+    dxBarButton5: TdxBarButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);

@@ -53,7 +53,7 @@ object frmLoc_fornecedor: TfrmLoc_fornecedor
     Width = 416
     Height = 47
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 1
     object Label1: TLabel
@@ -213,8 +213,6 @@ object frmLoc_fornecedor: TfrmLoc_fornecedor
     Width = 416
     Height = 18
     Panels = <>
-    ExplicitTop = 385
-    ExplicitWidth = 415
   end
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
@@ -233,7 +231,7 @@ object frmLoc_fornecedor: TfrmLoc_fornecedor
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -245,15 +243,15 @@ object frmLoc_fornecedor: TfrmLoc_fornecedor
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.0.4.2'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 3
     ShowExpander = False
+    ExpanderBorderColor = clHighlight
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitTop = 21
-    ExplicitWidth = 620
+    TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
       Left = 59
@@ -344,7 +342,7 @@ object frmLoc_fornecedor: TfrmLoc_fornecedor
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.0.1'
+      Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
   end

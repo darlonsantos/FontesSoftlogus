@@ -41,7 +41,6 @@ type
     MemorandodeExportao1: TMenuItem;
     Panel3: TPanel;
     Label10: TLabel;
-    bfiltrar: TAdvGlowButton;
     Label8: TLabel;
     Label1: TLabel;
     Label2: TLabel;
@@ -175,12 +174,7 @@ type
     qrnotaespecie: TStringField;
     Panel2: TPanel;
     Bevel3: TBevel;
-    bincluir: TAdvGlowButton;
-    balterar: TAdvGlowButton;
-    bexcluir: TAdvGlowButton;
-    bitbtn6: TAdvGlowButton;
     bimprimir: TAdvGlowButton;
-    bcancelar: TAdvGlowButton;
     btabela: TAdvGlowMenuButton;
     Panel6: TPanel;
     Label18: TLabel;
@@ -714,7 +708,6 @@ type
     qrnotaVICMSUFREMETTOTAL: TFloatField;
     qrnotaDIFAL: TFloatField;
     Panel9: TPanel;
-    Panel10: TPanel;
     zqryComplementar: TZQuery;
     zqryComplementarCODIGO: TWideStringField;
     zqryComplementarCODNOTA: TWideStringField;
@@ -724,12 +717,19 @@ type
     zqryComplementarCHAVE: TWideStringField;
     qrnotaPICMSITERPART: TFloatField;
     qrnotaPICMSINTERPART: TFloatField;
-    procedure bincluirClick(Sender: TObject);
+    Label24: TLabel;
+    cbVersaoDF: TComboBox;
+    Label26: TLabel;
+    edtPathSchemas: TEdit;
+    spPathSchemas: TSpeedButton;
+    btn_incluirNotaFiscal: TAdvGlowButton;
+    btn_AlterarNotaFiscal: TAdvGlowButton;
+    btn_ExcluirNotaFiscal: TAdvGlowButton;
+    btn_CancelarNotaFiscal: TAdvGlowButton;
+    btn_LocalizarNotafiscal: TAdvGlowButton;
+    btn_ImprimirNotaFiscal: TAdvGlowButton;
     procedure FormShow(Sender: TObject);
     procedure bfecharClick(Sender: TObject);
-    procedure balterarClick(Sender: TObject);
-    procedure bexcluirClick(Sender: TObject);
-    procedure bitbtn6Click(Sender: TObject);
     procedure b(Sender: TObject);
     procedure gridRowChanged(Sender: TObject);
     procedure Alterar2Click(Sender: TObject);
@@ -741,7 +741,6 @@ type
     procedure eclienteButtonClick(Sender: TObject);
     procedure ENUMEROKeyPress(Sender: TObject; var Key: Char);
     procedure DateEdit2KeyPress(Sender: TObject; var Key: Char);
-    procedure BfiltrarClick(Sender: TObject);
     procedure ENUMEROExit(Sender: TObject);
     procedure btotaliza_notaClick(Sender: TObject);
     procedure eclienteEnter(Sender: TObject);
@@ -749,7 +748,6 @@ type
     procedure bimprimirClick(Sender: TObject);
     procedure Cancelar1Click(Sender: TObject);
     procedure Imprimir1Click(Sender: TObject);
-    procedure bcancelarClick(Sender: TObject);
     procedure gridTitleButtonClick(Sender: TObject; AFieldName: string);
     procedure DateEdit1KeyPress(Sender: TObject; var Key: Char);
     procedure ZerarNotaFiscal1Click(Sender: TObject);
@@ -782,9 +780,15 @@ type
     procedure btnfff403113Click(Sender: TObject);
     procedure AdvMetroButton1Click(Sender: TObject);
     procedure btnCCe_nfe_cceClick(Sender: TObject);
-    procedure AdvGlowButton1Click(Sender: TObject);
+    procedure btn_incluirClick(Sender: TObject);
     procedure AdvSmoothExpanderPanel1MouseDown(Sender: TObject;
       Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure btn_incluirNotaFiscalClick(Sender: TObject);
+    procedure btn_AlterarNotaFiscalClick(Sender: TObject);
+    procedure btn_ExcluirNotaFiscalClick(Sender: TObject);
+    procedure btn_CancelarNotaFiscalClick(Sender: TObject);
+    procedure btn_LocalizarNotafiscalClick(Sender: TObject);
+    procedure btn_ImprimirNotaFiscalClick(Sender: TObject);
   private
     { Private declarations }
     // nfe
@@ -817,7 +821,7 @@ uses modulo, principal, compra, cfop, cst, modelo_fiscal, xloc_cliente,
   compra_item, lista_notaentrada, lista_notacompra, notafiscal,
   compra_menu, lista_notasaida, notafiscal_cancelar, unNFe2,
   status, nfe_legenda, email, math, cliente, produto, fornecedor, empresa, OpNatureza, orcamento,
-  notas_venda;
+  notas_venda,ACBrDFeSSL, pcnNFe;
 
 const
   SELDIRHELP = 1000;
@@ -838,15 +842,28 @@ begin
     Ini.WriteString('Certificado', 'Senha', edtSenha.Text);
     Ini.WriteString('Certificado', 'NumSerie', edtNumSerie.Text);
 
+
+
+
+
     Ini.WriteInteger('Geral', 'DANFE', rgTipoDanfe.ItemIndex);
     Ini.WriteInteger('Geral', 'FormaEmissao', rgFormaEmissao.ItemIndex);
     Ini.WriteString('Geral', 'LogoMarca', edtLogoMarca.Text);
     Ini.WriteBool('Geral', 'Salvar', ckSalvar.Checked);
     Ini.WriteString('Geral', 'PathSalvar', edtPathLogs.Text);
+    Ini.WriteString( 'Geral','PathSchemas'  ,edtPathSchemas.Text) ;
+    Ini.WriteInteger( 'Geral','VersaoDF',cbVersaoDF.ItemIndex) ;
+
 
     Ini.WriteString('WebService', 'UF', cbUF.Text);
     Ini.WriteInteger('WebService', 'Ambiente', rgTipoAmb.ItemIndex);
     Ini.WriteBool('WebService', 'Visualizar', ckVisualizar.Checked);
+
+
+
+
+
+
 
     Ini.WriteString('Proxy', 'Host', edtProxyHost.Text);
     Ini.WriteString('Proxy', 'Porta', edtProxyPorta.Text);
@@ -883,7 +900,7 @@ begin
       s2 := s2 + s1[i];
   result := s2;
 end;
-   // CRIAÇÃO DO XML DA NOTA FISCAL | D S A SYSTEM
+
 procedure Tfrmnotafiscal_menu.Inicia_NFe();
 var
   IniFile: string;
@@ -896,6 +913,11 @@ begin
   Ini := TIniFile.Create(IniFile);
   try
 {$IFDEF ACBrNFeOpenSSL}
+
+
+
+
+
     edtCaminho.Text := Ini.ReadString('Certificado', 'Caminho', '');
     edtSenha.Text := Ini.ReadString('Certificado', 'Senha', '');
     ACBrNFe1.Configuracoes.Certificados.Certificado := edtCaminho.Text;
@@ -904,6 +926,9 @@ begin
     Label25.Visible := False;
     sbtnGetCert.Visible := False;
 {$ELSE}
+
+
+
     edtNumSerie.Text := Ini.ReadString('Certificado', 'NumSerie', '');
     edtCaminho.Text := Ini.ReadString('Certificado', 'Caminho', '');
     edtSenha.Text := Ini.ReadString('Certificado', 'Senha', '');
@@ -925,6 +950,15 @@ begin
     ACBrNFe1.Configuracoes.Geral.FormaEmissao :=
       StrToTpEmis(ok, IntToStr(rgFormaEmissao.ItemIndex + 1));
 
+
+    ACBrNFe1.Configuracoes.Geral.SSLLib:=TSSLLib.libCapicom;
+    ACBrNFe1.Configuracoes.Geral.SSLCryptLib:=TSSLCryptLib.cryCapicom;
+    ACBrNFe1.Configuracoes.Geral.SSLHttpLib := TSSLHttpLib.httpWinINet;
+    ACBrNFe1.Configuracoes.Geral.SSLXmlSignLib := TSSLXmlSignLib.xsMsXmlCapicom;
+    ACBrNFe1.Configuracoes.Geral.VersaoDF:= ve400;
+    ACBRNFE1.configuracoes.arquivos.pathSchemas :='C:\Softlogus\Server\Schemas';
+
+
     ACBrNFe1.Configuracoes.Geral.Salvar := ckSalvar.Checked;
 //    ACBrNFe1.Configuracoes.Geral.PathSalvar := edtPathLogs.Text;
 
@@ -937,6 +971,8 @@ begin
       StrToTpAmb(ok, IntToStr(rgTipoAmb.ItemIndex + 1));
     ACBrNFe1.Configuracoes.WebServices.Visualizar := ckVisualizar.Checked;
 
+
+
     edtProxyHost.Text := Ini.ReadString('Proxy', 'Host', '');
     edtProxyPorta.Text := Ini.ReadString('Proxy', 'Porta', '');
     edtProxyUser.Text := Ini.ReadString('Proxy', 'User', '');
@@ -945,6 +981,10 @@ begin
     ACBrNFe1.Configuracoes.WebServices.ProxyPort := edtProxyPorta.Text;
     ACBrNFe1.Configuracoes.WebServices.ProxyUser := edtProxyUser.Text;
     ACBrNFe1.Configuracoes.WebServices.ProxyPass := edtProxySenha.Text;
+
+
+
+
 
     rgTipoDanfe.ItemIndex := Ini.ReadInteger('Geral', 'DANFE', 0);
     edtLogoMarca.Text := Ini.ReadString('Geral', 'LogoMarca', '');
@@ -987,6 +1027,7 @@ var
   xTotalImposto: Currency;
   TotalIBPT: Double;
   PorcIBPT: Double;
+  InfoPgto : TpagCollectionItem;
 
 begin
   if qrnota.RecordCount = 0 then
@@ -1089,6 +1130,33 @@ begin
          end;
 
 
+    //FORMA DE PAG
+    InfoPgto :=      pag.Add;
+    if qrnota.fieldbyname('fat_tipo').asinteger = 0 then
+      begin
+            InfoPgto.indPag := ipVista;
+      end
+    else
+    if qrnota.fieldbyname('fat_tipo').asinteger = 1 then
+         begin
+              InfoPgto.indPag := ipPrazo;
+         end
+    else
+    if qrnota.fieldbyname('fat_tipo').asinteger = 2 then
+         begin
+              InfoPgto.indPag := ipOutras;
+         end;
+
+
+
+
+
+  InfoPgto.tPag   := fpDinheiro;
+  InfoPgto.vPag   := RoundTo(qrnota.fieldbyname('TOTAL_NOTA').asfloat, -2);
+
+
+
+
     Ide.verProc := '7.0';
     Ide.cUF := StrToInt(Copy(query2.fieldbyname('COD_MUNICIPIO_IBGE')
       .asstring, 1, 2));
@@ -1100,7 +1168,7 @@ begin
     else
       Ide.idDest := doInterestadual;
 
-    // 21/10/2015
+
     qrcompl.close;
     qrcompl.sql.clear;
     qrcompl.sql.add('select * from NFE_COMPLEMENTAR where NUMNOTA = :NUMNOTA');
@@ -1966,6 +2034,11 @@ begin
       FormatFloat('0.00', PorcIBPT) + '%) Fonte: IBPT';
 
 
+    //form pag
+
+
+
+
     //
 
    // ACBrNFe1.NotasFiscais.GerarNFe;
@@ -1984,66 +2057,6 @@ begin
      //   abort;
  // end;  }
           result := ACBrNFe1.NotasFiscais.Items[0].NomeArq;
-
-end;
-
-procedure Tfrmnotafiscal_menu.bincluirClick(Sender: TObject);
-var
-  natureza: string;
-begin
-  // Abre Opçoes de Faturamento
-  frmOpNatureza := TfrmOpNatureza.Create(self);
-  frmOpNatureza.showmodal;
-
-  vrecno := qrnota.RecNo;
-  vopcao_nfs := 1;
-
-  qrnota.Insert;
-  qrnota.fieldbyname('codigo').asstring := frmPrincipal.codifica('000061');
-  qrnota.fieldbyname('situacao').asinteger := 1;
-  qrnota.fieldbyname('baixa_estoque').asstring := 'S';
-  qrnota.fieldbyname('custo_venda').asstring := 'V';
-  qrnota.fieldbyname('sit').asstring := 'N';
-  qrnota.fieldbyname('movimento').asstring := 'S';
-  qrnota.fieldbyname('codfilial').asstring := '000001';
-  qrnota.fieldbyname('codvendedor').asstring := 'S/VEND';
-  qrnota.fieldbyname('natureza').asstring := frmmodulo.natoperacao;
-
-  frmmodulo.qrconfig.open;
-
-  if frmmodulo.qrconfig.fieldbyname('NF_GERAR_RECEBER').asstring = '1' then
-    qrnota.fieldbyname('fat_gerar_receber').asinteger := 1
-  else
-    qrnota.fieldbyname('fat_gerar_receber').asinteger := 0;
-
-  if frmmodulo.qrconfig.fieldbyname('NF_GERAR_duplicata').asstring = '1' then
-    qrnota.fieldbyname('fat_gerar_duplicata').asinteger := 1
-  else
-    qrnota.fieldbyname('fat_gerar_duplicata').asinteger := 0;
-
-  frmnotafiscal := Tfrmnotafiscal.Create(self);
-  // frmnotafiscal.rtipo.ItemIndex := 0;
-   if sUsa_NFE = '1' then
-   begin
-    frmnotafiscal.ecodmodelo.Text := '55';
-    frmnotafiscal.DBEdit42.Text := 'NFE';
-   end;
-
-  frmnotafiscal.showmodal;
-
-  qrnota.refresh;
-  qrnota.RecNo := vrecno;
-  qrempresa.close;
-  qrempresa.sql.clear;
-  qrempresa.sql.add('select * from  c000004');
-  qrempresa.open;
-
-  qrcliente.close;
-  qrcliente.sql.clear;
-  qrcliente.sql.add('select * from  c000007');
-  qrcliente.open;
-
-  btotaliza_notaClick(frmnotafiscal_menu);
 
 end;
 
@@ -2117,176 +2130,6 @@ end;
 procedure Tfrmnotafiscal_menu.bfecharClick(Sender: TObject);
 begin
   close;
-end;
-
-procedure Tfrmnotafiscal_menu.balterarClick(Sender: TObject);
-var
-  vrecno: integer;
-begin
-
-  vrecno := qrnota.RecNo;
-
-  if qrnota.fieldbyname('SITUACAO').asinteger = 1 then
-  begin
-    vopcao_nfs := 2;
-    if qrnota.RecordCount = 0 then
-      exit;
-
-    qrnota.edit;
-
-    frmnotafiscal := Tfrmnotafiscal.Create(self);
-    frmnotafiscal.showmodal;
-
-    qrnota.refresh;
-
-    qrempresa.close;
-    qrempresa.sql.clear;
-    qrempresa.sql.add('select * from  c000004');
-    qrempresa.open;
-
-    qrcliente.close;
-    qrcliente.sql.clear;
-    qrcliente.sql.add('select * from  c000007');
-    qrcliente.open;
-
-    btotaliza_notaClick(frmnotafiscal_menu);
-
-    qrnota.RecNo := vrecno;
-
-  end
-  else
-  begin
-    Application.messagebox('Nota fiscal cancelada! Impossível alterar!',
-      'Atenção', mb_ok + mb_iconerror);
-  end;
-end;
-
-procedure Tfrmnotafiscal_menu.bexcluirClick(Sender: TObject);
-begin
-  if qrnota.RecordCount = 0 then
-    exit;
-
-  if frmPrincipal.autentica('Excluir NF', 4) then
-  begin
-    query2.close;
-    query2.sql.clear;
-    query2.sql.add('select * from c000049 where codvenda = ''NF' +
-      frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
-    query2.sql.add('and valor_pago > 0');
-    query2.open;
-    if query2.RecordCount > 0 then
-    begin
-      Application.messagebox
-        ('Esta nota fiscal possue prestações que já foram feito pagamentos! Favor verificar!',
-        'Aviso', mb_ok + mb_iconerror);
-      exit;
-    end;
-    query2.close;
-    query2.sql.clear;
-    query2.sql.add('delete from c000117 where cod_nota = ''' +
-      frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
-    query2.execsql;
-
-    query2.close;
-    query2.sql.clear;
-    query2.sql.add('delete from c000049 where codvenda = ''NF' +
-      frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
-    query2.execsql;
-
-    if qrnota.fieldbyname('SITUACAO').asinteger = 1 then
-    begin
-      qrnota_item.close;
-      qrnota_item.sql.clear;
-      qrnota_item.sql.add('select * from c000062 where codnota = ''' +
-        qrnota.fieldbyname('codigo').asstring + '''');
-      qrnota_item.open;
-      while qrnota_item.RecordCount <> 0 do
-      begin
-        if qrnota_item.fieldbyname('CODLANCAMENTO').asstring <> 'XXXXXX' then
-        begin
-          frmmodulo.QRPRODUTO_MOV.close;
-          frmmodulo.QRPRODUTO_MOV.sql.clear;
-          frmmodulo.QRPRODUTO_MOV.sql.add
-            ('DELETE FROM C000032 WHERE CODIGO = ''' + qrnota_item.fieldbyname
-            ('CODLANCAMENTO').asstring + '''');
-          frmmodulo.QRPRODUTO_MOV.execsql;
-        end;
-
-        if qrnota.fieldbyname('BAIXA_ESTOQUE').asstring = 'S' then
-        begin
-          if qrnota_item.fieldbyname('codgrade').asstring <> '' then
-          begin
-            if frmnotafiscal_menu.qrnota.fieldbyname('BAIXA_ESTOQUE').asstring = 'S'
-            then
-            begin
-              frmmodulo.qrgrade_produto.close;
-              frmmodulo.qrgrade_produto.sql.clear;
-              frmmodulo.qrgrade_produto.sql.add
-                ('select * from c000021 where codproduto = ''' +
-                qrnota_item.fieldbyname('CODPRODUTO').asstring + '''');
-              frmmodulo.qrgrade_produto.sql.add
-                ('and codigo = ''' + qrnota_item.fieldbyname('codgrade')
-                .asstring + '''');
-              frmmodulo.qrgrade_produto.open;
-              if frmmodulo.qrgrade_produto.RecordCount > 0 then
-              begin
-                frmmodulo.qrgrade_produto.edit;
-                if frmnotafiscal_menu.qrnota.fieldbyname('MOVIMENTO').asstring = 'S'
-                then
-                  frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat :=
-                    frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat +
-                    qrnota_item.fieldbyname('qtde').asfloat
-                else
-                  frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat :=
-                    frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat -
-                    qrnota_item.fieldbyname('qtde').asfloat;
-                frmmodulo.qrgrade_produto.post;
-              end;
-            end;
-          end;
-          if qrnota_item.fieldbyname('serial').asstring <> '' then
-          begin
-            query.close;
-            query.sql.clear;
-            query.sql.add
-              ('update c000022 set situacao = :situacao, cliente = :cliente, codcliente = :codcliente, datavenda= :datavenda,');
-            query.sql.add('codvenda = :codvenda, precovenda = :precovenda');
-            query.sql.add('where serial = ''' + qrnota_item.fieldbyname
-              ('serial').asstring + '''');
-            query.sql.add('and codproduto = ''' + qrnota_item.fieldbyname
-              ('codigo').asstring + '''');
-            query.params.ParamByName('situacao').asinteger := 1;
-            query.params.ParamByName('cliente').asstring := '';
-            query.params.ParamByName('codcliente').asstring := '';
-            query.params.ParamByName('DATAVENDA').asstring := '';
-            query.params.ParamByName('codvenda').asstring := '';
-            query.params.ParamByName('precovenda').asfloat := 0;
-            query.execsql;
-          end;
-
-        end;
-        qrnota_item.delete;
-      end;
-    end;
-    qrnota.delete;
-  end
-  else
-  begin
-    Application.messagebox('Acesso não permitido!', 'Erro!',
-      mb_ok + mb_iconerror);
-  end;
-
-end;
-
-procedure Tfrmnotafiscal_menu.bitbtn6Click(Sender: TObject);
-begin
-  vrecno := qrnota.RecNo;
-
-  frmlista_notasaida := tfrmlista_notasaida.Create(self);
-  frmlista_notasaida.showmodal;
-
-  qrnota.RecNo := vrecno;
-
 end;
 
 procedure Tfrmnotafiscal_menu.b(Sender: TObject);
@@ -2368,8 +2211,8 @@ end;
 
 procedure Tfrmnotafiscal_menu.Alterar2Click(Sender: TObject);
 begin
-  if balterar.Enabled then
-    balterarClick(frmnotafiscal_menu);
+  if btn_AlterarNotaFiscal.Enabled then
+    btn_AlterarNotaFiscalClick(frmnotafiscal_menu);
 end;
 
 procedure Tfrmnotafiscal_menu.abelasFunes2Click(Sender: TObject);
@@ -2464,42 +2307,7 @@ end;
 procedure Tfrmnotafiscal_menu.DateEdit2KeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
-    bfiltrar.SetFocus;
-end;
-
-procedure Tfrmnotafiscal_menu.BfiltrarClick(Sender: TObject);
-var
-  cliente, nota: string;
-begin
-  if ecliente.Text = '' then
-    cliente := ''
-  else
-    cliente := ' and codcliente = ''' + Copy(ecliente.Text, 1, 6) + '''';
-  if (ENUMERO.Text = '000000') or (ENUMERO.Text = '') then
-    nota := ''
-  else
-    nota := ' and numero = ''' + ENUMERO.Text + '''';
-
-  qrnota.close;
-  qrnota.sql.clear;
-
-  if (ENUMERO.Text = '000000') or (ENUMERO.Text = '') then
-  begin
-    qrnota.sql.add('select * from c000061 where data BETWEEN :datai and :dataf '
-      + cliente + nota + ' order by numero');
-    qrnota.params.ParamByName('datai').AsDateTime := DateEdit1.date;
-    qrnota.params.ParamByName('dataf').AsDateTime := DateEdit2.date;
-  end
-  else
-    qrnota.sql.add('select * from c000061 where codigo is not null ' + cliente +
-      nota + ' order by numero');
-  qrnota.open;
-
-  rqde.Value := qrnota.RecordCount;
-
-  btotaliza_notaClick(frmnotafiscal_menu);
-
-  gridRowChanged(frmnotafiscal_menu);
+    btn_LocalizarNotafiscal.SetFocus;
 end;
 
 procedure Tfrmnotafiscal_menu.ENUMEROExit(Sender: TObject);
@@ -2596,223 +2404,12 @@ end;
 
 procedure Tfrmnotafiscal_menu.Cancelar1Click(Sender: TObject);
 begin
-  bcancelarClick(frmnotafiscal_menu);
+  btn_CancelarNotaFiscalClick(frmnotafiscal_menu);
 end;
 
 procedure Tfrmnotafiscal_menu.Imprimir1Click(Sender: TObject);
 begin
-  bimprimirClick(frmnotafiscal_menu);
-end;
-
-procedure Tfrmnotafiscal_menu.bcancelarClick(Sender: TObject);
-var
-  modelo, serie, Ano, NumeroInicial, NumeroFinal, Justificativa: string;
-begin
-
-  if qrnota.RecordCount = 0 then
-    exit;
-
-  if qrnota.fieldbyname('nfe_situacao').asinteger = 8 then
-    exit; // cancelada
-  if qrnota.fieldbyname('nfe_situacao').asinteger = 6 then
-    exit; // validada e transmitida e aceita
-
-  if frmPrincipal.autentica('Cancelar NF', 4) then
-  begin
-    if qrnota.fieldbyname('situacao').asinteger = 1 then
-    begin
-
-      cancela := False;
-      frmnotafiscal_cancelar := tfrmnotafiscal_cancelar.Create(self);
-      frmnotafiscal_cancelar.showmodal;
-      if not cancela then
-        exit;
-      query2.close;
-      query2.sql.clear;
-      query2.sql.add('select * from c000049 where codvenda = ''NF' +
-        frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
-      query2.sql.add('and valor_pago > 0');
-      query2.open;
-      if query2.RecordCount > 0 then
-      begin
-        Application.messagebox
-          ('Esta nota fiscal possue prestações que já foram feito pagamentos! Favor verificar!',
-          'Aviso', mb_ok + mb_iconerror);
-        exit;
-
-      end;
-
-      query2.close;
-      query2.sql.clear;
-      query2.sql.add('delete from c000117 where cod_nota = ''' +
-        frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
-      query2.execsql;
-
-      query2.close;
-      query2.sql.clear;
-      query2.sql.add('delete from c000049 where codvenda = ''NF' +
-        frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
-      query2.execsql;
-
-      qrnota_item.close;
-      qrnota_item.sql.clear;
-      qrnota_item.sql.add('select * from c000062 where codnota = ''' +
-        qrnota.fieldbyname('codigo').asstring + '''');
-      qrnota_item.open;
-
-      qrnota_item.first;
-      while not qrnota_item.eof do
-      begin
-        if qrnota_item.fieldbyname('CODLANCAMENTO').asstring <> 'XXXXXX' then
-        begin
-          frmmodulo.QRPRODUTO_MOV.close;
-          frmmodulo.QRPRODUTO_MOV.sql.clear;
-          frmmodulo.QRPRODUTO_MOV.sql.add
-            ('DELETE FROM C000032 WHERE CODIGO = ''' + qrnota_item.fieldbyname
-            ('CODLANCAMENTO').asstring + '''');
-          frmmodulo.QRPRODUTO_MOV.execsql;
-        end;
-
-        if qrnota.fieldbyname('BAIXA_ESTOQUE').asstring = 'S' then
-        begin
-
-          if qrnota_item.fieldbyname('codgrade').asstring <> '' then
-          begin
-            if frmnotafiscal_menu.qrnota.fieldbyname('BAIXA_ESTOQUE').asstring = 'S'
-            then
-            begin
-              frmmodulo.qrgrade_produto.close;
-              frmmodulo.qrgrade_produto.sql.clear;
-              frmmodulo.qrgrade_produto.sql.add
-                ('select * from c000021 where codproduto = ''' +
-                qrnota_item.fieldbyname('CODPRODUTO').asstring + '''');
-              frmmodulo.qrgrade_produto.sql.add
-                ('and codigo = ''' + qrnota_item.fieldbyname('codgrade')
-                .asstring + '''');
-              frmmodulo.qrgrade_produto.open;
-              if frmmodulo.qrgrade_produto.RecordCount > 0 then
-              begin
-                frmmodulo.qrgrade_produto.edit;
-                frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat :=
-                  frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat -
-                  qrnota_item.fieldbyname('qtde').asfloat;
-                frmmodulo.qrgrade_produto.post;
-              end;
-            end;
-          end;
-        end;
-
-        if Trim(qrnota_item.fieldbyname('serial').asstring) <> '' then
-        begin
-
-          query.close;
-          query.sql.clear;
-          query.sql.add
-            ('update c000022 set situacao = :situacao, cliente = :cliente, codcliente = :codcliente, datavenda = :datavenda,');
-          query.sql.add('codvenda = :codvenda, precovenda = :precovenda');
-          query.sql.add('where serial = ''' + qrnota_item.fieldbyname('serial')
-            .asstring + '''');
-          query.sql.add('and codproduto = ''' + qrnota_item.fieldbyname
-            ('codproduto').asstring + '''');
-          query.params.ParamByName('situacao').asinteger := 1;
-          query.params.ParamByName('cliente').asstring := '';
-          query.params.ParamByName('codcliente').asstring := '';
-          query.params.ParamByName('DATAVENDA').clear;
-          query.params.ParamByName('codvenda').asstring := '';
-          query.params.ParamByName('precovenda').asfloat := 0;
-          query.execsql;
-
-        end;
-
-        qrnota_item.Next;
-      end;
-
-      qrnota.edit;
-      qrnota.fieldbyname('motivo').asstring :=
-        inputbox('Cancelar NF', 'Informe o motivo do Cancelamento:', '');
-      qrnota.fieldbyname('situacao_a').asstring := 'C';
-      qrnota.fieldbyname('situacao').asinteger := 2;
-      qrnota.post;
-
-      frmmodulo.Conexao.Commit;
-      Application.ProcessMessages;
-
-      // devolver esstoque usando tela notas
-      if self.Tag = 100 then
-      begin
-        frmmodulo.cancelou_venda_nf := True;
-        qrnota.edit;
-        qrnota.fieldbyname('nfe_situacao').asinteger := 8;
-        qrnota.post;
-        close;
-      end
-      else
-      begin
-
-        try
-          frmmodulo.cancelou_venda_nf := True;
-          frmnotas_venda := Tfrmnotas_venda.Create(Application);
-          frmmodulo.QRVENDA.close;
-          frmmodulo.QRVENDA.sql.clear;
-          frmmodulo.QRVENDA.sql.add
-            ('SELECT * FROM C000048 ORDER BY DATA, codigo');
-          frmmodulo.QRVENDA.open;
-          frmmodulo.QRVENDA.IndexFieldNames := 'CODIGO';
-          frmmodulo.QRVENDA.Locate('NUMERO_CUPOM_FISCAL',
-            qrnota.fieldbyname('NUMERO').asstring, [loCaseInsensitive]);
-          frmnotas_venda.bcancelarClick(frmnotas_venda);
-          frmmodulo.QRVENDA.close;
-          qrnota.edit;
-          qrnota.fieldbyname('nfe_situacao').asinteger := 8;
-          qrnota.post;
-        except
-          frmmodulo.cancelou_venda_nf := False;
-          frmmodulo.QRVENDA.close;
-        end;
-
-      end;
-      // inutilizar numero nfe
-
-      qrempresa.close;
-      qrempresa.sql.clear;
-      qrempresa.sql.add('select * from  c000004');
-      qrempresa.open;
-
-      Ano := datetostr(qrnota.fieldbyname('DATA').AsDateTime);
-      Ano := formatdatetime('yyyy', StrToDate(Ano));
-      serie := qrempresa.fieldbyname('CONHECIMENTO').asstring;
-      modelo := '55';
-      NumeroInicial := qrnota.fieldbyname('NUMERO').asstring;
-      NumeroFinal := qrnota.fieldbyname('NUMERO').asstring;
-      Justificativa := 'Inutilizacao por conta de cancelamento';
-
-      try
-
-        ACBrNFe1.WebServices.Inutiliza(qrempresa.fieldbyname('CNPJ').asstring,
-          Justificativa, StrToInt(Ano), StrToInt(modelo), StrToInt(serie),
-          StrToInt(NumeroInicial), StrToInt(NumeroFinal));
-        MemoResp.Lines.Text :=
-          UTF8Encode(ACBrNFe1.WebServices.Inutilizacao.RetWS);
-        LoadXML(MemoResp, WebBrowser1);
-
-      finally
-
-      end;
-
-    end
-    else
-    begin
-      Application.messagebox('Esta nota fiscal já está CANCELADA!', 'Atenção',
-        mb_ok + mb_iconerror);
-    end;
-
-  end
-  else
-  begin
-    Application.messagebox('Acesso não permitido!', 'Erro!',
-      mb_ok + mb_iconerror);
-  end;
-
+  btn_ImprimirNotaFiscalClick(frmnotafiscal_menu);
 end;
 
 procedure Tfrmnotafiscal_menu.gridTitleButtonClick(Sender: TObject;
@@ -3375,7 +2972,383 @@ begin
 
 end;
 
-procedure Tfrmnotafiscal_menu.AdvGlowButton1Click(Sender: TObject);
+procedure Tfrmnotafiscal_menu.btn_AlterarNotaFiscalClick(Sender: TObject);
+var
+  vrecno: integer;
+begin
+
+  vrecno := qrnota.RecNo;
+
+  if qrnota.fieldbyname('SITUACAO').asinteger = 1 then
+  begin
+    vopcao_nfs := 2;
+    if qrnota.RecordCount = 0 then
+      exit;
+
+    qrnota.edit;
+
+    frmnotafiscal := Tfrmnotafiscal.Create(self);
+    frmnotafiscal.showmodal;
+
+    qrnota.refresh;
+
+    qrempresa.close;
+    qrempresa.sql.clear;
+    qrempresa.sql.add('select * from  c000004');
+    qrempresa.open;
+
+    qrcliente.close;
+    qrcliente.sql.clear;
+    qrcliente.sql.add('select * from  c000007');
+    qrcliente.open;
+
+    btotaliza_notaClick(frmnotafiscal_menu);
+
+    qrnota.RecNo := vrecno;
+
+  end
+  else
+  begin
+    Application.messagebox('Nota fiscal cancelada! Impossível alterar!',
+      'Atenção', mb_ok + mb_iconerror);
+  end;
+end;
+procedure Tfrmnotafiscal_menu.btn_CancelarNotaFiscalClick(Sender: TObject);
+var
+  modelo, serie, Ano, NumeroInicial, NumeroFinal, Justificativa: string;
+begin
+
+  if qrnota.RecordCount = 0 then
+    exit;
+
+  if qrnota.fieldbyname('nfe_situacao').asinteger = 8 then
+    exit; // cancelada
+  if qrnota.fieldbyname('nfe_situacao').asinteger = 6 then
+    exit; // validada e transmitida e aceita
+
+  if frmPrincipal.autentica('Cancelar NF', 4) then
+  begin
+    if qrnota.fieldbyname('situacao').asinteger = 1 then
+    begin
+
+      cancela := False;
+      frmnotafiscal_cancelar := tfrmnotafiscal_cancelar.Create(self);
+      frmnotafiscal_cancelar.showmodal;
+      if not cancela then
+        exit;
+      query2.close;
+      query2.sql.clear;
+      query2.sql.add('select * from c000049 where codvenda = ''NF' +
+        frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
+      query2.sql.add('and valor_pago > 0');
+      query2.open;
+      if query2.RecordCount > 0 then
+      begin
+        Application.messagebox
+          ('Esta nota fiscal possue prestações que já foram feito pagamentos! Favor verificar!',
+          'Aviso', mb_ok + mb_iconerror);
+        exit;
+
+      end;
+
+      query2.close;
+      query2.sql.clear;
+      query2.sql.add('delete from c000117 where cod_nota = ''' +
+        frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
+      query2.execsql;
+
+      query2.close;
+      query2.sql.clear;
+      query2.sql.add('delete from c000049 where codvenda = ''NF' +
+        frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
+      query2.execsql;
+
+      qrnota_item.close;
+      qrnota_item.sql.clear;
+      qrnota_item.sql.add('select * from c000062 where codnota = ''' +
+        qrnota.fieldbyname('codigo').asstring + '''');
+      qrnota_item.open;
+
+      qrnota_item.first;
+      while not qrnota_item.eof do
+      begin
+        if qrnota_item.fieldbyname('CODLANCAMENTO').asstring <> 'XXXXXX' then
+        begin
+          frmmodulo.QRPRODUTO_MOV.close;
+          frmmodulo.QRPRODUTO_MOV.sql.clear;
+          frmmodulo.QRPRODUTO_MOV.sql.add
+            ('DELETE FROM C000032 WHERE CODIGO = ''' + qrnota_item.fieldbyname
+            ('CODLANCAMENTO').asstring + '''');
+          frmmodulo.QRPRODUTO_MOV.execsql;
+        end;
+
+        if qrnota.fieldbyname('BAIXA_ESTOQUE').asstring = 'S' then
+        begin
+
+          if qrnota_item.fieldbyname('codgrade').asstring <> '' then
+          begin
+            if frmnotafiscal_menu.qrnota.fieldbyname('BAIXA_ESTOQUE').asstring = 'S'
+            then
+            begin
+              frmmodulo.qrgrade_produto.close;
+              frmmodulo.qrgrade_produto.sql.clear;
+              frmmodulo.qrgrade_produto.sql.add
+                ('select * from c000021 where codproduto = ''' +
+                qrnota_item.fieldbyname('CODPRODUTO').asstring + '''');
+              frmmodulo.qrgrade_produto.sql.add
+                ('and codigo = ''' + qrnota_item.fieldbyname('codgrade')
+                .asstring + '''');
+              frmmodulo.qrgrade_produto.open;
+              if frmmodulo.qrgrade_produto.RecordCount > 0 then
+              begin
+                frmmodulo.qrgrade_produto.edit;
+                frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat :=
+                  frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat -
+                  qrnota_item.fieldbyname('qtde').asfloat;
+                frmmodulo.qrgrade_produto.post;
+              end;
+            end;
+          end;
+        end;
+
+        if Trim(qrnota_item.fieldbyname('serial').asstring) <> '' then
+        begin
+
+          query.close;
+          query.sql.clear;
+          query.sql.add
+            ('update c000022 set situacao = :situacao, cliente = :cliente, codcliente = :codcliente, datavenda = :datavenda,');
+          query.sql.add('codvenda = :codvenda, precovenda = :precovenda');
+          query.sql.add('where serial = ''' + qrnota_item.fieldbyname('serial')
+            .asstring + '''');
+          query.sql.add('and codproduto = ''' + qrnota_item.fieldbyname
+            ('codproduto').asstring + '''');
+          query.params.ParamByName('situacao').asinteger := 1;
+          query.params.ParamByName('cliente').asstring := '';
+          query.params.ParamByName('codcliente').asstring := '';
+          query.params.ParamByName('DATAVENDA').clear;
+          query.params.ParamByName('codvenda').asstring := '';
+          query.params.ParamByName('precovenda').asfloat := 0;
+          query.execsql;
+
+        end;
+
+        qrnota_item.Next;
+      end;
+
+      qrnota.edit;
+      qrnota.fieldbyname('motivo').asstring :=
+        inputbox('Cancelar NF', 'Informe o motivo do Cancelamento:', '');
+      qrnota.fieldbyname('situacao_a').asstring := 'C';
+      qrnota.fieldbyname('situacao').asinteger := 2;
+      qrnota.post;
+
+      frmmodulo.Conexao.Commit;
+      Application.ProcessMessages;
+
+      // devolver esstoque usando tela notas
+      if self.Tag = 100 then
+      begin
+        frmmodulo.cancelou_venda_nf := True;
+        qrnota.edit;
+        qrnota.fieldbyname('nfe_situacao').asinteger := 8;
+        qrnota.post;
+        close;
+      end
+      else
+      begin
+
+        try
+          frmmodulo.cancelou_venda_nf := True;
+          frmnotas_venda := Tfrmnotas_venda.Create(Application);
+          frmmodulo.QRVENDA.close;
+          frmmodulo.QRVENDA.sql.clear;
+          frmmodulo.QRVENDA.sql.add
+            ('SELECT * FROM C000048 ORDER BY DATA, codigo');
+          frmmodulo.QRVENDA.open;
+          frmmodulo.QRVENDA.IndexFieldNames := 'CODIGO';
+          frmmodulo.QRVENDA.Locate('NUMERO_CUPOM_FISCAL',
+            qrnota.fieldbyname('NUMERO').asstring, [loCaseInsensitive]);
+          frmnotas_venda.bcancelarClick(frmnotas_venda);
+          frmmodulo.QRVENDA.close;
+          qrnota.edit;
+          qrnota.fieldbyname('nfe_situacao').asinteger := 8;
+          qrnota.post;
+        except
+          frmmodulo.cancelou_venda_nf := False;
+          frmmodulo.QRVENDA.close;
+        end;
+
+      end;
+      // inutilizar numero nfe
+
+      qrempresa.close;
+      qrempresa.sql.clear;
+      qrempresa.sql.add('select * from  c000004');
+      qrempresa.open;
+
+      Ano := datetostr(qrnota.fieldbyname('DATA').AsDateTime);
+      Ano := formatdatetime('yyyy', StrToDate(Ano));
+      serie := qrempresa.fieldbyname('CONHECIMENTO').asstring;
+      modelo := '55';
+      NumeroInicial := qrnota.fieldbyname('NUMERO').asstring;
+      NumeroFinal := qrnota.fieldbyname('NUMERO').asstring;
+      Justificativa := 'Inutilizacao por conta de cancelamento';
+
+      try
+
+        ACBrNFe1.WebServices.Inutiliza(qrempresa.fieldbyname('CNPJ').asstring,
+          Justificativa, StrToInt(Ano), StrToInt(modelo), StrToInt(serie),
+          StrToInt(NumeroInicial), StrToInt(NumeroFinal));
+        MemoResp.Lines.Text :=
+          UTF8Encode(ACBrNFe1.WebServices.Inutilizacao.RetWS);
+        LoadXML(MemoResp, WebBrowser1);
+
+      finally
+
+      end;
+
+    end
+    else
+    begin
+      Application.messagebox('Esta nota fiscal já está CANCELADA!', 'Atenção',
+        mb_ok + mb_iconerror);
+    end;
+
+  end
+  else
+  begin
+    Application.messagebox('Acesso não permitido!', 'Erro!',
+      mb_ok + mb_iconerror);
+  end;
+
+end;
+procedure Tfrmnotafiscal_menu.btn_ExcluirNotaFiscalClick(Sender: TObject);
+begin
+
+if qrnota.RecordCount = 0 then
+    exit;
+
+  if frmPrincipal.autentica('Excluir NF', 4) then
+  begin
+    query2.close;
+    query2.sql.clear;
+    query2.sql.add('select * from c000049 where codvenda = ''NF' +
+      frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
+    query2.sql.add('and valor_pago > 0');
+    query2.open;
+    if query2.RecordCount > 0 then
+    begin
+      Application.messagebox
+        ('Esta nota fiscal possue prestações que já foram feito pagamentos! Favor verificar!',
+        'Aviso', mb_ok + mb_iconerror);
+      exit;
+    end;
+    query2.close;
+    query2.sql.clear;
+    query2.sql.add('delete from c000117 where cod_nota = ''' +
+      frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
+    query2.execsql;
+
+    query2.close;
+    query2.sql.clear;
+    query2.sql.add('delete from c000049 where codvenda = ''NF' +
+      frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
+    query2.execsql;
+
+    if qrnota.fieldbyname('SITUACAO').asinteger = 1 then
+    begin
+      qrnota_item.close;
+      qrnota_item.sql.clear;
+      qrnota_item.sql.add('select * from c000062 where codnota = ''' +
+        qrnota.fieldbyname('codigo').asstring + '''');
+      qrnota_item.open;
+      while qrnota_item.RecordCount <> 0 do
+      begin
+        if qrnota_item.fieldbyname('CODLANCAMENTO').asstring <> 'XXXXXX' then
+        begin
+          frmmodulo.QRPRODUTO_MOV.close;
+          frmmodulo.QRPRODUTO_MOV.sql.clear;
+          frmmodulo.QRPRODUTO_MOV.sql.add
+            ('DELETE FROM C000032 WHERE CODIGO = ''' + qrnota_item.fieldbyname
+            ('CODLANCAMENTO').asstring + '''');
+          frmmodulo.QRPRODUTO_MOV.execsql;
+        end;
+
+        if qrnota.fieldbyname('BAIXA_ESTOQUE').asstring = 'S' then
+        begin
+          if qrnota_item.fieldbyname('codgrade').asstring <> '' then
+          begin
+            if frmnotafiscal_menu.qrnota.fieldbyname('BAIXA_ESTOQUE').asstring = 'S'
+            then
+            begin
+              frmmodulo.qrgrade_produto.close;
+              frmmodulo.qrgrade_produto.sql.clear;
+              frmmodulo.qrgrade_produto.sql.add
+                ('select * from c000021 where codproduto = ''' +
+                qrnota_item.fieldbyname('CODPRODUTO').asstring + '''');
+              frmmodulo.qrgrade_produto.sql.add
+                ('and codigo = ''' + qrnota_item.fieldbyname('codgrade')
+                .asstring + '''');
+              frmmodulo.qrgrade_produto.open;
+              if frmmodulo.qrgrade_produto.RecordCount > 0 then
+              begin
+                frmmodulo.qrgrade_produto.edit;
+                if frmnotafiscal_menu.qrnota.fieldbyname('MOVIMENTO').asstring = 'S'
+                then
+                  frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat :=
+                    frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat +
+                    qrnota_item.fieldbyname('qtde').asfloat
+                else
+                  frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat :=
+                    frmmodulo.qrgrade_produto.fieldbyname('estoque').asfloat -
+                    qrnota_item.fieldbyname('qtde').asfloat;
+                frmmodulo.qrgrade_produto.post;
+              end;
+            end;
+          end;
+          if qrnota_item.fieldbyname('serial').asstring <> '' then
+          begin
+            query.close;
+            query.sql.clear;
+            query.sql.add
+              ('update c000022 set situacao = :situacao, cliente = :cliente, codcliente = :codcliente, datavenda= :datavenda,');
+            query.sql.add('codvenda = :codvenda, precovenda = :precovenda');
+            query.sql.add('where serial = ''' + qrnota_item.fieldbyname
+              ('serial').asstring + '''');
+            query.sql.add('and codproduto = ''' + qrnota_item.fieldbyname
+              ('codigo').asstring + '''');
+            query.params.ParamByName('situacao').asinteger := 1;
+            query.params.ParamByName('cliente').asstring := '';
+            query.params.ParamByName('codcliente').asstring := '';
+            query.params.ParamByName('DATAVENDA').asstring := '';
+            query.params.ParamByName('codvenda').asstring := '';
+            query.params.ParamByName('precovenda').asfloat := 0;
+            query.execsql;
+          end;
+
+        end;
+        qrnota_item.delete;
+      end;
+    end;
+    qrnota.delete;
+  end
+  else
+  begin
+    Application.messagebox('Acesso não permitido!', 'Erro!',
+      mb_ok + mb_iconerror);
+  end;
+
+end;
+procedure Tfrmnotafiscal_menu.btn_ImprimirNotaFiscalClick(Sender: TObject);
+begin
+vrecno := qrnota.RecNo;
+  frmlista_notasaida := tfrmlista_notasaida.Create(self);
+  frmlista_notasaida.showmodal;
+  qrnota.RecNo := vrecno;
+end;
+
+procedure Tfrmnotafiscal_menu.btn_incluirClick(Sender: TObject);
 var
    sXML: string;
 begin
@@ -3424,6 +3397,101 @@ begin
 
        end;
 
+end;
+
+procedure Tfrmnotafiscal_menu.btn_incluirNotaFiscalClick(Sender: TObject);
+var
+  natureza: string;
+begin
+  // Abre Opçoes de Faturamento
+  frmOpNatureza := TfrmOpNatureza.Create(self);
+  frmOpNatureza.showmodal;
+
+  vrecno := qrnota.RecNo;
+  vopcao_nfs := 1;
+
+  qrnota.Insert;
+  qrnota.fieldbyname('codigo').asstring := frmPrincipal.codifica('000061');
+  qrnota.fieldbyname('situacao').asinteger := 1;
+  qrnota.fieldbyname('baixa_estoque').asstring := 'S';
+  qrnota.fieldbyname('custo_venda').asstring := 'V';
+  qrnota.fieldbyname('sit').asstring := 'N';
+  qrnota.fieldbyname('movimento').asstring := 'S';
+  qrnota.fieldbyname('codfilial').asstring := '000001';
+  qrnota.fieldbyname('codvendedor').asstring := 'S/VEND';
+  qrnota.fieldbyname('natureza').asstring := frmmodulo.natoperacao;
+
+  frmmodulo.qrconfig.open;
+
+  if frmmodulo.qrconfig.fieldbyname('NF_GERAR_RECEBER').asstring = '1' then
+    qrnota.fieldbyname('fat_gerar_receber').asinteger := 1
+  else
+    qrnota.fieldbyname('fat_gerar_receber').asinteger := 0;
+
+  if frmmodulo.qrconfig.fieldbyname('NF_GERAR_duplicata').asstring = '1' then
+    qrnota.fieldbyname('fat_gerar_duplicata').asinteger := 1
+  else
+    qrnota.fieldbyname('fat_gerar_duplicata').asinteger := 0;
+
+  frmnotafiscal := Tfrmnotafiscal.Create(self);
+  // frmnotafiscal.rtipo.ItemIndex := 0;
+   if sUsa_NFE = '1' then
+   begin
+    frmnotafiscal.ecodmodelo.Text := '55';
+    frmnotafiscal.DBEdit42.Text := 'NFE';
+   end;
+
+  frmnotafiscal.showmodal;
+
+  qrnota.refresh;
+  qrnota.RecNo := vrecno;
+  qrempresa.close;
+  qrempresa.sql.clear;
+  qrempresa.sql.add('select * from  c000004');
+  qrempresa.open;
+
+  qrcliente.close;
+  qrcliente.sql.clear;
+  qrcliente.sql.add('select * from  c000007');
+  qrcliente.open;
+
+  btotaliza_notaClick(frmnotafiscal_menu);
+
+end;
+
+procedure Tfrmnotafiscal_menu.btn_LocalizarNotafiscalClick(Sender: TObject);
+var
+  cliente, nota: string;
+begin
+  if ecliente.Text = '' then
+    cliente := ''
+  else
+    cliente := ' and codcliente = ''' + Copy(ecliente.Text, 1, 6) + '''';
+  if (ENUMERO.Text = '000000') or (ENUMERO.Text = '') then
+    nota := ''
+  else
+    nota := ' and numero = ''' + ENUMERO.Text + '''';
+
+  qrnota.close;
+  qrnota.sql.clear;
+
+  if (ENUMERO.Text = '000000') or (ENUMERO.Text = '') then
+  begin
+    qrnota.sql.add('select * from c000061 where data BETWEEN :datai and :dataf '
+      + cliente + nota + ' order by numero');
+    qrnota.params.ParamByName('datai').AsDateTime := DateEdit1.date;
+    qrnota.params.ParamByName('dataf').AsDateTime := DateEdit2.date;
+  end
+  else
+    qrnota.sql.add('select * from c000061 where codigo is not null ' + cliente +
+      nota + ' order by numero');
+  qrnota.open;
+
+  rqde.Value := qrnota.RecordCount;
+
+  btotaliza_notaClick(frmnotafiscal_menu);
+
+  gridRowChanged(frmnotafiscal_menu);
 end;
 
 procedure Tfrmnotafiscal_menu.AdvMetroButton1Click(Sender: TObject);

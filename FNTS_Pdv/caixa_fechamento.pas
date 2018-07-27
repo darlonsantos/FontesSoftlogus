@@ -2081,6 +2081,8 @@ begin
         SMsg := Imp_Usa_Gerencial(sPortaNaoFiscal, '---------------------Assinatura-----------------');
          //Imp_Fecha_Gerencial(sPortaNaoFiscal);
            frxReport1.LoadFromFile('\Softlogus\PDV\rel\fechamento.fr3');
+           frxReport1.PrepareReport;
+           frxReport1.PrintOptions.ShowDialog := false;
            frxReport1.Print;
              frmMsg_Operador.lb_msg.caption := 'Aguarde! Imprimindo informações do fechamento...';
 

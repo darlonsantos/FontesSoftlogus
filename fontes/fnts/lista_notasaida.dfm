@@ -4,9 +4,9 @@ object frmlista_notasaida: Tfrmlista_notasaida
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'EMISS'#195'O DE NOTAS FISCAIS | Relat'#243'rios'
-  ClientHeight = 291
-  ClientWidth = 531
-  Color = clSilver
+  ClientHeight = 344
+  ClientWidth = 441
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -82,8 +82,8 @@ object frmlista_notasaida: Tfrmlista_notasaida
   end
   object Bevel2: TBevel
     Left = 0
-    Top = 290
-    Width = 531
+    Top = 343
+    Width = 441
     Height = 1
     Align = alBottom
     ExplicitTop = 242
@@ -234,18 +234,20 @@ object frmlista_notasaida: Tfrmlista_notasaida
     TabOrder = 6
   end
   object Panel1: TPanel
-    Left = 405
-    Top = 48
-    Width = 126
-    Height = 242
-    Align = alRight
+    Left = 0
+    Top = 268
+    Width = 441
+    Height = 75
+    Align = alBottom
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 7
+    ExplicitTop = 616
+    ExplicitWidth = 905
     object bimprimir: TAdvGlowButton
-      Left = 19
-      Top = 27
+      Left = 167
+      Top = 3
       Width = 92
       Height = 66
       Caption = 'Visualizar'
@@ -518,7 +520,7 @@ object frmlista_notasaida: Tfrmlista_notasaida
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 531
+    Width = 441
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -532,6 +534,7 @@ object frmlista_notasaida: Tfrmlista_notasaida
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -550,6 +553,7 @@ object frmlista_notasaida: Tfrmlista_notasaida
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 531
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel

@@ -24,9 +24,9 @@ object frmxloc_grupo: Tfrmxloc_grupo
     Top = 48
     Width = 769
     Height = 44
-    Color = clSilver
-    ColorHighLight = clSilver
-    ColorShadow = clSilver
+    Color = clHighlight
+    ColorHighLight = clHighlight
+    ColorShadow = clHighlight
     TabOrder = 0
     object Label1: TLabel
       Left = 6
@@ -35,7 +35,7 @@ object frmxloc_grupo: Tfrmxloc_grupo
       Height = 12
       Caption = 'F3 | LOCALIZAR POR'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = []
@@ -48,7 +48,7 @@ object frmxloc_grupo: Tfrmxloc_grupo
       Height = 12
       Caption = 'F4 | REFER'#202'NCIA'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = []
@@ -93,7 +93,7 @@ object frmxloc_grupo: Tfrmxloc_grupo
       Height = 12
       Caption = 'F5 | INFORME OS PAR'#194'METROS DA PESQUISA'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = []
@@ -253,7 +253,7 @@ object frmxloc_grupo: Tfrmxloc_grupo
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 6723891
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -265,14 +265,14 @@ object frmxloc_grupo: Tfrmxloc_grupo
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.0.4.2'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 2
     ShowExpander = False
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 770
+    TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label20: TLabel
       Left = 59
@@ -363,7 +363,7 @@ object frmxloc_grupo: Tfrmxloc_grupo
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.0.1'
+      Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
   end

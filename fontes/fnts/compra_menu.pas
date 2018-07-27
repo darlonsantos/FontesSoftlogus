@@ -505,6 +505,9 @@ type
     qrnotaINTEGRACAO: TIntegerField;
     qrnotaAPROVEITA_CREDITO_ICMS: TWideStringField;
     qrnotaCHAVE: TWideStringField;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label7: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure bincluirClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

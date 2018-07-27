@@ -7,7 +7,7 @@ object frmproduto: Tfrmproduto
   Caption = 'CADASTRO DE PRODUTOS'
   ClientHeight = 741
   ClientWidth = 921
-  Color = clSilver
+  Color = clHighlight
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -1683,7 +1683,7 @@ object frmproduto: Tfrmproduto
             Height = 331
             Align = alClient
             BevelOuter = bvNone
-            Color = clSilver
+            Color = clWhite
             ParentBackground = False
             TabOrder = 0
             object Label94: TLabel
@@ -10637,12 +10637,13 @@ object frmproduto: Tfrmproduto
     end
   end
   object pficha3: TPanel
-    Left = -5
-    Top = 116
-    Width = 923
+    Left = 0
+    Top = 121
+    Width = 921
     Height = 204
+    Align = alTop
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clWhite
     ParentBackground = False
     TabOrder = 10
     object Label1: TLabel
@@ -12011,11 +12012,12 @@ object frmproduto: Tfrmproduto
   end
   object Panel8: TPanel
     Left = 0
-    Top = 49
-    Width = 922
+    Top = 48
+    Width = 921
     Height = 73
+    Align = alTop
     BevelOuter = bvNone
-    Color = 10933723
+    Color = clWhite
     ParentBackground = False
     TabOrder = 11
     object AdvSmoothButton1: TAdvSmoothButton
@@ -12445,7 +12447,7 @@ object frmproduto: Tfrmproduto
     Width = 663
     Height = 84
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 12
     object bincluir: TAdvGlowButton
@@ -12455,7 +12457,7 @@ object frmproduto: Tfrmproduto
       Height = 54
       Caption = 'Incluir'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -12540,7 +12542,7 @@ object frmproduto: Tfrmproduto
       Height = 54
       Caption = 'Alterar'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -12616,7 +12618,7 @@ object frmproduto: Tfrmproduto
       Height = 54
       Caption = 'Excluir'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -12742,7 +12744,7 @@ object frmproduto: Tfrmproduto
       Hint = 'Prior record'
       Caption = 'Voltar'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -12834,7 +12836,7 @@ object frmproduto: Tfrmproduto
       Hint = 'Next record'
       Caption = 'Proximo'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -12924,7 +12926,7 @@ object frmproduto: Tfrmproduto
       Height = 54
       Caption = 'Relat'#243'rios'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -13031,7 +13033,7 @@ object frmproduto: Tfrmproduto
       Height = 54
       Caption = 'Atalhos'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -13144,7 +13146,7 @@ object frmproduto: Tfrmproduto
       Height = 54
       Caption = 'Localizar'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -13336,15 +13338,20 @@ object frmproduto: Tfrmproduto
       Layout = blGlyphTop
     end
     object pgravar: TFlatPanel
-      Left = -4
+      Left = 0
       Top = 0
-      Width = 664
-      Height = 82
+      Width = 663
+      Height = 84
       ParentColor = True
       Visible = False
-      ColorHighLight = clSilver
-      ColorShadow = clSilver
+      ColorHighLight = clHighlight
+      ColorShadow = clHighlight
+      Align = alClient
       TabOrder = 8
+      ExplicitLeft = -57
+      ExplicitTop = 57
+      ExplicitWidth = 664
+      ExplicitHeight = 82
       object bgravar: TAdvGlowButton
         Left = 247
         Top = 12
@@ -13352,7 +13359,7 @@ object frmproduto: Tfrmproduto
         Height = 63
         Caption = 'Gravar'
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
+        Font.Color = clWhite
         Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
@@ -13478,7 +13485,7 @@ object frmproduto: Tfrmproduto
         Height = 63
         Caption = 'Cancelar'
         Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
+        Font.Color = clWhite
         Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
@@ -13623,6 +13630,7 @@ object frmproduto: Tfrmproduto
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone

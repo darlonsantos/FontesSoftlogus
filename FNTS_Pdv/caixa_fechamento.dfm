@@ -4,7 +4,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   BorderStyle = bsNone
   Caption = 'Caixa - Fechamento'
   ClientHeight = 613
-  ClientWidth = 676
+  ClientWidth = 675
   Color = clSilver
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Width = 674
     Height = 82
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 0
     object bt_ok: TButton
@@ -235,8 +235,9 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Width = 911
     Height = 53
     BevelOuter = bvNone
-    Color = 15264234
+    Color = clWhite
     Enabled = False
+    ParentBackground = False
     TabOrder = 1
     object Label1: TLabel
       Left = 0
@@ -1445,7 +1446,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 676
+    Width = 675
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -1460,7 +1461,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 11563548
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -1580,7 +1581,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     Width = 912
     Height = 45
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 4
     object bt_fechamento01: TAdvGlowButton
@@ -2411,8 +2412,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
   object pop_fechamento: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
     Version = '2.6.1.0'
-    Left = 769
-    Top = 385
+    Left = 385
+    Top = 373
     object Cancelar1: TMenuItem
       Caption = 'Cancelar'
       ShortCut = 27
@@ -3284,8 +3285,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       'SUBTOTAL=SUBTOTAL')
     DataSet = qrRelFechamento
     BCDToCurrency = False
-    Left = 605
-    Top = 69
+    Left = 473
+    Top = 5
   end
   object qrRelFechamento: TUniQuery
     Connection = frmModulo.conexao

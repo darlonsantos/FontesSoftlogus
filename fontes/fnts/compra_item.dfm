@@ -2,11 +2,11 @@ object frmcompra_item: Tfrmcompra_item
   Left = 321
   Top = 170
   BorderIcons = [biSystemMenu]
-  BorderStyle = bsSingle
+  BorderStyle = bsNone
   Caption = 'NOTAS FISCAIS | Entrada - Item'
-  ClientHeight = 432
-  ClientWidth = 946
-  Color = clSilver
+  ClientHeight = 509
+  ClientWidth = 818
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -20,48 +20,48 @@ object frmcompra_item: Tfrmcompra_item
   PixelsPerInch = 96
   TextHeight = 13
   object Shape25: TShape
-    Left = 328
-    Top = 314
+    Left = 336
+    Top = 358
     Width = 230
     Height = 47
     Brush.Color = 8440061
     Pen.Color = clGray
   end
   object Shape24: TShape
-    Left = 328
-    Top = 299
+    Left = 336
+    Top = 343
     Width = 381
     Height = 15
     Brush.Color = 33023
     Pen.Color = 11982812
   end
   object Shape10: TShape
-    Left = 8
-    Top = 246
+    Left = 16
+    Top = 290
     Width = 310
     Height = 47
     Brush.Color = clBtnFace
     Pen.Color = clGray
   end
   object Shape8: TShape
-    Left = 8
-    Top = 231
+    Left = 16
+    Top = 275
     Width = 313
     Height = 15
     Brush.Color = 16744448
     Pen.Color = 11982812
   end
   object Shape1: TShape
-    Left = 8
-    Top = 165
+    Left = 16
+    Top = 209
     Width = 786
     Height = 15
     Brush.Color = clGreen
     Pen.Color = 11982812
   end
   object Label22: TLabel
-    Left = 12
-    Top = 92
+    Left = 20
+    Top = 136
     Width = 23
     Height = 13
     Caption = 'CST:'
@@ -74,8 +74,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label23: TLabel
-    Left = 10
-    Top = 116
+    Left = 18
+    Top = 160
     Width = 31
     Height = 13
     Caption = 'CFOP:'
@@ -88,8 +88,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label2: TLabel
-    Left = 530
-    Top = 91
+    Left = 538
+    Top = 135
     Width = 97
     Height = 13
     Caption = 'Classifica'#231#227'o Fiscal :'
@@ -102,56 +102,56 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape2: TShape
-    Left = 8
-    Top = 179
+    Left = 16
+    Top = 223
     Width = 49
     Height = 47
     Brush.Color = 7456876
     Pen.Color = clGray
   end
   object Shape3: TShape
-    Left = 56
-    Top = 179
+    Left = 64
+    Top = 223
     Width = 121
     Height = 47
     Brush.Color = 7456876
     Pen.Color = clGray
   end
   object Shape4: TShape
-    Left = 172
-    Top = 179
+    Left = 180
+    Top = 223
     Width = 129
     Height = 47
     Brush.Color = 7456876
     Pen.Color = clGray
   end
   object Shape5: TShape
-    Left = 456
-    Top = 179
+    Left = 464
+    Top = 223
     Width = 177
     Height = 47
     Brush.Color = 7456876
     Pen.Color = clGray
   end
   object Shape6: TShape
-    Left = 632
-    Top = 179
+    Left = 640
+    Top = 223
     Width = 161
     Height = 47
     Brush.Color = 7456876
     Pen.Color = clGray
   end
   object Shape7: TShape
-    Left = 304
-    Top = 179
+    Left = 312
+    Top = 223
     Width = 153
     Height = 47
     Brush.Color = 7456876
     Pen.Color = clGray
   end
   object Label15: TLabel
-    Left = 349
-    Top = 166
+    Left = 357
+    Top = 210
     Width = 90
     Height = 13
     Caption = 'Valores do Item'
@@ -164,8 +164,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label30: TLabel
-    Left = 29
-    Top = 180
+    Left = 37
+    Top = 224
     Width = 12
     Height = 13
     Caption = 'N'#186
@@ -178,8 +178,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label31: TLabel
-    Left = 85
-    Top = 180
+    Left = 93
+    Top = 224
     Width = 56
     Height = 13
     Caption = 'Quantidade'
@@ -192,8 +192,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label3: TLabel
-    Left = 197
-    Top = 180
+    Left = 205
+    Top = 224
     Width = 64
     Height = 13
     Caption = 'Valor Unit'#225'rio'
@@ -206,8 +206,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label4: TLabel
-    Left = 349
-    Top = 180
+    Left = 357
+    Top = 224
     Width = 40
     Height = 13
     Caption = 'Subtotal'
@@ -220,8 +220,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label5: TLabel
-    Left = 517
-    Top = 180
+    Left = 525
+    Top = 224
     Width = 45
     Height = 13
     Caption = 'Desconto'
@@ -234,8 +234,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label6: TLabel
-    Left = 679
-    Top = 180
+    Left = 687
+    Top = 224
     Width = 51
     Height = 13
     Caption = 'Valor Total'
@@ -248,16 +248,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape9: TShape
-    Left = 8
-    Top = 246
+    Left = 16
+    Top = 290
     Width = 44
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Label37: TLabel
-    Left = 111
-    Top = 232
+    Left = 119
+    Top = 276
     Width = 87
     Height = 13
     Caption = 'ICMS Tributado'
@@ -270,8 +270,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label32: TLabel
-    Left = 14
-    Top = 249
+    Left = 22
+    Top = 293
     Width = 31
     Height = 13
     Caption = 'Retido'
@@ -284,16 +284,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape11: TShape
-    Left = 51
-    Top = 246
+    Left = 59
+    Top = 290
     Width = 62
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Label38: TLabel
-    Left = 62
-    Top = 249
+    Left = 70
+    Top = 293
     Width = 39
     Height = 13
     Caption = 'Al'#237'quota'
@@ -306,24 +306,24 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape12: TShape
-    Left = 112
-    Top = 246
+    Left = 120
+    Top = 290
     Width = 62
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Shape13: TShape
-    Left = 173
-    Top = 246
+    Left = 181
+    Top = 290
     Width = 73
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Label39: TLabel
-    Left = 122
-    Top = 249
+    Left = 130
+    Top = 293
     Width = 42
     Height = 13
     Caption = 'Redu'#231#227'o'
@@ -336,8 +336,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label40: TLabel
-    Left = 179
-    Top = 249
+    Left = 187
+    Top = 293
     Width = 60
     Height = 13
     Caption = 'Base C'#225'lculo'
@@ -350,16 +350,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape14: TShape
-    Left = 245
-    Top = 246
+    Left = 253
+    Top = 290
     Width = 76
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Label33: TLabel
-    Left = 255
-    Top = 249
+    Left = 263
+    Top = 293
     Width = 52
     Height = 13
     Caption = 'Valor ICMS'
@@ -372,48 +372,48 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape15: TShape
-    Left = 328
-    Top = 246
+    Left = 336
+    Top = 290
     Width = 73
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Shape16: TShape
-    Left = 400
-    Top = 246
+    Left = 408
+    Top = 290
     Width = 73
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Shape17: TShape
-    Left = 472
-    Top = 246
+    Left = 480
+    Top = 290
     Width = 73
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Shape18: TShape
-    Left = 544
-    Top = 246
+    Left = 552
+    Top = 290
     Width = 73
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Shape20: TShape
-    Left = 328
-    Top = 231
+    Left = 336
+    Top = 275
     Width = 289
     Height = 15
     Brush.Color = 16744448
     Pen.Color = 11982812
   end
   object Label34: TLabel
-    Left = 351
-    Top = 232
+    Left = 359
+    Top = 276
     Width = 245
     Height = 13
     Caption = 'ICMS em Regime de Substitui'#231#227'o Tribut'#225'ria'
@@ -426,8 +426,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label35: TLabel
-    Left = 346
-    Top = 249
+    Left = 354
+    Top = 293
     Width = 38
     Height = 13
     Caption = 'Margem'
@@ -440,8 +440,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label36: TLabel
-    Left = 405
-    Top = 249
+    Left = 413
+    Top = 293
     Width = 63
     Height = 13
     Caption = 'Total Produt.'
@@ -454,8 +454,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label41: TLabel
-    Left = 480
-    Top = 249
+    Left = 488
+    Top = 293
     Width = 60
     Height = 13
     Caption = 'Base C'#225'lculo'
@@ -468,8 +468,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label42: TLabel
-    Left = 551
-    Top = 249
+    Left = 559
+    Top = 293
     Width = 58
     Height = 13
     Caption = 'Valor Subst.'
@@ -482,16 +482,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape19: TShape
-    Left = 624
-    Top = 231
+    Left = 632
+    Top = 275
     Width = 169
     Height = 15
     Brush.Color = 16744448
     Pen.Color = 11982812
   end
   object Label7: TLabel
-    Left = 640
-    Top = 232
+    Left = 648
+    Top = 276
     Width = 120
     Height = 13
     Caption = 'ICMS sem Tributa'#231#227'o'
@@ -504,16 +504,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape21: TShape
-    Left = 624
-    Top = 246
+    Left = 632
+    Top = 290
     Width = 85
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Label8: TLabel
-    Left = 648
-    Top = 249
+    Left = 656
+    Top = 293
     Width = 31
     Height = 13
     Caption = 'Isento'
@@ -526,16 +526,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape22: TShape
-    Left = 708
-    Top = 246
+    Left = 716
+    Top = 290
     Width = 85
     Height = 47
     Brush.Color = 16235068
     Pen.Color = clGray
   end
   object Label10: TLabel
-    Left = 716
-    Top = 249
+    Left = 724
+    Top = 293
     Width = 68
     Height = 13
     Caption = 'N'#227'o Tributado'
@@ -548,16 +548,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape23: TShape
-    Left = 328
-    Top = 314
+    Left = 336
+    Top = 358
     Width = 165
     Height = 47
     Brush.Color = 8440061
     Pen.Color = clGray
   end
   object Label9: TLabel
-    Left = 533
-    Top = 300
+    Left = 541
+    Top = 344
     Width = 17
     Height = 13
     Caption = 'IPI'
@@ -570,8 +570,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label11: TLabel
-    Left = 334
-    Top = 317
+    Left = 342
+    Top = 361
     Width = 20
     Height = 13
     Caption = 'Tipo'
@@ -584,8 +584,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label12: TLabel
-    Left = 502
-    Top = 317
+    Left = 510
+    Top = 361
     Width = 39
     Height = 13
     Caption = 'Al'#237'quota'
@@ -598,16 +598,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape26: TShape
-    Left = 557
-    Top = 314
+    Left = 565
+    Top = 358
     Width = 76
     Height = 47
     Brush.Color = 8440061
     Pen.Color = clGray
   end
   object Label26: TLabel
-    Left = 562
-    Top = 317
+    Left = 570
+    Top = 361
     Width = 60
     Height = 13
     Caption = 'Base C'#225'lculo'
@@ -620,16 +620,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape27: TShape
-    Left = 632
-    Top = 314
+    Left = 640
+    Top = 358
     Width = 77
     Height = 47
     Brush.Color = 8440061
     Pen.Color = clGray
   end
   object Label43: TLabel
-    Left = 639
-    Top = 317
+    Left = 647
+    Top = 361
     Width = 56
     Height = 13
     Caption = 'Valor do IPI'
@@ -642,48 +642,48 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape28: TShape
-    Left = 8
-    Top = 314
+    Left = 16
+    Top = 358
     Width = 80
     Height = 47
     Brush.Color = 8440061
     Pen.Color = clGray
   end
   object Shape29: TShape
-    Left = 86
-    Top = 314
+    Left = 94
+    Top = 358
     Width = 80
     Height = 47
     Brush.Color = 8440061
     Pen.Color = clGray
   end
   object Shape30: TShape
-    Left = 165
-    Top = 314
+    Left = 173
+    Top = 358
     Width = 80
     Height = 47
     Brush.Color = 8440061
     Pen.Color = clGray
   end
   object Shape31: TShape
-    Left = 244
-    Top = 314
+    Left = 252
+    Top = 358
     Width = 80
     Height = 47
     Brush.Color = 8440061
     Pen.Color = clGray
   end
   object Shape32: TShape
-    Left = 8
-    Top = 299
+    Left = 16
+    Top = 343
     Width = 316
     Height = 15
     Brush.Color = 33023
     Pen.Color = 11982812
   end
   object Label13: TLabel
-    Left = 136
-    Top = 300
+    Left = 144
+    Top = 344
     Width = 54
     Height = 13
     Caption = 'Despesas'
@@ -696,8 +696,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label14: TLabel
-    Left = 26
-    Top = 317
+    Left = 34
+    Top = 361
     Width = 26
     Height = 13
     Caption = 'Frete'
@@ -710,8 +710,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label16: TLabel
-    Left = 109
-    Top = 317
+    Left = 117
+    Top = 361
     Width = 34
     Height = 13
     Caption = 'Seguro'
@@ -724,8 +724,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label17: TLabel
-    Left = 184
-    Top = 317
+    Left = 192
+    Top = 361
     Width = 33
     Height = 13
     Caption = 'Outras'
@@ -738,8 +738,8 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Label18: TLabel
-    Left = 258
-    Top = 317
+    Left = 266
+    Top = 361
     Width = 55
     Height = 13
     Caption = 'It.Especiais'
@@ -752,16 +752,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape33: TShape
-    Left = 712
-    Top = 299
+    Left = 720
+    Top = 343
     Width = 81
     Height = 15
     Brush.Color = 33023
     Pen.Color = 11982812
   end
   object Label24: TLabel
-    Left = 735
-    Top = 300
+    Left = 743
+    Top = 344
     Width = 38
     Height = 13
     Caption = 'Outras'
@@ -774,16 +774,16 @@ object frmcompra_item: Tfrmcompra_item
     Transparent = True
   end
   object Shape35: TShape
-    Left = 712
-    Top = 314
+    Left = 720
+    Top = 358
     Width = 81
     Height = 47
     Brush.Color = 8440061
     Pen.Color = clGray
   end
   object Label27: TLabel
-    Left = 741
-    Top = 317
+    Left = 749
+    Top = 361
     Width = 24
     Height = 13
     Caption = 'Valor'
@@ -797,13 +797,16 @@ object frmcompra_item: Tfrmcompra_item
   end
   object Panel1: TPanel
     Left = 0
-    Top = 0
-    Width = 817
+    Top = 48
+    Width = 818
     Height = 81
+    Align = alTop
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 84
+    ExplicitWidth = 817
     object Label21: TLabel
       Left = 741
       Top = 53
@@ -885,6 +888,36 @@ object frmcompra_item: Tfrmcompra_item
       Height = 13
       Alignment = taCenter
       Caption = 'F4 | Limpar C'#243'd.Produto'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label46: TLabel
+      Left = 30
+      Top = 56
+      Width = 133
+      Height = 13
+      Alignment = taCenter
+      Caption = 'F3 | Alterar Pre'#231'o de Venda'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object Label47: TLabel
+      Left = 206
+      Top = 56
+      Width = 79
+      Height = 13
+      Alignment = taCenter
+      Caption = 'Atualizar nota...'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -11
@@ -1004,19 +1037,20 @@ object frmcompra_item: Tfrmcompra_item
       DisplayFormat = '###,###,##0.0000'
     end
     object rpreco: TCheckBox
-      Left = 61
-      Top = 56
-      Width = 156
+      Left = 11
+      Top = 54
+      Width = 22
       Height = 17
-      Caption = 'F3 | Alterar Pre'#231'o de Venda'
-      Color = clWhite
+      BiDiMode = bdLeftToRight
+      Checked = True
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWhite
+      Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
-      ParentColor = False
+      ParentBiDiMode = False
       ParentFont = False
+      State = cbChecked
       TabOrder = 5
     end
     object eproduto: TRzEdit
@@ -1111,10 +1145,27 @@ object frmcompra_item: Tfrmcompra_item
       Appearance.GradientMirrorDown = ggVertical
       Appearance.GradientChecked = ggVertical
     end
+    object check_atualiza: TCheckBox
+      Left = 186
+      Top = 54
+      Width = 23
+      Height = 17
+      Color = clWhite
+      Ctl3D = True
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentCtl3D = False
+      ParentFont = False
+      TabOrder = 8
+    end
   end
   object ecfop: TRzDBButtonEdit
-    Left = 53
-    Top = 112
+    Left = 61
+    Top = 156
     Width = 81
     Height = 21
     DataSource = dscompra_item
@@ -1165,8 +1216,8 @@ object frmcompra_item: Tfrmcompra_item
     OnButtonClick = ecfopButtonClick
   end
   object DBEdit6: TDBEdit
-    Left = 136
-    Top = 112
+    Left = 144
+    Top = 156
     Width = 382
     Height = 21
     Color = 15916445
@@ -1181,8 +1232,8 @@ object frmcompra_item: Tfrmcompra_item
     TabOrder = 32
   end
   object ecst: TRzDBButtonEdit
-    Left = 53
-    Top = 88
+    Left = 61
+    Top = 132
     Width = 81
     Height = 21
     DataSource = dscompra_item
@@ -1233,8 +1284,8 @@ object frmcompra_item: Tfrmcompra_item
     OnButtonClick = ecstButtonClick
   end
   object ECLASSIF: TDBEdit
-    Left = 630
-    Top = 88
+    Left = 638
+    Top = 132
     Width = 144
     Height = 21
     Color = 15916445
@@ -1252,8 +1303,8 @@ object frmcompra_item: Tfrmcompra_item
     OnKeyPress = eun_compraKeyPress
   end
   object eitem: TDBEdit
-    Left = 14
-    Top = 195
+    Left = 22
+    Top = 239
     Width = 36
     Height = 21
     CharCase = ecUpperCase
@@ -1273,8 +1324,8 @@ object frmcompra_item: Tfrmcompra_item
     OnKeyPress = eqtdeKeyPress
   end
   object eqtde: TRzDBNumericEdit
-    Left = 63
-    Top = 195
+    Left = 71
+    Top = 239
     Width = 103
     Height = 21
     DataSource = dscompra_item
@@ -1295,8 +1346,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.0000000'
   end
   object FlatPanel1: TFlatPanel
-    Left = 168
-    Top = 192
+    Left = 176
+    Top = 236
     Width = 17
     Height = 21
     Caption = 'x'
@@ -1311,8 +1362,8 @@ object frmcompra_item: Tfrmcompra_item
     TabOrder = 33
   end
   object eunitario: TRzDBNumericEdit
-    Left = 191
-    Top = 195
+    Left = 199
+    Top = 239
     Width = 91
     Height = 21
     DataSource = dscompra_item
@@ -1333,8 +1384,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.0000000'
   end
   object esubtotal: TRzDBNumericEdit
-    Left = 319
-    Top = 195
+    Left = 327
+    Top = 239
     Width = 114
     Height = 21
     DataSource = dscompra_item
@@ -1355,8 +1406,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object FlatPanel2: TFlatPanel
-    Left = 296
-    Top = 192
+    Left = 304
+    Top = 236
     Width = 17
     Height = 21
     Caption = '='
@@ -1371,8 +1422,8 @@ object frmcompra_item: Tfrmcompra_item
     TabOrder = 34
   end
   object FlatPanel3: TFlatPanel
-    Left = 448
-    Top = 192
+    Left = 456
+    Top = 236
     Width = 17
     Height = 21
     Caption = '-'
@@ -1387,8 +1438,8 @@ object frmcompra_item: Tfrmcompra_item
     TabOrder = 35
   end
   object edperc: TRzNumericEdit
-    Left = 469
-    Top = 195
+    Left = 477
+    Top = 239
     Width = 60
     Height = 21
     Color = 15916445
@@ -1405,8 +1456,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '##0.00%'
   end
   object edesconto: TRzDBNumericEdit
-    Left = 535
-    Top = 195
+    Left = 543
+    Top = 239
     Width = 85
     Height = 21
     DataSource = dscompra_item
@@ -1427,8 +1478,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = 'R$ ###,###,##0.00'
   end
   object FlatPanel4: TFlatPanel
-    Left = 624
-    Top = 192
+    Left = 632
+    Top = 236
     Width = 17
     Height = 21
     Caption = '='
@@ -1443,8 +1494,8 @@ object frmcompra_item: Tfrmcompra_item
     TabOrder = 36
   end
   object etotal: TRzDBNumericEdit
-    Left = 640
-    Top = 194
+    Left = 648
+    Top = 238
     Width = 144
     Height = 24
     DataSource = dscompra_item
@@ -1466,8 +1517,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object combo_retido: TRzDBComboBox
-    Left = 12
-    Top = 263
+    Left = 20
+    Top = 307
     Width = 37
     Height = 21
     DataField = 'ICMS_RETIDO'
@@ -1488,8 +1539,8 @@ object frmcompra_item: Tfrmcompra_item
       'S')
   end
   object ealiquota: TRzDBNumericEdit
-    Left = 54
-    Top = 262
+    Left = 62
+    Top = 306
     Width = 56
     Height = 21
     DataSource = dscompra_item
@@ -1510,8 +1561,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00%'
   end
   object ereducao: TRzDBNumericEdit
-    Left = 115
-    Top = 263
+    Left = 123
+    Top = 307
     Width = 56
     Height = 21
     DataSource = dscompra_item
@@ -1532,8 +1583,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.0000%'
   end
   object ebase_icms: TRzDBNumericEdit
-    Left = 176
-    Top = 263
+    Left = 184
+    Top = 307
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1554,8 +1605,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object evalor_icms: TRzDBNumericEdit
-    Left = 248
-    Top = 263
+    Left = 256
+    Top = 307
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1575,8 +1626,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object emargem_sub: TRzDBNumericEdit
-    Left = 333
-    Top = 263
+    Left = 341
+    Top = 307
     Width = 64
     Height = 21
     DataSource = dscompra_item
@@ -1597,8 +1648,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00%'
   end
   object eprod_sub: TRzDBNumericEdit
-    Left = 404
-    Top = 263
+    Left = 412
+    Top = 307
     Width = 65
     Height = 21
     DataSource = dscompra_item
@@ -1619,8 +1670,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object ebase_sub: TRzDBNumericEdit
-    Left = 476
-    Top = 263
+    Left = 484
+    Top = 307
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1641,8 +1692,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object evalor_sub: TRzDBNumericEdit
-    Left = 548
-    Top = 263
+    Left = 556
+    Top = 307
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1662,8 +1713,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object eisento: TRzDBNumericEdit
-    Left = 633
-    Top = 263
+    Left = 641
+    Top = 307
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1683,8 +1734,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object enao_trib: TRzDBNumericEdit
-    Left = 717
-    Top = 263
+    Left = 725
+    Top = 307
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1704,8 +1755,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object combo_ipi: TRzDBComboBox
-    Left = 332
-    Top = 331
+    Left = 340
+    Top = 375
     Width = 157
     Height = 21
     DataField = 'IPI_TIPO'
@@ -1731,8 +1782,8 @@ object frmcompra_item: Tfrmcompra_item
       '2')
   end
   object ealiquota_ipi: TRzDBNumericEdit
-    Left = 497
-    Top = 331
+    Left = 505
+    Top = 375
     Width = 56
     Height = 21
     DataSource = dscompra_item
@@ -1752,8 +1803,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00%'
   end
   object ebase_ipi: TRzDBNumericEdit
-    Left = 561
-    Top = 331
+    Left = 569
+    Top = 375
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1773,8 +1824,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object evalor_ipi: TRzDBNumericEdit
-    Left = 637
-    Top = 331
+    Left = 645
+    Top = 375
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1793,8 +1844,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object Efrete: TRzDBNumericEdit
-    Left = 12
-    Top = 331
+    Left = 20
+    Top = 375
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1814,8 +1865,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object eseguro: TRzDBNumericEdit
-    Left = 91
-    Top = 331
+    Left = 99
+    Top = 375
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1835,8 +1886,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object eoutras: TRzDBNumericEdit
-    Left = 173
-    Top = 331
+    Left = 181
+    Top = 375
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1855,8 +1906,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object eespecial: TRzDBNumericEdit
-    Left = 250
-    Top = 331
+    Left = 258
+    Top = 375
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -1875,19 +1926,27 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object Panel2: TPanel
-    Left = 815
-    Top = 0
-    Width = 132
-    Height = 436
+    Left = 0
+    Top = 417
+    Width = 818
+    Height = 92
+    Align = alBottom
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clHighlight
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
     ParentBackground = False
+    ParentFont = False
     TabOrder = 31
+    ExplicitTop = 640
     object bgravar: TAdvGlowButton
-      Left = 29
-      Top = 134
+      Left = 142
+      Top = 15
       Width = 72
-      Height = 59
+      Height = 58
       Caption = 'Gravar'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -2049,6 +2108,7 @@ object frmcompra_item: Tfrmcompra_item
         020C00F4D2058D809D8E7A0000000049454E44AE426082}
       Transparent = True
       TabOrder = 1
+      Visible = False
       OnClick = BitBtn1Click
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10079963
@@ -2135,6 +2195,7 @@ object frmcompra_item: Tfrmcompra_item
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00}
       Transparent = True
       TabOrder = 2
+      Visible = False
       OnClick = BitBtn3Click
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10079963
@@ -2202,6 +2263,7 @@ object frmcompra_item: Tfrmcompra_item
         0056AEADCFE29D72E10000000049454E44AE426082}
       Transparent = True
       TabOrder = 3
+      Visible = False
       OnClick = BitBtn4Click
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10079963
@@ -2273,6 +2335,7 @@ object frmcompra_item: Tfrmcompra_item
         73234000519C1B01020C009276F9248E0AE67A0000000049454E44AE426082}
       Transparent = True
       TabOrder = 4
+      Visible = False
       OnClick = BitBtn2Click
       Appearance.BorderColor = 14727579
       Appearance.BorderColorHot = 10079963
@@ -2305,8 +2368,8 @@ object frmcompra_item: Tfrmcompra_item
       Appearance.GradientChecked = ggVertical
     end
     object bserial: TAdvGlowButton
-      Left = 29
-      Top = 217
+      Left = 573
+      Top = 334
       Width = 72
       Height = 59
       Caption = 'Editar Serial'
@@ -2428,39 +2491,510 @@ object frmcompra_item: Tfrmcompra_item
       Appearance.GradientChecked = ggVertical
       Layout = blGlyphTop
     end
-    object RzPanel1: TRzPanel
-      Left = 1
-      Top = 341
-      Width = 129
-      Height = 36
-      BorderOuter = fsNone
-      BorderColor = clGradientActiveCaption
-      BorderWidth = 2
-      Color = 10092543
+    object DBAdvGlowButton1: TDBAdvGlowButton
+      Left = 384
+      Top = 15
+      Width = 67
+      Height = 58
+      Hint = 'Prior record'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Verdana'
+      Font.Style = [fsBold]
+      ImageIndex = 0
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      Picture.Data = {
+        89504E470D0A1A0A0000000D49484452000000280000002808060000008CFEB8
+        6D0000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000036669545874584D4C3A636F6D2E61646F62652E786D7000
+        000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+        4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+        6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+        786D70746B3D2241646F626520584D5020436F726520352E332D633031312036
+        362E3134353636312C20323031322F30322F30362D31343A35363A3237202020
+        2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+        3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+        7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+        626F75743D222220786D6C6E733A786D704D4D3D22687474703A2F2F6E732E61
+        646F62652E636F6D2F7861702F312E302F6D6D2F2220786D6C6E733A73745265
+        663D22687474703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F73
+        547970652F5265736F75726365526566232220786D6C6E733A786D703D226874
+        74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F2220786D704D
+        4D3A4F726967696E616C446F63756D656E7449443D22786D702E6469643A3444
+        3538324345333046463345343131383932454130343642353242383133372220
+        786D704D4D3A446F63756D656E7449443D22786D702E6469643A344630443444
+        30454633313031314534424642424641374346433745394646362220786D704D
+        4D3A496E7374616E636549443D22786D702E6969643A34463044344430444633
+        313031314534424642424641374346433745394646362220786D703A43726561
+        746F72546F6F6C3D2241646F62652050686F746F73686F702043533620285769
+        6E646F777329223E203C786D704D4D3A4465726976656446726F6D2073745265
+        663A696E7374616E636549443D22786D702E6969643A34443538324345333046
+        46334534313138393245413034364235324238313337222073745265663A646F
+        63756D656E7449443D22786D702E6469643A3444353832434533304646334534
+        313138393245413034364235324238313337222F3E203C2F7264663A44657363
+        72697074696F6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E
+        203C3F787061636B657420656E643D2272223F3E257E78A1000004A549444154
+        78DAC4986D685B5518C7FFC9BD3749D32EB5ADB176E91ABA545132379D38E82A
+        DA69073ADC14416513DF612A3886FAC517141461C2AC0E54C4B70F633050C7F0
+        8511266CDAB139FD601D165B95D1B5139BCE6DA52F499B26B989FF939CD46EA6
+        BDF7A677CD03BF7E48CF7DCEFF9CE739CF7971DCB2A70F25582559465693EBC8
+        D5A48ED4CAFF8F90F3E44FD2434E90D32466B523D562FB20E920F79175C465F2
+        BB34F99E7C4EBE2583760BBC8C3C4E9E262D25CCB82A0726E8271F904FC8A8D1
+        874E13CEEF2447486789E22EB6E564A7F479D74205BE42F6C93CB3DB84CF2FC8
+        ABA50854C847E475E2C5A5330F794D865BB59283E28347B178F604D1C8236666
+        F08D451657B087C90E2381F79297513E7B4196B0A2021BE4EA2AB7BD4502C504
+        6E9725A0DCD624B55C2030B490BCD314071C4EDBF331345BE003A4DEF2F6E074
+        A04275E0F0440A5DC4A53AED125A2F35E504D694327B42DC949EC5C1339378EC
+        4A2F3A57D4617C5AC7743A6B67E9A975CA8A7E95A5EACA909EA598E3E726F154
+        A806EFDE11C4C66B6AD1CBDFE2142D422E06301716B6C455A250B79AFD4284CF
+        C3309E184BE24C3C85CE350D78766D031CECF3AFD109C4C6A7D0E3D1B034A520
+        398F9F168F0A2FFDA43386B3DDAACA339DA990BA996F9173091E9E32F8ACA309
+        F7AFA8FBAF81E84BE11F45E4A513EE39FA169AC6F40C2A3553C97AA36AE684E2
+        A038314B91681C359CA1839B96E3A6C6AA0BDAAC59B604BD0FAD84C6764EC71C
+        6174E4057EDA3D8CF7FAC7B1DAAB19751D52CDAEDE43E713B8FD0A2F766F6846
+        A0FAFFE7D42AB7826BDD8AA95409FB2B11EB1B85EECD9F4AE631BF6AE654DC35
+        91C4B6503576AE0FE6C2BC509B4AEBE64EA22CB186CDF4DC813D83E66AB72DE2
+        0A7968D2B2860245086EF6B9F0DCAF67F1E691BF6D11285630B2A60B07FE316A
+        E5A6C3EB2B34BCF86314CF1C3885C964664102C7137A6EC198C8D81155DEB0C2
+        F3B54AB0F8D67301B42FADC2FB7D231888A5B06B7D135A6A3D336DBA87E2D871
+        3C0A9FA6C0AB149F2051AAF46C16BF8C4CA3D567EA423828048A8BF106A330C7
+        988762DF6D0F54E1C0701C27BFECC787EB02B8B5B93AD7663896C4BE936310EA
+        148AD48B665436573057321A7E0E38A51BC6B94F083C4A9E37938B53DC67DD4C
+        8ADBFC5E1CE66ED21E19C0DEB60036AFBA1C4D5C4458A221EC51E07729C8185C
+        844C8813764C08EC16519417184391E94C7EDBE8A871E1776E775B0E9DCE15F1
+        469F8666CE8AE6305EE926335868FA49081C22BBC99356123DC9D90C576A6864
+        38371F1B42B84245D0AB328A596432B62CF63D429B533E4BEC2DC5438C227D2C
+        A56D149A10C54DB7EDA805A9295DA883220FF75BF5A0C815AE7175063DF9BCCB
+        DA337B5FC99787990D47B87DA7E49D6126376DB35D85549DBD931C9537AA72DB
+        DBF225ACE8BD58DC89BF2BA33821ECA5F92EEEE220FC20F9AD0CE27AC916326D
+        F4F411952F0C3D8B28AE47F61935FBBA259E6E37CECE854B6862B56E227F587D
+        1F1C940F8C1F178E85369B2E7D8B73C080D5F7C182C5C956399B762E9E2EE973
+        ABEC03A50A2C58448EF46E59444BB56FC83DD257C4D46DD28273B1797F8DFC2B
+        BDB8ECB791B5E40679C9BE78B062DF3B457E263F8893895C0C092B23FA578001
+        006FBA3CE8FDF36C410000000049454E44AE426082}
+      Transparent = True
       TabOrder = 6
-      object check_atualiza: TCheckBox
-        Left = 6
-        Top = 11
-        Width = 129
-        Height = 17
-        Caption = 'Atualizar nota...'
-        Color = clWhite
-        Ctl3D = True
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentColor = False
-        ParentCtl3D = False
-        ParentFont = False
-        TabOrder = 0
-      end
+      OnClick = BitBtn3Click
+      Appearance.BorderColor = 14727579
+      Appearance.BorderColorHot = 10079963
+      Appearance.BorderColorDown = 4548219
+      Appearance.BorderColorChecked = clBlack
+      Appearance.Color = 15653832
+      Appearance.ColorTo = 16178633
+      Appearance.ColorChecked = 7915518
+      Appearance.ColorCheckedTo = 11918331
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 7778289
+      Appearance.ColorDownTo = 4296947
+      Appearance.ColorHot = 15465983
+      Appearance.ColorHotTo = 11332863
+      Appearance.ColorMirror = 15586496
+      Appearance.ColorMirrorTo = 16245200
+      Appearance.ColorMirrorHot = 5888767
+      Appearance.ColorMirrorHotTo = 10807807
+      Appearance.ColorMirrorDown = 946929
+      Appearance.ColorMirrorDownTo = 5021693
+      Appearance.ColorMirrorChecked = 10480637
+      Appearance.ColorMirrorCheckedTo = 5682430
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Appearance.GradientHot = ggVertical
+      Appearance.GradientMirrorHot = ggVertical
+      Appearance.GradientDown = ggVertical
+      Appearance.GradientMirrorDown = ggVertical
+      Appearance.GradientChecked = ggVertical
+      Layout = blGlyphTop
+      AutoDisable = True
+      ConfirmAction = False
+      DBButtonType = dbPrior
+      DisableControl = [drBOF, drEditing, drEmpty]
+    end
+    object DBAdvGlowButton2: TDBAdvGlowButton
+      Left = 457
+      Top = 15
+      Width = 67
+      Height = 58
+      Hint = 'Next record'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Verdana'
+      Font.Style = [fsBold]
+      ImageIndex = 0
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      Picture.Data = {
+        89504E470D0A1A0A0000000D49484452000000280000002808060000008CFEB8
+        6D0000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000036669545874584D4C3A636F6D2E61646F62652E786D7000
+        000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+        4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+        6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+        786D70746B3D2241646F626520584D5020436F726520352E332D633031312036
+        362E3134353636312C20323031322F30322F30362D31343A35363A3237202020
+        2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+        3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+        7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+        626F75743D222220786D6C6E733A786D704D4D3D22687474703A2F2F6E732E61
+        646F62652E636F6D2F7861702F312E302F6D6D2F2220786D6C6E733A73745265
+        663D22687474703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F73
+        547970652F5265736F75726365526566232220786D6C6E733A786D703D226874
+        74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F2220786D704D
+        4D3A4F726967696E616C446F63756D656E7449443D22786D702E6469643A3444
+        3538324345333046463345343131383932454130343642353242383133372220
+        786D704D4D3A446F63756D656E7449443D22786D702E6469643A363237383534
+        38374633313031314534413133314444363345433831363235412220786D704D
+        4D3A496E7374616E636549443D22786D702E6969643A36323738353438364633
+        313031314534413133314444363345433831363235412220786D703A43726561
+        746F72546F6F6C3D2241646F62652050686F746F73686F702043533620285769
+        6E646F777329223E203C786D704D4D3A4465726976656446726F6D2073745265
+        663A696E7374616E636549443D22786D702E6969643A34443538324345333046
+        46334534313138393245413034364235324238313337222073745265663A646F
+        63756D656E7449443D22786D702E6469643A3444353832434533304646334534
+        313138393245413034364235324238313337222F3E203C2F7264663A44657363
+        72697074696F6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E
+        203C3F787061636B657420656E643D2272223F3E77FAF4360000049549444154
+        78DACC987B6C53551CC7BF6D6FDB6D1D5BBBECA5190FC1C188222841A2238D12
+        93C5408868F085890A2AF1458CF10F497C4062A231D11031BE12FF300650D098
+        98208A4074021115C42DA251746E202B34E04AB7D1767DF8FDDD9DCA5CDADE7B
+        DB6BE72FF9A4D9EEB9E77C7FBF7BCEEF77CE7104DFFD09455833B98CCC2773C9
+        34524F6AD5F30809931ED2450E931F49C8EA409AC5F6579265E40E32AB40BB26
+        3293B48FF9DF2F6433F9981C313BA0D364BB4BC91BE42BB2DE405C3E13C11B54
+        1FAFA93E6D11783FD943D6101F4AB76AF220D9ADFA2E5AA09BBCA59802FB6DAA
+        EAFB4D3596258193C8FB663CB4C11E5063559B1528DE6C21CB513E5BAE169066
+        46E0EB6429CA6FCBD4D805054AB85763E2EC3E454E81B3C90B98787B9EB4E612
+        B89604EC1841733A4A795D2AD263E3054AB95A695708E2E98C2EB204A1779139
+        6305DEAE524BC99173BB1C383A3482BDE7E270509FFC5D84D590DBB202A56EDE
+        6387B868328DD3B114365EDD8CA75A03D8131AC6B99174B122578936C93BF3D4
+        EEC4508044249381FE9BCB62A90CBAE3492C6CA9C6CAB9F5FA3BEB8F8471498D
+        07D3AB34FDDD243FBF49BB885C2E021719B594084824BACE275155A0DD5F6C83
+        58127D9138663554E2D9EB5B3099E2561F38899E911496042A10A3732329D322
+        1789C02B8C5A89E7129D853EB71E957C511081DD9A035EED42725835BF1153FC
+        1E2CDD7D1C3B4E0D6349D3A88B2645CE1381D38D5AC984DFD05687871634156C
+        97A227E28CBFF2DF15EB86197E74D57A71F7277F60C79F8358DCECD3BF8A0991
+        D3A4A706433F9219B4D655A0DEE72E7A11CDACAFC4CE15AD78F8B35E6C393188
+        A0DF5BF06B6437BE4E537B427634184F959C1F25B29B6F9A81756D0174461366
+        168C3E593228B3F9DC4ED3A3CA27364E52F4B4D2E32A59D808FB7972572F5EFE
+        2D8260ADA94F9C1681A70DE7212774889F64389182334FF94A73207926BFB28A
+        5DE3DAC9FB8FEEEAC3073D11B49B5F246111D8A78E90796D31BDDD7A6C00FBFA
+        8790AFBCBA98BDA34C3361E6C14DCC7FD74EADF9E7D9775CB96B3EEFC3E1B331
+        74B48C56D4F3AC3A26EC7711F803B9B150AB6CE5F89403C433B9BDF6B2515C16
+        120546131716D44747CFE2E6CE139283D07171351342C64AA2EE1281FB0DE70E
+        3BF4730EB61BCCC3B027856E8F13931971B14D5F87B0F6603F02151AAEAAF3EA
+        73D042A9133BA0A9537F64CCAD40EE5468D0B1BE9361A4677B351C3B13C3CE5F
+        07F0C4C110E6B0BC3556B8AC442D6B67E480AFA9EB88B7C9E3A5AC507140A21C
+        A0C847F69DC471CEB1606395D9C590CBDE116D920765B6BE471276E43811D3C0
+        3C179CE429455C421D4533D92AF2AD128952A3A8570C35578B1407A5E59BF167
+        925764B76E47142D2E84F1364C36E63A341D22CFFC0F4E75A2E1FB7CE7E217C9
+        8713286E3B79C9E866E15E33B9F13FB04E35B6E1D54794AC205F9451DC5E722B
+        19327BBBD5AF2E74B69741DC36720B3965F57E704079F5B4CAEA769BF4B94E9D
+        7F078AB9C0CCDA73A443254EBB6CABEAD3F02EC8EC1DF52175FB701D46EF97C3
+        4588927DE7AB2448EE547D9ADA515BB12F15928E16906BD4BD4E9BDAF47AC694
+        2A71E267B59DDBAF04F55AF5EA6F01060058D57322DA95B3520000000049454E
+        44AE426082}
+      Transparent = True
+      TabOrder = 7
+      OnClick = BitBtn4Click
+      Appearance.BorderColor = 14727579
+      Appearance.BorderColorHot = 10079963
+      Appearance.BorderColorDown = 4548219
+      Appearance.BorderColorChecked = clBlack
+      Appearance.Color = 15653832
+      Appearance.ColorTo = 16178633
+      Appearance.ColorChecked = 7915518
+      Appearance.ColorCheckedTo = 11918331
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 7778289
+      Appearance.ColorDownTo = 4296947
+      Appearance.ColorHot = 15465983
+      Appearance.ColorHotTo = 11332863
+      Appearance.ColorMirror = 15586496
+      Appearance.ColorMirrorTo = 16245200
+      Appearance.ColorMirrorHot = 5888767
+      Appearance.ColorMirrorHotTo = 10807807
+      Appearance.ColorMirrorDown = 946929
+      Appearance.ColorMirrorDownTo = 5021693
+      Appearance.ColorMirrorChecked = 10480637
+      Appearance.ColorMirrorCheckedTo = 5682430
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Appearance.GradientHot = ggVertical
+      Appearance.GradientMirrorHot = ggVertical
+      Appearance.GradientDown = ggVertical
+      Appearance.GradientMirrorDown = ggVertical
+      Appearance.GradientChecked = ggVertical
+      Layout = blGlyphTop
+      AutoDisable = True
+      ConfirmAction = False
+      DBButtonType = dbNext
+      DisableControl = [drEOF, drEditing, drEmpty]
+    end
+    object DBAdvGlowButton3: TDBAdvGlowButton
+      Left = 530
+      Top = 15
+      Width = 65
+      Height = 58
+      Hint = 'Next record'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Verdana'
+      Font.Style = [fsBold]
+      ImageIndex = 0
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      Picture.Data = {
+        89504E470D0A1A0A0000000D49484452000000280000002808060000008CFEB8
+        6D0000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000036669545874584D4C3A636F6D2E61646F62652E786D7000
+        000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+        4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+        6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+        786D70746B3D2241646F626520584D5020436F726520352E332D633031312036
+        362E3134353636312C20323031322F30322F30362D31343A35363A3237202020
+        2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+        3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+        7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+        626F75743D222220786D6C6E733A786D704D4D3D22687474703A2F2F6E732E61
+        646F62652E636F6D2F7861702F312E302F6D6D2F2220786D6C6E733A73745265
+        663D22687474703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F73
+        547970652F5265736F75726365526566232220786D6C6E733A786D703D226874
+        74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F2220786D704D
+        4D3A4F726967696E616C446F63756D656E7449443D22786D702E6469643A3444
+        3538324345333046463345343131383932454130343642353242383133372220
+        786D704D4D3A446F63756D656E7449443D22786D702E6469643A363237383534
+        38374633313031314534413133314444363345433831363235412220786D704D
+        4D3A496E7374616E636549443D22786D702E6969643A36323738353438364633
+        313031314534413133314444363345433831363235412220786D703A43726561
+        746F72546F6F6C3D2241646F62652050686F746F73686F702043533620285769
+        6E646F777329223E203C786D704D4D3A4465726976656446726F6D2073745265
+        663A696E7374616E636549443D22786D702E6969643A34443538324345333046
+        46334534313138393245413034364235324238313337222073745265663A646F
+        63756D656E7449443D22786D702E6469643A3444353832434533304646334534
+        313138393245413034364235324238313337222F3E203C2F7264663A44657363
+        72697074696F6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E
+        203C3F787061636B657420656E643D2272223F3E77FAF4360000049549444154
+        78DACC987B6C53551CC7BF6D6FDB6D1D5BBBECA5190FC1C188222841A2238D12
+        93C5408868F085890A2AF1458CF10F497C4062A231D11031BE12FF300650D098
+        98208A4074021115C42DA251746E202B34E04AB7D1767DF8FDDD9DCA5CDADE7B
+        DB6BE72FF9A4D9EEB9E77C7FBF7BCEEF77CE7104DFFD09455833B98CCC2773C9
+        34524F6AD5F30809931ED2450E931F49C8EA409AC5F6579265E40E32AB40BB26
+        3293B48FF9DF2F6433F9981C313BA0D364BB4BC91BE42BB2DE405C3E13C11B54
+        1FAFA93E6D11783FD943D6101F4AB76AF220D9ADFA2E5AA09BBCA59802FB6DAA
+        EAFB4D3596258193C8FB663CB4C11E5063559B1528DE6C21CB513E5BAE169066
+        46E0EB6429CA6FCBD4D805054AB85763E2EC3E454E81B3C90B98787B9EB4E612
+        B89604EC1841733A4A795D2AD263E3054AB95A695708E2E98C2EB204A1779139
+        6305DEAE524BC99173BB1C383A3482BDE7E270509FFC5D84D590DBB202A56EDE
+        6387B868328DD3B114365EDD8CA75A03D8131AC6B99174B122578936C93BF3D4
+        EEC4508044249381FE9BCB62A90CBAE3492C6CA9C6CAB9F5FA3BEB8F8471498D
+        07D3AB34FDDD243FBF49BB885C2E021719B594084824BACE275155A0DD5F6C83
+        58127D9138663554E2D9EB5B3099E2561F38899E911496042A10A3732329D322
+        1789C02B8C5A89E7129D853EB71E957C511081DD9A035EED42725835BF1153FC
+        1E2CDD7D1C3B4E0D6349D3A88B2645CE1381D38D5AC984DFD05687871634156C
+        97A227E28CBFF2DF15EB86197E74D57A71F7277F60C79F8358DCECD3BF8A0991
+        D3A4A706433F9219B4D655A0DEE72E7A11CDACAFC4CE15AD78F8B35E6C393188
+        A0DF5BF06B6437BE4E537B427634184F959C1F25B29B6F9A81756D0174461366
+        168C3E593228B3F9DC4ED3A3CA27364E52F4B4D2E32A59D808FB7972572F5EFE
+        2D8260ADA94F9C1681A70DE7212774889F64389182334FF94A73207926BFB28A
+        5DE3DAC9FB8FEEEAC3073D11B49B5F246111D8A78E90796D31BDDD7A6C00FBFA
+        8790AFBCBA98BDA34C3361E6C14DCC7FD74EADF9E7D9775CB96B3EEFC3E1B331
+        74B48C56D4F3AC3A26EC7711F803B9B150AB6CE5F89403C433B9BDF6B2515C16
+        120546131716D44747CFE2E6CE139283D07171351342C64AA2EE1281FB0DE70E
+        3BF4730EB61BCCC3B027856E8F13931971B14D5F87B0F6603F02151AAEAAF3EA
+        73D042A9133BA0A9537F64CCAD40EE5468D0B1BE9361A4677B351C3B13C3CE5F
+        07F0C4C110E6B0BC3556B8AC442D6B67E480AFA9EB88B7C9E3A5AC507140A21C
+        A0C847F69DC471CEB1606395D9C590CBDE116D920765B6BE471276E43811D3C0
+        3C179CE429455C421D4533D92AF2AD128952A3A8570C35578B1407A5E59BF167
+        925764B76E47142D2E84F1364C36E63A341D22CFFC0F4E75A2E1FB7CE7E217C9
+        8713286E3B79C9E866E15E33B9F13FB04E35B6E1D54794AC205F9451DC5E722B
+        19327BBBD5AF2E74B69741DC36720B3965F57E704079F5B4CAEA769BF4B94E9D
+        7F078AB9C0CCDA73A443254EBB6CABEAD3F02EC8EC1DF52175FB701D46EF97C3
+        4588927DE7AB2448EE547D9ADA515BB12F15928E16906BD4BD4E9BDAF47AC694
+        2A71E267B59DDBAF04F55AF5EA6F01060058D57322DA95B3520000000049454E
+        44AE426082}
+      Transparent = True
+      TabOrder = 8
+      OnClick = BitBtn2Click
+      Appearance.BorderColor = 14727579
+      Appearance.BorderColorHot = 10079963
+      Appearance.BorderColorDown = 4548219
+      Appearance.BorderColorChecked = clBlack
+      Appearance.Color = 15653832
+      Appearance.ColorTo = 16178633
+      Appearance.ColorChecked = 7915518
+      Appearance.ColorCheckedTo = 11918331
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 7778289
+      Appearance.ColorDownTo = 4296947
+      Appearance.ColorHot = 15465983
+      Appearance.ColorHotTo = 11332863
+      Appearance.ColorMirror = 15586496
+      Appearance.ColorMirrorTo = 16245200
+      Appearance.ColorMirrorHot = 5888767
+      Appearance.ColorMirrorHotTo = 10807807
+      Appearance.ColorMirrorDown = 946929
+      Appearance.ColorMirrorDownTo = 5021693
+      Appearance.ColorMirrorChecked = 10480637
+      Appearance.ColorMirrorCheckedTo = 5682430
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Appearance.GradientHot = ggVertical
+      Appearance.GradientMirrorHot = ggVertical
+      Appearance.GradientDown = ggVertical
+      Appearance.GradientMirrorDown = ggVertical
+      Appearance.GradientChecked = ggVertical
+      Layout = blGlyphTop
+      AutoDisable = True
+      ConfirmAction = False
+      DBButtonType = dbNext
+      DisableControl = [drEOF, drEditing, drEmpty]
+    end
+    object DBAdvGlowButton4: TDBAdvGlowButton
+      Left = 311
+      Top = 15
+      Width = 67
+      Height = 58
+      Hint = 'Prior record'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -11
+      Font.Name = 'Verdana'
+      Font.Style = [fsBold]
+      ImageIndex = 0
+      NotesFont.Charset = DEFAULT_CHARSET
+      NotesFont.Color = clWindowText
+      NotesFont.Height = -11
+      NotesFont.Name = 'Tahoma'
+      NotesFont.Style = []
+      ParentFont = False
+      Picture.Data = {
+        89504E470D0A1A0A0000000D49484452000000280000002808060000008CFEB8
+        6D0000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000036669545874584D4C3A636F6D2E61646F62652E786D7000
+        000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+        4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+        6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+        786D70746B3D2241646F626520584D5020436F726520352E332D633031312036
+        362E3134353636312C20323031322F30322F30362D31343A35363A3237202020
+        2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+        3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+        7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+        626F75743D222220786D6C6E733A786D704D4D3D22687474703A2F2F6E732E61
+        646F62652E636F6D2F7861702F312E302F6D6D2F2220786D6C6E733A73745265
+        663D22687474703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F73
+        547970652F5265736F75726365526566232220786D6C6E733A786D703D226874
+        74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F2220786D704D
+        4D3A4F726967696E616C446F63756D656E7449443D22786D702E6469643A3444
+        3538324345333046463345343131383932454130343642353242383133372220
+        786D704D4D3A446F63756D656E7449443D22786D702E6469643A344630443444
+        30454633313031314534424642424641374346433745394646362220786D704D
+        4D3A496E7374616E636549443D22786D702E6969643A34463044344430444633
+        313031314534424642424641374346433745394646362220786D703A43726561
+        746F72546F6F6C3D2241646F62652050686F746F73686F702043533620285769
+        6E646F777329223E203C786D704D4D3A4465726976656446726F6D2073745265
+        663A696E7374616E636549443D22786D702E6969643A34443538324345333046
+        46334534313138393245413034364235324238313337222073745265663A646F
+        63756D656E7449443D22786D702E6469643A3444353832434533304646334534
+        313138393245413034364235324238313337222F3E203C2F7264663A44657363
+        72697074696F6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E
+        203C3F787061636B657420656E643D2272223F3E257E78A1000004A549444154
+        78DAC4986D685B5518C7FFC9BD3749D32EB5ADB176E91ABA545132379D38E82A
+        DA69073ADC14416513DF612A3886FAC517141461C2AC0E54C4B70F633050C7F0
+        8511266CDAB139FD601D165B95D1B5139BCE6DA52F499B26B989FF939CD46EA6
+        BDF7A677CD03BF7E48CF7DCEFF9CE739CF7971DCB2A70F25582559465693EBC8
+        D5A48ED4CAFF8F90F3E44FD2434E90D32466B523D562FB20E920F79175C465F2
+        BB34F99E7C4EBE2583760BBC8C3C4E9E262D25CCB82A0726E8271F904FC8A8D1
+        874E13CEEF2447486789E22EB6E564A7F479D74205BE42F6C93CB3DB84CF2FC8
+        ABA50854C847E475E2C5A5330F794D865BB59283E28347B178F604D1C8236666
+        F08D451657B087C90E2381F79297513E7B4196B0A2021BE4EA2AB7BD4502C504
+        6E9725A0DCD624B55C2030B490BCD314071C4EDBF331345BE003A4DEF2F6E074
+        A04275E0F0440A5DC4A53AED125A2F35E504D694327B42DC949EC5C1339378EC
+        4A2F3A57D4617C5AC7743A6B67E9A975CA8A7E95A5EACA909EA598E3E726F154
+        A806EFDE11C4C66B6AD1CBDFE2142D422E06301716B6C455A250B79AFD4284CF
+        C3309E184BE24C3C85CE350D78766D031CECF3AFD109C4C6A7D0E3D1B034A520
+        398F9F168F0A2FFDA43386B3DDAACA339DA990BA996F9173091E9E32F8ACA309
+        F7AFA8FBAF81E84BE11F45E4A513EE39FA169AC6F40C2A3553C97AA36AE684E2
+        A038314B91681C359CA1839B96E3A6C6AA0BDAAC59B604BD0FAD84C6764EC71C
+        6174E4057EDA3D8CF7FAC7B1DAAB19751D52CDAEDE43E713B8FD0A2F766F6846
+        A0FAFFE7D42AB7826BDD8AA95409FB2B11EB1B85EECD9F4AE631BF6AE654DC35
+        91C4B6503576AE0FE6C2BC509B4AEBE64EA22CB186CDF4DC813D83E66AB72DE2
+        0A7968D2B2860245086EF6B9F0DCAF67F1E691BF6D11285630B2A60B07FE316A
+        E5A6C3EB2B34BCF86314CF1C3885C964664102C7137A6EC198C8D81155DEB0C2
+        F3B54AB0F8D67301B42FADC2FB7D231888A5B06B7D135A6A3D336DBA87E2D871
+        3C0A9FA6C0AB149F2051AAF46C16BF8C4CA3D567EA423828048A8BF106A330C7
+        988762DF6D0F54E1C0701C27BFECC787EB02B8B5B93AD7663896C4BE936310EA
+        148AD48B665436573057321A7E0E38A51BC6B94F083C4A9E37938B53DC67DD4C
+        8ADBFC5E1CE66ED21E19C0DEB60036AFBA1C4D5C4458A221EC51E07729C8185C
+        844C8813764C08EC16519417184391E94C7EDBE8A871E1776E775B0E9DCE15F1
+        469F8666CE8AE6305EE926335868FA49081C22BBC99356123DC9D90C576A6864
+        38371F1B42B84245D0AB328A596432B62CF63D429B533E4BEC2DC5438C227D2C
+        A56D149A10C54DB7EDA805A9295DA883220FF75BF5A0C815AE7175063DF9BCCB
+        DA337B5FC99787990D47B87DA7E49D6126376DB35D85549DBD931C9537AA72DB
+        DBF225ACE8BD58DC89BF2BA33821ECA5F92EEEE220FC20F9AD0CE27AC916326D
+        F4F411952F0C3D8B28AE47F61935FBBA259E6E37CECE854B6862B56E227F587D
+        1F1C940F8C1F178E85369B2E7D8B73C080D5F7C182C5C956399B762E9E2EE973
+        ABEC03A50A2C58448EF46E59444BB56FC83DD257C4D46DD28273B1797F8DFC2B
+        BDB8ECB791B5E40679C9BE78B062DF3B457E263F8893895C0C092B23FA578001
+        006FBA3CE8FDF36C410000000049454E44AE426082}
+      Transparent = True
+      TabOrder = 9
+      OnClick = BitBtn1Click
+      Appearance.BorderColor = 14727579
+      Appearance.BorderColorHot = 10079963
+      Appearance.BorderColorDown = 4548219
+      Appearance.BorderColorChecked = clBlack
+      Appearance.Color = 15653832
+      Appearance.ColorTo = 16178633
+      Appearance.ColorChecked = 7915518
+      Appearance.ColorCheckedTo = 11918331
+      Appearance.ColorDisabled = 15921906
+      Appearance.ColorDisabledTo = 15921906
+      Appearance.ColorDown = 7778289
+      Appearance.ColorDownTo = 4296947
+      Appearance.ColorHot = 15465983
+      Appearance.ColorHotTo = 11332863
+      Appearance.ColorMirror = 15586496
+      Appearance.ColorMirrorTo = 16245200
+      Appearance.ColorMirrorHot = 5888767
+      Appearance.ColorMirrorHotTo = 10807807
+      Appearance.ColorMirrorDown = 946929
+      Appearance.ColorMirrorDownTo = 5021693
+      Appearance.ColorMirrorChecked = 10480637
+      Appearance.ColorMirrorCheckedTo = 5682430
+      Appearance.ColorMirrorDisabled = 11974326
+      Appearance.ColorMirrorDisabledTo = 15921906
+      Appearance.GradientHot = ggVertical
+      Appearance.GradientMirrorHot = ggVertical
+      Appearance.GradientDown = ggVertical
+      Appearance.GradientMirrorDown = ggVertical
+      Appearance.GradientChecked = ggVertical
+      Layout = blGlyphTop
+      AutoDisable = True
+      ConfirmAction = False
+      DBButtonType = dbPrior
+      DisableControl = [drBOF, drEditing, drEmpty]
     end
   end
   object DBEdit1: TDBEdit
-    Left = 136
-    Top = 88
+    Left = 144
+    Top = 132
     Width = 382
     Height = 21
     Color = 15916445
@@ -2475,8 +3009,8 @@ object frmcompra_item: Tfrmcompra_item
     TabOrder = 38
   end
   object evalor_outras: TRzDBNumericEdit
-    Left = 716
-    Top = 331
+    Left = 729
+    Top = 375
     Width = 67
     Height = 21
     DataSource = dscompra_item
@@ -2496,8 +3030,8 @@ object frmcompra_item: Tfrmcompra_item
     DisplayFormat = '###,###,##0.00'
   end
   object bvalor_outras: TBitBtn
-    Left = 583
-    Top = 552
+    Left = 928
+    Top = 572
     Width = 177
     Height = 25
     Caption = 'calcula valor de outras'
@@ -2506,8 +3040,8 @@ object frmcompra_item: Tfrmcompra_item
     OnClick = bvalor_outrasClick
   end
   object rlote_fabricacao: TRzPanel
-    Left = 526
-    Top = 113
+    Left = 534
+    Top = 157
     Width = 253
     Height = 46
     BorderOuter = fsNone
@@ -2606,6 +3140,138 @@ object frmcompra_item: Tfrmcompra_item
       TabOrder = 1
       OnExit = evalidadeExit
       OnKeyPress = ealiquotaKeyPress
+    end
+  end
+  object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
+    Left = 0
+    Top = 0
+    Width = 818
+    Height = 48
+    Cursor = crDefault
+    Caption.HTMLFont.Charset = DEFAULT_CHARSET
+    Caption.HTMLFont.Color = clWindowText
+    Caption.HTMLFont.Height = -11
+    Caption.HTMLFont.Name = 'Tahoma'
+    Caption.HTMLFont.Style = []
+    Caption.Font.Charset = DEFAULT_CHARSET
+    Caption.Font.Color = clWindowText
+    Caption.Font.Height = -16
+    Caption.Font.Name = 'Tahoma'
+    Caption.Font.Style = []
+    Caption.Line = False
+    Fill.Color = clHighlight
+    Fill.ColorTo = clNone
+    Fill.ColorMirror = clNone
+    Fill.ColorMirrorTo = clNone
+    Fill.GradientType = gtSolid
+    Fill.GradientMirrorType = gtSolid
+    Fill.BorderColor = clNone
+    Fill.BorderWidth = 0
+    Fill.Rounding = 0
+    Fill.ShadowColor = clNone
+    Fill.ShadowOffset = 0
+    Fill.Glow = gmNone
+    Version = '1.1.0.0'
+    Align = alTop
+    TabOrder = 46
+    ShowExpander = False
+    ExpanderColor = 16445929
+    ExpanderDownColor = 15587527
+    ExpanderHoverColor = 11196927
+    ExplicitTop = 1
+    TMSStyle = 0
+    OldHeight = 48.000000000000000000
+    object Label45: TLabel
+      Left = 102
+      Top = 10
+      Width = 333
+      Height = 23
+      Caption = 'NOTAS FISCAIS | Entrada de Itens'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -19
+      Font.Name = 'Verdana'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object AdvMetroButton1: TAdvMetroButton
+      Left = 2
+      Top = 2
+      Width = 49
+      Height = 45
+      Appearance.PictureColor = clWhite
+      Caption = ''
+      Picture.Data = {
+        89504E470D0A1A0A0000000D494844520000002A0000002A0806000000C5C3C9
+        5B0000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000032269545874584D4C3A636F6D2E61646F62652E786D7000
+        000000003C3F787061636B657420626567696E3D22EFBBBF222069643D225735
+        4D304D7043656869487A7265537A4E54637A6B633964223F3E203C783A786D70
+        6D65746120786D6C6E733A783D2261646F62653A6E733A6D6574612F2220783A
+        786D70746B3D2241646F626520584D5020436F726520352E332D633031312036
+        362E3134353636312C20323031322F30322F30362D31343A35363A3237202020
+        2020202020223E203C7264663A52444620786D6C6E733A7264663D2268747470
+        3A2F2F7777772E77332E6F72672F313939392F30322F32322D7264662D73796E
+        7461782D6E7323223E203C7264663A4465736372697074696F6E207264663A61
+        626F75743D222220786D6C6E733A786D703D22687474703A2F2F6E732E61646F
+        62652E636F6D2F7861702F312E302F2220786D6C6E733A786D704D4D3D226874
+        74703A2F2F6E732E61646F62652E636F6D2F7861702F312E302F6D6D2F222078
+        6D6C6E733A73745265663D22687474703A2F2F6E732E61646F62652E636F6D2F
+        7861702F312E302F73547970652F5265736F75726365526566232220786D703A
+        43726561746F72546F6F6C3D2241646F62652050686F746F73686F7020435336
+        202857696E646F7773292220786D704D4D3A496E7374616E636549443D22786D
+        702E6969643A3445414132443945303444303131453538344545414445343436
+        3535353531312220786D704D4D3A446F63756D656E7449443D22786D702E6469
+        643A344541413244394630344430313145353834454541444534343635353535
+        3131223E203C786D704D4D3A4465726976656446726F6D2073745265663A696E
+        7374616E636549443D22786D702E6969643A3445414132443943303444303131
+        453538344545414445343436353535353131222073745265663A646F63756D65
+        6E7449443D22786D702E6469643A344541413244394430344430313145353834
+        4545414445343436353535353131222F3E203C2F7264663A4465736372697074
+        696F6E3E203C2F7264663A5244463E203C2F783A786D706D6574613E203C3F78
+        7061636B657420656E643D2272223F3E4B533802000004B14944415478DAD499
+        7968554714C65F1215778D2651A352637109C605036EE082A2455C6A5D506825
+        54105C402B05A960ABE03F820A2AA2E082FE218A2888FB52975A49085151DBB8
+        15375C316AAAC625C6C4EB77E01B3D0EBEF7665EDE7BE0811FF7BE3B73CF7C77
+        EEDC9973E6A5044110FA1AAC4E2DEF6F023A806EA02B680B9A8306A012FC0F1E
+        82CBE02AB8092A40902CA11DC170F03DE80D5A39DCF3045C007BC1617003BC77
+        6D30C5F3D54BEF4D063F832EEAFA6B50069E9337A03E7BB729C8028D54FD5B60
+        0BD806AEC75BE838301FF457D72E82425002AEF135BF0255A02E878688EC0CF2
+        C1401E8D9D03CBC0CEA8BD2B42A3D0002C02CF824F560C6680AE0EF76BBE05D3
+        C029E5EB25580A9A45BA379AE3266003A8A15311FB07E8E029D0A61D980FCA94
+        E0ED202B16A10DC13AE5A8147C07D26A29D220C36E083867894DF715BA44F564
+        09E81E2781369DC009B6F31E2CE74338099DA8C6E4BF0914A9C76E09DB7B0D0A
+        5C84760467D5981C9A6091867EE0A11A66B99184A682DF59B986033E25494285
+        59E01DDB972150279CD0CEE0162BFE0D32922832C429EA00DB9719A1A7294B55
+        53AA9C8FE6EAF3166CE0B2974C93556D13780932C1789066C4196BCAB55BEC3C
+        38E2D140373EE0974C0295EE1EBE8E83629E8F0119F6CAD417BC61B72FF6785D
+        23C04D5008BA7C6128FDC5E134CEC3E7AF9CAA64BC0EB3C7E84C8A7C0C463A3A
+        1C4691C644540ECB72F8DBD87D30D6D1EF60D617FBCD1EA33D787CC000C3C546
+        821CF57B3058CDC065357F1BCBE6AB743169FF2ECFF3EC576FBEB683A091E393
+        4BAF1D0E3EB76A50C1A3B6427B6E8C804C4B3BD4ECF3598F9AE0F71143351793
+        B8723A38A6AEC957DAD87CADB462C6B0571CFD56333BF8A84B0B35816D95E794
+        22AFA8001C0D537E1AFC08FEF3F45BC163335B688A09516398FF5E71EE0D5716
+        CB7C1C685DA9563A116264EE6312C16F06A3C2940F67DA91E5E9B7318F2F6CA1
+        8FD49868E8E84CEAAE053F58BE6A548FA4B17C9D63126874A5F3BCCC167A57AD
+        24998E0EE78109D635F970268193D675590E173AFA95D5E81B9EDFB18596F2D8
+        0674727458C47957FB98037683B9E08C2A7BCAFA2E26EDB7E3F9257B1E1D08AA
+        F46AE0882C8DF7C025D0DF2AEBC55443E2CC9F3C7CFEC279B8DAAC92BA5042BA
+        220A952CB18587E301202F4C9964AA833C7C49AEB65F05D0D9B650099A17A814
+        765292635183F46039752C35C1B35D294FA50387A2E5DA094096EE9D6CFF29C8
+        0F17E1A7F129028658B3922C742AA864FB6B22A52221060EA5AC2CBDDB274922
+        25D3BDCD76AFF3438C9A2E17A820BA280E3B23D16803FE54B9FD6C3BA90C77A3
+        7C582B7993D8B1048A6D0BF6A8707023A8EFB353D2925B2C3A9E1C106791BDD5
+        2E49C098383B964D32D9B4DAA51CDDE36BC9AAA540E984E9E086F22DB34CFB58
+        77F38CD3556ACC1AA753406B4F81999C9FF7295F32BBAC0FD79306D78DDCBA0C
+        7E6523375705D812809C026719183F61C05BCD6D7709D55A70773A9F39543FEE
+        F187B8DBBC826160653CB7C6257F9FCA88BEB5BA5ECE30F131838F777C3811D9
+        927533ACFA5B19C75E48C41EBEE9DD5CEEAA08BD540F4532C900FE0187F88743
+        6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
+        65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
+      TabOrder = 0
+      Version = '1.1.1.0'
+      OnClick = AdvMetroButton1Click
     end
   end
   object AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler
@@ -3211,7 +3877,7 @@ object frmcompra_item: Tfrmcompra_item
     Left = 976
     Top = 408
     Bitmap = {
-      494C0101710072001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010171007200200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000D0010000010020000000000000D0
       010000000000000000000000000000000000000000003E3E3E0017171700FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF

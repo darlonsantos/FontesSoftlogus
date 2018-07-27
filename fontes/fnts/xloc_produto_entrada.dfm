@@ -126,6 +126,7 @@ object frmxloc_produto_entrada: Tfrmxloc_produto_entrada
     BevelOuter = bvNone
     Color = clWhite
     TabOrder = 2
+    ExplicitTop = -3
     object Label56: TLabel
       Left = 19
       Top = 13

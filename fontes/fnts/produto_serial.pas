@@ -242,12 +242,15 @@ begin
   end;
   wwDbgrid2.DefaultDrawDataCell(Rect, field, State);
 end;
-
 procedure Tfrmproduto_serial.Fechar1Click(Sender: TObject);
 begin
   bgravarclick(frmproduto_serial);
 end;
 
 end.
+
+
+
+
 
 

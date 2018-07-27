@@ -1429,9 +1429,9 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object imgFundo: TImage
     Left = 0
-    Top = 159
+    Top = 126
     Width = 1385
-    Height = 634
+    Height = 667
     Margins.Left = 0
     Margins.Top = 100
     Margins.Right = 0
@@ -2215,10 +2215,9 @@ object frmPrincipal: TfrmPrincipal
       28A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A00
       28A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A00
       28A28A00FFD9}
-    ExplicitLeft = 51
-    ExplicitTop = 180
-    ExplicitWidth = 1086
-    ExplicitHeight = 651
+    ExplicitLeft = -5
+    ExplicitTop = 159
+    ExplicitHeight = 634
   end
   object pstatus: TAdvOfficeStatusBar
     Left = 1419
@@ -2844,11 +2843,10 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 1385
-    Height = 159
+    Height = 126
     ApplicationButton.Menu = dxBarApplicationMenu1
     BarManager = dxBarManager1
     ColorSchemeName = 'Black'
-    QuickAccessToolbar.Toolbar = dxBarManager1Bar1
     Contexts = <>
     TabOrder = 9
     TabStop = False
@@ -2881,7 +2879,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 752
     Top = 472
     Bitmap = {
-      494C010108000D008C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010108000D00B40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3500,22 +3498,6 @@ object frmPrincipal: TfrmPrincipal
       0
       0
       0)
-    object dxBarManager1Bar1: TdxBar
-      Caption = 'Custom 1'
-      CaptionButtons = <>
-      DockedLeft = 0
-      DockedTop = 0
-      FloatLeft = 1409
-      FloatTop = 8
-      FloatClientWidth = 53
-      FloatClientHeight = 42
-      ItemLinks = <>
-      OneOnRow = True
-      Row = 0
-      UseOwnFont = False
-      Visible = True
-      WholeRow = False
-    end
     object dxBarManager1Bar2: TdxBar
       Caption = 'Vendas'
       CaptionButtons = <>
@@ -3575,6 +3557,10 @@ object frmPrincipal: TfrmPrincipal
         item
           Visible = True
           ItemName = 'dxBarLargeButton9'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarButton5'
         end>
       OneOnRow = True
       Row = 0
@@ -4044,6 +4030,7 @@ object frmPrincipal: TfrmPrincipal
     object dxBarLargeButton9: TdxBarLargeButton
       Action = balanca
       Category = 0
+      Enabled = False
       LargeGlyph.Data = {
         36100000424D3610000000000000360000002800000020000000200000000100
         2000000000000010000000000000000000000000000000000000000000000000
@@ -4180,6 +4167,12 @@ object frmPrincipal: TfrmPrincipal
       Caption = 'Or'#231'amentos'
       Category = 0
       Hint = 'Or'#231'amentos'
+      Visible = ivAlways
+    end
+    object dxBarButton5: TdxBarButton
+      Caption = 'Atualiza'#231#227'o Sistema'
+      Category = 0
+      Hint = 'Atualiza'#231#227'o Sistema'
       Visible = ivAlways
     end
   end

@@ -4143,7 +4143,7 @@ begin
   begin
     // LOGIN
     Response := ('xxxxxxxxxxxxxxxx');
-    sChallenge := ('ICLOUDINFORMATIC');
+    sChallenge := ('SOFTLOGUS');
 {$IFDEF DEBUG}
 {$ELSE}
 {$ENDIF}
@@ -4492,15 +4492,6 @@ begin
   DB.connected := true;
   VersaoBD := frmprincipal.ExeInfo1.FileVersion;
   Busca_Integridade_Base_Dados; // Efetua a atualização do banco de dados
-
-  { IBConexao.Connected := false;
-    IBConexao.DatabaseName := conexao.HostName+':'+conexao.Database;
-    IBConexao.Connected := true; }
-
-  { EConexao.close;
-    EConexao.Server := Conexao.hostname;
-    EConexao.database := Conexao.database;
-    EConexao.open; }
 
   conexao_ecfserver.connected := false;
   conexao_ecfserver.hostname := Conexao.hostname;
@@ -4979,8 +4970,6 @@ begin
 end;
 
 procedure Tfrmmodulo.Busca_Integridade_Base_Dados();
-// adcionado o parametro pprimarykey para criar chave primaria sim ou nao automaticamente ao criar uma tabel
-// by fernando
   procedure Atualiza_Integridade_Tabela(pTabela: string; pCampo: string;
     pFormato: string; pCriaTabela: Boolean; pGen: Boolean;
     pPrimarykey: Boolean);
@@ -4998,11 +4987,9 @@ procedure Tfrmmodulo.Busca_Integridade_Base_Dados();
     begin
       QueryTmp.sql.add('SELECT * FROM rdb$generators where rdb$generator_name = ''' + UpperCase(pTabela) + '''');
       QueryTmp.Active := true;
-
-      bAchou := false;
+     bAchou := false;
       if QueryTmp.RecordCount = 0 then
       begin
-
         QueryTmp.close;
         QueryTmp.sql.clear;
         QueryTmp.sql.add(pCampo);
@@ -5016,7 +5003,7 @@ procedure Tfrmmodulo.Busca_Integridade_Base_Dados();
       end;
     end;
 
-    if not(pCriaTabela) and not(pGen) and not (bAchou) then
+    if (pCriaTabela) and (pGen) and  (bAchou) then
     begin
       try
         QueryTmp.sql.add
@@ -5031,7 +5018,7 @@ procedure Tfrmmodulo.Busca_Integridade_Base_Dados();
           QueryTmp.sql.clear;
           QueryTmp.sql.add('ALTER TABLE ' + pTabela + ' ADD ' + pCampo + ' ' +
             pFormato + ' ;');
-          // SHOWMESSAGE(QueryTmp.SQL.TEXT);
+           SHOWMESSAGE(QueryTmp.SQL.TEXT);
           QueryTmp.Active := true;
           bAchou := true;
         end;
@@ -5153,6 +5140,8 @@ begin
 
   Atualiza_Integridade_Tabela('C000001', 'VERSAOBD', 'VARCHAR(20)', false,
     false, false); // cria independete da versão
+
+
 
   if VersaoBD <= '7.3.9.5' then
   begin
@@ -5321,6 +5310,8 @@ begin
       false, false, false);
       Atualiza_Integridade_Tabela('CL00001', 'COR', 'VARCHAR(100)',
       false, false, false);
+     Atualiza_Integridade_Tabela('C000001', 'DARLON', 'VARCHAR(20)',
+     false, false, true);
 
   end;
 
@@ -5340,7 +5331,7 @@ begin
   begin
     // LOGIN
     Response := ('xxxxxxxxxxxxxxxx');
-    sChallenge := ('ICLOUDINFORMATIC');
+    sChallenge := ('SOFTLOGUS');
 {$IFDEF DEBUG}
 {$ELSE}
 {$ENDIF}

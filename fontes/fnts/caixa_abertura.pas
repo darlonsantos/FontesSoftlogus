@@ -26,7 +26,7 @@ type
     qrdata: TZQuery;
     AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
     Label53: TLabel;
-    Image1: TImage;
+    bfechar: TAdvMetroButton;
     procedure bcancelarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure bgravarClick(Sender: TObject);

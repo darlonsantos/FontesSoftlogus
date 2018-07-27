@@ -24,9 +24,9 @@ object frmxloc_produto: Tfrmxloc_produto
     Top = 48
     Width = 774
     Height = 44
-    Color = clSilver
-    ColorHighLight = clSilver
-    ColorShadow = clSilver
+    Color = clHighlight
+    ColorHighLight = clHighlight
+    ColorShadow = clHighlight
     TabOrder = 0
     object Label12: TLabel
       Left = 638
@@ -35,7 +35,7 @@ object frmxloc_produto: Tfrmxloc_produto
       Height = 12
       Caption = '* | TODOS'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = []
@@ -48,7 +48,7 @@ object frmxloc_produto: Tfrmxloc_produto
       Height = 12
       Caption = 'F3 | LOCALIZAR POR'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = []
@@ -61,7 +61,7 @@ object frmxloc_produto: Tfrmxloc_produto
       Height = 12
       Caption = 'F4 | REFER'#202'NCIA'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = []
@@ -80,7 +80,7 @@ object frmxloc_produto: Tfrmxloc_produto
       Height = 12
       Caption = 'F3'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = [fsBold]
@@ -93,7 +93,7 @@ object frmxloc_produto: Tfrmxloc_produto
       Height = 12
       Caption = 'F4'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = [fsBold]
@@ -106,7 +106,7 @@ object frmxloc_produto: Tfrmxloc_produto
       Height = 12
       Caption = 'F5 | INFORME OS PAR'#194'METROS DA PESQUISA'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = []
@@ -119,7 +119,7 @@ object frmxloc_produto: Tfrmxloc_produto
       Height = 12
       Caption = 'F5'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = [fsBold]
@@ -216,8 +216,8 @@ object frmxloc_produto: Tfrmxloc_produto
     end
   end
   object GRID: TwwDBGrid
-    Left = 1
-    Top = 93
+    Left = 0
+    Top = 92
     Width = 774
     Height = 398
     Selected.Strings = (
@@ -273,9 +273,9 @@ object frmxloc_produto: Tfrmxloc_produto
     Top = 492
     Width = 774
     Height = 60
-    Color = 6723891
-    ColorHighLight = 6723891
-    ColorShadow = 6723891
+    Color = clHighlight
+    ColorHighLight = clHighlight
+    ColorShadow = clHighlight
     Align = alBottom
     TabOrder = 2
     object Bevel3: TBevel
@@ -729,7 +729,7 @@ object frmxloc_produto: Tfrmxloc_produto
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 6723891
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone

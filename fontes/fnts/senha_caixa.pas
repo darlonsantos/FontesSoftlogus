@@ -7,7 +7,7 @@ uses
   Dialogs, StdCtrls, DB, DBTables, DBCtrls, ExtDlgs,
   CellEditors, jpeg,
   ExtCtrls, VrControls, VrButtons, AdvGlowButton, acPNG, AdvReflectionImage,
-  dxGDIPlusClasses;
+  dxGDIPlusClasses, AdvMetroButton, AdvSmoothPanel, AdvSmoothExpanderPanel;
 
 type
   Tfrmsenha_caixa = class(TForm)
@@ -20,7 +20,10 @@ type
     lfuncao: TLabel;
     button1: TAdvGlowButton;
     button2: TAdvGlowButton;
-    Label3: TLabel;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label4: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
+    Panel1: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure ComboBox1KeyPress(Sender: TObject; var Key: Char);
@@ -31,6 +34,7 @@ type
     procedure BUTTON2Click(Sender: TObject);
     procedure BUTTON1Click(Sender: TObject);
     procedure edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure AdvMetroButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -158,6 +162,11 @@ procedure Tfrmsenha_caixa.BUTTON2Click(Sender: TObject);
 begin
   autenticado := false;
   close;
+end;
+
+procedure Tfrmsenha_caixa.AdvMetroButton1Click(Sender: TObject);
+begin
+close;
 end;
 
 procedure Tfrmsenha_caixa.BUTTON1Click(Sender: TObject);

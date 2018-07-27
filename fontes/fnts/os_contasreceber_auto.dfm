@@ -70,7 +70,6 @@ object frmos_contasreceber_auto: Tfrmos_contasreceber_auto
     TitleButtons = False
     OnEnter = wwDBGrid1Enter
     OnKeyPress = wwDBGrid1KeyPress
-    ExplicitHeight = 214
   end
   object combotipo: TwwDBLookupCombo
     Left = 160
@@ -156,7 +155,6 @@ object frmos_contasreceber_auto: Tfrmos_contasreceber_auto
     ColorShadow = clBtnFace
     Align = alBottom
     TabOrder = 3
-    ExplicitTop = 325
     object bgravar: TAdvGlowButton
       Left = 100
       Top = 2

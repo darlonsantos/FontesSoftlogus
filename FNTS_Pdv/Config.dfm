@@ -5428,7 +5428,7 @@ object frmConfig: TfrmConfig
           Top = 15
           Width = 592
           Height = 408
-          ActivePage = ts2
+          ActivePage = ts1
           Align = alClient
           MultiLine = True
           TabOrder = 0
@@ -7090,7 +7090,8 @@ object frmConfig: TfrmConfig
     Configuracoes.Geral.SSLHttpLib = httpIndy
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
-    Configuracoes.Geral.VersaoQRCode = veqr000
+    Configuracoes.Geral.VersaoDF = ve400
+    Configuracoes.Geral.VersaoQRCode = veqr200
     Configuracoes.Arquivos.PathSchemas = 'C:\Softlogus\PDV\Schemas\'
     Configuracoes.Arquivos.Salvar = False
     Configuracoes.Arquivos.OrdenacaoPath = <>

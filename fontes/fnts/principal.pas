@@ -45,7 +45,9 @@ uses
   dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
   System.Actions, AdvTimePickerDropDown, ResizeKit, AdvOfficeImage,
   AdvMetroButton, AeroButtons, cyCustomImage, TFlatHintUnit, LockApplication,
-  System.ImageList, SysUtils, AdvSmoothButton, midaslib;
+  System.ImageList, SysUtils, AdvSmoothButton, midaslib, JvExControls,
+  JvAnimatedImage, JvGIFCtrl, IdComponent, IdBaseComponent, IdTCPConnection,
+  IdTCPClient, IdHTTP, IdAntiFreezeBase, Vcl.IdAntiFreeze;
 
 type
 
@@ -209,7 +211,6 @@ type
     Action79: TAction;
     ResizeKit1: TResizeKit;
     AdvSmoothPanel6: TAdvSmoothPanel;
-    imgFundo: TcyImage;
     store_protect: TLockApplication;
     FlatHint1: TFlatHint;
     psuper: TAdvOfficePager;
@@ -464,7 +465,15 @@ type
     R2: TMenuItem;
     AdvSmoothButton42: TAdvSmoothButton;
     C21: TMenuItem;
-    H1: TMenuItem;
+    A2: TMenuItem;
+    B4: TMenuItem;
+    A3: TMenuItem;
+    imgFundo: TImage;
+    a4: TMenuItem;
+    A5: TMenuItem;
+    AtualizarSistema1: TMenuItem;
+    IdAntiFreeze1: TIdAntiFreeze;
+    qryAtualizarTabelas: TZQuery;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -783,7 +792,10 @@ type
     procedure R2Click(Sender: TObject);
     procedure S8Click(Sender: TObject);
     procedure C21Click(Sender: TObject);
-    procedure H1Click(Sender: TObject);
+    procedure B4Click(Sender: TObject);
+    procedure C22Click(Sender: TObject);
+    procedure A3Click(Sender: TObject);
+    procedure A5Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -861,6 +873,7 @@ type
     function LeInistr(arquivo, sessao, chave, padrao: string): string;
     function isFloat(Str: string): double;
 
+
     (* T E F *)
 
     procedure Daruma_Analisa_Retorno();
@@ -933,7 +946,8 @@ uses modulo, senha, cliente,
   Tef, unFuncoesTEF, cartao, cnae, cor, tamanho, Lista_ABC_Marca_Grupo,
   lista_frete, fluxo_caixa, DRE, mensagem_inventario, Ncm,
   xloc_csosn, importa_nfe,  sobre, // FMapa,
-  form_ativacaoicloud, pUCGeral, OpNatureza, Unit_ativar, regiao, versionamento;
+  form_ativacaoicloud, pUCGeral, OpNatureza, Unit_ativar, regiao, versionamento,
+  versao;
 
 {$R *.dfm}
 
@@ -2427,8 +2441,9 @@ begin
    Form_ativar.dados.Lines.Add(  frmPrincipal.store_protect.Cliente_Cidade );
    Form_ativar.dados.Lines.Add(  frmPrincipal.store_protect.Cliente_Estado );
    Form_ativar.dados.Lines.Add(  frmPrincipal.store_protect.Cliente_Telefone );
- //fim
-  imgFundo.Picture.LoadFromFile(extractfilepath(paramstr(0)) + 'img\fundo01.jpg');
+   //fim
+   imgFundo.Picture.LoadFromFile(extractfilepath(paramstr(0)) + 'img\fundo.jpg');
+
   begin
 
   end;
@@ -3552,6 +3567,11 @@ begin
   frmusuario.showmodal;
 end;
 
+procedure TfrmPrincipal.C22Click(Sender: TObject);
+begin
+ShellExecute(Handle, 'open', 'http://www.softlogus.com.br/glpi/', '', '', 1);
+end;
+
 procedure TfrmPrincipal.Caixa1Click(Sender: TObject);
 begin
   if frmPrincipal.acesso(codigo_usuario, '04.01') = 'NAO' then
@@ -3709,6 +3729,11 @@ begin
       mb_ok + MB_ICONERROR);
   end;
 
+end;
+
+procedure TfrmPrincipal.B4Click(Sender: TObject);
+begin
+  ShellExecute(Handle, 'open', 'http://www.softlogus.com.br/financeiro/cliente/', '', '', 1);
 end;
 
 procedure TfrmPrincipal.Baixa1Click(Sender: TObject);
@@ -6070,6 +6095,7 @@ begin
 
 end;
 
+
 procedure TfrmPrincipal.NotasdeVendas1Click(Sender: TObject);
 var
   i: Integer;
@@ -6765,11 +6791,6 @@ begin
   frmgrupo.showmodal;
 end;
 
-procedure TfrmPrincipal.H1Click(Sender: TObject);
-begin
-  frmversionamento.Show;
-end;
-
 procedure TfrmPrincipal.icloudAfterLogin(Sender: TObject);
 begin
   self.FormShow(self);
@@ -7395,6 +7416,17 @@ begin
   Form_ativacao.showmodal;
 end;
 
+procedure TfrmPrincipal.A3Click(Sender: TObject);
+begin
+ ShellExecute(Handle, 'open', 'http://www.softlogus.com.br/glpi/', '', '', 1);
+end;
+
+procedure TfrmPrincipal.A5Click(Sender: TObject);
+begin
+frmVersao  := TfrmVersao.create(self);
+frmVersao.showmodal;
+end;
+
 procedure TfrmPrincipal.A6Click(Sender: TObject);
 begin
   if frmmodulo.qrcaixa_operador.FIELDBYNAME('situacao').AsInteger = 1 then
@@ -7405,7 +7437,6 @@ begin
     frmprevenda.lcaixa.caption := frmmodulo.qrcaixa_operador.FIELDBYNAME
       ('nome').asstring;
     frmprevenda.showmodal;
-
   end
   else
   begin

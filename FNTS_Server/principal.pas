@@ -1277,13 +1277,13 @@ begin
 
                           qrpdv_tabela.close;
                           qrpdv_tabela.sql.clear;
-                          qrpdv_tabela.sql.add('select * from ESTOQUE where codigo = ' + inttostr(strtoint(qrservidor_tabela.fieldbyname('codigo').asstring)));
+                          qrpdv_tabela.sql.add('select * from ESTOQUE where codigo = ' + inttostr(ssssssssssssssssssssssssssssssssssssssssssssssssssstrtoint(qrservidor_tabela.fieldbyname('codigo').asstring)));
                           qrpdv_tabela.Open;
 
                           if qrpdv_tabela.RecordCount > 0 then
                           begin
                          // achou o registro e processar com a atualizacao
-                            memo1.lines.add('PDV' + grid.CELL[0, I].ASSTRING + ' - ALT - PRODUTO - ' + qrservidor.fieldbyname('codregistro').asstring);
+                            memo1.lines.add('PDV' + grid.CELL[0, I].ASSTRING + ' - PRODUTO ALTERADO - ' + qrservidor.fieldbyname('codregistro').asstring);
                             try
                               qrpdv.close;
                               qrpdv.sql.clear;

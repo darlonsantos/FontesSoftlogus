@@ -1269,17 +1269,31 @@ begin
 
   Ini := TIniFile.Create(IniFile);
   try
+
+  with ACBRNFCe.Configuracoes.Geral do
+       begin
+         SSLLib                := TSSLLib.libCapicom;
+         SSLCryptLib           := TSSLCryptLib.cryCapicom;
+         SSLHttpLib            := TSSLHttpLib.httpWinINet;
+         SSLXmlSignLib         := TSSLXmlSignLib.xsMsXmlCapicom;
+         end;
+
+
+
     { TODO -o27062018 -c201254693 : DARLON SANTOS }
-      cbSSLLib:= Ini.ReadInteger( 'Certificado','SSLLib' ,0);
-      cbCryptLib := Ini.ReadInteger( 'Certificado','CryptLib' , 0);
-      cbHttpLib := Ini.ReadInteger( 'Certificado','HttpLib' , 0);
-      cbXmlSignLib := Ini.ReadInteger( 'Certificado','XmlSignLib' , 0);
+//      cbSSLLib:= Ini.ReadInteger( 'Certificado','SSLLib' ,0);
+//      cbCryptLib := Ini.ReadInteger( 'Certificado','CryptLib' , 0);
+//      cbHttpLib := Ini.ReadInteger( 'Certificado','HttpLib' , 0);
+//      cbXmlSignLib := Ini.ReadInteger( 'Certificado','XmlSignLib' , 0);
 
     edtNumSerie := Ini.ReadString('Certificado', 'NumSerie', '');
-    cbVersaoDF := Ini.ReadInteger( 'Geral','VersaoDF',0);
     edtIdToken := Ini.ReadString('Certificado', 'IDToken', '');
     edtTokenNumero := Ini.ReadString('Certificado', 'TokenNumero', '');
 
+
+    {ALISON}
+    ACBRNFCE.Configuracoes.Geral.VersaoDF := ve400;
+ //
     ACBRNFCe.Configuracoes.Certificados.NumeroSerie := edtNumSerie;
     edtNumSerie := ACBRNFCe.Configuracoes.Certificados.NumeroSerie;
 

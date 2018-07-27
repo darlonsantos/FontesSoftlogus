@@ -101,6 +101,11 @@ type
     edt_senha: TDBEdit;
     Image1: TImage;
     chAtendente: TDBCheckBox;
+    AdvMetroButton1: TAdvMetroButton;
+    Label20: TLabel;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label22: TLabel;
+    AdvMetroButton2: TAdvMetroButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure enomeEnter(Sender: TObject);
@@ -142,6 +147,7 @@ type
     procedure DBComboBox1Change(Sender: TObject);
     procedure dsfunci2DataChange(Sender: TObject; Field: TField);
     procedure AdvMetroButton1Click(Sender: TObject);
+    procedure AdvMetroButton2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -214,6 +220,11 @@ end;
 procedure Tfrmfuncionario.AdvMetroButton1Click(Sender: TObject);
 begin
   close;
+end;
+
+procedure Tfrmfuncionario.AdvMetroButton2Click(Sender: TObject);
+begin
+close;
 end;
 
 procedure Tfrmfuncionario.balterarClick(Sender: TObject);

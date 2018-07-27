@@ -7230,10 +7230,8 @@ object frmSenha_Supervisor: TfrmSenha_Supervisor
       65FF656565FF656565FF656565FF656565FF656565FF656565FF656565FF6565
       65FF656565FF656565FF656565FF656565FF656565FF656565FF656565FF6565
       65FF656565FF656565FF656565FF656565FF656565FF676767FF6A6A6AFF}
-    ExplicitLeft = 234
-    ExplicitTop = 55
-    ExplicitWidth = 105
-    ExplicitHeight = 105
+    ExplicitLeft = 80
+    ExplicitTop = 124
   end
   object ed_senha: TRzEdit
     Left = 159

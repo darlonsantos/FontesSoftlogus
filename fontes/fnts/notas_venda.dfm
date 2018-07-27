@@ -29,8 +29,6 @@ object frmnotas_venda: Tfrmnotas_venda
     Color = clSilver
     ParentBackground = False
     TabOrder = 0
-    ExplicitLeft = 729
-    ExplicitTop = 57
     object DBText1: TDBText
       Left = 520
       Top = 8
@@ -295,8 +293,8 @@ object frmnotas_venda: Tfrmnotas_venda
       Layout = blGlyphTop
     end
     object bcupomfiscal: TAdvGlowMenuButton
-      Left = 6
-      Top = 213
+      Left = 5
+      Top = 216
       Width = 97
       Height = 63
       Caption = 'Comandos'
@@ -1415,7 +1413,7 @@ object frmnotas_venda: Tfrmnotas_venda
         Top = 0
         Width = 807
         Height = 105
-        Color = clSilver
+        ParentColor = True
         Enabled = False
         ColorHighLight = clSilver
         ColorShadow = clSilver
@@ -1766,7 +1764,6 @@ object frmnotas_venda: Tfrmnotas_venda
     Color = clSilver
     ParentBackground = False
     TabOrder = 2
-    ExplicitWidth = 916
     object Label1: TLabel
       Left = 31
       Top = 19
@@ -2936,7 +2933,7 @@ object frmnotas_venda: Tfrmnotas_venda
     Left = 904
     Top = 636
     Bitmap = {
-      494C010103000500280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030005002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -24,7 +24,8 @@ uses
 {$ENDIF},
   ZDataset, AdvPreviewMenuStylers, RzDBCmbo, AdvMenus, AdvMenuStylers,
   BaseGrid, AdvGrid, DBAdvGrid, Menus, PageView, AdvShapeButton, RzSpnEdt,
-  RzBtnEdt, RzDBSpin, System.ImageList, JvExMask, JvToolEdit, JvDBControls;
+  RzBtnEdt, RzDBSpin, System.ImageList, JvExMask, JvToolEdit, JvDBControls,
+  AdvMetroButton, AdvSmoothPanel, AdvSmoothExpanderPanel;
 
 type
   Tfrmcompra = class(TForm)
@@ -463,6 +464,9 @@ type
     qrpagarDATA_PAGAMENTO: TDateField;
     qrproduto_serialDATAVENDA: TDateField;
     qrproduto_serialDATACOMPRA: TDateField;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label90: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure bcancelarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -526,6 +530,7 @@ type
     procedure eaproveita_creditoKeyPress(Sender: TObject; var Key: Char);
     procedure RzDBComboBox3KeyPress(Sender: TObject; var Key: Char);
     procedure ecodmodeloExit(Sender: TObject);
+    procedure AdvMetroButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -2489,6 +2494,11 @@ begin
   edtotal.Value := (edprodutos.Value + edvst.Value + edfrete.Value +
     edseguro.Value + edoutras.Value + edipi.Value + edespecial.Value) -
     rdesconto.Value;
+end;
+
+procedure Tfrmcompra.AdvMetroButton1Click(Sender: TObject);
+begin
+close;
 end;
 
 procedure Tfrmcompra.balterarClick(Sender: TObject);

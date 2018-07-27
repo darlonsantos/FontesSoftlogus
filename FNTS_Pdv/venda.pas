@@ -12,7 +12,7 @@ uses
   Vcl.Mask, dxGDIPlusClasses, AdvOfficeImage, AdvReflectionLabel, RzLabel,
   acPNG, TFlatPanelUnit, Vcl.FileCtrl, pcnAuxiliar, principal,
   IdIPWatch, pcnConversao, ACBrUtil, ACBrBAL, Clipbrd, JvComponentBase,
-  JvThreadTimer, System.SysUtils, FlCtrlEx;
+  JvThreadTimer, System.SysUtils, FlCtrlEx, frxDesgn, frxClass, frxDBSet;
 
 type
   // tipo de imagens do dislplay
@@ -271,6 +271,10 @@ type
     img_produto: TImage;
     img_foto: TImage;
     Image2: TImage;
+    frxReport1: TfrxReport;
+    frxDesigner1: TfrxDesigner;
+    qryCupomNaoFiscal: TUniQuery;
+    fsCupomNaoFiscal: TfrxDBDataset;
 
     function TEF_Cartao(bandeira: Tbandeira_tef): boolean;
     function TEF_Cheque(bandeira: Tbandeira_tef): boolean;
@@ -400,6 +404,7 @@ type
     procedure horaTimer(Sender: TObject);
     procedure imgOffClick(Sender: TObject);
     procedure lbStatusClick(Sender: TObject);
+    procedure frxDesigner1GetTemplateList(List: TStrings);
   private
     { Private declarations }
     a, b: word;
@@ -2433,6 +2438,10 @@ begin
          AcionaBalana1Click(Sender);
       end;
 
+
+
+
+
   if key = #13 then
   begin
     sx_barra := Trim(ed_barra.text);
@@ -2494,7 +2503,6 @@ begin
     sProd_barra := ed_barra.text;
     if frmVenda.Localizar_Produto(ed_barra.Text) then
     begin
-
       if bBusca_foto_produto then
       begin
         if FileExists(sPasta_foto_produto + '\' + sProd_barra + '.jpg') then
@@ -3557,7 +3565,6 @@ var
   str: string;
   SR: TSearchRec;
   Origem, Destino: string;
-
 begin
 
   ED_FOCUS.SETFOCUS;
@@ -3781,8 +3788,6 @@ begin
         sCrediario_Nome := cb_forma3.text;
       end;
     end;
-    // SADRAQUE: Identificação do Vendedor, caso o parametro para identificação
-    // esteja habilidade no programa
 
     iVendedorCodigo := 0;
     sVendedorNome := '';
@@ -4497,7 +4502,8 @@ begin
     else
       sIdentificarVendedor := '';
 
-    if frmPrincipal.TipoImpressora = SemImpressora then begin
+    if frmPrincipal.TipoImpressora = SemImpressora then
+     begin
       try
         Imprime_display('          AGUARDE...  PREPARANDO NFC-E',
           CLWHITE, tiLivre);
@@ -4567,7 +4573,9 @@ begin
           exit;
         end;
       end;
-    end else begin
+    end
+    else
+    begin
       vgerado_nfce := 'N';
       vcontingencia := 'N';
     end;
@@ -4598,7 +4606,6 @@ begin
           end
           else
           begin
-
             if frmPrincipal.TipoImpressora = Fiscal then
               sMsg := cECF_Termina_Fechamento(iECF_Modelo,
                 sPAF_MD5 + #10 +
@@ -5315,11 +5322,15 @@ begin
     end;
 
 
-    //BlockInput(true);
+
+   // BlockInput(true);
 
     if bFinalizado then
     begin
-      Imprime_display('Aguarde!Finalizando Venda!', clwhite, tiInfo);
+     Imprime_display('Aguarde!Finalizando Venda!', clwhite, tiInfo);
+
+
+
 
       // cadastrar cheques
       if (bCadastra_Cheque) and (rvalor_total_cheque > 0) then
@@ -5333,6 +5344,8 @@ begin
 
 
       end;
+
+
 
       with frmmodulo do
       begin
@@ -5644,6 +5657,20 @@ begin
         img_fundo.visible := true;
       end;
 
+      if frmprincipal.TipoImpressora = Naofiscal then
+           begin
+         // /SOPHIA  SOARES CARVALHO
+           frxReport1.LoadFromFile('\Softlogus\PDV\rel\cupomNaoFiscal.fr3');
+           Imprime_display( 'Aguarde! Imprimindo Cupom não Fiscal...', clwhite, tiInfo);
+           qryCupomNaoFiscal.ParamByName('NUMERO').AsString := sNumero_Cupom;
+           qryCupomNaoFiscal.Prepare;
+           qryCupomNaoFiscal.Execute;
+           frxReport1.PrepareReport;
+           frxReport1.PrintOptions.ShowDialog := false;
+           frxReport1.Print;
+      end;
+
+
       Limpa_controles;
 
       if ed_troco.value > 0 then
@@ -5652,6 +5679,8 @@ begin
         Imprime_display('             C A I X A    L I V R E', clWhite, tiLivre);
 
       TimerTroco.Enabled := true; // Apos 5 segundos
+
+
 
       MostraFotoProduto(false);
       MostraLogoMarca(true);
@@ -6290,10 +6319,7 @@ begin
         ACBRDANFENFCe.Logo := frmPrincipal.LerINi(sConfiguracoes, 'PDV',
           'CAMINHO_LOGO', '');
       ACBRDANFENFCe.Detalhado := true;
-      //ACBRDANFENFCe.vTroco := ed_troco.value;
-
-     // ACBRDANFENFCe.vTroco := ed_troco.Value;
-      ACBRDANFENFCe.Impressora := edImpressora;
+       ACBRDANFENFCe.Impressora := edImpressora;
       ACBRDANFENFCe.DescricaoViaEstabelec := edDescEsta;
       ACBRDANFENFCe.EspessuraBorda := edMargem;
       ACBRDANFENFCe.MargemDireita := edMargDir;
@@ -6539,7 +6565,6 @@ end;
 procedure TfrmVenda.ed_senhaKeyPress(Sender: TObject; var Key: Char);
 begin
 
-
   if key = #13 then
   begin
     if iTeclado_modelo = 1 then
@@ -6599,8 +6624,6 @@ end;
 // -------------------------------------------------------------------------- //
 
 procedure TfrmVenda.AcionaBalana1Click(Sender: TObject);
-Var
- TimeOut : Integer;
 begin
   if frmmodulo.balanca.Modelo <> balNenhum then
   begin
@@ -6608,11 +6631,8 @@ begin
       frmmodulo.balanca.ativar;
       frmmodulo.balanca.Ativo := true;
     except
-  //  TimeOut :=2000;
     end;
-   //rmmodulo.balanca.LePeso(  timer_balanca. );
     timer_balanca.Enabled := true;
-
   end;
 end;
 
@@ -7382,6 +7402,11 @@ begin
           Pn_posto.Visible := false;
           ed_barra.setfocus;
         end;
+
+end;
+
+procedure TfrmVenda.frxDesigner1GetTemplateList(List: TStrings);
+begin
 
 end;
 
@@ -8704,9 +8729,9 @@ function TfrmVenda.ImgTipoImpressora(i: Integer): TImpressora;
 begin
 
 
-  case i of
+  case i of      //SOPHIA
     0: begin // Sem Impressora
-        imgImpressora.Picture.Assign(imgCinza.Picture);
+         imgImpressora.Picture.Assign(imgCinza.Picture);
         Frmprincipal.TipoImpressora := SemImpressora;
       end;
     1: begin // Nao Fiscal
@@ -8714,7 +8739,7 @@ begin
         Frmprincipal.TipoImpressora := NaoFiscal;
       end;
     2: begin // Fiscal
-        imgImpressora.Picture.Assign(imgAmarela.Picture);
+      imgImpressora.Picture.Assign(imgAmarela.Picture);
         Frmprincipal.TipoImpressora := Fiscal;
       end;
 

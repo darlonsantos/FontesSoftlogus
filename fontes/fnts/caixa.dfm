@@ -4,9 +4,9 @@ object frmcaixa: Tfrmcaixa
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Livro Caixa'
-  ClientHeight = 622
-  ClientWidth = 1016
-  Color = clSilver
+  ClientHeight = 692
+  ClientWidth = 878
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -25,7 +25,7 @@ object frmcaixa: Tfrmcaixa
     Width = 978
     Height = 52
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 2
     object btcaixapp01: TAdvGlowButton
@@ -281,12 +281,12 @@ object frmcaixa: Tfrmcaixa
   end
   object FlatPanel1: TFlatPanel
     Left = -6
-    Top = 47
+    Top = 44
     Width = 885
     Height = 111
-    Color = clSilver
-    ColorHighLight = clSilver
-    ColorShadow = clSilver
+    ParentColor = True
+    ColorHighLight = clWhite
+    ColorShadow = clWhite
     TabOrder = 0
     object Bevel3: TBevel
       Left = 288
@@ -341,10 +341,10 @@ object frmcaixa: Tfrmcaixa
     object RzPanel1: TRzPanel
       Left = 668
       Top = 2
-      Width = 214
+      Width = 216
       Height = 106
       BorderOuter = fsNone
-      BorderColor = clSilver
+      BorderColor = clHighlight
       BorderWidth = 3
       Color = clGradientInactiveCaption
       TabOrder = 0
@@ -378,12 +378,12 @@ object frmcaixa: Tfrmcaixa
       object Panel4: TPanel
         Left = 3
         Top = 3
-        Width = 208
+        Width = 210
         Height = 23
         Align = alTop
         BevelOuter = bvNone
         Caption = 'Caixa Geral'
-        Color = clSilver
+        Color = clHighlight
         Font.Charset = ANSI_CHARSET
         Font.Color = clWhite
         Font.Height = -16
@@ -397,22 +397,23 @@ object frmcaixa: Tfrmcaixa
     object RzPanel2: TRzPanel
       Left = 6
       Top = 2
-      Width = 661
+      Width = 662
       Height = 106
       BorderOuter = fsNone
-      BorderColor = clSilver
+      BorderColor = clHighlight
+      BorderShadow = clBlue
       BorderWidth = 3
       Color = 14678491
       TabOrder = 1
       object Panel3: TPanel
         Left = 3
         Top = 3
-        Width = 655
+        Width = 656
         Height = 23
         Align = alTop
         BevelOuter = bvNone
         Caption = 'Operador'
-        Color = clSilver
+        Color = clHighlight
         Font.Charset = ANSI_CHARSET
         Font.Color = clWhite
         Font.Height = -16
@@ -592,7 +593,6 @@ object frmcaixa: Tfrmcaixa
           TitleButtons = False
           OnDrawDataCell = wwDBGrid1DrawDataCell
           PaintOptions.ActiveRecordColor = clBlack
-          ExplicitLeft = 13
         end
         object bcaixaaberto: TButton
           Left = 487
@@ -620,7 +620,7 @@ object frmcaixa: Tfrmcaixa
           Width = 973
           Height = 144
           BevelOuter = bvNone
-          Color = clSilver
+          Color = clHighlight
           Enabled = False
           ParentBackground = False
           TabOrder = 3
@@ -714,7 +714,7 @@ object frmcaixa: Tfrmcaixa
             Width = 518
             Height = 53
             BevelOuter = bvNone
-            Color = clSilver
+            Color = clGradientInactiveCaption
             ParentBackground = False
             TabOrder = 0
             object Label10: TLabel
@@ -827,7 +827,7 @@ object frmcaixa: Tfrmcaixa
             Width = 339
             Height = 81
             BevelOuter = bvNone
-            Color = 10933723
+            Color = clGradientInactiveCaption
             ParentBackground = False
             TabOrder = 1
             object AdvReflectionImage1: TAdvReflectionImage
@@ -961,7 +961,7 @@ object frmcaixa: Tfrmcaixa
       Width = 879
       Height = 404
       Caption = 'Resumo do Caixa'
-      Color = clGray
+      Color = clWhite
       DisplayMode = tdGlyph
       ImageIndex = 0
       Margin = 0
@@ -976,7 +976,7 @@ object frmcaixa: Tfrmcaixa
         Width = 179
         Height = 297
         Caption = 'Vendas'
-        Color = clGray
+        Color = clHighlight
         Enabled = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -1717,7 +1717,7 @@ object frmcaixa: Tfrmcaixa
         Width = 179
         Height = 297
         Caption = 'Recebimentos'
-        Color = clGray
+        Color = clHighlight
         Enabled = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2247,7 +2247,7 @@ object frmcaixa: Tfrmcaixa
         Width = 201
         Height = 137
         Caption = 'Pagamentos'
-        Color = clGray
+        Color = clHighlight
         Enabled = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2557,7 +2557,7 @@ object frmcaixa: Tfrmcaixa
         Width = 179
         Height = 296
         Caption = 'Ordem de Servi'#231'o'
-        Color = clGray
+        Color = clHighlight
         Enabled = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -3130,7 +3130,7 @@ object frmcaixa: Tfrmcaixa
         Width = 201
         Height = 63
         Caption = 'Outros'
-        Color = clGray
+        Color = clHighlight
         Enabled = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -3304,7 +3304,7 @@ object frmcaixa: Tfrmcaixa
         Width = 201
         Height = 95
         Caption = 'Resumo Di'#225'rio'
-        Color = clGray
+        Color = clHighlight
         Enabled = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -3506,6 +3506,9 @@ object frmcaixa: Tfrmcaixa
         Width = 549
         Height = 126
         Caption = 'Demonstrativo financeiro'
+        Color = clHighlight
+        ParentBackground = False
+        ParentColor = False
         TabOrder = 6
         Visible = False
         object Grid: TStringGrid
@@ -3537,17 +3540,18 @@ object frmcaixa: Tfrmcaixa
     end
   end
   object pnl1: TPanel
-    Left = 879
-    Top = 48
-    Width = 137
-    Height = 565
+    Left = 0
+    Top = 611
+    Width = 878
+    Height = 81
+    Align = alBottom
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 3
     object bincluir: TAdvGlowButton
-      Left = 28
-      Top = 148
+      Left = 324
+      Top = 13
       Width = 83
       Height = 61
       Caption = 'Incluir'
@@ -3669,8 +3673,8 @@ object frmcaixa: Tfrmcaixa
       Layout = blGlyphTop
     end
     object balterar: TAdvGlowButton
-      Left = 28
-      Top = 212
+      Left = 388
+      Top = 13
       Width = 83
       Height = 61
       Caption = 'Alterar'
@@ -3792,8 +3796,8 @@ object frmcaixa: Tfrmcaixa
       Layout = blGlyphTop
     end
     object bexcluir: TAdvGlowButton
-      Left = 28
-      Top = 276
+      Left = 468
+      Top = 13
       Width = 83
       Height = 61
       Caption = 'Excluir'
@@ -3928,8 +3932,8 @@ object frmcaixa: Tfrmcaixa
       Layout = blGlyphTop
     end
     object brelatorio: TAdvGlowButton
-      Left = 154
-      Top = 330
+      Left = 552
+      Top = 13
       Width = 83
       Height = 61
       Caption = 'Relat'#243'rios'
@@ -4051,8 +4055,8 @@ object frmcaixa: Tfrmcaixa
       Layout = blGlyphTop
     end
     object LMDButton1: TAdvGlowMenuButton
-      Left = 28
-      Top = 84
+      Left = 221
+      Top = 13
       Width = 83
       Height = 61
       Caption = 'Menu'
@@ -4181,7 +4185,7 @@ object frmcaixa: Tfrmcaixa
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 1016
+    Width = 878
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -4195,8 +4199,9 @@ object frmcaixa: Tfrmcaixa
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
-    Fill.ColorMirror = clSilver
+    Fill.ColorMirror = clHighlight
     Fill.ColorMirrorTo = clNone
     Fill.GradientType = gtSolid
     Fill.GradientMirrorType = gtSolid
@@ -4213,20 +4218,19 @@ object frmcaixa: Tfrmcaixa
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 1010
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
-      Left = 59
-      Top = 10
-      Width = 52
-      Height = 23
-      Caption = 'Caixa'
+      Left = 388
+      Top = 13
+      Width = 148
+      Height = 25
+      Caption = 'CAIXA'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -19
+      Font.Height = -21
       Font.Name = 'Verdana'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
       Transparent = True
     end
@@ -4308,18 +4312,6 @@ object frmcaixa: Tfrmcaixa
       Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
-  end
-  object Panel13: TPanel
-    Left = 0
-    Top = 607
-    Width = 1016
-    Height = 15
-    Align = alBottom
-    BevelOuter = bvNone
-    Color = clSilver
-    ParentBackground = False
-    TabOrder = 5
-    ExplicitTop = 609
   end
   object qrcaixa_mov: TZQuery
     Connection = frmmodulo.Conexao
@@ -4417,12 +4409,12 @@ object frmcaixa: Tfrmcaixa
   end
   object dscaixa_mov: TDataSource
     DataSet = qrcaixa_mov
-    Left = 864
-    Top = 728
+    Left = 1076
+    Top = 788
   end
   object POPPRINCIPAL: TPopupMenu
-    Left = 1088
-    Top = 608
+    Left = 1132
+    Top = 796
     object Incluir1: TMenuItem
       Caption = 'Incluir'
       ShortCut = 113
@@ -4481,10 +4473,10 @@ object frmcaixa: Tfrmcaixa
     end
   end
   object ImageList1: TImageList
-    Left = 1160
-    Top = 584
+    Left = 1180
+    Top = 772
     Bitmap = {
-      494C01014F005400300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014F005400380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004001000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7152,8 +7144,8 @@ object frmcaixa: Tfrmcaixa
         'vimento = 1 and plano.tipo = 1'
       'group by plano.conta')
     Params = <>
-    Left = 992
-    Top = 608
+    Left = 1020
+    Top = 792
   end
   object qrmov: TZQuery
     Connection = frmmodulo.Conexao

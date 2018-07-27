@@ -4,7 +4,10 @@ object frmModulo: TfrmModulo
   Height = 709
   Width = 1346
   object Balanca: TACBrBAL
+    Modelo = balToledo
     Porta = 'COM1'
+    MonitorarBalanca = True
+    Device.Baud = 2400
     OnLePeso = BalancaLePeso
     Left = 371
     Top = 366
@@ -212,6 +215,7 @@ object frmModulo: TfrmModulo
     Database = 'C:\Softlogus\PDV\BD\DATPDV.FDB'
     Username = 'sysdba'
     Server = 'localhost'
+    Connected = True
     LoginPrompt = False
     Left = 48
     Top = 24
@@ -5261,7 +5265,8 @@ object frmModulo: TfrmModulo
     Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
-    Configuracoes.Geral.VersaoQRCode = veqr000
+    Configuracoes.Geral.VersaoDF = ve400
+    Configuracoes.Geral.VersaoQRCode = veqr200
     Configuracoes.Arquivos.SepararPorModelo = True
     Configuracoes.Arquivos.OrdenacaoPath = <>
     Configuracoes.Arquivos.SepararPorMes = True

@@ -4163,8 +4163,8 @@ object frmmodulo: Tfrmmodulo
     SQL.Strings = (
       'select * from c000027')
     Params = <>
-    Left = 702
-    Top = 628
+    Left = 718
+    Top = 592
     object qrcomposicao_produtoCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Required = True
@@ -11046,8 +11046,8 @@ object frmmodulo: Tfrmmodulo
     SQL.Strings = (
       'select * from c000096')
     Params = <>
-    Left = 702
-    Top = 492
+    Left = 718
+    Top = 464
     object qrbaixa_produtoscliente: TStringField
       FieldKind = fkLookup
       FieldName = 'cliente'
@@ -15375,8 +15375,8 @@ object frmmodulo: Tfrmmodulo
     SQL.Strings = (
       'select * from INF_SEGURO_CTE')
     Params = <>
-    Left = 952
-    Top = 448
+    Left = 972
+    Top = 424
     object qrinf_seguroCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Required = True
@@ -15557,8 +15557,8 @@ object frmmodulo: Tfrmmodulo
     SQL.Strings = (
       'select * from veiculos_novos_cte')
     Params = <>
-    Left = 832
-    Top = 493
+    Left = 844
+    Top = 441
     object qrveiculosnovosCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Required = True

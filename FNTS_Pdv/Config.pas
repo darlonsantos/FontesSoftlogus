@@ -312,7 +312,7 @@ begin
   cbVersaoDF.Items.Clear;
   For K := Low(TpcnVersaoDF) to High(TpcnVersaoDF) do
    cbVersaoDF.Items.Add( GetEnumName(TypeInfo(TpcnVersaoDF), integer(K) ) );
-   cbVersaoDF.Items[0] := 've200';
+   cbVersaoDF.Items[0] := 've400';
    cbVersaoDF.ItemIndex := 0;
    ACBrNFe1.Configuracoes.WebServices.Salvar := true;
 
@@ -925,8 +925,17 @@ end;
 
 procedure TfrmConfig.btnstatusClick(Sender: TObject);
 begin
- frmModulo.ACBRNFCe.WebServices.StatusServico.Executar;
- MemoResp.Lines.Text := frmModulo.ACBRNFCe.WebServices.StatusServico.RetWS;
+
+ ACBrNFe1.WebServices.StatusServico.Executar ;
+
+  ShowMessage( ACBrNFe1.WebServices.StatusServico.xMotivo);
+
+//alte ra ali//
+
+// frmModulo.ACBRNFCe.WebServices.StatusServico.Executar;
+// MemoResp.Lines.Text := frmModulo.ACBRNFCe.WebServices.StatusServico.RetWS;
+
+
  //memoRespWS.Lines.Text := ACBrNFe1.WebServices.StatusServico.RetornoWS;
 // LoadXML(ACBrNFe1.WebServices.StatusServico.RetornoWS, WBResposta);
 end;

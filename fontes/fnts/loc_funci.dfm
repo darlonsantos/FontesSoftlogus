@@ -52,12 +52,9 @@ object frmloc_funci: Tfrmloc_funci
     Height = 30
     Align = alTop
     BevelOuter = bvNone
-    Color = 9555950
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 112
-    ExplicitWidth = 417
     object Label1: TLabel
       Left = 8
       Top = 8
@@ -98,7 +95,7 @@ object frmloc_funci: Tfrmloc_funci
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -110,20 +107,19 @@ object frmloc_funci: Tfrmloc_funci
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.0.4.2'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 2
     ShowExpander = False
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitLeft = -311
-    ExplicitWidth = 862
+    TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
       Left = 59
       Top = 14
-      Width = 267
+      Width = 264
       Height = 23
       Caption = 'FUNCION'#193'RIO | Localizar...'
       Font.Charset = ANSI_CHARSET
@@ -209,7 +205,7 @@ object frmloc_funci: Tfrmloc_funci
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.0.1'
+      Version = '1.1.1.0'
     end
   end
   object dsfunci: TDataSource

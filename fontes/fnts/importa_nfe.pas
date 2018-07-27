@@ -12,7 +12,7 @@ uses
   AdvGlowButton, RzTabs, AdvShapeButton, jpeg, frxClass, frxDBSet, frxDesgn,
   ACBrBase, ACBrValidador, AdvReflectionImage, AdvMetroButton,
   AdvSmoothPanel, AdvSmoothExpanderPanel, inifiles, System.ImageList, ACBrDFe,
-  JvExStdCtrls, JvEdit, JvValidateEdit;
+  JvExStdCtrls, JvEdit, JvValidateEdit, vcl.Wwdbedit;
 
 type
   Tfrmimporta_nfe = class(TForm)
@@ -385,10 +385,8 @@ type
     qritemCODBARRA: TWideStringField;
     qryestoque: TZQuery;
     qritemPRODUTO: TWideStringField;
-    AdvReflectionImage1: TAdvReflectionImage;
     AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
     Label53: TLabel;
-    pnl1: TPanel;
     AdvGlowButton5: TAdvGlowButton;
     bar: TRzProgressBar;
     btn_importNFeSefaz: TAdvGlowButton;
@@ -641,6 +639,11 @@ type
     QryCadastraProdutoCEST: TWideStringField;
     qrnotaDATA_EMISSAO: TDateField;
     qrnotaDATA_LANCAMENTO: TDateField;
+    AdvMetroButton1: TAdvMetroButton;
+    DBEditFracao: TwwDBEdit;
+    wwDBEdit1: TwwDBEdit;
+    wwDBEditMargem: TwwDBEdit;
+    wwDBEditPreco: TwwDBEdit;
     procedure bimportaClick(Sender: TObject);
     procedure bgravarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -661,6 +664,11 @@ type
     procedure AdvMetroButton1Click(Sender: TObject);
     procedure btn_importNFeSefazClick(Sender: TObject);
     procedure ACBrNFe1StatusChange(Sender: TObject);
+    procedure wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
+    procedure wwDBEditMargemExit(Sender: TObject);
+    procedure wwDBEditPrecoExit(Sender: TObject);
+    procedure DBEditFracaoExit(Sender: TObject);
+    procedure wwDBEdit1Exit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -3055,6 +3063,38 @@ begin
     result := '';
 end;
 
+procedure Tfrmimporta_nfe.DBEditFracaoExit(Sender: TObject);
+begin
+ application.ProcessMessages;
+  try
+    if (qritem.State <> dsEdit) or (qritem.State <> dsInsert) then
+      qritem.Edit;
+
+    try
+      if qritemFRACAO.ASFLOAT <= 0 then
+        qritemFRACAO.ASFLOAT := 1;
+
+      { pega os valores originais }
+      qritemPRECOCUSTO.ASFLOAT := (qritemTOTAL.ASFLOAT + qritemFRETE.ASFLOAT + qritemSEGURO.ASFLOAT + qritemOUTRAS.ASFLOAT + qritemIPI_VALOR.ASFLOAT) /
+        (qritemQTDE.ASFLOAT) / qritemFRACAO.ASFLOAT;
+
+      if qritemPMARGEM.ASFLOAT > 0 then
+        qritemPRECOVENDA.ASFLOAT :=
+          (qritemPRECOCUSTO.ASFLOAT * qritemPMARGEM.ASFLOAT) / 100 +
+          qritemPRECOCUSTO.ASFLOAT
+      else
+        qritemPRECOVENDA.ASFLOAT := qritemPRECOCUSTO.ASFLOAT;
+
+      { calcula o preco de venda }
+      qritemPRECOVENDA.Value := (qritemPRECOVENDA.Value / qritemFRACAO.ASFLOAT);
+      qritemPRECOCUSTO.Value := (qritemPRECOCUSTO.Value / qritemFRACAO.ASFLOAT);
+    except
+      qritemPRECOVENDA.Value := qritemPRECOCUSTO.ASFLOAT;
+    end;
+  except
+  end;
+end;
+
 procedure Tfrmimporta_nfe.sair1Click(Sender: TObject);
 begin
   bsairClick(frmimporta_nfe);
@@ -3065,36 +3105,59 @@ begin
 
 end;
 
-// dados referentes a importação
-
-{
-  Os impostos referente a importação estão em
-
-  Det.Items[n].Imposto.II.vBc = Valor da Base de Calculo para Imposto de Importação
-  Det.Items[n].Imposto.II.vDespAdu = Valor das Despesas Aduaneiras
-  Det.Items[n].Imposto.II.vII = Valor do Imposto de Importação
-  Det.Items[n].Imposto.II.vIOF = Valor do IOF sobre Imposto de Importação
-
-  Mas ainda faltam os dados referentes a DI Declaração de Importação no caso o Nº da DI.
-
-  with  Prod.DI.Add do
-  begin
-  nDi := '1';
-  dDi := Date;
-  xLocDesemb := 'Local';
-  UFDesemb   := 'SP';
-  dDesemb := Date;
-  cExportador := 'Exportador';
-  with adi.Add do
-  begin
-  nAdicao
-  nSeqAdi
-  cFabricante
-  vDescDI
+procedure Tfrmimporta_nfe.wwDBEdit1Exit(Sender: TObject);
+begin
+ application.ProcessMessages;
+  if (qritem.State <> dsEdit) or (qritem.State <> dsInsert) then
+    qritem.Edit;
+  try
+    { calcula o preco de venda }
+    qritemPMARGEM.Value :=
+      (((qritemPRECOVENDA.ASFLOAT - qritemPRECOCUSTO.ASFLOAT) /
+      qritemPRECOCUSTO.ASFLOAT)) * 100;
+  except
+    qritemPMARGEM.Value := 0;
   end;
-  end;
-}
+end;
 
+procedure Tfrmimporta_nfe.wwDBEditMargemExit(Sender: TObject);
+begin
+   application.ProcessMessages;
+  if (qritem.State <> dsEdit) or (qritem.State <> dsInsert) then
+    qritem.Edit;
+  try
+    { calcula o preco de venda }
+    qritemPRECOVENDA.Value :=
+      ((qritemPRECOCUSTO.ASFLOAT) * qritemPMARGEM.ASFLOAT / 100) +
+      (qritemPRECOCUSTO.ASFLOAT);
+  except
+    qritemPRECOVENDA.Value := 0;
+  end;
+end;
+
+procedure Tfrmimporta_nfe.wwDBEditPrecoExit(Sender: TObject);
+begin
+ application.ProcessMessages;
+  if (qritem.State <> dsEdit) or (qritem.State <> dsInsert) then
+    qritem.Edit;
+  try
+    { calcula o preco de venda }
+    qritemPMARGEM.Value :=
+      (((qritemPRECOVENDA.ASFLOAT - qritemPRECOCUSTO.ASFLOAT) /
+      qritemPRECOCUSTO.ASFLOAT)) * 100;
+  except
+    qritemPMARGEM.Value := 0;
+  end;
+end;
+
+procedure Tfrmimporta_nfe.wwDBGrid2KeyPress(Sender: TObject; var Key: Char);
+begin
+ AdvGlowButton1.Enabled := true;
+  if Key = #13 then
+  begin
+    qritem.next;
+  end;
+end;
 procedure Tfrmimporta_nfe.qritemCalcFields(DataSet: TDataSet);
 begin
   if qritemCODBARRA.AsString = '' then
@@ -3266,13 +3329,6 @@ procedure Tfrmimporta_nfe.bprodutosClick(Sender: TObject);
 begin
 
   busca_produto := 2;
-  if frmprincipal.acesso(codigo_usuario, '02.01') = 'NAO' then
-  begin
-    application.messagebox('Acesso não permitido!', 'Atenção',
-      mb_ok + mb_iconerror);
-    exit;
-  end;
-
   frmmodulo.QRCONFIG.open;
   if frmmodulo.QRCONFIG.fieldbyname('CADASTRO_PRODUTO').AsString = 'NORMAL' then
   begin

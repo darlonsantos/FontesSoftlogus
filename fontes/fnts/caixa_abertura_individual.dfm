@@ -4,8 +4,8 @@ object frmcaixa_abertura_individual: Tfrmcaixa_abertura_individual
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'CAIXA | Abertura Individual'
-  ClientHeight = 194
-  ClientWidth = 488
+  ClientHeight = 237
+  ClientWidth = 373
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -20,17 +20,20 @@ object frmcaixa_abertura_individual: Tfrmcaixa_abertura_individual
   PixelsPerInch = 96
   TextHeight = 13
   object Panel4: TPanel
-    Left = 369
-    Top = 48
-    Width = 120
-    Height = 299
+    Left = 0
+    Top = 156
+    Width = 373
+    Height = 81
+    Align = alBottom
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 424
+    ExplicitWidth = 488
     object bgravar: TAdvGlowButton
-      Left = 22
-      Top = 31
+      Left = 140
+      Top = 7
       Width = 81
       Height = 70
       Caption = 'Confirmar'
@@ -158,12 +161,16 @@ object frmcaixa_abertura_individual: Tfrmcaixa_abertura_individual
   object pnl1: TPanel
     Left = 0
     Top = 48
-    Width = 369
-    Height = 211
+    Width = 373
+    Height = 108
+    Align = alClient
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitTop = 53
+    ExplicitWidth = 369
+    ExplicitHeight = 112
     object Label1: TLabel
       Left = 64
       Top = 36
@@ -269,7 +276,7 @@ object frmcaixa_abertura_individual: Tfrmcaixa_abertura_individual
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 488
+    Width = 373
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -283,6 +290,7 @@ object frmcaixa_abertura_individual: Tfrmcaixa_abertura_individual
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -301,6 +309,7 @@ object frmcaixa_abertura_individual: Tfrmcaixa_abertura_individual
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 488
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel

@@ -16,19 +16,26 @@ uses
   SHDocVw, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
   cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator,
   cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, JvExDBGrids, JvDBGrid;
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, JvExDBGrids, JvDBGrid,
+  AdvGlowButton, cxContainer, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
+  cxGroupBox, cxRadioGroup;
 
 type
   TfrmNotasconsumidor = class(TForm)
-    Panel1: TPanel;
     Panel2: TPanel;
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
     ds_nfce: TDataSource;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     edt_Numero: TEdit;
     ImageList2: TImageList;
     dataini: TsDateEdit;
@@ -49,22 +56,34 @@ type
     lbEnvio: TLabel;
     lbCancelamento: TLabel;
     qrNFCEENVIADOCONTINGENCIA: TStringField;
-    btn1: TButton;
     qrNFCEMOTIVOCONTIGENCIA: TStringField;
     qrNFCEXMLENVIO: TBlobField;
-    Button4: TButton;
     qrNFCEXMLCACNELAMENTO: TBlobField;
     qrNFCEHORA: TStringField;
     qrNFCECONTINGENCIA: TStringField;
     qrNFCEXML_CANCELAMENTO: TStringField;
-    procedure Button4Click(Sender: TObject);
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label4: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
+    blocalizar: TAdvGlowButton;
+    bitbtn5: TAdvGlowButton;
+    bcancelar: TAdvGlowButton;
+    bgravar: TAdvGlowButton;
+    bexcluir: TAdvGlowButton;
+    cxRadioGroup1: TcxRadioGroup;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
     procedure FormShow(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
     procedure AdvMetroButton1Click(Sender: TObject);
     procedure qrNFCEAfterScroll(DataSet: TDataSet);
-    procedure btn1Click(Sender: TObject);
+    procedure bgravarClick(Sender: TObject);
+    procedure bcancelarClick(Sender: TObject);
+    procedure bitbtn5Click(Sender: TObject);
+    procedure bexcluirClick(Sender: TObject);
+    procedure blocalizarClick(Sender: TObject);
+    procedure edt_NumeroKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
     procedure LoadXML(RetWS: String; MyWebBrowser: TWebBrowser);
@@ -87,27 +106,7 @@ begin
  Close;
 end;
 
-procedure TfrmNotasconsumidor.btn1Click(Sender: TObject);
-   //Botao inutilizacao da NFC-e ( Concluir Depois )
-var
- Modelo, Serie, Ano, NumeroInicial, NumeroFinal, Justificativa : String;
-begin
- if not(InputQuery('WebServices Inutilização ', 'Ano',    Ano)) then
-    exit;
- if not(InputQuery('WebServices Inutilização ', 'Modelo', Modelo)) then
-    exit;
- if not(InputQuery('WebServices Inutilização ', 'Serie',  Serie)) then
-    exit;
- if not(InputQuery('WebServices Inutilização ', 'Número Inicial', NumeroInicial)) then
-    exit;
- if not(InputQuery('WebServices Inutilização ', 'Número Final', NumeroFinal)) then
-    exit;
- if not(InputQuery('WebServices Inutilização ', 'Justificativa', Justificativa)) then
-    exit;
-  frmconfig.ACBrNFe1.WebServices.Inutiliza(frmconfig.edtEmitCNPJ.Text, Justificativa, StrToInt(Ano), StrToInt(Modelo), StrToInt(Serie), StrToInt(NumeroInicial), StrToInt(NumeroFinal));
-end;
-
-procedure TfrmNotasconsumidor.Button1Click(Sender: TObject);
+procedure TfrmNotasconsumidor.bcancelarClick(Sender: TObject);
 var
   Chave, idLote, CNPJ, Protocolo, Justificativa: string;
 begin
@@ -161,7 +160,7 @@ begin
           qrNFCE.Post;
           qrNFCE.ApplyUpdates;
           Conexao_Servidor.Commit;
-          Button4.Click;
+          blocalizar.Click;
         end;
       end;
     end else begin
@@ -171,7 +170,49 @@ begin
   end;
 end;
 
-procedure TfrmNotasconsumidor.Button2Click(Sender: TObject);
+
+procedure TfrmNotasconsumidor.bexcluirClick(Sender: TObject);
+  //Botao inutilizacao da NFC-e ( Concluir Depois )
+var
+ Modelo, Serie, Ano, NumeroInicial, NumeroFinal, Justificativa : String;
+begin
+ if not(InputQuery('WebServices Inutilização ', 'Ano',    Ano)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Modelo', Modelo)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Serie',  Serie)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Número Inicial', NumeroInicial)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Número Final', NumeroFinal)) then
+    exit;
+ if not(InputQuery('WebServices Inutilização ', 'Justificativa', Justificativa)) then
+    exit;
+  frmconfig.ACBrNFe1.WebServices.Inutiliza(frmconfig.edtEmitCNPJ.Text, Justificativa, StrToInt(Ano), StrToInt(Modelo), StrToInt(Serie), StrToInt(NumeroInicial), StrToInt(NumeroFinal));
+end;
+procedure TfrmNotasconsumidor.bgravarClick(Sender: TObject);
+begin
+  if qrNFCE.RecordCount > 0 then
+  begin
+    with frmModulo do
+    begin
+      LerConfiguracao;
+      ACBRNFCe.WebServices.Consulta.NFeChave :=
+        qrNFCE.FieldByName('chave').AsString;
+      if ACBRNFCe.WebServices.Consulta.Executar then begin
+       Application.CreateForm(TfrmResultadoWebService,frmResultadoWebService);
+       LoadXML(ACBRNFCe.WebServices.Consulta.RetornoWS, frmResultadoWebService.WBResposta);
+       frmResultadoWebService.pnTexto.Caption := IntToStr(ACBRNFCe.WebServices.Consulta.cStat) + ' - ' + ACBRNFCe.WebServices.Consulta.xMotivo;
+       frmResultadoWebService.ShowModal;
+       FreeAndNil(frmResultadoWebService);
+      end else begin
+        Application.MessageBox('Ocorreu um erro ao efetuar a consulta.','Atenção!',MB_ICONINFORMATION);
+      end;
+    end;
+  end;
+end;
+
+procedure TfrmNotasconsumidor.bitbtn5Click(Sender: TObject);
 var
   bc: TBitmap;
 begin
@@ -195,31 +236,7 @@ begin
     end;
   end;
 end;
-
-procedure TfrmNotasconsumidor.Button3Click(Sender: TObject);
-begin
-
-  if qrNFCE.RecordCount > 0 then
-  begin
-    with frmModulo do
-    begin
-      LerConfiguracao;
-      ACBRNFCe.WebServices.Consulta.NFeChave :=
-        qrNFCE.FieldByName('chave').AsString;
-      if ACBRNFCe.WebServices.Consulta.Executar then begin
-       Application.CreateForm(TfrmResultadoWebService,frmResultadoWebService);
-       LoadXML(ACBRNFCe.WebServices.Consulta.RetornoWS, frmResultadoWebService.WBResposta);
-       frmResultadoWebService.pnTexto.Caption := IntToStr(ACBRNFCe.WebServices.Consulta.cStat) + ' - ' + ACBRNFCe.WebServices.Consulta.xMotivo;
-       frmResultadoWebService.ShowModal;
-       FreeAndNil(frmResultadoWebService);
-      end else begin
-        Application.MessageBox('Ocorreu um erro ao efetuar a consulta.','Atenção!',MB_ICONINFORMATION);
-      end;
-    end;
-  end;
-end;
-
-procedure TfrmNotasconsumidor.Button4Click(Sender: TObject);
+procedure TfrmNotasconsumidor.blocalizarClick(Sender: TObject);
 var
   filtro:String;
 begin
@@ -253,11 +270,21 @@ begin
   qrNFCE.First;
 end;
 
+procedure TfrmNotasconsumidor.edt_NumeroKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+ if  key = #13 then
+  begin
+    blocalizar.Click;
+  end;
+
+end;
+
 procedure TfrmNotasconsumidor.FormShow(Sender: TObject);
 begin
   dataini.Date := now;
   datafin.Date := now;
-  Button4.Click;
+  blocalizar.Click;
 end;
 
 

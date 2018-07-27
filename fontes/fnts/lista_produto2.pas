@@ -12,7 +12,6 @@ uses
 
 type
   Tfrmlista_produto2 = class(TForm)
-    bar: TRzProgressBar;
     Panel1: TPanel;
     bimprimir: TAdvGlowButton;
     bitbtn1: TAdvGlowButton;
@@ -534,6 +533,7 @@ type
     CDSos_compraDATA_ULTIMAVENDA: TDateField;
     CDSos_pis_entrada_resumoDATA: TDateField;
     CDSos_pis_saida_resumoDATA: TDateField;
+    bar: TRzProgressBar;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure bcancelarClick(Sender: TObject);

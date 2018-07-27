@@ -337,7 +337,8 @@ uses
   Unit_ativar in 'fnts\Unit_ativar.pas' {Form_ativar},
   Ncm in 'fnts\Ncm.pas' {frmNcm},
   versionamento in 'fnts\versionamento.pas' {frmversionamento},
-  criarTabelasCampos in 'fnts\criarTabelasCampos.pas';
+  criarTabelasCampos in 'fnts\criarTabelasCampos.pas',
+  versao in 'fnts\versao.pas' {frmVersao};
 
 // Unit5 in 'fnts\metro\Unit5.pas' {metro_sair},
   //ACBrConsultaCPF in 'fnts\metro\CPF\ACBrConsultaCPF.pas',
@@ -369,6 +370,7 @@ begin
   Application.CreateForm(TForm_ativar, Form_ativar);
   Application.CreateForm(TfrmNcm, frmNcm);
   Application.CreateForm(Tfrmversionamento, frmversionamento);
+  Application.CreateForm(TfrmVersao, frmVersao);
   frmsplash.showmodal;
   application.ProcessMessages;
   Application.Icon.LoadFromFile('C:\Softlogus\Server\icones\Softlogus.ico');

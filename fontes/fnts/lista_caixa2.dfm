@@ -4,8 +4,8 @@ object frmlista_caixa2: Tfrmlista_caixa2
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'CAIXA | Relat'#243'rios'
-  ClientHeight = 535
-  ClientWidth = 756
+  ClientHeight = 379
+  ClientWidth = 469
   Color = 11429670
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -20,17 +20,19 @@ object frmlista_caixa2: Tfrmlista_caixa2
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
-    Left = 465
-    Top = 45
-    Width = 114
-    Height = 288
+    Left = 0
+    Top = 289
+    Width = 469
+    Height = 90
+    Align = alBottom
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 404
     object bimprimir: TAdvGlowButton
-      Left = 9
-      Top = 36
+      Left = 180
+      Top = 19
       Width = 97
       Height = 63
       Caption = 'Visualizar'
@@ -303,12 +305,17 @@ object frmlista_caixa2: Tfrmlista_caixa2
   object pnl1: TPanel
     Left = 0
     Top = 48
-    Width = 465
-    Height = 247
+    Width = 469
+    Height = 241
+    Align = alClient
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clWhite
     ParentBackground = False
     TabOrder = 1
+    ExplicitLeft = 3
+    ExplicitTop = 45
+    ExplicitWidth = 465
+    ExplicitHeight = 247
     object Label1: TLabel
       Left = 16
       Top = 28
@@ -551,7 +558,7 @@ object frmlista_caixa2: Tfrmlista_caixa2
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 756
+    Width = 469
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -565,7 +572,7 @@ object frmlista_caixa2: Tfrmlista_caixa2
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -584,7 +591,7 @@ object frmlista_caixa2: Tfrmlista_caixa2
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 579
+    ExplicitWidth = 756
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel

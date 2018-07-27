@@ -4,7 +4,7 @@ object frmxloc_Funcionario: Tfrmxloc_Funcionario
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'FUNCION'#193'RIOS | Localizar'
-  ClientHeight = 408
+  ClientHeight = 398
   ClientWidth = 843
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -24,7 +24,7 @@ object frmxloc_Funcionario: Tfrmxloc_Funcionario
     Top = 48
     Width = 843
     Height = 44
-    Color = 5460819
+    Color = clHighlight
     ColorHighLight = clBtnFace
     ColorShadow = clBtnFace
     Align = alTop
@@ -255,7 +255,7 @@ object frmxloc_Funcionario: Tfrmxloc_Funcionario
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 6723891
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -267,13 +267,14 @@ object frmxloc_Funcionario: Tfrmxloc_Funcionario
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.0.4.2'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 2
     ShowExpander = False
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
       Left = 59
@@ -364,7 +365,7 @@ object frmxloc_Funcionario: Tfrmxloc_Funcionario
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.0.1'
+      Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
   end

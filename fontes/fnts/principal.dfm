@@ -4,7 +4,7 @@ object frmPrincipal: TfrmPrincipal
   Align = alClient
   BorderStyle = bsSingle
   Caption = 'Softlogus Sistemas | www.softlogus.com.br '
-  ClientHeight = 735
+  ClientHeight = 756
   ClientWidth = 1376
   Color = clSilver
   Font.Charset = ANSI_CHARSET
@@ -1427,18 +1427,6 @@ object frmPrincipal: TfrmPrincipal
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 11
-  object imgFundo: TcyImage
-    Left = 0
-    Top = 0
-    Width = 1376
-    Height = 382
-    Align = alClient
-    AutoSize = True
-    Center = True
-    OnClick = imgFundoClick
-    Zoom = 1.000000000000000000
-    ExplicitTop = 1
-  end
   object FundoApp: TImage
     Left = -104
     Top = 104
@@ -1460,6 +1448,15 @@ object frmPrincipal: TfrmPrincipal
     Font.Style = [fsBold]
     ParentFont = False
     Visible = False
+  end
+  object imgFundo: TImage
+    Left = 0
+    Top = 0
+    Width = 1376
+    Height = 403
+    Align = alClient
+    Stretch = True
+    ExplicitTop = 1
   end
   object pfundo: TFlatPanel
     Left = -2000
@@ -12254,7 +12251,7 @@ object frmPrincipal: TfrmPrincipal
   end
   object AdvSmoothPanel6: TAdvSmoothPanel
     Left = 0
-    Top = 382
+    Top = 403
     Width = 1376
     Height = 7
     Cursor = crDefault
@@ -13012,8 +13009,8 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object AdvSmoothButton1: TAdvSmoothButton
-    Left = 808
-    Top = 56
+    Left = 855
+    Top = 453
     Width = 120
     Height = 35
     Appearance.Font.Charset = ANSI_CHARSET
@@ -13047,8 +13044,8 @@ object frmPrincipal: TfrmPrincipal
     TMSStyle = 23
   end
   object AdvSmoothButton2: TAdvSmoothButton
-    Left = 808
-    Top = 229
+    Left = 796
+    Top = 453
     Width = 120
     Height = 35
     Appearance.Font.Charset = ANSI_CHARSET
@@ -13082,8 +13079,8 @@ object frmPrincipal: TfrmPrincipal
     TMSStyle = 23
   end
   object AdvSmoothButton3: TAdvSmoothButton
-    Left = 808
-    Top = 270
+    Left = 834
+    Top = 457
     Width = 120
     Height = 35
     Appearance.Font.Charset = ANSI_CHARSET
@@ -13117,8 +13114,8 @@ object frmPrincipal: TfrmPrincipal
     TMSStyle = 23
   end
   object AdvSmoothButton4: TAdvSmoothButton
-    Left = 808
-    Top = 188
+    Left = 834
+    Top = 439
     Width = 120
     Height = 35
     Appearance.Font.Charset = ANSI_CHARSET
@@ -13152,8 +13149,8 @@ object frmPrincipal: TfrmPrincipal
     TMSStyle = 23
   end
   object AdvSmoothButton5: TAdvSmoothButton
-    Left = 808
-    Top = 138
+    Left = 825
+    Top = 439
     Width = 120
     Height = 35
     Appearance.Font.Charset = ANSI_CHARSET
@@ -13188,8 +13185,8 @@ object frmPrincipal: TfrmPrincipal
     TMSStyle = 23
   end
   object AdvSmoothButton6: TAdvSmoothButton
-    Left = 808
-    Top = 97
+    Left = 825
+    Top = 453
     Width = 120
     Height = 35
     Appearance.Font.Charset = ANSI_CHARSET
@@ -13224,8 +13221,8 @@ object frmPrincipal: TfrmPrincipal
     TMSStyle = 23
   end
   object AdvSmoothPanel15: TAdvSmoothPanel
-    Left = 808
-    Top = 19
+    Left = 825
+    Top = 409
     Width = 122
     Height = 31
     Cursor = crDefault
@@ -14475,7 +14472,7 @@ object frmPrincipal: TfrmPrincipal
   end
   object AdvSmoothPanel5: TAdvSmoothPanel
     Left = 0
-    Top = 389
+    Top = 410
     Width = 1376
     Height = 314
     Cursor = crDefault
@@ -19389,7 +19386,7 @@ object frmPrincipal: TfrmPrincipal
   object StatusBar1: TStatusBar
     AlignWithMargins = True
     Left = 3
-    Top = 706
+    Top = 727
     Width = 1370
     Height = 26
     Panels = <
@@ -21921,7 +21918,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 1012
     Top = 455
     Bitmap = {
-      494C010109000B00BC0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B00040210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -25085,8 +25082,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object UCZEOSConn1: TUCZEOSConn
     Connection = frmmodulo.Conexao
-    Left = 1096
-    Top = 454
+    Left = 404
+    Top = 278
   end
   object UCSettings1: TUCSettings
     AppMessages.MsgsForm_BtNew = '&Nova Mensagem'
@@ -26960,7 +26957,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 999
     Top = 368
     DesignFrmW = 1376
-    DesignFrmH = 735
+    DesignFrmH = 756
     DesignDpiW = 96
     DesignDpiH = 96
   end
@@ -27703,6 +27700,17 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Trocar Usu'#225'rio'
       end
     end
+    object A2: TMenuItem
+      Caption = #193'rea do Cliente'
+      object B4: TMenuItem
+        Caption = 'Boletos'
+        OnClick = B4Click
+      end
+      object A3: TMenuItem
+        Caption = 'Abrir Solicita'#231#227'o'
+        OnClick = A3Click
+      end
+    end
     object S5: TMenuItem
       Caption = 'Sobre o  Sistema'
       object I1: TMenuItem
@@ -27713,9 +27721,17 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Licensa de Uso'
         OnClick = L1Click
       end
-      object H1: TMenuItem
+      object a4: TMenuItem
         Caption = 'Atualiza'#231#245'es'
-        OnClick = H1Click
+        object A5: TMenuItem
+          Caption = 'Atualizar Sistema'
+          OnClick = A5Click
+        end
+        object AtualizarSistema1: TMenuItem
+          Caption = 'Atualizar Tabelas'
+          Enabled = False
+          Visible = False
+        end
       end
     end
     object S8: TMenuItem
@@ -27727,5 +27743,15 @@ object frmPrincipal: TfrmPrincipal
     OnTimer = tmr1Timer
     Left = 56
     Top = 8
+  end
+  object IdAntiFreeze1: TIdAntiFreeze
+    Left = 684
+    Top = 256
+  end
+  object qryAtualizarTabelas: TZQuery
+    Connection = frmmodulo.Conexao
+    Params = <>
+    Left = 144
+    Top = 244
   end
 end

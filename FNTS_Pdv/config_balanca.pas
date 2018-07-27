@@ -31,6 +31,9 @@ type
     Panel1: TPanel;
     AdvGlowButton1: TAdvGlowButton;
     AdvGlowButton2: TAdvGlowButton;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label1: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure BitBtn1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -78,7 +81,7 @@ begin
   GravaIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'BALANCA', 'Stopbits',inttostr(cb_bal_stop.ItemIndex));
   GravaIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'BALANCA', 'Porta',cb_bal_porta.Text);
   GravaIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'BALANCA', 'Databits', cb_bal_databits.Text);
-  GravaIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'BALANCA', 'Baudrate',cb_bal_baudrate.Text);
+  GravaIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'BALANCA', 'Baudrate', cb_bal_baudrate.Text);
   GravaIni(ExtractFilePath(Application.ExeName) + 'CFG\cfg.ini', 'BALANCA', 'Timeout',cb_bal_time_out.Text);
   application.messagebox('É necessário reiniciar o sistema para atualizar as novas configurações!','Aviso',mb_ok+MB_ICONINFORMATION);
   close;
