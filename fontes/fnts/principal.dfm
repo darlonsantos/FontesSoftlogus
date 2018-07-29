@@ -21888,8 +21888,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object ExeInfo1: TExeInfo
     Version = '1.3.3.0'
-    Left = 1110
-    Top = 239
+    Left = 986
+    Top = 567
   end
   object qrproduto: TZQuery
     Connection = frmmodulo.Conexao
@@ -21911,14 +21911,14 @@ object frmPrincipal: TfrmPrincipal
     Font.Style = []
     HintHelpText = 'Pressione F1 para obter ajuda...'
     Version = '1.7.0.0'
-    Left = 1047
-    Top = 303
+    Left = 963
+    Top = 587
   end
   object ImageList1: TImageList
     Left = 1012
     Top = 455
     Bitmap = {
-      494C010109000B00040210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B00100210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -22324,8 +22324,8 @@ object frmPrincipal: TfrmPrincipal
   object query: TZQuery
     Connection = frmmodulo.Conexao
     Params = <>
-    Left = 1098
-    Top = 295
+    Left = 1038
+    Top = 595
   end
   object qrniver: TZQuery
     Connection = frmmodulo.Conexao
@@ -22358,8 +22358,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object dsniver: TDataSource
     DataSet = qrniver
-    Left = 654
-    Top = 525
+    Left = 922
+    Top = 633
   end
   object qrcx: TZQuery
     Connection = frmmodulo.Conexao
@@ -22374,8 +22374,8 @@ object frmPrincipal: TfrmPrincipal
         'select pg.*, forn.nome from c000046 pg, c000009 forn where pg.co' +
         'dfornecedor = forn.codigo')
     Params = <>
-    Left = 1149
-    Top = 365
+    Left = 1081
+    Top = 613
     object qrpagarDATA_VENCIMENTO: TDateField
       DisplayLabel = 'VENCIMENTO'
       DisplayWidth = 10
@@ -22485,8 +22485,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object dspagar: TDataSource
     DataSet = qrpagar
-    Left = 660
-    Top = 637
+    Left = 868
+    Top = 621
   end
   object Timer1: TTimer
     Interval = 10000
@@ -22500,8 +22500,8 @@ object frmPrincipal: TfrmPrincipal
       'select * from inventario'
       '')
     Params = <>
-    Left = 829
-    Top = 381
+    Left = 905
+    Top = 601
     object qrinventarionome_aliquota: TStringField
       DisplayWidth = 20
       FieldKind = fkCalculated
@@ -22563,8 +22563,8 @@ object frmPrincipal: TfrmPrincipal
     SQL.Strings = (
       '')
     Params = <>
-    Left = 951
-    Top = 245
+    Left = 963
+    Top = 573
   end
   object AdvMenuFantasyStyler1: TAdvMenuFantasyStyler
     AntiAlias = aaNone
@@ -22670,8 +22670,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object checkcpf1: TACBrValidador
     IgnorarChar = './-'
-    Left = 983
-    Top = 256
+    Left = 1007
+    Top = 592
   end
   object CheckCNPJ: TACBrValidador
     TipoDocto = docCNPJ
@@ -25515,8 +25515,8 @@ object frmPrincipal: TfrmPrincipal
       '</table>'
       '<p>Atenciosamente,</p>'
       '<p>Administrador do sistema</p></body></html>')
-    Left = 708
-    Top = 654
+    Left = 872
+    Top = 638
   end
   object ActionManager1: TActionManager
     ActionBars = <
@@ -26536,8 +26536,8 @@ object frmPrincipal: TfrmPrincipal
             Caption = 'ActionClientItem0'
           end>
       end>
-    Left = 720
-    Top = 464
+    Left = 896
+    Top = 616
     StyleName = 'Ribbon - Silver'
     object Action3: TAction
       Category = 'Tabelas Fiscais'
@@ -26927,8 +26927,8 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object OpenDialog1: TOpenDialog
-    Left = 1050
-    Top = 246
+    Left = 1022
+    Top = 574
   end
   object UCControls1: TUCControls
     GroupName = 'Atalhos Menu Principal'
@@ -26940,8 +26940,8 @@ object frmPrincipal: TfrmPrincipal
   end
   object dsempresa2: TDataSource
     DataSet = frmmodulo.qrFilial
-    Left = 1082
-    Top = 376
+    Left = 1034
+    Top = 588
   end
   object ResizeKit1: TResizeKit
     FormPos = rpDefault
@@ -26954,8 +26954,8 @@ object frmPrincipal: TfrmPrincipal
     ResizeFont = True
     Enabled = True
     ValidTaskbar = True
-    Left = 999
-    Top = 368
+    Left = 967
+    Top = 628
     DesignFrmW = 1376
     DesignFrmH = 756
     DesignDpiW = 96
@@ -26976,8 +26976,8 @@ object frmPrincipal: TfrmPrincipal
     EMAIL_Enviar = False
     EMAIL_Assunto = 'REGISTRO DE CLIENTE!'
     EMAIL_Dias_enviar = 15
-    Left = 872
-    Top = 568
+    Left = 916
+    Top = 628
   end
   object FlatHint1: TFlatHint
     Font.Charset = DEFAULT_CHARSET
@@ -26985,8 +26985,8 @@ object frmPrincipal: TfrmPrincipal
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
-    Left = 946
-    Top = 320
+    Left = 926
+    Top = 572
   end
   object Menu: TMainMenu
     Left = 15
@@ -27729,8 +27729,7 @@ object frmPrincipal: TfrmPrincipal
         end
         object AtualizarSistema1: TMenuItem
           Caption = 'Atualizar Tabelas'
-          Enabled = False
-          Visible = False
+          OnClick = AtualizarSistema1Click
         end
       end
     end
@@ -27745,8 +27744,8 @@ object frmPrincipal: TfrmPrincipal
     Top = 8
   end
   object IdAntiFreeze1: TIdAntiFreeze
-    Left = 684
-    Top = 256
+    Left = 948
+    Top = 544
   end
   object qryAtualizarTabelas: TZQuery
     Connection = frmmodulo.Conexao

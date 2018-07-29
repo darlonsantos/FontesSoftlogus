@@ -11259,7 +11259,7 @@ object frmmodulo: Tfrmmodulo
     Database = 'C:\Softlogus\Server\BD\BASE.FDB'
     User = 'SYSDBA'
     Password = 'masterkey'
-    Protocol = 'firebirdd-2.5'
+    Protocol = 'firebird-2.5'
     Left = 212
     Top = 152
   end
@@ -14908,6 +14908,7 @@ object frmmodulo: Tfrmmodulo
     Catalog = ''
     ReadOnly = True
     TransactIsolationLevel = tiReadCommitted
+    Connected = True
     SQLHourGlass = True
     HostName = ''
     Port = 0
@@ -14916,7 +14917,7 @@ object frmmodulo: Tfrmmodulo
     Password = 'masterkey'
     Protocol = 'firebird-2.5'
     Left = 216
-    Top = 104
+    Top = 92
   end
   object qrpassagem: TZQuery
     Connection = Conexao
@@ -15720,8 +15721,8 @@ object frmmodulo: Tfrmmodulo
       'RoleName=RoleName'
       'ServerCharSet='
       'Trim Char=False')
-    Left = 296
-    Top = 104
+    Left = 292
+    Top = 84
   end
   object SQLDataSet1: TSQLDataSet
     Params = <>

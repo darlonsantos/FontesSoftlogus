@@ -85,7 +85,7 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <VerInfo_Build>48</VerInfo_Build>
+        <VerInfo_Build>49</VerInfo_Build>
         <VerInfo_Release>2</VerInfo_Release>
         <Icon_MainIcon>C:\Softlogus\Server\icones\Softlogus.ico</Icon_MainIcon>
         <DCC_ExeOutput>C:\Softlogus\Server\</DCC_ExeOutput>
@@ -93,7 +93,7 @@
         <DCC_MapFile>3</DCC_MapFile>
         <DCC_DebugInformation>true</DCC_DebugInformation>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=Softlogus Sistema ;FileDescription= Sistema  Retaguarda Softlogus;FileVersion=2.5.2.48;InternalName=Softlogus Sistemas;LegalCopyright=Copyright 2018 - Softlogus Informática - Todos os direitos reservados;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.1.1.2;Comments=</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Softlogus Sistema ;FileDescription= Sistema  Retaguarda Softlogus;FileVersion=2.5.2.49;InternalName=Softlogus Sistemas;LegalCopyright=Copyright 2018 - Softlogus Informática - Todos os direitos reservados;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.1.1.2;Comments=</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -1093,6 +1093,10 @@
         <DCCReference Include="fnts\criarTabelasCampos.pas"/>
         <DCCReference Include="fnts\versao.pas">
             <Form>frmVersao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="fnts\AtualizarBase.pas">
+            <Form>frmAtualizacaoBase</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">

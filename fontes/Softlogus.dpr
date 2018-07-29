@@ -338,7 +338,8 @@ uses
   Ncm in 'fnts\Ncm.pas' {frmNcm},
   versionamento in 'fnts\versionamento.pas' {frmversionamento},
   criarTabelasCampos in 'fnts\criarTabelasCampos.pas',
-  versao in 'fnts\versao.pas' {frmVersao};
+  versao in 'fnts\versao.pas' {frmVersao},
+  AtualizarBase in 'fnts\AtualizarBase.pas' {frmAtualizacaoBase};
 
 // Unit5 in 'fnts\metro\Unit5.pas' {metro_sair},
   //ACBrConsultaCPF in 'fnts\metro\CPF\ACBrConsultaCPF.pas',
@@ -371,6 +372,7 @@ begin
   Application.CreateForm(TfrmNcm, frmNcm);
   Application.CreateForm(Tfrmversionamento, frmversionamento);
   Application.CreateForm(TfrmVersao, frmVersao);
+  Application.CreateForm(TfrmAtualizacaoBase, frmAtualizacaoBase);
   frmsplash.showmodal;
   application.ProcessMessages;
   Application.Icon.LoadFromFile('C:\Softlogus\Server\icones\Softlogus.ico');

@@ -659,14 +659,19 @@
     <File Path="fnts\xloc_transportador.dfm"/>
     <File Path="fnts\xloc_veiculo.pas"/>
     <File Path="fnts\xloc_veiculo.dfm"/>
+    <File Path="fnts\AtualizarBase.pas"/>
+    <File Path="fnts\AtualizarBase.dfm"/>
   </ProjectSortOrder>
 	<Transactions>
     <Transaction>2018/07/21 18:08:40.000.979,=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
-    <Transaction>2018/07/21 18:09:15.000.781,C:\Desenv_Softlogus\fontes\Unit1.pas=C:\Desenv_Softlogus\fontes\fnts\versao.pas</Transaction>
     <Transaction>2018/07/21 18:09:15.000.782,C:\Desenv_Softlogus\fontes\Unit1.dfm=C:\Desenv_Softlogus\fontes\fnts\versao.dfm</Transaction>
-    <Transaction>2018/07/24 20:53:10.250,=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
-    <Transaction>2018/07/24 20:53:58.369,C:\Desenv_Softlogus\fontes\atualizacaoTabelas.dfm=C:\Desenv_Softlogus\fontes\Unit1.dfm</Transaction>
-    <Transaction>2018/07/24 20:53:58.369,C:\Desenv_Softlogus\fontes\atualizacaoTabelas.pas=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
-    <Transaction>2018/07/24 20:58:39.840,C:\Desenv_Softlogus\fontes\atualizacaoTabelas.pas=</Transaction>
+    <Transaction>2018/07/21 18:09:15.000.781,C:\Desenv_Softlogus\fontes\Unit1.pas=C:\Desenv_Softlogus\fontes\fnts\versao.pas</Transaction>
+    <Transaction>2018/07/24 20:53:10.000.250,=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
+    <Transaction>2018/07/24 20:53:58.000.369,C:\Desenv_Softlogus\fontes\atualizacaoTabelas.pas=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
+    <Transaction>2018/07/24 20:53:58.000.369,C:\Desenv_Softlogus\fontes\atualizacaoTabelas.dfm=C:\Desenv_Softlogus\fontes\Unit1.dfm</Transaction>
+    <Transaction>2018/07/24 20:58:39.000.840,C:\Desenv_Softlogus\fontes\atualizacaoTabelas.pas=</Transaction>
+    <Transaction>2018/07/27 19:52:54.000.656,=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
+    <Transaction>2018/07/27 19:55:29.000.561,C:\Desenv_Softlogus\fontes\fnts\AtualizarBase.dfm=C:\Desenv_Softlogus\fontes\Unit1.dfm</Transaction>
+    <Transaction>2018/07/27 19:55:29.000.561,C:\Desenv_Softlogus\fontes\fnts\AtualizarBase.pas=C:\Desenv_Softlogus\fontes\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

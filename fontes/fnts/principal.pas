@@ -947,7 +947,7 @@ uses modulo, senha, cliente,
   lista_frete, fluxo_caixa, DRE, mensagem_inventario, Ncm,
   xloc_csosn, importa_nfe,  sobre, // FMapa,
   form_ativacaoicloud, pUCGeral, OpNatureza, Unit_ativar, regiao, versionamento,
-  versao;
+  versao, AtualizarBase;
 
 {$R *.dfm}
 
@@ -2807,6 +2807,7 @@ var
 begin
   store_protect.IDSistema := 2018;
   store_protect.executar;
+
   try
 
     assignfile(txt, extractfilepath(paramstr(0)) +'ini\com.ini');
@@ -2867,6 +2868,8 @@ begin
     end;
     caption := caption + '    Terminal: ' + registro_terminal;
   except
+
+
 
   end;
 
@@ -6554,7 +6557,17 @@ procedure TfrmPrincipal.AtualizarSistema1Click(Sender: TObject);
 var
   Hand: THandle;
 begin
-
+  barra_config.Visible:= False;
+  if frmPrincipal.autentica('Atualizações', 4) then
+  begin
+    frmAtualizacaoBase := tfrmAtualizacaoBase.create(self);
+    frmAtualizacaoBase.showmodal;
+  end
+  else
+  begin
+    application.messagebox('Acesso não permitido!', 'Erro!',
+      mb_ok + MB_ICONERROR);
+  end;
 end;
 
 procedure TfrmPrincipal.ImportarNfe1Click(Sender: TObject);

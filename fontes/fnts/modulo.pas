@@ -4422,7 +4422,7 @@ begin
 
   // Atualiza o banco de dados
  //  DB.DatabaseName := Conexao.hostname + ':' + Conexao.database;
-  VersaoBD := frmprincipal.ExeInfo1.FileVersion;
+   VersaoBD := frmprincipal.ExeInfo1.FileVersion;
    Busca_Integridade_Base_Dados; // Efetua a atualização do banco de dados
 
   // prepara para mysql
@@ -4492,6 +4492,7 @@ begin
   DB.connected := true;
   VersaoBD := frmprincipal.ExeInfo1.FileVersion;
   Busca_Integridade_Base_Dados; // Efetua a atualização do banco de dados
+
 
   conexao_ecfserver.connected := false;
   conexao_ecfserver.hostname := Conexao.hostname;
@@ -5142,109 +5143,8 @@ begin
     false, false); // cria independete da versão
 
 
-
-  if VersaoBD <= '7.3.9.5' then
+ // if VersaoBD <= '2.5.2.48' then
   begin
-
-    { //PARA DEVOLUCAO
-      Atualiza_Integridade_Tabela('C000032', 'QTD_DEVOLUCAO', 'NUMERIC(15,3) DEFAULT 0', FALSE, False, False);
-      //cria tabela para tabela de precos
-      Atualiza_Integridade_Tabela('C000103', 'CODIGO', 'VARCHAR(6)', TRUE, False, true);
-      Atualiza_Integridade_Tabela('C000103', 'NOME', 'VARCHAR(40)', FALSE, False, False);
-      Atualiza_Integridade_Tabela('C000103', 'PRECO', 'VARCHAR(15)', FALSE, False, False);
-      Atualiza_Integridade_Tabela('C000103', 'DESC_ACRES', 'NUMERIC(15,3)', FALSE, False, False);
-      Atualiza_Integridade_Tabela('C000103', 'DESC_MAX', 'NUMERIC(15,3)', FALSE, False, False);
-      //cria tabela de conceitos
-      Atualiza_Integridade_Tabela('C000104', 'CODIGO', 'VARCHAR(6)', TRUE, False, true);
-      Atualiza_Integridade_Tabela('C000104', 'NOME', 'VARCHAR(50)', FALSE, False, False);
-      Atualiza_Integridade_Tabela('C000104', 'CREDIARIO', 'INTEGER DEFAULT 0', FALSE, False, False);
-      Atualiza_Integridade_Tabela('C000104', 'CHEQUEAV', 'INTEGER DEFAULT 0', FALSE, False, False);
-      Atualiza_Integridade_Tabela('C000104', 'CHEQUEAP', 'INTEGER DEFAULT 0', FALSE, False, False);
-      Atualiza_Integridade_Tabela('C000104', 'VERIFICA_LIMITE', 'INTEGER DEFAULT 0', FALSE, False, False);
-      Atualiza_Integridade_Tabela('C000104', 'VERIFICA_VENCIDOS', 'INTEGER DEFAULT 0', FALSE, False, False);
-      Atualiza_Integridade_Tabela('C000104', 'VERIFICA_CADASTRO', 'INTEGER DEFAULT 0', FALSE, False, False);
-
-      //cria indece da tabela de estoque
-      criaindice('C000100_IDX1', 'C000100', 'CODPRODUTO');
-      //para o vendas novo
-      Atualiza_Integridade_Tabela('C000001', 'CONTAS_RECEBER_BLOQUEIO', 'INTEGER', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'VERIFICA_ITEM_DUPLICADO_VENDA', 'INTEGER', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'VERIFICA_CADASTRO_VENDA', 'INTEGER', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'VENDA_LIMITE_CLIENTE', 'INTEGER', False, False, False);
-
-      //CADASTRO NO GLX ONLINo
-      Atualiza_Integridade_Tabela('C000001', 'CADGLX_SERVER', 'VARCHAR(20)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'CADGLX_CONTAB', 'VARCHAR(20)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'EXT_PLANO_DUPLICATA_NFE', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'EXT_PLANO_OS_AP', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'EXT_PLANO_OS_AV', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'EXT_PLANO_OUTRAS_ENTRADAS', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'EXT_PLANO_OUTRAS_SAIDAS', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'EXT_PLANO_RECBTO_CREDIARIO', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'EXT_PLANO_VENDA_AP', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'EXT_PLANO_VENDA_AV', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'USA_CAIXA_DIARIO', 'INTEGER', False, False, False);
-      //PARA PEDIR A SENHA DO VENDEDOR
-      Atualiza_Integridade_Tabela('C000001', 'SENHA_VENDEDOR', 'INTEGER', False, False, False);
-      //CAIXA PADRÃO, CLIENTE PADRÃO E TABELA DE PREÇO PADRÃO
-      Atualiza_Integridade_Tabela('C000001', 'CAIXA_PADRAO_VENDA', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'CLIENTE_CONSUMIDOR', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000001', 'TABELA_PRECOS_PADRAO', 'VARCHAR(30)', False, False, False);
-      //PARA AVISAR OU NÃO QUANDO O ESTOQUE ESTIVER ZERADO OU NEGATIVO
-      Atualiza_Integridade_Tabela('C000001', 'AVISO_ESTOQUE_ZERADO', 'INTEGER', False, False, False);
-      //PARA MOSTRAR HISTÓRICO NA VENDA
-      Atualiza_Integridade_Tabela('C000001', 'MOSTRA_HIST_CLIENTE', 'INTEGER', False, False, False);
-      //ESCOLHE O CAIXA OU DEIXA O PADRÃO
-      Atualiza_Integridade_Tabela('C000001', 'ESCOLHE_CAIXA_VENDA', 'INTEGER', False, False, False);
-      //DIGITOS DA AG. E CONTA DO FORNECEDOR
-      Atualiza_Integridade_Tabela('C000009', 'AGENCIA_DIG', 'VARCHAR(1)', False, False, False);
-      Atualiza_Integridade_Tabela('C000009', 'CONTA_DIG', 'VARCHAR(1)', False, False, False);
-      Atualiza_Integridade_Tabela('C000009', 'DATA_ABERTURA', 'TIMESTAMP', False, False, False);
-      Atualiza_Integridade_Tabela('C000007', 'DESCONTO', 'NUMERIC(15,3)', False, False, False);
-      //COMPLEMENTO PARA PUXAR DADOS ONLINE DOS FORNECEDORES
-      Atualiza_Integridade_Tabela('C000007', 'DATA_ABERTURA', 'DATE', False, False, False);
-      //COMISSÃO DE FUNCIONÁRIOS A PRAZO
-      Atualiza_Integridade_Tabela('C000008', 'COMISSAO2', 'NUMERIC(15,2)', False, False, False);
-      //COMPLEMENTO NO ENDEREÇO DOS LABORATÓRIOS
-      Atualiza_Integridade_Tabela('C000019', 'COMPLEMENTO', 'VARCHAR(40)', False, False, False);
-      //REF. DE FORNECEDORES E CAMPOS PARA A GUIA VÁRIOS PREÇOS'
-      Atualiza_Integridade_Tabela('C000025', 'REFERENCIA_FABRICANTE', 'VARCHAR(30)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'DESCONTO_MAXIMO', 'NUMERIC(15,4)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA_LUCRO', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA_LUCRO_P', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA_INDICE', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA_MARKUP', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA2_LUCRO', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA2_LUCRO_P', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA2_INDICE', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA2_MARKUP', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA3_LUCRO', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA3_LUCRO_P', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA3_INDICE', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA3_MARKUP', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA4_LUCRO', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA4_LUCRO_P', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA4_INDICE', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA4_MARKUP', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA5_LUCRO', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA5_LUCRO_P', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA5_INDICE', 'NUMERIC(15,3)', False, False, False);
-      Atualiza_Integridade_Tabela('C000025', 'PRECOVENDA5_MARKUP', 'NUMERIC(15,3)', False, False, False);
-      //ENVIOS DE SMS
-      Atualiza_Integridade_Tabela('C000034', 'DATA_ENVIO_SMS', 'DATE', False, False, False);
-      Atualiza_Integridade_Tabela('C000034', 'ENVIOU_SMS', 'VARCHAR(1)', False, False, False);
-      Atualiza_Integridade_Tabela('C000034', 'HORA_ENVIO_SMS', 'DATE', False, False, False);
-      //PARA MELHOR CONTROLE NOS CHEQUES
-      Atualiza_Integridade_Tabela('C000040', 'AGENCIADIG', 'VARCHAR(1)', False, False, False);
-      Atualiza_Integridade_Tabela('C000040', 'CONTADIG', 'VARCHAR(1)', False, False, False);
-      //NOVOS BOLETOS BANCARIOS
-      Atualiza_Integridade_Tabela('C000041', 'AGENCIADIG', 'VARCHAR(10)', False, False, False); //cad de contas corrente
-      Atualiza_Integridade_Tabela('C000041', 'CONTADIG', 'VARCHAR(10)', False, False, False);
-      Atualiza_Integridade_Tabela('C000064', 'CONVENIO', 'VARCHAR(20)', False, False, False); //cad de cedentes
-      Atualiza_Integridade_Tabela('C000064', 'CNPJ', 'VARCHAR(18)', False, False, False);
-      Atualiza_Integridade_Tabela('C000064', 'CODCONTADIG', 'VARCHAR(18)', False, False, False);
-      //ROTINA PARA QUE NÃO SEJA MAIS EDITADA A NF NA ENTRADA APOS SUA EFETIVAÇÃO
-      Atualiza_Integridade_Tabela('C000087', 'SITUACAO_ENTRADA', 'INTEGER', False, False, False); }
 
     // PRIMEIRA ATUALIZACAO DE BANCO
     // Para Usar caixa padrao para o usuario autenticado
@@ -5310,10 +5210,10 @@ begin
       false, false, false);
       Atualiza_Integridade_Tabela('CL00001', 'COR', 'VARCHAR(100)',
       false, false, false);
-     Atualiza_Integridade_Tabela('C000001', 'DARLON', 'VARCHAR(20)',
-     false, false, true);
+     Atualiza_Integridade_Tabela('C000001', 'DARLON', 'VARCHAR(20)', false, false, false);
+   end;
 
-  end;
+  
 
 end;
 
