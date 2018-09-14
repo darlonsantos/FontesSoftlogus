@@ -1622,7 +1622,8 @@ begin
           Prod.vOutro := qrnota.fieldbyname('outras_despesas').AsCurrency;
           infAdProd := qrnota_item.fieldbyname('COMPLEMENTO_PROD').asstring;  //COMPLEMENTO_PROD complemento do nome do item  darlon santos
           Prod.EXTIPI := '23';
-          Prod.cEANTrib := '';
+          Prod.cEANTrib := qrnota_item.fieldbyname('CODBARRA').asstring;
+          Prod.cEAN :=  qrnota_item.fieldbyname('CODBARRA').asstring;       //CODIGO DE BARRA DO PRODUTO DARLON SANTOS
           Prod.IndTot   := qrnota.fieldbyname('total_nota').AsVariant;
           Prod.IndTot := TpcnIndicadorTotal(0);
 
@@ -3539,7 +3540,7 @@ procedure Tfrmnotafiscal_menu.bt_nfe_validar1Click(Sender: TObject);
 var
   sXML: string;
 begin
-  case qrnota.fieldbyname('nfe_situacao').asinteger of
+  case qrnota.fieldbyname('NFE_SITUACAO').asinteger of
     // 3 - nao validada
 
     4:
