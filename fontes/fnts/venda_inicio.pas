@@ -37,12 +37,7 @@ type
     bvidalink: TAdvGlowButton;
     Convenio1: TMenuItem;
     query: TzQuery;
-    img: TAdvReflectionImage;
     qrFornecedor: TzQuery;
-    Panel2: TPanel;
-    Panel3: TPanel;
-    Panel4: TPanel;
-    Panel5: TPanel;
     AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
     Label26: TLabel;
     AdvMetroButton1: TAdvMetroButton;

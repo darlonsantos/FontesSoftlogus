@@ -2361,7 +2361,7 @@ object Bloqueio: TBloqueio
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 5460819
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -2547,7 +2547,7 @@ object Bloqueio: TBloqueio
       Version = '1.1.1.0'
     end
     object AdvMetroButton3: TAdvMetroButton
-      Left = 549
+      Left = 3
       Top = 5
       Width = 51
       Height = 49
@@ -2631,7 +2631,7 @@ object Bloqueio: TBloqueio
     Width = 607
     Height = 122
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 2
     object cySpeedButton1: TcySpeedButton
@@ -2742,7 +2742,7 @@ object Bloqueio: TBloqueio
       Height = 29
       BevelOuter = bvNone
       Caption = 'Chave de Instala'#231#227'o'
-      Color = 5460819
+      Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -11
@@ -2759,7 +2759,7 @@ object Bloqueio: TBloqueio
       Height = 29
       BevelOuter = bvNone
       Caption = 'Chave de Libera'#231#227'o'
-      Color = 5460819
+      Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -11
@@ -2776,7 +2776,7 @@ object Bloqueio: TBloqueio
       Height = 29
       BevelOuter = bvNone
       Caption = 'E-Mail:'
-      Color = 5460819
+      Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -11
@@ -2792,7 +2792,7 @@ object Bloqueio: TBloqueio
       Width = 297
       Height = 29
       BevelOuter = bvNone
-      Color = 5460819
+      Color = clHighlight
       ParentBackground = False
       TabOrder = 3
       object EID_Instalacao: TEdit
@@ -2801,7 +2801,7 @@ object Bloqueio: TBloqueio
         Width = 259
         Height = 19
         BorderStyle = bsNone
-        Color = 5460819
+        Color = clHighlight
         Ctl3D = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -2821,16 +2821,16 @@ object Bloqueio: TBloqueio
       Width = 297
       Height = 29
       BevelOuter = bvNone
-      Color = 5460819
+      Color = clHighlight
       ParentBackground = False
       TabOrder = 4
       object Echave: TEdit
         Left = 0
         Top = 5
         Width = 289
-        Height = 19
+        Height = 25
         CharCase = ecUpperCase
-        Color = 5460819
+        Color = clHighlight
         Ctl3D = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -2849,16 +2849,16 @@ object Bloqueio: TBloqueio
       Width = 297
       Height = 29
       BevelOuter = bvNone
-      Color = 5460819
+      Color = clHighlight
       ParentBackground = False
       TabOrder = 5
       object Eemail: TEdit
         Left = 0
         Top = 5
         Width = 289
-        Height = 19
+        Height = 25
         CharCase = ecLowerCase
-        Color = 5460819
+        Color = clHighlight
         Ctl3D = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -2879,7 +2879,7 @@ object Bloqueio: TBloqueio
       Align = alTop
       BevelOuter = bvNone
       Caption = 'Informa'#231#245'es'
-      Color = 5460819
+      Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -2902,8 +2902,8 @@ object Bloqueio: TBloqueio
     object Image4: TImage
       Left = 0
       Top = 0
-      Width = 364
-      Height = 440
+      Width = 607
+      Height = 186
       Align = alClient
       AutoSize = True
       Center = True
@@ -3685,6 +3685,8 @@ object Bloqueio: TBloqueio
         28A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A0028A28A00
         28A28A00FFD9}
       Stretch = True
+      ExplicitWidth = 364
+      ExplicitHeight = 440
     end
   end
   object Panel9: TPanel
@@ -3693,7 +3695,7 @@ object Bloqueio: TBloqueio
     Width = 606
     Height = 111
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clWhite
     ParentBackground = False
     TabOrder = 4
     object Panel10: TPanel
@@ -3704,7 +3706,7 @@ object Bloqueio: TBloqueio
       Align = alTop
       BevelOuter = bvNone
       Caption = 'Informa'#231#245'es'
-      Color = 5460819
+      Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -13
@@ -3721,7 +3723,7 @@ object Bloqueio: TBloqueio
       Height = 25
       BevelOuter = bvNone
       Caption = 'Site:'
-      Color = 5460819
+      Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -11
@@ -3738,7 +3740,7 @@ object Bloqueio: TBloqueio
       Height = 25
       BevelOuter = bvNone
       Caption = 'E-Mail:'
-      Color = 5460819
+      Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -11
@@ -3755,7 +3757,7 @@ object Bloqueio: TBloqueio
       Height = 25
       BevelOuter = bvNone
       Caption = 'Telefone:'
-      Color = 5460819
+      Color = clHighlight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWhite
       Font.Height = -11
@@ -3783,8 +3785,8 @@ object Bloqueio: TBloqueio
       object Label8: TLabel
         Left = 0
         Top = 0
-        Width = 181
-        Height = 19
+        Width = 423
+        Height = 25
         Align = alClient
         Alignment = taCenter
         Caption = 'www.softlogus.com.br'
@@ -3794,6 +3796,8 @@ object Bloqueio: TBloqueio
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
+        ExplicitWidth = 181
+        ExplicitHeight = 19
       end
     end
     object Panel19: TPanel
@@ -3814,8 +3818,8 @@ object Bloqueio: TBloqueio
       object Label9: TLabel
         Left = 0
         Top = 0
-        Width = 211
-        Height = 19
+        Width = 423
+        Height = 25
         Align = alClient
         Alignment = taCenter
         Caption = 'suporte@softlogus.com.br'
@@ -3825,6 +3829,8 @@ object Bloqueio: TBloqueio
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentFont = False
+        ExplicitWidth = 211
+        ExplicitHeight = 19
       end
     end
     object Panel22: TPanel
@@ -3845,8 +3851,8 @@ object Bloqueio: TBloqueio
       object Telefones: TLabel
         Left = 0
         Top = 0
-        Width = 179
-        Height = 19
+        Width = 423
+        Height = 25
         Align = alClient
         Alignment = taCenter
         Caption = '(61)98103-5324 / 30283648'
@@ -3856,6 +3862,8 @@ object Bloqueio: TBloqueio
         Font.Name = 'Times New Roman'
         Font.Style = [fsBold]
         ParentFont = False
+        ExplicitWidth = 179
+        ExplicitHeight = 19
       end
     end
   end
@@ -3866,9 +3874,8 @@ object Bloqueio: TBloqueio
     Height = 11
     Align = alBottom
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 5
-    ExplicitTop = 481
   end
 end

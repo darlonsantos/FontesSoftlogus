@@ -24,9 +24,9 @@ object frmxloc_servico: Tfrmxloc_servico
     Top = 48
     Width = 711
     Height = 44
-    Color = 5460819
-    ColorHighLight = 5460819
-    ColorShadow = 5460819
+    Color = clHighlight
+    ColorHighLight = clHighlight
+    ColorShadow = clHighlight
     Align = alTop
     TabOrder = 0
     object Label1: TLabel
@@ -246,7 +246,7 @@ object frmxloc_servico: Tfrmxloc_servico
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 6723891
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -258,21 +258,21 @@ object frmxloc_servico: Tfrmxloc_servico
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.0.4.2'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 2
     ShowExpander = False
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitTop = -3
+    TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
       Left = 59
       Top = 14
-      Width = 173
+      Width = 179
       Height = 23
-      Caption = 'Localizar Servi'#231'os'
+      Caption = 'Consultar Servi'#231'os'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -19
@@ -356,7 +356,7 @@ object frmxloc_servico: Tfrmxloc_servico
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.0.1'
+      Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
   end

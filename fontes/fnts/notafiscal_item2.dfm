@@ -4,8 +4,8 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'NOTA FISCAL DE SA'#205'DA | Edi'#231#227'o de Item'
-  ClientHeight = 491
-  ClientWidth = 852
+  ClientHeight = 549
+  ClientWidth = 705
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -19,33 +19,19 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
-  object Bevel1: TBevel
-    Left = 0
-    Top = 489
-    Width = 852
-    Height = 2
-    Align = alBottom
-    ExplicitTop = 443
-    ExplicitWidth = 664
-  end
   object FlatPanel1: TFlatPanel
-    Left = 688
-    Top = 8
-    Width = 147
-    Height = 555
-    Color = clWhite
-    ColorHighLight = clWhite
-    ColorShadow = clWhite
+    Left = 0
+    Top = 477
+    Width = 705
+    Height = 72
+    Color = clHighlight
+    ColorHighLight = clHighlight
+    ColorShadow = clHighlight
+    Align = alBottom
     TabOrder = 2
-    object Bevel7: TBevel
-      Left = 252
-      Top = -3
-      Width = 1
-      Height = 59
-    end
     object Label11: TLabel
-      Left = 47
-      Top = 314
+      Left = 544
+      Top = 452
       Width = 62
       Height = 13
       Caption = 'Lan'#231'amento:'
@@ -57,13 +43,13 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
       ParentFont = False
     end
     object bgravar: TAdvGlowButton
-      Left = 11
-      Top = 42
-      Width = 126
+      Left = 254
+      Top = 4
+      Width = 88
       Height = 58
       Caption = 'Gravar'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -184,13 +170,13 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
       Layout = blGlyphTop
     end
     object bretorna: TAdvGlowButton
-      Left = 11
-      Top = 102
-      Width = 126
+      Left = 348
+      Top = 5
+      Width = 78
       Height = 58
       Caption = 'Cancelar'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
@@ -313,8 +299,8 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
       Layout = blGlyphTop
     end
     object pState: TFlatPanel
-      Left = 18
-      Top = 264
+      Left = 638
+      Top = 458
       Width = 104
       Height = 18
       Caption = 'Inclus'#227'o'
@@ -329,8 +315,8 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
       TabOrder = 2
     end
     object pcodigo: TFlatPanel
-      Left = 43
-      Top = 333
+      Left = 540
+      Top = 471
       Width = 57
       Height = 18
       Caption = '000001'
@@ -420,7 +406,7 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
       ParentFont = False
     end
     object Label23: TLabel
-      Left = 344
+      Left = 385
       Top = 12
       Width = 37
       Height = 13
@@ -445,7 +431,7 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
       Font.Style = []
       ParentFont = False
     end
-    object Label33: TLabel
+    object lblComplemento: TLabel
       Left = 8
       Top = 60
       Width = 69
@@ -553,7 +539,7 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
       TabOrder = 4
     end
     object ed_codigo: TRzEdit
-      Left = 392
+      Left = 434
       Top = 8
       Width = 65
       Height = 21
@@ -601,18 +587,18 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
       Visible = False
     end
     object ed_complemento: TMemo
-      Left = 80
-      Top = 60
-      Width = 425
-      Height = 34
+      Left = 79
+      Top = 59
+      Width = 307
+      Height = 36
       Color = clSilver
       Enabled = False
       TabOrder = 8
       OnExit = ed_complementoExit
     end
     object baltera_complemento: TAdvGlowButton
-      Left = 8
-      Top = 73
+      Left = 392
+      Top = 59
       Width = 69
       Height = 19
       Caption = 'Alterar'
@@ -686,7 +672,7 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
     Width = 670
     Height = 369
     BevelOuter = bvNone
-    Color = 8210719
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 1
     object Label12: TLabel
@@ -1714,7 +1700,7 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
     Height = 465
     Align = alLeft
     BevelOuter = bvNone
-    Color = 3684661
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 3
   end
@@ -1724,42 +1710,31 @@ object frmNotaFiscal_Item2: TfrmNotaFiscal_Item2
     Width = 12
     Height = 504
     BevelOuter = bvNone
-    Color = 3684661
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 4
-  end
-  object Panel5: TPanel
-    Left = 0
-    Top = 477
-    Width = 852
-    Height = 12
-    Align = alBottom
-    BevelOuter = bvNone
-    Color = 3684661
-    ParentBackground = False
-    TabOrder = 5
   end
   object Panel6: TPanel
     Left = 0
     Top = 0
-    Width = 852
+    Width = 705
     Height = 12
     Align = alTop
     BevelOuter = bvNone
-    Color = 3684661
+    Color = clHighlight
     ParentBackground = False
-    TabOrder = 6
+    TabOrder = 5
   end
   object Panel7: TPanel
-    Left = 840
+    Left = 693
     Top = 12
     Width = 12
     Height = 465
     Align = alRight
     BevelOuter = bvNone
-    Color = 3684661
+    Color = clHighlight
     ParentBackground = False
-    TabOrder = 7
+    TabOrder = 6
   end
   object Pop2: TPopupMenu
     Left = 1036

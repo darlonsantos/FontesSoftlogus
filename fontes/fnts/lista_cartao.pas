@@ -231,7 +231,6 @@ begin
     Application.messagebox('Acesso não permitido!', 'Erro!', mb_ok + mb_iconerror);
     exit;
   end;
-
   if combo_relatorio.Text = 'RELAÇÃO' then
   begin
     fxCARTAO.LoadFromFile('\Softlogus\server\rel\f000192.fr3');
@@ -240,3 +239,4 @@ begin
 end;
 
 end.
+

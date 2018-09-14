@@ -3940,7 +3940,7 @@ object frmfuncionario: Tfrmfuncionario
       Layout = blGlyphTop
     end
     object pgravar: TFlatPanel
-      Left = 0
+      Left = 471
       Top = 0
       Width = 650
       Height = 119
@@ -3948,10 +3948,9 @@ object frmfuncionario: Tfrmfuncionario
       Visible = False
       ColorHighLight = 5460819
       ColorShadow = 5460819
-      Align = alClient
       TabOrder = 9
       object bgravar: TAdvGlowButton
-        Left = 237
+        Left = 239
         Top = 19
         Width = 73
         Height = 63

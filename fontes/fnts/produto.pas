@@ -63,14 +63,9 @@ type
     blocaliquota: TBitBtn;
     ealiquota: TDBEdit;
     Panel2: TPanel;
-    bincluir: TAdvGlowButton;
-    balterar: TAdvGlowButton;
-    bexcluir: TAdvGlowButton;
     DBAdvGlowButton2: TDBAdvGlowButton;
     DBAdvGlowButton3: TDBAdvGlowButton;
-    bitbtn5: TAdvGlowButton;
     LMDButton1: TAdvGlowMenuButton;
-    blocalizar: TAdvGlowButton;
     pgravar: TFlatPanel;
     bgravar: TAdvGlowButton;
     bcancelar: TAdvGlowButton;
@@ -986,14 +981,19 @@ type
     AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
     Label105: TLabel;
     AdvMetroButton1: TAdvMetroButton;
+    btn_Incluir: TAdvGlowButton;
+    btn_alterar: TAdvGlowButton;
+    btn_Excluir: TAdvGlowButton;
+    btn_localizar: TAdvGlowButton;
+    btn_Relatorio: TAdvGlowButton;
+    DBAdvGlowButton1: TDBAdvGlowButton;
+    DBAdvGlowButton4: TDBAdvGlowButton;
+    btn_Atalhos: TAdvGlowButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure enomeEnter(Sender: TObject);
     procedure enomeExit(Sender: TObject);
     procedure bincluirClick(Sender: TObject);
-    procedure balterarClick(Sender: TObject);
-    procedure bexcluirClick(Sender: TObject);
-    procedure blocalizarClick(Sender: TObject);
     procedure bfecharClick(Sender: TObject);
     procedure bgravarClick(Sender: TObject);
     procedure bcancelarClick(Sender: TObject);
@@ -1045,7 +1045,6 @@ type
     procedure Exportarparaarquivo1Click(Sender: TObject);
     procedure ImportardeArquivo1Click(Sender: TObject);
     procedure otalizarestoque1Click(Sender: TObject);
-    procedure BitBtn5Click(Sender: TObject);
     procedure AtualizaodePreos1Click(Sender: TObject);
     procedure DBEdit13KeyPress(Sender: TObject; var Key: Char);
     procedure ealiqExit(Sender: TObject);
@@ -1209,6 +1208,11 @@ type
     procedure AdvMetroButton1Click(Sender: TObject);
     procedure eCESTButtonClick(Sender: TObject);
     procedure eCESTKeyPress(Sender: TObject; var Key: Char);
+    procedure btn_IncluirClick(Sender: TObject);
+    procedure btn_ExcluirClick(Sender: TObject);
+    procedure btn_alterarClick(Sender: TObject);
+    procedure btn_localizarClick(Sender: TObject);
+    procedure btn_RelatorioClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -1344,7 +1348,7 @@ begin
     qrproduto.sql.add('select * from c000025 where codigo = ''' +
       busca_produto_codigo + '''');
     qrproduto.OPEN;
-    balterarClick(frmproduto);
+    btn_alterarClick(frmproduto);
   end
   else
   begin
@@ -1468,114 +1472,6 @@ begin
   combo_tipo.Text := '00 - Mercadoria para Revenda';
   PageView1.ActivePageindex := 0;
   PageView2.ActivePageindex := 0;
-
-end;
-
-procedure Tfrmproduto.balterarClick(Sender: TObject);
-begin
-
-  pficha1.enabled := True;
-  pficha2.enabled := True;
-  pficha3.enabled := True;
-  pficha4.enabled := True;
-  pficha5.enabled := True;
-  pficha6.enabled := True;
-  pficha7.enabled := True;
-  pficha8.enabled := True;
-  pficha9.enabled := True;
-  pficha10.enabled := True;
-
-  if DBEdit1.Text <> '' then
-  begin
-    // pageview1.ActivePageindex := 0;
-    // pobservacao.Enabled := true;
-    ptampapreco.visible := false;
-    PFOTO.enabled := True;
-    ppreco.enabled := True;
-    pgrade.enabled := True;
-    // pserial.Enabled := true;
-    pcomposicao.enabled := True;
-    pnutricional.enabled := True;
-
-
-    // eestoque.Top := 36;
-    // baltera.Visible := true;
-    // gestoque.Enabled := false;
-
-    estoque_anterior := qrproduto.FieldByName('estoque').asfloat;
-    preco_custo_anterior := qrproduto.FieldByName('precocusto').asfloat;
-    preco_venda_anterior := qrproduto.FieldByName('precovenda').asfloat;
-
-    qrproduto.Edit;
-    COMBOCODBARRA.SetFocus;
-    pgravar.visible := True;
-    PopupMenu := Pop2;
-
-    if PageView1.ActivePageindex = 1 then
-    begin
-      if (qrproduto.State = dsedit) or (qrproduto.State = dsinsert) then
-        qrpreco.Edit;
-    end;
-  end
-  else
-  begin
-    Showmessage('Nenhum registro foi selecionado!');
-  end;
-end;
-
-procedure Tfrmproduto.bexcluirClick(Sender: TObject);
-begin
-  if frmprincipal.autentica('Excluir PRODUTO', 4) then
-  begin
-    qrcodbarra.close;
-    qrcodbarra.sql.clear;
-    qrcodbarra.sql.add('SELECT * from c000055 where codproduto = ''' +
-      qrproduto.FieldByName('codigo').AsString + '''');
-    qrcodbarra.OPEN;
-    while qrcodbarra.RECORDCOUNT <> 0 do
-    begin
-      qrcodbarra.DELETE;
-    end;
-
-    qrproduto_mov.close;
-    qrproduto_mov.sql.clear;
-    qrproduto_mov.sql.add('select * from c000032 where codproduto = ''' +
-      qrproduto.FieldByName('codigo').AsString + '''');
-    qrproduto_mov.OPEN;
-
-    if qrproduto_mov.RECORDCOUNT > 1 then
-    begin
-      application.messagebox
-        ('Este produto possue movimentações entradas/saídas! Impossível excluí-lo!',
-        'Atenção', mb_ok + mb_iconwarning);
-
-    end
-    else
-    begin
-      frmprincipal.logUC('Excluiu Produto - ' + qrproduto.FieldByName('PRODUTO')
-        .AsString, 3);
-      qrproduto.DELETE;
-      FRMMODULO.Conexao.commit;
-    end;
-  end
-  else
-  begin
-    application.messagebox('Acesso não permitido!', 'Erro!',
-      mb_ok + mb_iconerror);
-  end;
-end;
-
-procedure Tfrmproduto.blocalizarClick(Sender: TObject);
-begin
-  frmxloc_PRODUTO := tfrmxloc_PRODUTO.create(self);
-  frmxloc_PRODUTO.bitbtn1.enabled := false;
-  frmxloc_PRODUTO.balterar.enabled := false;
-  frmxloc_PRODUTO.showmodal;
-  if resultado_pesquisa1 <> '' then
-  begin
-    qrproduto.Locate('codigo', resultado_pesquisa1, [loCaseInsensitive]);
-    PageView1.ActivePageindex := 0;
-  end;
 
 end;
 
@@ -1703,6 +1599,14 @@ begin
   pficha9.enabled := false;
   pficha10.enabled := false;
 
+  btn_Incluir.Visible := true;
+  btn_alterar.Visible := true;
+  btn_Excluir.Visible := true;
+  btn_localizar.Visible := true;
+  btn_Relatorio.Visible := true;
+  btn_Atalhos.Visible := true;
+
+
   edicao_preco := false;
 
   if FRMMODULO.qrproduto.State = dsinsert then
@@ -1758,7 +1662,12 @@ begin
   pficha7.enabled := false;
   pficha8.enabled := false;
   pficha9.enabled := false;
-
+  btn_Incluir.Visible := true;
+  btn_alterar.Visible := true;
+  btn_Excluir.Visible := true;
+  btn_localizar.Visible := true;
+  btn_Relatorio.Visible := true;
+  btn_Atalhos.Visible := true;
   edicao_preco := false;
 
 end;
@@ -2476,12 +2385,6 @@ begin
   frmproduto_total.showmodal;
 end;
 
-procedure Tfrmproduto.BitBtn5Click(Sender: TObject);
-begin
-  Frmlista_produto2 := tfrmlista_produto2.create(self);
-  Frmlista_produto2.showmodal;
-end;
-
 procedure Tfrmproduto.AtualizaodePreos1Click(Sender: TObject);
 begin
   frmproduto_atualizapreco := tfrmproduto_atualizapreco.create(self);
@@ -2842,6 +2745,139 @@ procedure Tfrmproduto.bservicosClick(Sender: TObject);
 begin
   frmservico := tfrmservico.create(self);
   frmservico.showmodal;
+end;
+
+procedure Tfrmproduto.btn_ExcluirClick(Sender: TObject);
+begin
+  if frmprincipal.autentica('Excluir PRODUTO', 4) then
+  begin
+    qrcodbarra.close;
+    qrcodbarra.sql.clear;
+    qrcodbarra.sql.add('SELECT * from c000055 where codproduto = ''' +
+      qrproduto.FieldByName('codigo').AsString + '''');
+    qrcodbarra.OPEN;
+    while qrcodbarra.RECORDCOUNT <> 0 do
+    begin
+      qrcodbarra.DELETE;
+    end;
+    qrproduto_mov.close;
+    qrproduto_mov.sql.clear;
+    qrproduto_mov.sql.add('select * from c000032 where codproduto = ''' +
+      qrproduto.FieldByName('codigo').AsString + '''');
+    qrproduto_mov.OPEN;
+      if qrproduto_mov.RECORDCOUNT > 1 then
+    begin
+      application.messagebox
+        ('Este produto possue movimentações entradas/saídas! Impossível excluí-lo!',
+        'Atenção', mb_ok + mb_iconwarning);
+
+    end
+    else
+    begin
+      frmprincipal.logUC('Excluiu Produto - ' + qrproduto.FieldByName('PRODUTO')
+        .AsString, 3);
+      qrproduto.DELETE;
+      FRMMODULO.Conexao.commit;
+    end;
+  end
+  else
+  begin
+    application.messagebox('Acesso não permitido!', 'Erro!',
+      mb_ok + mb_iconerror);
+  end;
+end;
+
+procedure Tfrmproduto.btn_IncluirClick(Sender: TObject);
+begin
+
+  PFOTO.enabled := True;
+  ppreco.enabled := True;
+  pgrade.enabled := True;
+
+  pcomposicao.enabled := True;
+  pnutricional.enabled := True;
+
+  qrproduto.insert;
+  qrproduto.FieldByName('unidade').AsString := 'UN';
+  qrproduto.FieldByName('estoque').asfloat := 0;
+  qrproduto.FieldByName('cst').AsString := '000';
+  qrproduto.FieldByName('aliquota').asinteger := 17;
+  qrproduto.FieldByName('situacao').asinteger := 0;
+
+  qrproduto.FieldByName('usa_balanca').asinteger := 2;
+  qrproduto.FieldByName('usa_serial').asinteger := 0;
+  qrproduto.FieldByName('usa_grade').asinteger := 0;
+  qrproduto.FieldByName('tipo').AsString := '00 - Mercadoria para Revenda';
+  qrproduto.FieldByName('iat').AsString := 'T';
+  qrproduto.FieldByName('ippt').AsString := 'T';
+  qrproduto.FieldByName('FLAG_SIS').AsString := 'S';
+  wwDBComboBox2.Value := 'T';
+  wwDBComboBox1.Value := 'NENHUMA';
+
+  if (FRMMODULO.qrfilial.FieldByName('permite_credito').asinteger = 1) then
+  begin
+    ecsosn.Text := '101';
+  end
+  else
+    ecsosn.Text := '102';
+
+  qrproduto.FieldByName('data_inventario').AsDateTime :=
+    strtodate('31/12/' + frmprincipal.zerarcodigo
+    (inttostr(strtoint(copy(datetostr(date), 7, 4)) - 1), 4));
+  qrproduto.FieldByName('custo_inventario').asfloat := 0;
+  qrproduto.FieldByName('estoque_inventario').asfloat := 0;
+
+  qrproduto.FieldByName('codigo').AsString := frmprincipal.codifica('000025');
+
+  edata_cadastro.date := date;
+
+  estoque_anterior := 0;
+
+  pficha1.enabled := True;
+  pficha2.enabled := True;
+  pficha3.enabled := True;
+  pficha4.enabled := True;
+  pficha5.enabled := True;
+  pficha6.enabled := True;
+  pficha7.enabled := True;
+  pficha8.enabled := True;
+  pficha9.enabled := True;
+  pficha10.enabled := True;
+   btn_Incluir.Visible := false;
+  btn_alterar.Visible := false;
+  btn_Excluir.Visible := false;
+  btn_localizar.Visible := false;
+  btn_Relatorio.Visible := false;
+  btn_Atalhos.Visible := false;
+
+
+
+  COMBOCODBARRA.SetFocus;
+  combo_tipo.Text := '00 - Mercadoria para Revenda';
+  PageView1.ActivePageindex := 0;
+  PageView2.ActivePageindex := 0;
+end;
+
+
+
+procedure Tfrmproduto.btn_localizarClick(Sender: TObject);
+begin
+  frmxloc_PRODUTO := tfrmxloc_PRODUTO.create(self);
+  frmxloc_PRODUTO.bitbtn1.enabled := false;
+  frmxloc_PRODUTO.balterar.enabled := false;
+  frmxloc_PRODUTO.showmodal;
+  if resultado_pesquisa1 <> '' then
+  begin
+    qrproduto.Locate('codigo', resultado_pesquisa1, [loCaseInsensitive]);
+    PageView1.ActivePageindex := 0;
+  end;
+
+end;
+
+procedure Tfrmproduto.btn_RelatorioClick(Sender: TObject);
+begin
+  Frmlista_produto2 := tfrmlista_produto2.create(self);
+  Frmlista_produto2.showmodal;
 end;
 
 procedure Tfrmproduto.Servicos1Click(Sender: TObject);
@@ -5413,6 +5449,64 @@ begin
   end;
 
 end;
+
+procedure Tfrmproduto.btn_alterarClick(Sender: TObject);
+begin
+  pficha1.enabled := True;
+  pficha2.enabled := True;
+  pficha3.enabled := True;
+  pficha4.enabled := True;
+  pficha5.enabled := True;
+  pficha6.enabled := True;
+  pficha7.enabled := True;
+  pficha8.enabled := True;
+  pficha9.enabled := True;
+  pficha10.enabled := True;
+  btn_Incluir.Visible := false;
+  btn_alterar.Visible := false;
+  btn_Excluir.Visible := false;
+  btn_localizar.Visible := false;
+  btn_Relatorio.Visible := false;
+  btn_Atalhos.Visible := false;
+
+
+  if DBEdit1.Text <> '' then
+  begin
+    // pageview1.ActivePageindex := 0;
+    // pobservacao.Enabled := true;
+    ptampapreco.visible := false;
+    PFOTO.enabled := True;
+    ppreco.enabled := True;
+    pgrade.enabled := True;
+    // pserial.Enabled := true;
+    pcomposicao.enabled := True;
+    pnutricional.enabled := True;
+
+    // eestoque.Top := 36;
+    // baltera.Visible := true;
+    // gestoque.Enabled := false;
+
+    estoque_anterior := qrproduto.FieldByName('estoque').asfloat;
+    preco_custo_anterior := qrproduto.FieldByName('precocusto').asfloat;
+    preco_venda_anterior := qrproduto.FieldByName('precovenda').asfloat;
+
+    qrproduto.Edit;
+    COMBOCODBARRA.SetFocus;
+    pgravar.visible := True;
+    PopupMenu := Pop2;
+
+    if PageView1.ActivePageindex = 1 then
+    begin
+      if (qrproduto.State = dsedit) or (qrproduto.State = dsinsert) then
+        qrpreco.Edit;
+    end;
+  end
+  else
+  begin
+    Showmessage('Nenhum registro foi selecionado!');
+  end;
+end;
+
 
 procedure Tfrmproduto.AdvMetroButton1Click(Sender: TObject);
 begin

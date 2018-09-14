@@ -1481,18 +1481,18 @@ begin
     then // quando for o próprio destinatário
       frmnotafiscal_menu.qrnota.fieldbyname('FRETE_CONTA').asinteger := 2;
 
-    if frmmodulo.qrfilial.fieldbyname('optante_simples').asstring = 'S' then
-    begin
-      frmnotafiscal_menu.qrnota.fieldbyname('inf1').asstring :=
-        'DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL';
-      frmnotafiscal_menu.qrnota.fieldbyname('inf2').asstring :=
-        'NÃO GERA DIREITO A CRÉDITO FISCAL DE ICMS, DE ISS E DE IPI';
-    end
-    else
-    begin
-      frmnotafiscal_menu.qrnota.fieldbyname('inf3').asstring := '';
-      frmnotafiscal_menu.qrnota.fieldbyname('inf4').asstring := '';
-    end;
+//    if frmmodulo.qrfilial.fieldbyname('optante_simples').asstring = 'S' then
+//    begin
+//      frmnotafiscal_menu.qrnota.fieldbyname('inf1').asstring :=
+//        'DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL';
+//      frmnotafiscal_menu.qrnota.fieldbyname('inf2').asstring :=
+//        'NÃO GERA DIREITO A CRÉDITO FISCAL DE ICMS, DE ISS E DE IPI';
+//    end
+//    else
+//    begin
+//      frmnotafiscal_menu.qrnota.fieldbyname('inf3').asstring := '';
+//      frmnotafiscal_menu.qrnota.fieldbyname('inf4').asstring := '';
+//    end;
 
     frmnotafiscal_menu.qrnota.post;
 
@@ -3637,7 +3637,7 @@ end;
 
 procedure Tfrmnotafiscal.FormShow(Sender: TObject);
 begin
-  // 22/10/2015
+
   cb_Finalidade.ItemIndex := frmnotafiscal_menu.qrnota.fieldbyname
     ('TIPO_FINALIDADE').AsInteger;
 
@@ -3654,19 +3654,19 @@ begin
 
   if frmnotafiscal_menu.qrnota.State = dsinsert then
   begin
-
-    if frmmodulo.qrfilial.fieldbyname('optante_simples').asstring = 'S' then
-    begin
-      frmnotafiscal_menu.qrnota.fieldbyname('OBS1').asstring :=
-        'DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL';
-      frmnotafiscal_menu.qrnota.fieldbyname('OBS2').asstring :=
-        'NÃO GERA DIREITO A CRÉDITO FISCAL DE ICMS, DE ISS E DE IPI';
-    end
-    else
-    begin
-      frmnotafiscal_menu.qrnota.fieldbyname('OBS1').asstring := '';
-      frmnotafiscal_menu.qrnota.fieldbyname('OBS2').asstring := '';
-    end;
+//         DARLON SANTOS
+//    if frmmodulo.qrfilial.fieldbyname('optante_simples').asstring = 'S' then
+//    begin
+//      frmnotafiscal_menu.qrnota.fieldbyname('OBS1').asstring :=
+//        'DOCUMENTO EMITIDO POR ME OU EPP OPTANTE PELO SIMPLES NACIONAL';
+//      frmnotafiscal_menu.qrnota.fieldbyname('OBS2').asstring :=
+//        'NÃO GERA DIREITO A CRÉDITO FISCAL DE ICMS, DE ISS E DE IPI';
+//    end
+//    else
+//    begin
+//      frmnotafiscal_menu.qrnota.fieldbyname('OBS1').asstring := '';
+//      frmnotafiscal_menu.qrnota.fieldbyname('OBS2').asstring := '';
+//    end;
 
     if frmmodulo.qrconfig.fieldbyname('BAIXAR_ESTOQUE_NOTA_SAIDA').asinteger = 1
     then
@@ -3755,7 +3755,7 @@ begin
   qrreceber.sql.add('select * from c000117');
   qrreceber.sql.add('where cod_nota = ''' +
     frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
-  qrreceber.sql.add('order by numero');
+   qrreceber.sql.add('order by numero');
   qrreceber.Open;
 
   if frmnotafiscal_menu.vopcao_nfs = 3 then
@@ -3844,8 +3844,7 @@ begin
 
         qrservico.close;
         qrservico.sql.clear;
-        qrservico.sql.add('select * from c000011 where codigo = ''' +
-          frmnotafiscal_menu.qrnota.fieldbyname('os_cod1').asstring + '''');
+        qrservico.sql.add('select * from c000011 where codigo = ''' + frmnotafiscal_menu.qrnota.fieldbyname('os_cod1').asstring + '''');
         qrservico.Open;
         if qrservico.RecordCount > 0 then
         begin
@@ -3878,15 +3877,15 @@ end;
 
 procedure Tfrmnotafiscal.ed_serv1ButtonClick(Sender: TObject);
 begin
-  resultado_pesquisa1 := '';
-  frmxloc_servico := Tfrmxloc_servico.create(self);
+  parametro_pesquisa := ' is not null ';
+  frmxloc_servico := tfrmxloc_servico.create(self);
   frmxloc_servico.showmodal;
-
   if resultado_pesquisa1 <> '' then
   begin
-    frmnotafiscal_menu.qrnota.fieldbyname('os_cod1').asstring :=
-      resultado_pesquisa1;
-    TEdit(Sender).setfocus;
+    frmnotafiscal_menu.qrnota.Open;
+  if (frmnotafiscal_menu.qrnota.State = dsEdit) or (frmnotafiscal_menu.qrnota.State = dsInsert) then
+     frmnotafiscal_menu.qrnota.FieldByName('os_cod1').AsString := resultado_pesquisa1;
+     frmnotafiscal_menu.qrnota.FieldByName('OS_SERV1').AsString := resultado_pesquisa2;
   end;
 end;
 
@@ -4112,74 +4111,73 @@ end;
 
 procedure Tfrmnotafiscal.ed_serv2ButtonClick(Sender: TObject);
 begin
-  resultado_pesquisa1 := '';
-  frmxloc_servico := Tfrmxloc_servico.create(self);
+  parametro_pesquisa := ' is not null ';
+  frmxloc_servico := tfrmxloc_servico.create(self);
   frmxloc_servico.showmodal;
-
   if resultado_pesquisa1 <> '' then
   begin
-    frmnotafiscal_menu.qrnota.fieldbyname('os_cod2').asstring :=
-      resultado_pesquisa1;
-    TEdit(Sender).setfocus;
+    frmnotafiscal_menu.qrnota.Open;
+  if (frmnotafiscal_menu.qrnota.State = dsEdit) or (frmnotafiscal_menu.qrnota.State = dsInsert) then
+     frmnotafiscal_menu.qrnota.FieldByName('os_cod2').AsString := resultado_pesquisa1;
+     frmnotafiscal_menu.qrnota.FieldByName('OS_SERV2').AsString := resultado_pesquisa2;
   end;
 end;
+
+
 
 procedure Tfrmnotafiscal.ed_serv3ButtonClick(Sender: TObject);
 begin
-  resultado_pesquisa1 := '';
-  frmxloc_servico := Tfrmxloc_servico.create(self);
+  parametro_pesquisa := ' is not null ';
+  frmxloc_servico := tfrmxloc_servico.create(self);
   frmxloc_servico.showmodal;
-
   if resultado_pesquisa1 <> '' then
   begin
-    frmnotafiscal_menu.qrnota.fieldbyname('os_cod3').asstring :=
-      resultado_pesquisa1;
-    TEdit(Sender).setfocus;
+    frmnotafiscal_menu.qrnota.Open;
+  if (frmnotafiscal_menu.qrnota.State = dsEdit) or (frmnotafiscal_menu.qrnota.State = dsInsert) then
+     frmnotafiscal_menu.qrnota.FieldByName('os_cod3').AsString := resultado_pesquisa1;
+     frmnotafiscal_menu.qrnota.FieldByName('OS_SERV3').AsString := resultado_pesquisa2;
   end;
 end;
-
 procedure Tfrmnotafiscal.ed_serv4ButtonClick(Sender: TObject);
 begin
-  resultado_pesquisa1 := '';
-  frmxloc_servico := Tfrmxloc_servico.create(self);
+  parametro_pesquisa := ' is not null ';
+  frmxloc_servico := tfrmxloc_servico.create(self);
   frmxloc_servico.showmodal;
-
   if resultado_pesquisa1 <> '' then
   begin
-    frmnotafiscal_menu.qrnota.fieldbyname('os_cod4').asstring :=
-      resultado_pesquisa1;
-    TEdit(Sender).setfocus;
+    frmnotafiscal_menu.qrnota.Open;
+  if (frmnotafiscal_menu.qrnota.State = dsEdit) or (frmnotafiscal_menu.qrnota.State = dsInsert) then
+     frmnotafiscal_menu.qrnota.FieldByName('os_cod4').AsString := resultado_pesquisa1;
+     frmnotafiscal_menu.qrnota.FieldByName('OS_SERV4').AsString := resultado_pesquisa2;
   end;
 end;
 
 procedure Tfrmnotafiscal.ed_serv5ButtonClick(Sender: TObject);
 begin
-  resultado_pesquisa1 := '';
-  frmxloc_servico := Tfrmxloc_servico.create(self);
+  parametro_pesquisa := ' is not null ';
+  frmxloc_servico := tfrmxloc_servico.create(self);
   frmxloc_servico.showmodal;
-
   if resultado_pesquisa1 <> '' then
   begin
-    frmnotafiscal_menu.qrnota.fieldbyname('os_cod5').asstring :=
-      resultado_pesquisa1;
-    TEdit(Sender).setfocus;
+    frmnotafiscal_menu.qrnota.Open;
+  if (frmnotafiscal_menu.qrnota.State = dsEdit) or (frmnotafiscal_menu.qrnota.State = dsInsert) then
+     frmnotafiscal_menu.qrnota.FieldByName('os_cod5').AsString := resultado_pesquisa1;
+     frmnotafiscal_menu.qrnota.FieldByName('OS_SERV5').AsString := resultado_pesquisa2;
   end;
 end;
-
 procedure Tfrmnotafiscal.ed_serv6ButtonClick(Sender: TObject);
 begin
-  resultado_pesquisa1 := '';
-  frmxloc_servico := Tfrmxloc_servico.create(self);
+  parametro_pesquisa := ' is not null ';
+  frmxloc_servico := tfrmxloc_servico.create(self);
   frmxloc_servico.showmodal;
-
   if resultado_pesquisa1 <> '' then
   begin
-    frmnotafiscal_menu.qrnota.fieldbyname('os_cod6').asstring :=
-      resultado_pesquisa1;
-    TEdit(Sender).setfocus;
+    frmnotafiscal_menu.qrnota.Open;
+  if (frmnotafiscal_menu.qrnota.State = dsEdit) or (frmnotafiscal_menu.qrnota.State = dsInsert) then
+     frmnotafiscal_menu.qrnota.FieldByName('os_cod6').AsString := resultado_pesquisa1;
+     frmnotafiscal_menu.qrnota.FieldByName('OS_SERV6').AsString := resultado_pesquisa2;
   end;
 end;
-
 procedure Tfrmnotafiscal.RzDBNumericEdit20Exit(Sender: TObject);
 begin
   if frmnotafiscal_menu.qrnota.State in [dsinsert, dsedit] then
@@ -4391,8 +4389,7 @@ procedure Tfrmnotafiscal.qrreceberBeforePost(DataSet: TDataSet);
 begin
   if qrreceber.State = dsinsert then
     qrreceber.fieldbyname('codigo').asstring := frmprincipal.codifica('000062');
-
-  qrreceber.fieldbyname('cod_nota').asstring :=
+   qrreceber.fieldbyname('cod_nota').asstring :=
     frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring;
 end;
 
@@ -4409,17 +4406,16 @@ var
   itotal: real;
 begin
 
+//  if tab_principal.ActivePageIndex = 1 then
+//  begin
+//    if (rtipo.ItemIndex = 0) or (rtipo.ItemIndex = 2) then
+//      tab_principal.ActivePageIndex := 0;
+//  end;
   if tab_principal.ActivePageIndex = 1 then
   begin
-    if (rtipo.ItemIndex = 0) or (rtipo.ItemIndex = 2) then
-      tab_principal.ActivePageIndex := 0;
-  end;
-
-  if tab_principal.ActivePageIndex = 1 then
-  begin
-    qrreceber.first;
+   qrreceber.first;
     itotal := 0;
-    while not qrreceber.eof do
+   while not qrreceber.eof do
     begin
       itotal := itotal + qrreceber.fieldbyname('valor').AsFloat;
       qrreceber.Next;
@@ -4534,14 +4530,12 @@ begin
     ecliente.setfocus;
     exit;
   end;
-
-  frmnotafiscal_importacupom := Tfrmnotafiscal_importacupom.create(self);
+ frmnotafiscal_importacupom := Tfrmnotafiscal_importacupom.create(self);
   frmnotafiscal_importacupom.showmodal;
-
   qrnotafiscal_item.post;
-
   {
-    frmmodulo.Conexao.Commit;
+
+      frmmodulo.Conexao.Commit;
     frmmodulo.EConexao.Commit;
 
     qrnotafiscal_item.Close;
@@ -4551,8 +4545,6 @@ begin
     qrnotafiscal_item.sql.add('where item.codproduto = pro.codigo and');
     qrnotafiscal_item.SQL.add('item.codnota = '''+vnumero_inclui_nota+''' order by item');
     qrnotafiscal_item.open;
-
-
     if qrnotafiscal_item.fieldbyname('item').asstring = '' then
     begin
     nf_item := 1;

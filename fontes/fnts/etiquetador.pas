@@ -140,6 +140,8 @@ type
     QRPRODUTOREFERENCIA: TWideStringField;
     QRPRODUTOCOMPOSICAO1: TWideStringField;
     QRPRODUTOCOMPOSICAO2: TWideStringField;
+    AdvGlowButton1: TAdvGlowButton;
+    qretiqUNIDADE: TWideStringField;
     procedure FormShow(Sender: TObject);
     procedure bfecharClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -3215,10 +3217,8 @@ begin
         qretiq.FIELDBYNAME('qtde').ASFLOAT := query.FIELDBYNAME('qtde').ASFLOAT;
       end;
 
-      qretiq.FIELDBYNAME('valor').ASFLOAT :=
-        query.FIELDBYNAME('precovenda').ASFLOAT;
-      qretiq.FIELDBYNAME('unidade').ASSTRING :=
-        query.FIELDBYNAME('unidade').ASSTRING;
+      qretiq.FIELDBYNAME('valor').ASFLOAT := query.FIELDBYNAME('precovenda').ASFLOAT;
+      //qretiq.FIELDBYNAME('UNIDADE').ASSTRING := query.FIELDBYNAME('UNIDADE').ASSTRING;
       qretiq.FIELDBYNAME('TEXTO').ASSTRING := '3';
       qretiq.POST;
       query.NEXT;

@@ -5,7 +5,7 @@ object frmlista_servicos2: Tfrmlista_servicos2
   BorderStyle = bsNone
   Caption = 'SERVI'#199'OS | Relat'#243'rios'
   ClientHeight = 243
-  ClientWidth = 518
+  ClientWidth = 407
   Color = 11429670
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -20,19 +20,22 @@ object frmlista_servicos2: Tfrmlista_servicos2
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
-    Left = 407
-    Top = 46
-    Width = 147
-    Height = 185
+    Left = 0
+    Top = 171
+    Width = 407
+    Height = 72
+    Align = alBottom
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 356
     object bimprimir: TAdvGlowButton
-      Left = 17
-      Top = 37
-      Width = 81
+      Left = 0
+      Top = 9
+      Width = 407
       Height = 63
+      Align = alBottom
       Caption = 'Visualizar'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -177,6 +180,9 @@ object frmlista_servicos2: Tfrmlista_servicos2
       Appearance.GradientMirrorDown = ggVertical
       Appearance.GradientChecked = ggVertical
       Layout = blGlyphTop
+      ExplicitLeft = 57
+      ExplicitTop = 41
+      ExplicitWidth = 81
     end
     object bitbtn1: TAdvGlowButton
       Left = 488
@@ -304,9 +310,9 @@ object frmlista_servicos2: Tfrmlista_servicos2
     Left = 0
     Top = 43
     Width = 408
-    Height = 183
+    Height = 126
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clWhite
     ParentBackground = False
     TabOrder = 1
     object Label1: TLabel
@@ -373,7 +379,7 @@ object frmlista_servicos2: Tfrmlista_servicos2
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 518
+    Width = 407
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -387,7 +393,7 @@ object frmlista_servicos2: Tfrmlista_servicos2
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 6723891
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -406,6 +412,7 @@ object frmlista_servicos2: Tfrmlista_servicos2
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 518
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
@@ -500,17 +507,6 @@ object frmlista_servicos2: Tfrmlista_servicos2
       Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
-  end
-  object Panel2: TPanel
-    Left = 0
-    Top = 224
-    Width = 518
-    Height = 19
-    Align = alBottom
-    BevelOuter = bvNone
-    Color = 6723891
-    ParentBackground = False
-    TabOrder = 3
   end
   object fxdesenhar: TfrxDesigner
     DefaultScriptLanguage = 'PascalScript'

@@ -43,7 +43,6 @@ type
     AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
     Label53: TLabel;
     AdvMetroButton1: TAdvMetroButton;
-    Panel2: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure bcancelarClick(Sender: TObject);

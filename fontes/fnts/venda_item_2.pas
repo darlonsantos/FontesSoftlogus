@@ -64,7 +64,6 @@ type
     AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
     Label20: TLabel;
     AdvMetroButton1: TAdvMetroButton;
-    Panel3: TPanel;
     qrprodutoCODIGO: TWideStringField;
     qrprodutoCODBARRA: TWideStringField;
     qrprodutoPRODUTO: TWideStringField;

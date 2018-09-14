@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Grids, DBGrids, Collection, ExtCtrls, DB, StdCtrls, Wwkeycb,
-  Buttons, Menus, Wwdbigrd, Wwdbgrid, AdvGlowButton;
+  Buttons, Menus, Wwdbigrd, Wwdbgrid, AdvGlowButton, AdvMetroButton,
+  AdvSmoothPanel, AdvSmoothExpanderPanel;
 
 type
   Tfrmloc_cliente = class(TForm)
@@ -18,6 +19,9 @@ type
     Label1: TLabel;
     loc: TwwIncrementalSearch;
     bitbtn1: TAdvGlowButton;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label2: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure locChange(Sender: TObject);
     procedure locKeyPress(Sender: TObject; var Key: Char);
     procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
@@ -29,6 +33,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure locKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure AdvMetroButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,6 +68,11 @@ end;
 procedure Tfrmloc_cliente.DBGrid1DblClick(Sender: TObject);
 begin
   CLOSE;
+end;
+
+procedure Tfrmloc_cliente.AdvMetroButton1Click(Sender: TObject);
+begin
+close;
 end;
 
 procedure Tfrmloc_cliente.BitBtn1Click(Sender: TObject);

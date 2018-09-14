@@ -40,7 +40,8 @@ object frmnotafiscal: Tfrmnotafiscal
     ColorShadow = clWhite
     Align = alBottom
     TabOrder = 0
-    ExplicitWidth = 942
+    ExplicitLeft = 396
+    ExplicitTop = 649
     object bimprimir: TBitBtn
       Left = 879
       Top = 34
@@ -2313,8 +2314,8 @@ object frmnotafiscal: Tfrmnotafiscal
     Top = 192
     Width = 928
     Height = 280
-    ActivePage = PageSheet11
-    ActivePageIndex = 1
+    ActivePage = PageSheet10
+    ActivePageIndex = 0
     AdaptiveColors = True
     BackgroundColor = 15790320
     BackgroundKind = bkSolid
@@ -2377,6 +2378,7 @@ object frmnotafiscal: Tfrmnotafiscal
         Font.Style = []
         Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap]
         ParentFont = False
+        ReadOnly = True
         TabOrder = 0
         TitleAlignment = taCenter
         TitleFont.Charset = ANSI_CHARSET
@@ -2409,7 +2411,7 @@ object frmnotafiscal: Tfrmnotafiscal
         end
         object FlatPanel2: TFlatPanel
           Left = 2
-          Top = 2
+          Top = 0
           Width = 413
           Height = 17
           Caption = 'Venda de Ve'#237'culo'
@@ -2425,7 +2427,7 @@ object frmnotafiscal: Tfrmnotafiscal
         end
         object Memo1: TMemo
           Left = 8
-          Top = 24
+          Top = 20
           Width = 401
           Height = 121
           Lines.Strings = (
@@ -3329,8 +3331,8 @@ object frmnotafiscal: Tfrmnotafiscal
         OnButtonClick = ed_serv1ButtonClick
       end
       object RzDBEdit1: TRzDBEdit
-        Left = 96
-        Top = 32
+        Left = 97
+        Top = 30
         Width = 201
         Height = 21
         DataSource = dsnota
@@ -4327,7 +4329,6 @@ object frmnotafiscal: Tfrmnotafiscal
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 938
     TMSStyle = 0
     OldHeight = 42.000000000000000000
     object AdvMetroButton1: TAdvMetroButton
@@ -11883,7 +11884,6 @@ object frmnotafiscal: Tfrmnotafiscal
   object qrnotafiscal_item: TZQuery
     Connection = frmmodulo.econexao2
     OnNewRecord = qrnotafiscal_itemNewRecord
-    Active = True
     SQL.Strings = (
       'select item.*, pro.produto, pro.unidade'
       'from c000062 item, c000025 pro'
@@ -12079,7 +12079,6 @@ object frmnotafiscal: Tfrmnotafiscal
   object qrreceber: TZQuery
     Connection = frmmodulo.econexao2
     BeforePost = qrreceberBeforePost
-    Active = True
     SQL.Strings = (
       'SELECT * FROM C000117')
     Params = <>
@@ -12669,7 +12668,7 @@ object frmnotafiscal: Tfrmnotafiscal
     SQL.Strings = (
       'select * from NFE_COMPLEMENTAR')
     Params = <>
-    Left = 343
+    Left = 347
     Top = 273
     object qryComplementarCODIGO: TWideStringField
       FieldName = 'CODIGO'

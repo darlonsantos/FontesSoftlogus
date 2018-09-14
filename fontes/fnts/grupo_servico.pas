@@ -21,6 +21,7 @@ type
     AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
     Label53: TLabel;
     AdvMetroButton1: TAdvMetroButton;
+    btn_GravarGrupoServicos: TAdvGlowButton;
     procedure bfecharClick(Sender: TObject);
     procedure qrgrupo_servicoBeforePost(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -28,6 +29,7 @@ type
     procedure qrgrupo_servicoAfterPost(DataSet: TDataSet);
     procedure bexcluirClick(Sender: TObject);
     procedure AdvMetroButton1Click(Sender: TObject);
+    procedure btn_GravarGrupoServicosClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +48,12 @@ uses modulo, principal;
 procedure Tfrmgrupo_servico.bfecharClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure Tfrmgrupo_servico.btn_GravarGrupoServicosClick(Sender: TObject);
+begin
+
+  qrgrupo_servico.post;
 end;
 
 procedure Tfrmgrupo_servico.qrgrupo_servicoBeforePost(DataSet: TDataSet);

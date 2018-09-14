@@ -126,7 +126,6 @@ object frmxloc_produto_entrada: Tfrmxloc_produto_entrada
     BevelOuter = bvNone
     Color = clWhite
     TabOrder = 2
-    ExplicitTop = -3
     object Label56: TLabel
       Left = 19
       Top = 13
@@ -401,8 +400,8 @@ object frmxloc_produto_entrada: Tfrmxloc_produto_entrada
   end
   object ds: TDataSource
     DataSet = query
-    Left = 464
-    Top = 200
+    Left = 400
+    Top = 216
   end
   object query: TZQuery
     Connection = frmmodulo.Conexao

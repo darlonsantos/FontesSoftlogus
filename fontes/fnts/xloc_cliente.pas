@@ -58,6 +58,9 @@ type
     RzDBEdit6: TRzDBEdit;
     RzDBNumericEdit2: TRzDBNumericEdit;
     bitbtn1: TAdvGlowButton;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label8: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure Localizarpor1Click(Sender: TObject);
     procedure Referncia1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

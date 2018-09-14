@@ -4,9 +4,9 @@ object frmetiquetador: Tfrmetiquetador
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'ETIQUETAS DE PRODUTOS | Impress'#227'o'
-  ClientHeight = 470
-  ClientWidth = 727
-  Color = 5460819
+  ClientHeight = 560
+  ClientWidth = 1045
+  Color = clHighlight
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -21,9 +21,9 @@ object frmetiquetador: Tfrmetiquetador
   TextHeight = 13
   object wwDBGrid1: TwwDBGrid
     Left = 0
-    Top = 43
-    Width = 611
-    Height = 425
+    Top = 50
+    Width = 1045
+    Height = 429
     ControlType.Strings = (
       'CODPRODUTO;CustomEdit;COMBOCODIGO;F'
       'PRODUTO;CustomEdit;COMBOPRODUTO;F'
@@ -35,12 +35,14 @@ object frmetiquetador: Tfrmetiquetador
       'VALOR'#9'10'#9'VALOR'#9#9
       'TAMANHO'#9'10'#9'TAMANHO'#9#9
       'TEXTO'#9'25'#9'TEXTO'#9'F'#9
-      'GRADE'#9'25'#9'GRADE'#9'F'#9)
+      'GRADE'#9'25'#9'GRADE'#9'F'#9
+      'UNIDADE'#9'80'#9'UNIDADE'#9'F'#9)
     IniAttributes.Delimiter = ';;'
     IniAttributes.UnicodeIniFile = False
-    TitleColor = 7456876
+    TitleColor = clWhite
     FixedCols = 0
     ShowHorzScrollBar = True
+    Align = alTop
     Color = clSilver
     DataSource = dsetiq
     KeyOptions = [dgEnterToTab, dgAllowDelete, dgAllowInsert]
@@ -56,8 +58,8 @@ object frmetiquetador: Tfrmetiquetador
     PaintOptions.AlternatingRowColor = 14540253
   end
   object pimprimir: THeaderView
-    Left = 88
-    Top = 161
+    Left = 384
+    Top = 173
     Width = 425
     Height = 148
     AdaptiveColors = True
@@ -73,13 +75,13 @@ object frmetiquetador: Tfrmetiquetador
     Visible = False
     object HeaderView2: THeaderView
       Left = 3
-      Top = 1
+      Top = 0
       Width = 419
       Height = 144
       AdaptiveColors = False
       BorderStyle = bsNone
       Caption = 'Formato da Etiqueta'
-      Color = 33023
+      Color = clHighlight
       HeaderColor = 5460819
       HeaderFont.Charset = ANSI_CHARSET
       HeaderFont.Color = clWindow
@@ -309,8 +311,8 @@ object frmetiquetador: Tfrmetiquetador
     OnExit = COMBOCODIGOExit
   end
   object Pimport: THeaderView
-    Left = 129
-    Top = 347
+    Left = 353
+    Top = 379
     Width = 369
     Height = 72
     AdaptiveColors = True
@@ -332,7 +334,7 @@ object frmetiquetador: Tfrmetiquetador
       AdaptiveColors = False
       BorderStyle = bsNone
       Caption = 'Aguarde... Importando Produtos...'
-      Color = 33023
+      Color = clHighlight
       HeaderColor = 5460819
       HeaderFont.Charset = ANSI_CHARSET
       HeaderFont.Color = clWindow
@@ -387,7 +389,7 @@ object frmetiquetador: Tfrmetiquetador
       AdaptiveColors = False
       BorderStyle = bsNone
       Caption = 'Per'#237'odo'
-      Color = 33023
+      Color = clHighlight
       HeaderColor = 5460819
       HeaderFont.Charset = ANSI_CHARSET
       HeaderFont.Color = clWindow
@@ -601,8 +603,8 @@ object frmetiquetador: Tfrmetiquetador
     end
   end
   object bgerar: TAdvGlowButton
-    Left = 617
-    Top = 89
+    Left = 287
+    Top = 489
     Width = 97
     Height = 63
     Caption = 'Gerar...'
@@ -726,10 +728,10 @@ object frmetiquetador: Tfrmetiquetador
     Layout = blGlyphTop
   end
   object BitBtn2: TAdvGlowButton
-    Left = 394
-    Top = 491
-    Width = 135
-    Height = 48
+    Left = 907
+    Top = 375
+    Width = 114
+    Height = 52
     Caption = 'Importar NF Entrada'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -816,10 +818,11 @@ object frmetiquetador: Tfrmetiquetador
     Appearance.GradientDown = ggVertical
     Appearance.GradientMirrorDown = ggVertical
     Appearance.GradientChecked = ggVertical
+    Layout = blGlyphTop
   end
   object bexcluir: TAdvGlowButton
-    Left = 617
-    Top = 158
+    Left = 399
+    Top = 489
     Width = 97
     Height = 63
     Caption = 'Excluir'
@@ -953,8 +956,8 @@ object frmetiquetador: Tfrmetiquetador
     Layout = blGlyphTop
   end
   object BitBtn3: TAdvGlowButton
-    Left = 617
-    Top = 228
+    Left = 512
+    Top = 489
     Width = 97
     Height = 63
     Caption = 'Remarcados'
@@ -1084,8 +1087,8 @@ object frmetiquetador: Tfrmetiquetador
     Layout = blGlyphTop
   end
   object pdesconto: THeaderView
-    Left = 386
-    Top = 294
+    Left = 798
+    Top = 79
     Width = 184
     Height = 72
     AdaptiveColors = True
@@ -1108,7 +1111,7 @@ object frmetiquetador: Tfrmetiquetador
       AdaptiveColors = False
       BorderStyle = bsNone
       Caption = 'Taxa de Juros'
-      Color = 33023
+      Color = clHighlight
       HeaderColor = 5460819
       HeaderFont.Charset = ANSI_CHARSET
       HeaderFont.Color = clWindow
@@ -1229,8 +1232,8 @@ object frmetiquetador: Tfrmetiquetador
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 727
-    Height = 48
+    Width = 1045
+    Height = 50
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
     Caption.HTMLFont.Color = clWindowText
@@ -1243,7 +1246,7 @@ object frmetiquetador: Tfrmetiquetador
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -1259,11 +1262,12 @@ object frmetiquetador: Tfrmetiquetador
     Align = alTop
     TabOrder = 12
     ShowExpander = False
+    ExpanderBorderColor = clHighlight
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
     TMSStyle = 0
-    OldHeight = 48.000000000000000000
+    OldHeight = 50.000000000000000000
     object Label53: TLabel
       Left = 59
       Top = 14
@@ -1280,7 +1284,7 @@ object frmetiquetador: Tfrmetiquetador
     end
     object AdvMetroButton1: TAdvMetroButton
       Left = -3
-      Top = 0
+      Top = 2
       Width = 56
       Height = 48
       Appearance.PictureColor = clWhite
@@ -1357,6 +1361,137 @@ object frmetiquetador: Tfrmetiquetador
       OnClick = AdvMetroButton1Click
     end
   end
+  object AdvGlowButton1: TAdvGlowButton
+    Left = 621
+    Top = 489
+    Width = 120
+    Height = 63
+    Caption = 'Importar NF Entrada'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ImageIndex = 49
+    FocusType = ftHot
+    NotesFont.Charset = DEFAULT_CHARSET
+    NotesFont.Color = clWindowText
+    NotesFont.Height = -11
+    NotesFont.Name = 'Tahoma'
+    NotesFont.Style = []
+    ParentFont = False
+    Picture.Data = {
+      89504E470D0A1A0A0000000D49484452000000280000002808060000008CFEB8
+      6D000000097048597300000EC300000EC301C76FA864000000206348524D0000
+      7A25000080830000F9FF000080E8000052080001155800003A970000176FD75A
+      1F900000091F4944415478DAB499EB4F5BE71DC77F52D5499D34696AF707AC7B
+      B7ED4DDF6CAFB73FA07BDD49D5944AD5A6B6E97A232DB7D0DC480805FBDC6C83
+      CDAD81045FCEB1C1011A02010CE97A5BB76A0B018ECD2509B17D9E736C830D06
+      DB98EF5E181CEE3129B3F491EDA323FBE3EFF3FC7EE7398F697414B493C00468
+      64384FB2A093CF16A71E7B8C14C1A03EC70A79F938F55813248B3AC93CFBB587
+      67EF7804D6268BFA1D0FCF1E7A7896F4F02CE9E1585891F4718FC0BA3C3C2B53
+      04F68A2CE8A4483A295C8C7A9B96C8DFB44C5E4927AF3546B259A7A12F7214B8
+      BBDB65741444A50AF6B7A6C927C45F5444A34216F4290FCFB08D9B7BF2BA78CC
+      ACC1B3E3B82CE873B2C06A152EF64B7FF332DD6C4E9E8060539C7A1C315278E3
+      799F355127F3FA929BD3F6C9948A9B63F0702CA7484653AF75F9259FC5F87182
+      3DB638F9ECF157DD262DE436479F596CBFA80637C7E28A859DF259E324734709
+      06B08BF17F80C6C6408AC5208F995DD8FEC093922B4AF21ADCBC0699D32599D7
+      E9CE509EC6BFC23E1F1ABD835D0402A03B43799245BDCBD518DD358FFE1FB8CD
+      1ADC9C36343490A5C0F8E63E1F1A6D458116D0443BE8765B865C42F47A291F2E
+      0B8579D579258ACECB51745D29B0FDDE656290C5D2449D5C2470AB658DEE7E5E
+      70D9F6A2B17ED0583F28700B34DE0FEA9112E7BBEBC3254F7A5964E86B35D0D7
+      66149EB76933D0633320F3FA8155BE97EECFC2F09A6337027E506010452FF277
+      24C9DFBE4C7D5D29EAED5CFE838B2B7D583B2F47D1DF6660752D83F58D2C56D2
+      19ACA43348AF6790470E035D51B49D8BC02B192549BACC11F83A12A7FABA52E4
+      6F5F267F479268B03D43439D191AB0A59F73D6457437A7C123942678AD368A81
+      7603997C1679E4B0BE91C5FA4616D9CD2C804D288E07A87B6B065EC98057324A
+      281C86EEBA30FAADAB2F0D756668B03D4334ECDAA0516F9EFCADCB75CEC6F0B1
+      26F851090279F4B42FE2DC1BFF4553CD5C51F269493A1B23E86959728E783768
+      D8B54174934B92DF9C7CC1636239B7A09DB860ED5FEFC37C66BA744981C1658A
+      A2C7B4F4DB9B7C92A8BF29453E295EE1E28EDF884B15942A83BB247D96A325DD
+      5C145E2966EB6F5A21F24A319205FDD1B3F4B0E308EE957C5A9232AF2F7BA5D8
+      F3A448C6AF8E23E56CD4D0DDA0C1D9A0A1FD7C047EBB7EA8A0E2788473A7EE81
+      2B538B98CAA6D0FCE9DC530BC7CD6B5044FD4F240BFA7BA5F63C4562F05A7574
+      376A70366AE8B810C14DC7E1092A2D8F70FE8D4970675498CB66D07C7E16CDE7
+      6761FA68AAA4246541779022185DA55C6B5D2686EB5735CCDE5F453A9D417831
+      8DF0A334B4C81A56D219ACAE658A8205C92CA291341ECCA6F0702185E4720673
+      6A0A627910E632B584E1D620F3FA18299211709B4BABDEAE2B1AFC7603B97C0E
+      C0263690C3067205A9D5DD82A9D50C369003B081ED47B7F000756F4F41AA0A3E
+      BD70380659D455F2F06CB1D4F9A7880CAD6723F05A75ACAF6701E490DC23B693
+      E4EA3A803C803C3ACD0B38776A12D6EA50B1684A281C833C3C4B1FA7481491C1
+      5115415FBB813C72C82387D40192A9D5756C6C16D2531C0F51F3977BB0540577
+      C91D26B9E3FB568E2DB8BD8A71544530E48A03D8406E73B7646A35834C2E0700
+      B8E50AE3ECEBF72056048B435B8AE456922BE4E158E499D6721C83BD3282899B
+      0900796436B248AD16E4D6325900C0C400C3D9D7EF41F82478687A474B6A7152
+      2CC697A516C9DE145D66067B4504FF1C5D0690473A53A86600F8FE6E0CE74E4D
+      C2FC915A92DC5E494530E0B3C56749110DE7516DC6CD31B8CD07DFB9C942A171
+      3B2A2398FC36B55510C0D40F4BB8F8E67D34BC3F0D6BF57E09B12208A13C08B1
+      FC28C9597825E32E7978F6C95129DDA867B87689E17ADD938BF9FE7334B47D1A
+      45F8E13A1E2FA670F9ADFBA87F771AD6B3A17D5F6EA90AA2E17D15756FCFE0B3
+      BFCF148FED3D8FFB781A4D3573D748918CDF1C96DC8D7A866F4674CCCFEBF8F7
+      D77AB161EFFB2162A1897B25038E0BF3B8FCD6E481726279105C998AB18145A8
+      D30CDF8C87613D1B0257A61E90A40A4BE5FC9F49110DF2F0CCD87F33C3D059CB
+      10527500061E6B06AE5F65B87681E1FAD5FD746F25DD794987AD7201574F4FA1
+      E1BD995DD49F9E46ED9BD308AA0CC00AF4A5386C9F86D0F8C14182C16C73CDFC
+      4FA9CF9624AF14FF6CEF72CB6D66E8BAC230F9838ED4A681F97903BD7606AF95
+      A1D77E387DAD06FADB62F8BC7E01F68B41B45E9E2DE2B81882AD2684C9FF4491
+      DE5CC2FC820E5B4D08A60FD53D735485A55CBD61AF0E12F59812E46D48FCC26D
+      DABDD4DF29184F1B781C35B0182981B081B01643448B6131AC1F78CEE3A80123
+      193B50D05215047F6606969A85DF37D73E20BAD595A12167867CF6B8C3D918D9
+      2578AD96613664208F0452B904D2289D3524B08E25ACED611D4B48E512C86209
+      FAF2FE21E63E9C42CB9547B77D729A64579A68B83B4FA39E3CDD6A59FF99AB3E
+      9AD96E396E8EC1D9A0637C2082EFBF5DC4775F464E941FBE8BE0ABD1AD2239A3
+      16DB8FF9FDFBE8E0175EF6743F2667FB2291CF12279F14A75EFB1229F6D86B4E
+      2E52BCEDF45A0C745ED6507F5A45EDDFEEA3FEF4CC8971F59D19D4BF3B03A9E2
+      499B11CECCA0F552B8E2F306462DB5616ABD1C261AF6E768D89FA33BFD391AF1
+      E7C927C6EDCE862743ED9562F0F03AA4CA104C65D3102B0AEDE244A8D8D1F73E
+      9A8654AD8EF89424F5F5A7A9D75780026D2872B70334685FA7EEC6F0F0CE7EE8
+      B3C4200B3A2C5521701F4F977CD93A0EFC07EA94C33CF75C87738EDADA43D4D6
+      518046075164EC3668ECCE26DD1EC8922CEA23DB9B476E7EB7A4F9CCC9490A1F
+      CF402C5727FDEED59F8F8C66E9F65096060733456874024F18078D7F0D0A8C6F
+      6DBF995897FB90247FB464451062B90AB142FDC2521DFAC9F0509EBEF917687C
+      1C3431F184C33730459D7AAC09F2D9636FBA4D5A766B9BAC2869AD2E481E67A5
+      B2B3110B9FA868AA992FB75F5A20A93A485FDCCCD0DDAF8EBD059CA09E963829
+      BCF1B2CF1A6FDBDECCF4596250C46748B2A220673B3BEB6BBA34FB8AFDE20372
+      5C5A20B1527D46415B827C8E1829628CFA5B57C9CBC77EA788BAE0E1597457E1
+      1C202956EEBBBE26A5AAA0C35A11FC63DBC507E4B8BA404DE7E7C97E71FE0404
+      77FE0D614B902CEA2F7838EDD51E4B4C92057DD856333B2594AB4CAA0C26B730
+      2C9521D552190A58AA8276A92AF49A54157A51AA56C95619A4D60B0B64BF325F
+      92E0FF0600282EBD554D20D2D20000000049454E44AE426082}
+    Transparent = True
+    TabOrder = 13
+    OnClick = BitBtn2Click
+    Appearance.BorderColor = 14727579
+    Appearance.BorderColorHot = 10079963
+    Appearance.BorderColorDown = 4548219
+    Appearance.BorderColorChecked = clBlack
+    Appearance.Color = 15653832
+    Appearance.ColorTo = 16178633
+    Appearance.ColorChecked = 7915518
+    Appearance.ColorCheckedTo = 11918331
+    Appearance.ColorDisabled = 15921906
+    Appearance.ColorDisabledTo = 15921906
+    Appearance.ColorDown = 7778289
+    Appearance.ColorDownTo = 4296947
+    Appearance.ColorHot = 15465983
+    Appearance.ColorHotTo = 11332863
+    Appearance.ColorMirror = 15586496
+    Appearance.ColorMirrorTo = 16245200
+    Appearance.ColorMirrorHot = 5888767
+    Appearance.ColorMirrorHotTo = 10807807
+    Appearance.ColorMirrorDown = 946929
+    Appearance.ColorMirrorDownTo = 5021693
+    Appearance.ColorMirrorChecked = 10480637
+    Appearance.ColorMirrorCheckedTo = 5682430
+    Appearance.ColorMirrorDisabled = 11974326
+    Appearance.ColorMirrorDisabledTo = 15921906
+    Appearance.GradientHot = ggVertical
+    Appearance.GradientMirrorHot = ggVertical
+    Appearance.GradientDown = ggVertical
+    Appearance.GradientMirrorDown = ggVertical
+    Appearance.GradientChecked = ggVertical
+    Layout = blGlyphTop
+  end
   object dsetiq: TwwDataSource
     DataSet = qretiq
     Left = 107
@@ -1367,8 +1502,47 @@ object frmetiquetador: Tfrmetiquetador
     SQL.Strings = (
       'SELECT * FROM CL00005')
     Params = <>
-    Left = 651
-    Top = 421
+    Left = 895
+    Top = 265
+    object qretiqCODPRODUTO: TWideStringField
+      DisplayWidth = 6
+      FieldName = 'CODPRODUTO'
+      Size = 6
+    end
+    object qretiqQTDE: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'QTDE'
+    end
+    object qretiqPRODUTO: TWideStringField
+      DisplayWidth = 80
+      FieldName = 'PRODUTO'
+      Size = 80
+    end
+    object qretiqVALOR: TFloatField
+      DisplayWidth = 10
+      FieldName = 'VALOR'
+    end
+    object qretiqTAMANHO: TWideStringField
+      DisplayWidth = 10
+      FieldName = 'TAMANHO'
+      Size = 10
+    end
+    object qretiqTEXTO: TWideStringField
+      DisplayWidth = 25
+      FieldName = 'TEXTO'
+      Size = 25
+    end
+    object qretiqGRADE: TWideStringField
+      DisplayWidth = 25
+      FieldName = 'GRADE'
+      Size = 25
+    end
+    object qretiqUNIDADE: TWideStringField
+      DisplayWidth = 80
+      FieldName = 'UNIDADE'
+      ReadOnly = True
+      Size = 80
+    end
     object qretiqultima_compra: TDateField
       DisplayWidth = 10
       FieldKind = fkLookup
@@ -1445,39 +1619,6 @@ object frmetiquetador: Tfrmetiquetador
       Visible = False
       Size = 13
       Lookup = True
-    end
-    object qretiqCODPRODUTO: TWideStringField
-      DisplayWidth = 6
-      FieldName = 'CODPRODUTO'
-      Size = 6
-    end
-    object qretiqQTDE: TIntegerField
-      DisplayWidth = 10
-      FieldName = 'QTDE'
-    end
-    object qretiqPRODUTO: TWideStringField
-      DisplayWidth = 80
-      FieldName = 'PRODUTO'
-      Size = 80
-    end
-    object qretiqVALOR: TFloatField
-      DisplayWidth = 10
-      FieldName = 'VALOR'
-    end
-    object qretiqTAMANHO: TWideStringField
-      DisplayWidth = 10
-      FieldName = 'TAMANHO'
-      Size = 10
-    end
-    object qretiqTEXTO: TWideStringField
-      DisplayWidth = 25
-      FieldName = 'TEXTO'
-      Size = 25
-    end
-    object qretiqGRADE: TWideStringField
-      DisplayWidth = 25
-      FieldName = 'GRADE'
-      Size = 25
     end
   end
   object PopupMenu1: TPopupMenu
@@ -1718,8 +1859,8 @@ object frmetiquetador: Tfrmetiquetador
     SQL.Strings = (
       'SELECT * FROM CL00007')
     Params = <>
-    Left = 691
-    Top = 501
+    Left = 731
+    Top = 321
     object QRPRODUTOCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Required = True

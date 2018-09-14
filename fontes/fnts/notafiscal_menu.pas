@@ -1084,7 +1084,7 @@ begin
                 Ide.indFinal := cfConsumidorFinal;
            End ;
 
-     //  ShowMessage(Copy(qrnota.fieldbyname('NATUREZA').AsString, 1, Pred(Pos(' \', qrnota.fieldbyname('NATUREZA').AsString))));
+      //ShowMessage(Copy(qrnota.fieldbyname('NATUREZA').AsString, 1, Pred(Pos(' \', qrnota.fieldbyname('NATUREZA').AsString))));
 
    if Copy(qrnota.fieldbyname('NATUREZA').AsString, 1, 5) = 'VENDA' then
           begin
@@ -1356,6 +1356,7 @@ begin
           Prod.vFrete := qrnota.fieldbyname('frete').AsCurrency;
           Prod.vSeg := qrnota.fieldbyname('seguro').AsCurrency;
           Prod.vOutro := qrnota.fieldbyname('outras_despesas').AsCurrency;
+          infAdProd := qrnota_item.fieldbyname('COMPLEMENTO_PROD').asstring;
           // Prod.IndTot   := qrnota.fieldbyname('total_nota').AsVariant;
           Prod.IndTot := TpcnIndicadorTotal(0);
            ShowMessage('item 1');
@@ -1585,7 +1586,7 @@ begin
           frmmodulo.qrproduto.open;
 
           Prod.nItem := qrnota_item.fieldbyname('item').asinteger;
-          Prod.cProd := qrnota_item.fieldbyname('codproduto').asstring;
+           Prod.cProd := qrnota_item.fieldbyname('codproduto').asstring;
           Prod.cEAN := '';
           // frmPrincipal.Zerarcodigo(qrnota_item.fieldbyname('codbarra').asstring, 13);
           // NCM
@@ -1606,7 +1607,7 @@ begin
           // prod.NCM := sn(qrnota_item.fieldbyname('classificacao_fiscal').asstring);
           Prod.xProd := qrnota_item.fieldbyname('produto').asstring;
 
-
+            //DARLON SANTOS
           Prod.CFOP := qrnota_item.fieldbyname('cfop').asstring;
           Prod.uCom := qrnota_item.fieldbyname('UN').asstring;
           Prod.qCom := qrnota_item.fieldbyname('qtde').asfloat;
@@ -1619,7 +1620,7 @@ begin
           Prod.vFrete := qrnota.fieldbyname('frete').AsCurrency;
           Prod.vSeg := qrnota.fieldbyname('seguro').AsCurrency;
           Prod.vOutro := qrnota.fieldbyname('outras_despesas').AsCurrency;
-          infAdProd := ''; // complemento do nome do item
+          infAdProd := qrnota_item.fieldbyname('COMPLEMENTO_PROD').asstring;  //COMPLEMENTO_PROD complemento do nome do item  darlon santos
           Prod.EXTIPI := '23';
           Prod.cEANTrib := '';
           Prod.IndTot   := qrnota.fieldbyname('total_nota').AsVariant;
@@ -3595,9 +3596,9 @@ begin
     begin
       ACBrNFe1.NotasFiscais.clear;
       ACBrNFe1.NotasFiscais.LoadFromFile(sXML);
-     //  ACBrNFe1.NotasFiscais.Valida;
-      // Application.MessageBox('Nota
-     //  Fiscal validada com sucesso!','Aviso',mb_ok+mb_iconinformation);
+      { TODO : DARLON SANTOS }
+  //     ACBrNFe1.NotasFiscais.Valida;
+  //     Application.MessageBox('Nota Fiscal validada com sucesso!','Aviso',mb_ok+mb_iconinformation);
 
       qrnota.edit;
       qrnota.fieldbyname('nfe_xml').asstring := sXML;

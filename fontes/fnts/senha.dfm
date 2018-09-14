@@ -143,9 +143,7 @@ object frmsenha: Tfrmsenha
     Align = alBottom
     Color = clHighlight
     ParentBackground = False
-    TabOrder = 3
-    ExplicitTop = 248
-    ExplicitWidth = 456
+    TabOrder = 2
     object button1: TAdvGlowButton
       Left = 65
       Top = 10
@@ -442,8 +440,6 @@ object frmsenha: Tfrmsenha
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitLeft = -194
-    ExplicitWidth = 650
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label4: TLabel

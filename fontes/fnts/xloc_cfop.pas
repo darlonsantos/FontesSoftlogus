@@ -52,6 +52,7 @@ type
     procedure locChange(Sender: TObject);
     procedure GRIDDblClick(Sender: TObject);
     procedure ParmetrosdaPesquisa1Click(Sender: TObject);
+    procedure AdvMetroButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -94,6 +95,11 @@ procedure Tfrmxloc_cfop.FormClose(Sender: TObject;
 begin
   PARAMETRO_PESQUISA := '';
   ACTION := CAFREE;
+end;
+
+procedure Tfrmxloc_cfop.AdvMetroButton1Click(Sender: TObject);
+begin
+Close;
 end;
 
 procedure Tfrmxloc_cfop.Fechar1Click(Sender: TObject);

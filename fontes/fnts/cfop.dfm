@@ -4,8 +4,8 @@ object frmcfop: Tfrmcfop
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'CFOP | Ficha de Cadastro'
-  ClientHeight = 371
-  ClientWidth = 773
+  ClientHeight = 468
+  ClientWidth = 631
   Color = 5460819
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object frmcfop: Tfrmcfop
     Top = 47
     Width = 634
     Height = 325
-    Color = clSilver
+    Color = clWhite
     ColorHighLight = clSilver
     ColorShadow = clSilver
     TabOrder = 0
@@ -420,8 +420,8 @@ object frmcfop: Tfrmcfop
     end
   end
   object plocalizar2: THeaderView
-    Left = 912
-    Top = 72
+    Left = 752
+    Top = 680
     Width = 605
     Height = 243
     AdaptiveColors = True
@@ -439,8 +439,8 @@ object frmcfop: Tfrmcfop
     object DBGrid1: TDBGrid
       Left = 0
       Top = 15
-      Width = 603
-      Height = 226
+      Width = 605
+      Height = 228
       Align = alClient
       BorderStyle = bsNone
       DataSource = dscfop
@@ -478,18 +478,21 @@ object frmcfop: Tfrmcfop
     end
   end
   object Panel2: TPanel
-    Left = 632
-    Top = 45
-    Width = 140
-    Height = 352
+    Left = 0
+    Top = 371
+    Width = 631
+    Height = 97
+    Align = alBottom
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 2
+    ExplicitTop = 584
+    ExplicitWidth = 1085
     object bincluir: TAdvGlowButton
-      Left = 24
-      Top = 71
-      Width = 97
+      Left = 16
+      Top = 22
+      Width = 86
       Height = 54
       Caption = 'Incluir'
       Font.Charset = ANSI_CHARSET
@@ -610,9 +613,9 @@ object frmcfop: Tfrmcfop
       Layout = blGlyphTop
     end
     object balterar: TAdvGlowButton
-      Left = 24
-      Top = 129
-      Width = 97
+      Left = 96
+      Top = 22
+      Width = 95
       Height = 54
       Caption = 'Alterar'
       Font.Charset = ANSI_CHARSET
@@ -733,9 +736,9 @@ object frmcfop: Tfrmcfop
       Layout = blGlyphTop
     end
     object bexcluir: TAdvGlowButton
-      Left = 24
-      Top = 187
-      Width = 97
+      Left = 179
+      Top = 23
+      Width = 78
       Height = 54
       Caption = 'Excluir'
       Font.Charset = ANSI_CHARSET
@@ -869,8 +872,8 @@ object frmcfop: Tfrmcfop
       Layout = blGlyphTop
     end
     object blocalizar: TAdvGlowButton
-      Left = 24
-      Top = 245
+      Left = 258
+      Top = 22
       Width = 97
       Height = 54
       Caption = 'Localizar'
@@ -1009,7 +1012,7 @@ object frmcfop: Tfrmcfop
       Layout = blGlyphTop
     end
     object DBAdvGlowButton1: TDBAdvGlowButton
-      Left = 360
+      Left = 356
       Top = 3
       Width = 44
       Height = 32
@@ -1089,8 +1092,8 @@ object frmcfop: Tfrmcfop
       DisableControl = [drBOF, drEditing, drEmpty]
     end
     object DBAdvGlowButton2: TDBAdvGlowButton
-      Left = 12
-      Top = 18
+      Left = 345
+      Top = 22
       Width = 59
       Height = 47
       Hint = 'Prior record'
@@ -1214,8 +1217,8 @@ object frmcfop: Tfrmcfop
       DisableControl = [drBOF, drEditing, drEmpty]
     end
     object DBAdvGlowButton3: TDBAdvGlowButton
-      Left = 74
-      Top = 18
+      Left = 418
+      Top = 22
       Width = 59
       Height = 47
       Hint = 'Next record'
@@ -1420,17 +1423,21 @@ object frmcfop: Tfrmcfop
     end
     object pgravar: TFlatPanel
       Left = 0
-      Top = 0
-      Width = 146
-      Height = 348
-      ParentColor = True
+      Top = 7
+      Width = 631
+      Height = 90
+      Color = clHighlight
       Visible = False
-      ColorHighLight = 5460819
-      ColorShadow = 5460819
+      ColorHighLight = clHighlight
+      ColorShadow = clHighlight
+      Align = alBottom
       TabOrder = 8
+      ExplicitLeft = -48
+      ExplicitTop = 0
+      ExplicitWidth = 1085
       object bgravar: TAdvGlowButton
-        Left = 26
-        Top = 62
+        Left = 206
+        Top = 19
         Width = 89
         Height = 63
         Caption = 'Gravar'
@@ -1555,8 +1562,8 @@ object frmcfop: Tfrmcfop
         Layout = blGlyphTop
       end
       object bcancelar: TAdvGlowButton
-        Left = 26
-        Top = 131
+        Left = 286
+        Top = 20
         Width = 89
         Height = 63
         Caption = 'Cancelar'
@@ -1692,7 +1699,7 @@ object frmcfop: Tfrmcfop
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 773
+    Width = 631
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -1706,7 +1713,7 @@ object frmcfop: Tfrmcfop
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -1722,19 +1729,19 @@ object frmcfop: Tfrmcfop
     Align = alTop
     TabOrder = 3
     ShowExpander = False
+    ExpanderBorderColor = clHighlight
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitLeft = -263
-    ExplicitWidth = 1058
+    ExplicitWidth = 773
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label105: TLabel
       Left = 59
       Top = 14
-      Width = 50
+      Width = 244
       Height = 23
-      Caption = 'CFOP'
+      Caption = 'CFOP | Ficha de Cadastro'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -19
@@ -1823,8 +1830,8 @@ object frmcfop: Tfrmcfop
     end
   end
   object Pop1: TPopupMenu
-    Left = 632
-    Top = 504
+    Left = 252
+    Top = 65532
     object Incluir1: TMenuItem
       Caption = 'Incluir'
       ShortCut = 113
@@ -1860,8 +1867,8 @@ object frmcfop: Tfrmcfop
     end
   end
   object Pop2: TPopupMenu
-    Left = 992
-    Top = 424
+    Left = 768
+    Top = 92
     object Gravar1: TMenuItem
       Caption = 'Gravar'
       ShortCut = 113
@@ -1875,16 +1882,16 @@ object frmcfop: Tfrmcfop
   end
   object dscfop2: TDataSource
     DataSet = frmmodulo.qrCFOP
-    Left = 536
-    Top = 512
+    Left = 156
+    Top = 4
   end
   object qrcfop: TZQuery
     Connection = frmmodulo.Conexao
     SQL.Strings = (
       'select * from c000030')
     Params = <>
-    Left = 1000
-    Top = 304
+    Left = 212
+    Top = 8
     object qrcfopCFOP: TStringField
       FieldName = 'CFOP'
       Required = True
@@ -1968,12 +1975,12 @@ object frmcfop: Tfrmcfop
   end
   object dscfop: TDataSource
     DataSet = qrcfop
-    Left = 472
-    Top = 504
+    Left = 92
+    Top = 65532
   end
   object POP3: TPopupMenu
-    Left = 592
-    Top = 496
+    Left = 212
+    Top = 65524
     object InciodoNome1: TMenuItem
       Caption = 'In'#237'cio do Nome'
       ShortCut = 112
@@ -1992,7 +1999,7 @@ object frmcfop: Tfrmcfop
     UserControl = frmPrincipal.icloud
     Components = ''
     NotAllowed = naDisabled
-    Left = 648
-    Top = 496
+    Left = 268
+    Top = 65524
   end
 end

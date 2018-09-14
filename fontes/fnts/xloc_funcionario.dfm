@@ -114,7 +114,7 @@ object frmxloc_Funcionario: Tfrmxloc_Funcionario
       Height = 12
       Caption = 'ESC'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = [fsBold]
@@ -128,7 +128,7 @@ object frmxloc_Funcionario: Tfrmxloc_Funcionario
       Height = 12
       Caption = 'FECHAR'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
+      Font.Color = clWhite
       Font.Height = -9
       Font.Name = 'Verdana'
       Font.Style = []
@@ -237,6 +237,7 @@ object frmxloc_Funcionario: Tfrmxloc_Funcionario
     OnKeyPress = GRIDKeyPress
     PaintOptions.AlternatingRowColor = 16250871
     PaintOptions.ActiveRecordColor = clBlack
+    ExplicitTop = 91
   end
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0

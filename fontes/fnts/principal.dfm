@@ -16919,7 +16919,7 @@ object frmPrincipal: TfrmPrincipal
       TMSStyle = 0
     end
     object wwDBGrid1: TwwDBGrid
-      Left = 712
+      Left = 711
       Top = 176
       Width = 636
       Height = 122
@@ -21918,7 +21918,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 1012
     Top = 455
     Bitmap = {
-      494C010109000B00100210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B00400210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -27744,8 +27744,8 @@ object frmPrincipal: TfrmPrincipal
     Top = 8
   end
   object IdAntiFreeze1: TIdAntiFreeze
-    Left = 948
-    Top = 544
+    Left = 836
+    Top = 540
   end
   object qryAtualizarTabelas: TZQuery
     Connection = frmmodulo.Conexao

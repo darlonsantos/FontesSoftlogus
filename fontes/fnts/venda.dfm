@@ -72,7 +72,7 @@ object frmvenda: Tfrmvenda
         Height = 67
         Align = alClient
         BevelOuter = bvNone
-        Color = clSilver
+        Color = clHighlight
         ParentBackground = False
         TabOrder = 0
         object bfinalizar: TAdvGlowButton
@@ -498,7 +498,7 @@ object frmvenda: Tfrmvenda
         Height = 64
         Align = alTop
         BevelOuter = bvNone
-        Color = clSilver
+        Color = clHighlight
         ParentBackground = False
         TabOrder = 1
         object bincluir: TAdvGlowButton
@@ -898,7 +898,7 @@ object frmvenda: Tfrmvenda
           Height = 64
           Align = alRight
           BevelOuter = bvNone
-          Color = clSilver
+          Color = clHighlight
           Enabled = False
           ParentBackground = False
           TabOrder = 3
@@ -989,7 +989,7 @@ object frmvenda: Tfrmvenda
           end
           object rtotal: TJvCalcEdit
             Left = 233
-            Top = 28
+            Top = 27
             Width = 195
             Height = 37
             Margins.Left = 2
@@ -1085,7 +1085,7 @@ object frmvenda: Tfrmvenda
       Height = 80
       Align = alTop
       BevelOuter = bvNone
-      Color = clSilver
+      Color = clHighlight
       ParentBackground = False
       TabOrder = 2
       object Bevel6: TBevel
@@ -1702,9 +1702,9 @@ object frmvenda: Tfrmvenda
       Top = 86
       Width = 417
       Height = 225
-      Color = clSilver
+      Color = clHighlight
       Visible = False
-      ColorHighLight = clSilver
+      ColorHighLight = clHighlight
       ColorShadow = clSilver
       TabOrder = 3
       object Label9: TLabel
@@ -1727,13 +1727,13 @@ object frmvenda: Tfrmvenda
         Height = 17
         Caption = 'Venda de Ve'#237'culo'
         Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
-        Color = 5460819
-        ColorHighLight = 5460819
-        ColorShadow = 5460819
+        Color = clWhite
+        ColorHighLight = clWhite
+        ColorShadow = clWhite
         TabOrder = 0
       end
       object Memo1: TMemo

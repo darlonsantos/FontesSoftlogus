@@ -1,3 +1,4 @@
+
 unit notafiscal_item2;
 
 interface
@@ -10,7 +11,6 @@ uses
 
 type
   TfrmNotaFiscal_Item2 = class(TForm)
-    Bevel1: TBevel;
     FlatPanel1: TFlatPanel;
     bgravar: TAdvGlowButton;
     bretorna: TAdvGlowButton;
@@ -83,7 +83,6 @@ type
     ed_total: TRzNumericEdit;
     query1: TZQuery;
     pState: TFlatPanel;
-    Bevel7: TBevel;
     pcodigo: TFlatPanel;
     Label11: TLabel;
     Label25: TLabel;
@@ -108,7 +107,7 @@ type
     Label32: TLabel;
     ed_cofins_valor: TRzNumericEdit;
     FlatPanel7: TFlatPanel;
-    Label33: TLabel;
+    lblComplemento: TLabel;
     ed_complemento: TMemo;
     qrestoque: TZQuery;
     baltera_complemento: TAdvGlowButton;
@@ -130,7 +129,6 @@ type
     Label38: TLabel;
     Panel9: TPanel;
     Panel4: TPanel;
-    Panel5: TPanel;
     Panel6: TPanel;
     Panel7: TPanel;
     procedure bretornaClick(Sender: TObject);
@@ -161,6 +159,7 @@ type
     procedure ed_totalExit(Sender: TObject);
     procedure ed_csosnKeyPress(Sender: TObject; var Key: Char);
     procedure ed_csosnButtonClick(Sender: TObject);
+    procedure AdvGlowButton1Click(Sender: TObject);
   private
     { Private declarations }
     function loc_produto(parametro: string): boolean;
@@ -327,13 +326,6 @@ begin
       qrestoque.sql.add('select * from c000100 where codproduto = ''' + frmmodulo.qrproduto.fieldbyname('codigo').asstring + '''');
       qrestoque.open;
 
-              {
-              if qrestoque.recordcount > 0 then
-                restoque.Value := (qrestoque.fieldbyname('estoque_atual').asfloat)
-              else
-                restoque.Value := qrvendido.fieldbyname('quant').asfloat * (-1);
-              }
-
       if frmnotafiscal.check_estoque.Checked = true then
       begin
         if not ESTOQUE_NEGATIVO then
@@ -351,15 +343,14 @@ begin
         end;
       end;
 
-      frmmodulo.qrconfig.open;
-      if FRMMODULO.QRCONFIG.FieldByName('CADASTRO_PRODUTO').asstring = 'PECAS' then
-      begin
-        ed_complemento.lines.text := qrproduto.fieldbyname('aplicacao').asstring;
-      end
-      else
-        ed_complemento.lines.text := '';
-
-
+//      frmmodulo.qrconfig.open;
+//      if (FRMMODULO.QRCONFIG.FieldByName('CADASTRO_PRODUTO').asstring = 'PECAS')  then
+//      begin
+//        ed_complemento.lines.text := qrproduto.fieldbyname('aplicacao').asstring;
+//        ed_complemento.Visible := true;
+//        lblComplemento.Visible := true;
+//        baltera_complemento.Visible := true;
+//      end ;
 
       if frmmodulo.qrFilial.FieldByName('OPTANTE_SIMPLES').AsString = 'N' then
       begin
@@ -486,8 +477,8 @@ begin
     FrmNotaFiscal.qrnotafiscal_item.sql.add('CLASSIFICACAO_FISCAL, CEST,CST,VALOR_ICMS,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('ICMS_REDUZIDO,BASE_CALCULO,MARGEM_AGREGADA,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('BASE_SUB,ICMS_SUB,ISENTO,CODLANCAMENTO,');
-    FrmNotaFiscal.qrnotafiscal_item.sql.add('DESCONTO,SUBTOTAL,PESO_BRUTO,PESO_LIQUIDO,Item,codigo,grade,complemento,');
-    FrmNotaFiscal.qrnotafiscal_item.sql.add('pis_base,pis_valor,pis_aliquota,cofins_base,cofins_valor,cofins_aliquota,codbarra,OUTRAS)');
+    FrmNotaFiscal.qrnotafiscal_item.sql.add('DESCONTO,SUBTOTAL,PESO_BRUTO,PESO_LIQUIDO,Item,codigo,grade,');
+    FrmNotaFiscal.qrnotafiscal_item.sql.add('pis_base,pis_valor,pis_aliquota,cofins_base,cofins_valor,cofins_aliquota,codbarra,OUTRAS,COMPLEMENTO_PROD)');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('VALUES');
     FrmNotaFiscal.qrnotafiscal_item.SQL.add('(:CODNOTA,:CODPRODUTO,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add(':QTDE,:UNITARIO,:TOTAL,:IPI,:ICMS,');
@@ -495,8 +486,8 @@ begin
     FrmNotaFiscal.qrnotafiscal_item.sql.add(':CLASSIFICACAO_FISCAL, :CEST,:CST,:VALOR_ICMS,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add(':ICMS_REDUZIDO,:BASE_CALCULO,:MARGEM_AGREGADA,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add(':BASE_SUB,:ICMS_SUB,:ISENTO,:CODLANCAMENTO,');
-    FrmNotaFiscal.qrnotafiscal_item.sql.add(':DESCONTO,:SUBTOTAL,:PESO_BRUTO,:PESO_LIQUIDO,:ITEM,:codigo,:grade,:complemento,');
-    FrmNotaFiscal.qrnotafiscal_item.sql.add(':pis_base,:pis_valor,:pis_aliquota,:cofins_base,:cofins_valor,:cofins_aliquota,:cbarra,:OUTRAS)');
+    FrmNotaFiscal.qrnotafiscal_item.sql.add(':DESCONTO,:SUBTOTAL,:PESO_BRUTO,:PESO_LIQUIDO,:ITEM,:codigo,:grade,');
+    FrmNotaFiscal.qrnotafiscal_item.sql.add(':pis_base,:pis_valor,:pis_aliquota,:cofins_base,:cofins_valor,:cofins_aliquota,:cbarra,:OUTRAS,:COMPLEMENTO_PROD)');
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('CODNOTA').asstring := frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring;
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('CODPRODUTO').asstring := ed_codigo.text;
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('QTDE').asfloat := ed_qtde.value;
@@ -528,7 +519,7 @@ begin
     frmNotaFiscal.qrnotafiscal_item.Params.Parambyname('Item').asinteger := nf_item;
     frmNotaFiscal.qrnotafiscal_item.Params.Parambyname('codigo').asstring := frmprincipal.codifica('000062');
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('GRADE').asstring := ED_grade.text;
-    FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('COMPLEMENTO').asstring := ED_COMPLEMENTO.Lines.Text;
+    FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('COMPLEMENTO_PROD').asstring := ED_COMPLEMENTO.Lines.Text;
 
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('pis_base').asfloat := ed_Pis_Base.value;
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('pis_valor').asfloat := ed_Pis_valor.value;
@@ -579,6 +570,7 @@ begin
     FrmNotaFiscal.qrnotafiscal_item.sql.add('CSOSN                = :CSOSN,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('VALOR_IPI            = :VALOR_IPI,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('CLASSIFICACAO_FISCAL = :CLASSIFICACAO_FISCAL,');
+    FrmNotaFiscal.qrnotafiscal_item.sql.add('CEST                 = :CEST,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('CST                  = :CST,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('VALOR_ICMS           = :VALOR_ICMS,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('ICMS_REDUZIDO        = :ICMS_REDUZIDO,');
@@ -588,6 +580,8 @@ begin
     FrmNotaFiscal.qrnotafiscal_item.sql.add('ICMS_SUB             = :ICMS_SUB,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('ISENTO               = :ISENTO,');
     FrmNotaFiscal.qrnotafiscal_item.sql.add('OUTRAS               = :OUTRAS,');
+    FrmNotaFiscal.qrnotafiscal_item.sql.add('COMPLEMENTO_PROD     = :COMPLEMENTO_PROD,');
+
     FrmNotaFiscal.qrnotafiscal_item.sql.add('DESCONTO             = :DESCONTO,');
     {PESO_NOVO}
     FrmNotaFiscal.qrnotafiscal_item.sql.add('PESO_BRUTO           = :PESO_BRUTO,');
@@ -625,6 +619,8 @@ begin
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('ICMS_SUB').asfloat := ed_sub_valor.value;
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('ISENTO').asfloat := ed_isenta.value;
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('OUTRAS').asfloat := ed_outras.value;
+    FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('COMPLEMENTO_PROD').asstring := ED_COMPLEMENTO.Lines.Text;
+
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('DESCONTO').asfloat := ed_desconto.value;
     FrmNotaFiscal.qrnotafiscal_item.Params.Parambyname('SUBTOTAL').asfloat := ed_subtotal.value;
 
@@ -1033,7 +1029,6 @@ begin
     ed_nome_cst.text := query1.fieldbyname('situacao').asstring;
     ed_cfop.setfocus;
   end;
-
 end;
 
 procedure TfrmNotaFiscal_Item2.ed_cfopExit(Sender: TObject);
@@ -1177,6 +1172,7 @@ end;
 
 procedure TfrmNotaFiscal_Item2.FormShow(Sender: TObject);
 begin
+
 
   //trans.Active := false;
   //trans.active := true;
@@ -1474,6 +1470,11 @@ begin
   if ed_COFINS_aliquota.VALUE > 0 then
     ed_COFINS_base.value := ed_TOTAL.VALUE;
 
+end;
+
+procedure TfrmNotaFiscal_Item2.AdvGlowButton1Click(Sender: TObject);
+begin
+     ed_produto.Enabled := true;
 end;
 
 procedure TfrmNotaFiscal_Item2.baltera_complementoClick(Sender: TObject);

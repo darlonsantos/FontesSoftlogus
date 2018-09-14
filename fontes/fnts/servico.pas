@@ -64,6 +64,9 @@ type
     Label3: TLabel;
     ECOMISSAO: TJvDBCalcEdit;
     UCControls1: TUCControls;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label4: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure enomeEnter(Sender: TObject);

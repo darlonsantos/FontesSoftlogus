@@ -4,9 +4,9 @@ object frmvenda_item_2: Tfrmvenda_item_2
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Venda - Lan'#231'amento de Item'
-  ClientHeight = 399
-  ClientWidth = 646
-  Color = clSilver
+  ClientHeight = 453
+  ClientWidth = 539
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -112,20 +112,23 @@ object frmvenda_item_2: Tfrmvenda_item_2
     ParentFont = False
   end
   object pgravar: TFlatPanel
-    Left = 528
-    Top = 48
-    Width = 118
-    Height = 328
-    Color = 5460819
-    ColorHighLight = 5460819
-    ColorShadow = 5460819
-    Align = alRight
+    Left = 0
+    Top = 379
+    Width = 539
+    Height = 74
+    Color = clHighlight
+    ColorHighLight = clHighlight
+    ColorShadow = clHighlight
+    Align = alBottom
     TabOrder = 6
+    ExplicitTop = 564
+    ExplicitWidth = 995
     object bgravar: TAdvGlowButton
-      Left = 18
-      Top = 40
-      Width = 73
+      Left = 1
+      Top = 10
+      Width = 537
       Height = 63
+      Align = alBottom
       Caption = 'Confirmar'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -246,17 +249,23 @@ object frmvenda_item_2: Tfrmvenda_item_2
       Appearance.GradientMirrorDown = ggVertical
       Appearance.GradientChecked = ggVertical
       Layout = blGlyphTop
+      ExplicitLeft = 90
+      ExplicitTop = 18
+      ExplicitWidth = 73
     end
   end
   object FlatPanel5: TFlatPanel
     Left = 0
-    Top = 42
-    Width = 531
+    Top = 48
+    Width = 539
     Height = 97
-    Color = 5461077
-    ColorHighLight = 5461077
-    ColorShadow = 5461077
+    Color = clHighlight
+    ColorHighLight = clHighlight
+    ColorShadow = clHighlight
+    Align = alTop
     TabOrder = 0
+    ExplicitTop = 42
+    ExplicitWidth = 538
     object Label1: TLabel
       Left = 8
       Top = 12
@@ -755,7 +764,7 @@ object frmvenda_item_2: Tfrmvenda_item_2
   end
   object Panel1: TPanel
     Left = -1
-    Top = 195
+    Top = 200
     Width = 478
     Height = 27
     BevelOuter = bvNone
@@ -821,7 +830,7 @@ object frmvenda_item_2: Tfrmvenda_item_2
   end
   object Panel2: TPanel
     Left = 0
-    Top = 140
+    Top = 145
     Width = 477
     Height = 55
     BevelOuter = bvNone
@@ -908,7 +917,7 @@ object frmvenda_item_2: Tfrmvenda_item_2
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 646
+    Width = 539
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -922,7 +931,7 @@ object frmvenda_item_2: Tfrmvenda_item_2
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -938,9 +947,11 @@ object frmvenda_item_2: Tfrmvenda_item_2
     Align = alTop
     TabOrder = 10
     ShowExpander = False
+    ExpanderBorderColor = clHighlight
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitTop = -24
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label20: TLabel
@@ -1035,17 +1046,6 @@ object frmvenda_item_2: Tfrmvenda_item_2
       Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
-  end
-  object Panel3: TPanel
-    Left = 0
-    Top = 376
-    Width = 646
-    Height = 23
-    Align = alBottom
-    BevelOuter = bvNone
-    Color = clBlack
-    ParentBackground = False
-    TabOrder = 11
   end
   object dsproduto: TDataSource
     DataSet = frmmodulo.qrproduto

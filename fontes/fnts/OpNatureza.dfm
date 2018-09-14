@@ -24,7 +24,7 @@ object frmOpNatureza: TfrmOpNatureza
     Width = 301
     Height = 221
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 0
     object Panel2: TPanel
@@ -33,7 +33,7 @@ object frmOpNatureza: TfrmOpNatureza
       Width = 292
       Height = 209
       BevelOuter = bvNone
-      Color = 5460819
+      Color = clWhite
       ParentBackground = False
       TabOrder = 0
       object AdvGlowButton1: TAdvGlowButton
@@ -43,7 +43,7 @@ object frmOpNatureza: TfrmOpNatureza
         Height = 55
         Caption = 'F1 - Venda'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
@@ -166,7 +166,7 @@ object frmOpNatureza: TfrmOpNatureza
         Height = 54
         Caption = 'F2 - Devolu'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
@@ -275,7 +275,7 @@ object frmOpNatureza: TfrmOpNatureza
         Height = 54
         Caption = 'F3 - Garantia'
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -13
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
@@ -411,7 +411,7 @@ object frmOpNatureza: TfrmOpNatureza
     Height = 232
     Align = alRight
     BevelOuter = bvNone
-    Color = clBlack
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 1
   end
@@ -422,7 +422,7 @@ object frmOpNatureza: TfrmOpNatureza
     Height = 11
     Align = alBottom
     BevelOuter = bvNone
-    Color = clBlack
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 2
   end
@@ -433,7 +433,7 @@ object frmOpNatureza: TfrmOpNatureza
     Height = 232
     Align = alLeft
     BevelOuter = bvNone
-    Color = clBlack
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 3
   end
@@ -444,7 +444,7 @@ object frmOpNatureza: TfrmOpNatureza
     Height = 11
     Align = alTop
     BevelOuter = bvNone
-    Color = clBlack
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 4
   end
