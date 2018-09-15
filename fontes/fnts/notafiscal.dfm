@@ -40,8 +40,6 @@ object frmnotafiscal: Tfrmnotafiscal
     ColorShadow = clWhite
     Align = alBottom
     TabOrder = 0
-    ExplicitLeft = 396
-    ExplicitTop = 649
     object bimprimir: TBitBtn
       Left = 879
       Top = 34
@@ -2314,8 +2312,8 @@ object frmnotafiscal: Tfrmnotafiscal
     Top = 192
     Width = 928
     Height = 280
-    ActivePage = PageSheet10
-    ActivePageIndex = 0
+    ActivePage = PageSheet11
+    ActivePageIndex = 1
     AdaptiveColors = True
     BackgroundColor = 15790320
     BackgroundKind = bkSolid
