@@ -707,7 +707,6 @@ type
     qrnotaVICMSUFDESTTOTAL: TFloatField;
     qrnotaVICMSUFREMETTOTAL: TFloatField;
     qrnotaDIFAL: TFloatField;
-    Panel9: TPanel;
     zqryComplementar: TZQuery;
     zqryComplementarCODIGO: TWideStringField;
     zqryComplementarCODNOTA: TWideStringField;

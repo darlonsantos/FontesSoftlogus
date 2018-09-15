@@ -5,7 +5,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   BorderStyle = bsNone
   Caption = 'hh'
   ClientHeight = 747
-  ClientWidth = 836
+  ClientWidth = 825
   Color = 11429670
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -21,13 +21,14 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   object Panel3: TPanel
     Left = 0
     Top = 53
-    Width = 836
+    Width = 825
     Height = 49
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 836
     object Label8: TLabel
       Left = 36
       Top = 18
@@ -1049,13 +1050,14 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   object Panel2: TPanel
     Left = 0
     Top = 650
-    Width = 836
+    Width = 825
     Height = 97
     Align = alBottom
     BevelOuter = bvNone
     Color = clHighlight
     ParentBackground = False
     TabOrder = 3
+    ExplicitWidth = 836
     object Bevel3: TBevel
       Left = 270
       Top = -31
@@ -2481,7 +2483,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 836
+    Width = 825
     Height = 53
     Cursor = crDefault
     Caption.Text = '           Nota Fiscal Eletr'#244'nica - NFe'
@@ -2520,6 +2522,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 836
     TMSStyle = 0
     OldHeight = 53.000000000000000000
     object AdvMetroButton1: TAdvMetroButton
@@ -2605,13 +2608,14 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   object Panel8: TPanel
     Left = 0
     Top = 102
-    Width = 836
+    Width = 825
     Height = 74
     Align = alTop
     BevelOuter = bvNone
     Color = clHighlight
     ParentBackground = False
     TabOrder = 7
+    ExplicitWidth = 836
     object bt_nfe_validar: TAdvGlowButton
       Left = 0
       Top = 3
@@ -3659,16 +3663,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       Layout = blGlyphTop
     end
   end
-  object Panel9: TPanel
-    Left = 825
-    Top = 159
-    Width = 12
-    Height = 552
-    BevelOuter = bvNone
-    Color = clHighlight
-    ParentBackground = False
-    TabOrder = 8
-  end
   object AdvMenuOfficeStyler1: TAdvMenuOfficeStyler
     AntiAlias = aaNone
     AutoThemeAdapt = False
@@ -3760,7 +3754,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 944
     Top = 96
     Bitmap = {
-      494C0101710073009C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010171007300A40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000D0010000010020000000000000D0
       010000000000000000000000000000000000000000003E3E3E0017171700FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -8703,7 +8697,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 968
     Top = 56
     Bitmap = {
-      494C010109000B009C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B00A40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
