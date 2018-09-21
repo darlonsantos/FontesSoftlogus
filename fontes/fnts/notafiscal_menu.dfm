@@ -20,7 +20,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
   TextHeight = 13
   object Panel3: TPanel
     Left = 0
-    Top = 53
+    Top = 47
     Width = 825
     Height = 49
     Align = alTop
@@ -28,7 +28,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 836
+    ExplicitTop = 53
     object Label8: TLabel
       Left = 36
       Top = 18
@@ -203,11 +203,11 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       ParentBackground = False
       TabOrder = 0
       object Label3: TLabel
-        Left = 674
+        Left = 644
         Top = 8
-        Width = 28
+        Width = 59
         Height = 13
-        Caption = 'Total:'
+        Caption = 'Total Notas:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -217,11 +217,11 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         Transparent = True
       end
       object Label6: TLabel
-        Left = 422
-        Top = 8
-        Width = 171
+        Left = 323
+        Top = 9
+        Width = 28
         Height = 13
-        Caption = 'Quantidade de Documentos Fiscais:'
+        Caption = 'Total:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -236,6 +236,20 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         Width = 45
         Height = 13
         Caption = 'Empresa:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label27: TLabel
+        Left = 432
+        Top = 8
+        Width = 81
+        Height = 13
+        Caption = 'Total Cancelada:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -260,16 +274,18 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         FrameStyle = fsLowered
         FrameVisible = True
         ParentFont = False
+        ParentShowHint = False
         ReadOnly = True
         ReadOnlyColor = clWindow
+        ShowHint = False
         TabOrder = 0
         OnEnter = DateEdit1Enter
         OnExit = eclienteExit
         DisplayFormat = ',0.00;(,0.00)'
       end
       object rqde: TRzNumericEdit
-        Left = 597
-        Top = 4
+        Left = 356
+        Top = 2
         Width = 67
         Height = 24
         Ctl3D = True
@@ -295,7 +311,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       object RzDBEdit1: TRzDBEdit
         Left = 82
         Top = 5
-        Width = 281
+        Width = 235
         Height = 21
         DataSource = dsnota
         DataField = 'empresa'
@@ -303,6 +319,27 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
         TabOrder = 2
         OnEnter = DateEdit1Enter
         OnExit = eclienteExit
+      end
+      object edtTotalNotaCancelada: TRzNumericEdit
+        Left = 518
+        Top = 4
+        Width = 122
+        Height = 24
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ParentShowHint = False
+        ReadOnly = True
+        ReadOnlyColor = clWindow
+        ShowHint = False
+        TabOrder = 3
+        OnEnter = edtTotalNotaCanceladaEnter
+        OnExit = edtTotalNotaCanceladaExit
+        DisplayFormat = ',0.00;(,0.00)'
+        FlatButtons = True
       end
     end
   end
@@ -1057,7 +1094,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Color = clHighlight
     ParentBackground = False
     TabOrder = 3
-    ExplicitWidth = 836
     object Bevel3: TBevel
       Left = 270
       Top = -31
@@ -2484,10 +2520,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 0
     Top = 0
     Width = 825
-    Height = 53
+    Height = 47
     Cursor = crDefault
     Caption.Text = '           Nota Fiscal Eletr'#244'nica - NFe'
-    Caption.Location = plCenterLeft
+    Caption.Location = plCenterCenter
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
     Caption.HTMLFont.Color = clWindowText
     Caption.HTMLFont.Height = -11
@@ -2522,15 +2558,14 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 836
     TMSStyle = 0
-    OldHeight = 53.000000000000000000
+    OldHeight = 47.000000000000000000
     object AdvMetroButton1: TAdvMetroButton
-      Left = 0
+      Left = 768
       Top = 0
       Width = 57
-      Height = 53
-      Align = alLeft
+      Height = 47
+      Align = alRight
       Appearance.PictureColor = clWhite
       Caption = ''
       Picture.Data = {
@@ -2603,11 +2638,12 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       TabOrder = 0
       Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
+      ExplicitHeight = 53
     end
   end
   object Panel8: TPanel
     Left = 0
-    Top = 102
+    Top = 96
     Width = 825
     Height = 74
     Align = alTop
@@ -2615,10 +2651,10 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Color = clHighlight
     ParentBackground = False
     TabOrder = 7
-    ExplicitWidth = 836
+    ExplicitTop = 102
     object bt_nfe_validar: TAdvGlowButton
-      Left = 0
-      Top = 3
+      Left = 1
+      Top = 1
       Width = 93
       Height = 65
       Caption = 'Enviar'
@@ -3754,7 +3790,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 944
     Top = 96
     Bitmap = {
-      494C010171007300A40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010171007300A80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000D0010000010020000000000000D0
       010000000000000000000000000000000000000000003E3E3E0017171700FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -8697,7 +8733,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 968
     Top = 56
     Bitmap = {
-      494C010109000B00A40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B00A80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11415,5 +11451,11 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       FieldName = 'CHAVE'
       Size = 50
     end
+  end
+  object qryNotaCanceladas: TZQuery
+    Connection = frmmodulo.econexao2
+    Params = <>
+    Left = 31
+    Top = 213
   end
 end

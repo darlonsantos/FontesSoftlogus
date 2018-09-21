@@ -1,7 +1,6 @@
 unit notafiscal_menu;
 
 interface
-
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, AdvOfficeStatusBar, ImgList, AdvMenus, AdvMenuStylers,
@@ -727,6 +726,9 @@ type
     btn_CancelarNotaFiscal: TAdvGlowButton;
     btn_LocalizarNotafiscal: TAdvGlowButton;
     btn_ImprimirNotaFiscal: TAdvGlowButton;
+    edtTotalNotaCancelada: TRzNumericEdit;
+    Label27: TLabel;
+    qryNotaCanceladas: TZQuery;
     procedure FormShow(Sender: TObject);
     procedure bfecharClick(Sender: TObject);
     procedure b(Sender: TObject);
@@ -788,6 +790,8 @@ type
     procedure btn_CancelarNotaFiscalClick(Sender: TObject);
     procedure btn_LocalizarNotafiscalClick(Sender: TObject);
     procedure btn_ImprimirNotaFiscalClick(Sender: TObject);
+    procedure edtTotalNotaCanceladaExit(Sender: TObject);
+    procedure edtTotalNotaCanceladaEnter(Sender: TObject);
   private
     { Private declarations }
     // nfe
@@ -1314,7 +1318,7 @@ begin
 
           Prod.nItem := qrnota_item.fieldbyname('item').asinteger;
           Prod.cProd := qrnota_item.fieldbyname('codproduto').asstring;
-          // Prod.cEAN := frmPrincipal.Zerarcodigo(qrnota_item.fieldbyname('codbarra').asstring, 13);
+           Prod.cEAN := qrnota_item.fieldbyname('CODBARRA').asstring;
           Prod.NCM := SN(qrnota_item.fieldbyname('classificacao_fiscal').AsString);
           if  trim(qrnota_item.fieldbyname('cest').AsString) <> '0' then
            begin
@@ -1347,7 +1351,7 @@ begin
           Prod.qCom := qrnota_item.fieldbyname('qtde').asfloat;
           Prod.vUnCom := qrnota_item.fieldbyname('unitario').asfloat;
           Prod.vProd := qrnota_item.fieldbyname('total').asfloat;
-          Prod.cEANTrib := '';
+          Prod.cEANTrib := qrnota_item.fieldbyname('CODBARRA').asstring;
           Prod.qTrib := qrnota_item.fieldbyname('qtde').asfloat;
           Prod.vUnTrib := qrnota_item.fieldbyname('unitario').asfloat;
           Prod.uTrib := qrnota_item.fieldbyname('UN').asstring;
@@ -1586,7 +1590,7 @@ begin
 
           Prod.nItem := qrnota_item.fieldbyname('item').asinteger;
            Prod.cProd := qrnota_item.fieldbyname('codproduto').asstring;
-          Prod.cEAN := '';
+          Prod.cEAN := qrnota_item.fieldbyname('CODBARRA').asstring;
           // frmPrincipal.Zerarcodigo(qrnota_item.fieldbyname('codbarra').asstring, 13);
           // NCM
           if frmmodulo.qrproduto.Locate('codigo',
@@ -1611,7 +1615,7 @@ begin
           Prod.uCom := qrnota_item.fieldbyname('UN').asstring;
           Prod.qCom := qrnota_item.fieldbyname('qtde').asfloat;
           Prod.vUnCom := qrnota_item.fieldbyname('unitario').asfloat;
-          Prod.vProd := qrnota_item.fieldbyname('total').asfloat;
+          Prod.vProd := qrnota_item.fieldbyname('unitario').asfloat * qrnota_item.fieldbyname('qtde').asfloat;
           Prod.qTrib := qrnota_item.fieldbyname('qtde').asfloat;
           Prod.vUnTrib := qrnota_item.fieldbyname('unitario').asfloat;
           Prod.uTrib := qrnota_item.fieldbyname('UN').asstring;
@@ -1623,7 +1627,7 @@ begin
           Prod.EXTIPI := '23';
           Prod.cEANTrib := qrnota_item.fieldbyname('CODBARRA').asstring;
           Prod.cEAN :=  qrnota_item.fieldbyname('CODBARRA').asstring;       //CODIGO DE BARRA DO PRODUTO DARLON SANTOS
-          Prod.IndTot   := qrnota.fieldbyname('total_nota').AsVariant;
+          Prod.IndTot   :=  qrnota_item.fieldbyname('total').AsVariant;  //qrnota.fieldbyname('total_nota').AsVariant;    //TOTAL DA NOTA DARLON SANTOS
           Prod.IndTot := TpcnIndicadorTotal(0);
 
           with Imposto do
@@ -2111,7 +2115,13 @@ begin
   qrnota.params.ParamByName('dataf').AsDateTime := DateEdit2.date;
 
   qrnota.open;
+  { TODO : Total de Notas Canceladas - DARLON SANTOS }
 
+  qryNotaCanceladas.Close;
+  qryNotaCanceladas.SQL.Clear;
+  qryNotaCanceladas.SQL.Add('SELECT  SUM(TOTAL_NOTA)  AS TOTAL FROM c000061  where SITUACAO_A = ''C''');
+  qryNotaCanceladas.Open;
+  edtTotalNotaCancelada.Text :=  qryNotaCanceladas.FieldByName('TOTAL').asString;
 
   // conf_totalnota
 
@@ -2283,6 +2293,16 @@ begin
     end;
   end;
 
+end;
+
+procedure Tfrmnotafiscal_menu.edtTotalNotaCanceladaEnter(Sender: TObject);
+begin
+ TEdit(Sender).Color := $00A0FAF8;
+end;
+
+procedure Tfrmnotafiscal_menu.edtTotalNotaCanceladaExit(Sender: TObject);
+begin
+TEdit(Sender).Color := clwindow;
 end;
 
 procedure Tfrmnotafiscal_menu.eclienteButtonClick(Sender: TObject);
@@ -3710,7 +3730,7 @@ begin
     ACBrNFeDANFEFR1.ProtocoloNFe := '';
     // Linha inserida para corrigir problema de impressao do numero do protocolo na nfe.
 
-    // bt_nfe_danfe.Click;
+     bt_nfe_danfe.Click;
 
   end
   else

@@ -83,9 +83,13 @@
         <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DCC_LocalDebugSymbols>true</DCC_LocalDebugSymbols>
+        <DCC_PentiumSafeDivide>true</DCC_PentiumSafeDivide>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_RunTimeTypeInfo>true</DCC_RunTimeTypeInfo>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <VerInfo_Build>101</VerInfo_Build>
+        <VerInfo_Build>102</VerInfo_Build>
         <VerInfo_Release>2</VerInfo_Release>
         <Icon_MainIcon>C:\Softlogus\Server\icones\Softlogus.ico</Icon_MainIcon>
         <DCC_ExeOutput>C:\Softlogus\Server\</DCC_ExeOutput>
@@ -93,7 +97,7 @@
         <DCC_MapFile>3</DCC_MapFile>
         <DCC_DebugInformation>true</DCC_DebugInformation>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=Softlogus engenharia em software;FileDescription= Sistema de  Gestão Softlogus;FileVersion=2.5.2.101;InternalName=Softlogus engenharia em software;LegalCopyright=Copyright 2018 - Softlogus Informática - Todos os direitos reservados;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=2.5.2.100;Comments=www.softlogus.com.br</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Softlogus engenharia em software;FileDescription= Sistema de  Gestão Softlogus;FileVersion=2.5.2.102;InternalName=Softlogus engenharia em software;LegalCopyright=Copyright 2018 - Softlogus Informática - Todos os direitos reservados;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=2.5.2.100;Comments=www.softlogus.com.br</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -1163,12 +1167,27 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -1522,27 +1541,12 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>

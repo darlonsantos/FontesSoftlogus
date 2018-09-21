@@ -489,7 +489,6 @@ type
     Label63: TLabel;
     Label64: TLabel;
     Label65: TLabel;
-    Panel6: TPanel;
     qryComplementar: TZQuery;
     qryComplementarCODIGO: TWideStringField;
     qryComplementarCODNOTA: TWideStringField;

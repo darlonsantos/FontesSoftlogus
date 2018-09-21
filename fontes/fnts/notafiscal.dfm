@@ -5,7 +5,7 @@ object frmnotafiscal: Tfrmnotafiscal
   BorderStyle = bsNone
   Caption = 'Nota Fiscal de Sa'#237'da'
   ClientHeight = 694
-  ClientWidth = 939
+  ClientWidth = 931
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object frmnotafiscal: Tfrmnotafiscal
   object Bevel5: TBevel
     Left = 0
     Top = 614
-    Width = 939
+    Width = 931
     Height = 3
     Align = alBottom
     ExplicitTop = 491
@@ -33,13 +33,14 @@ object frmnotafiscal: Tfrmnotafiscal
   object pgravar: TFlatPanel
     Left = 0
     Top = 617
-    Width = 939
+    Width = 931
     Height = 77
     Color = clHighlight
     ColorHighLight = clWhite
     ColorShadow = clWhite
     Align = alBottom
     TabOrder = 0
+    ExplicitWidth = 939
     object bimprimir: TBitBtn
       Left = 879
       Top = 34
@@ -1578,7 +1579,7 @@ object frmnotafiscal: Tfrmnotafiscal
       Height = 12
       Alignment = taRightJustify
       AutoSize = False
-      Caption = 'Desconto:'
+      Caption = 'Total de descontos:'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -1875,6 +1876,7 @@ object frmnotafiscal: Tfrmnotafiscal
       Color = clSilver
       DataField = 'DESCONTO'
       DataSource = dsnota
+      Enabled = False
       TabOrder = 8
       OnEnter = efilialEnter
       OnExit = DBEdit12Exit
@@ -1885,7 +1887,7 @@ object frmnotafiscal: Tfrmnotafiscal
       Top = 7
       Width = 115
       Height = 37
-      Caption = 'Incluir Item'
+      Caption = 'Incluir Item F5'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -2012,7 +2014,7 @@ object frmnotafiscal: Tfrmnotafiscal
       Top = 45
       Width = 115
       Height = 37
-      Caption = 'Alterar Item'
+      Caption = 'Alterar Item F7'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -2125,7 +2127,7 @@ object frmnotafiscal: Tfrmnotafiscal
       Top = 83
       Width = 115
       Height = 37
-      Caption = 'Excluir Item'
+      Caption = 'Excluir Item F4'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -2223,7 +2225,7 @@ object frmnotafiscal: Tfrmnotafiscal
       Top = 8
       Width = 106
       Height = 33
-      Caption = 'Qtde. Itens'
+      Caption = 'Total de Itens'
       TabOrder = 12
       object DBText1: TDBText
         Left = 24
@@ -2312,8 +2314,8 @@ object frmnotafiscal: Tfrmnotafiscal
     Top = 192
     Width = 928
     Height = 280
-    ActivePage = PageSheet11
-    ActivePageIndex = 1
+    ActivePage = PageSheet10
+    ActivePageIndex = 0
     AdaptiveColors = True
     BackgroundColor = 15790320
     BackgroundKind = bkSolid
@@ -4289,11 +4291,11 @@ object frmnotafiscal: Tfrmnotafiscal
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 939
+    Width = 931
     Height = 42
     Cursor = crDefault
-    Caption.Text = '          Nota Fiscal de Sa'#237'da'
-    Caption.Location = plCenterLeft
+    Caption.Text = 'Nota Fiscal de Sa'#237'da'
+    Caption.Location = plCenterCenter
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
     Caption.HTMLFont.Color = clWindowText
     Caption.HTMLFont.Height = -11
@@ -4307,6 +4309,7 @@ object frmnotafiscal: Tfrmnotafiscal
     Caption.ColorStart = clWhite
     Caption.ColorEnd = clWhite
     Caption.Line = False
+    Caption.TextRendering = tClearType
     Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
@@ -4327,14 +4330,15 @@ object frmnotafiscal: Tfrmnotafiscal
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 939
     TMSStyle = 0
     OldHeight = 42.000000000000000000
     object AdvMetroButton1: TAdvMetroButton
-      Left = 0
+      Left = 896
       Top = 0
       Width = 35
       Height = 42
-      Align = alLeft
+      Align = alRight
       Appearance.PictureColor = clWhite
       Caption = ''
       Picture.Data = {
@@ -4407,6 +4411,7 @@ object frmnotafiscal: Tfrmnotafiscal
       TabOrder = 0
       Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
+      ExplicitLeft = 0
     end
   end
   object DBEdit46: TDBEdit
@@ -4418,16 +4423,6 @@ object frmnotafiscal: Tfrmnotafiscal
     DataSource = dsnota
     TabOrder = 7
   end
-  object Panel6: TPanel
-    Left = 925
-    Top = 25
-    Width = 13
-    Height = 627
-    BevelOuter = bvNone
-    Color = clHighlight
-    ParentBackground = False
-    TabOrder = 8
-  end
   object Panel4: TPanel
     Left = 0
     Top = 596
@@ -4436,7 +4431,7 @@ object frmnotafiscal: Tfrmnotafiscal
     BevelOuter = bvNone
     Color = clHighlight
     ParentBackground = False
-    TabOrder = 9
+    TabOrder = 8
   end
   object Pop2: TPopupMenu
     Left = 808
