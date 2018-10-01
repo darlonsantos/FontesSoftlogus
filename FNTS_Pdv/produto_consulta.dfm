@@ -57251,9 +57251,8 @@ object frmProduto_consulta: TfrmProduto_consulta
       64FF646464FF646464FF646464FF646464FF646464FF646464FF646464FF6464
       64FF646464FF646464FF646464FF646464FF646464FF646464FF646464FF6464
       64FF646464FF646464FF646464FF646464FF646464FF}
-    ExplicitLeft = 258
-    ExplicitTop = 40
-    ExplicitHeight = 470
+    ExplicitLeft = -8
+    ExplicitTop = 136
   end
   object grid: TNextGrid
     Left = 14
@@ -57464,9 +57463,9 @@ object frmProduto_consulta: TfrmProduto_consulta
     end
   end
   object ed_barra: TRzEdit
-    Left = 258
-    Top = 24
-    Width = 483
+    Left = 257
+    Top = 20
+    Width = 460
     Height = 37
     Text = ''
     Color = 12123135
@@ -57483,6 +57482,55 @@ object frmProduto_consulta: TfrmProduto_consulta
     OnEnter = ed_barraEnter
     OnKeyPress = ed_barraKeyPress
   end
+  object PPROCURA: TFlatPanel
+    Left = 258
+    Top = 62
+    Width = 459
+    Height = 257
+    Color = clWindow
+    Visible = False
+    ColorHighLight = clWindow
+    ColorShadow = clWindow
+    TabOrder = 2
+    object wwDBGrid1: TwwDBGrid
+      Left = 1
+      Top = 1
+      Width = 457
+      Height = 255
+      Selected.Strings = (
+        'CODIGO'#9'7'#9'CODIGO'
+        'NOME'#9'42'#9'NOME'#9'F')
+      IniAttributes.Delimiter = ';;'
+      IniAttributes.UnicodeIniFile = False
+      TitleColor = clWindow
+      FixedCols = 0
+      ShowHorzScrollBar = True
+      Align = alClient
+      BorderStyle = bsNone
+      Color = 12123135
+      DataSource = dsPesquisar
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -9
+      Font.Name = 'Verdana'
+      Font.Style = []
+      Options = [dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgWordWrap, dgHideBottomDataLine]
+      ParentFont = False
+      TabOrder = 0
+      TitleAlignment = taLeftJustify
+      TitleFont.Charset = ANSI_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Verdana'
+      TitleFont.Style = []
+      TitleLines = 1
+      TitleButtons = False
+      FooterColor = clWindow
+      FooterCellColor = clWindow
+      PaintOptions.ActiveRecordColor = clRed
+      ExplicitWidth = 444
+    end
+  end
   object pop_principal: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
     Version = '2.6.1.0'
@@ -57496,7 +57544,16 @@ object frmProduto_consulta: TfrmProduto_consulta
   end
   object query: TUniQuery
     Connection = frmModulo.conexao
-    Left = 233
-    Top = 297
+    Left = 37
+    Top = 261
+  end
+  object dsPesquisar: TDataSource
+    Left = 276
+    Top = 116
+  end
+  object qryPesquisar: TUniQuery
+    Connection = frmModulo.conexao
+    Left = 197
+    Top = 93
   end
 end

@@ -7,7 +7,7 @@ uses
   Dialogs, jpeg, ExtCtrls, StdCtrls, RzLabel, AdvOfficeImage, Mask, RzEdit,
   NxColumnClasses, NxColumns, NxScrollControl, NxCustomGridControl,
   NxCustomGrid, NxGrid, Menus, AdvMenus, DB, DBAccess, pngimage, frxClass, dxGDIPlusClasses, Uni,
-  MemDS, TFlatPanelUnit, acPNG;
+  MemDS, TFlatPanelUnit, acPNG, Vcl.Grids, vcl.wwdbigrd, vcl.wwdbgrid;
 
 type
   TfrmProduto_consulta = class(TForm)
@@ -32,6 +32,10 @@ type
     NxTextColumn7: TNxTextColumn;
     ed_barra: TRzEdit;
     img1: TImage;
+    PPROCURA: TFlatPanel;
+    wwDBGrid1: TwwDBGrid;
+    dsPesquisar: TDataSource;
+    qryPesquisar: TUniQuery;
     procedure ed_barraEnter(Sender: TObject);
     procedure ed_barraKeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -44,6 +48,7 @@ type
     procedure PreencherGrid;
     procedure FormResize(Sender: TObject);
     procedure lncedente2Click(Sender: TObject);
+    procedure ed_barraExit(Sender: TObject);
   private
     procedure CentralizarPanel(p: TPanel);
     { Private declarations }
@@ -69,6 +74,10 @@ begin
   begin
     Imprime_display_teclado('Informe o Produto','');
   end;
+end;
+
+procedure TfrmProduto_consulta.ed_barraExit(Sender: TObject);
+begin
 end;
 
 // -------------------------------------------------------------------------- //
