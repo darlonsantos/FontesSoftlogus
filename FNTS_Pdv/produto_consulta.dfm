@@ -57468,6 +57468,7 @@ object frmProduto_consulta: TfrmProduto_consulta
     Width = 460
     Height = 37
     Text = ''
+    CharCase = ecUpperCase
     Color = 12123135
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
@@ -57528,7 +57529,6 @@ object frmProduto_consulta: TfrmProduto_consulta
       FooterColor = clWindow
       FooterCellColor = clWindow
       PaintOptions.ActiveRecordColor = clRed
-      ExplicitWidth = 444
     end
   end
   object pop_principal: TAdvPopupMenu
