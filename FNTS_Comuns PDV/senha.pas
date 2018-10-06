@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, RzEdit, AdvOfficeImage, ExtCtrls,
   AdvReflectionLabel, RzLabel, RzBckgnd, pngimage, AdvReflectionImage, jpeg,
-  acPNG, Vcl.Buttons, dxGDIPlusClasses;
+  acPNG, Vcl.Buttons, dxGDIPlusClasses, AdvSmoothPanel, AdvSmoothExpanderPanel,
+  AdvGlowButton, TFlatPanelUnit;
 
 type
   Tfrmsenha = class(TForm)
@@ -16,10 +17,14 @@ type
     ed_senha: TRzEdit;
     Label1: TLabel;
     ed_codigo: TRzEdit;
-    Image2: TImage;
     btn_entrar: TSpeedButton;
     btn_cancelar: TSpeedButton;
     pnl1: TPanel;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label22: TLabel;
+    pgravar: TFlatPanel;
+    bgravar: TAdvGlowButton;
+    bcancelar: TAdvGlowButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure ed_senhaKeyPress(Sender: TObject; var Key: Char);
     procedure ed_codigoKeyPress(Sender: TObject; var Key: Char);
