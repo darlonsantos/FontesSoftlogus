@@ -42,8 +42,6 @@ type
     AdvOfficeStatusBarOfficeStyler1: TAdvOfficeStatusBarOfficeStyler;
     ResizeKit1: TResizeKit;
     imgFundo: TImage;
-    AdvSmoothExpanderPanel3: TAdvSmoothExpanderPanel;
-    Label1: TLabel;
     AdvSmoothExpanderPanel4: TAdvSmoothExpanderPanel;
     store_protect: TLockApplication;
     FlatHint1: TFlatHint;
@@ -68,7 +66,6 @@ type
     CheckCPF1: TACBrValidador;
     TestaCnpj: TACBrValidador;
     GerenciarNFCe: TAction;
-    cySpeedButton1: TcySpeedButton;
     DIretorio: TJvSelectDirectory;
     ExeInfo1: TExeInfo;
     dxBarManager1: TdxBarManager;
