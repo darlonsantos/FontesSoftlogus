@@ -1483,8 +1483,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
-      Left = 59
-      Top = 15
+      Left = 225
+      Top = 11
       Width = 190
       Height = 23
       Caption = 'Caixa - Fechamento'
@@ -1497,7 +1497,7 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       Transparent = True
     end
     object AdvMetroButton1: TAdvMetroButton
-      Left = -3
+      Left = 616
       Top = 0
       Width = 56
       Height = 48
@@ -2506,8 +2506,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       'begin'
       ''
       'end.')
-    Left = 364
-    Top = 5
+    Left = 380
+    Top = 81
     Datasets = <
       item
         DataSet = relFechamento
@@ -3152,8 +3152,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
     RTLLanguage = False
     MemoParentFont = False
     OnGetTemplateList = frxDesigner1GetTemplateList
-    Left = 412
-    Top = 12
+    Left = 432
+    Top = 68
   end
   object fscaixa: TfrxDBDataset
     UserName = 'fscaixa'
@@ -3171,8 +3171,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       'CANCELAMENTO_ICMS=CANCELAMENTO_ICMS')
     DataSet = qrRelatorioResumo
     BCDToCurrency = False
-    Left = 604
-    Top = 24
+    Left = 588
+    Top = 80
   end
   object qrRelatorioResumo: TUniQuery
     Connection = frmModulo.conexao
@@ -3204,8 +3204,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
         '.codigo and cupom.data + cupom.hora >= :data and cupom.cod_vende' +
         'dor = :codvendedor')
     Active = True
-    Left = 549
-    Top = 14
+    Left = 537
+    Top = 54
     ParamData = <
       item
         DataType = ftDate
@@ -3285,8 +3285,8 @@ object frmCaixa_Fechamento: TfrmCaixa_Fechamento
       'SUBTOTAL=SUBTOTAL')
     DataSet = qrRelFechamento
     BCDToCurrency = False
-    Left = 473
-    Top = 5
+    Left = 477
+    Top = 65
   end
   object qrRelFechamento: TUniQuery
     Connection = frmModulo.conexao
