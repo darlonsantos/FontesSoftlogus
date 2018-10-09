@@ -1687,7 +1687,7 @@ object frmcliente: Tfrmcliente
           Font.Style = []
           ParentFont = False
         end
-        object Label2: TLabel
+        object lblNomeFantasia: TLabel
           Left = 43
           Top = 10
           Width = 31
@@ -3297,8 +3297,8 @@ object frmcliente: Tfrmcliente
           end
         end
         object PNLcpf: TPanel
-          Left = 141
-          Top = 9
+          Left = 144
+          Top = 15
           Width = 636
           Height = 241
           BevelInner = bvRaised

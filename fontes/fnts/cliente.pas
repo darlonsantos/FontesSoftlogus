@@ -401,7 +401,7 @@ type
     btn125: TAdvGlowButton;
     btn1987: TAdvGlowButton;
     DBEdit2: TDBEdit;
-    Label2: TLabel;
+    lblNomeFantasia: TLabel;
     AdvSmoothPanel1: TAdvSmoothPanel;
     sBitBtn11: TsBitBtn;
     sBitBtn12: TsBitBtn;
@@ -844,8 +844,8 @@ begin
     begin
       combo_pessoa.SetFocus;
       combo_pessoa.ItemIndex := 1;
-
-      LAPELIDO.caption := 'Fantasia:';
+       lblNomeFantasia.Caption := 'Razão social';
+      LAPELIDO.caption := 'Nome fantasia:';
       ltelefone1.caption := 'Telefone 01:';
       ltelefone2.caption := 'Telefone 02:';
       LRG.caption := 'IE:';
@@ -2383,7 +2383,7 @@ begin
   if combo_pessoa.ItemIndex = 1 then
   begin
 
-    LAPELIDO.caption := 'Fantasia:';
+    LAPELIDO.caption := 'Nome fantasia:';
     ltelefone1.caption := 'Telefone 01:';
     ltelefone2.caption := 'Telefone 02:';
     LRG.caption := 'IE:';
@@ -3024,7 +3024,7 @@ begin
      // EditTipo.Text        := ACBrConsultaCNPJ1.EmpresaTipo;
       frmmodulo.qrclienteNOME.AsString := ACBrConsultaCNPJ1.RazaoSocial;
       //EditAbertura.Text    := DateToStr( ACBrConsultaCNPJ1.Abertura );
-      frmmodulo.qrclienteNOME.AsString    := ACBrConsultaCNPJ1.Fantasia;
+      frmmodulo.qrclienteAPELIDO.AsString    := ACBrConsultaCNPJ1.Fantasia;
       frmmodulo.qrclienteENDERECO.AsString    := ACBrConsultaCNPJ1.Endereco;
       frmmodulo.qrclienteNUMERO.AsString      := ACBrConsultaCNPJ1.Numero;
       frmmodulo.qrclienteCOMPLEMENTO.AsString := ACBrConsultaCNPJ1.Complemento;
