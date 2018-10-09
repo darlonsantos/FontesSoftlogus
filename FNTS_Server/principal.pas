@@ -42,7 +42,6 @@ type
   //  qrconfig: TIBCQuery;
  //   qrcaixa_mov: TIBCQuery;
     pnlAviso: TPanel;
-    pnTitulo: TPanel;
     xpmnfst1: TXPManifest;
     PageView1: TPageView;
     PageSheet1: TPageSheet;
@@ -1277,7 +1276,7 @@ begin
 
                           qrpdv_tabela.close;
                           qrpdv_tabela.sql.clear;
-                          qrpdv_tabela.sql.add('select * from ESTOQUE where codigo = ' + inttostr(ssssssssssssssssssssssssssssssssssssssssssssssssssstrtoint(qrservidor_tabela.fieldbyname('codigo').asstring)));
+                          qrpdv_tabela.sql.add('select * from ESTOQUE where codigo = ' + inttostr(strtoint(qrservidor_tabela.fieldbyname('codigo').asstring)));
                           qrpdv_tabela.Open;
 
                           if qrpdv_tabela.RecordCount > 0 then

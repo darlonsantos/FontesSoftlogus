@@ -10,7 +10,7 @@ uses
 type
   TfrmSenha_Supervisor = class(TForm)
     ed_senha: TRzEdit;
-    img1: TImage;
+    Panel1: TPanel;
     procedure ed_senhaKeyPress(Sender: TObject; var Key: Char);
     procedure FormShow(Sender: TObject);
     procedure ed_senhaEnter(Sender: TObject);

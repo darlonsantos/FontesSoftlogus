@@ -40,7 +40,6 @@ object frmnotafiscal: Tfrmnotafiscal
     ColorShadow = clWhite
     Align = alBottom
     TabOrder = 0
-    ExplicitWidth = 939
     object bimprimir: TBitBtn
       Left = 879
       Top = 34
@@ -2314,10 +2313,10 @@ object frmnotafiscal: Tfrmnotafiscal
     Top = 192
     Width = 928
     Height = 280
-    ActivePage = PageSheet10
-    ActivePageIndex = 0
+    ActivePage = PageSheet11
+    ActivePageIndex = 1
     AdaptiveColors = True
-    BackgroundColor = 15790320
+    BackgroundColor = clWhite
     BackgroundKind = bkSolid
     Indent = 2
     Margin = 0
@@ -2395,10 +2394,10 @@ object frmnotafiscal: Tfrmnotafiscal
       end
       object pveiculo: TFlatPanel
         Left = 335
-        Top = 22
+        Top = 21
         Width = 417
         Height = 183
-        Color = 3684661
+        Color = clHighlight
         Visible = False
         TabOrder = 1
         object Label9: TLabel
@@ -4330,7 +4329,6 @@ object frmnotafiscal: Tfrmnotafiscal
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 939
     TMSStyle = 0
     OldHeight = 42.000000000000000000
     object AdvMetroButton1: TAdvMetroButton
@@ -4411,7 +4409,6 @@ object frmnotafiscal: Tfrmnotafiscal
       TabOrder = 0
       Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
-      ExplicitLeft = 0
     end
   end
   object DBEdit46: TDBEdit

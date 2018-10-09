@@ -30364,7 +30364,6 @@ object frmsenha: Tfrmsenha
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 20
     object Label2: TLabel
       Left = 22
       Top = 103
@@ -31017,6 +31016,7 @@ object frmsenha: Tfrmsenha
       Width = 262
       Height = 21
       Text = ''
+      Alignment = taCenter
       CharCase = ecUpperCase
       Ctl3D = True
       FocusColor = 12713983
@@ -31032,6 +31032,7 @@ object frmsenha: Tfrmsenha
       Width = 262
       Height = 20
       Text = ''
+      Alignment = taCenter
       Ctl3D = True
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -31087,8 +31088,6 @@ object frmsenha: Tfrmsenha
       ExpanderColor = 16445929
       ExpanderDownColor = 15587527
       ExpanderHoverColor = 11196927
-      ExplicitLeft = 2
-      ExplicitTop = 4
       TMSStyle = 0
       OldHeight = 48.000000000000000000
       object Label22: TLabel
@@ -31117,7 +31116,6 @@ object frmsenha: Tfrmsenha
       ColorShadow = clHighlight
       Align = alBottom
       TabOrder = 3
-      ExplicitTop = 197
       object bgravar: TAdvGlowButton
         Left = 71
         Top = 0

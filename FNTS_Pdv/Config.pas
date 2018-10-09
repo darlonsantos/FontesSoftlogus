@@ -89,7 +89,6 @@ type
     bttconf003: TAdvGlowButton;
     qrconfig: TUniQuery;
     dsconfig: TUniDataSource;
-    btnNFCe: TAdvGlowButton;
     PageSheet5: TPageSheet;
     grp1: TGroupBox;
     pgc1: TPageControl;
@@ -173,7 +172,6 @@ type
     mmEmailMsg: TMemo;
     ACBrNFe1: TACBrNFe;
     dlgOpen1: TOpenDialog;
-    Label12: TLabel;
     OpenDialog1: TOpenDialog;
     TabSheet1: TTabSheet;
     edImpressora: TComboBox;
@@ -220,7 +218,7 @@ type
     Label26: TLabel;
     cbVersaoDF: TComboBox;
     MemoResp: TMemo;
-    btnstatus: TAdvGlowButton;
+    AdvGlowButton1: TAdvGlowButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure BitBtn2Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -235,14 +233,13 @@ type
     procedure bttconf002Click(Sender: TObject);
     procedure bttconf003Click(Sender: TObject);
     procedure AdvMetroButton1Click(Sender: TObject);
-    procedure btnNFCeClick(Sender: TObject);
     procedure sbtnCaminhoCertClick(Sender: TObject);
     procedure btnGetCertClick(Sender: TObject);
     procedure btnPathSalvarClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure btn3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure btnstatusClick(Sender: TObject);
+    procedure AdvGlowButton1Click(Sender: TObject);
   private
     { Private declarations }
     procedure GravaConfiguracoesLocais;
@@ -344,6 +341,11 @@ begin
   end;
   LerConfiguracoes;
   LerConfiguracao;
+end;
+
+procedure TfrmConfig.AdvGlowButton1Click(Sender: TObject);
+begin
+ pageview1.ActivePageIndex := 4;
 end;
 
 procedure TfrmConfig.AdvMetroButton1Click(Sender: TObject);
@@ -905,11 +907,6 @@ begin
 //{$ENDIF}
 end;
 
-procedure TfrmConfig.btnNFCeClick(Sender: TObject);
-begin
-  pageview1.ActivePageIndex := 4;
-end;
-
 procedure TfrmConfig.btnPathSalvarClick(Sender: TObject);
 var
   Dir: string;
@@ -921,23 +918,6 @@ begin
    //PathClick(edtPathLogs);
   if frmPrincipal.DIretorio.Execute then
     edtPathLogs.Text := frmPrincipal.DIretorio.Directory;
-end;
-
-procedure TfrmConfig.btnstatusClick(Sender: TObject);
-begin
-
- ACBrNFe1.WebServices.StatusServico.Executar ;
-
-  ShowMessage( ACBrNFe1.WebServices.StatusServico.xMotivo);
-
-//alte ra ali//
-
-// frmModulo.ACBRNFCe.WebServices.StatusServico.Executar;
-// MemoResp.Lines.Text := frmModulo.ACBRNFCe.WebServices.StatusServico.RetWS;
-
-
- //memoRespWS.Lines.Text := ACBrNFe1.WebServices.StatusServico.RetornoWS;
-// LoadXML(ACBrNFe1.WebServices.StatusServico.RetornoWS, WBResposta);
 end;
 
 procedure TfrmConfig.bttconf001Click(Sender: TObject);

@@ -2,11 +2,11 @@ object frmPrincipal: TfrmPrincipal
   Left = 519
   Top = 183
   BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
+  BorderStyle = bsNone
   Caption = 'Monitor de vendas'
-  ClientHeight = 563
-  ClientWidth = 766
-  Color = clSilver
+  ClientHeight = 511
+  ClientWidth = 718
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -1429,16 +1429,18 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object Panel2: TPanel
     Left = 0
-    Top = 501
-    Width = 766
-    Height = 62
+    Top = 474
+    Width = 718
+    Height = 37
     Align = alBottom
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitTop = 555
+    ExplicitWidth = 882
     object Button1: TButton
-      Left = 768
+      Left = 783
       Top = 6
       Width = 92
       Height = 29
@@ -1454,8 +1456,8 @@ object frmPrincipal: TfrmPrincipal
       OnClick = Button1Click
     end
     object Button2: TButton
-      Left = 790
-      Top = 33
+      Left = 686
+      Top = 17
       Width = 169
       Height = 30
       Caption = 'Carga Geral'
@@ -1470,8 +1472,8 @@ object frmPrincipal: TfrmPrincipal
       OnClick = Button2Click
     end
     object Button3: TButton
-      Left = 758
-      Top = 34
+      Left = 342
+      Top = 13
       Width = 169
       Height = 29
       Caption = 'Atualizar PDV'
@@ -1488,12 +1490,12 @@ object frmPrincipal: TfrmPrincipal
     object pnlAviso: TPanel
       Left = 0
       Top = 0
-      Width = 766
-      Height = 62
+      Width = 718
+      Height = 37
       Align = alClient
       BevelOuter = bvNone
       Caption = 'Aguarde! Carga em andamento...'
-      Color = clSilver
+      Color = clHighlight
       Font.Charset = ANSI_CHARSET
       Font.Color = clYellow
       Font.Height = -15
@@ -1503,30 +1505,16 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
       TabOrder = 0
       Visible = False
+      ExplicitLeft = 20
+      ExplicitTop = 17
+      ExplicitWidth = 772
+      ExplicitHeight = 62
     end
-  end
-  object pnTitulo: TPanel
-    Left = 0
-    Top = 59
-    Width = 943
-    Height = 25
-    BevelOuter = bvNone
-    Color = clSilver
-    Ctl3D = True
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -21
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentBackground = False
-    ParentCtl3D = False
-    ParentFont = False
-    TabOrder = 0
   end
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 766
+    Width = 718
     Height = 59
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -1540,6 +1528,7 @@ object frmPrincipal: TfrmPrincipal
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -1553,45 +1542,50 @@ object frmPrincipal: TfrmPrincipal
     Fill.Glow = gmNone
     Version = '1.1.0.0'
     Align = alTop
-    TabOrder = 3
+    TabOrder = 2
     ShowExpander = False
-    ExpanderBorderColor = clSilver
+    ExpanderBorderColor = clHighlight
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 766
     TMSStyle = 0
     OldHeight = 59.000000000000000000
     object Label17: TLabel
       AlignWithMargins = True
       Left = 3
       Top = 3
-      Width = 760
+      Width = 712
       Height = 32
       Align = alTop
       Alignment = taCenter
-      Caption = 'Monitor de vendas'
+      Caption = 'Monitoramento de vendas'
+      Color = clHighlight
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -27
       Font.Name = 'Verdana'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       Transparent = True
-      ExplicitWidth = 251
+      ExplicitLeft = 201
+      ExplicitWidth = 353
     end
   end
   object Panel1: TPanel
-    Left = 632
+    Left = 621
     Top = 59
-    Width = 134
-    Height = 442
+    Width = 97
+    Height = 415
     Align = alRight
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
-    TabOrder = 4
+    TabOrder = 3
+    ExplicitLeft = 672
     object AdvGlowButton1: TAdvGlowButton
-      Left = 20
+      Left = -1
       Top = 129
       Width = 107
       Height = 67
@@ -1717,7 +1711,7 @@ object frmPrincipal: TfrmPrincipal
       Layout = blGlyphTop
     end
     object AdvGlowButton2: TAdvGlowButton
-      Left = 20
+      Left = -1
       Top = 202
       Width = 107
       Height = 67
@@ -1837,7 +1831,7 @@ object frmPrincipal: TfrmPrincipal
       Layout = blGlyphTop
     end
     object AdvGlowButton3: TAdvGlowButton
-      Left = 20
+      Left = -1
       Top = 284
       Width = 107
       Height = 67
@@ -1907,7 +1901,7 @@ object frmPrincipal: TfrmPrincipal
       Layout = blGlyphTop
     end
     object AdvGlowButton4: TAdvGlowButton
-      Left = 20
+      Left = -1
       Top = 56
       Width = 107
       Height = 67
@@ -2018,13 +2012,14 @@ object frmPrincipal: TfrmPrincipal
   end
   object PageView1: TPageView
     Left = 0
-    Top = 84
-    Width = 631
-    Height = 418
+    Top = 59
+    Width = 621
+    Height = 415
     ActivePage = PageSheet1
     ActivePageIndex = 0
     AdaptiveColors = True
-    BackgroundColor = clSilver
+    Align = alClient
+    BackgroundColor = clWhite
     BackgroundKind = bkSolid
     Indent = 2
     Margin = 0
@@ -2032,16 +2027,19 @@ object frmPrincipal: TfrmPrincipal
     ShowTabs = False
     Spacing = 0
     TabHeight = 17
-    TabOrder = 2
+    TabOrder = 1
     TabStyle = tsWhidbey
     TopIndent = 3
+    ExplicitTop = 84
+    ExplicitWidth = 631
+    ExplicitHeight = 418
     object PageSheet1: TPageSheet
       Left = 0
       Top = 0
-      Width = 631
-      Height = 418
+      Width = 621
+      Height = 415
       Caption = 'Principal'
-      Color = clSilver
+      Color = clWhite
       DisplayMode = tdGlyph
       ImageIndex = 0
       Margin = 0
@@ -2050,9 +2048,12 @@ object frmPrincipal: TfrmPrincipal
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
+      ExplicitTop = 21
+      ExplicitWidth = 641
+      ExplicitHeight = 394
       object Label1: TLabel
-        Left = 31
-        Top = 431
+        Left = 128
+        Top = 451
         Width = 52
         Height = 13
         Caption = 'Progresso:'
@@ -2063,7 +2064,7 @@ object frmPrincipal: TfrmPrincipal
         Width = 612
         Height = 34
         BevelOuter = bvNone
-        Color = clSilver
+        Color = clWhite
         Enabled = False
         ParentBackground = False
         TabOrder = 0
@@ -2074,7 +2075,7 @@ object frmPrincipal: TfrmPrincipal
           Height = 13
           Caption = 'SERIVODR:'
           Font.Charset = ANSI_CHARSET
-          Font.Color = clWhite
+          Font.Color = clBlack
           Font.Height = -11
           Font.Name = 'Tahoma'
           Font.Style = []
@@ -2119,8 +2120,8 @@ object frmPrincipal: TfrmPrincipal
         end
       end
       object barra: TProgressBar
-        Left = 31
-        Top = 450
+        Left = 13
+        Top = 412
         Width = 625
         Height = 17
         TabOrder = 1
@@ -2256,8 +2257,8 @@ object frmPrincipal: TfrmPrincipal
     object PageSheet2: TPageSheet
       Left = 0
       Top = 0
-      Width = 631
-      Height = 418
+      Width = 621
+      Height = 415
       Caption = 'Log'
       Color = 15916445
       DisplayMode = tdGlyph
@@ -2268,11 +2269,13 @@ object frmPrincipal: TfrmPrincipal
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
+      ExplicitWidth = 631
+      ExplicitHeight = 418
       object Memo1: TMemo
         Left = 0
         Top = 0
-        Width = 631
-        Height = 418
+        Width = 621
+        Height = 415
         Align = alClient
         Color = 15916445
         Font.Charset = ANSI_CHARSET
@@ -2283,6 +2286,8 @@ object frmPrincipal: TfrmPrincipal
         ParentFont = False
         ScrollBars = ssVertical
         TabOrder = 0
+        ExplicitWidth = 631
+        ExplicitHeight = 418
       end
     end
   end
@@ -2300,7 +2305,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 560
     Top = 216
     Bitmap = {
-      494C010102003400600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102003400640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000066CCCC0000000000000000000000000000000000000000000000
@@ -2440,10 +2445,10 @@ object frmPrincipal: TfrmPrincipal
       000000000000}
   end
   object ImageList2: TImageList
-    Left = 744
-    Top = 146
+    Left = 688
+    Top = 30
     Bitmap = {
-      494C01010A000D00400010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010A000D00440010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -4,7 +4,7 @@ object frmfuncionario: Tfrmfuncionario
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'Cadastro de Funcion'#225'rios'
-  ClientHeight = 503
+  ClientHeight = 446
   ClientWidth = 650
   Color = 16235068
   Font.Charset = ANSI_CHARSET
@@ -2876,17 +2876,18 @@ object frmfuncionario: Tfrmfuncionario
   end
   object Panel2: TPanel
     Left = 0
-    Top = 384
+    Top = 383
     Width = 650
-    Height = 119
+    Height = 63
     Align = alBottom
     BevelOuter = bvNone
     Color = clHighlight
     ParentBackground = False
     TabOrder = 1
+    ExplicitTop = 440
     object bincluir: TAdvGlowButton
       Left = 70
-      Top = 31
+      Top = 4
       Width = 73
       Height = 54
       Caption = 'Incluir'
@@ -3009,7 +3010,7 @@ object frmfuncionario: Tfrmfuncionario
     end
     object balterar: TAdvGlowButton
       Left = 140
-      Top = 31
+      Top = 4
       Width = 73
       Height = 54
       Caption = 'Alterar'
@@ -3132,7 +3133,7 @@ object frmfuncionario: Tfrmfuncionario
     end
     object bexcluir: TAdvGlowButton
       Left = 215
-      Top = 31
+      Top = 4
       Width = 73
       Height = 54
       Caption = 'Excluir'
@@ -3268,7 +3269,7 @@ object frmfuncionario: Tfrmfuncionario
     end
     object blocalizar: TAdvGlowButton
       Left = 294
-      Top = 31
+      Top = 4
       Width = 73
       Height = 54
       Caption = 'Localizar'
@@ -3488,7 +3489,7 @@ object frmfuncionario: Tfrmfuncionario
     end
     object DBAdvGlowButton2: TDBAdvGlowButton
       Left = 450
-      Top = 34
+      Top = 7
       Width = 67
       Height = 44
       Hint = 'Prior record'
@@ -3613,7 +3614,7 @@ object frmfuncionario: Tfrmfuncionario
     end
     object DBAdvGlowButton3: TDBAdvGlowButton
       Left = 523
-      Top = 34
+      Top = 7
       Width = 67
       Height = 44
       Hint = 'Next record'
@@ -3818,7 +3819,7 @@ object frmfuncionario: Tfrmfuncionario
     end
     object bitbtn5: TAdvGlowButton
       Left = 371
-      Top = 31
+      Top = 4
       Width = 73
       Height = 54
       Caption = 'Relat'#243'rios'
@@ -3940,18 +3941,21 @@ object frmfuncionario: Tfrmfuncionario
       Layout = blGlyphTop
     end
     object pgravar: TFlatPanel
-      Left = 471
+      Left = 0
       Top = 0
       Width = 650
-      Height = 119
+      Height = 63
       ParentColor = True
       Visible = False
-      ColorHighLight = 5460819
-      ColorShadow = 5460819
+      ColorHighLight = clHighlight
+      ColorShadow = clHighlight
+      Align = alClient
       TabOrder = 9
+      ExplicitLeft = 331
+      ExplicitTop = 4
       object bgravar: TAdvGlowButton
         Left = 239
-        Top = 19
+        Top = 2
         Width = 73
         Height = 63
         Caption = 'Gravar'
@@ -4077,7 +4081,7 @@ object frmfuncionario: Tfrmfuncionario
       end
       object bcancelar: TAdvGlowButton
         Left = 321
-        Top = 20
+        Top = 3
         Width = 73
         Height = 63
         Caption = 'Cancelar'
@@ -4326,11 +4330,12 @@ object frmfuncionario: Tfrmfuncionario
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label22: TLabel
-      Left = 102
+      Left = 190
       Top = 10
-      Width = 339
+      Width = 233
       Height = 23
-      Caption = 'PRODUTOS | Atualiza'#231#227'o de Pre'#231'os'
+      Alignment = taCenter
+      Caption = 'Cadastro de Funcionario'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -19
@@ -4340,9 +4345,9 @@ object frmfuncionario: Tfrmfuncionario
       Transparent = True
     end
     object AdvMetroButton2: TAdvMetroButton
-      Left = 2
+      Left = 594
       Top = 1
-      Width = 49
+      Width = 52
       Height = 45
       Appearance.PictureColor = clWhite
       Caption = ''
