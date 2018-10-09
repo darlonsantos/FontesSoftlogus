@@ -3019,7 +3019,7 @@ begin
       chkRemoverEspacosDuplos.Checked )
      then
     begin
-
+       // DARLON SANTOS
        lblsituacaoCNPJ.Text  := ACBrConsultaCNPJ1.Situacao;
      // EditTipo.Text        := ACBrConsultaCNPJ1.EmpresaTipo;
       frmmodulo.qrclienteNOME.AsString := ACBrConsultaCNPJ1.RazaoSocial;
