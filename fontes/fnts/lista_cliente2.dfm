@@ -4,8 +4,8 @@ object frmlista_cliente2: Tfrmlista_cliente2
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'CLIENTE | Relat'#243'rios'
-  ClientHeight = 302
-  ClientWidth = 512
+  ClientHeight = 365
+  ClientWidth = 406
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -20,17 +20,19 @@ object frmlista_cliente2: Tfrmlista_cliente2
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
-    Left = 401
-    Top = 48
-    Width = 112
-    Height = 287
+    Left = 0
+    Top = 292
+    Width = 406
+    Height = 73
+    Align = alBottom
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 388
     object bimprimir: TAdvGlowButton
-      Left = 22
-      Top = 40
+      Left = 170
+      Top = 8
       Width = 69
       Height = 63
       Caption = 'Visualizar'
@@ -304,9 +306,9 @@ object frmlista_cliente2: Tfrmlista_cliente2
     Left = 0
     Top = 47
     Width = 401
-    Height = 257
+    Height = 242
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clWhite
     ParentBackground = False
     TabOrder = 1
     object Label1: TLabel
@@ -540,7 +542,7 @@ object frmlista_cliente2: Tfrmlista_cliente2
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 512
+    Width = 406
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -554,7 +556,7 @@ object frmlista_cliente2: Tfrmlista_cliente2
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -573,11 +575,12 @@ object frmlista_cliente2: Tfrmlista_cliente2
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitWidth = 512
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
-      Left = 59
-      Top = 14
+      Left = 79
+      Top = 10
       Width = 199
       Height = 23
       Caption = 'Relat'#243'rio de Clientes'
@@ -590,7 +593,7 @@ object frmlista_cliente2: Tfrmlista_cliente2
       Transparent = True
     end
     object AdvMetroButton1: TAdvMetroButton
-      Left = -3
+      Left = 348
       Top = 0
       Width = 56
       Height = 48
