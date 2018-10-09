@@ -1483,9 +1483,9 @@ object frmcliente: Tfrmcliente
         Top = 0
         Width = 860
         Height = 272
-        Color = clSilver
-        ColorHighLight = 10933723
-        ColorShadow = 10933723
+        Color = clWhite
+        ColorHighLight = clWhite
+        ColorShadow = clWhite
         Align = alTop
         TabOrder = 0
         object Label5: TLabel
@@ -2092,7 +2092,7 @@ object frmcliente: Tfrmcliente
           Width = 168
           Height = 89
           Caption = 'Telefones'
-          Color = clSilver
+          Color = clWhite
           ParentBackground = False
           ParentColor = False
           TabOrder = 13
@@ -2963,7 +2963,7 @@ object frmcliente: Tfrmcliente
           Align = alCustom
           BevelInner = bvRaised
           BevelOuter = bvLowered
-          Color = clSilver
+          Color = clWhite
           ParentBackground = False
           TabOrder = 24
           Visible = False
@@ -3159,6 +3159,7 @@ object frmcliente: Tfrmcliente
             Caption.Font.Name = 'Tahoma'
             Caption.Font.Style = []
             Caption.Line = False
+            Fill.Color = clHighlight
             Fill.ColorTo = clNone
             Fill.ColorMirror = clNone
             Fill.ColorMirrorTo = clNone
@@ -3174,7 +3175,7 @@ object frmcliente: Tfrmcliente
             Align = alTop
             TabOrder = 5
             ShowExpander = False
-            ExpanderBorderColor = clSilver
+            ExpanderBorderColor = clHighlight
             ExpanderColor = 16445929
             ExpanderDownColor = 15587527
             ExpanderHoverColor = 11196927
@@ -3184,7 +3185,7 @@ object frmcliente: Tfrmcliente
               AlignWithMargins = True
               Left = 3
               Top = 3
-              Width = 188
+              Width = 616
               Height = 22
               Align = alTop
               Alignment = taCenter
@@ -3196,6 +3197,7 @@ object frmcliente: Tfrmcliente
               Font.Style = []
               ParentFont = False
               Transparent = True
+              ExplicitWidth = 188
             end
             object btn1: TAdvMetroButton
               Left = 562
@@ -3301,7 +3303,7 @@ object frmcliente: Tfrmcliente
           Height = 241
           BevelInner = bvRaised
           BevelOuter = bvLowered
-          Color = clSilver
+          Color = clWhite
           ParentBackground = False
           TabOrder = 25
           Visible = False
@@ -3473,6 +3475,7 @@ object frmcliente: Tfrmcliente
             Caption.Font.Name = 'Tahoma'
             Caption.Font.Style = []
             Caption.Line = False
+            Fill.Color = clHighlight
             Fill.ColorTo = clNone
             Fill.ColorMirror = clNone
             Fill.ColorMirrorTo = clNone
@@ -3497,7 +3500,7 @@ object frmcliente: Tfrmcliente
               AlignWithMargins = True
               Left = 3
               Top = 3
-              Width = 177
+              Width = 626
               Height = 22
               Align = alTop
               Alignment = taCenter
@@ -3511,6 +3514,7 @@ object frmcliente: Tfrmcliente
               ParentColor = False
               ParentFont = False
               Transparent = True
+              ExplicitWidth = 177
             end
             object btn2: TAdvMetroButton
               Left = 572
@@ -3634,7 +3638,7 @@ object frmcliente: Tfrmcliente
             Height = 220
             Align = alClient
             BevelOuter = bvNone
-            Color = clSilver
+            Color = clWhite
             ParentBackground = False
             TabOrder = 0
             object LFILIACAO: TLabel
@@ -4342,10 +4346,6 @@ object frmcliente: Tfrmcliente
             TabOrder = 0
             object TabSheet1: TTabSheet
               Caption = '1'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label33: TLabel
                 Left = 263
                 Top = 33
@@ -4679,10 +4679,6 @@ object frmcliente: Tfrmcliente
             object TabSheet2: TTabSheet
               Caption = '2'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label43: TLabel
                 Left = 263
                 Top = 33
@@ -6653,7 +6649,7 @@ object frmcliente: Tfrmcliente
     Height = 27
     Align = alTop
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     Enabled = False
     ParentBackground = False
     TabOrder = 1
@@ -6677,7 +6673,7 @@ object frmcliente: Tfrmcliente
       Height = 13
       Caption = 'Pessoa:'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
@@ -7100,9 +7096,11 @@ object frmcliente: Tfrmcliente
     Height = 481
     Align = alRight
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 2
+    ExplicitTop = 30
+    ExplicitHeight = 475
     object bincluir: TAdvGlowButton
       Left = 29
       Top = 61
@@ -7773,10 +7771,10 @@ object frmcliente: Tfrmcliente
       Top = 9
       Width = 119
       Height = 574
-      ParentColor = True
+      Color = clHighlight
       Visible = False
-      ColorHighLight = 5461077
-      ColorShadow = 5461077
+      ColorHighLight = clHighlight
+      ColorShadow = clHighlight
       TabOrder = 7
       object bgravar: TAdvGlowButton
         Left = 23
@@ -8941,7 +8939,7 @@ object frmcliente: Tfrmcliente
     Left = 1293
     Top = 360
     Bitmap = {
-      494C0101060008007C000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010600080080000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000001E0000000100200000000000201C
       0000000000000000000000000000000000007AC8EC002CA6DF002AA3DE0028A0
       DC00269DDB00249AD9002297D8001F92D5001A8BD2001584CE00107DCB000C76
@@ -9529,7 +9527,7 @@ object frmcliente: Tfrmcliente
     Left = 1197
     Top = 252
     Bitmap = {
-      494C010116001800640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010116001800680010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
