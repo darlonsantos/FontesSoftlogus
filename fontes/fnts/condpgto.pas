@@ -60,6 +60,8 @@ type
     Bevel4: TBevel;
     Label6: TLabel;
     comboentrada: TwwDBLookupCombo;
+    Panel4: TPanel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure enomeEnter(Sender: TObject);
