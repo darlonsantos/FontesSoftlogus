@@ -3453,7 +3453,6 @@ begin
     qrnota.fieldbyname('fat_gerar_duplicata').asinteger := 1
   else
     qrnota.fieldbyname('fat_gerar_duplicata').asinteger := 0;
-
   frmnotafiscal := Tfrmnotafiscal.Create(self);
   // frmnotafiscal.rtipo.ItemIndex := 0;
    if sUsa_NFE = '1' then

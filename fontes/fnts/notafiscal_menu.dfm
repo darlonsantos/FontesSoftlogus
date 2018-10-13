@@ -28,7 +28,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 53
     object Label8: TLabel
       Left = 36
       Top = 18
@@ -2638,7 +2637,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       TabOrder = 0
       Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
-      ExplicitHeight = 53
     end
   end
   object Panel8: TPanel
@@ -2651,7 +2649,6 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Color = clHighlight
     ParentBackground = False
     TabOrder = 7
-    ExplicitTop = 102
     object bt_nfe_validar: TAdvGlowButton
       Left = 1
       Top = 1
@@ -3482,8 +3479,8 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
       Layout = blGlyphTop
     end
     object btnCCe_nfe_cce: TAdvGlowButton
-      Left = 374
-      Top = 6
+      Left = 280
+      Top = 559
       Width = 73
       Height = 62
       Caption = 'CCe'
@@ -3790,7 +3787,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 944
     Top = 96
     Bitmap = {
-      494C010171007300A80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010171007300AC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000D0010000010020000000000000D0
       010000000000000000000000000000000000000000003E3E3E0017171700FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -8733,7 +8730,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 968
     Top = 56
     Bitmap = {
-      494C010109000B00A80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B00AC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -2313,8 +2313,8 @@ object frmnotafiscal: Tfrmnotafiscal
     Top = 192
     Width = 928
     Height = 280
-    ActivePage = PageSheet11
-    ActivePageIndex = 1
+    ActivePage = PageSheet10
+    ActivePageIndex = 0
     AdaptiveColors = True
     BackgroundColor = clWhite
     BackgroundKind = bkSolid
@@ -2606,7 +2606,8 @@ object frmnotafiscal: Tfrmnotafiscal
         Height = 21
         DataSource = dsnota
         DataField = 'FAT_QTDE_PRESTACAO'
-        Color = 15916445
+        Enabled = False
+        FocusColor = 15916445
         MaxLength = 3
         TabOrder = 2
         OnExit = rqtdeExit
@@ -12658,8 +12659,8 @@ object frmnotafiscal: Tfrmnotafiscal
     SQL.Strings = (
       'select * from NFE_COMPLEMENTAR')
     Params = <>
-    Left = 347
-    Top = 273
+    Left = 147
+    Top = 209
     object qryComplementarCODIGO: TWideStringField
       FieldName = 'CODIGO'
       Size = 6

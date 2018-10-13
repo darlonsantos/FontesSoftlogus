@@ -3654,6 +3654,7 @@ begin
   if frmnotafiscal_menu.qrnota.State = dsinsert then
   begin
 //         DARLON SANTOS
+
 //    if frmmodulo.qrfilial.fieldbyname('optante_simples').asstring = 'S' then
 //    begin
 //      frmnotafiscal_menu.qrnota.fieldbyname('OBS1').asstring :=
@@ -3755,7 +3756,7 @@ begin
   qrreceber.sql.add('where cod_nota = ''' +
     frmnotafiscal_menu.qrnota.fieldbyname('codigo').asstring + '''');
    qrreceber.sql.add('order by numero');
-  qrreceber.Open;
+  qrreceber.open;
 
   if frmnotafiscal_menu.vopcao_nfs = 3 then
   begin
@@ -4268,14 +4269,12 @@ begin
               valor := valor +
                 (valor * (frmmodulo.qrcondpgto_parcela.fieldbyname('juros')
                 .AsFloat / 100));
-
+            { TODO : DARLON SANTOS 201254693 }
             qrreceber.fieldbyname('valor').AsFloat :=
             frmprincipal.Arredondar(valor, 2);
-            qrreceber.fieldbyname('documento').asstring :=
-              frmnotafiscal_menu.qrnota.fieldbyname('numero').asstring + '/' +
-              inttostr(prestacao);
+            qrreceber.fieldbyname('documento').asstring :=  '00' + inttostr(prestacao);
+            qrreceber.fieldbyname('TIPO').asstring := combocondpgto.Text;
 
-            qrreceber.fieldbyname('TIPO').asstring := 'DUPLICATA';
 
             qrreceber.post;
             prestacao := prestacao + 1;
@@ -4366,10 +4365,8 @@ begin
         incmonth(frmnotafiscal_menu.qrnota.fieldbyname('data').asDATETIME,
         prestacao);
       qrreceber.fieldbyname('valor').AsFloat := valor;
-      qrreceber.fieldbyname('documento').asstring :=
-        frmnotafiscal_menu.qrnota.fieldbyname('numero').asstring + '/' +
-        inttostr(prestacao);
-      qrreceber.fieldbyname('TIPO').asstring := 'DUPLICATA';
+      qrreceber.fieldbyname('documento').asstring := '00' + inttostr(prestacao);
+      qrreceber.fieldbyname('TIPO').asstring := combocondpgto.Text;
       qrreceber.post;
       prestacao := prestacao + 1;
       qtde := qtde - 1;
@@ -4410,9 +4407,11 @@ begin
 //    if (rtipo.ItemIndex = 0) or (rtipo.ItemIndex = 2) then
 //      tab_principal.ActivePageIndex := 0;
 //  end;
+ // qrreceber.open;
   if tab_principal.ActivePageIndex = 1 then
   begin
-   qrreceber.first;
+
+ //  qrreceber.first;
     itotal := 0;
    while not qrreceber.eof do
     begin

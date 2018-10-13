@@ -4,13 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, jpeg, AdvOfficeImage, StdCtrls;
+  Dialogs, ExtCtrls, jpeg, AdvOfficeImage, StdCtrls, dxGDIPlusClasses;
 
 type
   TfrmProtetor_tela = class(TForm)
     Timer1: TTimer;
     Label1: TLabel;
     Panel1: TPanel;
+    Image1: TImage;
     procedure FormKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }

@@ -5,7 +5,7 @@ object frmCaixa_Abertura: TfrmCaixa_Abertura
   Caption = 'Abertura de Caixa'
   ClientHeight = 368
   ClientWidth = 673
-  Color = clSilver
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -26,6 +26,7 @@ object frmCaixa_Abertura: TfrmCaixa_Abertura
     Hint = ''
     ActivePage = TabSheet1
     Color = clSilver
+    FlatColor = clWhite
     ParentColor = False
     TabIndex = 0
     TabOrder = 0
@@ -40,7 +41,7 @@ object frmCaixa_Abertura: TfrmCaixa_Abertura
         Height = 224
         Align = alClient
         BevelOuter = bvNone
-        Color = clSilver
+        Color = clWhite
         Enabled = False
         ParentBackground = False
         TabOrder = 0
@@ -114,12 +115,12 @@ object frmCaixa_Abertura: TfrmCaixa_Abertura
         Height = 45
         Align = alBottom
         BevelOuter = bvNone
-        Color = 5460819
+        Color = clHighlight
         ParentBackground = False
         TabOrder = 1
         object bt_ok: TButton
-          Left = 22
-          Top = 6
+          Left = 254
+          Top = 2
           Width = 103
           Height = 37
           Caption = 'C&onfirmar'
@@ -729,10 +730,10 @@ object frmCaixa_Abertura: TfrmCaixa_Abertura
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
-    Fill.ColorMirror = clNone
-    Fill.ColorMirrorTo = clNone
+    Fill.ColorMirror = clHighlight
+    Fill.ColorMirrorTo = clHighlight
     Fill.GradientType = gtSolid
     Fill.GradientMirrorType = gtSolid
     Fill.BorderColor = clNone
@@ -745,14 +746,15 @@ object frmCaixa_Abertura: TfrmCaixa_Abertura
     Align = alTop
     TabOrder = 2
     ShowExpander = False
+    ExpanderBorderColor = clHighlight
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
-      Left = 59
-      Top = 14
+      Left = 255
+      Top = 10
       Width = 171
       Height = 23
       Caption = 'Abertura de Caixa'
@@ -765,7 +767,7 @@ object frmCaixa_Abertura: TfrmCaixa_Abertura
       Transparent = True
     end
     object AdvMetroButton1: TAdvMetroButton
-      Left = -3
+      Left = 614
       Top = 0
       Width = 56
       Height = 48

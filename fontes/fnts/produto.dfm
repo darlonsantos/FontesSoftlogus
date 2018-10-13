@@ -14181,8 +14181,8 @@ object frmproduto: Tfrmproduto
       Transparent = True
     end
     object AdvMetroButton1: TAdvMetroButton
-      Left = 2
-      Top = 2
+      Left = 873
+      Top = 1
       Width = 49
       Height = 45
       Appearance.PictureColor = clWhite

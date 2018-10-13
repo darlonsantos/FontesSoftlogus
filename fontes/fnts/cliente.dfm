@@ -1940,7 +1940,7 @@ object frmcliente: Tfrmcliente
             'SP'
             'SE'
             'TO')
-          ItemIndex = 1
+          ItemIndex = 3
           Sorted = False
           TabOrder = 8
           UnboundDataType = wwDefault
@@ -2023,7 +2023,6 @@ object frmcliente: Tfrmcliente
             ParentFont = False
             ShowButton = False
             TabOrder = 1
-            Value = 1000.000000000000000000
             DecimalPlacesAlwaysShown = False
             OnEnter = DBEdit1Enter
             OnExit = DBEdit1Exit
@@ -2512,7 +2511,6 @@ object frmcliente: Tfrmcliente
                 'AC'
                 'RR'
                 'RO')
-              ItemIndex = 14
               Sorted = False
               TabOrder = 1
               UnboundDataType = wwDefault
@@ -2660,7 +2658,6 @@ object frmcliente: Tfrmcliente
             NumGlyphs = 2
             ShowButton = False
             TabOrder = 1
-            Value = 1000.000000000000000000
             DecimalPlacesAlwaysShown = False
             OnEnter = DBEdit1Enter
             OnExit = DBEdit1Exit
@@ -2996,7 +2993,7 @@ object frmcliente: Tfrmcliente
           object btnButBuscar: TBitBtn
             Left = 500
             Top = 144
-            Width = 121
+            Width = 115
             Height = 42
             Caption = 'Consultar'
             Font.Charset = DEFAULT_CHARSET
@@ -3297,8 +3294,8 @@ object frmcliente: Tfrmcliente
           end
         end
         object PNLcpf: TPanel
-          Left = 144
-          Top = 15
+          Left = -580
+          Top = 2
           Width = 636
           Height = 241
           BevelInner = bvRaised
@@ -7099,8 +7096,6 @@ object frmcliente: Tfrmcliente
     Color = clHighlight
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 30
-    ExplicitHeight = 475
     object bincluir: TAdvGlowButton
       Left = 29
       Top = 61
@@ -7771,7 +7766,7 @@ object frmcliente: Tfrmcliente
       Top = 9
       Width = 119
       Height = 574
-      Color = clHighlight
+      ParentColor = True
       Visible = False
       ColorHighLight = clHighlight
       ColorShadow = clHighlight
@@ -8939,7 +8934,7 @@ object frmcliente: Tfrmcliente
     Left = 1293
     Top = 360
     Bitmap = {
-      494C01010600080080000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010600080084000F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000001E0000000100200000000000201C
       0000000000000000000000000000000000007AC8EC002CA6DF002AA3DE0028A0
       DC00269DDB00249AD9002297D8001F92D5001A8BD2001584CE00107DCB000C76
@@ -9527,7 +9522,7 @@ object frmcliente: Tfrmcliente
     Left = 1197
     Top = 252
     Bitmap = {
-      494C010116001800680010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101160018006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
