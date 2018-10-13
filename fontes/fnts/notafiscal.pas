@@ -500,6 +500,7 @@ type
     btn_GravarNotaFiscal: TAdvGlowButton;
     btn_CancelarNotaItem: TAdvGlowButton;
     Panel4: TPanel;
+    qrnotafiscal_itemCOMPLEMENTO_PROD: TWideStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure enomeEnter(Sender: TObject);
     procedure enomeExit(Sender: TObject);
@@ -3007,6 +3008,7 @@ begin
     ed_sub_valor.value := qrnotafiscal_item.fieldbyname('ICMS_SUB').AsFloat;
     ed_isenta.value := qrnotafiscal_item.fieldbyname('ISENTO').AsFloat;
     ed_outras.value := qrnotafiscal_item.fieldbyname('OUTRAS').AsFloat;
+    ED_COMPLEMENTO.Lines.Text := qrnotafiscal_item.fieldbyname('COMPLEMENTO_PROD').asstring; //darlon santos
     ed_desconto.value := qrnotafiscal_item.fieldbyname('DESCONTO').AsFloat;
     ed_subtotal.value := qrnotafiscal_item.fieldbyname('SUBTOTAL').AsFloat;
 

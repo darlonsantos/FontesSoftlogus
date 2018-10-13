@@ -12066,6 +12066,10 @@ object frmnotafiscal: Tfrmnotafiscal
       FieldName = 'CEST'
       Size = 7
     end
+    object qrnotafiscal_itemCOMPLEMENTO_PROD: TWideStringField
+      FieldName = 'COMPLEMENTO_PROD'
+      Size = 200
+    end
   end
   object qrreceber: TZQuery
     Connection = frmmodulo.econexao2
