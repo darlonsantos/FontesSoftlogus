@@ -3679,7 +3679,7 @@ begin
           ACBrNFe1.WebServices.ConsultaDPEC.nRegDPEC + ' ' +
           DateTimeToStr(ACBrNFe1.WebServices.ConsultaDPEC.dhRegDPEC);
      /end; }
-      ACBrNFe1.NotasFiscais.Imprimir;
+           ACBrNFe1.NotasFiscais.Imprimir;
        ACBrNFe1.NotasFiscais.Imprimirpdf;
     end
     else

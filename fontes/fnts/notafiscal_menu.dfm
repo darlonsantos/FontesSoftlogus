@@ -3787,7 +3787,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 944
     Top = 96
     Bitmap = {
-      494C010171007300AC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010171007300B40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000040000000D0010000010020000000000000D0
       010000000000000000000000000000000000000000003E3E3E0017171700FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
@@ -8730,7 +8730,7 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Left = 968
     Top = 56
     Bitmap = {
-      494C010109000B00AC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010109000B00B40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10890,8 +10890,8 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     Configuracoes.WebServices.AjustaAguardaConsultaRet = True
     Configuracoes.WebServices.QuebradeLinha = '|'
     DANFE = ACBrNFeDANFEFR1
-    Left = 307
-    Top = 321
+    Left = 403
+    Top = 417
   end
   object qrNFE_Cliente: TZQuery
     Connection = frmmodulo.econexao2
@@ -11398,8 +11398,8 @@ object frmnotafiscal_menu: Tfrmnotafiscal_menu
     IncorporarBackgroundPdf = True
     IncorporarFontesPdf = True
     ImprimirDadosDocReferenciados = True
-    Left = 620
-    Top = 394
+    Left = 560
+    Top = 362
   end
   object qrcompl: TZQuery
     Connection = frmmodulo.econexao2

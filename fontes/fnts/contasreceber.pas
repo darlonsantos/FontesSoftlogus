@@ -413,7 +413,6 @@ type
     qrproduto_movLANCADO: TIntegerField;
     qrproduto_movVENCIMENTO: TDateField;
     qrservicoDATA: TDateField;
-    bfechar: TAdvMetroButton;
     bincluir: TAdvGlowMenuButton;
     breceber: TAdvGlowButton;
     BGRAVARbliquidar: TAdvGlowButton;
@@ -423,12 +422,16 @@ type
     BGRAVARbrelatorios: TAdvGlowButton;
     BGRAVAR3: TAdvGlowButton;
     BGRAVARbrenegociar: TAdvGlowButton;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label52: TLabel;
+    btnSair: TAdvMetroButton;
+    AdvSmoothExpanderPanel2: TAdvSmoothExpanderPanel;
+    bfechar: TButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure qrcontasreceberCalcFields(DataSet: TDataSet);
     procedure bfechar_legendaClick(Sender: TObject);
     procedure wwDBGrid1TitleButtonClick(Sender: TObject; AFieldName: String);
-    procedure bfecharClick(Sender: TObject);
     procedure breceberClick(Sender: TObject);
     procedure BGRAVARbliquidarClick(Sender: TObject);
     procedure BGRAVARbexcluirClick(Sender: TObject);
@@ -481,6 +484,8 @@ type
     procedure bt_receber001Click(Sender: TObject);
     procedure bt_receber002Click(Sender: TObject);
     procedure bt_receber003Click(Sender: TObject);
+    procedure bfecharClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
   private
     procedure VerificaEmissor;
     procedure geraboleto;
@@ -756,34 +761,6 @@ begin
   if AFieldName = 'situacao2' then
   begin
     button1Click(frmcontasreceber);
-  end;
-end;
-
-procedure Tfrmcontasreceber.bfecharClick(Sender: TObject);
-begin
-  if bfechar.caption = 'ESC | Sair' then
-    close;
-  if bfechar.caption = 'ESC | Voltar' then
-  begin
-    qrcontasreceber.close;
-    qrcontasreceber.SQL.CLEAR;
-    qrcontasreceber.SQL.ADD
-      ('select * from c000049 where codcliente = ''nenhum''');
-    qrcontasreceber.Open;
-    QRCr.Open;
-    while QRCr.RecordCount > 0 do
-      QRCr.Delete;
-    ptampa_recebimento.top := 0;
-    ptampa_recebimento.Left := 0;
-    ptampa_produto.top := 0;
-    ptampa_produto.Left := 0;
-    roriginal.Value := 0;
-    rpago.Value := 0;
-    rvalor.Value := 0;
-    rjuro.Value := 0;
-    rtotal.Value := 0;
-    bfechar.caption := 'ESC | Sair';
-    edit1.setfocus;
   end;
 end;
 
@@ -1929,6 +1906,11 @@ begin
 
 end;
 
+procedure Tfrmcontasreceber.btnSairClick(Sender: TObject);
+begin
+close;
+end;
+
 procedure Tfrmcontasreceber.bt_receber001Click(Sender: TObject);
 begin
   PageView1.ActivePageIndex := 0;
@@ -2134,6 +2116,34 @@ begin
 
   plegenda.visible := TRUE;
   bfechar_legenda.setfocus;
+end;
+
+procedure Tfrmcontasreceber.bfecharClick(Sender: TObject);
+begin
+ if bfechar.caption = 'ESC | Sair' then
+     close;
+  if bfechar.caption = 'ESC | Voltar' then
+  begin
+    qrcontasreceber.close;
+    qrcontasreceber.SQL.CLEAR;
+    qrcontasreceber.SQL.ADD
+      ('select * from c000049 where codcliente = ''nenhum''');
+    qrcontasreceber.Open;
+    QRCr.Open;
+    while QRCr.RecordCount > 0 do
+      QRCr.Delete;
+    ptampa_recebimento.top := 0;
+    ptampa_recebimento.Left := 0;
+    ptampa_produto.top := 0;
+    ptampa_produto.Left := 0;
+    roriginal.Value := 0;
+    rpago.Value := 0;
+    rvalor.Value := 0;
+    rjuro.Value := 0;
+    rtotal.Value := 0;
+     bfechar.caption := 'ESC | Sair';
+    edit1.setfocus;
+  end;
 end;
 
 procedure Tfrmcontasreceber.C1Click(Sender: TObject);

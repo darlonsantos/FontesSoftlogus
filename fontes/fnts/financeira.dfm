@@ -4,7 +4,7 @@ object frmFinanceira: TfrmFinanceira
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'FINANCEIRA | Movimento'
-  ClientHeight = 491
+  ClientHeight = 494
   ClientWidth = 904
   Color = 11429670
   Font.Charset = ANSI_CHARSET
@@ -21,7 +21,7 @@ object frmFinanceira: TfrmFinanceira
   TextHeight = 13
   object Bevel1: TBevel
     Left = 0
-    Top = 0
+    Top = 48
     Width = 904
     Height = 0
     Align = alTop
@@ -34,7 +34,7 @@ object frmFinanceira: TfrmFinanceira
     Width = 782
     Height = 47
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clWhite
     ParentBackground = False
     TabOrder = 0
     object Label1: TLabel
@@ -957,8 +957,8 @@ object frmFinanceira: TfrmFinanceira
     end
   end
   object grid: TwwDBGrid
-    Left = -1
-    Top = 95
+    Left = -2
+    Top = 97
     Width = 782
     Height = 289
     Selected.Strings = (
@@ -1171,7 +1171,7 @@ object frmFinanceira: TfrmFinanceira
     Width = 782
     Height = 26
     BevelOuter = bvNone
-    Color = 5460819
+    Color = clHighlight
     Enabled = False
     ParentBackground = False
     TabOrder = 4
@@ -1221,13 +1221,13 @@ object frmFinanceira: TfrmFinanceira
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = clBlack
-    Fill.ColorTo = clNone
-    Fill.ColorMirror = clNone
-    Fill.ColorMirrorTo = clNone
+    Fill.Color = clHighlight
+    Fill.ColorTo = clHighlight
+    Fill.ColorMirror = clHighlight
+    Fill.ColorMirrorTo = clHighlight
     Fill.GradientType = gtSolid
     Fill.GradientMirrorType = gtSolid
-    Fill.BorderColor = clNone
+    Fill.BorderColor = clHighlight
     Fill.BorderWidth = 0
     Fill.Rounding = 0
     Fill.ShadowColor = clNone
@@ -1240,10 +1240,12 @@ object frmFinanceira: TfrmFinanceira
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitLeft = -1
+    ExplicitTop = -2
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
-      Left = 59
+      Left = 299
       Top = 14
       Width = 247
       Height = 23
@@ -1257,7 +1259,7 @@ object frmFinanceira: TfrmFinanceira
       Transparent = True
     end
     object AdvMetroButton1: TAdvMetroButton
-      Left = -3
+      Left = 845
       Top = 0
       Width = 56
       Height = 48
