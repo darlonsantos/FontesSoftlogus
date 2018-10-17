@@ -83,6 +83,7 @@ type
     qrServidor: TUniQuery;
     qrServidor_Tabela: TUniQuery;
     InterBaseUniProvider1: TInterBaseUniProvider;
+    AdvMetroButton1: TAdvMetroButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -99,6 +100,7 @@ type
     procedure AdvGlowButton3Click(Sender: TObject);
     procedure AdvGlowButton4Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure AdvMetroButton1Click(Sender: TObject);
   private
     { Private declarations }
     function Cript(Action, Src: string): string;
@@ -2507,6 +2509,11 @@ end;
 procedure TfrmPrincipal.AdvGlowButton4Click(Sender: TObject);
 begin
   PageView1.ActivePageIndex := 0;
+end;
+
+procedure TfrmPrincipal.AdvMetroButton1Click(Sender: TObject);
+begin
+close;
 end;
 
 procedure TfrmPrincipal.AdvMetroButton2Click(Sender: TObject);
