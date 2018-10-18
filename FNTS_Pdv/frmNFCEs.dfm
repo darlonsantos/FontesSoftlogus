@@ -2304,8 +2304,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = 16767411
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 398
-    ExplicitWidth = 1002
     object lbEnvio: TLabel
       Left = 8
       Top = 6
@@ -2332,8 +2330,6 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Color = 12683294
     ParentBackground = False
     TabOrder = 3
-    ExplicitTop = 420
-    ExplicitWidth = 1002
     object lbCancelamento: TLabel
       Left = 8
       Top = 5
@@ -2385,12 +2381,11 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 1002
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label4: TLabel
-      Left = 102
-      Top = 10
+      Left = 338
+      Top = 14
       Width = 326
       Height = 23
       Caption = 'NOTAS FICAIS | Consumidor final'
@@ -2403,8 +2398,8 @@ object frmNotasconsumidor: TfrmNotasconsumidor
       Transparent = True
     end
     object AdvMetroButton1: TAdvMetroButton
-      Left = 2
-      Top = 2
+      Left = 940
+      Top = 3
       Width = 49
       Height = 45
       Appearance.PictureColor = clWhite
@@ -2490,7 +2485,7 @@ object frmNotasconsumidor: TfrmNotasconsumidor
     Left = 588
     Top = 273
     Bitmap = {
-      494C0101020005004C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
