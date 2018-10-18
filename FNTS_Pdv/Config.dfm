@@ -1437,7 +1437,6 @@ object frmConfig: TfrmConfig
     Color = clHighlight
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 489
     object BitBtn1: TBitBtn
       Left = 724
       Top = 118
@@ -5263,8 +5262,6 @@ object frmConfig: TfrmConfig
           Align = alClient
           MultiLine = True
           TabOrder = 0
-          ExplicitLeft = -130
-          ExplicitTop = 95
           object ts1: TTabSheet
             Caption = 'Certificado'
             object grp2: TGroupBox
@@ -6268,9 +6265,6 @@ object frmConfig: TfrmConfig
     Color = clHighlight
     ParentBackground = False
     TabOrder = 2
-    ExplicitLeft = 2
-    ExplicitTop = 1
-    ExplicitWidth = 613
     object bttconf001: TAdvGlowButton
       Left = 17
       Top = 4

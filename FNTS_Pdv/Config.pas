@@ -848,7 +848,8 @@ begin
         qradic_mestre.FIELDBYNAME('SEQUENCIAS').AsInteger := StrToInt(edSequencia.Text);
         qradic_mestre.Post;
       end;
-      Conexao_Servidor.Commit;
+     // Conexao_Servidor.Commit;
+       conexao.Commit;
     end else begin
       qradic_mestre.Insert;
       qradic_mestre.FIELDBYNAME('CODIGO').AsString := '915';
