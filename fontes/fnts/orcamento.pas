@@ -959,6 +959,9 @@ type
     ZQuery1USA_TB_PC: TWideStringField;
     ZQuery1ATIVA: TWideStringField;
     ZQuery1CEST: TWideStringField;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label17: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure qrorcamento_produtoBeforePost(DataSet: TDataSet);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
