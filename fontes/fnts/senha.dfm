@@ -110,9 +110,10 @@ object frmsenha: Tfrmsenha
   end
   object EditUsuario: TEdit
     Left = 27
-    Top = 87
+    Top = 88
     Width = 262
     Height = 21
+    Alignment = taCenter
     Color = 15916445
     Ctl3D = True
     MaxLength = 15
@@ -126,6 +127,7 @@ object frmsenha: Tfrmsenha
     Top = 137
     Width = 262
     Height = 21
+    Alignment = taCenter
     Color = 15916445
     Ctl3D = True
     MaxLength = 10
@@ -443,8 +445,8 @@ object frmsenha: Tfrmsenha
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label4: TLabel
-      Left = 102
-      Top = 10
+      Left = 84
+      Top = 14
       Width = 152
       Height = 23
       Caption = 'TELA DE LOGIN'
@@ -457,8 +459,8 @@ object frmsenha: Tfrmsenha
       Transparent = True
     end
     object AdvMetroButton1: TAdvMetroButton
-      Left = 2
-      Top = 2
+      Left = 266
+      Top = 1
       Width = 49
       Height = 45
       Appearance.PictureColor = clWhite
