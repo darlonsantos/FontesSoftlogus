@@ -65,7 +65,6 @@ type
     dsproduto1: TDataSource;
     AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
     Label53: TLabel;
-    FlowPanel1: TFlowPanel;
     edtOBSItem: TEdit;
     qrprodutoCODIGO: TWideStringField;
     qrprodutoCODBARRA: TWideStringField;
@@ -226,6 +225,7 @@ type
     qrprodutoUSA_TB_PC: TWideStringField;
     qrprodutoATIVA: TWideStringField;
     qrprodutoCEST: TWideStringField;
+    AdvMetroButton1: TAdvMetroButton;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure bcancelarClick(Sender: TObject);
@@ -257,6 +257,7 @@ type
     procedure rdesconto1KeyPress(Sender: TObject; var Key: Char);
     procedure Cancelar1Click(Sender: TObject);
     procedure edtOBSItemKeyPress(Sender: TObject; var Key: Char);
+    procedure AdvMetroButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -282,6 +283,11 @@ uses modulo, principal, venda, venda_grade, venda_serial,
   xloc_produto, ecf, loc_subgrupo,
   orcamento_localizar, xloc_servico, senha, orcamento, orcamento_grade,
   orcamento_serial, tabela_preco;
+
+procedure TfrmOS_item.AdvMetroButton1Click(Sender: TObject);
+begin
+close;
+end;
 
 procedure TfrmOS_item.bcancelarClick(Sender: TObject);
 begin
