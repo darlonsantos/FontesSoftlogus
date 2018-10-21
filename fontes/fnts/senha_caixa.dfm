@@ -69,6 +69,7 @@ object frmsenha_caixa: Tfrmsenha_caixa
     Top = 129
     Width = 220
     Height = 21
+    Alignment = taCenter
     Color = 15916445
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -86,6 +87,7 @@ object frmsenha_caixa: Tfrmsenha_caixa
     Top = 73
     Width = 220
     Height = 21
+    Alignment = taCenter
     Color = 15916445
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -133,8 +135,6 @@ object frmsenha_caixa: Tfrmsenha_caixa
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitLeft = -194
-    ExplicitWidth = 650
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label4: TLabel
@@ -242,8 +242,6 @@ object frmsenha_caixa: Tfrmsenha_caixa
     Color = clHighlight
     ParentBackground = False
     TabOrder = 3
-    ExplicitTop = 208
-    ExplicitWidth = 281
     object button1: TAdvGlowButton
       Left = 43
       Top = 8
