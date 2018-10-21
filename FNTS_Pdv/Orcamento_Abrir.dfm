@@ -280,7 +280,7 @@ object frmOrcamento_Abrir: TfrmOrcamento_Abrir
     Width = 745
     Height = 39
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clWhite
     ParentBackground = False
     TabOrder = 1
     object Label1: TLabel
@@ -388,7 +388,7 @@ object frmOrcamento_Abrir: TfrmOrcamento_Abrir
     Width = 745
     Height = 36
     BevelOuter = bvNone
-    Color = 52377
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 2
     object bt_imprimir: TButton
@@ -436,7 +436,7 @@ object frmOrcamento_Abrir: TfrmOrcamento_Abrir
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
-    Fill.Color = 52377
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -448,23 +448,24 @@ object frmOrcamento_Abrir: TfrmOrcamento_Abrir
     Fill.ShadowColor = clNone
     Fill.ShadowOffset = 0
     Fill.Glow = gmNone
-    Version = '1.1.1.0'
+    Version = '1.1.0.0'
     Align = alTop
     TabOrder = 3
     ShowExpander = False
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
+    ExplicitTop = 2
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
-      Left = 3
-      Top = 19
+      Left = 295
+      Top = 11
       Width = 114
       Height = 23
       Caption = 'Or'#231'amentos'
       Font.Charset = ANSI_CHARSET
-      Font.Color = clBlack
+      Font.Color = clWhite
       Font.Height = -19
       Font.Name = 'Verdana'
       Font.Style = []
@@ -546,13 +547,13 @@ object frmOrcamento_Abrir: TfrmOrcamento_Abrir
         6984AC202E42751297CED7DA93E2B3D973F5D8ABD273F799D45D641A5CCEA1E1
         65B5119A54FB20C0004E7B10B44195D3E70000000049454E44AE426082}
       TabOrder = 0
-      Version = '1.1.2.0'
+      Version = '1.1.1.0'
       OnClick = AdvMetroButton1Click
     end
   end
   object pop_principal: TAdvPopupMenu
     MenuStyler = frmModulo.estilo_menu
-    Version = '2.6.1.1'
+    Version = '2.6.1.0'
     Left = 800
     Top = 384
     object MenuFiscal2: TMenuItem

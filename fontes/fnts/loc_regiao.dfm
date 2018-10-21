@@ -33,6 +33,7 @@ object frmloc_regiao: Tfrmloc_regiao
       'CODIGO'#9'7'#9'C'#243'digo'
       'REGIAO'#9'44'#9'Regi'#227'o')
     IniAttributes.Delimiter = ';;'
+    IniAttributes.UnicodeIniFile = False
     TitleColor = clBtnFace
     FixedCols = 0
     ShowHorzScrollBar = True
@@ -93,7 +94,6 @@ object frmloc_regiao: Tfrmloc_regiao
     ExplicitTop = 270
   end
   object dsregiao: TDataSource
-    DataSet = frmmodulo.qrregiao
     Left = 216
     Top = 144
   end

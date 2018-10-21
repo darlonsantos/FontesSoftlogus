@@ -2884,7 +2884,6 @@ object frmfuncionario: Tfrmfuncionario
     Color = clHighlight
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 440
     object bincluir: TAdvGlowButton
       Left = 70
       Top = 4
@@ -3951,8 +3950,6 @@ object frmfuncionario: Tfrmfuncionario
       ColorShadow = clHighlight
       Align = alClient
       TabOrder = 9
-      ExplicitLeft = 331
-      ExplicitTop = 4
       object bgravar: TAdvGlowButton
         Left = 239
         Top = 2

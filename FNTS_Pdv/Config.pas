@@ -849,7 +849,7 @@ begin
         qradic_mestre.Post;
       end;
      // Conexao_Servidor.Commit;
-       conexao.Commit;
+       conexao.Commit;  // darlon santos
     end else begin
       qradic_mestre.Insert;
       qradic_mestre.FIELDBYNAME('CODIGO').AsString := '915';

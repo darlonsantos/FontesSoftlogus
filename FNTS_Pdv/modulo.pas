@@ -1143,7 +1143,8 @@ begin
       qradic_mestre.Post;
       result := Zerar(IntToStr(frmModulo.qradic_mestre.FIELDBYNAME('sequencias').AsInteger), 6);
     end;
-    Conexao_Servidor.Commit;
+   // Conexao_Servidor.Commit; //
+    conexao.Commit;   // DARLON SANTOS
   end else begin
     showmessage('Não foi possível concluir com a operação!' + #13 +
       'Erro: Código de sequência não encontrado na tabela de códigos.');

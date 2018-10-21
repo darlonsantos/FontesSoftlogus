@@ -50,6 +50,9 @@ type
     qrorcamentoPEND_CHEQUE: TIntegerField;
     qrorcamentoPEND_CARTAO: TIntegerField;
     qrorcamentoNOME_VENDEDOR: TWideStringField;
+    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
+    Label1: TLabel;
+    AdvMetroButton1: TAdvMetroButton;
     procedure Edit1Enter(Sender: TObject);
     procedure Edit1Exit(Sender: TObject);
     procedure Edit1KeyPress(Sender: TObject; var Key: Char);
@@ -193,7 +196,7 @@ begin
   Edit1.setfocus;
   if Self.Tag = 100 then
   begin
-    Panel2.Visible := False;
+   // Panel2.Visible := False;
     qrorcamento.close;
     qrorcamento.sql.clear;
     qrorcamento.sql.add

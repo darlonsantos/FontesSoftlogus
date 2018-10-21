@@ -210,12 +210,12 @@ object frmModulo: TfrmModulo
     Top = 424
   end
   object conexao: TUniConnection
+    AutoCommit = False
     ProviderName = 'InterBase'
     Port = 3050
     Database = 'C:\Softlogus\PDV\BD\DATPDV.FDB'
     Username = 'sysdba'
     Server = 'localhost'
-    Connected = True
     LoginPrompt = False
     Left = 48
     Top = 24
@@ -1449,7 +1449,7 @@ object frmModulo: TfrmModulo
     SQL.Strings = (
       'select * from c000041')
     Left = 872
-    Top = 88
+    Top = 116
     object qrcontacorrenteCODIGO: TStringField
       FieldName = 'CODIGO'
       Required = True
@@ -2786,8 +2786,8 @@ object frmModulo: TfrmModulo
     Connection = Conexao_Servidor
     SQL.Strings = (
       'select * from c000032')
-    Left = 656
-    Top = 136
+    Left = 680
+    Top = 140
     object qrgrade_produtoCODIGO: TStringField
       FieldName = 'CODIGO'
       Required = True
@@ -2956,8 +2956,8 @@ object frmModulo: TfrmModulo
     Connection = Conexao_Servidor
     SQL.Strings = (
       'select * from c000082')
-    Left = 560
-    Top = 136
+    Left = 580
+    Top = 196
     object qrfiscal_modeloCODIGO: TStringField
       FieldName = 'CODIGO'
       Size = 6
@@ -4085,8 +4085,8 @@ object frmModulo: TfrmModulo
         'UBTOTAL, :VALOR_DESCONTO, :VALOR_ACRESCIMO, :VALOR_TOTAL, :CST, ' +
         ':ALIQUOTA, :CANCELADO, :COD_TOTALIZADOR, :TAMANHO, :COR)')
     Connection = conexao
-    Left = 496
-    Top = 192
+    Left = 488
+    Top = 244
     ParamData = <
       item
         DataType = ftString
@@ -4208,8 +4208,8 @@ object frmModulo: TfrmModulo
         'AL, :VALOR_DESCONTO, :VALOR_ACRESCIMO, :VALOR_TOTAL, :CST, :ALIQ' +
         'UOTA, :CANCELADO, :COD_TOTALIZADOR, :TAMANHO, :COR)')
     Connection = conexao
-    Left = 568
-    Top = 192
+    Left = 564
+    Top = 256
     ParamData = <
       item
         DataType = ftString
@@ -4329,8 +4329,8 @@ object frmModulo: TfrmModulo
         'EXECUTE PROCEDURE ST_BICO_MOVIMENTO(:COD_BICO, :DATA, :EF, :VOLU' +
         'ME)')
     Connection = conexao
-    Left = 656
-    Top = 192
+    Left = 660
+    Top = 216
     ParamData = <
       item
         DataType = ftInteger
@@ -4363,8 +4363,8 @@ object frmModulo: TfrmModulo
     SQL.Strings = (
       'EXECUTE PROCEDURE ST_ABASTECIMENTO_CODIGO')
     Connection = conexao
-    Left = 752
-    Top = 192
+    Left = 776
+    Top = 172
     ParamData = <
       item
         DataType = ftInteger
@@ -4382,8 +4382,8 @@ object frmModulo: TfrmModulo
         ', :DATA, :HORA, :COD_PRODUTO, :QTDE, :UNITARIO, :TOTAL, :EI, :EF' +
         ', :SITUACAO, :TANQUE, :NUMERO_ABASTECIMENTO)')
     Connection = conexao
-    Left = 880
-    Top = 192
+    Left = 1076
+    Top = 208
     ParamData = <
       item
         DataType = ftInteger
@@ -4557,7 +4557,7 @@ object frmModulo: TfrmModulo
         'A, :HORA)')
     Connection = conexao
     Left = 144
-    Top = 264
+    Top = 292
     ParamData = <
       item
         DataType = ftString
@@ -4599,8 +4599,8 @@ object frmModulo: TfrmModulo
     SQL.Strings = (
       'EXECUTE PROCEDURE SPCODIGO_DAV')
     Connection = Conexao_Servidor
-    Left = 240
-    Top = 264
+    Left = 236
+    Top = 300
     ParamData = <
       item
         DataType = ftInteger
@@ -4922,7 +4922,7 @@ object frmModulo: TfrmModulo
     SQL.Strings = (
       'select * from c000004')
     Left = 136
-    Top = 342
+    Top = 370
     object ZFilialCODIGO: TStringField
       FieldName = 'CODIGO'
       Required = True
@@ -5393,7 +5393,7 @@ object frmModulo: TfrmModulo
   object old_cdsComandas: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 848
+    Left = 1080
     Top = 328
     object old_cdsComandasID_COMANDA: TStringField
       FieldName = 'ID_COMANDA'
@@ -5406,8 +5406,8 @@ object frmModulo: TfrmModulo
   object cdsComandas: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 728
-    Top = 328
+    Left = 712
+    Top = 360
     object cdsComandasID_COMANDA: TStringField
       FieldName = 'ID_COMANDA'
     end

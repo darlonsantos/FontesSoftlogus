@@ -4,7 +4,7 @@ object frmPrevenda: TfrmPrevenda
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'ATENDIMENTO | Vendas/Or'#231'amentos em Aberto (Pr'#233'-Venda)'
-  ClientHeight = 434
+  ClientHeight = 442
   ClientWidth = 893
   Color = 5460819
   Font.Charset = ANSI_CHARSET
@@ -291,14 +291,18 @@ object frmPrevenda: TfrmPrevenda
     end
   end
   object Panel1: TPanel
-    Left = 780
-    Top = 47
+    Left = 778
+    Top = 48
     Width = 115
-    Height = 435
+    Height = 394
+    Align = alRight
     BevelOuter = bvNone
     Color = 5460819
     ParentBackground = False
     TabOrder = 1
+    ExplicitLeft = 856
+    ExplicitTop = 39
+    ExplicitHeight = 435
     object Label3: TLabel
       Left = 575
       Top = 115

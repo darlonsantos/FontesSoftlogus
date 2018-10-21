@@ -138,8 +138,8 @@ object frmsenha_caixa: Tfrmsenha_caixa
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label4: TLabel
-      Left = 102
-      Top = 10
+      Left = 80
+      Top = 13
       Width = 130
       Height = 23
       Caption = 'LOGIN CAIXA'
@@ -152,8 +152,8 @@ object frmsenha_caixa: Tfrmsenha_caixa
       Transparent = True
     end
     object AdvMetroButton1: TAdvMetroButton
-      Left = 2
-      Top = 2
+      Left = 235
+      Top = 1
       Width = 49
       Height = 45
       Appearance.PictureColor = clWhite

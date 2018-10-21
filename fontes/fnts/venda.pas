@@ -727,9 +727,10 @@ begin
   frmorcamento_localizar.showmodal;
 
   if frmmodulo.cod_orcamento = '' then
-    exit;
-
-  if frmmodulo.cod_orcamento <> '' then
+    BEGIN
+        exit;
+   END
+    else  //DARLON SANTOS
   begin
     qrapoio2.close;
     qrapoio2.sql.Clear;

@@ -5,7 +5,7 @@ object frmOrcamento: TfrmOrcamento
   BorderStyle = bsNone
   Caption = 'Or'#231'amentos'
   ClientHeight = 724
-  ClientWidth = 977
+  ClientWidth = 972
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -1666,7 +1666,7 @@ object frmOrcamento: TfrmOrcamento
   object Panel6: TPanel
     Left = 0
     Top = 643
-    Width = 977
+    Width = 972
     Height = 81
     Align = alBottom
     BevelOuter = bvNone
@@ -1674,6 +1674,7 @@ object frmOrcamento: TfrmOrcamento
     ParentBackground = False
     TabOrder = 7
     ExplicitTop = 744
+    ExplicitWidth = 977
     object bincluir: TAdvGlowButton
       Left = 195
       Top = 14
@@ -2855,7 +2856,7 @@ object frmOrcamento: TfrmOrcamento
     object pgravar: TFlatPanel
       Left = 0
       Top = 0
-      Width = 977
+      Width = 972
       Height = 81
       ParentColor = True
       Visible = False
@@ -2865,6 +2866,7 @@ object frmOrcamento: TfrmOrcamento
       TabOrder = 9
       ExplicitLeft = 843
       ExplicitTop = -14
+      ExplicitWidth = 977
       ExplicitHeight = 98
       object bgravar: TAdvGlowButton
         Left = 365
@@ -3181,7 +3183,7 @@ object frmOrcamento: TfrmOrcamento
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 977
+    Width = 972
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET

@@ -6271,6 +6271,7 @@ begin
     frmtOffLine := teOffLine;
 
   vAux := frmmodulo.codifica('915');
+
   vNumNFCe := StrToInt(vAux);
   vSincrono := '1';
   vNumLote := vAux;
