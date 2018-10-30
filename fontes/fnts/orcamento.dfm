@@ -382,7 +382,7 @@ object frmOrcamento: TfrmOrcamento
           Width = 598
           Height = 178
           Caption = 'F9 | Observa'#231#245'es'
-          Color = clSilver
+          Color = clWhite
           DisplayMode = tdGlyph
           ImageIndex = 0
           Margin = 0
