@@ -4,7 +4,7 @@ object frmPrincipal: TfrmPrincipal
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsNone
   Caption = 'Monitor de vendas'
-  ClientHeight = 507
+  ClientHeight = 549
   ClientWidth = 718
   Color = clWhite
   Font.Charset = ANSI_CHARSET
@@ -1429,7 +1429,7 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object Panel2: TPanel
     Left = 0
-    Top = 470
+    Top = 512
     Width = 718
     Height = 37
     Align = alBottom
@@ -1437,7 +1437,7 @@ object frmPrincipal: TfrmPrincipal
     Color = clHighlight
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 474
+    ExplicitTop = 470
     object Button1: TButton
       Left = 783
       Top = 6
@@ -1504,8 +1504,6 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
       TabOrder = 0
       Visible = False
-      ExplicitTop = -4
-      ExplicitHeight = 41
     end
   end
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
@@ -1545,7 +1543,6 @@ object frmPrincipal: TfrmPrincipal
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitTop = 1
     TMSStyle = 0
     OldHeight = 59.000000000000000000
     object Label17: TLabel
@@ -1566,8 +1563,6 @@ object frmPrincipal: TfrmPrincipal
       ParentColor = False
       ParentFont = False
       Transparent = True
-      ExplicitLeft = 171
-      ExplicitTop = 11
       ExplicitWidth = 353
     end
     object AdvMetroButton1: TAdvMetroButton
@@ -1653,13 +1648,13 @@ object frmPrincipal: TfrmPrincipal
     Left = 621
     Top = 59
     Width = 97
-    Height = 411
+    Height = 453
     Align = alRight
     BevelOuter = bvNone
     Color = clHighlight
     ParentBackground = False
     TabOrder = 3
-    ExplicitHeight = 415
+    ExplicitHeight = 411
     object AdvGlowButton1: TAdvGlowButton
       Left = -1
       Top = 129
@@ -2090,7 +2085,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 59
     Width = 621
-    Height = 411
+    Height = 453
     ActivePage = PageSheet1
     ActivePageIndex = 0
     AdaptiveColors = True
@@ -2106,12 +2101,12 @@ object frmPrincipal: TfrmPrincipal
     TabOrder = 1
     TabStyle = tsWhidbey
     TopIndent = 3
-    ExplicitHeight = 415
+    ExplicitHeight = 411
     object PageSheet1: TPageSheet
       Left = 0
       Top = 0
       Width = 621
-      Height = 411
+      Height = 453
       Caption = 'Principal'
       Color = clWhite
       DisplayMode = tdGlyph
@@ -2122,7 +2117,7 @@ object frmPrincipal: TfrmPrincipal
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitHeight = 381
+      ExplicitHeight = 411
       object Label1: TLabel
         Left = 128
         Top = 451
@@ -2192,7 +2187,7 @@ object frmPrincipal: TfrmPrincipal
         end
       end
       object barra: TProgressBar
-        Left = 13
+        Left = 0
         Top = 412
         Width = 625
         Height = 17
@@ -2330,7 +2325,7 @@ object frmPrincipal: TfrmPrincipal
       Left = 0
       Top = 0
       Width = 621
-      Height = 411
+      Height = 453
       Caption = 'Log'
       Color = 15916445
       DisplayMode = tdGlyph
@@ -2341,12 +2336,12 @@ object frmPrincipal: TfrmPrincipal
       TabColor = clWindow
       TabWidth = 0
       TransparentColor = clNone
-      ExplicitHeight = 415
+      ExplicitHeight = 411
       object Memo1: TMemo
         Left = 0
         Top = 0
         Width = 621
-        Height = 411
+        Height = 453
         Align = alClient
         Color = 15916445
         Font.Charset = ANSI_CHARSET
@@ -2357,7 +2352,7 @@ object frmPrincipal: TfrmPrincipal
         ParentFont = False
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitHeight = 415
+        ExplicitHeight = 411
       end
     end
   end
@@ -2375,7 +2370,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 560
     Top = 216
     Bitmap = {
-      494C010102003400680010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020034006C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000066CCCC0000000000000000000000000000000000000000000000
@@ -2518,7 +2513,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 676
     Top = 102
     Bitmap = {
-      494C01010A000D00480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010A000D004C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

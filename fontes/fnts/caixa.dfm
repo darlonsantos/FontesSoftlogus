@@ -4221,11 +4221,11 @@ object frmcaixa: Tfrmcaixa
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
-      Left = 388
-      Top = 13
-      Width = 148
+      Left = 323
+      Top = 3
+      Width = 245
       Height = 25
-      Caption = 'CAIXA'
+      Caption = 'CONTROLE DE CAIXA'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -21
@@ -4235,7 +4235,7 @@ object frmcaixa: Tfrmcaixa
       Transparent = True
     end
     object bfechar: TAdvMetroButton
-      Left = -3
+      Left = 819
       Top = 0
       Width = 56
       Height = 48
@@ -4476,7 +4476,7 @@ object frmcaixa: Tfrmcaixa
     Left = 1180
     Top = 772
     Bitmap = {
-      494C01014F005400380010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01014F0054003C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004001000001002000000000000040
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

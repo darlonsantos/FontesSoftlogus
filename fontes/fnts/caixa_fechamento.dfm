@@ -4,9 +4,9 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
   BorderIcons = [biSystemMenu]
   BorderStyle = bsNone
   Caption = 'CAIXA GERAL | Fechamento'
-  ClientHeight = 354
-  ClientWidth = 771
-  Color = clOlive
+  ClientHeight = 418
+  ClientWidth = 652
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -20,19 +20,23 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
   PixelsPerInch = 96
   TextHeight = 13
   object Panel4: TPanel
-    Left = 634
-    Top = 48
-    Width = 120
-    Height = 327
+    Left = 0
+    Top = 344
+    Width = 652
+    Height = 59
+    Align = alBottom
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 0
+    ExplicitTop = 624
+    ExplicitWidth = 771
     object bgravar: TAdvGlowButton
-      Left = 14
-      Top = 68
-      Width = 85
-      Height = 63
+      Left = 0
+      Top = 0
+      Width = 652
+      Height = 59
+      Align = alClient
       Caption = 'Confirmar'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -153,6 +157,10 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
       Appearance.GradientMirrorDown = ggVertical
       Appearance.GradientChecked = ggVertical
       Layout = blGlyphTop
+      ExplicitLeft = 14
+      ExplicitTop = 68
+      ExplicitWidth = 85
+      ExplicitHeight = 63
     end
   end
   object Panel5: TPanel
@@ -161,7 +169,7 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
     Width = 618
     Height = 293
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clWhite
     ParentBackground = False
     TabOrder = 1
     object ldata: TLabel
@@ -216,7 +224,7 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
       Height = 293
       Align = alLeft
       BevelOuter = bvNone
-      Color = clSilver
+      Color = clWhite
       ParentBackground = False
       TabOrder = 0
       object Panel7: TPanel
@@ -227,15 +235,16 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
         Align = alTop
         BevelInner = bvLowered
         Caption = 'Situa'#231#227'o dos Caixas'
-        Color = clSilver
+        Color = clWhite
         Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = [fsBold]
         ParentBackground = False
         ParentFont = False
         TabOrder = 0
+        ExplicitLeft = 2
       end
       object wwDBGrid1: TwwDBGrid
         Left = 0
@@ -278,7 +287,7 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
         Height = 43
         Caption = 'Fechar Caixa Individual'
         Font.Charset = ANSI_CHARSET
-        Font.Color = clWhite
+        Font.Color = clBlack
         Font.Height = -11
         Font.Name = 'Verdana'
         Font.Style = [fsBold]
@@ -428,7 +437,7 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
       Width = 298
       Height = 202
       BevelOuter = bvNone
-      Color = clSilver
+      Color = clWhite
       ParentBackground = False
       TabOrder = 2
       object Label3: TLabel
@@ -514,7 +523,7 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
         Align = alTop
         BevelOuter = bvNone
         Caption = 'Resumo do Movimento'
-        Color = clSilver
+        Color = clHighlight
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
         Font.Height = -15
@@ -638,7 +647,7 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
   object AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel
     Left = 0
     Top = 0
-    Width = 771
+    Width = 652
     Height = 48
     Cursor = crDefault
     Caption.HTMLFont.Charset = DEFAULT_CHARSET
@@ -652,6 +661,7 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
     Caption.Font.Name = 'Tahoma'
     Caption.Font.Style = []
     Caption.Line = False
+    Fill.Color = clHighlight
     Fill.ColorTo = clNone
     Fill.ColorMirror = clNone
     Fill.ColorMirrorTo = clNone
@@ -670,11 +680,11 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitWidth = 765
+    ExplicitWidth = 771
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label53: TLabel
-      Left = 59
+      Left = 255
       Top = 14
       Width = 269
       Height = 23
@@ -688,7 +698,7 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
       Transparent = True
     end
     object bfechar: TAdvMetroButton
-      Left = -3
+      Left = 592
       Top = 0
       Width = 56
       Height = 48
@@ -770,39 +780,39 @@ object frmcaixa_fechamento: Tfrmcaixa_fechamento
     Left = 0
     Top = 48
     Width = 16
-    Height = 291
+    Height = 296
     Align = alLeft
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 3
-    ExplicitHeight = 290
+    ExplicitHeight = 291
   end
   object Panel9: TPanel
-    Left = 754
+    Left = 635
     Top = 48
     Width = 17
-    Height = 291
+    Height = 296
     Align = alRight
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 4
-    ExplicitLeft = 748
-    ExplicitHeight = 290
+    ExplicitLeft = 754
+    ExplicitHeight = 291
   end
   object Panel10: TPanel
     Left = 0
-    Top = 339
-    Width = 771
+    Top = 403
+    Width = 652
     Height = 15
     Align = alBottom
     BevelOuter = bvNone
-    Color = clSilver
+    Color = clHighlight
     ParentBackground = False
     TabOrder = 5
-    ExplicitTop = 338
-    ExplicitWidth = 765
+    ExplicitTop = 339
+    ExplicitWidth = 771
   end
   object qrcaixa_operador: TZQuery
     Connection = frmmodulo.Conexao
