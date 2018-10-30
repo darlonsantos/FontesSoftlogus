@@ -695,7 +695,7 @@ object frmOrcamento: TfrmOrcamento
           'CODPRODUTO;CustomEdit;eproduto;F'
           'PRODUTO;CustomEdit;comboproduto;F'
           'QTDE;CustomEdit;eqtde;F'
-          'UNITARIO;CustomEdit;eunitario;F'
+          'UNITARIO;CustomEdit;eunitario;T'
           'DESCONTO;CustomEdit;edesconto;F'
           'ACRESCIMO;CustomEdit;eacrescimo;F'
           'TOTAL;CustomEdit;etotal;F')
@@ -1673,8 +1673,6 @@ object frmOrcamento: TfrmOrcamento
     Color = clHighlight
     ParentBackground = False
     TabOrder = 7
-    ExplicitTop = 744
-    ExplicitWidth = 977
     object bincluir: TAdvGlowButton
       Left = 195
       Top = 14
@@ -2864,10 +2862,6 @@ object frmOrcamento: TfrmOrcamento
       ColorShadow = clHighlight
       Align = alClient
       TabOrder = 9
-      ExplicitLeft = 843
-      ExplicitTop = -14
-      ExplicitWidth = 977
-      ExplicitHeight = 98
       object bgravar: TAdvGlowButton
         Left = 365
         Top = 13
@@ -3216,9 +3210,6 @@ object frmOrcamento: TfrmOrcamento
     ExpanderColor = 16445929
     ExpanderDownColor = 15587527
     ExpanderHoverColor = 11196927
-    ExplicitLeft = 4
-    ExplicitTop = 4
-    ExplicitWidth = 650
     TMSStyle = 0
     OldHeight = 48.000000000000000000
     object Label17: TLabel
