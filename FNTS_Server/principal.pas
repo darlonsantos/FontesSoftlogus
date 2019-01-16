@@ -15,7 +15,6 @@ type
   TfrmPrincipal = class(TForm)
     icone: TRzTrayIcon;
     ImageList1: TImageList;
-    Panel2: TPanel;
     Button1: TButton;
     ImageList2: TImageList;
   //  conexao_servidor: TIBCConnection;
@@ -34,13 +33,6 @@ type
     Button2: TButton;
     Button3: TButton;
     Atualizaragora1: TMenuItem;
-   // qrCrediario: TIBCQuery;
-   // qrMestre: TIBCQuery;
-   // qrpdv2: TIBCQuery;
-   // qrpdv3: TIBCQuery;
- //   qrForma: TIBCQuery;
-  //  qrconfig: TIBCQuery;
- //   qrcaixa_mov: TIBCQuery;
     pnlAviso: TPanel;
     xpmnfst1: TXPManifest;
     PageView1: TPageView;
@@ -51,8 +43,6 @@ type
     Label3: TLabel;
     ed_server: TEdit;
     ed_server_database: TEdit;
-    Label1: TLabel;
-    barra: TProgressBar;
     GroupBox1: TGroupBox;
     grid: TNextGrid;
     NxNumberColumn2: TNxNumberColumn;
@@ -61,13 +51,6 @@ type
     NxImageColumn1: TNxImageColumn;
     NxCheckBoxColumn1: TNxCheckBoxColumn;
     Memo1: TMemo;
-    AdvSmoothExpanderPanel1: TAdvSmoothExpanderPanel;
-    Label17: TLabel;
-    Panel1: TPanel;
-    AdvGlowButton1: TAdvGlowButton;
-    AdvGlowButton2: TAdvGlowButton;
-    AdvGlowButton3: TAdvGlowButton;
-    AdvGlowButton4: TAdvGlowButton;
     N1: TMenuItem;
     conexao_servidor: TUniConnection;
     conexao_pdv: TUniConnection;
@@ -83,7 +66,6 @@ type
     qrServidor: TUniQuery;
     qrServidor_Tabela: TUniQuery;
     InterBaseUniProvider1: TInterBaseUniProvider;
-    AdvMetroButton1: TAdvMetroButton;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -96,11 +78,9 @@ type
     procedure Button3Click(Sender: TObject);
     procedure iconeLButtonDblClick(Sender: TObject);
     procedure AdvMetroButton2Click(Sender: TObject);
-    procedure AdvGlowButton1Click(Sender: TObject);
-    procedure AdvGlowButton3Click(Sender: TObject);
-    procedure AdvGlowButton4Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure AdvMetroButton1Click(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
   private
     { Private declarations }
     function Cript(Action, Src: string): string;
@@ -1181,8 +1161,8 @@ begin
                             qrpdv.sql.add('CFOP,');
                             qrpdv.sql.add('NCM,');
                             qrpdv.sql.add('CSOSN,');
-                            qrpdv.sql.add('CEST'); //CEST
-
+                            qrpdv.sql.add('CEST,'); //CEST   TIPOPRODUTO
+                             qrpdv.sql.add('TIPOPRODUTO');
 
                             qrpdv.sql.add(') values (');
 
@@ -1205,7 +1185,8 @@ begin
                             qrpdv.sql.add(':CFOP,');
                             qrpdv.sql.add(':NCM,');
                             qrpdv.sql.add(':CSOSN,');
-                             qrpdv.sql.add(':CEST');
+                            qrpdv.sql.add(':CEST,');
+                            qrpdv.sql.add(':TIPOPRODUTO');
 
                             qrpdv.sql.add(')');
 
@@ -1221,7 +1202,7 @@ begin
                             qrpdv.parambyname('ALIQUOTA').asfloat := qrservidor_tabela.fieldbyname('aliquota').asfloat;
                             qrpdv.parambyname('DESCONTO_MAXIMO').asfloat := 0;
                             qrpdv.parambyname('SITUACAO').AsInteger := 0;
-                            qrpdv.parambyname('CFOP').AsString := qrservidor_tabela.fieldbyname('IND_CFOP_NFCE').asstring;;
+                            qrpdv.parambyname('CFOP').AsString := qrservidor_tabela.fieldbyname('IND_CFOP_VENDA_DENTRO').asstring;;
 
                             scst := qrservidor_tabela.fieldbyname('cst').asstring;
 
@@ -1244,7 +1225,9 @@ begin
                             qrpdv.parambyname('IPPT').asstring := qrservidor_tabela.fieldbyname('IPPT').AsString;
                             qrpdv.parambyname('NCM').asstring := qrservidor_tabela.fieldbyname('CLASSIFICACAO_FISCAL').AsString;
                             qrpdv.parambyname('CSOSN').asstring := qrservidor_tabela.fieldbyname('CSOSN').AsString;
-                             qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
+                            qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
+                            qrpdv.parambyname('TIPOPRODUTO').asstring := qrservidor_tabela.fieldbyname('TIPO').AsString;
+
                             qrpdv.ExecSQL;
                           except
                             on E: Exception do
@@ -1307,7 +1290,9 @@ begin
                               qrpdv.sql.add('CFOP = :CFOP,');
                               qrpdv.sql.add('NCM = :NCM,');
                               qrpdv.sql.add('CSOSN = :CSOSN,');
-                              qrpdv.sql.add('CEST = :CEST');
+                              qrpdv.sql.add('CEST = :CEST,');
+                              qrpdv.sql.add('TIPOPRODUTO = :TIPOPRODUTO');
+
                               qrpdv.sql.add('where codigo = :codigo');
 
                               qrpdv.parambyname('CODIGO').asinteger := strtoint(qrservidor_tabela.fieldbyname('codigo').asstring);
@@ -1322,7 +1307,7 @@ begin
                               qrpdv.parambyname('ALIQUOTA').asfloat := qrservidor_tabela.fieldbyname('aliquota').asfloat;
                               qrpdv.parambyname('DESCONTO_MAXIMO').asfloat := 0;
                               qrpdv.parambyname('SITUACAO').AsInteger := qrservidor_tabela.fieldbyname('SITUACAO').AsInteger;
-                              qrpdv.parambyname('CFOP').AsString := qrservidor_tabela.fieldbyname('IND_CFOP_NFCE').asstring;
+                              qrpdv.parambyname('CFOP').AsString := qrservidor_tabela.fieldbyname('IND_CFOP_VENDA_DENTRO').asstring;
 
                               scst := qrservidor_tabela.fieldbyname('cst').asstring;
 
@@ -1345,7 +1330,8 @@ begin
                               qrpdv.parambyname('IPPT').asstring := qrservidor_tabela.fieldbyname('IPPT').AsString;
                               qrpdv.parambyname('NCM').asstring := qrservidor_tabela.fieldbyname('CLASSIFICACAO_FISCAL').AsString;
                               qrpdv.parambyname('CSOSN').asstring := qrservidor_tabela.fieldbyname('CSOSN').AsString;
-                               qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
+                              qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
+                              qrpdv.parambyname('TIPOPRODUTO').asstring := qrservidor_tabela.fieldbyname('TIPO').AsString;
                               qrpdv.ExecSQL;
                             except
                               memo1.lines.add('PDV' + grid.CELL[0, I].ASSTRING + ' ERRO - ALT - PRODUTO - ' + qrservidor.fieldbyname('codregistro').asstring);
@@ -1379,8 +1365,9 @@ begin
                               qrpdv.sql.add('CFOP,');
                               qrpdv.sql.add('NCM,');
                               qrpdv.sql.add('CSOSN,');
-                              qrpdv.sql.add('CEST');
-                              qrpdv.sql.add('SITUACAO');
+                              qrpdv.sql.add('CEST,');
+                              qrpdv.sql.add('SITUACAO,');
+                              qrpdv.sql.add('TIPOPRODUTO');
 
 
 
@@ -1403,9 +1390,10 @@ begin
                               qrpdv.sql.add(':IPPT,');
                               qrpdv.sql.add(':CFOP,');
                               qrpdv.sql.add(':NCM,');
-                              qrpdv.sql.add(':CSOSN');
-                              qrpdv.sql.add(':CEST');
-                              qrpdv.sql.add(':SITUACAO');
+                              qrpdv.sql.add(':CSOSN,');
+                              qrpdv.sql.add(':CEST,');
+                              qrpdv.sql.add(':SITUACAO,');
+                              qrpdv.sql.add(':TIPOPRODUTO');
 
                               qrpdv.sql.add(')');
 
@@ -1445,6 +1433,7 @@ begin
                               qrpdv.parambyname('ESTOQUE').asfloat := qrservidor_tabela.fieldbyname('estoque_atual').asfloat;
                               qrpdv.parambyname('IAT').asstring := qrservidor_tabela.fieldbyname('IAT').AsString;
                               qrpdv.parambyname('IPPT').asstring := qrservidor_tabela.fieldbyname('IPPT').AsString;
+                              qrpdv.parambyname('TIPOPRODUTO').asstring := qrservidor_tabela.fieldbyname('TIPO').AsString;
                               qrpdv.ExecSQL;
                             except
                               memo1.lines.add('PDV' + grid.CELL[0, I].ASSTRING + ' ERRO - INC - PRODUTO - ' + qrservidor.fieldbyname('codregistro').asstring);
@@ -1899,8 +1888,6 @@ begin
     else
       LimpaDados := False;
     Screen.Cursor := crAppStart;
-    pnlAviso.Left := 2;
-    pnlAviso.Width := 450;
     pnlAviso.Visible := True;
     pnlAviso.Repaint;
 
@@ -1978,7 +1965,8 @@ begin
                   qrpdv.sql.add('CFOP,');
                   qrpdv.sql.add('NCM,');
                   qrpdv.sql.add('CSOSN,');
-                  qrpdv.sql.add('CEST');
+                  qrpdv.sql.add('CEST,');
+                  qrpdv.sql.add('TIPOPRODUTO');
 
                   qrpdv.sql.add(') values (');
 
@@ -2001,7 +1989,8 @@ begin
                   qrpdv.sql.add(':CFOP,');
                   qrpdv.sql.add(':NCM,');
                   qrpdv.sql.add(':CSOSN,');
-                  qrpdv.sql.add(':CEST');
+                  qrpdv.sql.add(':CEST,'); //
+                  qrpdv.sql.add(':TIPOPRODUTO');
 
                   qrpdv.sql.add(')');
 
@@ -2017,7 +2006,7 @@ begin
                   qrpdv.parambyname('ALIQUOTA').asfloat := qrservidor_tabela.fieldbyname('aliquota').asfloat;
                   qrpdv.parambyname('DESCONTO_MAXIMO').asfloat := 0;
                   qrpdv.parambyname('SITUACAO').AsInteger := qrservidor_tabela.fieldbyname('SITUACAO').AsInteger;
-                  qrpdv.parambyname('CFOP').AsString := qrservidor_tabela.fieldbyname('IND_CFOP_NFCE').AsString;
+                  qrpdv.parambyname('CFOP').AsString := qrservidor_tabela.fieldbyname('IND_CFOP_VENDA_DENTRO').AsString; //IND_CFOP_VENDA_DENTRO
 
 
                   scst := qrservidor_tabela.fieldbyname('cst').asstring;
@@ -2042,6 +2031,7 @@ begin
                   qrpdv.parambyname('NCM').asstring := qrservidor_tabela.fieldbyname('CLASSIFICACAO_FISCAL').AsString;
                   qrpdv.parambyname('CSOSN').asstring := qrservidor_tabela.fieldbyname('CSOSN').AsString;
                   qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
+                  qrpdv.parambyname('TIPOPRODUTO').asstring := qrservidor_tabela.fieldbyname('TIPO').AsString;
 
                   qrpdv.ExecSQL;
                 except
@@ -2077,7 +2067,9 @@ begin
                   qrpdv.sql.add('CFOP = :CFOP,');
                   qrpdv.sql.add('NCM = :NCM,');
                   qrpdv.sql.add('CSOSN = :CSOSN,');
-                  qrpdv.sql.add('CEST = :CEST');
+                  qrpdv.sql.add('CEST = :CEST,');
+                  qrpdv.sql.add('TIPOPRODUTO = :TIPOPRODUTO');
+
                   qrpdv.sql.add('where codigo = :codigo');
 
                   qrpdv.parambyname('CODIGO').asinteger := strtoint(qrservidor_tabela.fieldbyname('codigo').asstring);
@@ -2092,7 +2084,7 @@ begin
                   qrpdv.parambyname('ALIQUOTA').asfloat := qrservidor_tabela.fieldbyname('aliquota').asfloat;
                   qrpdv.parambyname('DESCONTO_MAXIMO').asfloat := 0;
                   qrpdv.parambyname('SITUACAO').AsInteger := qrservidor_tabela.fieldbyname('SITUACAO').AsInteger;
-                  qrpdv.parambyname('CFOP').AsString := qrservidor_tabela.fieldbyname('IND_CFOP_NFCE').AsString;
+                  qrpdv.parambyname('CFOP').AsString := qrservidor_tabela.fieldbyname('IND_CFOP_VENDA_DENTRO').AsString;  //alterado
 
 
                   scst := qrservidor_tabela.fieldbyname('cst').asstring;
@@ -2117,6 +2109,9 @@ begin
                   qrpdv.parambyname('NCM').asstring := qrservidor_tabela.fieldbyname('CLASSIFICACAO_FISCAL').AsString;
                   qrpdv.parambyname('CSOSN').asstring := qrservidor_tabela.fieldbyname('CSOSN').AsString;
                   qrpdv.parambyname('CEST').asstring := qrservidor_tabela.fieldbyname('CEST').AsString;
+                  qrpdv.parambyname('TIPOPRODUTO').asstring := qrservidor_tabela.fieldbyname('TIPO').AsString;
+
+                //TIPOPRODUTO
                   qrpdv.ExecSQL;
                 except
                   on e: Exception do
@@ -2423,6 +2418,11 @@ begin
   Show;
 end;
 
+procedure TfrmPrincipal.Panel1Click(Sender: TObject);
+begin
+
+end;
+
 // -------------------------------------------------------------------------- //
 
 procedure TfrmPrincipal.AdicionarUsuarios;
@@ -2492,23 +2492,6 @@ begin
 
     qrservidor.next;
   end;
-end;
-
-procedure TfrmPrincipal.AdvGlowButton1Click(Sender: TObject);
-begin
-  PageView1.ActivePageIndex := 1;
-  if not pnlAviso.Visible then
-    Timer1Timer(frmPrincipal);
-end;
-
-procedure TfrmPrincipal.AdvGlowButton3Click(Sender: TObject);
-begin
-  PageView1.ActivePageIndex := 1;
-end;
-
-procedure TfrmPrincipal.AdvGlowButton4Click(Sender: TObject);
-begin
-  PageView1.ActivePageIndex := 0;
 end;
 
 procedure TfrmPrincipal.AdvMetroButton1Click(Sender: TObject);

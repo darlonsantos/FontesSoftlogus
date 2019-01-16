@@ -5,7 +5,7 @@ uses
   principal in 'principal.pas' {frmPrincipal},
   Thread.CheckConnection in '..\FNTS_Comuns\Thread.CheckConnection.pas',
   Vcl.Themes,
-  Vcl.Styles;
+   Vcl.Styles;
 
 {$R *.res}
 
